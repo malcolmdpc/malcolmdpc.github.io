@@ -1,105 +1,534 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>yourname.</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa:700" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <link rel="stylesheet" href="index.css">
-</head>
-<body>
-    <div id="loading">
-        <div id="spinner"></div>
-    </div>
-    <div id="particles-js"></div>
-    <div id="box">
-        <div class="box1 onlywide animated bounceOutLeft" style="animation-delay:1.7s;"></div>
-        <div class="box2 onlywide animated bounceOutLeft" style="animation-delay:1.8s;"></div>
-        <div class="box2 onlywide animated bounceOutLeft" style="animation-delay:1.9s;"></div>
-        <div class="box2 animated bounceOutRight" style="animation-delay:1.9s;"></div>
-        <div class="box2 onlywide animated bounceOutRight" style="animation-delay:1.8s;"></div>
-        <div class="box2 onlywide animated bounceOutRight" style="animation-delay:1.7s;"></div>
-    </div>
-    <a id="about" onclick="showabout()" class="animated fadeIn" style="animation-delay:2.2s;">about</a>
-    <a id="work" onclick="showwork()" class="animated fadeIn" style="animation-delay:2.2s;">work</a>
-    <a id="contact" onclick="showcontact()" class="animated fadeIn" style="animation-delay:2.2s;">contact</a>
-    <div id="middle" class="animated slideInDown" style="animation-delay:2.0s;">
-        <h1>yourname.</h1>
-        <h2>Software Developer / Photographer / Human</h2>
-        <div id="menu">
-            <a onclick="showabout()">about</a>
-            <a onclick="showwork()">work</a>
-            <a onclick="showcontact()">contact</a>
-        </div>
-        <table>
-                <tr>
-                    <td class="animated zoomIn" style="animation-delay:2.2s;"><a class="social"><i class="fab fa-facebook"></i></a></td>
-                    <td class="animated zoomIn" style="animation-delay:2.4s;"><a class="social"><i class="fab fa-twitter"></i></a></td>
-                    <td class="animated zoomIn" style="animation-delay:2.6s;"><a class="social"><i class="fab fa-instagram"></i></a></td>
-                    <td class="animated zoomIn" style="animation-delay:2.8s;"><a class="social"><i class="fab fa-dribbble"></i></a></td>
-                </tr>
-        </table>
-    </div>
-    <div id="work_container" class="container">
-        <div onclick="closework()"><i class="fas fa-angle-right"></i></div>
-        <h1>works.</h1>
-        <section>
-            <h2>work title</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <div id="used">
-                <div><i class="fas fa-circle"></i>&nbsp;HTML5</div>
-                <div><i class="fas fa-circle"></i>&nbsp;CSS3</div>
-                <div><i class="fas fa-circle"></i>&nbsp;Javascript</div>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Patrones Lab: portfolio de proyectos reproducibles en BI, Machine Learning, Python, SQL, Power BI, Qlik y Looker Studio.">
+    <meta name="author" content="Patrones Lab">
+
+    <title>Patrones Lab — Portfolio BI, ML & Data</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/unicons.css">
+<link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div class="floating-icon-layer" aria-hidden="true"></div>
+
+    <!-- MENU -->
+    <nav class="navbar navbar-expand-sm navbar-light pl-smart-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><span class="brand-badge brand-image-badge"><img src="images/patrones/patrones-lab-logo-bulb.png" alt=""></span> Patrones Lab</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Abrir navegación">
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a href="#about" class="nav-link">Inicio</a></li>
+                    <li class="nav-item"><a href="#project" class="nav-link">Canales</a></li>
+                    <li class="nav-item"><a href="#resume" class="nav-link">Método</a></li>
+                    <li class="nav-item"><a href="#repository" class="nav-link">Repositorio</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contacto</a></li>
+                </ul>
+
+                <ul class="navbar-nav ml-lg-auto">
+                    <div class="ml-lg-4">
+                      <div class="color-mode d-lg-flex justify-content-center align-items-center">
+                        <i class="color-mode-icon"></i>
+                        Modo
+                      </div>
+                    </div>
+                </ul>
             </div>
-            <button class="btn_one">button 1</button>
-            <button class="btn_two">button 2</button>
-        </section>
-    </div>
-    <div id="about_container" class="container">
-            <div onclick="closeabout()"><i class="fas fa-angle-left"></i></div>
-            <h1>about.</h1>
-            <section>
-                <h2>about me</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-            </section>
-            <section>
-                <h2>skills</h2>
-                <p>
-                    i do eveything ;)
-                </p>
-            </section>
         </div>
-          <div id="contact_container" class="container">
-            <div onclick="closecontact()"><i class="fas fa-angle-down"></i></div>
-            <h1>contact.</h1>
-            <section>
-                <h2>contact me</h2>
-                <p>
-                    <form>
-                        <input type="text" placeholder="name" required>
-                        <input type="email" placeholder="email" required><br>
-                        <textarea placeholder="your message" required rows="5"></textarea><br>
-                        <button class="btn_one">send</button>
-                    </form> 
-                </p>
-            </section>
+    </nav>
+
+    <!-- HERO -->
+    <section class="about section-glow glow-hero full-screen d-lg-flex justify-content-center align-items-center" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 col-md-12 col-12 d-flex align-items-center">
+                    <div class="about-text">
+                        <small class="small-text">Portfolio de proyectos <span class="mobile-block">BI · ML · Python · Dashboards</span></small>
+                        <h1 class="pl-hero-title">
+                            <span class="hero-line">Transformo datos en</span>
+                            <span class="hero-rotator" aria-label="evidencia, modelos y dashboards">
+                                <span>evidencia</span>
+                                <span>modelos</span>
+                                <span>dashboards</span>
+                                <span>decisiones</span>
+                            </span>
+                        </h1>
+
+                        <p>Patrones Lab reúne análisis reproducibles, modelos explicables y visualizaciones orientadas a decisión. Cada proyecto documenta datos, método, resultados y límites.</p>
+
+                        <div class="custom-btn-group mt-4">
+                          <a href="#project" class="btn mr-lg-2 custom-btn"><i class='uil uil-chart-line'></i> Ver proyectos</a>
+                          <a href="#resume" class="btn custom-btn custom-btn-bg custom-btn-link">Metodología</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-12 col-12">
+                    <div class="about-image svg hero-lab-card profile-hero-card">
+                        <img src="images/patrones/malcolm-profile.png" class="img-fluid" alt="Foto de Malcolm, creador de Patrones Lab">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="footer">
-            made on earth by a human <br> <a href="https://imfunniee.github.io">imfunniee</a>
+    </section>
+
+    <!-- SOCIAL CHANNELS -->
+    <section class="project py-5 social-section section-glow glow-social" id="project">
+        <div class="container">
+            <div class="row">
+              <div class="col-lg-11 text-center mx-auto col-12">
+                  <small class="section-kicker">Canales de Patrones Lab</small>
+                  <h2 class="mb-3">Redes, publicaciones y repositorio</h2>
+                  <p class="social-intro">
+                    Todo el ecosistema del proyecto en un solo lugar: visuales, notas técnicas, repositorios,
+                    dashboards, enlaces útiles y contacto profesional.
+                  </p>
+
+                  <div class="social-grid social-grid-complete">
+                    <a class="social-card instagram" href="https://www.instagram.com/patroneslab/" target="_blank" rel="noopener" aria-label="Instagram Patrones Lab">
+                      <span class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1.2"></circle></svg>
+                      </span>
+                      <strong>Instagram</strong>
+                      <small>Visuales y posts</small>
+                    </a>
+
+                    <a class="social-card linkedin" href="https://www.linkedin.com/in/malcolmdpc/" target="_blank" rel="noopener" aria-label="LinkedIn Malcolm">
+                      <span class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4v11H4zM6 4.2a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2zM10 9h3.8v1.6h.1c.5-.9 1.8-1.9 3.6-1.9 3.8 0 4.5 2.5 4.5 5.8V20h-4v-5c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V20h-4z"></path></svg>
+                      </span>
+                      <strong>LinkedIn</strong>
+                      <small>Perfil profesional</small>
+                    </a>
+
+                    <a class="social-card medium" href="https://medium.com/@malcolmdpc" target="_blank" rel="noopener" aria-label="Medium Malcolm DPC">
+                      <span class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="12" r="5"></circle><ellipse cx="15" cy="12" rx="3" ry="5"></ellipse><ellipse cx="20" cy="12" rx="1.4" ry="4.5"></ellipse></svg>
+                      </span>
+                      <strong>Medium</strong>
+                      <small>Artículos y notas</small>
+                    </a>
+
+                    <a class="social-card linktree" href="https://linktr.ee/PatronesLab" target="_blank" rel="noopener" aria-label="Linktree Patrones Lab">
+                      <span class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M5 8h14M6.5 15.5l11-11M17.5 15.5l-11-11"></path></svg>
+                      </span>
+                      <strong>Linktree</strong>
+                      <small>Todos los enlaces</small>
+                    </a>
+
+                    <a class="social-card github" href="https://github.com/malcolmdpc" target="_blank" rel="noopener" aria-label="GitHub Malcolm">
+                      <span class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8a9.2 9.2 0 0 0-2.9 17.9c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.8.8.1-.6.3-1.1.6-1.3-2.2-.3-4.5-1.1-4.5-4.8 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.7.7 1 1.6 1 2.7 0 3.8-2.3 4.6-4.5 4.8.4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5A9.2 9.2 0 0 0 12 2.8z"></path></svg>
+                      </span>
+                      <strong>GitHub</strong>
+                      <small>Perfil técnico</small>
+                    </a>
+
+                    <a class="social-card repo" href="https://github.com/malcolmdpc/patrones-lab" target="_blank" rel="noopener" aria-label="Repositorio Patrones Lab">
+                      <span class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z"></path><path d="M8 8h8M8 12h8M8 16h5"></path></svg>
+                      </span>
+                      <strong>Repo</strong>
+                      <small>Patrones Lab</small>
+                    </a>
+
+                    <a class="social-card dashboard" href="https://datastudio.google.com/reporting/b0b32df2-f110-4bac-8dfb-3be359d4888d" target="_blank" rel="noopener" aria-label="Dashboard Looker Studio">
+                      <span class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="17" r="3"></circle><circle cx="17" cy="7" r="3"></circle><path d="M9.5 14.5l5-5"></path></svg>
+                      </span>
+                      <strong>Dashboard</strong>
+                      <small>Looker Studio</small>
+                    </a>
+
+                    <a class="social-card mail" href="mailto:encontrandopatrones@gmail.com" aria-label="Email de contacto">
+                      <span class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"></path><path d="m4 7 8 6 8-6"></path></svg>
+                      </span>
+                      <strong>Email</strong>
+                      <small>Contacto directo</small>
+                    </a>
+                  </div>
+              </div>
+            </div>
         </div>
-    <script src="index.js" type="text/javascript"></script>
-    <script src="particles.js"></script>
-    <script src="app.js"></script>
-</body>
+    </section>
+
+    <!-- METHOD -->
+    <section class="resume section-glow glow-method py-5 pinned-timeline-section" id="resume" data-pinned-timeline>
+        <div class="container">
+            <div class="row align-items-start">
+
+                <div class="col-lg-6 col-12">
+                  <h2 class="mb-4">Proceso analítico</h2>
+                  <p class="timeline-scroll-note">Hacé scroll para avanzar por las etapas. Al finalizar, la página continúa normalmente.</p>
+
+                    <div class="timeline process-timeline" data-process-timeline>
+                        <div class="timeline-wrapper is-active is-complete" data-step="1">
+                             <span class="timeline-segment" aria-hidden="true"></span>
+                             <div class="timeline-yr"><span>01</span></div>
+                             <div class="timeline-info">
+                                  <h3><span>Pregunta</span><small>Alcance</small></h3>
+                                  <p>Definir la unidad de análisis, el objetivo y qué decisión busca mejorar el proyecto.</p>
+                             </div>
+                        </div>
+
+                        <div class="timeline-wrapper" data-step="2">
+                            <span class="timeline-segment" aria-hidden="true"></span>
+                            <div class="timeline-yr"><span>02</span></div>
+                            <div class="timeline-info">
+                                <h3><span>Datos</span><small>Fuente única</small></h3>
+                                <p>Consolidar una base confiable, trazable y consistente para todo el análisis.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-wrapper" data-step="3">
+                            <span class="timeline-segment" aria-hidden="true"></span>
+                            <div class="timeline-yr"><span>03</span></div>
+                            <div class="timeline-info">
+                                <h3><span>Preparación</span><small>Transformación</small></h3>
+                                <p>Limpiar, cruzar fuentes y crear variables con reglas explícitas y reproducibles.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-wrapper" data-step="4">
+                            <span class="timeline-segment" aria-hidden="true"></span>
+                            <div class="timeline-yr"><span>04</span></div>
+                            <div class="timeline-info">
+                                <h3><span>Modelo / Visual</span><small>Construcción</small></h3>
+                                <p>Desarrollar métricas, dashboard o modelo alineado con la pregunta inicial.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-wrapper" data-step="5">
+                            <span class="timeline-segment" aria-hidden="true"></span>
+                            <div class="timeline-yr"><span>05</span></div>
+                            <div class="timeline-info">
+                                <h3><span>Validación</span><small>Control</small></h3>
+                                <p>Revisar coherencia, sesgos, supuestos, métricas y estabilidad de resultados.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-wrapper" data-step="6">
+                            <span class="timeline-segment" aria-hidden="true"></span>
+                            <div class="timeline-yr"><span>06</span></div>
+                            <div class="timeline-info">
+                                <h3><span>Publicación</span><small>Entrega</small></h3>
+                                <p>Documentar hallazgos, límites, próximos pasos y outputs finales.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-12">
+                  <h2 class="mb-4 mobile-mt-2">Stack y líneas</h2>
+
+                    <div class="timeline stack-timeline">
+                        <div class="timeline-wrapper">
+                             <div class="timeline-yr"><span>BI</span></div>
+                             <div class="timeline-info">
+                                  <h3><span>Business Intelligence</span><small>Power BI · Qlik · Looker</small></h3>
+                                  <p>Dashboards, KPIs, modelos de datos, navegación ejecutiva y trazabilidad de métricas.</p>
+                             </div>
+                        </div>
+
+                        <div class="timeline-wrapper">
+                            <div class="timeline-yr"><span>PY</span></div>
+                            <div class="timeline-info">
+                                <h3><span>Python Analytics</span><small>Pandas · Plotly</small></h3>
+                                <p>Limpieza, análisis exploratorio, visualización, automatización y notebooks reproducibles.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-wrapper">
+                            <div class="timeline-yr"><span>ML</span></div>
+                            <div class="timeline-info">
+                                <h3><span>Machine Learning</span><small>scikit-learn</small></h3>
+                                <p>Modelos supervisados, validación, métricas, calibración, interpretación y control de leakage.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stack-pills mt-4">
+                      <span>SQL</span><span>Python</span><span>Power BI</span><span>Qlik</span><span>Looker Studio</span><span>GitHub</span><span>Data Storytelling</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- GITHUB PROJECTS -->
+    <section class="contact py-5 github-projects-section section-glow glow-repo" id="repository">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 text-center mx-auto col-12">
+            <small class="section-kicker">Repositorio Patrones Lab</small>
+            <h2 class="mb-3">Proyectos actuales</h2>
+            <p class="projects-intro">
+              Acceso directo a los proyectos publicados y en desarrollo dentro del repositorio.
+              Usá los filtros para navegar por disciplina, herramienta o tipo de entrega.
+            </p>
+
+            <div class="repo-filter-toolbar" aria-label="Filtrar proyectos">
+              <button class="repo-filter-btn active" data-repo-filter="all"><span class="filter-icon">◎</span>Todos</button>
+              <button class="repo-filter-btn" data-repo-filter="bi"><span class="filter-icon">▦</span>BI</button>
+              <button class="repo-filter-btn" data-repo-filter="machine-learning"><span class="filter-icon">✦</span>Machine Learning</button>
+              <button class="repo-filter-btn" data-repo-filter="python"><span class="filter-icon">◇</span>Python</button>
+              <button class="repo-filter-btn" data-repo-filter="sql"><span class="filter-icon">▤</span>SQL</button>
+              <button class="repo-filter-btn" data-repo-filter="spss"><span class="filter-icon">◧</span>SPSS</button>
+              <button class="repo-filter-btn" data-repo-filter="looker-studio"><span class="filter-icon">◉</span>Looker Studio</button>
+              <button class="repo-filter-btn" data-repo-filter="power-bi"><span class="filter-icon">◼</span>Power BI</button>
+              <button class="repo-filter-btn" data-repo-filter="dashboard"><span class="filter-icon">▣</span>Dashboard</button>
+              <button class="repo-filter-btn" data-repo-filter="data-storytelling"><span class="filter-icon">✎</span>Data Storytelling</button>
+              <button class="repo-filter-btn" data-repo-filter="geoespacial"><span class="filter-icon">⌖</span>Geoespacial</button>
+              <button class="repo-filter-btn" data-repo-filter="aena"><span class="filter-icon">✈</span>AENA</button>
+              <button class="repo-filter-btn" data-repo-filter="airbnb"><span class="filter-icon">⌂</span>Airbnb</button>
+              <button class="repo-filter-btn" data-repo-filter="taxi"><span class="filter-icon">◆</span>Taxi</button>
+              <button class="repo-filter-btn" data-repo-filter="futbol"><span class="filter-icon">●</span>Fútbol</button>
+              <button class="repo-filter-btn" data-repo-filter="en-desarrollo"><span class="filter-icon">…</span>En desarrollo</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="github-project-grid">
+          <article class="github-project-card" data-tags="bi python data-storytelling aena">
+            <a href="./2026-01_trafico-aereo-aena/" class="project-image-link">
+              <img src="https://github.com/user-attachments/assets/632158bd-ec44-454c-b797-4b6e67d47672" alt="Proyecto Vuelos en Islas Baleares">
+            </a>
+            <div class="github-project-body">
+              <h3>2026-01 · Vuelos en las Islas Baleares</h3>
+              <p class="project-status published">✅ publicado</p>
+              <p>Análisis de tráfico aéreo en España con datos públicos de AENA, con foco en volúmenes, patrones por aeropuerto y diferencias entre categorías.</p>
+              <div class="mini-tags"><span>BI</span><span>Python</span><span>AENA</span></div>
+              <a class="project-link" href="./2026-01_trafico-aereo-aena/">Entrar al proyecto</a>
+            </div>
+          </article>
+
+          <article class="github-project-card featured" data-tags="python bi data-storytelling airbnb">
+            <a href="./2026-02_airbnb-london/" class="project-image-link">
+              <img src="https://github.com/user-attachments/assets/1e366e5e-6271-4135-9203-6c4862f7a953" alt="Proyecto Airbnb en London">
+            </a>
+            <div class="github-project-body">
+              <h3>2026-02 · Alojamiento Airbnb en London</h3>
+              <p class="project-status published">✅ publicado</p>
+              <p>Análisis exploratorio del alojamiento Airbnb en Londres con foco en precio, categorías, reseñas y patrones territoriales.</p>
+              <div class="mini-tags"><span>Python</span><span>BI</span><span>Airbnb</span></div>
+              <a class="project-link" href="./2026-02_airbnb-london/">Entrar al proyecto</a>
+            </div>
+          </article>
+
+          <article class="github-project-card" data-tags="python sql data-storytelling geoespacial taxi">
+            <a href="./2026-03_taxi-trip-chicago/" class="project-image-link">
+              <img src="https://github.com/user-attachments/assets/b8b13d5e-4b4a-4fe4-9f9d-c164ea37ccb9" alt="Proyecto Taxi Trip en Chicago">
+            </a>
+            <div class="github-project-body">
+              <h3>2026-03 · Taxi Trip en Chicago</h3>
+              <p class="project-status published">✅ publicado</p>
+              <p>Análisis de viajes de taxi en Chicago para estudiar duración, demanda, distribución geoespacial y patrones operativos.</p>
+              <div class="mini-tags"><span>Python</span><span>SQL</span><span>Geoespacial</span></div>
+              <a class="project-link" href="./2026-03_taxi-trip-chicago/">Entrar al proyecto</a>
+            </div>
+          </article>
+
+          <article class="github-project-card" data-tags="machine-learning python data-storytelling airbnb">
+            <a href="./2026-02_airbnb-london/" class="project-image-link">
+              <img src="https://github.com/user-attachments/assets/b5a907e0-923f-4054-8824-d88122284af1" alt="Modelo ML Airbnb London">
+            </a>
+            <div class="github-project-body">
+              <h3>Modelo ML · Airbnb London</h3>
+              <p class="project-status published">✅ publicado</p>
+              <p>Clasificación supervisada de anuncios relativamente caros o baratos dentro de cada tipo de alojamiento.</p>
+              <div class="mini-tags"><span>Machine Learning</span><span>Python</span><span>Airbnb</span></div>
+              <a class="project-link" href="./2026-02_airbnb-london/">Entrar al proyecto</a>
+            </div>
+          </article>
+
+          <article class="github-project-card featured" data-tags="dashboard looker-studio bi sql taxi geoespacial">
+            <a href="https://datastudio.google.com/reporting/b0b32df2-f110-4bac-8dfb-3be359d4888d" class="project-image-link">
+              <img src="https://github.com/user-attachments/assets/95f703e1-cfae-4db7-9140-aff44e6b9f74" alt="Dashboard Looker Taxi Trips Chicago">
+            </a>
+            <div class="github-project-body">
+              <h3>Dashboard Looker · Taxi Trips Chicago</h3>
+              <p class="project-status published">✅ publicado</p>
+              <p>Dashboard interactivo en Looker Studio para explorar viajes de taxi en Chicago, indicadores operativos, patrones horarios y recorridos pickup-dropoff.</p>
+              <div class="mini-tags"><span>Looker Studio</span><span>Dashboard</span><span>BI</span></div>
+              <div class="project-link-row">
+                <a class="project-link" href="https://datastudio.google.com/reporting/b0b32df2-f110-4bac-8dfb-3be359d4888d">Entrar al Dashboard</a>
+                <a class="project-link secondary" href="./2026-03_taxi-trip-chicago/dashboard/">Ver documentación</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="github-project-card muted-card" data-tags="power-bi dashboard bi en-desarrollo">
+            <a href="https://github.com/malcolmdpc/patrones-lab" class="project-image-link">
+              <img src="https://github.com/user-attachments/assets/818b147f-67a5-47f0-9f24-d0692e8c8eae" alt="Contenido en preparación">
+            </a>
+            <div class="github-project-body">
+              <h3>Contenido en preparación</h3>
+              <p class="project-status development">⚠️ en desarrollo</p>
+              <p>Próximamente.</p>
+              <div class="mini-tags"><span>Power BI</span><span>Dashboard</span><span>En desarrollo</span></div>
+              <a class="project-link" href="https://github.com/malcolmdpc/patrones-lab">Entrar al proyecto</a>
+            </div>
+          </article>
+
+          <article class="github-project-card" data-tags="machine-learning python data-storytelling futbol en-desarrollo">
+            <a href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-04_futbol-statsbomb" class="project-image-link">
+              <img src="https://github.com/user-attachments/assets/627d08a0-9609-41bc-be8a-c270051e6570" alt="Modelo Probabilístico xT">
+            </a>
+            <div class="github-project-body">
+              <h3>Contenido en preparación</h3>
+              <p class="project-status development">⚠️ en desarrollo</p>
+              <p>Modelo Probabilístico: Peligro Esperado xT. Próximamente.</p>
+              <div class="mini-tags"><span>Machine Learning</span><span>Python</span><span>Fútbol</span></div>
+              <a class="project-link" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-04_futbol-statsbomb">Entrar al proyecto</a>
+            </div>
+          </article>
+
+          <article class="github-project-card muted-card" data-tags="dashboard bi data-storytelling en-desarrollo">
+            <a href="https://github.com/malcolmdpc/patrones-lab" class="project-image-link">
+              <img src="https://github.com/user-attachments/assets/41177833-277b-4ad8-8f67-7cc4002bf448" alt="Próximamente">
+            </a>
+            <div class="github-project-body">
+              <h3>Contenido en preparación</h3>
+              <p class="project-status neutral">---</p>
+              <p>Próximamente.</p>
+              <div class="mini-tags"><span>Dashboard</span><span>BI</span></div>
+              <a class="project-link" href="https://github.com/malcolmdpc/patrones-lab">Entrar al repositorio</a>
+            </div>
+          </article>
+
+          <article class="github-project-card muted-card" data-tags="sql python bi en-desarrollo">
+            <a href="https://github.com/malcolmdpc/patrones-lab" class="project-image-link">
+              <img src="https://github.com/user-attachments/assets/41177833-277b-4ad8-8f67-7cc4002bf448" alt="Próximamente">
+            </a>
+            <div class="github-project-body">
+              <h3>Contenido en preparación</h3>
+              <p class="project-status neutral">---</p>
+              <p>Próximamente.</p>
+              <div class="mini-tags"><span>SQL</span><span>Python</span></div>
+              <a class="project-link" href="https://github.com/malcolmdpc/patrones-lab">Entrar al repositorio</a>
+            </div>
+          </article>
+
+          <article class="github-project-card muted-card" data-tags="dashboard bi data-storytelling en-desarrollo">
+            <a href="https://github.com/malcolmdpc/patrones-lab" class="project-image-link">
+              <img src="https://github.com/user-attachments/assets/41177833-277b-4ad8-8f67-7cc4002bf448" alt="Próximamente">
+            </a>
+            <div class="github-project-body">
+              <h3>Contenido en preparación</h3>
+              <p class="project-status neutral">---</p>
+              <p>Próximamente.</p>
+              <div class="mini-tags"><span>Dashboard</span><span>BI</span></div>
+              <a class="project-link" href="https://github.com/malcolmdpc/patrones-lab">Entrar al repositorio</a>
+            </div>
+          </article>
+
+          <article class="github-project-card muted-card" data-tags="dashboard bi data-storytelling en-desarrollo">
+            <a href="https://github.com/malcolmdpc/patrones-lab" class="project-image-link">
+              <img src="https://github.com/user-attachments/assets/41177833-277b-4ad8-8f67-7cc4002bf448" alt="Próximamente">
+            </a>
+            <div class="github-project-body">
+              <h3>Contenido en preparación</h3>
+              <p class="project-status neutral">---</p>
+              <p>Próximamente.</p>
+              <div class="mini-tags"><span>Dashboard</span><span>BI</span></div>
+              <a class="project-link" href="https://github.com/malcolmdpc/patrones-lab">Entrar al repositorio</a>
+            </div>
+          </article>
+
+          <article class="github-project-card muted-card" data-tags="dashboard bi data-storytelling en-desarrollo">
+            <a href="https://github.com/malcolmdpc/patrones-lab" class="project-image-link">
+              <img src="https://github.com/user-attachments/assets/41177833-277b-4ad8-8f67-7cc4002bf448" alt="Próximamente">
+            </a>
+            <div class="github-project-body">
+              <h3>Contenido en preparación</h3>
+              <p class="project-status neutral">---</p>
+              <p>Próximamente.</p>
+              <div class="mini-tags"><span>Dashboard</span><span>BI</span></div>
+              <a class="project-link" href="https://github.com/malcolmdpc/patrones-lab">Entrar al repositorio</a>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="repo-empty-message" hidden>No hay proyectos para esa categoría todavía.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact py-5 contact-form-section section-glow glow-contact" id="contact">
+      <div class="container">
+        <div class="row align-items-stretch justify-content-center">
+
+          <div class="col-lg-5 col-12 mb-4 mb-lg-0">
+            <div class="contact-panel">
+              <h3>Contacto</h3>
+              <p>Para consultas profesionales, revisión de portfolio o proyectos de BI/Data.</p>
+              <p class="contact-email-line"><strong>correo:</strong> <a href="mailto:encontrandopatrones@gmail.com">encontrandopatrones@gmail.com</a></p>
+            </div>
+          </div>
+
+          <div class="col-lg-7 col-12">
+            <div class="contact-form boxed-mail-form">
+              <h2 class="mb-3">Dejame un mensaje</h2>
+              <p class="form-note">Escribime y te responderé a la brevedad.</p>
+
+              <form id="contactForm">
+                <div class="row">
+                  <div class="col-lg-6 col-12">
+                    <input type="text" class="form-control" name="name" placeholder="Nombre" id="name">
+                  </div>
+
+                  <div class="col-lg-6 col-12">
+                    <input type="email" class="form-control" name="email" placeholder="Email" id="email">
+                  </div>
+
+                  <div class="col-12">
+                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="Mensaje"></textarea>
+                  </div>
+
+                  <div class="ml-lg-auto col-lg-5 col-12">
+                    <input type="submit" class="form-control submit-btn" value="Preparar email">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+     <footer class="footer py-5">
+          <div class="container">
+               <div class="row">
+                    <div class="col-lg-12 col-12">
+                        <p class="copyright-text text-center">Patrones Lab® · Generando conocimiento a través de los datos</p>
+                    </div>
+               </div>
+          </div>
+     </footer>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/Headroom.js"></script>
+    <script src="js/jQuery.headroom.js"></script>
+<script src="js/custom.js"></script>
+
+  </body>
 </html>
