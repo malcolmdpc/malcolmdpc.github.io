@@ -3934,3 +3934,1755 @@ body{
     padding-bottom:0 !important;
   }
 }
+
+
+/* === V19B: Timeline cinematográfica estable === */
+/* Parte de v18. No agrega otro sistema de navegación: solo mejora el visual de la timeline existente. */
+
+.process-timeline{
+  --pl-cinema-yellow:#ffc200;
+  --pl-cinema-line:#3f3d4e;
+  --pl-cinema-muted:rgba(245,240,232,.46);
+  --pl-cinema-glow:rgba(255,194,0,.32);
+}
+
+/* Línea base y relleno por tramo */
+.process-timeline .timeline-segment{
+  overflow:hidden !important;
+  background:var(--pl-cinema-line) !important;
+  box-shadow:none !important;
+}
+
+.process-timeline .timeline-segment::after{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:var(--segment-progress, 0%);
+  border-radius:999px;
+  background:linear-gradient(180deg, #fff0a6 0%, var(--pl-cinema-yellow) 46%, #d99500 100%);
+  box-shadow:
+    0 0 12px rgba(255,194,0,.30),
+    0 0 30px rgba(255,194,0,.10);
+  transition:height .72s cubic-bezier(.22,.61,.36,1);
+}
+
+.process-timeline .timeline-wrapper.is-complete .timeline-segment::after{
+  height:100%;
+}
+
+/* Círculo activo con respiración suave */
+.process-timeline .timeline-yr{
+  transition:
+    background-color .52s ease,
+    box-shadow .62s ease,
+    transform .62s cubic-bezier(.16,1,.3,1),
+    opacity .48s ease !important;
+}
+
+.process-timeline .timeline-wrapper.is-active .timeline-yr{
+  animation:timelineBreathStable 2.55s ease-in-out infinite;
+}
+
+@keyframes timelineBreathStable{
+  0%,100%{
+    transform:scale(1);
+    box-shadow:
+      0 14px 34px rgba(255,194,0,.22),
+      0 0 0 0 rgba(255,194,0,.18);
+  }
+  50%{
+    transform:scale(1.045);
+    box-shadow:
+      0 18px 46px rgba(255,194,0,.34),
+      0 0 0 10px rgba(255,194,0,.055);
+  }
+}
+
+/* Textos: aparición más gradual y foco claro */
+.process-timeline .timeline-info{
+  transition:
+    opacity .64s ease,
+    transform .72s cubic-bezier(.16,1,.3,1),
+    filter .64s ease !important;
+}
+
+.process-timeline .timeline-info h3 span,
+.process-timeline .timeline-info h3 small,
+.process-timeline .timeline-info p{
+  transition:
+    opacity .64s ease,
+    color .64s ease,
+    transform .72s cubic-bezier(.16,1,.3,1),
+    text-shadow .64s ease,
+    filter .64s ease !important;
+}
+
+.process-timeline .timeline-wrapper:not(.is-active):not(.is-complete) .timeline-info{
+  opacity:.40 !important;
+  transform:translateY(7px) !important;
+  filter:blur(.12px);
+}
+
+.process-timeline .timeline-wrapper:not(.is-active):not(.is-complete) .timeline-info h3 span,
+.process-timeline .timeline-wrapper:not(.is-active):not(.is-complete) .timeline-info h3 small,
+.process-timeline .timeline-wrapper:not(.is-active):not(.is-complete) .timeline-info p{
+  transform:translateY(3px);
+}
+
+.process-timeline .timeline-wrapper.is-active .timeline-info{
+  opacity:1 !important;
+  transform:translateY(0) !important;
+  filter:none;
+}
+
+.process-timeline .timeline-wrapper.is-active .timeline-info h3 span{
+  color:var(--pl-cinema-yellow) !important;
+  text-shadow:0 0 24px rgba(255,194,0,.14);
+}
+
+.process-timeline .timeline-wrapper.is-active .timeline-info h3 small{
+  color:var(--pl-cinema-yellow) !important;
+  opacity:.96;
+}
+
+/* Reveal inicial escalonado, solo visual */
+.pinned-timeline-section.timeline-cinema-ready .process-timeline .timeline-wrapper{
+  animation:timelineRevealStable .72s cubic-bezier(.16,1,.3,1) both;
+  animation-delay:calc(var(--step-index, 0) * .055s);
+}
+
+@keyframes timelineRevealStable{
+  0%{
+    opacity:0;
+    transform:translateY(14px) !important;
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0) !important;
+  }
+}
+
+/* Halo muy leve detrás del texto activo */
+.process-timeline .timeline-info{
+  position:relative;
+}
+
+.process-timeline .timeline-wrapper.is-active .timeline-info::before{
+  content:"";
+  position:absolute;
+  left:-22px;
+  top:-16px;
+  width:min(440px, 70vw);
+  height:110px;
+  background:radial-gradient(circle at 0% 50%, rgba(255,194,0,.095), transparent 68%);
+  pointer-events:none;
+  z-index:-1;
+}
+
+/* Evita que la animación inicial pise el estado activo luego de reproducirse */
+.pinned-timeline-section.timeline-cinema-ready.timeline-cinema-settled .process-timeline .timeline-wrapper{
+  animation:none !important;
+}
+
+/* Mobile/tablet: no bloqueo, solo estado completo y lectura limpia */
+@media (max-width:991px){
+  .process-timeline .timeline-wrapper{
+    animation:none !important;
+    opacity:1 !important;
+    transform:none !important;
+  }
+
+  .process-timeline .timeline-segment::after{
+    height:100% !important;
+  }
+
+  .process-timeline .timeline-wrapper .timeline-info{
+    opacity:1 !important;
+    transform:none !important;
+    filter:none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .process-timeline .timeline-wrapper,
+  .process-timeline .timeline-yr,
+  .process-timeline .timeline-info,
+  .process-timeline .timeline-segment::after{
+    animation:none !important;
+    transition:none !important;
+  }
+}
+
+
+/* === V19C: remove active timeline yellow background block === */
+/* Mantiene la transición cinematográfica, pero elimina el halo/rectángulo amarillo detrás del texto activo. */
+.process-timeline .timeline-wrapper.is-active .timeline-info::before,
+.process-timeline .timeline-info::before{
+  content:none !important;
+  display:none !important;
+  opacity:0 !important;
+  background:none !important;
+}
+
+.process-timeline .timeline-wrapper.is-active .timeline-info{
+  background:transparent !important;
+  box-shadow:none !important;
+}
+
+.process-timeline .timeline-wrapper.is-active .timeline-info h3 span{
+  text-shadow:0 0 18px rgba(255,194,0,.10) !important;
+}
+
+
+/* === V20: floating CTA discreto === */
+.floating-cta{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  z-index:9990;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  min-height:42px;
+  padding:10px 15px 10px 13px;
+  border-radius:999px;
+  background:rgba(255,194,0,.94);
+  color:#111111 !important;
+  font-size:13px;
+  font-weight:900;
+  line-height:1;
+  letter-spacing:-.01em;
+  box-shadow:
+    0 16px 42px rgba(0,0,0,.26),
+    0 0 0 1px rgba(255,255,255,.10) inset;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transform:translateY(14px) scale(.96);
+  transition:
+    opacity .28s ease,
+    visibility .28s ease,
+    transform .32s cubic-bezier(.16,1,.3,1),
+    background .22s ease,
+    box-shadow .22s ease;
+}
+
+.floating-cta.is-visible{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translateY(0) scale(1);
+}
+
+.floating-cta:hover{
+  color:#111111 !important;
+  text-decoration:none;
+  background:#ffd23d;
+  transform:translateY(-3px) scale(1.015);
+  box-shadow:
+    0 22px 58px rgba(0,0,0,.34),
+    0 0 0 1px rgba(255,255,255,.18) inset;
+}
+
+.floating-cta__dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#111111;
+  box-shadow:0 0 0 0 rgba(17,17,17,.28);
+  animation:floatingCtaPulse 2.4s ease-in-out infinite;
+}
+
+.floating-cta__arrow{
+  display:inline-block;
+  font-size:14px;
+  transform:translateY(-1px);
+  transition:transform .22s ease;
+}
+
+.floating-cta:hover .floating-cta__arrow{
+  transform:translate(2px, -3px);
+}
+
+@keyframes floatingCtaPulse{
+  0%,100%{
+    box-shadow:0 0 0 0 rgba(17,17,17,.24);
+  }
+  50%{
+    box-shadow:0 0 0 7px rgba(17,17,17,0);
+  }
+}
+
+.dark-mode .floating-cta{
+  background:rgba(255,194,0,.92);
+  color:#111111 !important;
+}
+
+@media (max-width:767px){
+  .floating-cta{
+    right:16px;
+    bottom:16px;
+    min-height:40px;
+    padding:10px 13px;
+    font-size:12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .floating-cta,
+  .floating-cta__dot,
+  .floating-cta__arrow{
+    animation:none !important;
+    transition:none !important;
+  }
+}
+
+
+/* === V21: indicador visual de scroll debajo del hero === */
+.hero-scroll-indicator{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin-top:28px;
+  color:#f5f0e8 !important;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  opacity:.72;
+  text-decoration:none !important;
+  transition:
+    opacity .24s ease,
+    transform .28s cubic-bezier(.16,1,.3,1),
+    color .24s ease;
+}
+
+.hero-scroll-indicator:hover{
+  opacity:1;
+  color:#ffc200 !important;
+  transform:translateY(2px);
+  text-decoration:none !important;
+}
+
+.hero-scroll-indicator__text{
+  display:inline-block;
+}
+
+.hero-scroll-indicator__line{
+  position:relative;
+  display:inline-block;
+  width:2px;
+  height:46px;
+  border-radius:999px;
+  background:rgba(245,240,232,.18);
+  overflow:hidden;
+}
+
+.hero-scroll-indicator__line::after{
+  content:"";
+  position:absolute;
+  left:0;
+  top:-45%;
+  width:100%;
+  height:45%;
+  border-radius:999px;
+  background:linear-gradient(180deg, rgba(255,194,0,0), rgba(255,194,0,.95), rgba(255,194,0,0));
+  animation:heroScrollLine 1.85s cubic-bezier(.65,0,.35,1) infinite;
+}
+
+@keyframes heroScrollLine{
+  0%{
+    top:-45%;
+    opacity:0;
+  }
+  18%{
+    opacity:1;
+  }
+  78%{
+    opacity:1;
+  }
+  100%{
+    top:100%;
+    opacity:0;
+  }
+}
+
+.hero-scroll-indicator::after{
+  content:"";
+  width:7px;
+  height:7px;
+  border-right:2px solid currentColor;
+  border-bottom:2px solid currentColor;
+  transform:rotate(45deg) translateY(-1px);
+  opacity:.76;
+  animation:heroScrollChevron 1.85s ease-in-out infinite;
+}
+
+@keyframes heroScrollChevron{
+  0%,100%{
+    transform:rotate(45deg) translateY(-1px);
+    opacity:.45;
+  }
+  50%{
+    transform:rotate(45deg) translate(3px, 3px);
+    opacity:1;
+  }
+}
+
+body:not(.dark-mode) .hero-scroll-indicator{
+  color:#474559 !important;
+}
+
+body:not(.dark-mode) .hero-scroll-indicator__line{
+  background:rgba(71,69,89,.16);
+}
+
+@media (max-width:991px){
+  .hero-scroll-indicator{
+    margin-top:22px;
+  }
+}
+
+@media (max-width:767px){
+  .hero-scroll-indicator{
+    display:flex;
+    justify-content:flex-start;
+    margin-top:20px;
+    font-size:11px;
+  }
+
+  .hero-scroll-indicator__line{
+    height:38px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .hero-scroll-indicator__line::after,
+  .hero-scroll-indicator::after{
+    animation:none !important;
+  }
+}
+
+
+/* === V22: secciones principales a pantalla completa === */
+/* Prueba: que el indicador de scroll tenga más sentido, evitando que se vea parte de la sección siguiente al 100%. */
+
+@media (min-width: 992px){
+  .fullscreen-sections-experiment section:not(.github-projects-section){
+    min-height:100vh;
+    min-height:100svh;
+    display:flex;
+    align-items:center;
+  }
+
+  .fullscreen-sections-experiment section:not(.github-projects-section) > .container{
+    width:100%;
+  }
+
+  .fullscreen-sections-experiment .about.full-screen{
+    min-height:100vh !important;
+    min-height:100svh !important;
+    padding-top:88px !important;
+    padding-bottom:64px !important;
+  }
+
+  .fullscreen-sections-experiment .social-section,
+  .fullscreen-sections-experiment .contact-form-section{
+    padding-top:82px !important;
+    padding-bottom:82px !important;
+  }
+
+  .fullscreen-sections-experiment .pinned-timeline-section{
+    min-height:100vh !important;
+    min-height:100svh !important;
+    padding-top:74px !important;
+    padding-bottom:74px !important;
+  }
+
+  .fullscreen-sections-experiment .github-projects-section{
+    min-height:100vh;
+    min-height:100svh;
+    padding-top:92px !important;
+    padding-bottom:92px !important;
+  }
+
+  .fullscreen-sections-experiment section + section{
+    margin-top:0 !important;
+  }
+}
+
+@media (min-width:992px) and (max-height:760px){
+  .fullscreen-sections-experiment section:not(.github-projects-section){
+    min-height:auto;
+    display:block;
+  }
+
+  .fullscreen-sections-experiment .about.full-screen{
+    min-height:100vh !important;
+    min-height:100svh !important;
+    display:flex;
+    align-items:center;
+  }
+
+  .fullscreen-sections-experiment .pinned-timeline-section{
+    min-height:auto !important;
+  }
+}
+
+@media (max-width:991px){
+  .fullscreen-sections-experiment section{
+    min-height:auto;
+  }
+}
+
+
+/* === V23: ajuste de cierre contacto + footer compacto === */
+/* Mantiene el experimento fullscreen, pero evita que Contacto genere un vacío grande antes del footer. */
+
+@media (min-width: 992px){
+  .fullscreen-sections-experiment .contact-form-section{
+    min-height:auto !important;
+    display:block !important;
+    align-items:initial !important;
+    padding-top:76px !important;
+    padding-bottom:34px !important;
+  }
+
+  .fullscreen-sections-experiment .contact-form-section > .container{
+    width:100%;
+  }
+}
+
+/* Reduce el espacio vertical del cierre general de la web. */
+.footer,
+footer.footer{
+  padding-top:18px !important;
+  padding-bottom:18px !important;
+  margin-top:0 !important;
+  margin-bottom:0 !important;
+  min-height:auto !important;
+  line-height:1.1 !important;
+}
+
+.footer .container,
+footer.footer .container{
+  padding-top:0 !important;
+  padding-bottom:0 !important;
+}
+
+.footer .copyright-text,
+footer.footer .copyright-text{
+  margin:0 !important;
+  padding:0 !important;
+  font-size:13px !important;
+  line-height:1.15 !important;
+  font-weight:700;
+}
+
+/* Evita márgenes residuales entre contacto y footer. */
+.contact-form-section + .footer,
+.contact-form-section + footer.footer{
+  margin-top:0 !important;
+}
+
+@media (max-width: 991px){
+  .fullscreen-sections-experiment .contact-form-section{
+    padding-bottom:34px !important;
+  }
+
+  .footer,
+  footer.footer{
+    padding-top:16px !important;
+    padding-bottom:16px !important;
+  }
+
+  .footer .copyright-text,
+  footer.footer .copyright-text{
+    font-size:12px !important;
+    line-height:1.18 !important;
+  }
+}
+
+
+/* === V24: navbar fija con estado activo === */
+/* Barra superior fija, tipografía levemente mayor y sección activa visible. */
+
+:root{
+  --pl-navbar-height:68px;
+}
+
+html{
+  scroll-padding-top:calc(var(--pl-navbar-height) + 14px);
+}
+
+body{
+  padding-top:0 !important;
+}
+
+.pl-active-navbar,
+.navbar.pl-active-navbar{
+  position:fixed !important;
+  top:0 !important;
+  left:0 !important;
+  right:0 !important;
+  width:100% !important;
+  min-height:var(--pl-navbar-height) !important;
+  z-index:10000 !important;
+  padding:0 !important;
+  background:rgba(7, 8, 7, .88) !important;
+  border-bottom:1px solid rgba(255,255,255,.075);
+  box-shadow:0 12px 36px rgba(0,0,0,.20);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  transform:none !important;
+  transition:
+    background .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease;
+}
+
+body:not(.dark-mode) .pl-active-navbar,
+body:not(.dark-mode) .navbar.pl-active-navbar{
+  background:rgba(255,255,255,.92) !important;
+  border-bottom-color:rgba(20,20,20,.07);
+  box-shadow:0 12px 34px rgba(0,0,0,.055);
+}
+
+.pl-active-navbar.headroom--pinned,
+.pl-active-navbar.headroom--unpinned,
+.pl-active-navbar.headroom--top,
+.pl-active-navbar.headroom--not-top{
+  transform:none !important;
+}
+
+.pl-active-navbar .container{
+  min-height:var(--pl-navbar-height) !important;
+  display:flex !important;
+  align-items:center !important;
+}
+
+.pl-active-navbar .navbar-brand{
+  display:flex !important;
+  align-items:center !important;
+  padding:0 !important;
+  margin:0 !important;
+  font-size:16px !important;
+  font-weight:900 !important;
+  line-height:1 !important;
+  letter-spacing:-.015em;
+}
+
+.pl-active-navbar .brand-badge,
+.pl-active-navbar .brand-image-badge{
+  width:38px !important;
+  height:38px !important;
+  min-width:38px !important;
+  margin-right:8px !important;
+}
+
+.pl-active-navbar .navbar-nav{
+  align-items:center !important;
+}
+
+.pl-active-navbar .navbar-nav .nav-link{
+  position:relative;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-height:38px;
+  padding:8px 12px !important;
+  color:rgba(245,240,232,.72) !important;
+  font-size:13.5px !important;
+  font-weight:850 !important;
+  line-height:1 !important;
+  letter-spacing:-.005em;
+  white-space:nowrap;
+  transition:
+    color .22s ease,
+    opacity .22s ease,
+    transform .22s ease;
+}
+
+/* Evita doble render de textos si quedaran restos del hover del template. */
+.pl-active-navbar .navbar-nav .nav-link::before,
+.pl-active-navbar .navbar-nav .nav-link::after,
+.pl-active-navbar .navbar-nav .nav-link span::before,
+.pl-active-navbar .navbar-nav .nav-link span::after{
+  display:none !important;
+  content:none !important;
+}
+
+.pl-active-navbar .navbar-nav .nav-link:hover,
+.pl-active-navbar .navbar-nav .nav-link:focus{
+  color:#ffc200 !important;
+  transform:translateY(-1px);
+}
+
+.pl-active-navbar .navbar-nav .nav-link.is-active{
+  color:#111111 !important;
+  background:#ffc200;
+  border-radius:999px;
+  box-shadow:
+    0 10px 28px rgba(255,194,0,.20),
+    0 0 0 1px rgba(255,255,255,.12) inset;
+}
+
+.pl-active-navbar .navbar-nav .nav-link.is-active:hover,
+.pl-active-navbar .navbar-nav .nav-link.is-active:focus{
+  color:#111111 !important;
+  transform:translateY(-1px);
+}
+
+body:not(.dark-mode) .pl-active-navbar .navbar-nav .nav-link{
+  color:rgba(71,69,89,.72) !important;
+}
+
+body:not(.dark-mode) .pl-active-navbar .navbar-nav .nav-link:hover,
+body:not(.dark-mode) .pl-active-navbar .navbar-nav .nav-link:focus{
+  color:#111111 !important;
+}
+
+body:not(.dark-mode) .pl-active-navbar .navbar-nav .nav-link.is-active{
+  color:#111111 !important;
+  background:#ffc200;
+}
+
+.pl-active-navbar .color-mode{
+  min-height:38px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:7px;
+  padding:7px 12px !important;
+  color:rgba(245,240,232,.82) !important;
+  font-size:13px !important;
+  font-weight:850 !important;
+  line-height:1 !important;
+  border-radius:999px;
+}
+
+body:not(.dark-mode) .pl-active-navbar .color-mode{
+  color:rgba(71,69,89,.86) !important;
+}
+
+.pl-active-navbar .color-mode-icon{
+  margin-right:0 !important;
+}
+
+/* El hero no queda tapado por la barra fija. */
+.fullscreen-sections-experiment .about.full-screen,
+.about.full-screen{
+  padding-top:calc(var(--pl-navbar-height) + 42px) !important;
+}
+
+/* Mobile/tablet */
+@media (max-width:767px){
+  :root{
+    --pl-navbar-height:62px;
+  }
+
+  .pl-active-navbar,
+  .navbar.pl-active-navbar{
+    min-height:var(--pl-navbar-height) !important;
+  }
+
+  .pl-active-navbar .container{
+    min-height:var(--pl-navbar-height) !important;
+  }
+
+  .pl-active-navbar .navbar-brand{
+    font-size:15px !important;
+  }
+
+  .pl-active-navbar .brand-badge,
+  .pl-active-navbar .brand-image-badge{
+    width:34px !important;
+    height:34px !important;
+    min-width:34px !important;
+  }
+
+  .pl-active-navbar .navbar-toggler{
+    border:0 !important;
+    padding:5px 7px !important;
+  }
+
+  .pl-active-navbar .navbar-collapse{
+    width:100%;
+    padding:10px 0 12px;
+  }
+
+  .pl-active-navbar .navbar-nav{
+    align-items:flex-start !important;
+  }
+
+  .pl-active-navbar .navbar-nav .nav-link{
+    justify-content:flex-start !important;
+    width:100%;
+    min-height:40px;
+    padding:10px 14px !important;
+    font-size:14px !important;
+  }
+
+  .pl-active-navbar .navbar-nav .nav-link.is-active{
+    width:auto;
+    padding-left:16px !important;
+    padding-right:16px !important;
+  }
+
+  .pl-active-navbar .color-mode{
+    margin-left:10px;
+  }
+}
+
+
+/* === V25B: hero microanimación estricta sobre v24 === */
+/* Solo agrega fade + slide de entrada. No modifica colores, fondos, imagen, sombras ni estilos base. */
+
+.hero-entry-v25b-section .hero-entry-v25b{
+  opacity:0;
+  transform:translate3d(0, 18px, 0);
+  will-change:opacity, transform;
+}
+
+body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b{
+  animation:v25bHeroFadeSlide .78s cubic-bezier(.16,1,.3,1) forwards;
+}
+
+body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-kicker{
+  animation-delay:.04s;
+}
+
+body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-title{
+  animation-delay:.12s;
+}
+
+body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-copy{
+  animation-delay:.22s;
+}
+
+body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-buttons{
+  animation-delay:.32s;
+}
+
+body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-scroll{
+  animation-delay:.42s;
+}
+
+/* Foto/card: mismo color e imagen que v24. Solo desplazamiento de entrada, sin filtros ni escala. */
+.hero-entry-v25b-section .hero-entry-v25b-image{
+  transform:translate3d(22px, 0, 0);
+}
+
+body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
+  animation:v25bHeroImageSlide .84s cubic-bezier(.16,1,.3,1) forwards;
+  animation-delay:.18s;
+}
+
+@keyframes v25bHeroFadeSlide{
+  from{
+    opacity:0;
+    transform:translate3d(0, 18px, 0);
+  }
+  to{
+    opacity:1;
+    transform:translate3d(0, 0, 0);
+  }
+}
+
+@keyframes v25bHeroImageSlide{
+  from{
+    opacity:0;
+    transform:translate3d(22px, 0, 0);
+  }
+  to{
+    opacity:1;
+    transform:translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .hero-entry-v25b-section .hero-entry-v25b{
+    opacity:1 !important;
+    transform:none !important;
+    animation:none !important;
+  }
+}
+
+
+/* === V26B: filtros de proyectos con reacomodamiento FLIP === */
+/* Rehecho para evitar trabas: no usa min-height forzado ni blur pesado; anima posiciones reales. */
+
+.github-project-grid{
+  contain:layout paint;
+}
+
+.github-project-grid.is-filtering{
+  pointer-events:none;
+}
+
+.github-project-card{
+  will-change:transform, opacity;
+  backface-visibility:hidden;
+}
+
+.github-project-card.is-filtering-out,
+.github-project-card.is-filtering-in{
+  pointer-events:none;
+}
+
+.repo-empty-message{
+  opacity:0;
+  transform:translateY(6px);
+  transition:opacity .22s ease, transform .26s cubic-bezier(.16,1,.3,1);
+}
+
+.repo-empty-message:not([hidden]){
+  opacity:1;
+  transform:translateY(0);
+}
+
+.repo-filter-btn{
+  transition:
+    background-color .20s ease,
+    color .20s ease,
+    border-color .20s ease,
+    transform .20s ease,
+    box-shadow .20s ease !important;
+}
+
+.repo-filter-btn.active{
+  transform:translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .github-project-card,
+  .repo-empty-message,
+  .repo-filter-btn{
+    animation:none !important;
+    transition:none !important;
+    transform:none !important;
+  }
+}
+
+
+/* === V27B: animación de entrada por sección segura === */
+/* No modifica HTML ni layout. Solo oculta temporalmente elementos marcados por JS y los revela una vez. */
+
+.pl-section-reveal-pending{
+  opacity:0;
+  transform:translate3d(0, 20px, 0);
+  will-change:opacity, transform;
+}
+
+.pl-section-reveal-visible{
+  opacity:1;
+  transform:translate3d(0, 0, 0);
+  transition:
+    opacity .58s cubic-bezier(.16,1,.3,1),
+    transform .64s cubic-bezier(.16,1,.3,1);
+  transition-delay:calc(var(--pl-reveal-order, 0) * 46ms);
+}
+
+/* Variantes suaves por tipo de elemento */
+.pl-section-reveal-title.pl-section-reveal-pending{
+  transform:translate3d(0, 14px, 0);
+}
+
+.pl-section-reveal-card.pl-section-reveal-pending{
+  transform:translate3d(0, 22px, 0);
+}
+
+.pl-section-reveal-side.pl-section-reveal-pending{
+  transform:translate3d(18px, 0, 0);
+}
+
+/* No competir con el filtro FLIP una vez reveladas las cards */
+.github-project-card.pl-section-reveal-visible{
+  will-change:auto;
+}
+
+/* Si la grilla está filtrando, la lógica FLIP manda */
+.github-project-grid.is-filtering .github-project-card{
+  transition-delay:0ms !important;
+}
+
+@media (max-width:767px){
+  .pl-section-reveal-pending{
+    transform:translate3d(0, 14px, 0);
+  }
+
+  .pl-section-reveal-visible{
+    transition-duration:.46s;
+    transition-delay:calc(var(--pl-reveal-order, 0) * 30ms);
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .pl-section-reveal-pending,
+  .pl-section-reveal-visible{
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+    will-change:auto !important;
+  }
+}
+
+
+/* === V28: método compacto para pantalla completa === */
+/* Objetivo: que Proceso analítico + Stack entren mejor en la pantalla visible cuando la sección está pinneada. */
+
+@media (min-width: 992px){
+  .fullscreen-sections-experiment .pinned-timeline-section{
+    min-height:100vh !important;
+    min-height:100svh !important;
+    padding-top:calc(var(--pl-navbar-height, 68px) + 22px) !important;
+    padding-bottom:34px !important;
+    display:flex !important;
+    align-items:center !important;
+  }
+
+  .fullscreen-sections-experiment .pinned-timeline-section > .container{
+    width:100%;
+  }
+
+  .pinned-timeline-section .row{
+    align-items:flex-start !important;
+  }
+
+  .pinned-timeline-section h2{
+    margin-bottom:14px !important;
+    font-size:clamp(30px, 2.6vw, 42px) !important;
+    line-height:1.02 !important;
+  }
+
+  .timeline-scroll-note{
+    margin-bottom:16px !important;
+    font-size:13px !important;
+    line-height:1.35 !important;
+    max-width:520px;
+  }
+
+  /* Proceso analítico: compacta verticalmente sin achicarlo en exceso. */
+  .process-timeline{
+    --circle-size:58px !important;
+    --circle-x:29px !important;
+    --text-x:86px !important;
+    margin-top:12px !important;
+  }
+
+  .process-timeline .timeline-wrapper{
+    min-height:112px !important;
+  }
+
+  .process-timeline .timeline-wrapper:last-child{
+    min-height:58px !important;
+  }
+
+  .process-timeline .timeline-wrapper:last-child .timeline-segment{
+    height:58px !important;
+  }
+
+  .process-timeline .timeline-yr{
+    width:58px !important;
+    height:58px !important;
+    line-height:58px !important;
+  }
+
+  .process-timeline .timeline-yr span{
+    font-size:17px !important;
+    font-weight:900 !important;
+  }
+
+  .process-timeline .timeline-info{
+    margin-left:86px !important;
+    padding-top:2px !important;
+  }
+
+  .process-timeline .timeline-info h3{
+    margin-bottom:5px !important;
+    gap:7px 10px !important;
+  }
+
+  .process-timeline .timeline-info h3 span{
+    font-size:clamp(24px, 2.05vw, 32px) !important;
+    line-height:1.02 !important;
+  }
+
+  .process-timeline .timeline-info h3 small{
+    font-size:12px !important;
+    line-height:1.05 !important;
+  }
+
+  .process-timeline .timeline-info p{
+    max-width:540px !important;
+    font-size:15.2px !important;
+    line-height:1.34 !important;
+    margin-bottom:0 !important;
+  }
+
+  /* Stack lateral: ocupa el alto de forma equilibrada y no queda desbordado. */
+  .stack-timeline{
+    --stack-circle-size:56px !important;
+    --stack-circle-x:28px !important;
+    --stack-text-x:84px !important;
+    margin-top:12px !important;
+  }
+
+  .stack-timeline .timeline-wrapper{
+    min-height:112px !important;
+  }
+
+  .stack-timeline .timeline-wrapper:last-child{
+    min-height:56px !important;
+  }
+
+  .stack-timeline .timeline-wrapper:last-child::after{
+    height:56px !important;
+  }
+
+  .stack-timeline .timeline-yr{
+    width:56px !important;
+    height:56px !important;
+    line-height:56px !important;
+  }
+
+  .stack-timeline .timeline-yr span{
+    font-size:16px !important;
+    font-weight:900 !important;
+  }
+
+  .stack-timeline .timeline-info{
+    margin-left:84px !important;
+    padding-top:2px !important;
+  }
+
+  .stack-timeline .timeline-info h3{
+    margin-bottom:6px !important;
+    gap:7px 10px !important;
+  }
+
+  .stack-timeline .timeline-info h3 span{
+    font-size:clamp(22px, 1.9vw, 30px) !important;
+    line-height:1.05 !important;
+  }
+
+  .stack-timeline .timeline-info h3 small{
+    font-size:12px !important;
+    line-height:1.05 !important;
+  }
+
+  .stack-timeline .timeline-info p{
+    max-width:500px !important;
+    font-size:14.6px !important;
+    line-height:1.34 !important;
+    margin-bottom:0 !important;
+  }
+
+  .stack-pills{
+    margin-top:16px !important;
+    gap:7px !important;
+  }
+
+  .stack-pills span{
+    padding:7px 10px !important;
+    font-size:11.5px !important;
+    line-height:1 !important;
+  }
+}
+
+/* Pantallas desktop bajas: compactación extra para que el efecto pinneado no corte contenido. */
+@media (min-width: 992px) and (max-height: 820px){
+  .fullscreen-sections-experiment .pinned-timeline-section{
+    padding-top:calc(var(--pl-navbar-height, 68px) + 14px) !important;
+    padding-bottom:22px !important;
+  }
+
+  .pinned-timeline-section h2{
+    margin-bottom:10px !important;
+    font-size:clamp(28px, 2.35vw, 38px) !important;
+  }
+
+  .timeline-scroll-note{
+    margin-bottom:10px !important;
+    font-size:12px !important;
+    line-height:1.28 !important;
+  }
+
+  .process-timeline{
+    --circle-size:52px !important;
+    --circle-x:26px !important;
+    --text-x:78px !important;
+    margin-top:8px !important;
+  }
+
+  .process-timeline .timeline-wrapper{
+    min-height:96px !important;
+  }
+
+  .process-timeline .timeline-wrapper:last-child{
+    min-height:52px !important;
+  }
+
+  .process-timeline .timeline-wrapper:last-child .timeline-segment{
+    height:52px !important;
+  }
+
+  .process-timeline .timeline-yr{
+    width:52px !important;
+    height:52px !important;
+    line-height:52px !important;
+  }
+
+  .process-timeline .timeline-yr span{
+    font-size:15.5px !important;
+  }
+
+  .process-timeline .timeline-info{
+    margin-left:78px !important;
+    padding-top:0 !important;
+  }
+
+  .process-timeline .timeline-info h3{
+    margin-bottom:4px !important;
+  }
+
+  .process-timeline .timeline-info h3 span{
+    font-size:clamp(22px, 1.8vw, 28px) !important;
+  }
+
+  .process-timeline .timeline-info h3 small{
+    font-size:11px !important;
+  }
+
+  .process-timeline .timeline-info p{
+    font-size:13.8px !important;
+    line-height:1.27 !important;
+  }
+
+  .stack-timeline{
+    --stack-circle-size:52px !important;
+    --stack-circle-x:26px !important;
+    --stack-text-x:78px !important;
+    margin-top:8px !important;
+  }
+
+  .stack-timeline .timeline-wrapper{
+    min-height:96px !important;
+  }
+
+  .stack-timeline .timeline-wrapper:last-child{
+    min-height:52px !important;
+  }
+
+  .stack-timeline .timeline-wrapper:last-child::after{
+    height:52px !important;
+  }
+
+  .stack-timeline .timeline-yr{
+    width:52px !important;
+    height:52px !important;
+    line-height:52px !important;
+  }
+
+  .stack-timeline .timeline-yr span{
+    font-size:15px !important;
+  }
+
+  .stack-timeline .timeline-info{
+    margin-left:78px !important;
+    padding-top:0 !important;
+  }
+
+  .stack-timeline .timeline-info h3{
+    margin-bottom:4px !important;
+  }
+
+  .stack-timeline .timeline-info h3 span{
+    font-size:clamp(20px, 1.7vw, 26px) !important;
+  }
+
+  .stack-timeline .timeline-info h3 small{
+    font-size:11px !important;
+  }
+
+  .stack-timeline .timeline-info p{
+    font-size:13.4px !important;
+    line-height:1.27 !important;
+  }
+
+  .stack-pills{
+    margin-top:12px !important;
+    gap:6px !important;
+  }
+
+  .stack-pills span{
+    padding:6px 9px !important;
+    font-size:10.8px !important;
+  }
+}
+
+/* Pantallas muy bajas: se privilegia que toda la sección sea visible, sin aplastar la experiencia móvil. */
+@media (min-width: 992px) and (max-height: 700px){
+  .fullscreen-sections-experiment .pinned-timeline-section{
+    min-height:auto !important;
+    display:block !important;
+    padding-top:calc(var(--pl-navbar-height, 68px) + 16px) !important;
+    padding-bottom:26px !important;
+  }
+
+  .process-timeline .timeline-wrapper{
+    min-height:88px !important;
+  }
+
+  .stack-timeline .timeline-wrapper{
+    min-height:88px !important;
+  }
+
+  .process-timeline .timeline-info p,
+  .stack-timeline .timeline-info p{
+    font-size:13px !important;
+    line-height:1.22 !important;
+  }
+}
+
+
+/* === V28B: método compacto ajustado === */
+/* Recupera tamaño de letra, compacta por espaciado y centra textos en círculos. */
+
+@media (min-width: 992px){
+  .fullscreen-sections-experiment .pinned-timeline-section{
+    padding-top:calc(var(--pl-navbar-height, 68px) + 18px) !important;
+    padding-bottom:26px !important;
+  }
+
+  .pinned-timeline-section h2{
+    margin-bottom:9px !important;
+    font-size:clamp(32px, 2.85vw, 44px) !important;
+    line-height:1.02 !important;
+  }
+
+  .timeline-scroll-note{
+    margin-bottom:10px !important;
+    font-size:13.4px !important;
+    line-height:1.28 !important;
+  }
+
+  /* Proceso: más legible, menos espacio muerto entre etapas. */
+  .process-timeline{
+    --circle-size:60px !important;
+    --circle-x:30px !important;
+    --text-x:84px !important;
+    margin-top:8px !important;
+  }
+
+  .process-timeline .timeline-wrapper{
+    min-height:104px !important;
+  }
+
+  .process-timeline .timeline-wrapper:last-child{
+    min-height:60px !important;
+  }
+
+  .process-timeline .timeline-wrapper:last-child .timeline-segment{
+    height:60px !important;
+  }
+
+  .process-timeline .timeline-yr{
+    width:60px !important;
+    height:60px !important;
+    line-height:normal !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:center !important;
+    padding:0 !important;
+  }
+
+  .process-timeline .timeline-yr span{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:100% !important;
+    height:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    line-height:1 !important;
+    text-align:center !important;
+    font-size:18px !important;
+    font-weight:900 !important;
+  }
+
+  .process-timeline .timeline-info{
+    margin-left:84px !important;
+    padding-top:0 !important;
+  }
+
+  .process-timeline .timeline-info h3{
+    margin-bottom:3px !important;
+    gap:5px 10px !important;
+  }
+
+  .process-timeline .timeline-info h3 span{
+    font-size:clamp(26px, 2.22vw, 34px) !important;
+    line-height:1 !important;
+  }
+
+  .process-timeline .timeline-info h3 small{
+    font-size:12.6px !important;
+    line-height:1 !important;
+  }
+
+  .process-timeline .timeline-info p{
+    max-width:560px !important;
+    font-size:16.2px !important;
+    line-height:1.22 !important;
+    margin-top:0 !important;
+    margin-bottom:0 !important;
+  }
+
+  /* Stack: mismos criterios, con círculos centrados. */
+  .stack-timeline{
+    --stack-circle-size:58px !important;
+    --stack-circle-x:29px !important;
+    --stack-text-x:82px !important;
+    margin-top:8px !important;
+  }
+
+  .stack-timeline .timeline-wrapper{
+    min-height:104px !important;
+  }
+
+  .stack-timeline .timeline-wrapper:last-child{
+    min-height:58px !important;
+  }
+
+  .stack-timeline .timeline-wrapper:last-child::after{
+    height:58px !important;
+  }
+
+  .stack-timeline .timeline-yr{
+    width:58px !important;
+    height:58px !important;
+    line-height:normal !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:center !important;
+    padding:0 !important;
+  }
+
+  .stack-timeline .timeline-yr span{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:100% !important;
+    height:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    line-height:1 !important;
+    text-align:center !important;
+    font-size:17px !important;
+    font-weight:900 !important;
+  }
+
+  .stack-timeline .timeline-info{
+    margin-left:82px !important;
+    padding-top:0 !important;
+  }
+
+  .stack-timeline .timeline-info h3{
+    margin-bottom:3px !important;
+    gap:5px 10px !important;
+  }
+
+  .stack-timeline .timeline-info h3 span{
+    font-size:clamp(23px, 2.02vw, 31px) !important;
+    line-height:1.02 !important;
+  }
+
+  .stack-timeline .timeline-info h3 small{
+    font-size:12.3px !important;
+    line-height:1 !important;
+  }
+
+  .stack-timeline .timeline-info p{
+    max-width:520px !important;
+    font-size:15.4px !important;
+    line-height:1.22 !important;
+    margin-top:0 !important;
+    margin-bottom:0 !important;
+  }
+
+  .stack-pills{
+    margin-top:10px !important;
+    gap:6px !important;
+  }
+
+  .stack-pills span{
+    padding:6px 9px !important;
+    font-size:11.4px !important;
+    line-height:1 !important;
+  }
+}
+
+/* Desktop bajo: conservar legibilidad; compactar más por separación, no tanto por fuente. */
+@media (min-width: 992px) and (max-height: 820px){
+  .fullscreen-sections-experiment .pinned-timeline-section{
+    padding-top:calc(var(--pl-navbar-height, 68px) + 10px) !important;
+    padding-bottom:18px !important;
+  }
+
+  .pinned-timeline-section h2{
+    margin-bottom:7px !important;
+    font-size:clamp(30px, 2.55vw, 40px) !important;
+  }
+
+  .timeline-scroll-note{
+    margin-bottom:7px !important;
+    font-size:12.8px !important;
+    line-height:1.18 !important;
+  }
+
+  .process-timeline{
+    --circle-size:56px !important;
+    --circle-x:28px !important;
+    --text-x:78px !important;
+    margin-top:6px !important;
+  }
+
+  .process-timeline .timeline-wrapper{
+    min-height:90px !important;
+  }
+
+  .process-timeline .timeline-wrapper:last-child,
+  .process-timeline .timeline-wrapper:last-child .timeline-segment{
+    min-height:56px !important;
+    height:56px !important;
+  }
+
+  .process-timeline .timeline-yr{
+    width:56px !important;
+    height:56px !important;
+  }
+
+  .process-timeline .timeline-yr span{
+    font-size:17px !important;
+  }
+
+  .process-timeline .timeline-info{
+    margin-left:78px !important;
+  }
+
+  .process-timeline .timeline-info h3{
+    margin-bottom:2px !important;
+  }
+
+  .process-timeline .timeline-info h3 span{
+    font-size:clamp(24px, 2vw, 31px) !important;
+  }
+
+  .process-timeline .timeline-info h3 small{
+    font-size:12px !important;
+  }
+
+  .process-timeline .timeline-info p{
+    font-size:15px !important;
+    line-height:1.16 !important;
+  }
+
+  .stack-timeline{
+    --stack-circle-size:54px !important;
+    --stack-circle-x:27px !important;
+    --stack-text-x:76px !important;
+    margin-top:6px !important;
+  }
+
+  .stack-timeline .timeline-wrapper{
+    min-height:90px !important;
+  }
+
+  .stack-timeline .timeline-wrapper:last-child,
+  .stack-timeline .timeline-wrapper:last-child::after{
+    min-height:54px !important;
+    height:54px !important;
+  }
+
+  .stack-timeline .timeline-yr{
+    width:54px !important;
+    height:54px !important;
+  }
+
+  .stack-timeline .timeline-yr span{
+    font-size:16px !important;
+  }
+
+  .stack-timeline .timeline-info{
+    margin-left:76px !important;
+  }
+
+  .stack-timeline .timeline-info h3{
+    margin-bottom:2px !important;
+  }
+
+  .stack-timeline .timeline-info h3 span{
+    font-size:clamp(22px, 1.86vw, 28px) !important;
+  }
+
+  .stack-timeline .timeline-info h3 small{
+    font-size:11.8px !important;
+  }
+
+  .stack-timeline .timeline-info p{
+    font-size:14.4px !important;
+    line-height:1.16 !important;
+  }
+
+  .stack-pills{
+    margin-top:8px !important;
+    gap:5px !important;
+  }
+
+  .stack-pills span{
+    padding:5px 8px !important;
+    font-size:10.8px !important;
+  }
+}
+
+/* Pantallas muy bajas: mantener la suavidad de lectura antes que cortar contenido. */
+@media (min-width: 992px) and (max-height: 700px){
+  .process-timeline .timeline-wrapper,
+  .stack-timeline .timeline-wrapper{
+    min-height:84px !important;
+  }
+
+  .process-timeline .timeline-info p{
+    font-size:14.4px !important;
+    line-height:1.12 !important;
+  }
+
+  .stack-timeline .timeline-info p{
+    font-size:13.8px !important;
+    line-height:1.12 !important;
+  }
+}
+
+
+/* === V29D: Canales hover solo en recuadro y nombre === */
+/* Parte de v28b. No modifica íconos: no color, no fill, no stroke, no filter, no fondo, no escala. */
+
+.social-section .social-card{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+  transform:translate3d(0, 0, 0);
+  transition:
+    transform .32s cubic-bezier(.16,1,.3,1),
+    border-color .28s ease,
+    box-shadow .32s cubic-bezier(.16,1,.3,1) !important;
+}
+
+/* Capa de brillo restringida al recuadro: queda detrás del contenido y no toca el ícono. */
+.social-section .social-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  border-radius:inherit;
+  opacity:0;
+  background:
+    radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,194,0,.13), transparent 34%),
+    linear-gradient(135deg, rgba(255,194,0,.06), transparent 46%);
+  transition:opacity .28s ease;
+}
+
+/* Borde interno amarillo muy sutil. */
+.social-section .social-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  border-radius:inherit;
+  opacity:0;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,194,0,.20),
+    inset 0 0 34px rgba(255,194,0,.045);
+  transition:opacity .28s ease;
+}
+
+/* Asegura que el contenido quede por encima de las capas de recuadro. */
+.social-section .social-card > *{
+  position:relative;
+  z-index:1;
+}
+
+.social-section .social-card:hover,
+.social-section .social-card:focus-within{
+  transform:translate3d(0, -8px, 0);
+  border-color:rgba(255,194,0,.34) !important;
+  box-shadow:
+    0 28px 72px rgba(0,0,0,.34),
+    0 0 42px rgba(255,194,0,.075) !important;
+}
+
+.social-section .social-card:hover::before,
+.social-section .social-card:hover::after,
+.social-section .social-card:focus-within::before,
+.social-section .social-card:focus-within::after{
+  opacity:1;
+}
+
+/* El nombre pasa a amarillo. No afecta ícono ni subtítulo. */
+.social-section .social-card:hover strong,
+.social-section .social-card:focus-within strong{
+  color:#ffc200 !important;
+}
+
+/* Anulación precisa del efecto base que escalaba/rotaba el ícono al hover. */
+.social-section .social-card:hover .social-icon,
+.social-section .social-card:focus-within .social-icon{
+  transform:none !important;
+}
+
+/* Blindaje: los SVG, imágenes o letras dentro del ícono no reciben estilos de hover. */
+.social-section .social-card:hover .social-icon svg,
+.social-section .social-card:focus-within .social-icon svg,
+.social-section .social-card:hover .social-icon img,
+.social-section .social-card:focus-within .social-icon img,
+.social-section .social-card:hover .social-icon i,
+.social-section .social-card:focus-within .social-icon i{
+  transform:none !important;
+  filter:none !important;
+}
+
+/* Modo claro: sombra más liviana. */
+body:not(.dark-mode) .social-section .social-card:hover,
+body:not(.dark-mode) .social-section .social-card:focus-within{
+  border-color:rgba(255,194,0,.48) !important;
+  box-shadow:
+    0 28px 68px rgba(28,28,34,.13),
+    0 0 38px rgba(255,194,0,.10) !important;
+}
+
+body:not(.dark-mode) .social-section .social-card::before{
+  background:
+    radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,194,0,.14), transparent 34%),
+    linear-gradient(135deg, rgba(255,194,0,.08), transparent 46%);
+}
+
+body:not(.dark-mode) .social-section .social-card::after{
+  box-shadow:
+    inset 0 0 0 1px rgba(255,194,0,.25),
+    inset 0 0 34px rgba(255,194,0,.05);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .social-section .social-card,
+  .social-section .social-card::before,
+  .social-section .social-card::after{
+    transition:none !important;
+    transform:none !important;
+  }
+}

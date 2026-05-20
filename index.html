@@ -12,11 +12,18 @@
     <link rel="stylesheet" href="css/unicons.css">
 <link rel="stylesheet" href="css/styles.css">
   </head>
-  <body>
+  <body class="dark-mode fullscreen-sections-experiment">
+    <!-- FLOATING CTA -->
+    <a class="floating-cta" href="https://github.com/malcolmdpc/patrones-lab" target="_blank" rel="noopener" aria-label="Ver repositorio de Patrones Lab">
+      <span class="floating-cta__dot" aria-hidden="true"></span>
+      <span class="floating-cta__text">Ver repo</span>
+      <span class="floating-cta__arrow" aria-hidden="true">↗</span>
+    </a>
+
     <div class="floating-icon-layer" aria-hidden="true"></div>
 
     <!-- MENU -->
-    <nav class="navbar navbar-expand-sm navbar-light pl-smart-navbar">
+    <nav class="navbar navbar-expand-sm navbar-light pl-smart-navbar pl-active-navbar">
         <div class="container">
             <a class="navbar-brand" href="index.html"><span class="brand-badge brand-image-badge"><img src="images/patrones/patrones-lab-logo-bulb.png" alt=""></span> Patrones Lab</a>
 
@@ -29,11 +36,11 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a href="#about" class="nav-link">Inicio</a></li>
-                    <li class="nav-item"><a href="#project" class="nav-link">Canales</a></li>
-                    <li class="nav-item"><a href="#resume" class="nav-link">Método</a></li>
-                    <li class="nav-item"><a href="#repository" class="nav-link">Repositorio</a></li>
-                    <li class="nav-item"><a href="#contact" class="nav-link">Contacto</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link" data-section="inicio">Inicio</a></li>
+                    <li class="nav-item"><a href="#project" class="nav-link" data-section="canales">Canales</a></li>
+                    <li class="nav-item"><a href="#resume" class="nav-link" data-section="metodo">Método</a></li>
+                    <li class="nav-item"><a href="#repository" class="nav-link" data-section="repositorio">Repositorio</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link" data-section="contacto">Contacto</a></li>
                 </ul>
 
                 <ul class="navbar-nav ml-lg-auto">
@@ -54,8 +61,8 @@
             <div class="row align-items-center">
                 <div class="col-lg-7 col-md-12 col-12 d-flex align-items-center">
                     <div class="about-text">
-                        <small class="small-text">Portfolio de proyectos <span class="mobile-block">BI · ML · Python · Dashboards</span></small>
-                        <h1 class="pl-hero-title">
+                        <small class="small-text hero-entry-v25b hero-entry-v25b-kicker">Portfolio de proyectos <span class="mobile-block">BI · ML · Python · Dashboards</span></small>
+                        <h1 class="pl-hero-title hero-entry-v25b hero-entry-v25b-title">
                             <span class="hero-line">Transformo datos en</span>
                             <span class="hero-rotator" aria-label="evidencia, modelos y dashboards">
                                 <span>evidencia</span>
@@ -65,17 +72,22 @@
                             </span>
                         </h1>
 
-                        <p>Patrones Lab reúne análisis reproducibles, modelos explicables y visualizaciones orientadas a decisión. Cada proyecto documenta datos, método, resultados y límites.</p>
+                        <p class="hero-entry-v25b hero-entry-v25b-copy">Patrones Lab reúne análisis reproducibles, modelos explicables y visualizaciones orientadas a decisión. Cada proyecto documenta datos, método, resultados y límites.</p>
 
-                        <div class="custom-btn-group mt-4">
+                        <div class="custom-btn-group mt-4 hero-entry-v25b hero-entry-v25b-buttons">
                           <a href="#project" class="btn mr-lg-2 custom-btn"><i class='uil uil-chart-line'></i> Ver proyectos</a>
                           <a href="#resume" class="btn custom-btn custom-btn-bg custom-btn-link">Metodología</a>
                         </div>
+                  <a class="hero-scroll-indicator hero-entry-v25b hero-entry-v25b-scroll" href="#project" aria-label="Ir a la siguiente sección">
+                    <span class="hero-scroll-indicator__text">Explorar</span>
+                    <span class="hero-scroll-indicator__line" aria-hidden="true"></span>
+                  </a>
+
                     </div>
                 </div>
 
                 <div class="col-lg-5 col-md-12 col-12">
-                    <div class="about-image svg hero-lab-card profile-hero-card">
+                    <div class="about-image svg hero-lab-card profile-hero-card hero-entry-v25b hero-entry-v25b-image">
                         <img src="images/patrones/malcolm-profile.png" class="img-fluid" alt="Foto de Malcolm, creador de Patrones Lab">
                     </div>
                 </div>
@@ -175,7 +187,7 @@
                   <p class="timeline-scroll-note">Hacé scroll para avanzar por las etapas. Al finalizar, la página continúa normalmente.</p>
 
                     <div class="timeline process-timeline" data-process-timeline>
-                        <div class="timeline-wrapper is-active is-complete" data-step="1">
+                        <div style="--step-index:0" class="timeline-wrapper is-active is-complete" data-step="1">
                              <span class="timeline-segment" aria-hidden="true"></span>
                              <div class="timeline-yr"><span>01</span></div>
                              <div class="timeline-info">
@@ -184,7 +196,7 @@
                              </div>
                         </div>
 
-                        <div class="timeline-wrapper" data-step="2">
+                        <div style="--step-index:1" class="timeline-wrapper" data-step="2">
                             <span class="timeline-segment" aria-hidden="true"></span>
                             <div class="timeline-yr"><span>02</span></div>
                             <div class="timeline-info">
@@ -193,7 +205,7 @@
                             </div>
                         </div>
 
-                        <div class="timeline-wrapper" data-step="3">
+                        <div style="--step-index:2" class="timeline-wrapper" data-step="3">
                             <span class="timeline-segment" aria-hidden="true"></span>
                             <div class="timeline-yr"><span>03</span></div>
                             <div class="timeline-info">
@@ -202,7 +214,7 @@
                             </div>
                         </div>
 
-                        <div class="timeline-wrapper" data-step="4">
+                        <div style="--step-index:3" class="timeline-wrapper" data-step="4">
                             <span class="timeline-segment" aria-hidden="true"></span>
                             <div class="timeline-yr"><span>04</span></div>
                             <div class="timeline-info">
@@ -211,7 +223,7 @@
                             </div>
                         </div>
 
-                        <div class="timeline-wrapper" data-step="5">
+                        <div style="--step-index:4" class="timeline-wrapper" data-step="5">
                             <span class="timeline-segment" aria-hidden="true"></span>
                             <div class="timeline-yr"><span>05</span></div>
                             <div class="timeline-info">
@@ -220,7 +232,7 @@
                             </div>
                         </div>
 
-                        <div class="timeline-wrapper" data-step="6">
+                        <div style="--step-index:5" class="timeline-wrapper" data-step="6">
                             <span class="timeline-segment" aria-hidden="true"></span>
                             <div class="timeline-yr"><span>06</span></div>
                             <div class="timeline-info">
@@ -526,8 +538,6 @@
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/Headroom.js"></script>
-    <script src="js/jQuery.headroom.js"></script>
 <script src="js/custom.js"></script>
 
   </body>
