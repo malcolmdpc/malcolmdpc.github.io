@@ -5686,3 +5686,1658 @@ body:not(.dark-mode) .social-section .social-card::after{
     transform:none !important;
   }
 }
+
+
+/* === V33: card proyecto fraude con doble enlace === */
+.project-links-dual{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
+}
+
+.project-links-dual .project-link{
+  margin-top:0 !important;
+}
+
+.project-links-dual .secondary-project-link{
+  background:transparent !important;
+  color:#ffc200 !important;
+  border:1px solid rgba(255,194,0,.42) !important;
+}
+
+.project-links-dual .secondary-project-link:hover{
+  background:#ffc200 !important;
+  color:#111111 !important;
+}
+
+@media (max-width:575px){
+  .project-links-dual{
+    flex-direction:column;
+  }
+
+  .project-links-dual .project-link{
+    width:100%;
+    text-align:center;
+    justify-content:center;
+  }
+}
+
+
+/* === V33E: botones fraude en una sola fila === */
+.github-project-card[data-tags*="fraude"] .project-links-dual{
+  display:grid !important;
+  grid-template-columns:minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap:8px !important;
+  align-items:center !important;
+  width:100%;
+  margin-top:12px !important;
+}
+
+.github-project-card[data-tags*="fraude"] .project-links-dual .project-link{
+  width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:10px 10px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+  font-size:12px !important;
+  line-height:1 !important;
+}
+
+/* Pisa la regla mobile anterior que los apilaba verticalmente. */
+@media (max-width:575px){
+  .github-project-card[data-tags*="fraude"] .project-links-dual{
+    display:grid !important;
+    grid-template-columns:minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap:8px !important;
+  }
+
+  .github-project-card[data-tags*="fraude"] .project-links-dual .project-link{
+    width:100% !important;
+    padding:10px 8px !important;
+    font-size:11.5px !important;
+  }
+}
+
+
+/* === V34: hover legible en botones de Proyectos === */
+/* Corrige botones de cards: al pasar el mouse, fondo amarillo y texto negro. */
+
+.github-projects-section .github-project-card .project-link:hover,
+.github-projects-section .github-project-card .project-link:focus,
+.github-projects-section .github-project-card .project-link:active,
+.github-projects-section .github-project-card .project-link:focus-visible{
+  background:#ffc200 !important;
+  color:#111111 !important;
+  border-color:#ffc200 !important;
+  text-decoration:none !important;
+}
+
+.github-projects-section .github-project-card .project-link:hover *,
+.github-projects-section .github-project-card .project-link:focus *,
+.github-projects-section .github-project-card .project-link:active *,
+.github-projects-section .github-project-card .project-link:focus-visible *{
+  color:#111111 !important;
+}
+
+/* Mantiene coherencia para botones secundarios de la card de fraude. */
+.github-projects-section .github-project-card .secondary-project-link:hover,
+.github-projects-section .github-project-card .secondary-project-link:focus,
+.github-projects-section .github-project-card .secondary-project-link:active,
+.github-projects-section .github-project-card .secondary-project-link:focus-visible{
+  background:#ffc200 !important;
+  color:#111111 !important;
+  border-color:#ffc200 !important;
+}
+
+/* Accesibilidad: foco visible sin perder contraste. */
+.github-projects-section .github-project-card .project-link:focus-visible{
+  outline:2px solid rgba(255,194,0,.55);
+  outline-offset:3px;
+}
+
+
+/* === V35: card fraude regresión logística === */
+.github-project-card img[src^="https://github.com/user-attachments/assets/fbd23c5f-10ee-4f3a-8291-61e9dc0b75cf"]{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  display:block;
+}
+
+
+/* === V36: URLs actualizadas para imágenes de fraude === */
+.github-project-card img[src^="https://github.com/user-attachments/assets/df046322-8737-48a1-84c9-969724ec0fca"],
+.github-project-card img[src^="https://github.com/user-attachments/assets/f9ff0e2c-c8f1-4995-b46d-ac2a93e89acb"]{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  display:block;
+}
+
+
+/* === V37: card fraude DBSCAN === */
+.github-project-card img[src^="https://github.com/user-attachments/assets/2bdeff45-b7dc-4bbe-9091-f4520707bd71"]{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  display:block;
+}
+
+
+/* === V38: links y tags editoriales proyectos 1 a 4 === */
+.github-project-card .project-links-editorial{
+  display:grid !important;
+  grid-template-columns:minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap:8px !important;
+  align-items:center !important;
+  width:100%;
+  margin-top:12px !important;
+}
+
+.github-project-card .project-links-editorial .project-link{
+  width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:10px 9px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+  font-size:11.7px !important;
+  line-height:1 !important;
+}
+
+.github-project-card .project-links-editorial .secondary-project-link{
+  background:transparent !important;
+  color:#ffc200 !important;
+  border:1px solid rgba(255,194,0,.42) !important;
+}
+
+.github-project-card .project-links-editorial .secondary-project-link:hover,
+.github-project-card .project-links-editorial .secondary-project-link:focus,
+.github-project-card .project-links-editorial .secondary-project-link:active,
+.github-project-card .project-links-editorial .secondary-project-link:focus-visible{
+  background:#ffc200 !important;
+  color:#111111 !important;
+  border-color:#ffc200 !important;
+}
+
+@media (max-width:575px){
+  .github-project-card .project-links-editorial{
+    display:grid !important;
+    grid-template-columns:minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap:8px !important;
+  }
+
+  .github-project-card .project-links-editorial .project-link{
+    width:100% !important;
+    padding:10px 7px !important;
+    font-size:11px !important;
+  }
+}
+
+
+/* === V39: botones verticales proyectos 1 a 4 === */
+/* Los botones Entrar al proyecto / Leer en LinkedIn vuelven a ubicarse uno debajo del otro. */
+
+.github-project-card .project-links-editorial{
+  display:flex !important;
+  flex-direction:column !important;
+  grid-template-columns:none !important;
+  gap:8px !important;
+  align-items:stretch !important;
+  width:100%;
+  margin-top:12px !important;
+}
+
+.github-project-card .project-links-editorial .project-link{
+  width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:11px 12px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  white-space:normal !important;
+  font-size:12px !important;
+  line-height:1.05 !important;
+}
+
+@media (max-width:575px){
+  .github-project-card .project-links-editorial{
+    display:flex !important;
+    flex-direction:column !important;
+    grid-template-columns:none !important;
+    gap:8px !important;
+  }
+
+  .github-project-card .project-links-editorial .project-link{
+    width:100% !important;
+    padding:11px 10px !important;
+    font-size:11.8px !important;
+  }
+}
+
+
+/* === V40: tamaño de letra estándar en botones proyectos 1 a 4 === */
+/* Mantiene los botones uno debajo del otro, pero recupera el tamaño visual del resto de proyectos. */
+
+.github-project-card .project-links-editorial .project-link{
+  font-size:13px !important;
+  line-height:1.08 !important;
+  padding:12px 13px !important;
+  font-weight:900 !important;
+}
+
+@media (max-width:575px){
+  .github-project-card .project-links-editorial .project-link{
+    font-size:12.6px !important;
+    line-height:1.08 !important;
+    padding:12px 11px !important;
+  }
+}
+
+
+/* === V41: botones uniformes al pie de cards de Proyectos === */
+/* Todas las cards de proyectos pasan a tener cuerpo flexible y botones alineados al pie. */
+
+.github-project-grid{
+  align-items:stretch !important;
+}
+
+.github-project-card{
+  height:100% !important;
+  display:flex !important;
+  flex-direction:column !important;
+}
+
+.github-project-card .project-image-link{
+  flex:0 0 auto !important;
+}
+
+.github-project-card .github-project-body{
+  flex:1 1 auto !important;
+  display:flex !important;
+  flex-direction:column !important;
+}
+
+/* Los tags quedan antes del bloque de botones; el botón/bloque se empuja al pie. */
+.github-project-card .mini-tags{
+  margin-bottom:14px !important;
+}
+
+.github-project-card .github-project-body > .project-link,
+.github-project-card .project-links-dual,
+.github-project-card .project-links-editorial{
+  margin-top:auto !important;
+}
+
+/* Tipografía uniforme para todos los botones de proyectos, tomando como referencia visual el botón estándar. */
+.github-project-card .project-link,
+.github-project-card .project-links-dual .project-link,
+.github-project-card .project-links-editorial .project-link{
+  font-size:13px !important;
+  line-height:1.08 !important;
+  font-weight:900 !important;
+  letter-spacing:-.01em !important;
+  min-height:42px !important;
+  padding:12px 13px !important;
+}
+
+/* Mantiene los proyectos 1 a 4 con botones verticales y mismo tamaño. */
+.github-project-card .project-links-editorial{
+  display:flex !important;
+  flex-direction:column !important;
+  grid-template-columns:none !important;
+  gap:8px !important;
+  align-items:stretch !important;
+  width:100%;
+}
+
+/* Mantiene los proyectos de fraude con botones en una misma fila. */
+.github-project-card[data-tags*="fraude"] .project-links-dual{
+  display:grid !important;
+  grid-template-columns:minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap:8px !important;
+  align-items:center !important;
+  width:100%;
+}
+
+.github-project-card[data-tags*="fraude"] .project-links-dual .project-link{
+  white-space:nowrap !important;
+  font-size:13px !important;
+}
+
+/* En pantallas muy angostas, prioriza que el texto no se corte. */
+@media (max-width:575px){
+  .github-project-card .project-link,
+  .github-project-card .project-links-dual .project-link,
+  .github-project-card .project-links-editorial .project-link{
+    font-size:12.6px !important;
+    line-height:1.08 !important;
+    min-height:42px !important;
+    padding:12px 11px !important;
+  }
+
+  .github-project-card[data-tags*="fraude"] .project-links-dual .project-link{
+    font-size:12px !important;
+    padding:11px 8px !important;
+  }
+}
+
+
+/* === V41A: ajuste botones al pie proyecto 8 === */
+/* Refuerzo específico para la card 8 / K-means: el bloque de botones queda pegado al pie del box. */
+
+.github-project-card[data-tags*="k-means"]{
+  height:100% !important;
+  display:flex !important;
+  flex-direction:column !important;
+}
+
+.github-project-card[data-tags*="k-means"] .github-project-body{
+  flex:1 1 auto !important;
+  display:flex !important;
+  flex-direction:column !important;
+  min-height:0 !important;
+}
+
+.github-project-card[data-tags*="k-means"] .project-links-dual{
+  margin-top:auto !important;
+  align-self:stretch !important;
+  width:100% !important;
+}
+
+/* Evita que los tags empujen visualmente el bloque de botones fuera de alineación. */
+.github-project-card[data-tags*="k-means"] .mini-tags{
+  margin-bottom:14px !important;
+}
+
+
+/* === V41B: ajustes links/tags proyectos 5 a 10 === */
+.github-project-card .project-links-dashboard{
+  display:grid !important;
+  grid-template-columns:minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap:8px !important;
+  align-items:center !important;
+  width:100%;
+  margin-top:auto !important;
+}
+
+.github-project-card .project-links-dashboard .project-link{
+  width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:12px 10px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+  font-size:13px !important;
+  line-height:1.08 !important;
+  font-weight:900 !important;
+}
+
+.github-project-card .project-links-dashboard .secondary-project-link{
+  background:transparent !important;
+  color:#ffc200 !important;
+  border:1px solid rgba(255,194,0,.42) !important;
+}
+
+.github-project-card .project-links-dashboard .secondary-project-link:hover,
+.github-project-card .project-links-dashboard .secondary-project-link:focus,
+.github-project-card .project-links-dashboard .secondary-project-link:active,
+.github-project-card .project-links-dashboard .secondary-project-link:focus-visible{
+  background:#ffc200 !important;
+  color:#111111 !important;
+  border-color:#ffc200 !important;
+}
+
+@media (max-width:575px){
+  .github-project-card .project-links-dashboard .project-link{
+    font-size:12px !important;
+    padding:11px 8px !important;
+  }
+}
+
+
+/* === V41C: proyecto 5 botones verticales === */
+/* El proyecto 5 mantiene dos botones, pero uno debajo del otro. */
+
+.github-project-card.featured .project-links-dashboard{
+  display:flex !important;
+  flex-direction:column !important;
+  grid-template-columns:none !important;
+  gap:8px !important;
+  align-items:stretch !important;
+  width:100% !important;
+  margin-top:auto !important;
+}
+
+.github-project-card.featured .project-links-dashboard .project-link{
+  width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:12px 13px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  white-space:normal !important;
+  font-size:13px !important;
+  line-height:1.08 !important;
+  font-weight:900 !important;
+}
+
+@media (max-width:575px){
+  .github-project-card.featured .project-links-dashboard{
+    display:flex !important;
+    flex-direction:column !important;
+    grid-template-columns:none !important;
+    gap:8px !important;
+  }
+
+  .github-project-card.featured .project-links-dashboard .project-link{
+    font-size:12.6px !important;
+    padding:12px 11px !important;
+  }
+}
+
+
+/* === V41E: imágenes proyectos 11 y 12 + texto Inicio === */
+.github-project-card img[src^="https://github.com/user-attachments/assets/e30b2a50-8004-4a99-a5c2-c3046bad889c"],
+.github-project-card img[src^="https://github.com/user-attachments/assets/3691c5a8-7897-4edc-ad99-0144d72cec7e"]{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  display:block;
+}
+
+
+/* === V42A: iconos de destino en botones de Proyectos === */
+/* Iconos internos a la derecha, sin cambiar alto/ancho de botones ni aplicar a Python/SPSS. */
+
+.github-project-card .project-link.has-destination-icon{
+  gap:7px !important;
+}
+
+.github-project-card .project-link .btn-destination-icon{
+  flex:0 0 auto;
+  width:18px;
+  height:18px;
+  min-width:18px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-left:2px;
+  font-size:8px;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:-.04em;
+  border:1px solid currentColor;
+  color:currentColor;
+  background:rgba(255,255,255,.06);
+  opacity:.92;
+  transform:translateY(.2px);
+  pointer-events:none;
+}
+
+.github-project-card .project-link .btn-destination-icon-linkedin{
+  font-size:10px;
+  font-family:Arial, Helvetica, sans-serif;
+  letter-spacing:-.05em;
+  text-transform:none;
+}
+
+.github-project-card .project-link .btn-destination-icon-docs,
+.github-project-card .project-link .btn-destination-icon-dashboard{
+  font-size:7px;
+  letter-spacing:-.08em;
+}
+
+.github-project-card .project-link:hover .btn-destination-icon,
+.github-project-card .project-link:focus .btn-destination-icon,
+.github-project-card .project-link:active .btn-destination-icon,
+.github-project-card .project-link:focus-visible .btn-destination-icon{
+  color:#111111;
+  border-color:#111111;
+  background:rgba(17,17,17,.08);
+}
+
+@media (max-width:575px){
+  .github-project-card .project-link.has-destination-icon{
+    gap:6px !important;
+  }
+
+  .github-project-card .project-link .btn-destination-icon{
+    width:17px;
+    height:17px;
+    min-width:17px;
+    font-size:7px;
+  }
+
+  .github-project-card .project-link .btn-destination-icon-linkedin{
+    font-size:9px;
+  }
+}
+
+
+/* === V42B: iconos tipo badge derecho en botones de Proyectos === */
+/* Ajusta v42a: el icono queda como círculo a la derecha, sin alterar alto/ancho del botón. */
+
+.github-project-card .project-link.has-destination-icon{
+  position:relative !important;
+  gap:0 !important;
+  padding-right:40px !important;
+  overflow:hidden !important;
+}
+
+/* Badge base: más grande, circular, ubicado a la derecha como en la referencia. */
+.github-project-card .project-link .btn-destination-icon{
+  position:absolute !important;
+  right:5px !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  width:30px !important;
+  height:30px !important;
+  min-width:30px !important;
+  border-radius:999px !important;
+  margin:0 !important;
+
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  border:0 !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.12) inset,
+    0 6px 14px rgba(0,0,0,.24) !important;
+
+  color:#ffffff !important;
+  font-family:Arial, Helvetica, sans-serif !important;
+  font-size:10px !important;
+  line-height:1 !important;
+  font-weight:900 !important;
+  letter-spacing:-.06em !important;
+  opacity:1 !important;
+  pointer-events:none !important;
+}
+
+/* GitHub / repositorios */
+.github-project-card .project-link .btn-destination-icon-github{
+  background:#171b21 !important;
+  color:#ffffff !important;
+  font-size:9px !important;
+}
+
+/* LinkedIn */
+.github-project-card .project-link .btn-destination-icon-linkedin{
+  background:#2f8fca !important;
+  color:#ffffff !important;
+  font-size:17px !important;
+  font-weight:900 !important;
+  letter-spacing:-.08em !important;
+  text-transform:none !important;
+}
+
+/* Documentación */
+.github-project-card .project-link .btn-destination-icon-docs{
+  background:#f4f0df !important;
+  color:#171b21 !important;
+  font-size:8px !important;
+  letter-spacing:-.08em !important;
+}
+
+/* Looker Studio / dashboard */
+.github-project-card .project-link .btn-destination-icon-dashboard{
+  background:linear-gradient(135deg, #4285f4 0 45%, #34a853 45% 70%, #fbbc04 70% 100%) !important;
+  color:#ffffff !important;
+  font-size:8px !important;
+  letter-spacing:-.08em !important;
+}
+
+/* Externos genéricos */
+.github-project-card .project-link .btn-destination-icon-external{
+  background:#ffc200 !important;
+  color:#111111 !important;
+  font-size:15px !important;
+}
+
+/* En hover amarillo, el badge se mantiene reconocible. */
+.github-project-card .project-link:hover .btn-destination-icon,
+.github-project-card .project-link:focus .btn-destination-icon,
+.github-project-card .project-link:active .btn-destination-icon,
+.github-project-card .project-link:focus-visible .btn-destination-icon{
+  border:0 !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.18) inset,
+    0 6px 14px rgba(0,0,0,.26) !important;
+}
+
+/* No aplicar iconos ni reservas de espacio a Python/SPSS porque no tienen span. */
+.github-project-card .project-link:not(.has-destination-icon){
+  padding-right:13px !important;
+}
+
+@media (max-width:575px){
+  .github-project-card .project-link.has-destination-icon{
+    padding-right:38px !important;
+  }
+
+  .github-project-card .project-link .btn-destination-icon{
+    width:28px !important;
+    height:28px !important;
+    min-width:28px !important;
+    right:5px !important;
+  }
+
+  .github-project-card .project-link .btn-destination-icon-linkedin{
+    font-size:16px !important;
+  }
+}
+
+
+/* === V42C: iconos reales en badges de botones + proyectos 11/12 === */
+.github-project-card .project-link .btn-destination-icon img{
+  display:block;
+  width:18px;
+  height:18px;
+  object-fit:contain;
+  pointer-events:none;
+}
+
+/* GitHub usa imagen negra original convertida a blanco sobre badge oscuro. */
+.github-project-card .project-link .btn-destination-icon-github{
+  background:#171b21 !important;
+}
+
+.github-project-card .project-link .btn-destination-icon-github img{
+  filter:invert(1) brightness(1.12);
+  width:18px;
+  height:18px;
+}
+
+/* Looker: badge blanco para respetar el logo multicolor. */
+.github-project-card .project-link .btn-destination-icon-dashboard{
+  background:#ffffff !important;
+}
+
+.github-project-card .project-link .btn-destination-icon-dashboard img{
+  width:22px;
+  height:22px;
+  filter:none !important;
+}
+
+/* LinkedIn se mantiene como texto "in" dentro del círculo azul. */
+.github-project-card .project-link .btn-destination-icon-linkedin{
+  background:#2f8fca !important;
+  color:#ffffff !important;
+}
+
+/* Estado en desarrollo más consistente si la clase no existía. */
+.github-project-card .project-status.development{
+  background:rgba(255,194,0,.14);
+  color:#ffc200;
+  border:1px solid rgba(255,194,0,.26);
+}
+
+
+/* === V43C: hero corregido sin cajas externas === */
+/* Corrige ancho del texto, elimina caja del kicker y deja la barra de tecnologías sin contenedor visible. */
+
+/* El texto vuelve a comportarse como en v42c: no cruza hacia la imagen. */
+#about .about-text{
+  width:100%;
+  max-width:640px !important;
+  position:relative;
+  z-index:2;
+}
+
+#about .hero-entry-v25b-copy{
+  display:block !important;
+  width:100% !important;
+  max-width:590px !important;
+  position:relative;
+  z-index:2;
+  margin-bottom:0 !important;
+  text-wrap:pretty;
+  overflow-wrap:normal;
+}
+
+/* Kicker sin caja, solo texto naranja. */
+#about .small-text.hero-entry-v25b-kicker{
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
+  padding:0 !important;
+  color:#ff9f1c !important;
+}
+
+#about .small-text.hero-entry-v25b-kicker span{
+  color:#ff9f1c !important;
+}
+
+/* Barra automática sin box externo. Solo quedan las tarjetas individuales. */
+.hero-tech-marquee{
+  width:min(86%, 590px);
+  max-width:100%;
+  margin-top:28px;
+  margin-bottom:0;
+  position:relative;
+  z-index:2;
+}
+
+.hero-tech-marquee-mask{
+  position:relative;
+  overflow:hidden;
+  width:100%;
+  padding:0;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+}
+
+.hero-tech-marquee-mask::before,
+.hero-tech-marquee-mask::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:64px;
+  z-index:3;
+  pointer-events:none;
+}
+
+.hero-tech-marquee-mask::before{
+  left:0;
+  background:linear-gradient(90deg, rgba(7,8,7,.98), rgba(7,8,7,0));
+}
+
+.hero-tech-marquee-mask::after{
+  right:0;
+  background:linear-gradient(270deg, rgba(7,8,7,.98), rgba(7,8,7,0));
+}
+
+.hero-tech-track{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  width:max-content;
+  animation:heroTechMarqueeNoBox 48s linear infinite;
+  will-change:transform;
+}
+
+.hero-tech-marquee:hover .hero-tech-track{
+  animation-play-state:paused;
+}
+
+.tech-logo-card{
+  flex:0 0 auto;
+  min-width:184px;
+  height:58px;
+  display:inline-flex;
+  align-items:center;
+  gap:11px;
+  padding:0 15px 0 10px;
+  border-radius:18px;
+  color:#f7f3ea;
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(245,240,232,.11);
+  box-shadow:0 10px 26px rgba(0,0,0,.16);
+}
+
+.tech-logo-icon-wrap{
+  width:37px;
+  height:37px;
+  min-width:37px;
+  border-radius:13px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:#ffffff;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.14) inset,
+    0 6px 14px rgba(0,0,0,.18);
+  overflow:hidden;
+}
+
+.tech-logo-icon-wrap img{
+  display:block;
+  width:24px;
+  height:24px;
+  object-fit:contain;
+}
+
+.tech-logo-text{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-width:0;
+}
+
+.tech-logo-text strong{
+  display:block;
+  color:#f7f3ea;
+  font-size:13.2px;
+  line-height:1.05;
+  font-weight:1000;
+  letter-spacing:-.02em;
+  white-space:nowrap;
+}
+
+.tech-logo-text small{
+  display:block;
+  margin-top:4px;
+  color:rgba(247,243,234,.62);
+  font-size:10.5px;
+  line-height:1;
+  font-weight:800;
+  letter-spacing:.01em;
+  white-space:nowrap;
+}
+
+@keyframes heroTechMarqueeNoBox{
+  from{
+    transform:translate3d(0, 0, 0);
+  }
+  to{
+    transform:translate3d(-50%, 0, 0);
+  }
+}
+
+body:not(.dark-mode) #about .small-text.hero-entry-v25b-kicker,
+body:not(.dark-mode) #about .small-text.hero-entry-v25b-kicker span{
+  color:#ff9f1c !important;
+}
+
+body:not(.dark-mode) .hero-tech-marquee-mask::before{
+  background:linear-gradient(90deg, rgba(250,250,247,.98), rgba(250,250,247,0));
+}
+
+body:not(.dark-mode) .hero-tech-marquee-mask::after{
+  background:linear-gradient(270deg, rgba(250,250,247,.98), rgba(250,250,247,0));
+}
+
+body:not(.dark-mode) .tech-logo-card{
+  color:#202126;
+  background:rgba(255,255,255,.78);
+  border-color:rgba(20,20,24,.09);
+  box-shadow:0 10px 24px rgba(20,20,24,.07);
+}
+
+body:not(.dark-mode) .tech-logo-text strong{
+  color:#202126;
+}
+
+body:not(.dark-mode) .tech-logo-text small{
+  color:rgba(32,33,38,.58);
+}
+
+@media (max-width:991px){
+  #about .about-text,
+  #about .hero-entry-v25b-copy{
+    max-width:100% !important;
+  }
+
+  .hero-tech-marquee{
+    width:min(96%, 640px);
+  }
+}
+
+@media (max-width:575px){
+  .hero-tech-marquee{
+    width:100%;
+    margin-top:24px;
+  }
+
+  .hero-tech-track{
+    gap:11px;
+    animation-duration:38s;
+  }
+
+  .tech-logo-card{
+    min-width:164px;
+    height:54px;
+    gap:9px;
+    padding:0 13px 0 9px;
+  }
+
+  .tech-logo-icon-wrap{
+    width:33px;
+    height:33px;
+    min-width:33px;
+    border-radius:11px;
+  }
+
+  .tech-logo-icon-wrap img{
+    width:21px;
+    height:21px;
+  }
+
+  .tech-logo-text strong{
+    font-size:12.4px;
+  }
+
+  .tech-logo-text small{
+    font-size:10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .hero-tech-track{
+    animation:none !important;
+    transform:none !important;
+  }
+}
+
+
+/* === V43D: iconos negros y más visibles en barra de tecnologías === */
+/* Mantiene la distribución de v43c, pero recupera el estilo oscuro/visible de v43b. */
+
+#about .hero-entry-v25b-copy{
+  max-width:590px !important;
+}
+
+.tech-logo-icon-wrap{
+  background:#ffffff !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.18) inset,
+    0 8px 18px rgba(0,0,0,.24) !important;
+}
+
+/* Los SVG externos de Simple Icons se muestran negros y con mayor presencia. */
+.tech-logo-icon-wrap img{
+  width:25px !important;
+  height:25px !important;
+  object-fit:contain !important;
+  filter:grayscale(1) brightness(0) contrast(1.25) !important;
+  opacity:.96 !important;
+}
+
+/* Looker Studio local: también pasa a monocromo para conservar coherencia visual. */
+.tech-logo-icon-wrap img[src$="looker-button-icon.png"]{
+  filter:grayscale(1) brightness(0) contrast(1.35) !important;
+  width:27px !important;
+  height:27px !important;
+}
+
+/* Fallback textual si algún logo remoto no carga. */
+.tech-logo-fallback{
+  display:none;
+  width:100%;
+  height:100%;
+  align-items:center;
+  justify-content:center;
+  color:#111111;
+  font-size:10px;
+  font-weight:1000;
+  line-height:1;
+  letter-spacing:-.07em;
+}
+
+/* Un poco más de contraste para las tarjetas sin recrear el box externo. */
+.tech-logo-card{
+  background:rgba(255,255,255,.070) !important;
+  border-color:rgba(245,240,232,.14) !important;
+}
+
+body:not(.dark-mode) .tech-logo-card{
+  background:rgba(255,255,255,.84) !important;
+  border-color:rgba(20,20,24,.11) !important;
+}
+
+@media (max-width:575px){
+  .tech-logo-icon-wrap img{
+    width:23px !important;
+    height:23px !important;
+  }
+
+  .tech-logo-icon-wrap img[src$="looker-button-icon.png"]{
+    width:24px !important;
+    height:24px !important;
+  }
+}
+
+
+
+
+
+
+/* === V43G: logos tecnológicos locales y limpieza de assets === */
+/* Continúa desde v43f: la barra ya no depende de imágenes externas. */
+
+.tech-logo-icon-wrap{
+  width:39px !important;
+  height:39px !important;
+  min-width:39px !important;
+  border-radius:13px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:hidden !important;
+  padding:0 !important;
+  background:#ffffff !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.20) inset,
+    0 8px 18px rgba(0,0,0,.24) !important;
+}
+
+.tech-logo-icon-wrap .tech-logo-img{
+  display:block !important;
+  width:26px !important;
+  height:26px !important;
+  max-width:26px !important;
+  max-height:26px !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  margin:0 !important;
+  transform:none !important;
+  filter:grayscale(1) brightness(0) contrast(1.25) !important;
+  opacity:1 !important;
+}
+
+.tech-logo-img-sql-server,
+.tech-logo-img-power-bi,
+.tech-logo-img-qlik,
+.tech-logo-img-spss,
+.tech-logo-img-python,
+.tech-logo-img-numpy,
+.tech-logo-img-scikit{
+  width:28px !important;
+  height:28px !important;
+  max-width:28px !important;
+  max-height:28px !important;
+}
+
+.tech-logo-img-snowflake,
+.tech-logo-img-databricks,
+.tech-logo-img-airflow,
+.tech-logo-img-dbt,
+.tech-logo-img-looker,
+.tech-logo-img-pandas,
+.tech-logo-img-plotly{
+  width:27px !important;
+  height:27px !important;
+  max-width:27px !important;
+  max-height:27px !important;
+}
+
+.tech-logo-card{
+  min-width:190px !important;
+  height:60px !important;
+  padding:0 15px 0 10px !important;
+  align-items:center !important;
+}
+
+.tech-logo-card-qlik{
+  min-width:196px !important;
+}
+
+.tech-logo-text strong,
+.tech-logo-text small{
+  text-align:left !important;
+}
+
+@media (max-width:575px){
+  .tech-logo-icon-wrap{
+    width:35px !important;
+    height:35px !important;
+    min-width:35px !important;
+  }
+
+  .tech-logo-icon-wrap .tech-logo-img{
+    width:23px !important;
+    height:23px !important;
+    max-width:23px !important;
+    max-height:23px !important;
+  }
+
+  .tech-logo-img-power-bi,
+  .tech-logo-img-sql-server,
+  .tech-logo-img-qlik,
+  .tech-logo-img-spss,
+  .tech-logo-img-python,
+  .tech-logo-img-numpy,
+  .tech-logo-img-scikit{
+    width:24px !important;
+    height:24px !important;
+    max-width:24px !important;
+    max-height:24px !important;
+  }
+
+  .tech-logo-card{
+    min-width:170px !important;
+    height:56px !important;
+  }
+
+  .tech-logo-card-qlik{
+    min-width:176px !important;
+  }
+}
+
+
+/* === V43H: descripciones actualizadas y Matplotlib en barra tecnológica === */
+.tech-logo-img-matplotlib{
+  width:27px !important;
+  height:27px !important;
+  max-width:27px !important;
+  max-height:27px !important;
+}
+
+.tech-logo-card-matplotlib{
+  min-width:190px !important;
+}
+
+@media (max-width:575px){
+  .tech-logo-img-matplotlib{
+    width:23px !important;
+    height:23px !important;
+    max-width:23px !important;
+    max-height:23px !important;
+  }
+
+  .tech-logo-card-matplotlib{
+    min-width:170px !important;
+  }
+}
+
+
+/* === V43I: corrección icono Matplotlib === */
+/* Usa el SVG oficial de Matplotlib y conserva sus colores para evitar el círculo negro/hueco. */
+
+.tech-logo-img-matplotlib{
+  filter:none !important;
+  width:31px !important;
+  height:31px !important;
+  max-width:31px !important;
+  max-height:31px !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  background:transparent !important;
+}
+
+@media (max-width:575px){
+  .tech-logo-img-matplotlib{
+    width:27px !important;
+    height:27px !important;
+    max-width:27px !important;
+    max-height:27px !important;
+  }
+}
+
+
+/* === V44: filtros sincronizados con tags reales de proyectos === */
+.repo-filter-toolbar{
+  gap:12px !important;
+  row-gap:14px !important;
+}
+
+.repo-filter-btn{
+  white-space:nowrap !important;
+}
+
+@media (max-width:575px){
+  .repo-filter-toolbar{
+    gap:9px !important;
+    row-gap:10px !important;
+  }
+
+  .repo-filter-btn{
+    font-size:12px !important;
+    padding:10px 12px !important;
+  }
+}
+
+
+/* === V44B: filtros por categorías desplegables === */
+.repo-filter-toolbar-categories{
+  gap:12px !important;
+  row-gap:14px !important;
+}
+
+.repo-filter-category{
+  position:relative;
+  z-index:20;
+}
+
+.repo-filter-category summary{
+  list-style:none;
+  cursor:pointer;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.045);
+  color:#f7f3ea;
+  border-radius:999px;
+  padding:12px 20px;
+  font-weight:900;
+  user-select:none;
+}
+
+.repo-filter-category summary::-webkit-details-marker{
+  display:none;
+}
+
+.repo-filter-category[open] summary{
+  background:#ffc200;
+  color:#111111;
+}
+
+.repo-filter-category-panel{
+  position:absolute;
+  top:calc(100% + 10px);
+  left:50%;
+  transform:translateX(-50%);
+  min-width:260px;
+  max-width:min(520px, calc(100vw - 32px));
+  padding:14px;
+  border-radius:22px;
+  background:rgba(12,13,12,.96);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 24px 70px rgba(0,0,0,.36);
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+}
+
+body:not(.dark-mode) .repo-filter-category-panel{
+  background:rgba(255,255,255,.96);
+}
+
+@media (max-width:575px){
+  .repo-filter-category{
+    position:static;
+  }
+
+  .repo-filter-category-panel{
+    left:12px;
+    right:12px;
+    width:auto;
+    min-width:0;
+    transform:none;
+  }
+}
+
+
+/* === V44G: filtros por categorías desplegables al pasar el mouse === */
+/* Variante basada en v44b: grupos Todos, Disciplina, Herramientas, Modelo y Tema. */
+
+.repo-filter-toolbar-hover-groups{
+  gap:12px !important;
+  row-gap:14px !important;
+  align-items:center !important;
+}
+
+.repo-filter-group{
+  position:relative;
+  z-index:30;
+  display:inline-flex;
+  align-items:center;
+}
+
+.repo-filter-group-trigger{
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.045);
+  color:#f7f3ea;
+  border-radius:999px;
+  padding:12px 20px;
+  font-weight:900;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
+  user-select:none;
+  transition:
+    background-color .18s ease,
+    color .18s ease,
+    border-color .18s ease,
+    transform .18s ease;
+}
+
+.repo-filter-group-trigger::after{
+  content:"⌄";
+  font-size:13px;
+  line-height:1;
+  opacity:.68;
+  transform:translateY(-1px);
+}
+
+.repo-filter-group:hover .repo-filter-group-trigger,
+.repo-filter-group:focus-within .repo-filter-group-trigger{
+  background:#ffc200;
+  color:#111111;
+  border-color:#ffc200;
+  transform:translateY(-1px);
+}
+
+.repo-filter-group:hover .repo-filter-group-trigger::after,
+.repo-filter-group:focus-within .repo-filter-group-trigger::after{
+  opacity:1;
+}
+
+.repo-filter-toolbar-hover-groups .repo-filter-category-panel{
+  position:absolute;
+  top:calc(100% + 10px);
+  left:50%;
+  transform:translateX(-50%) translateY(4px);
+  min-width:280px;
+  max-width:min(560px, calc(100vw - 32px));
+  padding:14px;
+  border-radius:22px;
+  background:rgba(12,13,12,.96);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 24px 70px rgba(0,0,0,.36);
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:
+    opacity .18s ease,
+    visibility .18s ease,
+    transform .18s ease;
+}
+
+.repo-filter-group:hover .repo-filter-category-panel,
+.repo-filter-group:focus-within .repo-filter-category-panel{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translateX(-50%) translateY(0);
+}
+
+body:not(.dark-mode) .repo-filter-group-trigger{
+  background:rgba(255,255,255,.72);
+  color:#202126;
+  border-color:rgba(20,20,24,.10);
+}
+
+body:not(.dark-mode) .repo-filter-toolbar-hover-groups .repo-filter-category-panel{
+  background:rgba(255,255,255,.96);
+  border-color:rgba(20,20,24,.10);
+}
+
+@media (max-width:575px){
+  .repo-filter-toolbar-hover-groups{
+    gap:9px !important;
+    row-gap:10px !important;
+  }
+
+  .repo-filter-group{
+    position:static;
+  }
+
+  .repo-filter-group-trigger{
+    font-size:12px;
+    padding:10px 14px;
+  }
+
+  .repo-filter-toolbar-hover-groups .repo-filter-category-panel{
+    left:12px;
+    right:12px;
+    width:auto;
+    min-width:0;
+    max-width:none;
+    transform:translateY(4px);
+  }
+
+  .repo-filter-group:hover .repo-filter-category-panel,
+  .repo-filter-group:focus-within .repo-filter-category-panel{
+    transform:translateY(0);
+  }
+
+  .repo-filter-toolbar-hover-groups .repo-filter-category-panel .repo-filter-btn{
+    font-size:12px !important;
+    padding:10px 12px !important;
+  }
+}
+
+
+
+
+
+/* === V44I: grilla de proyectos restaurada a 4 columnas === */
+/* Corrige v44h: la grilla vuelve a 4 columnas en desktop, sin tocar filtros ni tags. */
+
+.github-project-grid{
+  width:min(1320px, 100%) !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  display:grid !important;
+  grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
+  gap:18px !important;
+}
+
+.github-project-card{
+  width:100% !important;
+  max-width:none !important;
+}
+
+@media (max-width:1199px){
+  .github-project-grid{
+    grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width:991px){
+  .github-project-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width:575px){
+  .github-project-grid{
+    grid-template-columns:1fr !important;
+  }
+}
+
+/* Mantiene el comportamiento de filtros por categorías con hover de v44g/v44h. */
+.repo-filter-toolbar-hover-groups{
+  gap:12px !important;
+  row-gap:14px !important;
+  align-items:center !important;
+}
+
+.repo-filter-group{
+  position:relative;
+  z-index:30;
+  display:inline-flex;
+  align-items:center;
+}
+
+.repo-filter-group-trigger{
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.045);
+  color:#f7f3ea;
+  border-radius:999px;
+  padding:12px 20px;
+  font-weight:900;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
+  user-select:none;
+}
+
+.repo-filter-group-trigger::after{
+  content:"⌄";
+  font-size:13px;
+  line-height:1;
+  opacity:.68;
+  transform:translateY(-1px);
+}
+
+.repo-filter-group:hover .repo-filter-group-trigger,
+.repo-filter-group:focus-within .repo-filter-group-trigger{
+  background:#ffc200;
+  color:#111111;
+  border-color:#ffc200;
+}
+
+.repo-filter-toolbar-hover-groups .repo-filter-category-panel{
+  position:absolute;
+  top:calc(100% + 10px);
+  left:50%;
+  transform:translateX(-50%) translateY(4px);
+  min-width:280px;
+  max-width:min(560px, calc(100vw - 32px));
+  padding:14px;
+  border-radius:22px;
+  background:rgba(12,13,12,.96);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 24px 70px rgba(0,0,0,.36);
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:
+    opacity .18s ease,
+    visibility .18s ease,
+    transform .18s ease;
+}
+
+.repo-filter-group:hover .repo-filter-category-panel,
+.repo-filter-group:focus-within .repo-filter-category-panel{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translateX(-50%) translateY(0);
+}
+
+body:not(.dark-mode) .repo-filter-group-trigger{
+  background:rgba(255,255,255,.72);
+  color:#202126;
+  border-color:rgba(20,20,24,.10);
+}
+
+body:not(.dark-mode) .repo-filter-toolbar-hover-groups .repo-filter-category-panel{
+  background:rgba(255,255,255,.96);
+  border-color:rgba(20,20,24,.10);
+}
+
+@media (max-width:575px){
+  .repo-filter-toolbar-hover-groups{
+    gap:9px !important;
+    row-gap:10px !important;
+  }
+
+  .repo-filter-group{
+    position:static;
+  }
+
+  .repo-filter-group-trigger{
+    font-size:12px;
+    padding:10px 14px;
+  }
+
+  .repo-filter-toolbar-hover-groups .repo-filter-category-panel{
+    left:12px;
+    right:12px;
+    width:auto;
+    min-width:0;
+    max-width:none;
+    transform:translateY(4px);
+  }
+
+  .repo-filter-group:hover .repo-filter-category-panel,
+  .repo-filter-group:focus-within .repo-filter-category-panel{
+    transform:translateY(0);
+  }
+
+  .repo-filter-toolbar-hover-groups .repo-filter-category-panel .repo-filter-btn{
+    font-size:12px !important;
+    padding:10px 12px !important;
+  }
+}
+
+
+/* === V44J: ancho de Proyectos restaurado como referencia v42c === */
+/* La grilla usa 4 columnas y el contenedor padre deja de limitarla a ancho Bootstrap estándar. */
+
+.github-projects-section .container{
+  max-width:1380px !important;
+}
+
+.github-project-grid{
+  width:min(1320px, 100%) !important;
+  max-width:1320px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  display:grid !important;
+  grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
+  gap:18px !important;
+}
+
+.github-project-card{
+  width:100% !important;
+  max-width:none !important;
+}
+
+@media (max-width:1199px){
+  .github-projects-section .container{
+    max-width:1140px !important;
+  }
+
+  .github-project-grid{
+    grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+    width:min(1120px, 100%) !important;
+  }
+}
+
+@media (max-width:991px){
+  .github-projects-section .container{
+    max-width:960px !important;
+  }
+
+  .github-project-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width:575px){
+  .github-projects-section .container{
+    max-width:100% !important;
+  }
+
+  .github-project-grid{
+    grid-template-columns:1fr !important;
+  }
+}
+
+
+/* === V44K: filtro estable de proyectos === */
+/* Refuerza que una card filtrada no quede visible por estados de animación anteriores. */
+
+.github-project-card.is-filtered-out,
+.github-project-card[hidden]{
+  display:none !important;
+}
+
+.github-project-grid{
+  width:min(1320px, 100%) !important;
+  max-width:1320px !important;
+  grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
+}
+
+.github-projects-section .container{
+  max-width:1380px !important;
+}

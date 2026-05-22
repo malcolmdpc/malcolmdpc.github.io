@@ -47,179 +47,72 @@
 
 
 
-// V26B: smooth FLIP repository project filters
+
+// V44K: filtro estable de proyectos por data-tags
 (function(){
-  const buttons = Array.from(document.querySelectorAll('.repo-filter-btn'));
+  const buttons = Array.from(document.querySelectorAll('.repo-filter-btn[data-repo-filter]'));
   const cards = Array.from(document.querySelectorAll('.github-project-card[data-tags]'));
-  const grid = document.querySelector('.github-project-grid');
   const empty = document.querySelector('.repo-empty-message');
 
-  if(!buttons.length || !cards.length || !grid) return;
-
-  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let activeFilter = 'all';
-  let isFiltering = false;
+  if(!buttons.length || !cards.length) return;
 
   function tagsFor(card){
-    return (card.dataset.tags || '').trim().toLowerCase().split(/\s+/).filter(Boolean);
+    return (card.dataset.tags || '')
+      .trim()
+      .toLowerCase()
+      .split(/\s+/)
+      .filter(Boolean);
   }
 
   function shouldShow(card, filter){
     return filter === 'all' || tagsFor(card).includes(filter);
   }
 
-  function visibleCards(){
-    return cards.filter(card => !card.classList.contains('is-filtered-out'));
+  function setEmptyState(visibleCount){
+    if(empty) empty.hidden = visibleCount > 0;
   }
 
-  function rectMap(items){
-    const map = new Map();
-    items.forEach(card => map.set(card, card.getBoundingClientRect()));
-    return map;
-  }
-
-  function animateCard(card, keyframes, options){
-    if(!card.animate || reduceMotion){
-      return Promise.resolve();
-    }
-    const animation = card.animate(keyframes, options);
-    return animation.finished.catch(() => {});
-  }
-
-  function setEmptyState(count){
-    if(empty) empty.hidden = count > 0;
-  }
-
-  function applyImmediate(filter){
-    const shown = cards.filter(card => shouldShow(card, filter));
+  function applyFilter(filter){
+    let visibleCount = 0;
 
     cards.forEach(card => {
       const show = shouldShow(card, filter);
+
       card.classList.toggle('is-filtered-out', !show);
-      card.classList.remove('is-filtering-out', 'is-filtering-in');
+      card.hidden = !show;
+      card.style.display = show ? '' : 'none';
       card.style.opacity = '';
       card.style.transform = '';
+
+      if(show) visibleCount += 1;
     });
 
-    setEmptyState(shown.length);
+    setEmptyState(visibleCount);
   }
 
-  async function applyFilter(filter){
-    if(filter === activeFilter || isFiltering) return;
+  function setActiveButton(activeButton){
+    const filter = (activeButton.dataset.repoFilter || 'all').toLowerCase();
 
-    isFiltering = true;
-    activeFilter = filter;
-    grid.classList.add('is-filtering');
-    if(empty) empty.hidden = true;
-
-    const beforeVisible = visibleCards();
-    const beforeRects = rectMap(beforeVisible);
-
-    const toShow = cards.filter(card => shouldShow(card, filter));
-    const toShowSet = new Set(toShow);
-    const toHide = beforeVisible.filter(card => !toShowSet.has(card));
-    const toReveal = cards.filter(card => toShowSet.has(card) && card.classList.contains('is-filtered-out'));
-    const staying = beforeVisible.filter(card => toShowSet.has(card));
-
-    toHide.forEach(card => card.classList.add('is-filtering-out'));
-
-    await Promise.all(toHide.map(card => animateCard(card, [
-      {opacity:1, transform:'scale(1) translateY(0)'},
-      {opacity:0, transform:'scale(.975) translateY(8px)'}
-    ], {
-      duration:150,
-      easing:'cubic-bezier(.4,0,.2,1)',
-      fill:'forwards'
-    })));
-
-    toHide.forEach(card => {
-      card.classList.add('is-filtered-out');
-      card.classList.remove('is-filtering-out');
-      card.style.opacity = '';
-      card.style.transform = '';
+    buttons.forEach(button => {
+      const sameFilter = (button.dataset.repoFilter || 'all').toLowerCase() === filter;
+      button.classList.toggle('active', sameFilter);
     });
 
-    toReveal.forEach(card => {
-      card.classList.remove('is-filtered-out');
-      card.classList.add('is-filtering-in');
-      card.style.opacity = '0';
-      card.style.transform = 'scale(.985) translateY(10px)';
-    });
-
-    // Forzar layout después de ocultar/mostrar.
-    grid.getBoundingClientRect();
-
-    const afterVisible = visibleCards();
-    const afterRects = rectMap(afterVisible);
-
-    const moveAnimations = staying.map(card => {
-      const first = beforeRects.get(card);
-      const last = afterRects.get(card);
-      if(!first || !last) return Promise.resolve();
-
-      const dx = first.left - last.left;
-      const dy = first.top - last.top;
-
-      if(Math.abs(dx) < 1 && Math.abs(dy) < 1) return Promise.resolve();
-
-      return animateCard(card, [
-        {transform:`translate(${dx}px, ${dy}px)`},
-        {transform:'translate(0, 0)'}
-      ], {
-        duration:380,
-        easing:'cubic-bezier(.16,1,.3,1)',
-        fill:'both'
-      });
-    });
-
-    const revealAnimations = toReveal.map((card, index) => {
-      card.style.opacity = '';
-      card.style.transform = '';
-
-      return animateCard(card, [
-        {opacity:0, transform:'scale(.985) translateY(12px)'},
-        {opacity:1, transform:'scale(1) translateY(0)'}
-      ], {
-        duration:300,
-        delay:index * 24,
-        easing:'cubic-bezier(.16,1,.3,1)',
-        fill:'both'
-      });
-    });
-
-    await Promise.all([...moveAnimations, ...revealAnimations]);
-
-    cards.forEach(card => {
-      card.classList.remove('is-filtering-in', 'is-filtering-out');
-      card.style.opacity = '';
-      card.style.transform = '';
-    });
-
-    setEmptyState(toShow.length);
-    grid.classList.remove('is-filtering');
-    isFiltering = false;
+    applyFilter(filter);
   }
 
   buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      const filter = (button.dataset.repoFilter || 'all').toLowerCase();
-
-      if(isFiltering || filter === activeFilter) return;
-
-      buttons.forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
-
-      if(reduceMotion){
-        activeFilter = filter;
-        applyImmediate(filter);
-      }else{
-        applyFilter(filter);
-      }
+    button.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopPropagation();
+      setActiveButton(button);
     });
   });
 
-  applyImmediate('all');
+  const initial = buttons.find(button => button.classList.contains('active')) || buttons[0];
+  setActiveButton(initial);
 })();
+
 
 // V12: fixed background lamps, no document-height side effects
 (function(){
@@ -804,5 +697,59 @@
       card.style.removeProperty('--mx');
       card.style.removeProperty('--my');
     }, {passive:true});
+  });
+})();
+
+
+// V44G: estado accesible para grupos de filtros desplegables por hover/focus
+(function(){
+  const groups = Array.from(document.querySelectorAll('.repo-filter-group'));
+  if(!groups.length) return;
+
+  groups.forEach(group => {
+    const trigger = group.querySelector('.repo-filter-group-trigger');
+    if(!trigger) return;
+
+    function open(){
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+
+    function close(){
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    group.addEventListener('mouseenter', open);
+    group.addEventListener('mouseleave', close);
+    group.addEventListener('focusin', open);
+    group.addEventListener('focusout', event => {
+      if(!group.contains(event.relatedTarget)) close();
+    });
+  });
+})();
+
+
+// V44H: estado accesible para grupos de filtros desplegables por hover/focus
+(function(){
+  const groups = Array.from(document.querySelectorAll('.repo-filter-group'));
+  if(!groups.length) return;
+
+  groups.forEach(group => {
+    const trigger = group.querySelector('.repo-filter-group-trigger');
+    if(!trigger) return;
+
+    function open(){
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+
+    function close(){
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    group.addEventListener('mouseenter', open);
+    group.addEventListener('mouseleave', close);
+    group.addEventListener('focusin', open);
+    group.addEventListener('focusout', event => {
+      if(!group.contains(event.relatedTarget)) close();
+    });
   });
 })();
