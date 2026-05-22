@@ -753,3 +753,45 @@
     });
   });
 })();
+
+
+
+// === PRELOADER SYSTEM PRO ===
+(function(){
+  const preloader = document.querySelector('.pl-preloader');
+  if(!preloader) return;
+
+  const duration = Math.min(parseInt(preloader.dataset.preloaderDuration || '4200', 10), 7000);
+  const body = document.body;
+  const startAt = Date.now();
+  let removed = false;
+
+  body.classList.add('preloader-active');
+
+  function removePreloader(){
+    if(removed) return;
+    removed = true;
+    preloader.classList.add('is-hidden');
+    body.classList.remove('preloader-active');
+    body.classList.add('preloader-complete');
+    window.setTimeout(() => {
+      if(preloader.parentNode) preloader.parentNode.removeChild(preloader);
+    }, 900);
+  }
+
+  function scheduleRemoval(){
+    const elapsed = Date.now() - startAt;
+    const remaining = Math.max(0, duration - elapsed);
+    window.setTimeout(removePreloader, remaining);
+  }
+
+  if(document.readyState === 'complete'){
+    scheduleRemoval();
+  } else {
+    window.addEventListener('load', scheduleRemoval, { once:true });
+    window.setTimeout(scheduleRemoval, Math.min(1200, duration));
+  }
+
+  window.setTimeout(removePreloader, 7000);
+})();
+
