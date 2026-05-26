@@ -48,11 +48,14 @@
 
 
 
-// V44K: filtro estable de proyectos por data-tags
+// V48D: filtro estable de Proyectos por data-tags
 (function(){
-  const buttons = Array.from(document.querySelectorAll('.repo-filter-btn[data-repo-filter]'));
-  const cards = Array.from(document.querySelectorAll('.github-networks-card[data-tags]'));
-  const empty = document.querySelector('.repo-empty-message');
+  const projectsSection = document.querySelector('#projects');
+  if(!projectsSection) return;
+
+  const buttons = Array.from(projectsSection.querySelectorAll('.repo-filter-btn[data-repo-filter]'));
+  const cards = Array.from(projectsSection.querySelectorAll('.github-project-card[data-tags]'));
+  const empty = projectsSection.querySelector('.repo-empty-message');
 
   if(!buttons.length || !cards.length) return;
 
@@ -96,12 +99,15 @@
     buttons.forEach(button => {
       const sameFilter = (button.dataset.repoFilter || 'all').toLowerCase() === filter;
       button.classList.toggle('active', sameFilter);
+      button.setAttribute('aria-pressed', sameFilter ? 'true' : 'false');
     });
 
     applyFilter(filter);
   }
 
   buttons.forEach(button => {
+    button.setAttribute('aria-pressed', button.classList.contains('active') ? 'true' : 'false');
+
     button.addEventListener('click', event => {
       event.preventDefault();
       event.stopPropagation();

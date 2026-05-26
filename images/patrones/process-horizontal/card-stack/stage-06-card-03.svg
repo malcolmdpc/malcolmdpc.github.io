@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1260" role="img" aria-label="Entrega - Automatización">
-  <rect width="900" height="1260" rx="54" fill="#facc15"/>
-  <g opacity=".08" stroke="#111111" stroke-width="2">
-    <path d="M 120 0 V 1260"/><path d="M 240 0 V 1260"/><path d="M 360 0 V 1260"/><path d="M 480 0 V 1260"/><path d="M 600 0 V 1260"/><path d="M 720 0 V 1260"/><path d="M 840 0 V 1260"/>
-    <path d="M 0 140 H 1260"/><path d="M 0 280 H 1260"/><path d="M 0 420 H 1260"/><path d="M 0 560 H 1260"/><path d="M 0 700 H 1260"/><path d="M 0 840 H 1260"/><path d="M 0 980 H 1260"/><path d="M 0 1120 H 1260"/>
-  </g>
-  <text x="64" y="112" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="900" fill="#111111" opacity=".92">6</text>
-  <text x="64" y="182" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="900" fill="#111111" opacity=".88">AUTOMATIZACIÓN</text>
-<path d="M220 720 C320 570 430 640 560 480 C640 382 708 340 770 260" fill="none" stroke="#111111" stroke-width="20" stroke-linecap="round"/><g fill="#fff8de"><circle cx="220" cy="720" r="18"/><circle cx="430" cy="640" r="14"/><circle cx="560" cy="480" r="18"/><circle cx="770" cy="260" r="20"/></g></svg>
