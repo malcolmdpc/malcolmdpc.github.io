@@ -51,7 +51,7 @@
 // V44K: filtro estable de proyectos por data-tags
 (function(){
   const buttons = Array.from(document.querySelectorAll('.repo-filter-btn[data-repo-filter]'));
-  const cards = Array.from(document.querySelectorAll('.github-project-card[data-tags]'));
+  const cards = Array.from(document.querySelectorAll('.github-networks-card[data-tags]'));
   const empty = document.querySelector('.repo-empty-message');
 
   if(!buttons.length || !cards.length) return;
@@ -541,14 +541,14 @@
 
   const sectionConfigs = [
     {
-      section: '#project',
+      section: '#networks',
       items: [
         'h2',
         '.social-card'
       ]
     },
     {
-      section: '#resume',
+      section: '#methodology',
       items: [
         'h2',
         '.timeline-scroll-note',
@@ -558,12 +558,12 @@
       ]
     },
     {
-      section: '#repository',
+      section: '#networkss',
       items: [
         'h2',
-        '.projects-intro',
+        '.networkss-intro',
         '.repo-filter-toolbar',
-        '.github-project-card'
+        '.github-networks-card'
       ]
     },
     {
@@ -611,7 +611,7 @@
         item.classList.add('pl-section-reveal-title');
       }
 
-      if(item.matches('.social-card, .github-project-card, .contact-panel, .boxed-mail-form')){
+      if(item.matches('.social-card, .github-networks-card, .contact-panel, .boxed-mail-form')){
         item.classList.add('pl-section-reveal-card');
       }
 
@@ -793,5 +793,704 @@
   }
 
   window.setTimeout(removePreloader, 7000);
+})();
+
+
+// === V45D: ajuste final del loader sin rebote de zoom ===
+(function(){
+  const loader = document.querySelector('.pl-scroll-loader');
+  if(!loader) return;
+
+  const body = document.body;
+  const html = document.documentElement;
+  let finished = false;
+  let tl = null;
+  let fallbackHandler = null;
+
+  html.classList.add('pl-scroll-loader-lock');
+
+  function forceTopFor(ms){
+    const started = performance.now();
+
+    function block(e){
+      if(e && typeof e.preventDefault === 'function') e.preventDefault();
+      if(e && typeof e.stopPropagation === 'function') e.stopPropagation();
+      return false;
+    }
+
+    function blockKeys(e){
+      const keys = ['Space','PageDown','PageUp','ArrowDown','ArrowUp','Home','End'];
+      if(keys.includes(e.code)){
+        block(e);
+      }
+    }
+
+    window.addEventListener('wheel', block, { passive:false, capture:true });
+    window.addEventListener('touchmove', block, { passive:false, capture:true });
+    window.addEventListener('keydown', blockKeys, { passive:false, capture:true });
+
+    body.classList.add('pl-scroll-landing-lock');
+
+    function hold(){
+      window.scrollTo(0, 0);
+      if(performance.now() - started < ms){
+        requestAnimationFrame(hold);
+      }else{
+        window.removeEventListener('wheel', block, { capture:true });
+        window.removeEventListener('touchmove', block, { capture:true });
+        window.removeEventListener('keydown', blockKeys, { capture:true });
+        body.classList.remove('pl-scroll-landing-lock');
+        window.scrollTo(0, 0);
+      }
+    }
+
+    hold();
+  }
+
+  function cleanupScrollTrigger(){
+    if(tl){
+      try{
+        if(tl.scrollTrigger) tl.scrollTrigger.kill(false);
+        tl.kill();
+      }catch(e){}
+    }
+
+    if(window.ScrollTrigger && typeof window.ScrollTrigger.getAll === 'function'){
+      window.ScrollTrigger.getAll().forEach(function(st){
+        if(st && st.trigger && loader.contains(st.trigger)){
+          try{ st.kill(false); }catch(e){}
+        }
+      });
+    }
+
+    if(fallbackHandler){
+      window.removeEventListener('scroll', fallbackHandler);
+      window.removeEventListener('resize', fallbackHandler);
+    }
+  }
+
+  function finishScrollLoader(){
+    if(finished) return;
+    finished = true;
+
+    body.classList.add('pl-scroll-loader-finishing');
+
+    const dot = loader.querySelector('.dot');
+    const next = loader.querySelector('.pl-scroll-loader__next');
+
+    if(dot) dot.style.transform = 'scale(1200)';
+    if(next){
+      next.style.visibility = 'visible';
+      next.style.opacity = '1';
+    }
+
+    /*
+      V45D: primero congelamos el timeline/ScrollTrigger en el estado final.
+      Si se fuerza el scroll a 0 antes de matar el ScrollTrigger, el scrub intenta
+      volver hacia atrás y genera un pequeño rebote visual justo antes de mostrar la web.
+    */
+    cleanupScrollTrigger();
+
+    forceTopFor(850);
+
+    window.setTimeout(function(){
+      if(loader.parentNode) loader.parentNode.removeChild(loader);
+
+      body.classList.remove('pl-scroll-loader-active');
+      body.classList.remove('pl-scroll-loader-finishing');
+      body.classList.add('pl-scroll-loader-complete');
+      html.classList.remove('pl-scroll-loader-lock');
+
+      window.scrollTo(0, 0);
+
+      if(window.ScrollTrigger && typeof window.ScrollTrigger.refresh === 'function'){
+        window.ScrollTrigger.refresh(true);
+      }
+    }, 220);
+  }
+
+  if(window.gsap && window.ScrollTrigger){
+    window.gsap.registerPlugin(window.ScrollTrigger);
+
+    tl = window.gsap.timeline({
+      scrollTrigger:{
+        trigger:'.pl-scroll-loader__first',
+        start:'top top',
+        end:'+=135%',
+        pin:true,
+        scrub:.45,
+        onUpdate:function(self){
+          if(self.progress >= .992) finishScrollLoader();
+        },
+        onLeave:finishScrollLoader
+      }
+    });
+
+    tl.to('.pl-scroll-loader .dot', {
+      scale:1200,
+      duration:2,
+      ease:'power2.in'
+    })
+    .to('.pl-scroll-loader__next', {
+      autoAlpha:1,
+      duration:.08
+    }, '-=.22');
+  } else {
+    const dot = loader.querySelector('.dot');
+    const next = loader.querySelector('.pl-scroll-loader__next');
+    const maxScroll = Math.max(window.innerHeight * 1.35, 1);
+
+    fallbackHandler = function(){
+      if(finished) return;
+      const progress = Math.min(Math.max(window.scrollY / maxScroll, 0), 1);
+      if(dot) dot.style.transform = 'scale(' + (1 + progress * 1199).toFixed(3) + ')';
+      if(next && progress > .62){
+        next.style.visibility = 'visible';
+        next.style.opacity = '1';
+      }
+      if(progress >= .985) finishScrollLoader();
+    };
+
+    window.addEventListener('scroll', fallbackHandler, { passive:true });
+    window.addEventListener('resize', fallbackHandler, { passive:true });
+    fallbackHandler();
+  }
+})();
+
+
+// === V45P: Horizontal pinned panels con drag en toda la sección y barra mejorada ===
+(function(){
+  const horizontalSection=document.querySelector('[data-horizontal-process-section]');
+  if(!horizontalSection||!window.gsap||!window.ScrollTrigger)return;
+  const wrapper=horizontalSection.querySelector('.wrapper');
+  const items=wrapper?Array.from(wrapper.querySelectorAll('.item')):[];
+  const guide=horizontalSection.querySelector('.process-horizontal-guide');
+  const bullets=guide?Array.from(guide.querySelectorAll('[data-process-guide]')):[];
+  const progressBar=guide?guide.querySelector('.process-horizontal-guide__progress'):null;
+  const desktopQuery=window.matchMedia('(min-width: 992px)');
+  if(!wrapper||items.length<2)return;
+  window.gsap.registerPlugin(window.ScrollTrigger);
+  let timeline=null;
+  let isDragging=false;
+  let dragStartX=0;
+  let dragStartProgress=0;
+  let scrollDistance=1;
+  let currentProgress=0;
+  function clamp(v,min,max){return Math.min(Math.max(v,min),max);}
+  function activeIndexFromProgress(progress){return Math.min(items.length-1,Math.max(0,Math.round(progress*(items.length-1))));}
+  function getContrastIndex(progress){
+    const segmentCount = Math.max(items.length - 1, 1);
+    const scaled = clamp(progress, 0, 1) * segmentCount;
+    const baseIndex = Math.min(items.length - 1, Math.floor(scaled));
+    const phase = scaled - baseIndex;
+    const title = horizontalSection.querySelector('.process-horizontal-static-head');
+    let threshold = .72;
+
+    if(title && window.innerWidth){
+      const rect = title.getBoundingClientRect();
+      /*
+        El panel siguiente entra desde el borde derecho.
+        Cambiamos el color recién cuando ese borde alcanza el área real del título.
+      */
+      threshold = clamp(1 - ((rect.right + 8) / window.innerWidth), .58, .88);
+    }
+
+    if(phase >= threshold){
+      return Math.min(items.length - 1, baseIndex + 1);
+    }
+
+    return baseIndex;
+  }
+
+  function setGuide(progress){
+    currentProgress=clamp(progress,0,1);
+    const activeIndex=activeIndexFromProgress(currentProgress);
+    const contrastIndex=getContrastIndex(currentProgress);
+
+    bullets.forEach(function(bullet,index){
+      bullet.classList.toggle('is-active',index===activeIndex);
+    });
+
+    if(guide){
+      guide.style.setProperty('--process-guide-progress', currentProgress.toFixed(4));
+    }
+
+    const contrastItem=items[contrastIndex];
+
+    if(contrastItem&&contrastItem.classList.contains('is-light-text')){
+      horizontalSection.classList.add('is-light-stage');
+    }else{
+      horizontalSection.classList.remove('is-light-stage');
+    }
+  }
+
+  function scrollToProgress(progress){
+    if(!timeline||!timeline.scrollTrigger) return;
+    const p=clamp(progress,0,1);
+    const target=timeline.scrollTrigger.start+scrollDistance*p;
+    window.scrollTo({top:target,behavior:'auto'});
+    setGuide(p);
+  }
+  function reset(){
+    if(timeline){ if(timeline.scrollTrigger) timeline.scrollTrigger.kill(); timeline.kill(); timeline=null; }
+    window.gsap.set(items,{clearProps:'transform,opacity,scale,zIndex'});
+    setGuide(0);
+  }
+  function initScroll(){
+    reset();
+    if(!desktopQuery.matches) return;
+    items.forEach(function(item,index){
+      window.gsap.set(item,{xPercent:index===0?0:100,zIndex:items.length+index,opacity:1,scale:1});
+    });
+    timeline=window.gsap.timeline({
+      scrollTrigger:{
+        trigger:horizontalSection,
+        pin:true,
+        start:'top top',
+        end:function(){ return '+='+((items.length-1)*100)+'%'; },
+        scrub:1,
+        anticipatePin:1,
+        invalidateOnRefresh:true,
+        onRefresh:function(self){ scrollDistance=Math.max(1,self.end-self.start); },
+        onUpdate:function(self){ setGuide(self.progress); }
+      },
+      defaults:{ease:'none'}
+    });
+    items.forEach(function(item,index){
+      if(index!==items.length-1){
+        timeline.to(item,{xPercent:-100,duration:1}).to(items[index+1],{xPercent:0,duration:1},'<');
+      }
+    });
+    setGuide(0);
+  }
+  if(guide){
+    bullets.forEach(function(bullet){
+      bullet.addEventListener('click',function(e){
+        e.stopPropagation();
+        const index=Number(this.getAttribute('data-process-guide'))||0;
+        scrollToProgress(index/Math.max(items.length-1,1));
+      });
+    });
+  }
+  function beginDrag(event){
+    if(!desktopQuery.matches||!timeline||!timeline.scrollTrigger) return;
+    if(event.target.closest('a, button') && !event.target.closest('.process-horizontal-guide')) return;
+    isDragging=true;
+    dragStartX=event.clientX;
+    dragStartProgress=currentProgress;
+    horizontalSection.classList.add('is-dragging');
+    try{ horizontalSection.setPointerCapture(event.pointerId); }catch(e){}
+    event.preventDefault();
+  }
+  function moveDrag(event){
+    if(!isDragging) return;
+    const rect=horizontalSection.getBoundingClientRect();
+    const delta=(event.clientX-dragStartX)/Math.max(rect.width,1);
+    scrollToProgress(dragStartProgress - delta);
+    event.preventDefault();
+  }
+  function endDrag(event){
+    if(!isDragging) return;
+    isDragging=false;
+    horizontalSection.classList.remove('is-dragging');
+    try{ horizontalSection.releasePointerCapture(event.pointerId); }catch(e){}
+  }
+  horizontalSection.addEventListener('pointerdown', beginDrag);
+  horizontalSection.addEventListener('pointermove', moveDrag);
+  horizontalSection.addEventListener('pointerup', endDrag);
+  horizontalSection.addEventListener('pointercancel', endDrag);
+  horizontalSection.addEventListener('pointerleave', function(event){ if(isDragging && event.buttons===0) endDrag(event); });
+  initScroll();
+  desktopQuery.addEventListener('change', function(){ initScroll(); if(window.ScrollTrigger&&typeof window.ScrollTrigger.refresh==='function'){window.ScrollTrigger.refresh();} });
+  window.addEventListener('load', function(){ if(window.ScrollTrigger&&typeof window.ScrollTrigger.refresh==='function'){window.ScrollTrigger.refresh();} });
+})();
+
+
+// === V46I: Locomotive-style scroll más perceptible ===
+// Scroll suave global con inercia visible. No usa wrapper transformado para no romper ScrollTrigger/pin.
+(function(){
+  const root = document.documentElement;
+  const body = document.body;
+
+  if(!root || !body) return;
+
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion) return;
+
+  let target = window.scrollY || window.pageYOffset || 0;
+  let current = target;
+  let rafId = null;
+  let isAnimating = false;
+  let lastY = target;
+  let lastInputAt = 0;
+
+  const config = {
+    lerp: 0.065,              // menor = más resago visible
+    wheelMultiplier: 1.18,    // más avance objetivo por rueda
+    maxDelta: 980,
+    stopThreshold: 0.08,
+    minDesktopWidth: 768
+  };
+
+  function isEnabledViewport(){
+    return window.innerWidth >= config.minDesktopWidth;
+  }
+
+  function maxScroll(){
+    return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+  }
+
+  function clamp(value, min, max){
+    return Math.min(Math.max(value, min), max);
+  }
+
+  function shouldBypass(){
+    return (
+      !isEnabledViewport() ||
+      body.classList.contains('pl-scroll-loader-active') ||
+      body.classList.contains('pl-scroll-loader-finishing') ||
+      body.classList.contains('pl-scroll-landing-lock') ||
+      root.classList.contains('pl-scroll-loader-lock')
+    );
+  }
+
+  function updateScrollTriggers(){
+    if(window.ScrollTrigger && typeof window.ScrollTrigger.update === 'function'){
+      window.ScrollTrigger.update();
+    }
+  }
+
+  function syncToNative(){
+    current = window.scrollY || window.pageYOffset || 0;
+    target = current;
+    lastY = current;
+  }
+
+  function animate(){
+    rafId = null;
+
+    if(shouldBypass()){
+      isAnimating = false;
+      syncToNative();
+      return;
+    }
+
+    current += (target - current) * config.lerp;
+
+    if(Math.abs(target - current) <= config.stopThreshold){
+      current = target;
+      isAnimating = false;
+    }else{
+      isAnimating = true;
+    }
+
+    window.scrollTo(0, current);
+    updateScrollTriggers();
+    lastY = current;
+
+    if(isAnimating){
+      rafId = window.requestAnimationFrame(animate);
+    }
+  }
+
+  function requestAnimate(){
+    if(rafId === null){
+      rafId = window.requestAnimationFrame(animate);
+    }
+  }
+
+  function normalizeWheelDelta(event){
+    let delta = event.deltaY;
+
+    if(event.deltaMode === 1){
+      delta *= 18;
+    }else if(event.deltaMode === 2){
+      delta *= window.innerHeight;
+    }
+
+    return clamp(delta, -config.maxDelta, config.maxDelta) * config.wheelMultiplier;
+  }
+
+  function onWheel(event){
+    if(shouldBypass()) return;
+    if(event.ctrlKey || event.metaKey || event.shiftKey) return;
+
+    const nativeScrollTarget = event.target && event.target.closest
+      ? event.target.closest('[data-native-scroll], textarea, select, .modal, .dropdown-menu')
+      : null;
+
+    if(nativeScrollTarget) return;
+
+    const delta = normalizeWheelDelta(event);
+    if(delta === 0) return;
+
+    event.preventDefault();
+
+    lastInputAt = performance.now();
+    target = clamp(target + delta, 0, maxScroll());
+
+    // Si el usuario vuelve a scrollear mientras hay inercia, mantiene continuidad.
+    if(!isAnimating){
+      current = window.scrollY || window.pageYOffset || 0;
+    }
+
+    isAnimating = true;
+    requestAnimate();
+  }
+
+  function onScroll(){
+    const y = window.scrollY || window.pageYOffset || 0;
+    const now = performance.now();
+
+    /*
+      Si el scroll lo cambia un ancla, un drag interno, una navegación programática
+      o ScrollTrigger, sincronizamos. Si viene de nuestra animación, no pisamos target.
+    */
+    const isRecentWheel = now - lastInputAt < 180;
+    const isOurAnimation = isAnimating || isRecentWheel;
+
+    if(!isOurAnimation && Math.abs(y - lastY) > 2){
+      current = y;
+      target = y;
+    }
+
+    lastY = y;
+  }
+
+  function onResize(){
+    target = clamp(target, 0, maxScroll());
+    current = clamp(current, 0, maxScroll());
+
+    if(window.ScrollTrigger && typeof window.ScrollTrigger.refresh === 'function'){
+      window.ScrollTrigger.refresh();
+    }
+  }
+
+  function enable(){
+    root.classList.add('pl-locomotive-style-active');
+    body.classList.add('pl-locomotive-style-active');
+
+    syncToNative();
+
+    window.addEventListener('wheel', onWheel, { passive:false });
+    window.addEventListener('scroll', onScroll, { passive:true });
+    window.addEventListener('resize', onResize, { passive:true });
+
+    if(window.ScrollTrigger && typeof window.ScrollTrigger.refresh === 'function'){
+      window.ScrollTrigger.refresh();
+    }
+  }
+
+  function waitForLoader(){
+    if(!body.classList.contains('pl-scroll-loader-active') && !root.classList.contains('pl-scroll-loader-lock')){
+      enable();
+      return;
+    }
+
+    window.setTimeout(waitForLoader, 120);
+  }
+
+  waitForLoader();
+
+  window.plSmoothScrollSync = function(){
+    syncToNative();
+  };
+})();
+
+
+// === V47A: auto-snap suave entre secciones, compatible con GitHub Pages ===
+// No usa backend ni librerías nuevas. Ajusta solo cuando el usuario ya terminó de scrollear.
+(function(){
+  const root = document.documentElement;
+  const body = document.body;
+
+  if(!root || !body) return;
+
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduceMotion) return;
+
+  const sectionSelectors = ['#about', '#methodology', '#projects', '#networks', '#contact'];
+  const sections = sectionSelectors
+    .map(function(selector){ return document.querySelector(selector); })
+    .filter(Boolean);
+
+  if(sections.length < 2) return;
+
+  const config = {
+    threshold: 94,       // distancia máxima al borde superior para corregir
+    debounce: 180,       // espera tras el último scroll
+    duration: 520,       // duración del ajuste
+    easingPower: 3,
+    minDesktopWidth: 768
+  };
+
+  let timer = null;
+  let isSnapping = false;
+  let lastUserInputAt = 0;
+
+  function isEnabledViewport(){
+    return window.innerWidth >= config.minDesktopWidth;
+  }
+
+  function shouldBypass(){
+    return (
+      !isEnabledViewport() ||
+      isSnapping ||
+      body.classList.contains('pl-scroll-loader-active') ||
+      body.classList.contains('pl-scroll-loader-finishing') ||
+      body.classList.contains('pl-scroll-landing-lock') ||
+      root.classList.contains('pl-scroll-loader-lock') ||
+      body.classList.contains('is-dragging') ||
+      document.querySelector('[data-horizontal-process-section].is-dragging')
+    );
+  }
+
+  function easeOutCubic(t){
+    return 1 - Math.pow(1 - t, config.easingPower);
+  }
+
+  function maxScroll(){
+    return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+  }
+
+  function clamp(value, min, max){
+    return Math.min(Math.max(value, min), max);
+  }
+
+  function sectionTop(section){
+    return window.scrollY + section.getBoundingClientRect().top;
+  }
+
+  function findNearestCandidate(){
+    const viewportTop = 0;
+    let best = null;
+
+    sections.forEach(function(section){
+      const rect = section.getBoundingClientRect();
+
+      /*
+        Regla: solo snap cuando el borde superior de la nueva sección está cerca
+        del borde superior del viewport. Esto evita que salte dentro de Metodología
+        mientras corre la parte pinned/horizontal.
+      */
+      const distance = Math.abs(rect.top - viewportTop);
+
+      const isNearTop = distance <= config.threshold;
+      const isVisibleEnough = rect.bottom > 120 && rect.top < window.innerHeight - 120;
+
+      if(!isNearTop || !isVisibleEnough) return;
+
+      if(!best || distance < best.distance){
+        best = { section: section, distance: distance };
+      }
+    });
+
+    return best;
+  }
+
+  function animateTo(targetY){
+    const startY = window.scrollY || window.pageYOffset || 0;
+    const delta = targetY - startY;
+
+    if(Math.abs(delta) < 3) return;
+
+    isSnapping = true;
+
+    const startedAt = performance.now();
+
+    function frame(now){
+      const elapsed = now - startedAt;
+      const t = clamp(elapsed / config.duration, 0, 1);
+      const eased = easeOutCubic(t);
+      const y = startY + delta * eased;
+
+      window.scrollTo(0, y);
+
+      if(window.ScrollTrigger && typeof window.ScrollTrigger.update === 'function'){
+        window.ScrollTrigger.update();
+      }
+
+      if(t < 1){
+        window.requestAnimationFrame(frame);
+      }else{
+        window.scrollTo(0, targetY);
+
+        if(typeof window.plSmoothScrollSync === 'function'){
+          window.plSmoothScrollSync();
+        }
+
+        if(window.ScrollTrigger && typeof window.ScrollTrigger.update === 'function'){
+          window.ScrollTrigger.update();
+        }
+
+        isSnapping = false;
+      }
+    }
+
+    window.requestAnimationFrame(frame);
+  }
+
+  function maybeSnap(){
+    if(shouldBypass()) return;
+
+    const now = performance.now();
+    if(now - lastUserInputAt < config.debounce) return;
+
+    const candidate = findNearestCandidate();
+    if(!candidate) return;
+
+    const target = clamp(sectionTop(candidate.section), 0, maxScroll());
+
+    /*
+      Si ya está prácticamente alineada, no hacemos nada.
+      Esto evita microcorrecciones molestas.
+    */
+    if(Math.abs(window.scrollY - target) < 4) return;
+
+    animateTo(target);
+  }
+
+  function scheduleSnap(){
+    if(shouldBypass()) return;
+
+    window.clearTimeout(timer);
+    timer = window.setTimeout(maybeSnap, config.debounce);
+  }
+
+  function markUserInput(){
+    lastUserInputAt = performance.now();
+    scheduleSnap();
+  }
+
+  function enable(){
+    root.classList.add('pl-section-snap-enabled');
+
+    window.addEventListener('wheel', markUserInput, { passive:true });
+    window.addEventListener('touchend', markUserInput, { passive:true });
+    window.addEventListener('keyup', function(event){
+      const keys = ['Space','PageDown','PageUp','ArrowDown','ArrowUp','Home','End'];
+      if(keys.includes(event.code)) markUserInput();
+    }, { passive:true });
+
+    /*
+      También escuchamos scroll para capturar trackpads, barra lateral del navegador
+      y navegación interna por anclas.
+    */
+    window.addEventListener('scroll', scheduleSnap, { passive:true });
+    window.addEventListener('resize', function(){
+      window.clearTimeout(timer);
+    }, { passive:true });
+  }
+
+  function waitForLoader(){
+    if(!body.classList.contains('pl-scroll-loader-active') && !root.classList.contains('pl-scroll-loader-lock')){
+      enable();
+      return;
+    }
+
+    window.setTimeout(waitForLoader, 160);
+  }
+
+  waitForLoader();
 })();
 

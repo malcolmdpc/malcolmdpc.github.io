@@ -12,13 +12,20 @@
     <link rel="stylesheet" href="css/unicons.css">
 <link rel="stylesheet" href="css/styles.css">
   </head>
-  <body class="dark-mode fullscreen-sections-experiment"><div class="pl-preloader pl-preloader--r" data-preloader-duration="4200" aria-hidden="true"><div class="pl-preloader__bg"></div><div class="pl-preloader__noise"></div><div class="pl-preloader__shell">
-          <div class="pl-preloader__kicker">Data · ML · Dashboards</div>
-          <h1 class="pl-preloader__title">PATRONES LAB</h1>
-          
-          <div class="pl-preloader__progress"><span></span></div>
-          <div class="pl-preloader__meta">Iniciando portfolio</div>
-        </div></div>
+  <body class="dark-mode fullscreen-sections-experiment pl-scroll-loader-active">
+    <div class="pl-scroll-loader" aria-label="Intro Patrones Lab">
+      <section class="pl-scroll-loader__first first-page" aria-label="Scroll para entrar al sitio">
+        <div class="pl-scroll-loader__copy">
+          <h1 class="pl-scroll-loader__hero-text">Patrones Lab<span class="dot" aria-hidden="true"></span></h1>
+          <p class="pl-scroll-loader__subtitle">Data &amp; Analytics</p>
+          <div class="pl-scroll-loader__arrow" aria-hidden="true"></div>
+        </div>
+      </section>
+      <section class="pl-scroll-loader__next next-page" aria-hidden="true">
+        <div class="pl-scroll-loader__next-content"></div>
+      </section>
+      <div class="pl-scroll-loader__spacer spacer" aria-hidden="true"></div>
+    </div>
     <!-- FLOATING CTA -->
     <a class="floating-cta" href="https://github.com/malcolmdpc/patrones-lab" target="_blank" rel="noopener" aria-label="Ver repositorio de Patrones Lab">
       <span class="floating-cta__dot" aria-hidden="true"></span>
@@ -31,7 +38,7 @@
     <!-- MENU -->
     <nav class="navbar navbar-expand-sm navbar-light pl-smart-navbar pl-active-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><span class="brand-badge brand-image-badge"><img src="images/patrones/patrones-lab-logo-bulb.png" alt=""></span> Patrones Lab</a>
+            <a class="navbar-brand" href="index.html"><span class="brand-badge brand-image-badge"><img src="images/patrones/navbar-bulb-animated.gif" alt=""></span> Patrones Lab</a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                 aria-label="Abrir navegación">
@@ -43,9 +50,9 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a href="#about" class="nav-link" data-section="inicio">Inicio</a></li>
-                    <li class="nav-item"><a href="#project" class="nav-link" data-section="canales">Canales</a></li>
-                    <li class="nav-item"><a href="#resume" class="nav-link" data-section="metodo">Método</a></li>
-                    <li class="nav-item"><a href="#repository" class="nav-link" data-section="repositorio">Repositorio</a></li>
+                    <li class="nav-item"><a href="#methodology" class="nav-link" data-section="metodologia">Metodología</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link" data-section="proyectos">Proyectos</a></li>
+                    <li class="nav-item"><a href="#networks" class="nav-link" data-section="redes">Redes</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-link" data-section="contacto">Contacto</a></li>
                 </ul>
 
@@ -70,11 +77,12 @@
                         <small class="small-text hero-entry-v25b hero-entry-v25b-kicker">Portfolio de proyectos <span class="mobile-block">BI · ML · Python · Dashboards</span></small>
                         <h1 class="pl-hero-title hero-entry-v25b hero-entry-v25b-title">
                             <span class="hero-line">Transformo datos en</span>
-                            <span class="hero-rotator" aria-label="evidencia, modelos y dashboards">
+                            <span class="hero-rotator" aria-label="evidencia, modelos, dashboards, decisiones y patrones">
                                 <span>evidencia</span>
                                 <span>modelos</span>
                                 <span>dashboards</span>
                                 <span>decisiones</span>
+                                <span class="hero-rotator-word-patterns">patrones</span>
                             </span>
                         </h1>
 
@@ -357,7 +365,7 @@ El objetivo es plantear preguntas, preparar datos, construir análisis reproduci
                             </div>
                           </div>
                         </div>
-                  <a class="hero-scroll-indicator hero-entry-v25b hero-entry-v25b-scroll" href="#project" aria-label="Ir a la siguiente sección">
+                  <a class="hero-scroll-indicator hero-entry-v25b hero-entry-v25b-scroll" href="#methodology" aria-label="Ir a la siguiente sección">
                     <span class="hero-scroll-indicator__text">Explorar</span>
                     <span class="hero-scroll-indicator__line" aria-hidden="true"></span>
                   </a>
@@ -374,199 +382,142 @@ El objetivo es plantear preguntas, preparar datos, construir análisis reproduci
         </div>
     </section>
 
-    <!-- SOCIAL CHANNELS -->
-    <section class="project py-5 social-section section-glow glow-social" id="project">
-        <div class="container">
-            <div class="row">
-              <div class="col-lg-11 text-center mx-auto col-12">
-                  <small class="section-kicker">Canales de Patrones Lab</small>
-                  <h2 class="mb-3">Redes, publicaciones y repositorio</h2>
-                  <p class="social-intro">
-                    Todo el ecosistema del proyecto en un solo lugar: visuales, notas técnicas, repositorios,
-                    dashboards, enlaces útiles y contacto profesional.
-                  </p>
+    
+    <!-- METHODOLOGY -->
+    <section class="process-horizontal-edge-section" id="methodology" data-horizontal-process-section>
+      <div class="process-horizontal-static-head"><h2>Ciclo de vida del dato</h2></div>
 
-                  <div class="social-grid social-grid-complete">
-                    <a class="social-card instagram" href="https://www.instagram.com/patroneslab/" target="_blank" rel="noopener" aria-label="Instagram Patrones Lab">
-                      <span class="social-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1.2"></circle></svg>
-                      </span>
-                      <strong>Instagram</strong>
-                      <small>Visuales y posts</small>
-                    </a>
+      <div class="process-horizontal-guide" aria-label="Progreso de etapas">
+        <span class="process-horizontal-guide__line"></span>
+        <span class="process-horizontal-guide__progress"></span>
+        <button type="button" class="process-horizontal-guide__bullet is-active" data-process-guide="0" aria-label="Ir a etapa 1"></button>
+        <button type="button" class="process-horizontal-guide__bullet" data-process-guide="1" aria-label="Ir a etapa 2"></button>
+        <button type="button" class="process-horizontal-guide__bullet" data-process-guide="2" aria-label="Ir a etapa 3"></button>
+        <button type="button" class="process-horizontal-guide__bullet" data-process-guide="3" aria-label="Ir a etapa 4"></button>
+        <button type="button" class="process-horizontal-guide__bullet" data-process-guide="4" aria-label="Ir a etapa 5"></button>
+        <button type="button" class="process-horizontal-guide__bullet" data-process-guide="5" aria-label="Ir a etapa 6"></button>
+      </div>
 
-                    <a class="social-card linkedin" href="https://www.linkedin.com/in/malcolmdpc/" target="_blank" rel="noopener" aria-label="LinkedIn Malcolm">
-                      <span class="social-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4v11H4zM6 4.2a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2zM10 9h3.8v1.6h.1c.5-.9 1.8-1.9 3.6-1.9 3.8 0 4.5 2.5 4.5 5.8V20h-4v-5c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V20h-4z"></path></svg>
-                      </span>
-                      <strong>LinkedIn</strong>
-                      <small>Perfil profesional</small>
-                    </a>
-
-                    <a class="social-card medium" href="https://medium.com/@malcolmdpc" target="_blank" rel="noopener" aria-label="Medium Malcolm DPC">
-                      <span class="social-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="12" r="5"></circle><ellipse cx="15" cy="12" rx="3" ry="5"></ellipse><ellipse cx="20" cy="12" rx="1.4" ry="4.5"></ellipse></svg>
-                      </span>
-                      <strong>Medium</strong>
-                      <small>Artículos y notas</small>
-                    </a>
-
-                    <a class="social-card linktree" href="https://linktr.ee/PatronesLab" target="_blank" rel="noopener" aria-label="Linktree Patrones Lab">
-                      <span class="social-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M5 8h14M6.5 15.5l11-11M17.5 15.5l-11-11"></path></svg>
-                      </span>
-                      <strong>Linktree</strong>
-                      <small>Todos los enlaces</small>
-                    </a>
-
-                    <a class="social-card github" href="https://github.com/malcolmdpc" target="_blank" rel="noopener" aria-label="GitHub Malcolm">
-                      <span class="social-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8a9.2 9.2 0 0 0-2.9 17.9c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.8.8.1-.6.3-1.1.6-1.3-2.2-.3-4.5-1.1-4.5-4.8 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.7.7 1 1.6 1 2.7 0 3.8-2.3 4.6-4.5 4.8.4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5A9.2 9.2 0 0 0 12 2.8z"></path></svg>
-                      </span>
-                      <strong>GitHub</strong>
-                      <small>Perfil técnico</small>
-                    </a>
-
-                    <a class="social-card repo" href="https://github.com/malcolmdpc/patrones-lab" target="_blank" rel="noopener" aria-label="Repositorio Patrones Lab">
-                      <span class="social-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z"></path><path d="M8 8h8M8 12h8M8 16h5"></path></svg>
-                      </span>
-                      <strong>Repo</strong>
-                      <small>Patrones Lab</small>
-                    </a>
-
-                    <a class="social-card dashboard" href="https://datastudio.google.com/reporting/b0b32df2-f110-4bac-8dfb-3be359d4888d" target="_blank" rel="noopener" aria-label="Dashboard Looker Studio">
-                      <span class="social-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="17" r="3"></circle><circle cx="17" cy="7" r="3"></circle><path d="M9.5 14.5l5-5"></path></svg>
-                      </span>
-                      <strong>Dashboard</strong>
-                      <small>Looker Studio</small>
-                    </a>
-
-                    <a class="social-card mail" href="mailto:encontrandopatrones@gmail.com" aria-label="Email de contacto">
-                      <span class="social-icon">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"></path><path d="m4 7 8 6 8-6"></path></svg>
-                      </span>
-                      <strong>Email</strong>
-                      <small>Contacto directo</small>
-                    </a>
-                  </div>
+      <div class="process-horizontal-track wrapper">
+        
+        <article class="process-horizontal-panel item is-dark-text" data-process-horizontal-item style="--panel-color:#ffc200">
+          <div class="process-horizontal-panel__inner">
+            <div class="process-horizontal-panel__copy">
+              <span class="process-horizontal-panel__number">1</span>
+              <h3>Descubrimiento</h3>
+              <small>Contexto y objetivo</small>
+              <p>Entendimiento del problema, la decisión a mejorar, los usuarios involucrados y el resultado esperado.</p>
+              <div class="process-horizontal-tech" aria-label="Tecnologías de la etapa"><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/power-bi.svg" alt="Power BI" loading="lazy" decoding="async"><span>Power BI</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/qlik-cloud.svg" alt="Qlik Cloud" loading="lazy" decoding="async"><span>Qlik Cloud</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/looker-studio.svg" alt="Looker Studio" loading="lazy" decoding="async"><span>Looker Studio</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/sql-server.svg" alt="SQL Server" loading="lazy" decoding="async"><span>SQL Server</span></span></div>
+            </div>
+            <figure class="process-horizontal-panel__media process-card-swiper" aria-label="Visuales animados de la etapa 1: Descubrimiento">
+              <div class="card-groups">
+                <div class="card-group" data-index="0" data-status="active">
+                  <div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-01-card-01.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-01-card-02.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-01-card-03.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-01-card-04.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-01-card-05.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-01-card-06.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-01-card-07.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-01-card-08.jpg" alt="" loading="lazy" decoding="async"></div>
+                </div>
               </div>
+            </figure>
+          </div>
+        </article>
+        <article class="process-horizontal-panel item is-light-text" data-process-horizontal-item style="--panel-color:#0d0f0d">
+          <div class="process-horizontal-panel__inner">
+            <div class="process-horizontal-panel__copy">
+              <span class="process-horizontal-panel__number">2</span>
+              <h3>Fuentes</h3>
+              <small>Datos y diagnóstico</small>
+              <p>Identificación de las fuentes disponibles, su origen, actualización, confiabilidad y principales limitaciones.</p>
+              <div class="process-horizontal-tech" aria-label="Tecnologías de la etapa"><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/sql-server.svg" alt="SQL Server" loading="lazy" decoding="async"><span>SQL Server</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/python.svg" alt="Python" loading="lazy" decoding="async"><span>Python</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/pandas.svg" alt="Pandas" loading="lazy" decoding="async"><span>Pandas</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/numpy.svg" alt="NumPy" loading="lazy" decoding="async"><span>NumPy</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/dbt.svg" alt="dbt" loading="lazy" decoding="async"><span>dbt</span></span></div>
             </div>
-        </div>
+            <figure class="process-horizontal-panel__media process-card-swiper" aria-label="Visuales animados de la etapa 2: Fuentes">
+              <div class="card-groups">
+                <div class="card-group" data-index="0" data-status="active">
+                  <div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-02-card-01.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-02-card-02.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-02-card-03.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-02-card-04.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-02-card-05.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-02-card-06.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-02-card-07.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-02-card-08.jpg" alt="" loading="lazy" decoding="async"></div>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </article>
+        <article class="process-horizontal-panel item is-dark-text" data-process-horizontal-item style="--panel-color:#f5f0e8">
+          <div class="process-horizontal-panel__inner">
+            <div class="process-horizontal-panel__copy">
+              <span class="process-horizontal-panel__number">3</span>
+              <h3>Preparación</h3>
+              <small>Base analítica</small>
+              <p>Organización, limpieza y combinación de datos para construir una base consistente y usable.</p>
+              <div class="process-horizontal-tech" aria-label="Tecnologías de la etapa"><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/python.svg" alt="Python" loading="lazy" decoding="async"><span>Python</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/pandas.svg" alt="Pandas" loading="lazy" decoding="async"><span>Pandas</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/numpy.svg" alt="NumPy" loading="lazy" decoding="async"><span>NumPy</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/dbt.svg" alt="dbt" loading="lazy" decoding="async"><span>dbt</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/sql-server.svg" alt="SQL Server" loading="lazy" decoding="async"><span>SQL Server</span></span></div>
+            </div>
+            <figure class="process-horizontal-panel__media process-card-swiper" aria-label="Visuales animados de la etapa 3: Preparación">
+              <div class="card-groups">
+                <div class="card-group" data-index="0" data-status="active">
+                  <div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-03-card-01.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-03-card-02.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-03-card-03.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-03-card-04.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-03-card-05.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-03-card-06.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-03-card-07.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-03-card-08.jpg" alt="" loading="lazy" decoding="async"></div>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </article>
+        <article class="process-horizontal-panel item is-light-text" data-process-horizontal-item style="--panel-color:#1f2937">
+          <div class="process-horizontal-panel__inner">
+            <div class="process-horizontal-panel__copy">
+              <span class="process-horizontal-panel__number">4</span>
+              <h3>Construcción</h3>
+              <small>Solución</small>
+              <p>Desarrollo del análisis, modelo o dashboard necesario según el objetivo definido.</p>
+              <div class="process-horizontal-tech" aria-label="Tecnologías de la etapa"><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/scikit-learn.svg" alt="Scikit-learn" loading="lazy" decoding="async"><span>Scikit-learn</span></span><span class="process-horizontal-tech-chip process-horizontal-tech-chip--matplotlib"><span class="process-horizontal-tech-icon process-horizontal-tech-icon--matplotlib" aria-hidden="true"></span><span>Matplotlib</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/plotly.svg" alt="Plotly" loading="lazy" decoding="async"><span>Plotly</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/power-bi.svg" alt="Power BI" loading="lazy" decoding="async"><span>Power BI</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/qlik-cloud.svg" alt="Qlik Cloud" loading="lazy" decoding="async"><span>Qlik Cloud</span></span></div>
+            </div>
+            <figure class="process-horizontal-panel__media process-card-swiper" aria-label="Visuales animados de la etapa 4: Construcción">
+              <div class="card-groups">
+                <div class="card-group" data-index="0" data-status="active">
+                  <div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-04-card-01.svg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-04-card-02.svg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-04-card-03.svg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-04-card-04.svg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-04-card-05.svg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-04-card-06.svg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-04-card-07.svg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-04-card-08.svg" alt="" loading="lazy" decoding="async"></div>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </article>
+        <article class="process-horizontal-panel item is-light-text" data-process-horizontal-item style="--panel-color:#202126">
+          <div class="process-horizontal-panel__inner">
+            <div class="process-horizontal-panel__copy">
+              <span class="process-horizontal-panel__number">5</span>
+              <h3>Validación</h3>
+              <small>Control y confianza</small>
+              <p>Revisión de la coherencia, estabilidad y alineación de los resultados con la realidad del negocio.</p>
+              <div class="process-horizontal-tech" aria-label="Tecnologías de la etapa"><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/python.svg" alt="Python" loading="lazy" decoding="async"><span>Python</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/scikit-learn.svg" alt="Scikit-learn" loading="lazy" decoding="async"><span>Scikit-learn</span></span><span class="process-horizontal-tech-chip process-horizontal-tech-chip--matplotlib"><span class="process-horizontal-tech-icon process-horizontal-tech-icon--matplotlib" aria-hidden="true"></span><span>Matplotlib</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/plotly.svg" alt="Plotly" loading="lazy" decoding="async"><span>Plotly</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/spss-modeler.svg" alt="SPSS Modeler" loading="lazy" decoding="async"><span>SPSS Modeler</span></span></div>
+            </div>
+            <figure class="process-horizontal-panel__media process-card-swiper" aria-label="Visuales animados de la etapa 5: Validación">
+              <div class="card-groups">
+                <div class="card-group" data-index="0" data-status="active">
+                  <div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-05-card-01.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-05-card-02.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-05-card-03.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-05-card-04.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-05-card-05.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-05-card-06.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-05-card-07.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-05-card-08.jpg" alt="" loading="lazy" decoding="async"></div>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </article>
+        <article class="process-horizontal-panel item is-dark-text" data-process-horizontal-item style="--panel-color:#facc15">
+          <div class="process-horizontal-panel__inner">
+            <div class="process-horizontal-panel__copy">
+              <span class="process-horizontal-panel__number">6</span>
+              <h3>Entrega</h3>
+              <small>Publicación, automatización y evolución</small>
+              <p>Documentación del trabajo final, automatización de procesos recurrentes y consideración del feedback para mejoras futuras.</p>
+              <div class="process-horizontal-tech" aria-label="Tecnologías de la etapa"><span class="process-horizontal-tech-chip"><img src="images/patrones/canales-icons-dark/github.svg" alt="GitHub" loading="lazy" decoding="async"><span>GitHub</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/power-bi.svg" alt="Power BI" loading="lazy" decoding="async"><span>Power BI</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/qlik-cloud.svg" alt="Qlik Cloud" loading="lazy" decoding="async"><span>Qlik Cloud</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/looker-studio.svg" alt="Looker Studio" loading="lazy" decoding="async"><span>Looker Studio</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/plotly.svg" alt="Plotly" loading="lazy" decoding="async"><span>Plotly</span></span></div>
+            </div>
+            <figure class="process-horizontal-panel__media process-card-swiper" aria-label="Visuales animados de la etapa 6: Entrega">
+              <div class="card-groups">
+                <div class="card-group" data-index="0" data-status="active">
+                  <div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-06-card-01.svg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-06-card-02.svg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-06-card-03.svg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-06-card-04.svg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-06-card-05.svg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-06-card-06.svg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-06-card-07.svg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-06-card-08.svg" alt="" loading="lazy" decoding="async"></div>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <!-- METHOD -->
-    <section class="resume section-glow glow-method py-5 pinned-timeline-section" id="resume" data-pinned-timeline>
-        <div class="container">
-            <div class="row align-items-start">
-
-                <div class="col-lg-6 col-12">
-                  <h2 class="mb-4">Proceso analítico</h2>
-                  <p class="timeline-scroll-note">Hacé scroll para avanzar por las etapas. Al finalizar, la página continúa normalmente.</p>
-
-                    <div class="timeline process-timeline" data-process-timeline>
-                        <div style="--step-index:0" class="timeline-wrapper is-active is-complete" data-step="1">
-                             <span class="timeline-segment" aria-hidden="true"></span>
-                             <div class="timeline-yr"><span>01</span></div>
-                             <div class="timeline-info">
-                                  <h3><span>Pregunta</span><small>Alcance</small></h3>
-                                  <p>Definir la unidad de análisis, el objetivo y qué decisión busca mejorar el proyecto.</p>
-                             </div>
-                        </div>
-
-                        <div style="--step-index:1" class="timeline-wrapper" data-step="2">
-                            <span class="timeline-segment" aria-hidden="true"></span>
-                            <div class="timeline-yr"><span>02</span></div>
-                            <div class="timeline-info">
-                                <h3><span>Datos</span><small>Fuente única</small></h3>
-                                <p>Consolidar una base confiable, trazable y consistente para todo el análisis.</p>
-                            </div>
-                        </div>
-
-                        <div style="--step-index:2" class="timeline-wrapper" data-step="3">
-                            <span class="timeline-segment" aria-hidden="true"></span>
-                            <div class="timeline-yr"><span>03</span></div>
-                            <div class="timeline-info">
-                                <h3><span>Preparación</span><small>Transformación</small></h3>
-                                <p>Limpiar, cruzar fuentes y crear variables con reglas explícitas y reproducibles.</p>
-                            </div>
-                        </div>
-
-                        <div style="--step-index:3" class="timeline-wrapper" data-step="4">
-                            <span class="timeline-segment" aria-hidden="true"></span>
-                            <div class="timeline-yr"><span>04</span></div>
-                            <div class="timeline-info">
-                                <h3><span>Modelo / Visual</span><small>Construcción</small></h3>
-                                <p>Desarrollar métricas, dashboard o modelo alineado con la pregunta inicial.</p>
-                            </div>
-                        </div>
-
-                        <div style="--step-index:4" class="timeline-wrapper" data-step="5">
-                            <span class="timeline-segment" aria-hidden="true"></span>
-                            <div class="timeline-yr"><span>05</span></div>
-                            <div class="timeline-info">
-                                <h3><span>Validación</span><small>Control</small></h3>
-                                <p>Revisar coherencia, sesgos, supuestos, métricas y estabilidad de resultados.</p>
-                            </div>
-                        </div>
-
-                        <div style="--step-index:5" class="timeline-wrapper" data-step="6">
-                            <span class="timeline-segment" aria-hidden="true"></span>
-                            <div class="timeline-yr"><span>06</span></div>
-                            <div class="timeline-info">
-                                <h3><span>Publicación</span><small>Entrega</small></h3>
-                                <p>Documentar hallazgos, límites, próximos pasos y outputs finales.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 col-12">
-                  <h2 class="mb-4 mobile-mt-2">Stack y líneas</h2>
-
-                    <div class="timeline stack-timeline">
-                        <div class="timeline-wrapper">
-                             <div class="timeline-yr"><span>BI</span></div>
-                             <div class="timeline-info">
-                                  <h3><span>Business Intelligence</span><small>Power BI · Qlik · Looker</small></h3>
-                                  <p>Dashboards, KPIs, modelos de datos, navegación ejecutiva y trazabilidad de métricas.</p>
-                             </div>
-                        </div>
-
-                        <div class="timeline-wrapper">
-                            <div class="timeline-yr"><span>PY</span></div>
-                            <div class="timeline-info">
-                                <h3><span>Python Analytics</span><small>Pandas · Plotly</small></h3>
-                                <p>Limpieza, análisis exploratorio, visualización, automatización y notebooks reproducibles.</p>
-                            </div>
-                        </div>
-
-                        <div class="timeline-wrapper">
-                            <div class="timeline-yr"><span>ML</span></div>
-                            <div class="timeline-info">
-                                <h3><span>Machine Learning</span><small>scikit-learn</small></h3>
-                                <p>Modelos supervisados, validación, métricas, calibración, interpretación y control de leakage.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="stack-pills mt-4">
-                      <span>SQL</span><span>Python</span><span>Power BI</span><span>Qlik</span><span>Looker Studio</span><span>GitHub</span><span>Data Storytelling</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- GITHUB PROJECTS -->
-    <section class="contact py-5 github-projects-section section-glow glow-repo" id="repository">
+<!-- PROJECTS -->
+    <section class="contact py-5 github-projects-section section-glow glow-repo" id="projects">
       <div class="container">
         <div class="row">
           <div class="col-lg-10 text-center mx-auto col-12">
             <small class="section-kicker">Repositorio Patrones Lab</small>
-            <h2 class="mb-3 projects-title-display">Proyectos actuales</h2>
+            <h2 class="mb-3 projects-title-display">Proyectos</h2>
             <p class="projects-intro">
               Selección de proyectos aplicados con datos públicos, metodología y resultados visuales.
               Usá los filtros para navegar por disciplina, herramienta o tipo de entrega.
@@ -820,6 +771,88 @@ El objetivo es plantear preguntas, preparar datos, construir análisis reproduci
       </div>
     </section>
 
+    <!-- NETWORKS -->
+    <section class="project py-5 social-section section-glow glow-social" id="networks">
+        <div class="container">
+            <div class="row">
+              <div class="col-lg-10 text-center mx-auto col-12">
+                  <small class="section-kicker">Canales de Patrones Lab</small>
+                  <h2 class="mb-3 projects-title-display">Redes y canales</h2>
+                  <p class="social-intro">
+                    Todo el ecosistema del proyecto en un solo lugar: visuales, notas técnicas, publicaciones,
+                    dashboards, enlaces útiles y contacto profesional.
+                  </p>
+
+                  <div class="social-grid social-grid-complete">
+                    <a class="social-card instagram" href="https://www.instagram.com/patroneslab/" target="_blank" rel="noopener" aria-label="Instagram Patrones Lab">
+                      <span class="social-icon">
+                        <img src="images/patrones/canales-icons/instagram.svg" alt="" aria-hidden="true">
+                      </span>
+                      <strong>Instagram</strong>
+                      <small>Visuales y posts</small>
+                    </a>
+
+                    <a class="social-card linkedin" href="https://www.linkedin.com/in/malcolmdpc/" target="_blank" rel="noopener" aria-label="LinkedIn Malcolm">
+                      <span class="social-icon">
+                        <img src="images/patrones/canales-icons/linkedin.svg" alt="" aria-hidden="true">
+                      </span>
+                      <strong>LinkedIn</strong>
+                      <small>Perfil profesional</small>
+                    </a>
+
+                    <a class="social-card medium" href="https://medium.com/@malcolmdpc" target="_blank" rel="noopener" aria-label="Medium Malcolm DPC">
+                      <span class="social-icon">
+                        <img src="images/patrones/canales-icons/medium-2026.png" alt="" aria-hidden="true">
+                      </span>
+                      <strong>Medium</strong>
+                      <small>Artículos y notas</small>
+                    </a>
+
+                    <a class="social-card linktree" href="https://linktr.ee/PatronesLab" target="_blank" rel="noopener" aria-label="Linktree Patrones Lab">
+                      <span class="social-icon">
+                        <img src="images/patrones/canales-icons/linktree.svg" alt="" aria-hidden="true">
+                      </span>
+                      <strong>Linktree</strong>
+                      <small>Todos los enlaces</small>
+                    </a>
+
+                    <a class="social-card github" href="https://github.com/malcolmdpc" target="_blank" rel="noopener" aria-label="GitHub Malcolm">
+                      <span class="social-icon">
+                        <img src="images/patrones/canales-icons/github.svg" alt="" aria-hidden="true">
+                      </span>
+                      <strong>GitHub</strong>
+                      <small>Perfil técnico</small>
+                    </a>
+
+                    <a class="social-card repo" href="https://github.com/malcolmdpc/patrones-lab" target="_blank" rel="noopener" aria-label="Repositorio Patrones Lab">
+                      <span class="social-icon">
+                        <img src="images/patrones/canales-icons/github-repo.svg" alt="" aria-hidden="true">
+                      </span>
+                      <strong>Repo</strong>
+                      <small>Patrones Lab</small>
+                    </a>
+
+                    <a class="social-card dashboard" href="https://datastudio.google.com/reporting/b0b32df2-f110-4bac-8dfb-3be359d4888d" target="_blank" rel="noopener" aria-label="Dashboard Looker Studio">
+                      <span class="social-icon">
+                        <img src="images/patrones/canales-icons/looker-studio.svg" alt="" aria-hidden="true">
+                      </span>
+                      <strong>Dashboard</strong>
+                      <small>Looker Studio</small>
+                    </a>
+
+                    <a class="social-card mail" href="mailto:encontrandopatrones@gmail.com" aria-label="Email de contacto">
+                      <span class="social-icon">
+                        <img src="images/patrones/canales-icons/gmail-2026.png" alt="" aria-hidden="true">
+                      </span>
+                      <strong>Email</strong>
+                      <small>Contacto directo</small>
+                    </a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CONTACT -->
     <section class="contact py-5 contact-form-section section-glow glow-contact" id="contact">
       <div class="container">
@@ -878,6 +911,8 @@ El objetivo es plantear preguntas, preparar datos, construir análisis reproduci
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="js/custom.js"></script>
 
   </body>
