@@ -448,7 +448,7 @@
 })();
 
 
-// V24: navbar active section state
+// V48H: navbar active section state con Inicio por default tras loader
 (function(){
   const nav = document.querySelector('.pl-active-navbar');
   if(!nav) return;
@@ -463,10 +463,13 @@
 
   if(!sectionPairs.length) return;
 
+  const firstSectionId = sectionPairs[0].target.id;
+
   function setActiveById(id){
     sectionPairs.forEach(({link, target}) => {
       const isActive = target.id === id;
       link.classList.toggle('is-active', isActive);
+
       if(isActive){
         link.setAttribute('aria-current', 'page');
       }else{
@@ -476,18 +479,29 @@
   }
 
   function getCurrentSection(){
+    /*
+      Prioridad absoluta: si la página está arriba, la sección activa es Inicio.
+      Esto evita que, durante/tras el loader, el cálculo de "final de página"
+      marque Contacto cuando el documento todavía no estabilizó altura/scroll.
+    */
+    if(window.scrollY <= 96){
+      return firstSectionId;
+    }
+
     const offset = window.innerHeight * 0.38;
-    let current = sectionPairs[0].target.id;
+    let current = firstSectionId;
 
     sectionPairs.forEach(({target}) => {
       const rect = target.getBoundingClientRect();
+
       if(rect.top <= offset && rect.bottom > offset){
         current = target.id;
       }
     });
 
-    // Refuerzo para el final de página: marcar contacto.
-    if(window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8){
+    // Refuerzo para el final real de página: marcar Contacto solo si no estamos arriba.
+    const reachedRealBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8;
+    if(window.scrollY > 96 && reachedRealBottom){
       const contact = sectionPairs.find(pair => pair.target.id === 'contact');
       if(contact) current = contact.target.id;
     }
@@ -502,13 +516,17 @@
     ticking = false;
   }
 
-  window.addEventListener('scroll', function(){
+  function requestUpdate(){
     if(!ticking){
       requestAnimationFrame(updateActive);
       ticking = true;
     }
-  }, {passive:true});
+  }
 
+  // Estado inicial explícito: la web abre siempre en Inicio tras el loader.
+  setActiveById(firstSectionId);
+
+  window.addEventListener('scroll', requestUpdate, {passive:true});
   window.addEventListener('resize', updateActive);
 
   links.forEach(link => {
@@ -520,7 +538,14 @@
     });
   });
 
-  updateActive();
+  /*
+    Rechequeos posteriores al loader/layout.
+    Mantienen Inicio activo si la pantalla quedó arriba, y corrigen si el usuario
+    vuelve con historial o un ancla.
+  */
+  window.setTimeout(updateActive, 120);
+  window.setTimeout(updateActive, 480);
+  window.setTimeout(updateActive, 1100);
 })();
 
 
@@ -1107,6 +1132,43 @@
   horizontalSection.addEventListener('pointercancel', endDrag);
   horizontalSection.addEventListener('pointerleave', function(event){ if(isDragging && event.buttons===0) endDrag(event); });
   initScroll();
+
+  // V48G: navegación directa a Metodología siempre vuelve a la solapa 1.
+  window.plGoToMethodologyFirstPanel = function(options){
+    const opts = options || {};
+    const smooth = opts.smooth !== false;
+
+    if(window.ScrollTrigger && typeof window.ScrollTrigger.refresh === 'function'){
+      window.ScrollTrigger.refresh();
+    }
+
+    let target = window.scrollY + horizontalSection.getBoundingClientRect().top;
+
+    if(timeline && timeline.scrollTrigger){
+      scrollDistance = Math.max(1, timeline.scrollTrigger.end - timeline.scrollTrigger.start);
+      target = timeline.scrollTrigger.start;
+    }
+
+    target = Math.max(0, target);
+
+    if(window.gsap){
+      window.gsap.set(items, {xPercent:function(index){return index===0?0:100;}, opacity:1, scale:1});
+    }
+
+    setGuide(0);
+    window.scrollTo({top:target, behavior:smooth ? 'smooth' : 'auto'});
+
+    window.setTimeout(function(){
+      setGuide(0);
+      if(typeof window.plSmoothScrollSync === 'function'){
+        window.plSmoothScrollSync();
+      }
+      if(window.ScrollTrigger && typeof window.ScrollTrigger.update === 'function'){
+        window.ScrollTrigger.update();
+      }
+    }, smooth ? 720 : 40);
+  };
+
   desktopQuery.addEventListener('change', function(){ initScroll(); if(window.ScrollTrigger&&typeof window.ScrollTrigger.refresh==='function'){window.ScrollTrigger.refresh();} });
   window.addEventListener('load', function(){ if(window.ScrollTrigger&&typeof window.ScrollTrigger.refresh==='function'){window.ScrollTrigger.refresh();} });
 })();
@@ -1498,5 +1560,68 @@
   }
 
   waitForLoader();
+})();
+
+// === V48G: navbar Metodología siempre inicia en solapa 1 ===
+(function(){
+  document.addEventListener('click', function(event){
+    const link = event.target && event.target.closest ? event.target.closest('.navbar a[href="#methodology"]') : null;
+    if(!link) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+
+    if(typeof window.plGoToMethodologyFirstPanel === 'function'){
+      window.plGoToMethodologyFirstPanel({smooth:true});
+      return;
+    }
+
+    const section = document.querySelector('#methodology');
+    if(section){
+      section.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  }, true);
+})();
+
+
+// === V49L: dropdowns de filtros con cierre demorado y hover estable ===
+(function(){
+  const projectsSection = document.querySelector('#projects');
+  if(!projectsSection) return;
+
+  const groups = Array.from(projectsSection.querySelectorAll('.repo-filter-group'));
+  if(!groups.length) return;
+
+  groups.forEach(group => {
+    const trigger = group.querySelector('.repo-filter-group-trigger');
+    const panel = group.querySelector('.repo-filter-category-panel');
+    if(!trigger || !panel) return;
+
+    let closeTimer = null;
+
+    function open(){
+      window.clearTimeout(closeTimer);
+      trigger.setAttribute('aria-expanded', 'true');
+      group.classList.add('is-filter-open');
+    }
+
+    function close(){
+      window.clearTimeout(closeTimer);
+      closeTimer = window.setTimeout(() => {
+        trigger.setAttribute('aria-expanded', 'false');
+        group.classList.remove('is-filter-open');
+      }, 180);
+    }
+
+    group.addEventListener('pointerenter', open);
+    group.addEventListener('pointerleave', close);
+    panel.addEventListener('pointerenter', open);
+    panel.addEventListener('pointerleave', close);
+    group.addEventListener('focusin', open);
+    group.addEventListener('focusout', event => {
+      if(!group.contains(event.relatedTarget)) close();
+    });
+  });
 })();
 

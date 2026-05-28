@@ -9192,3 +9192,1571 @@ html.pl-section-snap-enabled{
   }
 }
 
+
+/* === V49A: sección de proyectos estilo CodePen, sin tocar Proyectos original === */
+.pl-codepen-projects-section{background:#212121;color:#fff;overflow:hidden;padding:0}.dark-mode .pl-codepen-projects-section{background:#10120f}.pl-codepen-cards{background:#212121;margin-left:0;margin-right:0}.dark-mode .pl-codepen-cards{background:#10120f}.pl-codepen-cards:hover .pl-codepen-card-single{opacity:.15}.pl-codepen-cards .pl-codepen-card-single{background:#212121;padding:0;opacity:1;transition:opacity .5s ease-in-out}.dark-mode .pl-codepen-cards .pl-codepen-card-single{background:#10120f}.pl-codepen-cards .pl-codepen-card-single:hover{opacity:1}.pl-codepen-card-single>.row{min-height:550px}.pl-codepen-card-img{padding:0;min-height:550px;background:#0f110f}.pl-codepen-img-link{display:block;height:100%;min-height:550px;overflow:hidden}.pl-codepen-card-img .carousel,.pl-codepen-card-img .carousel-inner,.pl-codepen-card-img .carousel-item{height:550px;min-height:550px}.pl-codepen-card-img .carousel-item{background-position:center;background-size:cover;background-repeat:no-repeat;transition:transform .55s ease,filter .55s ease}.pl-codepen-card-single:hover .carousel-item{transform:scale(1.055);filter:saturate(1.08) contrast(1.04)}.pl-codepen-card-content{height:550px;min-height:550px;padding:40px;color:#fff;background:repeating-linear-gradient(-45deg,rgba(255,255,255,.035) 0 1px,transparent 1px 9px),#212121}.dark-mode .pl-codepen-card-content{background:repeating-linear-gradient(-45deg,rgba(255,255,255,.035) 0 1px,transparent 1px 9px),#141814}.pl-codepen-card-height{height:100%}.pl-codepen-card-text{width:100%;max-width:600px;text-align:left}.pl-codepen-card-text h2{color:#ffca28;margin-bottom:20px;font-family:var(--font-heading,inherit);text-transform:none;font-size:clamp(28px,2.7vw,46px);line-height:.98;letter-spacing:-1.4px}.pl-codepen-card-text p{color:rgba(255,255,255,.78);font-size:15px;line-height:1.55}.pl-codepen-card-text .project-status{margin-bottom:14px}.pl-codepen-card-text .mini-tags{margin-top:18px;margin-bottom:20px}.pl-codepen-card-text .mini-tags span{background:rgba(255,255,255,.09);color:#f7f3ea;border:1px solid rgba(255,255,255,.11)}.pl-codepen-card-links,.pl-codepen-card-text .project-links-dual,.pl-codepen-card-text .project-links-editorial{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.pl-codepen-card-text .project-link{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:9px 14px;border-radius:999px;background:#ffca28;color:#111;font-weight:900;font-size:13px;text-decoration:none;transition:background .35s ease,color .35s ease,transform .25s ease}.pl-codepen-card-text .project-link:hover{background:#fff;color:#212121;transform:translateY(-2px)}.pl-codepen-card-text .secondary-project-link{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.32)}.pl-codepen-card-text .secondary-project-link:hover{background:#fff;color:#212121}.pl-codepen-card-img .carousel-indicators{bottom:18px;margin-bottom:0}.pl-codepen-card-img .carousel-indicators li{height:10px;width:10px;border-radius:50%;background-color:#ffca28;opacity:.45}.pl-codepen-card-img .carousel-indicators .active{opacity:1}@media(max-width:1199px){.pl-codepen-card-single>.row,.pl-codepen-card-img,.pl-codepen-img-link,.pl-codepen-card-img .carousel,.pl-codepen-card-img .carousel-inner,.pl-codepen-card-img .carousel-item,.pl-codepen-card-content{min-height:520px;height:520px}.pl-codepen-card-content{padding:34px}}@media(max-width:991px){.pl-codepen-cards:hover .pl-codepen-card-single{opacity:1}.pl-codepen-card-single{max-width:920px;margin-left:auto;margin-right:auto}}@media(max-width:767px){.pl-codepen-card-single>.row{min-height:auto}.pl-codepen-card-img,.pl-codepen-img-link,.pl-codepen-card-img .carousel,.pl-codepen-card-img .carousel-inner,.pl-codepen-card-img .carousel-item{height:360px;min-height:360px}.pl-codepen-card-content{height:auto;min-height:auto;padding:28px 24px 32px}}
+
+
+/* === V49B: CodePen proyectos 4:5 completos e intercalado por filas === */
+.pl-codepen-projects-section{
+  background:#080909 !important;
+  padding:64px 0 !important;
+}
+
+.pl-codepen-showcase-fluid{
+  width:100% !important;
+  max-width:none !important;
+  padding-left:32px !important;
+  padding-right:32px !important;
+}
+
+.pl-codepen-cards-interleaved{
+  width:100%;
+  display:flex !important;
+  flex-direction:column;
+  align-items:center;
+  gap:22px;
+  background:#080909 !important;
+}
+
+.pl-codepen-project-row{
+  width:100%;
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0, 270px));
+  justify-content:center;
+  align-items:stretch;
+  gap:0;
+  background:#080909;
+}
+
+.pl-codepen-cell{
+  width:100%;
+  aspect-ratio:4 / 5;
+  min-height:0 !important;
+  height:auto !important;
+  overflow:hidden;
+}
+
+.pl-codepen-image-cell{
+  padding:0 !important;
+  background:#050606 !important;
+}
+
+.pl-codepen-text-cell{
+  padding:0 !important;
+  color:#fff;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,.035) 0 1px,
+      transparent 1px 9px
+    ),
+    #212121 !important;
+}
+
+.dark-mode .pl-codepen-text-cell{
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,.035) 0 1px,
+      transparent 1px 9px
+    ),
+    #141814 !important;
+}
+
+.pl-codepen-image-cell .pl-codepen-img-link,
+.pl-codepen-image-cell .carousel,
+.pl-codepen-image-cell .carousel-inner,
+.pl-codepen-image-cell .carousel-item{
+  display:block;
+  width:100%;
+  height:100% !important;
+  min-height:0 !important;
+}
+
+.pl-codepen-image-cell .carousel-item{
+  background-size:contain !important;
+  background-position:center !important;
+  background-repeat:no-repeat !important;
+  background-color:#050606 !important;
+  transform:none !important;
+  filter:none !important;
+}
+
+.pl-codepen-image-cell:hover .carousel-item{
+  transform:none !important;
+  filter:none !important;
+}
+
+.pl-codepen-text-cell .pl-codepen-card-height{
+  width:100%;
+  height:100% !important;
+  min-height:0 !important;
+  padding:24px;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+
+.pl-codepen-text-cell .pl-codepen-card-text{
+  width:100%;
+  max-width:100%;
+  text-align:left;
+}
+
+.pl-codepen-text-cell h2{
+  margin:0 0 13px !important;
+  color:#ffca28 !important;
+  font-size:clamp(21px, 1.7vw, 31px) !important;
+  line-height:1.02 !important;
+  letter-spacing:-.7px !important;
+}
+
+.pl-codepen-text-cell p{
+  margin-bottom:13px !important;
+  color:rgba(255,255,255,.76) !important;
+  font-size:13px !important;
+  line-height:1.42 !important;
+}
+
+.pl-codepen-text-cell .project-status{
+  margin-bottom:11px !important;
+  font-size:11px !important;
+  padding:5px 8px !important;
+}
+
+.pl-codepen-text-cell .mini-tags{
+  margin-top:12px !important;
+  margin-bottom:14px !important;
+  gap:5px !important;
+}
+
+.pl-codepen-text-cell .mini-tags span{
+  padding:4px 7px !important;
+  font-size:10px !important;
+}
+
+.pl-codepen-text-cell .pl-codepen-card-links{
+  gap:7px !important;
+}
+
+.pl-codepen-text-cell .project-link{
+  min-height:32px !important;
+  padding:7px 11px !important;
+  font-size:11.5px !important;
+}
+
+.pl-codepen-cards-interleaved:hover .pl-codepen-cell{
+  opacity:.22;
+  transition:opacity .45s ease;
+}
+
+.pl-codepen-cards-interleaved .pl-codepen-cell:hover{
+  opacity:1;
+}
+
+@media (min-width:1400px){
+  .pl-codepen-project-row{
+    grid-template-columns:repeat(4, minmax(0, 300px));
+  }
+
+  .pl-codepen-text-cell .pl-codepen-card-height{
+    padding:28px;
+  }
+}
+
+@media (max-width:1199px){
+  .pl-codepen-project-row{
+    grid-template-columns:repeat(4, minmax(0, 230px));
+  }
+
+  .pl-codepen-text-cell .pl-codepen-card-height{
+    padding:20px;
+  }
+
+  .pl-codepen-text-cell h2{
+    font-size:clamp(19px, 1.7vw, 27px) !important;
+  }
+
+  .pl-codepen-text-cell p{
+    font-size:12.5px !important;
+  }
+}
+
+@media (max-width:991px){
+  .pl-codepen-showcase-fluid{
+    padding-left:22px !important;
+    padding-right:22px !important;
+  }
+
+  .pl-codepen-project-row{
+    grid-template-columns:repeat(2, minmax(0, 280px));
+  }
+
+  .pl-codepen-project-row-odd,
+  .pl-codepen-project-row-even{
+    grid-auto-flow:row;
+  }
+
+  .pl-codepen-cards-interleaved:hover .pl-codepen-cell{
+    opacity:1;
+  }
+}
+
+@media (max-width:575px){
+  .pl-codepen-projects-section{
+    padding:44px 0 !important;
+  }
+
+  .pl-codepen-showcase-fluid{
+    padding-left:16px !important;
+    padding-right:16px !important;
+  }
+
+  .pl-codepen-project-row{
+    grid-template-columns:minmax(0, 320px);
+    gap:0;
+  }
+
+  .pl-codepen-cell{
+    aspect-ratio:auto;
+    min-height:360px !important;
+  }
+
+  .pl-codepen-image-cell{
+    aspect-ratio:4 / 5;
+    min-height:0 !important;
+  }
+
+  .pl-codepen-text-cell{
+    min-height:auto !important;
+  }
+
+  .pl-codepen-text-cell .pl-codepen-card-height{
+    padding:24px;
+  }
+}
+
+
+/* === V49C: formato editorial oscuro para descripciones del showcase de Proyectos === */
+/* Ajusta trama, tipografía, tamaños y jerarquía visual sin eliminar íconos. */
+#projects-showcase .pl-codepen-text-cell{
+  position:relative;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,.040) 0 1px,
+      transparent 1px 10px
+    ),
+    #151716 !important;
+  color:#f7f3ea !important;
+}
+
+#projects-showcase .pl-codepen-text-cell::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 92% 12%, rgba(255,202,40,.09), transparent 24%),
+    linear-gradient(180deg, rgba(255,255,255,.035), transparent 42%);
+  opacity:.85;
+}
+
+#projects-showcase .pl-codepen-text-cell .pl-codepen-card-height{
+  position:relative;
+  z-index:1;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  padding:22px 20px !important;
+}
+
+#projects-showcase .pl-codepen-text-cell .pl-codepen-card-text{
+  max-width:100%;
+}
+
+#projects-showcase .pl-codepen-text-cell .project-status{
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:5px !important;
+  width:max-content;
+  margin:0 0 16px !important;
+  padding:5px 9px !important;
+  border-radius:999px !important;
+  font-size:11px !important;
+  font-weight:900 !important;
+  line-height:1 !important;
+  text-transform:lowercase;
+}
+
+#projects-showcase .pl-codepen-text-cell .project-status *,
+#projects-showcase .pl-codepen-text-cell .project-link *,
+#projects-showcase .pl-codepen-text-cell .secondary-project-link *{
+  display:inline-flex !important;
+  align-items:center !important;
+  flex:0 0 auto;
+}
+
+#projects-showcase .pl-codepen-text-cell .project-status svg,
+#projects-showcase .pl-codepen-text-cell .project-status img,
+#projects-showcase .pl-codepen-text-cell .project-link svg,
+#projects-showcase .pl-codepen-text-cell .project-link img{
+  width:1em;
+  height:1em;
+  object-fit:contain;
+}
+
+#projects-showcase .pl-codepen-text-cell .project-status.published{
+  background:rgba(61,206,113,.20) !important;
+  color:#d9f7e4 !important;
+}
+
+#projects-showcase .pl-codepen-text-cell .project-status.development{
+  background:rgba(255,202,40,.18) !important;
+  color:#ffd15a !important;
+}
+
+#projects-showcase .pl-codepen-text-cell .project-status.neutral{
+  background:rgba(255,255,255,.12) !important;
+  color:#ece8df !important;
+}
+
+#projects-showcase .pl-codepen-text-cell h2{
+  margin:0 0 15px !important;
+  color:#ffc200 !important;
+  font-family:inherit !important;
+  font-size:clamp(26px, 2.2vw, 38px) !important;
+  line-height:1.02 !important;
+  letter-spacing:-1.15px !important;
+  font-weight:950 !important;
+  text-transform:none !important;
+}
+
+#projects-showcase .pl-codepen-text-cell p{
+  margin:0 0 18px !important;
+  max-width:96%;
+  color:rgba(247,243,234,.84) !important;
+  font-size:14px !important;
+  line-height:1.45 !important;
+  font-weight:600 !important;
+}
+
+#projects-showcase .pl-codepen-text-cell .mini-tags{
+  display:flex !important;
+  flex-wrap:wrap;
+  gap:7px !important;
+  margin:0 0 22px !important;
+}
+
+#projects-showcase .pl-codepen-text-cell .mini-tags span{
+  display:inline-flex;
+  align-items:center;
+  min-height:25px;
+  padding:5px 9px !important;
+  border-radius:999px !important;
+  background:rgba(255,255,255,.17) !important;
+  border:1px solid rgba(255,255,255,.18) !important;
+  color:#f7f3ea !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+  font-size:10.6px !important;
+  font-weight:950 !important;
+  line-height:1 !important;
+  text-transform:capitalize;
+}
+
+#projects-showcase .pl-codepen-text-cell .pl-codepen-card-links,
+#projects-showcase .pl-codepen-text-cell .project-links-dual,
+#projects-showcase .pl-codepen-text-cell .project-links-editorial{
+  display:flex !important;
+  flex-wrap:wrap;
+  gap:9px !important;
+  align-items:center !important;
+  margin-top:0 !important;
+}
+
+#projects-showcase .pl-codepen-text-cell .project-link{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:6px !important;
+  min-height:35px !important;
+  padding:8px 14px !important;
+  border-radius:999px !important;
+  background:#ffc200 !important;
+  border:1px solid #ffc200 !important;
+  color:#111 !important;
+  font-size:12px !important;
+  font-weight:950 !important;
+  line-height:1 !important;
+  text-decoration:none !important;
+  box-shadow:none !important;
+  transition:background .22s ease, color .22s ease, transform .22s ease, border-color .22s ease !important;
+}
+
+#projects-showcase .pl-codepen-text-cell .project-link:hover{
+  transform:translateY(-2px);
+  background:#fff !important;
+  border-color:#fff !important;
+  color:#111 !important;
+}
+
+#projects-showcase .pl-codepen-text-cell .secondary-project-link{
+  background:transparent !important;
+  border-color:#ffc200 !important;
+  color:#ffc200 !important;
+}
+
+#projects-showcase .pl-codepen-text-cell .secondary-project-link:hover{
+  background:#ffc200 !important;
+  border-color:#ffc200 !important;
+  color:#111 !important;
+}
+
+@media (max-width:1199px){
+  #projects-showcase .pl-codepen-text-cell .pl-codepen-card-height{
+    padding:20px 18px !important;
+  }
+
+  #projects-showcase .pl-codepen-text-cell h2{
+    font-size:clamp(23px, 2vw, 32px) !important;
+  }
+
+  #projects-showcase .pl-codepen-text-cell p{
+    font-size:13px !important;
+  }
+
+  #projects-showcase .pl-codepen-text-cell .mini-tags{
+    gap:5px !important;
+    margin-bottom:18px !important;
+  }
+}
+
+@media (max-width:575px){
+  #projects-showcase .pl-codepen-text-cell .pl-codepen-card-height{
+    padding:26px 24px !important;
+  }
+
+  #projects-showcase .pl-codepen-text-cell h2{
+    font-size:32px !important;
+  }
+
+  #projects-showcase .pl-codepen-text-cell p{
+    font-size:14px !important;
+  }
+}
+
+
+/* === V49D: formato de descripción aplicado a cards originales de Proyectos === */
+/* Aplica el estilo de la referencia directamente sobre #projects, sin quitar íconos ni tocar HTML. */
+#projects .github-project-card{
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,.040) 0 1px,
+      transparent 1px 10px
+    ),
+    #151716 !important;
+  border:1px solid rgba(255,255,255,.10) !important;
+  color:#f7f3ea !important;
+}
+
+#projects .github-project-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 94% 12%, rgba(255,202,40,.08), transparent 25%),
+    linear-gradient(180deg, rgba(255,255,255,.035), transparent 42%);
+  opacity:.8;
+  z-index:0;
+}
+
+#projects .github-project-card > *{
+  position:relative;
+  z-index:1;
+}
+
+#projects .github-project-body{
+  padding:22px 22px 24px !important;
+}
+
+#projects .github-project-body h3{
+  margin:0 0 14px !important;
+  color:#ffc200 !important;
+  font-family:inherit !important;
+  font-size:clamp(22px, 1.55vw, 30px) !important;
+  line-height:1.02 !important;
+  letter-spacing:-.85px !important;
+  font-weight:950 !important;
+  text-transform:none !important;
+}
+
+#projects .github-project-body .project-status{
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:5px !important;
+  width:max-content;
+  margin:0 0 18px !important;
+  padding:5px 9px !important;
+  border-radius:999px !important;
+  font-size:11px !important;
+  font-weight:900 !important;
+  line-height:1 !important;
+  text-transform:lowercase;
+}
+
+#projects .github-project-body .project-status *,
+#projects .github-project-body .project-link *,
+#projects .github-project-body .secondary-project-link *{
+  display:inline-flex !important;
+  align-items:center !important;
+  flex:0 0 auto;
+}
+
+#projects .github-project-body .project-status svg,
+#projects .github-project-body .project-status img,
+#projects .github-project-body .project-link svg,
+#projects .github-project-body .project-link img,
+#projects .github-project-body .secondary-project-link svg,
+#projects .github-project-body .secondary-project-link img{
+  width:1em;
+  height:1em;
+  object-fit:contain;
+}
+
+#projects .github-project-body .project-status.published{
+  background:rgba(61,206,113,.20) !important;
+  color:#d9f7e4 !important;
+}
+
+#projects .github-project-body .project-status.development{
+  background:rgba(255,202,40,.18) !important;
+  color:#ffd15a !important;
+}
+
+#projects .github-project-body .project-status.neutral{
+  background:rgba(255,255,255,.12) !important;
+  color:#ece8df !important;
+}
+
+#projects .github-project-body p:not(.project-status){
+  margin:0 0 18px !important;
+  color:rgba(247,243,234,.82) !important;
+  font-size:14px !important;
+  line-height:1.48 !important;
+  font-weight:600 !important;
+}
+
+#projects .github-project-card .mini-tags{
+  display:flex !important;
+  flex-wrap:wrap;
+  gap:7px !important;
+  margin:0 0 22px !important;
+}
+
+#projects .github-project-card .mini-tags span{
+  display:inline-flex;
+  align-items:center;
+  min-height:25px;
+  padding:5px 9px !important;
+  border-radius:999px !important;
+  background:rgba(255,255,255,.17) !important;
+  border:1px solid rgba(255,255,255,.18) !important;
+  color:#f7f3ea !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+  font-size:10.6px !important;
+  font-weight:950 !important;
+  line-height:1 !important;
+  text-transform:capitalize;
+}
+
+#projects .github-project-card .project-link-row,
+#projects .github-project-card .project-links-dual,
+#projects .github-project-card .project-links-editorial{
+  display:flex !important;
+  flex-wrap:wrap;
+  gap:9px !important;
+  align-items:center !important;
+  margin-top:auto !important;
+}
+
+#projects .github-project-card .project-link{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:7px !important;
+  min-height:36px !important;
+  padding:8px 14px !important;
+  border-radius:999px !important;
+  background:#ffc200 !important;
+  border:1px solid #ffc200 !important;
+  color:#111 !important;
+  font-size:12px !important;
+  font-weight:950 !important;
+  line-height:1 !important;
+  text-decoration:none !important;
+  box-shadow:none !important;
+  transition:background .22s ease, color .22s ease, transform .22s ease, border-color .22s ease !important;
+}
+
+#projects .github-project-card .project-link:hover{
+  transform:translateY(-2px);
+  background:#fff !important;
+  border-color:#fff !important;
+  color:#111 !important;
+}
+
+#projects .github-project-card .secondary-project-link{
+  background:transparent !important;
+  border-color:#ffc200 !important;
+  color:#ffc200 !important;
+}
+
+#projects .github-project-card .secondary-project-link:hover{
+  background:#ffc200 !important;
+  border-color:#ffc200 !important;
+  color:#111 !important;
+}
+
+#projects .github-project-card .project-image-link{
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+
+#projects .github-project-card:hover{
+  border-color:#ffc200 !important;
+  box-shadow:
+    0 0 0 1px rgba(255,202,40,.18),
+    0 26px 70px rgba(0,0,0,.34) !important;
+}
+
+@media (max-width:1199px){
+  #projects .github-project-body{
+    padding:20px 20px 22px !important;
+  }
+
+  #projects .github-project-body h3{
+    font-size:clamp(21px, 1.9vw, 27px) !important;
+  }
+
+  #projects .github-project-body p:not(.project-status){
+    font-size:13.5px !important;
+  }
+}
+
+@media (max-width:575px){
+  #projects .github-project-body h3{
+    font-size:30px !important;
+  }
+
+  #projects .github-project-body p:not(.project-status){
+    font-size:14px !important;
+  }
+}
+
+
+/* === V49G: restauración final de botones e íconos de Proyectos === */
+/* Regla central: usar siempre badge .btn-destination-icon; no img/svg sueltos. */
+
+#projects .github-project-card .project-link-row,
+#projects .github-project-card .project-links-dual,
+#projects .github-project-card .project-links-editorial,
+#projects-showcase .pl-codepen-text-cell .project-link-row,
+#projects-showcase .pl-codepen-text-cell .project-links-dual,
+#projects-showcase .pl-codepen-text-cell .project-links-editorial,
+#projects-showcase .pl-codepen-text-cell .pl-codepen-card-links{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:9px !important;
+  align-items:center !important;
+}
+
+#projects .github-project-card .project-link,
+#projects-showcase .pl-codepen-text-cell .project-link{
+  position:relative !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+  line-height:1 !important;
+  gap:0 !important;
+  min-height:36px !important;
+  padding:8px 14px !important;
+  border-radius:999px !important;
+}
+
+#projects .github-project-card .project-link.has-destination-icon,
+#projects-showcase .pl-codepen-text-cell .project-link.has-destination-icon{
+  padding-left:42px !important;
+  padding-right:42px !important;
+  overflow:hidden !important;
+}
+
+#projects .github-project-card .project-link .btn-destination-icon,
+#projects-showcase .pl-codepen-text-cell .project-link .btn-destination-icon{
+  position:absolute !important;
+  right:5px !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  width:30px !important;
+  height:30px !important;
+  min-width:30px !important;
+  max-width:30px !important;
+  min-height:30px !important;
+  max-height:30px !important;
+  border-radius:999px !important;
+  margin:0 !important;
+  padding:0 !important;
+  border:0 !important;
+
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.14) inset,
+    0 6px 14px rgba(0,0,0,.26) !important;
+
+  font-family:Arial, Helvetica, sans-serif !important;
+  font-size:17px !important;
+  line-height:1 !important;
+  font-weight:900 !important;
+  letter-spacing:-.08em !important;
+  text-transform:none !important;
+  text-align:center !important;
+  pointer-events:none !important;
+  opacity:1 !important;
+}
+
+#projects .github-project-card .project-link .btn-destination-icon img,
+#projects-showcase .pl-codepen-text-cell .project-link .btn-destination-icon img,
+#projects .github-project-card .project-link .btn-destination-icon svg,
+#projects-showcase .pl-codepen-text-cell .project-link .btn-destination-icon svg{
+  position:static !important;
+  transform:none !important;
+  display:block !important;
+  margin:0 auto !important;
+  padding:0 !important;
+  width:18px !important;
+  height:18px !important;
+  min-width:18px !important;
+  max-width:18px !important;
+  min-height:18px !important;
+  max-height:18px !important;
+  object-fit:contain !important;
+}
+
+#projects .github-project-card .project-link .btn-destination-icon-github,
+#projects-showcase .pl-codepen-text-cell .project-link .btn-destination-icon-github{
+  background:#171b21 !important;
+  color:#ffffff !important;
+}
+
+#projects .github-project-card .project-link .btn-destination-icon-github img,
+#projects-showcase .pl-codepen-text-cell .project-link .btn-destination-icon-github img{
+  filter:invert(1) brightness(1.12) !important;
+}
+
+#projects .github-project-card .project-link .btn-destination-icon-linkedin,
+#projects-showcase .pl-codepen-text-cell .project-link .btn-destination-icon-linkedin{
+  background:#2f8fca !important;
+  color:#ffffff !important;
+}
+
+#projects .github-project-card .project-link .btn-destination-icon-dashboard,
+#projects-showcase .pl-codepen-text-cell .project-link .btn-destination-icon-dashboard{
+  background:#ffffff !important;
+  color:#111111 !important;
+  font-size:8px !important;
+  letter-spacing:-.08em !important;
+}
+
+#projects .github-project-card .project-link .btn-destination-icon-docs,
+#projects-showcase .pl-codepen-text-cell .project-link .btn-destination-icon-docs{
+  background:#f4f0df !important;
+  color:#171b21 !important;
+  font-size:8px !important;
+  letter-spacing:-.08em !important;
+}
+
+#projects .github-project-card .project-link:not(.has-destination-icon),
+#projects-showcase .pl-codepen-text-cell .project-link:not(.has-destination-icon){
+  padding-left:13px !important;
+  padding-right:13px !important;
+  min-width:max-content !important;
+}
+
+#projects .github-project-card:nth-of-type(8) .project-links-dual,
+#projects .github-project-card:nth-of-type(8) .project-links-editorial,
+#projects .github-project-card:nth-of-type(8) .project-link-row,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-links-dual,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-links-editorial,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .pl-codepen-card-links{
+  flex-wrap:nowrap !important;
+  gap:8px !important;
+}
+
+#projects .github-project-card:nth-of-type(8) .project-link,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-link{
+  white-space:nowrap !important;
+  flex:0 0 auto !important;
+  font-size:11px !important;
+  padding-left:10px !important;
+  padding-right:10px !important;
+}
+
+#projects .github-project-card:nth-of-type(7) .linkedin-placeholder-link,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .linkedin-placeholder-link{
+  width:100% !important;
+  max-width:100% !important;
+  justify-content:center !important;
+  background:transparent !important;
+  color:#ffc200 !important;
+  border:1px solid #ffc200 !important;
+}
+
+#projects .github-project-card:nth-of-type(7) .linkedin-placeholder-link:hover,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .linkedin-placeholder-link:hover{
+  background:#ffc200 !important;
+  color:#111111 !important;
+  border-color:#ffc200 !important;
+}
+
+#projects-showcase .pl-codepen-showcase-fluid{
+  padding-left:18px !important;
+  padding-right:18px !important;
+}
+
+#projects-showcase .pl-codepen-project-row{
+  grid-template-columns:repeat(4, minmax(0, 286px)) !important;
+}
+
+@media (min-width:1400px){
+  #projects-showcase .pl-codepen-project-row{
+    grid-template-columns:repeat(4, minmax(0, 318px)) !important;
+  }
+}
+
+@media (max-width:1199px){
+  #projects-showcase .pl-codepen-project-row{
+    grid-template-columns:repeat(4, minmax(0, 242px)) !important;
+  }
+}
+
+@media (max-width:991px){
+  #projects-showcase .pl-codepen-project-row{
+    grid-template-columns:repeat(2, minmax(0, 300px)) !important;
+  }
+
+  #projects .github-project-card:nth-of-type(8) .project-links-dual,
+  #projects .github-project-card:nth-of-type(8) .project-links-editorial,
+  #projects .github-project-card:nth-of-type(8) .project-link-row,
+  #projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-links-dual,
+  #projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-links-editorial,
+  #projects-showcase .pl-codepen-text-cell[data-project-index="8"] .pl-codepen-card-links{
+    flex-wrap:wrap !important;
+  }
+}
+
+@media (max-width:575px){
+  #projects .github-project-card .project-link.has-destination-icon,
+  #projects-showcase .pl-codepen-text-cell .project-link.has-destination-icon{
+    padding-left:40px !important;
+    padding-right:40px !important;
+  }
+
+  #projects .github-project-card .project-link .btn-destination-icon,
+  #projects-showcase .pl-codepen-text-cell .project-link .btn-destination-icon{
+    width:28px !important;
+    height:28px !important;
+    min-width:28px !important;
+    max-width:28px !important;
+    min-height:28px !important;
+    max-height:28px !important;
+  }
+
+  #projects-showcase .pl-codepen-project-row{
+    grid-template-columns:minmax(0, 340px) !important;
+  }
+}
+
+
+/* === V49H: ajuste final de espaciado y nowrap botones Proyectos 7-9 === */
+
+/* Proyecto 7: mismo espaciado vertical que el resto de botones. */
+#projects .github-project-card:nth-of-type(7) .project-link-row,
+#projects .github-project-card:nth-of-type(7) .project-links-dual,
+#projects .github-project-card:nth-of-type(7) .project-links-editorial,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .project-link-row,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .project-links-dual,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .project-links-editorial,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .pl-codepen-card-links{
+  gap:9px !important;
+  row-gap:9px !important;
+  margin-top:auto !important;
+  align-content:flex-start !important;
+}
+
+#projects .github-project-card:nth-of-type(7) .project-link,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .project-link{
+  margin-top:0 !important;
+  margin-bottom:0 !important;
+}
+
+/* LinkedIn del proyecto 7: conservar ancho completo pero sin separación extra. */
+#projects .github-project-card:nth-of-type(7) .linkedin-placeholder-link,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .linkedin-placeholder-link{
+  margin-top:0 !important;
+}
+
+/* Proyectos 8 y 9: los botones técnicos no deben partirse en dos líneas. */
+#projects .github-project-card:nth-of-type(8) .project-link-row,
+#projects .github-project-card:nth-of-type(8) .project-links-dual,
+#projects .github-project-card:nth-of-type(8) .project-links-editorial,
+#projects .github-project-card:nth-of-type(9) .project-link-row,
+#projects .github-project-card:nth-of-type(9) .project-links-dual,
+#projects .github-project-card:nth-of-type(9) .project-links-editorial,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-link-row,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-links-dual,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-links-editorial,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .pl-codepen-card-links,
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .project-link-row,
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .project-links-dual,
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .project-links-editorial,
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .pl-codepen-card-links{
+  display:flex !important;
+  flex-wrap:nowrap !important;
+  gap:8px !important;
+  row-gap:8px !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  overflow:visible !important;
+}
+
+#projects .github-project-card:nth-of-type(8) .project-link,
+#projects .github-project-card:nth-of-type(9) .project-link,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-link,
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .project-link{
+  white-space:nowrap !important;
+  word-break:keep-all !important;
+  overflow-wrap:normal !important;
+  hyphens:none !important;
+  min-width:max-content !important;
+  width:auto !important;
+  flex:0 0 auto !important;
+  font-size:10.4px !important;
+  letter-spacing:-.15px !important;
+  padding-left:9px !important;
+  padding-right:9px !important;
+}
+
+/* El texto dentro del botón tampoco debe envolver. */
+#projects .github-project-card:nth-of-type(8) .project-link *,
+#projects .github-project-card:nth-of-type(9) .project-link *,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-link *,
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .project-link *{
+  white-space:nowrap !important;
+}
+
+/* Mantener badges centrados y sin afectar SPSS/Python, que no tienen ícono. */
+#projects .github-project-card:nth-of-type(8) .project-link:not(.has-destination-icon),
+#projects .github-project-card:nth-of-type(9) .project-link:not(.has-destination-icon),
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-link:not(.has-destination-icon),
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .project-link:not(.has-destination-icon){
+  padding-right:9px !important;
+}
+
+/* En pantallas menores, permitimos wrap del contenedor, pero cada botón sigue en una línea. */
+@media (max-width:991px){
+  #projects .github-project-card:nth-of-type(8) .project-link-row,
+  #projects .github-project-card:nth-of-type(8) .project-links-dual,
+  #projects .github-project-card:nth-of-type(8) .project-links-editorial,
+  #projects .github-project-card:nth-of-type(9) .project-link-row,
+  #projects .github-project-card:nth-of-type(9) .project-links-dual,
+  #projects .github-project-card:nth-of-type(9) .project-links-editorial,
+  #projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-link-row,
+  #projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-links-dual,
+  #projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-links-editorial,
+  #projects-showcase .pl-codepen-text-cell[data-project-index="8"] .pl-codepen-card-links,
+  #projects-showcase .pl-codepen-text-cell[data-project-index="9"] .project-link-row,
+  #projects-showcase .pl-codepen-text-cell[data-project-index="9"] .project-links-dual,
+  #projects-showcase .pl-codepen-text-cell[data-project-index="9"] .project-links-editorial,
+  #projects-showcase .pl-codepen-text-cell[data-project-index="9"] .pl-codepen-card-links{
+    flex-wrap:wrap !important;
+  }
+}
+
+
+/* === V49I: ancho de grilla y botones full-width Proyectos 7-9 === */
+
+/* Ensanchar un poco el bloque de tarjetas original, sin cambiar 4 columnas. */
+#projects.github-projects-section .container,
+.github-projects-section#projects .container{
+  width:min(1480px, calc(100vw - 40px)) !important;
+  max-width:1480px !important;
+  padding-left:0 !important;
+  padding-right:0 !important;
+}
+
+#projects .github-project-grid{
+  width:100% !important;
+  max-width:1440px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
+}
+
+/* Proyecto 7: mismo comportamiento visual que proyecto 5: botones full-width apilados y compactos. */
+#projects .github-project-card:nth-of-type(7) .project-links-dual,
+#projects .github-project-card:nth-of-type(7) .project-links-editorial,
+#projects .github-project-card:nth-of-type(7) .project-link-row,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .project-links-dual,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .project-links-editorial,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .pl-codepen-card-links{
+  display:flex !important;
+  flex-direction:column !important;
+  flex-wrap:nowrap !important;
+  align-items:stretch !important;
+  justify-content:flex-start !important;
+  gap:8px !important;
+  row-gap:8px !important;
+  margin-top:auto !important;
+}
+
+#projects .github-project-card:nth-of-type(7) .project-link,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .project-link{
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+}
+
+/* Proyectos 8 y 9: botones técnicos full-width, uno debajo del otro. */
+#projects .github-project-card:nth-of-type(8) .project-links-dual,
+#projects .github-project-card:nth-of-type(8) .project-links-editorial,
+#projects .github-project-card:nth-of-type(8) .project-link-row,
+#projects .github-project-card:nth-of-type(9) .project-links-dual,
+#projects .github-project-card:nth-of-type(9) .project-links-editorial,
+#projects .github-project-card:nth-of-type(9) .project-link-row,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-links-dual,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-links-editorial,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .pl-codepen-card-links,
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .project-links-dual,
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .project-links-editorial,
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .pl-codepen-card-links{
+  display:flex !important;
+  flex-direction:column !important;
+  flex-wrap:nowrap !important;
+  align-items:stretch !important;
+  justify-content:flex-start !important;
+  gap:8px !important;
+  row-gap:8px !important;
+}
+
+#projects .github-project-card:nth-of-type(8) .project-link,
+#projects .github-project-card:nth-of-type(9) .project-link,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-link,
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .project-link{
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  display:flex !important;
+  justify-content:center !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+  word-break:keep-all !important;
+  overflow-wrap:normal !important;
+  hyphens:none !important;
+  font-size:12px !important;
+  padding-left:14px !important;
+  padding-right:14px !important;
+}
+
+/* Mantener responsive original. */
+@media (max-width:1199px){
+  #projects.github-projects-section .container,
+  .github-projects-section#projects .container{
+    width:min(1180px, calc(100vw - 36px)) !important;
+    max-width:1180px !important;
+  }
+
+  #projects .github-project-grid{
+    grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width:991px){
+  #projects.github-projects-section .container,
+  .github-projects-section#projects .container{
+    width:min(820px, calc(100vw - 32px)) !important;
+    max-width:820px !important;
+  }
+
+  #projects .github-project-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width:575px){
+  #projects.github-projects-section .container,
+  .github-projects-section#projects .container{
+    width:min(100%, calc(100vw - 24px)) !important;
+    max-width:100% !important;
+  }
+
+  #projects .github-project-grid{
+    grid-template-columns:1fr !important;
+  }
+}
+
+
+/* === V49J: loader amarillo, grilla más ancha y botones 7-9 corregidos === */
+
+/* Loader: "Data & Analytics" en amarillo Patrones Lab */
+.pl-preloader,
+.pl-preloader *{
+  --pl-loader-yellow:#ffc200;
+}
+
+.pl-preloader [class*="analytics"],
+.pl-preloader [class*="tagline"],
+.pl-preloader [class*="subtitle"],
+.pl-preloader [class*="kicker"],
+.pl-preloader__tagline,
+.pl-preloader__subtitle,
+.pl-preloader__kicker{
+  color:#ffc200 !important;
+}
+
+/* Fallback directo por texto visible: si el loader usa strong/small/span genéricos, colorear el texto secundario. */
+.pl-preloader strong + span,
+.pl-preloader strong + small,
+.pl-preloader .pl-preloader__content span,
+.pl-preloader .pl-preloader__content small{
+  color:#ffc200 !important;
+}
+
+/* Grilla original de Proyectos: un poco más ancha, sin cambiar 4 columnas. */
+#projects.github-projects-section .container,
+.github-projects-section#projects .container{
+  width:min(1540px, calc(100vw - 28px)) !important;
+  max-width:1540px !important;
+  padding-left:0 !important;
+  padding-right:0 !important;
+}
+
+#projects .github-project-grid{
+  width:100% !important;
+  max-width:1500px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
+  gap:18px !important;
+}
+
+/* PROYECTO 7: dos botones apilados con distancia real corta, igual lógica que proyecto 5. */
+#projects .github-project-card:nth-of-type(7) .project-links-dual,
+#projects .github-project-card:nth-of-type(7) .project-links-editorial,
+#projects .github-project-card:nth-of-type(7) .project-link-row,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .project-links-dual,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .project-links-editorial,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .pl-codepen-card-links{
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  gap:8px !important;
+  row-gap:8px !important;
+  column-gap:0 !important;
+  align-items:stretch !important;
+  justify-items:stretch !important;
+  align-content:start !important;
+  margin-top:auto !important;
+}
+
+#projects .github-project-card:nth-of-type(7) .project-link,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .project-link{
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+}
+
+/* Evita que reglas anteriores agreguen separación vertical específica al LinkedIn del proyecto 7. */
+#projects .github-project-card:nth-of-type(7) .linkedin-placeholder-link,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .linkedin-placeholder-link{
+  margin-top:0 !important;
+  margin-bottom:0 !important;
+}
+
+/* PROYECTOS 8 Y 9: Ver en SPSS + Ver en Python en una sola fila horizontal. */
+#projects .github-project-card:nth-of-type(8) .project-links-dual,
+#projects .github-project-card:nth-of-type(8) .project-links-editorial,
+#projects .github-project-card:nth-of-type(8) .project-link-row,
+#projects .github-project-card:nth-of-type(9) .project-links-dual,
+#projects .github-project-card:nth-of-type(9) .project-links-editorial,
+#projects .github-project-card:nth-of-type(9) .project-link-row,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-links-dual,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-links-editorial,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .pl-codepen-card-links,
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .project-links-dual,
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .project-links-editorial,
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .pl-codepen-card-links{
+  display:grid !important;
+  grid-template-columns:minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap:8px !important;
+  row-gap:0 !important;
+  align-items:center !important;
+  justify-items:stretch !important;
+  margin-top:auto !important;
+}
+
+#projects .github-project-card:nth-of-type(8) .project-link,
+#projects .github-project-card:nth-of-type(9) .project-link,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-link,
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .project-link{
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+  white-space:nowrap !important;
+  word-break:keep-all !important;
+  overflow-wrap:normal !important;
+  hyphens:none !important;
+  text-align:center !important;
+  justify-content:center !important;
+  font-size:11px !important;
+  letter-spacing:-.25px !important;
+  padding-left:6px !important;
+  padding-right:6px !important;
+}
+
+/* Reafirma que el texto interno tampoco pueda quebrarse. */
+#projects .github-project-card:nth-of-type(8) .project-link *,
+#projects .github-project-card:nth-of-type(9) .project-link *,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-link *,
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .project-link *{
+  white-space:nowrap !important;
+  word-break:keep-all !important;
+}
+
+/* Responsive: conservar comportamiento previo. */
+@media (max-width:1199px){
+  #projects.github-projects-section .container,
+  .github-projects-section#projects .container{
+    width:min(1220px, calc(100vw - 32px)) !important;
+    max-width:1220px !important;
+  }
+
+  #projects .github-project-grid{
+    max-width:1180px !important;
+    grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width:991px){
+  #projects.github-projects-section .container,
+  .github-projects-section#projects .container{
+    width:min(860px, calc(100vw - 28px)) !important;
+    max-width:860px !important;
+  }
+
+  #projects .github-project-grid{
+    max-width:820px !important;
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width:575px){
+  #projects.github-projects-section .container,
+  .github-projects-section#projects .container{
+    width:min(100%, calc(100vw - 24px)) !important;
+    max-width:100% !important;
+  }
+
+  #projects .github-project-grid{
+    grid-template-columns:1fr !important;
+  }
+
+  #projects .github-project-card:nth-of-type(8) .project-links-dual,
+  #projects .github-project-card:nth-of-type(8) .project-links-editorial,
+  #projects .github-project-card:nth-of-type(8) .project-link-row,
+  #projects .github-project-card:nth-of-type(9) .project-links-dual,
+  #projects .github-project-card:nth-of-type(9) .project-links-editorial,
+  #projects .github-project-card:nth-of-type(9) .project-link-row{
+    grid-template-columns:1fr !important;
+    row-gap:8px !important;
+  }
+}
+
+
+/* === V49K: corrección real loader y botones proyectos 7-9 === */
+
+/* Loader real: el subtítulo Data & Analytics usa esta clase. */
+.pl-scroll-loader .pl-scroll-loader__subtitle,
+.pl-scroll-loader__subtitle{
+  color:#ffc200 !important;
+  text-shadow:0 0 18px rgba(255,194,0,.22) !important;
+}
+
+/* Proyecto 7: ahora ambos botones están en el mismo contenedor. Gap real compacto. */
+#projects .github-project-card:nth-of-type(7) .project-links-dual,
+#projects .github-project-card:nth-of-type(7) .project-links-editorial,
+#projects .github-project-card:nth-of-type(7) .project-link-row,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .project-links-dual,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .project-links-editorial,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .pl-codepen-card-links{
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  gap:5px !important;
+  row-gap:5px !important;
+  column-gap:0 !important;
+  align-items:stretch !important;
+  justify-items:stretch !important;
+  margin-top:auto !important;
+}
+
+#projects .github-project-card:nth-of-type(7) .project-link,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .project-link{
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+}
+
+/* Evitar que reglas anteriores separen el botón LinkedIn. */
+#projects .github-project-card:nth-of-type(7) .linkedin-placeholder-link,
+#projects-showcase .pl-codepen-text-cell[data-project-index="7"] .linkedin-placeholder-link{
+  margin-top:0 !important;
+  margin-bottom:0 !important;
+}
+
+/* Proyectos 8 y 9: fila horizontal definitiva. */
+#projects .github-project-card:nth-of-type(8) .project-links-dual,
+#projects .github-project-card:nth-of-type(8) .project-links-editorial,
+#projects .github-project-card:nth-of-type(8) .project-link-row,
+#projects .github-project-card:nth-of-type(9) .project-links-dual,
+#projects .github-project-card:nth-of-type(9) .project-links-editorial,
+#projects .github-project-card:nth-of-type(9) .project-link-row,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-links-dual,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-links-editorial,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .pl-codepen-card-links,
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .project-links-dual,
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .project-links-editorial,
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .pl-codepen-card-links{
+  display:flex !important;
+  flex-direction:row !important;
+  flex-wrap:nowrap !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:8px !important;
+  row-gap:0 !important;
+  width:100% !important;
+  margin-top:auto !important;
+}
+
+#projects .github-project-card:nth-of-type(8) .project-link,
+#projects .github-project-card:nth-of-type(9) .project-link,
+#projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-link,
+#projects-showcase .pl-codepen-text-cell[data-project-index="9"] .project-link{
+  flex:1 1 0 !important;
+  width:auto !important;
+  max-width:none !important;
+  min-width:0 !important;
+  margin:0 !important;
+  display:inline-flex !important;
+  justify-content:center !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+  word-break:keep-all !important;
+  overflow-wrap:normal !important;
+  hyphens:none !important;
+  font-size:10.6px !important;
+  letter-spacing:-.35px !important;
+  padding-left:5px !important;
+  padding-right:5px !important;
+}
+
+/* Ensanchar un poco más la grilla original de Proyectos. */
+#projects.github-projects-section .container,
+.github-projects-section#projects .container{
+  width:min(1580px, calc(100vw - 24px)) !important;
+  max-width:1580px !important;
+  padding-left:0 !important;
+  padding-right:0 !important;
+}
+
+#projects .github-project-grid{
+  width:100% !important;
+  max-width:1540px !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
+}
+
+@media (max-width:1199px){
+  #projects.github-projects-section .container,
+  .github-projects-section#projects .container{
+    width:min(1220px, calc(100vw - 32px)) !important;
+    max-width:1220px !important;
+  }
+
+  #projects .github-project-grid{
+    max-width:1180px !important;
+    grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width:991px){
+  #projects.github-projects-section .container,
+  .github-projects-section#projects .container{
+    width:min(860px, calc(100vw - 28px)) !important;
+    max-width:860px !important;
+  }
+
+  #projects .github-project-grid{
+    max-width:820px !important;
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width:575px){
+  #projects.github-projects-section .container,
+  .github-projects-section#projects .container{
+    width:min(100%, calc(100vw - 24px)) !important;
+    max-width:100% !important;
+  }
+
+  #projects .github-project-grid{
+    grid-template-columns:1fr !important;
+  }
+
+  #projects .github-project-card:nth-of-type(8) .project-links-dual,
+  #projects .github-project-card:nth-of-type(8) .project-links-editorial,
+  #projects .github-project-card:nth-of-type(8) .project-link-row,
+  #projects .github-project-card:nth-of-type(9) .project-links-dual,
+  #projects .github-project-card:nth-of-type(9) .project-links-editorial,
+  #projects .github-project-card:nth-of-type(9) .project-link-row{
+    flex-direction:column !important;
+    row-gap:6px !important;
+  }
+}
+
+
+/* === V49L: estilo final cards Proyectos, filtros y dropdowns === */
+
+/* Títulos de tarjetas en crema, no amarillo. */
+#projects .github-project-body h3,
+#projects-showcase .pl-codepen-text-cell h2{
+  color:#f5f0e8 !important;
+}
+
+/* Estado más legible. */
+#projects .github-project-body .project-status,
+#projects-showcase .pl-codepen-text-cell .project-status{
+  font-size:12.8px !important;
+  line-height:1.05 !important;
+  font-weight:950 !important;
+  padding:6px 10px !important;
+  gap:6px !important;
+  letter-spacing:-.05px !important;
+}
+
+/* Descripción con mayor contraste contra fondo oscuro. */
+#projects .github-project-body p:not(.project-status),
+#projects-showcase .pl-codepen-text-cell p:not(.project-status){
+  color:rgba(245,240,232,.92) !important;
+  font-weight:650 !important;
+}
+
+/* Filtros: más planos, algo más compactos y más vistosos. */
+#projects .repo-filter-toolbar{
+  gap:10px !important;
+  row-gap:12px !important;
+}
+
+#projects .repo-filter-btn,
+#projects .repo-filter-group-trigger{
+  border-radius:999px !important;
+  padding:8px 15px !important;
+  min-height:38px !important;
+  border:1px solid rgba(255,194,0,.22) !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.025)),
+    rgba(255,255,255,.045) !important;
+  color:#f5f0e8 !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.08) inset,
+    0 8px 22px rgba(0,0,0,.16) !important;
+  transform:none !important;
+}
+
+#projects .repo-filter-btn:hover,
+#projects .repo-filter-btn.active,
+#projects .repo-filter-group:hover .repo-filter-group-trigger,
+#projects .repo-filter-group:focus-within .repo-filter-group-trigger{
+  background:#ffc200 !important;
+  color:#111111 !important;
+  border-color:#ffc200 !important;
+  box-shadow:
+    0 0 0 1px rgba(255,194,0,.38),
+    0 10px 28px rgba(255,194,0,.16) !important;
+  transform:translateY(-1px) !important;
+}
+
+/* Panel de filtros más definido y sin cerrar al bajar el mouse desde el botón. */
+#projects .repo-filter-group{
+  position:relative !important;
+}
+
+/* Puente invisible entre botón y panel para que no se pierda el hover al mover el mouse hacia abajo. */
+#projects .repo-filter-group::after{
+  content:"";
+  position:absolute;
+  left:-18px;
+  right:-18px;
+  top:100%;
+  height:22px;
+  pointer-events:auto;
+  background:transparent;
+}
+
+#projects .repo-filter-toolbar-hover-groups .repo-filter-category-panel{
+  top:calc(100% + 6px) !important;
+  padding:13px !important;
+  border-radius:20px !important;
+  border:1px solid rgba(255,194,0,.24) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.045) inset,
+    0 24px 70px rgba(0,0,0,.40),
+    0 0 40px rgba(255,194,0,.08) !important;
+}
+
+#projects .repo-filter-toolbar-hover-groups .repo-filter-category-panel .repo-filter-btn{
+  padding:8px 12px !important;
+  min-height:34px !important;
+  font-size:12.2px !important;
+  box-shadow:none !important;
+  border-color:rgba(255,255,255,.12) !important;
+}
+
+/* Mantener dropdown visible si JS dejó aria-expanded=true. */
+#projects .repo-filter-group:has(.repo-filter-group-trigger[aria-expanded="true"]) .repo-filter-category-panel{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translateX(-50%) translateY(0);
+}
+
+/* Soporte mobile: mantener el panel usable. */
+@media (max-width:575px){
+  #projects .repo-filter-btn,
+  #projects .repo-filter-group-trigger{
+    padding:8px 12px !important;
+    min-height:36px !important;
+  }
+
+  #projects .repo-filter-group::after{
+    display:none;
+  }
+}
+

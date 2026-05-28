@@ -1,919 +1,869 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="es">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Patrones Lab: portfolio de proyectos reproducibles en BI, Machine Learning, Python, SQL, Power BI, Qlik y Looker Studio.">
-    <meta name="author" content="Patrones Lab">
-
-    <title>Patrones Lab — Portfolio BI, ML & Data</title>
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/unicons.css">
-<link rel="stylesheet" href="css/styles.css">
-  </head>
-  <body class="dark-mode fullscreen-sections-experiment pl-scroll-loader-active">
-    <div class="pl-scroll-loader" aria-label="Intro Patrones Lab">
-      <section class="pl-scroll-loader__first first-page" aria-label="Scroll para entrar al sitio">
-        <div class="pl-scroll-loader__copy">
-          <h1 class="pl-scroll-loader__hero-text">Patrones Lab<span class="dot" aria-hidden="true"></span></h1>
-          <p class="pl-scroll-loader__subtitle">Data &amp; Analytics</p>
-          <div class="pl-scroll-loader__arrow" aria-hidden="true"></div>
-        </div>
-      </section>
-      <section class="pl-scroll-loader__next next-page" aria-hidden="true">
-        <div class="pl-scroll-loader__next-content"></div>
-      </section>
-      <div class="pl-scroll-loader__spacer spacer" aria-hidden="true"></div>
-    </div>
-    <!-- FLOATING CTA -->
-    <a class="floating-cta" href="https://github.com/malcolmdpc/patrones-lab" target="_blank" rel="noopener" aria-label="Ver repositorio de Patrones Lab">
-      <span class="floating-cta__dot" aria-hidden="true"></span>
-      <span class="floating-cta__text">Ver repo</span>
-      <span class="floating-cta__arrow" aria-hidden="true">↗</span>
-    </a>
-
-    <div class="floating-icon-layer" aria-hidden="true"></div>
-
-    <!-- MENU -->
-    <nav class="navbar navbar-expand-sm navbar-light pl-smart-navbar pl-active-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="index.html"><span class="brand-badge brand-image-badge"><img src="images/patrones/navbar-bulb-animated.gif" alt=""></span> Patrones Lab</a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                aria-label="Abrir navegación">
-                <span class="navbar-toggler-icon"></span>
-                <span class="navbar-toggler-icon"></span>
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a href="#about" class="nav-link" data-section="inicio">Inicio</a></li>
-                    <li class="nav-item"><a href="#methodology" class="nav-link" data-section="metodologia">Metodología</a></li>
-                    <li class="nav-item"><a href="#projects" class="nav-link" data-section="proyectos">Proyectos</a></li>
-                    <li class="nav-item"><a href="#networks" class="nav-link" data-section="redes">Redes</a></li>
-                    <li class="nav-item"><a href="#contact" class="nav-link" data-section="contacto">Contacto</a></li>
-                </ul>
-
-                <ul class="navbar-nav ml-lg-auto">
-                    <div class="ml-lg-4">
-                      <div class="color-mode d-lg-flex justify-content-center align-items-center">
-                        <i class="color-mode-icon"></i>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Patrones Lab: portfolio de proyectos reproducibles en BI, Machine Learning, Python, SQL, Power BI, Qlik y Looker Studio." name="description"/>
+<meta content="Patrones Lab" name="author"/>
+<title>Patrones Lab — Portfolio BI, ML &amp; Data</title>
+<link href="css/bootstrap.min.css" rel="stylesheet"/>
+<link href="css/unicons.css" rel="stylesheet"/>
+<link href="css/styles.css" rel="stylesheet"/>
+</head>
+<body class="dark-mode fullscreen-sections-experiment pl-scroll-loader-active">
+<div aria-label="Intro Patrones Lab" class="pl-scroll-loader">
+<section aria-label="Scroll para entrar al sitio" class="pl-scroll-loader__first first-page">
+<div class="pl-scroll-loader__copy">
+<h1 class="pl-scroll-loader__hero-text">Patrones Lab<span aria-hidden="true" class="dot"></span></h1>
+<p class="pl-scroll-loader__subtitle">Data &amp; Analytics</p>
+<div aria-hidden="true" class="pl-scroll-loader__arrow"></div>
+</div>
+</section>
+<section aria-hidden="true" class="pl-scroll-loader__next next-page">
+<div class="pl-scroll-loader__next-content"></div>
+</section>
+<div aria-hidden="true" class="pl-scroll-loader__spacer spacer"></div>
+</div>
+<!-- FLOATING CTA -->
+<a aria-label="Ver repositorio de Patrones Lab" class="floating-cta" href="https://github.com/malcolmdpc/patrones-lab" rel="noopener" target="_blank">
+<span aria-hidden="true" class="floating-cta__dot"></span>
+<span class="floating-cta__text">Ver repo</span>
+<span aria-hidden="true" class="floating-cta__arrow">↗</span>
+</a>
+<div aria-hidden="true" class="floating-icon-layer"></div>
+<!-- MENU -->
+<nav class="navbar navbar-expand-sm navbar-light pl-smart-navbar pl-active-navbar">
+<div class="container">
+<a class="navbar-brand" href="index.html"><span class="brand-badge brand-image-badge"><img alt="" src="images/patrones/navbar-bulb-animated.gif"/></span> Patrones Lab</a>
+<button aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir navegación" class="navbar-toggler" data-target="#navbarNav" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+<span class="navbar-toggler-icon"></span>
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav mx-auto">
+<li class="nav-item"><a class="nav-link" data-section="inicio" href="#about">Inicio</a></li>
+<li class="nav-item"><a class="nav-link" data-section="metodologia" href="#methodology">Metodología</a></li>
+<li class="nav-item"><a class="nav-link" data-section="proyectos" href="#projects">Proyectos</a></li>
+<li class="nav-item"><a class="nav-link" data-section="redes" href="#networks">Redes</a></li>
+<li class="nav-item"><a class="nav-link" data-section="contacto" href="#contact">Contacto</a></li>
+</ul>
+<ul class="navbar-nav ml-lg-auto">
+<div class="ml-lg-4">
+<div class="color-mode d-lg-flex justify-content-center align-items-center">
+<i class="color-mode-icon"></i>
                         Modo
                       </div>
-                    </div>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- HERO -->
-    <section class="about section-glow glow-hero full-screen d-lg-flex justify-content-center align-items-center" id="about">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-7 col-md-12 col-12 d-flex align-items-center">
-                    <div class="about-text">
-                        <small class="small-text hero-entry-v25b hero-entry-v25b-kicker">Portfolio de proyectos <span class="mobile-block">BI · ML · Python · Dashboards</span></small>
-                        <h1 class="pl-hero-title hero-entry-v25b hero-entry-v25b-title">
-                            <span class="hero-line">Transformo datos en</span>
-                            <span class="hero-rotator" aria-label="evidencia, modelos, dashboards, decisiones y patrones">
-                                <span>evidencia</span>
-                                <span>modelos</span>
-                                <span>dashboards</span>
-                                <span>decisiones</span>
-                                <span class="hero-rotator-word-patterns">patrones</span>
-                            </span>
-                        </h1>
-
-                        <p class="hero-entry-v25b hero-entry-v25b-copy">Patrones Lab es un laboratorio de análisis de datos aplicado a fenómenos cotidianos y reales.<br><br>
-Aquí se trabajan proyectos independientes construidos a partir de datos públicos, con foco en detectar patrones, describir comportamientos y comunicar los hallazgos con su contexto.<br><br>
+</div>
+</ul>
+</div>
+</div>
+</nav>
+<!-- HERO -->
+<section class="about section-glow glow-hero full-screen d-lg-flex justify-content-center align-items-center" id="about">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-lg-7 col-md-12 col-12 d-flex align-items-center">
+<div class="about-text">
+<small class="small-text hero-entry-v25b hero-entry-v25b-kicker">Portfolio de proyectos <span class="mobile-block">BI · ML · Python · Dashboards</span></small>
+<h1 class="pl-hero-title hero-entry-v25b hero-entry-v25b-title">
+<span class="hero-line">Transformo datos en</span>
+<span aria-label="evidencia, modelos, dashboards, decisiones y patrones" class="hero-rotator">
+<span>evidencia</span>
+<span>modelos</span>
+<span>dashboards</span>
+<span>decisiones</span>
+<span class="hero-rotator-word-patterns">patrones</span>
+</span>
+</h1>
+<p class="hero-entry-v25b hero-entry-v25b-copy">Patrones Lab es un laboratorio de análisis de datos aplicado a fenómenos cotidianos y reales.<br/><br/>
+Aquí se trabajan proyectos independientes construidos a partir de datos públicos, con foco en detectar patrones, describir comportamientos y comunicar los hallazgos con su contexto.<br/><br/>
 El objetivo es plantear preguntas, preparar datos, construir análisis reproducibles y generar resultados visuales.</p>
-                        <div class="hero-tech-marquee hero-entry-v25b hero-entry-v25b-buttons" aria-label="Tecnologías utilizadas">
-                          <div class="hero-tech-marquee-mask">
-                            <div class="hero-tech-track">
-                              <span class="tech-logo-card tech-logo-card-airflow">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-airflow" src="images/patrones/tech-icons/airflow.svg" alt="Airflow" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Airflow</strong>
-                      <small>Orquestación</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-sql-server">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-sql-server" src="images/patrones/tech-icons/sql-server.svg" alt="SQL Server" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>SQL Server</strong>
-                      <small>Base de datos</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-qlik">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-qlik" src="images/patrones/tech-icons/qlik-cloud.svg" alt="Qlik Cloud" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Qlik Cloud</strong>
-                      <small>Reporting</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-power-bi">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-power-bi" src="images/patrones/tech-icons/power-bi.svg" alt="Power BI" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Power BI</strong>
-                      <small>Reporting</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-spss">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-spss" src="images/patrones/tech-icons/spss-modeler.svg" alt="SPSS Modeler" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>SPSS Modeler</strong>
-                      <small>Machine Learning</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-looker">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-looker" src="images/patrones/tech-icons/looker-studio.svg" alt="Looker Studio" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Looker Studio</strong>
-                      <small>Reporting</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-python">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-python" src="images/patrones/tech-icons/python.svg" alt="Python" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Python</strong>
-                      <small>Analytics</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-numpy">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-numpy" src="images/patrones/tech-icons/numpy.svg" alt="NumPy" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>NumPy</strong>
-                      <small>Cálculo numérico</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-scikit">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-scikit" src="images/patrones/tech-icons/scikit-learn.svg" alt="Scikit-learn" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Scikit-learn</strong>
-                      <small>Machine Learning</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-matplotlib">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-matplotlib" src="images/patrones/tech-icons/matplotlib.svg" alt="Matplotlib" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Matplotlib</strong>
-                      <small>Visualización</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-pandas">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-pandas" src="images/patrones/tech-icons/pandas.svg" alt="Pandas" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Pandas</strong>
-                      <small>Dataframes</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-plotly">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-plotly" src="images/patrones/tech-icons/plotly.svg" alt="Plotly" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Plotly</strong>
-                      <small>Visualización</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-snowflake">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-snowflake" src="images/patrones/tech-icons/snowflake.svg" alt="Snowflake" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Snowflake</strong>
-                      <small>Warehouse Cloud</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-databricks">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-databricks" src="images/patrones/tech-icons/databricks.svg" alt="Databricks" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Databricks</strong>
-                      <small>Lakehouse</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-dbt">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-dbt" src="images/patrones/tech-icons/dbt.svg" alt="dbt" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>dbt</strong>
-                      <small>Transformación</small>
-                    </span>
-                  </span>
-                              <span class="tech-logo-card tech-logo-card-airflow">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-airflow" src="images/patrones/tech-icons/airflow.svg" alt="Airflow" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Airflow</strong>
-                      <small>Orquestación</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-sql-server">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-sql-server" src="images/patrones/tech-icons/sql-server.svg" alt="SQL Server" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>SQL Server</strong>
-                      <small>Base de datos</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-qlik">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-qlik" src="images/patrones/tech-icons/qlik-cloud.svg" alt="Qlik Cloud" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Qlik Cloud</strong>
-                      <small>Reporting</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-power-bi">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-power-bi" src="images/patrones/tech-icons/power-bi.svg" alt="Power BI" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Power BI</strong>
-                      <small>Reporting</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-spss">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-spss" src="images/patrones/tech-icons/spss-modeler.svg" alt="SPSS Modeler" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>SPSS Modeler</strong>
-                      <small>Machine Learning</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-looker">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-looker" src="images/patrones/tech-icons/looker-studio.svg" alt="Looker Studio" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Looker Studio</strong>
-                      <small>Reporting</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-python">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-python" src="images/patrones/tech-icons/python.svg" alt="Python" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Python</strong>
-                      <small>Analytics</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-numpy">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-numpy" src="images/patrones/tech-icons/numpy.svg" alt="NumPy" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>NumPy</strong>
-                      <small>Cálculo numérico</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-scikit">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-scikit" src="images/patrones/tech-icons/scikit-learn.svg" alt="Scikit-learn" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Scikit-learn</strong>
-                      <small>Machine Learning</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-matplotlib">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-matplotlib" src="images/patrones/tech-icons/matplotlib.svg" alt="Matplotlib" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Matplotlib</strong>
-                      <small>Visualización</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-pandas">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-pandas" src="images/patrones/tech-icons/pandas.svg" alt="Pandas" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Pandas</strong>
-                      <small>Dataframes</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-plotly">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-plotly" src="images/patrones/tech-icons/plotly.svg" alt="Plotly" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Plotly</strong>
-                      <small>Visualización</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-snowflake">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-snowflake" src="images/patrones/tech-icons/snowflake.svg" alt="Snowflake" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Snowflake</strong>
-                      <small>Warehouse Cloud</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-databricks">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-databricks" src="images/patrones/tech-icons/databricks.svg" alt="Databricks" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>Databricks</strong>
-                      <small>Lakehouse</small>
-                    </span>
-                  </span>
-                  <span class="tech-logo-card tech-logo-card-dbt">
-                    <span class="tech-logo-icon-wrap">
-                      <img class="tech-logo-img tech-logo-img-dbt" src="images/patrones/tech-icons/dbt.svg" alt="dbt" loading="lazy" decoding="async">
-                    </span>
-                    <span class="tech-logo-text">
-                      <strong>dbt</strong>
-                      <small>Transformación</small>
-                    </span>
-                  </span>
-                            </div>
-                          </div>
-                        </div>
-                  <a class="hero-scroll-indicator hero-entry-v25b hero-entry-v25b-scroll" href="#methodology" aria-label="Ir a la siguiente sección">
-                    <span class="hero-scroll-indicator__text">Explorar</span>
-                    <span class="hero-scroll-indicator__line" aria-hidden="true"></span>
-                  </a>
+<div aria-label="Tecnologías utilizadas" class="hero-tech-marquee hero-entry-v25b hero-entry-v25b-buttons">
+<div class="hero-tech-marquee-mask">
+<div class="hero-tech-track">
+<span class="tech-logo-card tech-logo-card-airflow">
+<span class="tech-logo-icon-wrap">
+<img alt="Airflow" class="tech-logo-img tech-logo-img-airflow" decoding="async" loading="lazy" src="images/patrones/tech-icons/airflow.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Airflow</strong>
+<small>Orquestación</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-sql-server">
+<span class="tech-logo-icon-wrap">
+<img alt="SQL Server" class="tech-logo-img tech-logo-img-sql-server" decoding="async" loading="lazy" src="images/patrones/tech-icons/sql-server.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>SQL Server</strong>
+<small>Base de datos</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-qlik">
+<span class="tech-logo-icon-wrap">
+<img alt="Qlik Cloud" class="tech-logo-img tech-logo-img-qlik" decoding="async" loading="lazy" src="images/patrones/tech-icons/qlik-cloud.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Qlik Cloud</strong>
+<small>Reporting</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-power-bi">
+<span class="tech-logo-icon-wrap">
+<img alt="Power BI" class="tech-logo-img tech-logo-img-power-bi" decoding="async" loading="lazy" src="images/patrones/tech-icons/power-bi.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Power BI</strong>
+<small>Reporting</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-spss">
+<span class="tech-logo-icon-wrap">
+<img alt="SPSS Modeler" class="tech-logo-img tech-logo-img-spss" decoding="async" loading="lazy" src="images/patrones/tech-icons/spss-modeler.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>SPSS Modeler</strong>
+<small>Machine Learning</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-looker">
+<span class="tech-logo-icon-wrap">
+<img alt="Looker Studio" class="tech-logo-img tech-logo-img-looker" decoding="async" loading="lazy" src="images/patrones/tech-icons/looker-studio.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Looker Studio</strong>
+<small>Reporting</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-python">
+<span class="tech-logo-icon-wrap">
+<img alt="Python" class="tech-logo-img tech-logo-img-python" decoding="async" loading="lazy" src="images/patrones/tech-icons/python.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Python</strong>
+<small>Analytics</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-numpy">
+<span class="tech-logo-icon-wrap">
+<img alt="NumPy" class="tech-logo-img tech-logo-img-numpy" decoding="async" loading="lazy" src="images/patrones/tech-icons/numpy.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>NumPy</strong>
+<small>Cálculo numérico</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-scikit">
+<span class="tech-logo-icon-wrap">
+<img alt="Scikit-learn" class="tech-logo-img tech-logo-img-scikit" decoding="async" loading="lazy" src="images/patrones/tech-icons/scikit-learn.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Scikit-learn</strong>
+<small>Machine Learning</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-matplotlib">
+<span class="tech-logo-icon-wrap">
+<img alt="Matplotlib" class="tech-logo-img tech-logo-img-matplotlib" decoding="async" loading="lazy" src="images/patrones/tech-icons/matplotlib.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Matplotlib</strong>
+<small>Visualización</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-pandas">
+<span class="tech-logo-icon-wrap">
+<img alt="Pandas" class="tech-logo-img tech-logo-img-pandas" decoding="async" loading="lazy" src="images/patrones/tech-icons/pandas.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Pandas</strong>
+<small>Dataframes</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-plotly">
+<span class="tech-logo-icon-wrap">
+<img alt="Plotly" class="tech-logo-img tech-logo-img-plotly" decoding="async" loading="lazy" src="images/patrones/tech-icons/plotly.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Plotly</strong>
+<small>Visualización</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-snowflake">
+<span class="tech-logo-icon-wrap">
+<img alt="Snowflake" class="tech-logo-img tech-logo-img-snowflake" decoding="async" loading="lazy" src="images/patrones/tech-icons/snowflake.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Snowflake</strong>
+<small>Warehouse Cloud</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-databricks">
+<span class="tech-logo-icon-wrap">
+<img alt="Databricks" class="tech-logo-img tech-logo-img-databricks" decoding="async" loading="lazy" src="images/patrones/tech-icons/databricks.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Databricks</strong>
+<small>Lakehouse</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-dbt">
+<span class="tech-logo-icon-wrap">
+<img alt="dbt" class="tech-logo-img tech-logo-img-dbt" decoding="async" loading="lazy" src="images/patrones/tech-icons/dbt.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>dbt</strong>
+<small>Transformación</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-airflow">
+<span class="tech-logo-icon-wrap">
+<img alt="Airflow" class="tech-logo-img tech-logo-img-airflow" decoding="async" loading="lazy" src="images/patrones/tech-icons/airflow.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Airflow</strong>
+<small>Orquestación</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-sql-server">
+<span class="tech-logo-icon-wrap">
+<img alt="SQL Server" class="tech-logo-img tech-logo-img-sql-server" decoding="async" loading="lazy" src="images/patrones/tech-icons/sql-server.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>SQL Server</strong>
+<small>Base de datos</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-qlik">
+<span class="tech-logo-icon-wrap">
+<img alt="Qlik Cloud" class="tech-logo-img tech-logo-img-qlik" decoding="async" loading="lazy" src="images/patrones/tech-icons/qlik-cloud.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Qlik Cloud</strong>
+<small>Reporting</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-power-bi">
+<span class="tech-logo-icon-wrap">
+<img alt="Power BI" class="tech-logo-img tech-logo-img-power-bi" decoding="async" loading="lazy" src="images/patrones/tech-icons/power-bi.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Power BI</strong>
+<small>Reporting</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-spss">
+<span class="tech-logo-icon-wrap">
+<img alt="SPSS Modeler" class="tech-logo-img tech-logo-img-spss" decoding="async" loading="lazy" src="images/patrones/tech-icons/spss-modeler.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>SPSS Modeler</strong>
+<small>Machine Learning</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-looker">
+<span class="tech-logo-icon-wrap">
+<img alt="Looker Studio" class="tech-logo-img tech-logo-img-looker" decoding="async" loading="lazy" src="images/patrones/tech-icons/looker-studio.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Looker Studio</strong>
+<small>Reporting</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-python">
+<span class="tech-logo-icon-wrap">
+<img alt="Python" class="tech-logo-img tech-logo-img-python" decoding="async" loading="lazy" src="images/patrones/tech-icons/python.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Python</strong>
+<small>Analytics</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-numpy">
+<span class="tech-logo-icon-wrap">
+<img alt="NumPy" class="tech-logo-img tech-logo-img-numpy" decoding="async" loading="lazy" src="images/patrones/tech-icons/numpy.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>NumPy</strong>
+<small>Cálculo numérico</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-scikit">
+<span class="tech-logo-icon-wrap">
+<img alt="Scikit-learn" class="tech-logo-img tech-logo-img-scikit" decoding="async" loading="lazy" src="images/patrones/tech-icons/scikit-learn.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Scikit-learn</strong>
+<small>Machine Learning</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-matplotlib">
+<span class="tech-logo-icon-wrap">
+<img alt="Matplotlib" class="tech-logo-img tech-logo-img-matplotlib" decoding="async" loading="lazy" src="images/patrones/tech-icons/matplotlib.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Matplotlib</strong>
+<small>Visualización</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-pandas">
+<span class="tech-logo-icon-wrap">
+<img alt="Pandas" class="tech-logo-img tech-logo-img-pandas" decoding="async" loading="lazy" src="images/patrones/tech-icons/pandas.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Pandas</strong>
+<small>Dataframes</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-plotly">
+<span class="tech-logo-icon-wrap">
+<img alt="Plotly" class="tech-logo-img tech-logo-img-plotly" decoding="async" loading="lazy" src="images/patrones/tech-icons/plotly.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Plotly</strong>
+<small>Visualización</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-snowflake">
+<span class="tech-logo-icon-wrap">
+<img alt="Snowflake" class="tech-logo-img tech-logo-img-snowflake" decoding="async" loading="lazy" src="images/patrones/tech-icons/snowflake.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Snowflake</strong>
+<small>Warehouse Cloud</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-databricks">
+<span class="tech-logo-icon-wrap">
+<img alt="Databricks" class="tech-logo-img tech-logo-img-databricks" decoding="async" loading="lazy" src="images/patrones/tech-icons/databricks.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>Databricks</strong>
+<small>Lakehouse</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-dbt">
+<span class="tech-logo-icon-wrap">
+<img alt="dbt" class="tech-logo-img tech-logo-img-dbt" decoding="async" loading="lazy" src="images/patrones/tech-icons/dbt.svg"/>
+</span>
+<span class="tech-logo-text">
+<strong>dbt</strong>
+<small>Transformación</small>
+</span>
+</span>
+</div>
+</div>
+</div>
+<a aria-label="Ir a la siguiente sección" class="hero-scroll-indicator hero-entry-v25b hero-entry-v25b-scroll" href="#methodology">
+<span class="hero-scroll-indicator__text">Explorar</span>
+<span aria-hidden="true" class="hero-scroll-indicator__line"></span>
+</a>
+</div>
+</div>
+<div class="col-lg-5 col-md-12 col-12">
+<div class="about-image svg hero-lab-card profile-hero-card hero-entry-v25b hero-entry-v25b-image">
+<img alt="Foto de Malcolm, creador de Patrones Lab" class="img-fluid" src="images/patrones/malcolm-profile.png"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PROJECTS CODEPEN SHOWCASE -->
+<!-- PROJECTS CODEPEN SHOWCASE -->
 
-                    </div>
-                </div>
-
-                <div class="col-lg-5 col-md-12 col-12">
-                    <div class="about-image svg hero-lab-card profile-hero-card hero-entry-v25b hero-entry-v25b-image">
-                        <img src="images/patrones/malcolm-profile.png" class="img-fluid" alt="Foto de Malcolm, creador de Patrones Lab">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    
-    <!-- METHODOLOGY -->
-    <section class="process-horizontal-edge-section" id="methodology" data-horizontal-process-section>
-      <div class="process-horizontal-static-head"><h2>Ciclo de vida del dato</h2></div>
-
-      <div class="process-horizontal-guide" aria-label="Progreso de etapas">
-        <span class="process-horizontal-guide__line"></span>
-        <span class="process-horizontal-guide__progress"></span>
-        <button type="button" class="process-horizontal-guide__bullet is-active" data-process-guide="0" aria-label="Ir a etapa 1"></button>
-        <button type="button" class="process-horizontal-guide__bullet" data-process-guide="1" aria-label="Ir a etapa 2"></button>
-        <button type="button" class="process-horizontal-guide__bullet" data-process-guide="2" aria-label="Ir a etapa 3"></button>
-        <button type="button" class="process-horizontal-guide__bullet" data-process-guide="3" aria-label="Ir a etapa 4"></button>
-        <button type="button" class="process-horizontal-guide__bullet" data-process-guide="4" aria-label="Ir a etapa 5"></button>
-        <button type="button" class="process-horizontal-guide__bullet" data-process-guide="5" aria-label="Ir a etapa 6"></button>
-      </div>
-
-      <div class="process-horizontal-track wrapper">
-        
-        <article class="process-horizontal-panel item is-dark-text" data-process-horizontal-item style="--panel-color:#ffc200">
-          <div class="process-horizontal-panel__inner">
-            <div class="process-horizontal-panel__copy">
-              <span class="process-horizontal-panel__number">1</span>
-              <h3>Descubrimiento</h3>
-              <small>Contexto y objetivo</small>
-              <p>Entendimiento del problema, la decisión a mejorar, los usuarios involucrados y el resultado esperado.</p>
-              <div class="process-horizontal-tech" aria-label="Tecnologías de la etapa"><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/power-bi.svg" alt="Power BI" loading="lazy" decoding="async"><span>Power BI</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/qlik-cloud.svg" alt="Qlik Cloud" loading="lazy" decoding="async"><span>Qlik Cloud</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/looker-studio.svg" alt="Looker Studio" loading="lazy" decoding="async"><span>Looker Studio</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/sql-server.svg" alt="SQL Server" loading="lazy" decoding="async"><span>SQL Server</span></span></div>
-            </div>
-            <figure class="process-horizontal-panel__media process-card-swiper" aria-label="Visuales animados de la etapa 1: Descubrimiento">
-              <div class="card-groups">
-                <div class="card-group" data-index="0" data-status="active">
-                  <div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-01-card-01.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-01-card-02.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-01-card-03.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-01-card-04.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-01-card-05.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-01-card-06.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-01-card-07.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-01-card-08.jpg" alt="" loading="lazy" decoding="async"></div>
-                </div>
-              </div>
-            </figure>
-          </div>
-        </article>
-        <article class="process-horizontal-panel item is-light-text" data-process-horizontal-item style="--panel-color:#0d0f0d">
-          <div class="process-horizontal-panel__inner">
-            <div class="process-horizontal-panel__copy">
-              <span class="process-horizontal-panel__number">2</span>
-              <h3>Fuentes</h3>
-              <small>Datos y diagnóstico</small>
-              <p>Identificación de las fuentes disponibles, su origen, actualización, confiabilidad y principales limitaciones.</p>
-              <div class="process-horizontal-tech" aria-label="Tecnologías de la etapa"><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/sql-server.svg" alt="SQL Server" loading="lazy" decoding="async"><span>SQL Server</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/python.svg" alt="Python" loading="lazy" decoding="async"><span>Python</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/pandas.svg" alt="Pandas" loading="lazy" decoding="async"><span>Pandas</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/numpy.svg" alt="NumPy" loading="lazy" decoding="async"><span>NumPy</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/dbt.svg" alt="dbt" loading="lazy" decoding="async"><span>dbt</span></span></div>
-            </div>
-            <figure class="process-horizontal-panel__media process-card-swiper" aria-label="Visuales animados de la etapa 2: Fuentes">
-              <div class="card-groups">
-                <div class="card-group" data-index="0" data-status="active">
-                  <div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-02-card-01.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-02-card-02.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-02-card-03.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-02-card-04.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-02-card-05.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-02-card-06.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-02-card-07.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-02-card-08.jpg" alt="" loading="lazy" decoding="async"></div>
-                </div>
-              </div>
-            </figure>
-          </div>
-        </article>
-        <article class="process-horizontal-panel item is-dark-text" data-process-horizontal-item style="--panel-color:#f5f0e8">
-          <div class="process-horizontal-panel__inner">
-            <div class="process-horizontal-panel__copy">
-              <span class="process-horizontal-panel__number">3</span>
-              <h3>Preparación</h3>
-              <small>Base analítica</small>
-              <p>Organización, limpieza y combinación de datos para construir una base consistente y usable.</p>
-              <div class="process-horizontal-tech" aria-label="Tecnologías de la etapa"><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/python.svg" alt="Python" loading="lazy" decoding="async"><span>Python</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/pandas.svg" alt="Pandas" loading="lazy" decoding="async"><span>Pandas</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/numpy.svg" alt="NumPy" loading="lazy" decoding="async"><span>NumPy</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/dbt.svg" alt="dbt" loading="lazy" decoding="async"><span>dbt</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/sql-server.svg" alt="SQL Server" loading="lazy" decoding="async"><span>SQL Server</span></span></div>
-            </div>
-            <figure class="process-horizontal-panel__media process-card-swiper" aria-label="Visuales animados de la etapa 3: Preparación">
-              <div class="card-groups">
-                <div class="card-group" data-index="0" data-status="active">
-                  <div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-03-card-01.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-03-card-02.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-03-card-03.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-03-card-04.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-03-card-05.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-03-card-06.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-03-card-07.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-03-card-08.jpg" alt="" loading="lazy" decoding="async"></div>
-                </div>
-              </div>
-            </figure>
-          </div>
-        </article>
-        <article class="process-horizontal-panel item is-light-text" data-process-horizontal-item style="--panel-color:#1f2937">
-          <div class="process-horizontal-panel__inner">
-            <div class="process-horizontal-panel__copy">
-              <span class="process-horizontal-panel__number">4</span>
-              <h3>Construcción</h3>
-              <small>Solución</small>
-              <p>Desarrollo del análisis, modelo o dashboard necesario según el objetivo definido.</p>
-              <div class="process-horizontal-tech" aria-label="Tecnologías de la etapa"><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/scikit-learn.svg" alt="Scikit-learn" loading="lazy" decoding="async"><span>Scikit-learn</span></span><span class="process-horizontal-tech-chip process-horizontal-tech-chip--matplotlib"><span class="process-horizontal-tech-icon process-horizontal-tech-icon--matplotlib" aria-hidden="true"></span><span>Matplotlib</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/plotly.svg" alt="Plotly" loading="lazy" decoding="async"><span>Plotly</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/power-bi.svg" alt="Power BI" loading="lazy" decoding="async"><span>Power BI</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/qlik-cloud.svg" alt="Qlik Cloud" loading="lazy" decoding="async"><span>Qlik Cloud</span></span></div>
-            </div>
-            <figure class="process-horizontal-panel__media process-card-swiper" aria-label="Visuales animados de la etapa 4: Construcción">
-              <div class="card-groups">
-                <div class="card-group" data-index="0" data-status="active">
-                  <div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-04-card-01.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-04-card-02.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-04-card-03.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-04-card-04.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-04-card-05.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-04-card-06.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-04-card-07.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-04-card-08.jpg" alt="" loading="lazy" decoding="async"></div>
-                </div>
-              </div>
-            </figure>
-          </div>
-        </article>
-        <article class="process-horizontal-panel item is-light-text" data-process-horizontal-item style="--panel-color:#202126">
-          <div class="process-horizontal-panel__inner">
-            <div class="process-horizontal-panel__copy">
-              <span class="process-horizontal-panel__number">5</span>
-              <h3>Validación</h3>
-              <small>Control y confianza</small>
-              <p>Revisión de la coherencia, estabilidad y alineación de los resultados con la realidad del negocio.</p>
-              <div class="process-horizontal-tech" aria-label="Tecnologías de la etapa"><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/python.svg" alt="Python" loading="lazy" decoding="async"><span>Python</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/scikit-learn.svg" alt="Scikit-learn" loading="lazy" decoding="async"><span>Scikit-learn</span></span><span class="process-horizontal-tech-chip process-horizontal-tech-chip--matplotlib"><span class="process-horizontal-tech-icon process-horizontal-tech-icon--matplotlib" aria-hidden="true"></span><span>Matplotlib</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/plotly.svg" alt="Plotly" loading="lazy" decoding="async"><span>Plotly</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons-light/spss-modeler.svg" alt="SPSS Modeler" loading="lazy" decoding="async"><span>SPSS Modeler</span></span></div>
-            </div>
-            <figure class="process-horizontal-panel__media process-card-swiper" aria-label="Visuales animados de la etapa 5: Validación">
-              <div class="card-groups">
-                <div class="card-group" data-index="0" data-status="active">
-                  <div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-05-card-01.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-05-card-02.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-05-card-03.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-05-card-04.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-05-card-05.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-05-card-06.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-05-card-07.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-05-card-08.jpg" alt="" loading="lazy" decoding="async"></div>
-                </div>
-              </div>
-            </figure>
-          </div>
-        </article>
-        <article class="process-horizontal-panel item is-dark-text" data-process-horizontal-item style="--panel-color:#facc15">
-          <div class="process-horizontal-panel__inner">
-            <div class="process-horizontal-panel__copy">
-              <span class="process-horizontal-panel__number">6</span>
-              <h3>Entrega</h3>
-              <small>Publicación, automatización y evolución</small>
-              <p>Documentación del trabajo final, automatización de procesos recurrentes y consideración del feedback para mejoras futuras.</p>
-              <div class="process-horizontal-tech" aria-label="Tecnologías de la etapa"><span class="process-horizontal-tech-chip"><img src="images/patrones/canales-icons-dark/github.svg" alt="GitHub" loading="lazy" decoding="async"><span>GitHub</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/power-bi.svg" alt="Power BI" loading="lazy" decoding="async"><span>Power BI</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/qlik-cloud.svg" alt="Qlik Cloud" loading="lazy" decoding="async"><span>Qlik Cloud</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/looker-studio.svg" alt="Looker Studio" loading="lazy" decoding="async"><span>Looker Studio</span></span><span class="process-horizontal-tech-chip"><img src="images/patrones/tech-icons/plotly.svg" alt="Plotly" loading="lazy" decoding="async"><span>Plotly</span></span></div>
-            </div>
-            <figure class="process-horizontal-panel__media process-card-swiper" aria-label="Visuales animados de la etapa 6: Entrega">
-              <div class="card-groups">
-                <div class="card-group" data-index="0" data-status="active">
-                  <div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-06-card-01.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-06-card-02.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-06-card-03.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-06-card-04.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-06-card-05.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-06-card-06.jpg" alt="" loading="lazy" decoding="async"></div><div class="little-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-06-card-07.jpg" alt="" loading="lazy" decoding="async"></div><div class="big-card card" aria-hidden="true"><img src="images/patrones/process-horizontal/card-stack/stage-06-card-08.jpg" alt="" loading="lazy" decoding="async"></div>
-                </div>
-              </div>
-            </figure>
-          </div>
-        </article>
-      </div>
-    </section>
-
+<!-- METHODOLOGY -->
+<section class="process-horizontal-edge-section" data-horizontal-process-section="" id="methodology">
+<div class="process-horizontal-static-head"><h2>Ciclo de vida del dato</h2></div>
+<div aria-label="Progreso de etapas" class="process-horizontal-guide">
+<span class="process-horizontal-guide__line"></span>
+<span class="process-horizontal-guide__progress"></span>
+<button aria-label="Ir a etapa 1" class="process-horizontal-guide__bullet is-active" data-process-guide="0" type="button"></button>
+<button aria-label="Ir a etapa 2" class="process-horizontal-guide__bullet" data-process-guide="1" type="button"></button>
+<button aria-label="Ir a etapa 3" class="process-horizontal-guide__bullet" data-process-guide="2" type="button"></button>
+<button aria-label="Ir a etapa 4" class="process-horizontal-guide__bullet" data-process-guide="3" type="button"></button>
+<button aria-label="Ir a etapa 5" class="process-horizontal-guide__bullet" data-process-guide="4" type="button"></button>
+<button aria-label="Ir a etapa 6" class="process-horizontal-guide__bullet" data-process-guide="5" type="button"></button>
+</div>
+<div class="process-horizontal-track wrapper">
+<article class="process-horizontal-panel item is-dark-text" data-process-horizontal-item="" style="--panel-color:#ffc200">
+<div class="process-horizontal-panel__inner">
+<div class="process-horizontal-panel__copy">
+<span class="process-horizontal-panel__number">1</span>
+<h3>Descubrimiento</h3>
+<small>Contexto y objetivo</small>
+<p>Entendimiento del problema, la decisión a mejorar, los usuarios involucrados y el resultado esperado.</p>
+<div aria-label="Tecnologías de la etapa" class="process-horizontal-tech"><span class="process-horizontal-tech-chip"><img alt="Power BI" decoding="async" loading="lazy" src="images/patrones/tech-icons/power-bi.svg"/><span>Power BI</span></span><span class="process-horizontal-tech-chip"><img alt="Qlik Cloud" decoding="async" loading="lazy" src="images/patrones/tech-icons/qlik-cloud.svg"/><span>Qlik Cloud</span></span><span class="process-horizontal-tech-chip"><img alt="Looker Studio" decoding="async" loading="lazy" src="images/patrones/tech-icons/looker-studio.svg"/><span>Looker Studio</span></span><span class="process-horizontal-tech-chip"><img alt="SQL Server" decoding="async" loading="lazy" src="images/patrones/tech-icons/sql-server.svg"/><span>SQL Server</span></span></div>
+</div>
+<figure aria-label="Visuales animados de la etapa 1: Descubrimiento" class="process-horizontal-panel__media process-card-swiper">
+<div class="card-groups">
+<div class="card-group" data-index="0" data-status="active">
+<div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-01-card-01.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-01-card-02.jpg"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-01-card-03.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-01-card-04.jpg"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-01-card-05.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-01-card-06.jpg"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-01-card-07.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-01-card-08.jpg"/></div>
+</div>
+</div>
+</figure>
+</div>
+</article>
+<article class="process-horizontal-panel item is-light-text" data-process-horizontal-item="" style="--panel-color:#0d0f0d">
+<div class="process-horizontal-panel__inner">
+<div class="process-horizontal-panel__copy">
+<span class="process-horizontal-panel__number">2</span>
+<h3>Fuentes</h3>
+<small>Datos y diagnóstico</small>
+<p>Identificación de las fuentes disponibles, su origen, actualización, confiabilidad y principales limitaciones.</p>
+<div aria-label="Tecnologías de la etapa" class="process-horizontal-tech"><span class="process-horizontal-tech-chip"><img alt="SQL Server" decoding="async" loading="lazy" src="images/patrones/tech-icons-light/sql-server.svg"/><span>SQL Server</span></span><span class="process-horizontal-tech-chip"><img alt="Python" decoding="async" loading="lazy" src="images/patrones/tech-icons-light/python.svg"/><span>Python</span></span><span class="process-horizontal-tech-chip"><img alt="Pandas" decoding="async" loading="lazy" src="images/patrones/tech-icons-light/pandas.svg"/><span>Pandas</span></span><span class="process-horizontal-tech-chip"><img alt="NumPy" decoding="async" loading="lazy" src="images/patrones/tech-icons-light/numpy.svg"/><span>NumPy</span></span><span class="process-horizontal-tech-chip"><img alt="dbt" decoding="async" loading="lazy" src="images/patrones/tech-icons-light/dbt.svg"/><span>dbt</span></span></div>
+</div>
+<figure aria-label="Visuales animados de la etapa 2: Fuentes" class="process-horizontal-panel__media process-card-swiper">
+<div class="card-groups">
+<div class="card-group" data-index="0" data-status="active">
+<div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-02-card-01.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-02-card-02.jpg"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-02-card-03.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-02-card-04.jpg"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-02-card-05.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-02-card-06.jpg"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-02-card-07.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-02-card-08.jpg"/></div>
+</div>
+</div>
+</figure>
+</div>
+</article>
+<article class="process-horizontal-panel item is-dark-text" data-process-horizontal-item="" style="--panel-color:#f5f0e8">
+<div class="process-horizontal-panel__inner">
+<div class="process-horizontal-panel__copy">
+<span class="process-horizontal-panel__number">3</span>
+<h3>Preparación</h3>
+<small>Base analítica</small>
+<p>Organización, limpieza y combinación de datos para construir una base consistente y usable.</p>
+<div aria-label="Tecnologías de la etapa" class="process-horizontal-tech"><span class="process-horizontal-tech-chip"><img alt="Python" decoding="async" loading="lazy" src="images/patrones/tech-icons/python.svg"/><span>Python</span></span><span class="process-horizontal-tech-chip"><img alt="Pandas" decoding="async" loading="lazy" src="images/patrones/tech-icons/pandas.svg"/><span>Pandas</span></span><span class="process-horizontal-tech-chip"><img alt="NumPy" decoding="async" loading="lazy" src="images/patrones/tech-icons/numpy.svg"/><span>NumPy</span></span><span class="process-horizontal-tech-chip"><img alt="dbt" decoding="async" loading="lazy" src="images/patrones/tech-icons/dbt.svg"/><span>dbt</span></span><span class="process-horizontal-tech-chip"><img alt="SQL Server" decoding="async" loading="lazy" src="images/patrones/tech-icons/sql-server.svg"/><span>SQL Server</span></span></div>
+</div>
+<figure aria-label="Visuales animados de la etapa 3: Preparación" class="process-horizontal-panel__media process-card-swiper">
+<div class="card-groups">
+<div class="card-group" data-index="0" data-status="active">
+<div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-03-card-01.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-03-card-02.jpg"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-03-card-03.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-03-card-04.jpg"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-03-card-05.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-03-card-06.jpg"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-03-card-07.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-03-card-08.jpg"/></div>
+</div>
+</div>
+</figure>
+</div>
+</article>
+<article class="process-horizontal-panel item is-light-text" data-process-horizontal-item="" style="--panel-color:#1f2937">
+<div class="process-horizontal-panel__inner">
+<div class="process-horizontal-panel__copy">
+<span class="process-horizontal-panel__number">4</span>
+<h3>Construcción</h3>
+<small>Solución</small>
+<p>Desarrollo del análisis, modelo o dashboard necesario según el objetivo definido.</p>
+<div aria-label="Tecnologías de la etapa" class="process-horizontal-tech"><span class="process-horizontal-tech-chip"><img alt="Scikit-learn" decoding="async" loading="lazy" src="images/patrones/tech-icons-light/scikit-learn.svg"/><span>Scikit-learn</span></span><span class="process-horizontal-tech-chip process-horizontal-tech-chip--matplotlib"><span aria-hidden="true" class="process-horizontal-tech-icon process-horizontal-tech-icon--matplotlib"></span><span>Matplotlib</span></span><span class="process-horizontal-tech-chip"><img alt="Plotly" decoding="async" loading="lazy" src="images/patrones/tech-icons-light/plotly.svg"/><span>Plotly</span></span><span class="process-horizontal-tech-chip"><img alt="Power BI" decoding="async" loading="lazy" src="images/patrones/tech-icons-light/power-bi.svg"/><span>Power BI</span></span><span class="process-horizontal-tech-chip"><img alt="Qlik Cloud" decoding="async" loading="lazy" src="images/patrones/tech-icons-light/qlik-cloud.svg"/><span>Qlik Cloud</span></span></div>
+</div>
+<figure aria-label="Visuales animados de la etapa 4: Construcción" class="process-horizontal-panel__media process-card-swiper">
+<div class="card-groups">
+<div class="card-group" data-index="0" data-status="active">
+<div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-04-card-01.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-04-card-02.jpg"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-04-card-03.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-04-card-04.jpg"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-04-card-05.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-04-card-06.jpg"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-04-card-07.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-04-card-08.jpg"/></div>
+</div>
+</div>
+</figure>
+</div>
+</article>
+<article class="process-horizontal-panel item is-light-text" data-process-horizontal-item="" style="--panel-color:#202126">
+<div class="process-horizontal-panel__inner">
+<div class="process-horizontal-panel__copy">
+<span class="process-horizontal-panel__number">5</span>
+<h3>Validación</h3>
+<small>Control y confianza</small>
+<p>Revisión de la coherencia, estabilidad y alineación de los resultados con la realidad del negocio.</p>
+<div aria-label="Tecnologías de la etapa" class="process-horizontal-tech"><span class="process-horizontal-tech-chip"><img alt="Python" decoding="async" loading="lazy" src="images/patrones/tech-icons-light/python.svg"/><span>Python</span></span><span class="process-horizontal-tech-chip"><img alt="Scikit-learn" decoding="async" loading="lazy" src="images/patrones/tech-icons-light/scikit-learn.svg"/><span>Scikit-learn</span></span><span class="process-horizontal-tech-chip process-horizontal-tech-chip--matplotlib"><span aria-hidden="true" class="process-horizontal-tech-icon process-horizontal-tech-icon--matplotlib"></span><span>Matplotlib</span></span><span class="process-horizontal-tech-chip"><img alt="Plotly" decoding="async" loading="lazy" src="images/patrones/tech-icons-light/plotly.svg"/><span>Plotly</span></span><span class="process-horizontal-tech-chip"><img alt="SPSS Modeler" decoding="async" loading="lazy" src="images/patrones/tech-icons-light/spss-modeler.svg"/><span>SPSS Modeler</span></span></div>
+</div>
+<figure aria-label="Visuales animados de la etapa 5: Validación" class="process-horizontal-panel__media process-card-swiper">
+<div class="card-groups">
+<div class="card-group" data-index="0" data-status="active">
+<div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-05-card-01.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-05-card-02.jpg"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-05-card-03.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-05-card-04.jpg"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-05-card-05.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-05-card-06.jpg"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-05-card-07.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-05-card-08.jpg"/></div>
+</div>
+</div>
+</figure>
+</div>
+</article>
+<article class="process-horizontal-panel item is-dark-text" data-process-horizontal-item="" style="--panel-color:#facc15">
+<div class="process-horizontal-panel__inner">
+<div class="process-horizontal-panel__copy">
+<span class="process-horizontal-panel__number">6</span>
+<h3>Entrega</h3>
+<small>Publicación, automatización y evolución</small>
+<p>Documentación del trabajo final, automatización de procesos recurrentes y consideración del feedback para mejoras futuras.</p>
+<div aria-label="Tecnologías de la etapa" class="process-horizontal-tech"><span class="process-horizontal-tech-chip"><img alt="GitHub" decoding="async" loading="lazy" src="images/patrones/canales-icons-dark/github.svg"/><span>GitHub</span></span><span class="process-horizontal-tech-chip"><img alt="Power BI" decoding="async" loading="lazy" src="images/patrones/tech-icons/power-bi.svg"/><span>Power BI</span></span><span class="process-horizontal-tech-chip"><img alt="Qlik Cloud" decoding="async" loading="lazy" src="images/patrones/tech-icons/qlik-cloud.svg"/><span>Qlik Cloud</span></span><span class="process-horizontal-tech-chip"><img alt="Looker Studio" decoding="async" loading="lazy" src="images/patrones/tech-icons/looker-studio.svg"/><span>Looker Studio</span></span><span class="process-horizontal-tech-chip"><img alt="Plotly" decoding="async" loading="lazy" src="images/patrones/tech-icons/plotly.svg"/><span>Plotly</span></span></div>
+</div>
+<figure aria-label="Visuales animados de la etapa 6: Entrega" class="process-horizontal-panel__media process-card-swiper">
+<div class="card-groups">
+<div class="card-group" data-index="0" data-status="active">
+<div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-06-card-01.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-06-card-02.jpg"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-06-card-03.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-06-card-04.jpg"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-06-card-05.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-06-card-06.jpg"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-06-card-07.jpg"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" loading="lazy" src="images/patrones/process-horizontal/card-stack/stage-06-card-08.jpg"/></div>
+</div>
+</div>
+</figure>
+</div>
+</article>
+</div>
+</section>
 <!-- PROJECTS -->
-    <section class="contact py-5 github-projects-section section-glow glow-repo" id="projects">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-10 text-center mx-auto col-12">
-            <small class="section-kicker">Repositorio Patrones Lab</small>
-            <h2 class="mb-3 projects-title-display">Proyectos</h2>
-            <p class="projects-intro">
+<section class="contact py-5 github-projects-section section-glow glow-repo" id="projects">
+<div class="container">
+<div class="row">
+<div class="col-lg-10 text-center mx-auto col-12">
+<small class="section-kicker">Repositorio Patrones Lab</small>
+<h2 class="mb-3 projects-title-display">Proyectos</h2>
+<p class="projects-intro">
               Selección de proyectos aplicados con datos públicos, metodología y resultados visuales.
               Usá los filtros para navegar por disciplina, herramienta o tipo de entrega.
             </p>
-
-            <div class="repo-filter-toolbar repo-filter-toolbar-categories repo-filter-toolbar-hover-groups" aria-label="Filtrar proyectos">
-              <button type="button" class="repo-filter-btn active" data-repo-filter="all"><span class="filter-icon">◎</span>Todos</button>
-              <div class="repo-filter-group">
-                <button type="button" class="repo-filter-group-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+<div aria-label="Filtrar proyectos" class="repo-filter-toolbar repo-filter-toolbar-categories repo-filter-toolbar-hover-groups">
+<button class="repo-filter-btn active" data-repo-filter="all" type="button"><span class="filter-icon">◎</span>Todos</button>
+<div class="repo-filter-group">
+<button aria-expanded="false" aria-haspopup="true" class="repo-filter-group-trigger" type="button">
                   Disciplina
                 </button>
-                <div class="repo-filter-category-panel" role="group" aria-label="Disciplina">
-                  <button type="button" class="repo-filter-btn" data-repo-filter="bi"><span class="filter-icon">▦</span>BI</button>
-                  <button type="button" class="repo-filter-btn" data-repo-filter="data-analysis"><span class="filter-icon">▥</span>Data Analysis</button>
-                  <button type="button" class="repo-filter-btn" data-repo-filter="data-science"><span class="filter-icon">⚗</span>Data Science</button>
-                  <button type="button" class="repo-filter-btn" data-repo-filter="machine-learning"><span class="filter-icon">✦</span>Machine Learning</button>
-                  <button type="button" class="repo-filter-btn" data-repo-filter="data-storytelling"><span class="filter-icon">✎</span>Data Storytelling</button>
-                </div>
-              </div>
-              <div class="repo-filter-group">
-                <button type="button" class="repo-filter-group-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+<div aria-label="Disciplina" class="repo-filter-category-panel" role="group">
+<button class="repo-filter-btn" data-repo-filter="bi" type="button"><span class="filter-icon">▦</span>BI</button>
+<button class="repo-filter-btn" data-repo-filter="data-analysis" type="button"><span class="filter-icon">▥</span>Data Analysis</button>
+<button class="repo-filter-btn" data-repo-filter="data-science" type="button"><span class="filter-icon">⚗</span>Data Science</button>
+<button class="repo-filter-btn" data-repo-filter="machine-learning" type="button"><span class="filter-icon">✦</span>Machine Learning</button>
+<button class="repo-filter-btn" data-repo-filter="data-storytelling" type="button"><span class="filter-icon">✎</span>Data Storytelling</button>
+</div>
+</div>
+<div class="repo-filter-group">
+<button aria-expanded="false" aria-haspopup="true" class="repo-filter-group-trigger" type="button">
                   Herramientas
                 </button>
-                <div class="repo-filter-category-panel" role="group" aria-label="Herramientas">
-                  <button type="button" class="repo-filter-btn" data-repo-filter="python"><span class="filter-icon">◇</span>Python</button>
-                  <button type="button" class="repo-filter-btn" data-repo-filter="spss"><span class="filter-icon">◧</span>SPSS</button>
-                  <button type="button" class="repo-filter-btn" data-repo-filter="looker-studio"><span class="filter-icon">◉</span>Looker Studio</button>
-                  <button type="button" class="repo-filter-btn" data-repo-filter="dashboard"><span class="filter-icon">▣</span>Dashboard</button>
-                </div>
-              </div>
-              <div class="repo-filter-group">
-                <button type="button" class="repo-filter-group-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+<div aria-label="Herramientas" class="repo-filter-category-panel" role="group">
+<button class="repo-filter-btn" data-repo-filter="python" type="button"><span class="filter-icon">◇</span>Python</button>
+<button class="repo-filter-btn" data-repo-filter="spss" type="button"><span class="filter-icon">◧</span>SPSS</button>
+<button class="repo-filter-btn" data-repo-filter="looker-studio" type="button"><span class="filter-icon">◉</span>Looker Studio</button>
+<button class="repo-filter-btn" data-repo-filter="dashboard" type="button"><span class="filter-icon">▣</span>Dashboard</button>
+</div>
+</div>
+<div class="repo-filter-group">
+<button aria-expanded="false" aria-haspopup="true" class="repo-filter-group-trigger" type="button">
                   Modelo
                 </button>
-                <div class="repo-filter-category-panel" role="group" aria-label="Modelo">
-                  <button type="button" class="repo-filter-btn" data-repo-filter="modelo-supervisado"><span class="filter-icon">✓</span>Modelo Supervisado</button>
-                  <button type="button" class="repo-filter-btn" data-repo-filter="modelo-no-supervisado"><span class="filter-icon">◎</span>Modelo No Supervisado</button>
-                  <button type="button" class="repo-filter-btn" data-repo-filter="clasificacion"><span class="filter-icon">≡</span>Clasificación</button>
-                  <button type="button" class="repo-filter-btn" data-repo-filter="clustering"><span class="filter-icon">✣</span>Clustering</button>
-                  <button type="button" class="repo-filter-btn" data-repo-filter="knn"><span class="filter-icon">↗</span>KNN</button>
-                  <button type="button" class="repo-filter-btn" data-repo-filter="k-means"><span class="filter-icon">⌖</span>K-means</button>
-                  <button type="button" class="repo-filter-btn" data-repo-filter="regresion-logistica"><span class="filter-icon">⌁</span>Regresión Logística</button>
-                  <button type="button" class="repo-filter-btn" data-repo-filter="dbscan"><span class="filter-icon">⊙</span>DBSCAN</button>
-                </div>
-              </div>
-              <div class="repo-filter-group">
-                <button type="button" class="repo-filter-group-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+<div aria-label="Modelo" class="repo-filter-category-panel" role="group">
+<button class="repo-filter-btn" data-repo-filter="modelo-supervisado" type="button"><span class="filter-icon">✓</span>Modelo Supervisado</button>
+<button class="repo-filter-btn" data-repo-filter="modelo-no-supervisado" type="button"><span class="filter-icon">◎</span>Modelo No Supervisado</button>
+<button class="repo-filter-btn" data-repo-filter="clasificacion" type="button"><span class="filter-icon">≡</span>Clasificación</button>
+<button class="repo-filter-btn" data-repo-filter="clustering" type="button"><span class="filter-icon">✣</span>Clustering</button>
+<button class="repo-filter-btn" data-repo-filter="knn" type="button"><span class="filter-icon">↗</span>KNN</button>
+<button class="repo-filter-btn" data-repo-filter="k-means" type="button"><span class="filter-icon">⌖</span>K-means</button>
+<button class="repo-filter-btn" data-repo-filter="regresion-logistica" type="button"><span class="filter-icon">⌁</span>Regresión Logística</button>
+<button class="repo-filter-btn" data-repo-filter="dbscan" type="button"><span class="filter-icon">⊙</span>DBSCAN</button>
+</div>
+</div>
+<div class="repo-filter-group">
+<button aria-expanded="false" aria-haspopup="true" class="repo-filter-group-trigger" type="button">
                   Tema
                 </button>
-                <div class="repo-filter-category-panel" role="group" aria-label="Tema">
-                  <button type="button" class="repo-filter-btn" data-repo-filter="geoespacial"><span class="filter-icon">⌖</span>Geoespacial</button>
-                  <button type="button" class="repo-filter-btn" data-repo-filter="airbnb"><span class="filter-icon">⌂</span>Airbnb</button>
-                  <button type="button" class="repo-filter-btn" data-repo-filter="taxi"><span class="filter-icon">◆</span>Taxi</button>
-                  <button type="button" class="repo-filter-btn" data-repo-filter="futbol"><span class="filter-icon">●</span>Fútbol</button>
-                  <button type="button" class="repo-filter-btn" data-repo-filter="aviacion"><span class="filter-icon">✈</span>Aviación</button>
-                  <button type="button" class="repo-filter-btn" data-repo-filter="fraude"><span class="filter-icon">!</span>Fraude</button>
-                </div>
-              </div>
-            </div>
-
-        <div class="github-project-grid">
-          <article class="github-project-card" data-tags="python data-storytelling aviacion data-analysis bi">
-            <a href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-01_trafico-aereo-aena" class="project-image-link">
-              <img src="https://github.com/user-attachments/assets/632158bd-ec44-454c-b797-4b6e67d47672" alt="Proyecto Vuelos en Islas Baleares">
-            </a>
-            <div class="github-project-body">
-              <h3>Análisis de Vuelos en las Islas Baleares</h3>
-              <p class="project-status published">✅ publicado</p>
-              <p>Análisis de tráfico aéreo en España con datos públicos de AENA, con foco en volúmenes, patrones por aeropuerto y diferencias entre categorías.</p>
-              <div class="mini-tags"><span>Python</span><span>Data Storytelling</span><span>Aviación</span><span>Data Analysis</span><span>BI</span></div>
-              <div class="project-links-dual project-links-editorial">
-                <a class="project-link has-destination-icon" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-01_trafico-aereo-aena" target="_blank" rel="noopener">Entrar al proyecto<span class="btn-destination-icon btn-destination-icon-github" aria-hidden="true"><img src="images/patrones/github-button-icon.png" alt=""></span></a>
-                <a class="project-link secondary-project-link has-destination-icon" href="https://www.linkedin.com/pulse/turismo-en-las-islas-baleares-visto-desde-el-aire-qu%C3%A9-malcolm-dl9be" target="_blank" rel="noopener">Leer en LinkedIn<span class="btn-destination-icon btn-destination-icon-linkedin" aria-hidden="true">in</span></a>
-              </div>
-            </div>
-          </article>
-
-          <article class="github-project-card featured" data-tags="python data-storytelling airbnb data-analysis bi geoespacial">
-            <a href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-02_airbnb-london" class="project-image-link">
-              <img src="https://github.com/user-attachments/assets/1e366e5e-6271-4135-9203-6c4862f7a953" alt="Proyecto Airbnb en London">
-            </a>
-            <div class="github-project-body">
-              <h3>Análisis del Alojamiento Airbnb en Londres</h3>
-              <p class="project-status published">✅ publicado</p>
-              <p>Análisis exploratorio del alojamiento Airbnb en Londres con foco en precio, categorías, reseñas y patrones territoriales.</p>
-              <div class="mini-tags"><span>Python</span><span>Data Storytelling</span><span>Airbnb</span><span>Data Analysis</span><span>BI</span><span>Geoespacial</span></div>
-              <div class="project-links-dual project-links-editorial">
-                <a class="project-link has-destination-icon" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-02_airbnb-london" target="_blank" rel="noopener">Entrar al proyecto<span class="btn-destination-icon btn-destination-icon-github" aria-hidden="true"><img src="images/patrones/github-button-icon.png" alt=""></span></a>
-                <a class="project-link secondary-project-link has-destination-icon" href="https://www.linkedin.com/pulse/airbnb-en-londres-an%C3%A1lisis-del-alojamiento-precios-y-malcolm-ycoae" target="_blank" rel="noopener">Leer en LinkedIn<span class="btn-destination-icon btn-destination-icon-linkedin" aria-hidden="true">in</span></a>
-              </div>
-            </div>
-          </article>
-
-          <article class="github-project-card" data-tags="python data-storytelling taxi data-analysis bi geoespacial">
-            <a href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-03_taxi-trip-chicago" class="project-image-link">
-              <img src="https://github.com/user-attachments/assets/b8b13d5e-4b4a-4fe4-9f9d-c164ea37ccb9" alt="Proyecto Taxi Trip en Chicago">
-            </a>
-            <div class="github-project-body">
-              <h3>Análisis de Viajes en Taxi en Chicago</h3>
-              <p class="project-status published">✅ publicado</p>
-              <p>Análisis de viajes de taxi en Chicago para estudiar duración, demanda, distribución geoespacial y patrones operativos.</p>
-              <div class="mini-tags"><span>Python</span><span>Data Storytelling</span><span>Taxi</span><span>Data Analysis</span><span>BI</span><span>Geoespacial</span></div>
-              <div class="project-links-dual project-links-editorial">
-                <a class="project-link has-destination-icon" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-03_taxi-trip-chicago" target="_blank" rel="noopener">Entrar al proyecto<span class="btn-destination-icon btn-destination-icon-github" aria-hidden="true"><img src="images/patrones/github-button-icon.png" alt=""></span></a>
-                <a class="project-link secondary-project-link has-destination-icon" href="https://www.linkedin.com/pulse/taxi-trips-chicago-an%C3%A1lisis-sobre-la-red-urbana-de-malcolm-zo6we" target="_blank" rel="noopener">Leer en LinkedIn<span class="btn-destination-icon btn-destination-icon-linkedin" aria-hidden="true">in</span></a>
-              </div>
-            </div>
-          </article>
-
-          <article class="github-project-card" data-tags="python data-storytelling airbnb data-analysis bi geoespacial data-science machine-learning knn modelo-supervisado">
-            <a href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-02_airbnb-london" class="project-image-link">
-              <img src="https://github.com/user-attachments/assets/b5a907e0-923f-4054-8824-d88122284af1" alt="Modelo ML Airbnb London">
-            </a>
-            <div class="github-project-body">
-              <h3>Modelo ML · Airbnb London</h3>
-              <p class="project-status published">✅ publicado</p>
-              <p>Clasificación supervisada de anuncios relativamente caros o baratos dentro de cada tipo de alojamiento.</p>
-              <div class="mini-tags"><span>Python</span><span>Data Storytelling</span><span>Airbnb</span><span>Data Analysis</span><span>BI</span><span>Geoespacial</span><span>Data Science</span><span>Machine Learning</span><span>KNN</span><span>Modelo Supervisado</span></div>
-              <div class="project-links-dual project-links-editorial">
-                <a class="project-link has-destination-icon" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-02_airbnb-london" target="_blank" rel="noopener">Entrar al proyecto<span class="btn-destination-icon btn-destination-icon-github" aria-hidden="true"><img src="images/patrones/github-button-icon.png" alt=""></span></a>
-                <a class="project-link secondary-project-link has-destination-icon" href="https://www.linkedin.com/pulse/airbnb-en-londres-an%C3%A1lisis-del-alojamiento-precios-y-malcolm-ycoae" target="_blank" rel="noopener">Leer en LinkedIn<span class="btn-destination-icon btn-destination-icon-linkedin" aria-hidden="true">in</span></a>
-              </div>
-            </div>
-          </article>
-
-          <article class="github-project-card featured" data-tags="looker-studio taxi data-analysis bi dashboard">
-            <a href="https://datastudio.google.com/reporting/b0b32df2-f110-4bac-8dfb-3be359d4888d" class="project-image-link">
-              <img src="https://github.com/user-attachments/assets/95f703e1-cfae-4db7-9140-aff44e6b9f74" alt="Dashboard Looker Taxi Trips Chicago">
-            </a>
-            <div class="github-project-body">
-              <h3>Dashboard Looker · Taxi Trips Chicago</h3>
-              <p class="project-status published">✅ publicado</p>
-              <p>Dashboard interactivo en Looker Studio para explorar viajes de taxi en Chicago, indicadores operativos, patrones horarios y recorridos pickup-dropoff.</p>
-              <div class="mini-tags"><span>Looker Studio</span><span>Taxi</span><span>Data Analysis</span><span>BI</span><span>Dashboard</span></div>
-              <div class="project-links-dual project-links-dashboard">
-                <a class="project-link has-destination-icon" href="https://datastudio.google.com/reporting/b0b32df2-f110-4bac-8dfb-3be359d4888d" target="_blank" rel="noopener">Ver dashboard<span class="btn-destination-icon btn-destination-icon-dashboard" aria-hidden="true"><img src="images/patrones/looker-button-icon.png" alt=""></span></a>
-                <a class="project-link secondary-project-link has-destination-icon" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-03_taxi-trip-chicago" target="_blank" rel="noopener">Ver documentación<span class="btn-destination-icon btn-destination-icon-github" aria-hidden="true"><img src="images/patrones/github-button-icon.png" alt=""></span></a>
-              </div>
-            </div>
-          </article>
-
-          <article class="github-project-card muted-card" data-tags="python data-storytelling futbol data-analysis bi data-science machine-learning regresion-logistica modelo-supervisado">
-            <a href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-04_futbol-statsbomb" class="project-image-link">
-              <img src="https://github.com/user-attachments/assets/818b147f-67a5-47f0-9f24-d0692e8c8eae" alt="Contenido en preparación">
-            </a>
-            <div class="github-project-body">
-              <h3>Modelo ML · Goles Esperados (xG)</h3>
-              <p class="project-status development">⚠️ en desarrollo</p>
-              <p>Próximamente.</p>
-              <div class="mini-tags"><span>Python</span><span>Data Storytelling</span><span>Fútbol</span><span>Data Analysis</span><span>BI</span><span>Data Science</span><span>Machine Learning</span><span>Regresión Logística</span><span>Modelo Supervisado</span></div>
-              <a class="project-link has-destination-icon" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-04_futbol-statsbomb" target="_blank" rel="noopener">Entrar al proyecto<span class="btn-destination-icon btn-destination-icon-github" aria-hidden="true"><img src="images/patrones/github-button-icon.png" alt=""></span></a>
-            </div>
-          </article>
-
-          <article class="github-project-card" data-tags="python data-storytelling futbol data-analysis bi">
-            <a href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-04_futbol-statsbomb" class="project-image-link">
-              <img src="https://github.com/user-attachments/assets/627d08a0-9609-41bc-be8a-c270051e6570" alt="Modelo Probabilístico xT">
-            </a>
-            <div class="github-project-body">
-              <h3>Probabilidades en el Fútbol · Peligro Esperado (xT)</h3>
-              <p class="project-status development">⚠️ en desarrollo</p>
-              <p>Modelo Probabilístico: Peligro Esperado xT. Próximamente.</p>
-              <div class="mini-tags"><span>Python</span><span>Data Storytelling</span><span>Fútbol</span><span>Data Analysis</span><span>BI</span></div>
-              <a class="project-link has-destination-icon" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-04_futbol-statsbomb" target="_blank" rel="noopener">Entrar al proyecto<span class="btn-destination-icon btn-destination-icon-github" aria-hidden="true"><img src="images/patrones/github-button-icon.png" alt=""></span></a>
-            </div>
-          </article>
-
-          <article class="github-project-card" data-tags="machine-learning python clustering spss fraude k-means modelo-no-supervisado">
-            <a href="https://github.com/malcolmdpc/MachineLearningConPython" class="project-image-link" target="_blank" rel="noopener">
-              <img src="https://github.com/user-attachments/assets/df046322-8737-48a1-84c9-969724ec0fca" alt="Modelo ML de detección de fraude con clustering K-means" referrerpolicy="no-referrer">
-            </a>
-            <div class="github-project-body">
-              <h3>Modelo ML · Detección de Fraude</h3>
-              <p class="project-status published">✅ publicado</p>
-              <p>Clustering no supervisado con K-means para la detección de fraudes con tarjetas de crédito.</p>
-              <div class="mini-tags">
-                <span>Machine Learning</span><span>Python</span><span>Clustering</span><span>SPSS</span><span>Fraude</span><span>K-means</span>
-              <span>Modelo No Supervisado</span></div>
-              <div class="project-links-dual">
-                <a class="project-link" href="https://github.com/malcolmdpc/MachineLearningConSPSSModeler/tree/main/Clustering%20KMEANS%20%E2%80%A2%20Segmentaci%C3%B3n%20de%20Clientes" target="_blank" rel="noopener">Ver en SPSS</a>
-                <a class="project-link secondary-project-link" href="https://github.com/malcolmdpc/MachineLearningConPython" target="_blank" rel="noopener">Ver en Python</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="github-project-card" data-tags="machine-learning python clasificacion spss fraude regresion-logistica modelo-supervisado">
-            <a href="https://github.com/malcolmdpc/MachineLearningConSPSSModeler" class="project-image-link" target="_blank" rel="noopener">
-              <img src="https://github.com/user-attachments/assets/f9ff0e2c-c8f1-4995-b46d-ac2a93e89acb" alt="Modelo ML de detección de fraude con regresión logística" referrerpolicy="no-referrer">
-            </a>
-            <div class="github-project-body">
-              <h3>Modelo ML · Detección de Fraude</h3>
-              <p class="project-status published">✅ publicado</p>
-              <p>Clasificación supervisada mediante regresión logística para la detección de fraude con tarjeta de crédito.</p>
-              <div class="mini-tags">
-                <span>Machine Learning</span><span>Python</span><span>Clasificación</span><span>SPSS</span><span>Fraude</span><span>Regresión Logística</span>
-              <span>Modelo Supervisado</span></div>
-              <div class="project-links-dual">
-                <a class="project-link" href="https://github.com/malcolmdpc/MachineLearningConSPSSModeler" target="_blank" rel="noopener">Ver en SPSS</a>
-                <a class="project-link secondary-project-link" href="https://github.com/malcolmdpc/MachineLearningConPython" target="_blank" rel="noopener">Ver en Python</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="github-project-card" data-tags="machine-learning python clustering fraude dbscan modelo-no-supervisado">
-            <a href="https://github.com/malcolmdpc/MachineLearningConPython" class="project-image-link" target="_blank" rel="noopener">
-              <img src="https://github.com/user-attachments/assets/2bdeff45-b7dc-4bbe-9091-f4520707bd71" alt="Modelo ML de detección de fraude con clustering DBSCAN" referrerpolicy="no-referrer">
-            </a>
-            <div class="github-project-body">
-              <h3>Modelo ML · Detección de Fraude</h3>
-              <p class="project-status published">✅ publicado</p>
-              <p>Clustering no supervisado con DBSCAN para identificar posibles fraudes con tarjeta de crédito.</p>
-              <div class="mini-tags">
-                <span>Machine Learning</span><span>Python</span><span>Clustering</span><span>Fraude</span><span>DBSCAN</span>
-              <span>Modelo No Supervisado</span></div>
-              <a class="project-link has-destination-icon" href="https://github.com/malcolmdpc/MachineLearningConPython/blob/master/Clustering%20DBSCAN%20%E2%80%A2%20Detecci%C3%B3n%20de%20Fraude%20con%20Tarjetas%20de%20Cr%C3%A9dito/Clustering%20DBSCAN%20%E2%80%A2%20Detecci%C3%B3n%20de%20Fraude%20con%20Tarjetas%20de%20Cr%C3%A9dito.ipynb" target="_blank" rel="noopener">Entrar al repositorio<span class="btn-destination-icon btn-destination-icon-github" aria-hidden="true"><img src="images/patrones/github-button-icon.png" alt=""></span></a>
-            </div>
-          </article>
-
-          <article class="github-project-card muted-card" data-tags="python data-storytelling futbol data-analysis bi">
-            <a href="https://github.com/malcolmdpc/patrones-lab" class="project-image-link">
-              <img src="https://github.com/user-attachments/assets/e30b2a50-8004-4a99-a5c2-c3046bad889c" referrerpolicy="no-referrer" alt="Estadísticas del Mundial de Fútbol Qatar 2022">
-            </a>
-            <div class="github-project-body">
-              <h3>Estadísticas del Mundial de Fútbol Qatar 2022</h3>
-              <p class="project-status development">⚠️ en desarrollo</p>
-              <p>Próximamente.</p>
-              <div class="mini-tags"><span>Python</span><span>Data Storytelling</span><span>Fútbol</span><span>Data Analysis</span><span>BI</span></div>
-              <a class="project-link has-destination-icon" href="https://github.com/malcolmdpc/patrones-lab">Entrar al repositorio<span class="btn-destination-icon btn-destination-icon-github" aria-hidden="true"><img src="images/patrones/github-button-icon.png" alt=""></span></a>
-            </div>
-          </article>
-
-          <article class="github-project-card muted-card" data-tags="python data-storytelling taxi data-analysis bi geoespacial">
-            <a href="https://github.com/malcolmdpc/patrones-lab" class="project-image-link">
-              <img src="https://github.com/user-attachments/assets/3691c5a8-7897-4edc-ad99-0144d72cec7e" referrerpolicy="no-referrer" alt="Análisis Geoespacial de los Viajes en Taxi">
-            </a>
-            <div class="github-project-body">
-              <h3>Análisis Geoespacial de los Viajes en Taxi</h3>
-              <p class="project-status published">✅ publicado</p>
-              <p>Próximamente.</p>
-              <div class="mini-tags"><span>Python</span><span>Data Storytelling</span><span>Taxi</span><span>Data Analysis</span><span>BI</span><span>Geoespacial</span></div>
-              <div class="project-links-dual project-links-editorial">
-                <a class="project-link has-destination-icon" href="https://github.com/malcolmdpc/patrones-lab" target="_blank" rel="noopener">Entrar al repositorio<span class="btn-destination-icon btn-destination-icon-github" aria-hidden="true"><img src="images/patrones/github-button-icon.png" alt=""></span></a>
-                <a class="project-link secondary-project-link has-destination-icon" href="https://www.linkedin.com/pulse/taxi-trips-chicago-an%C3%A1lisis-geoespacial-qu%C3%A9-muestran-malcolm-cjjae" target="_blank" rel="noopener">Leer en LinkedIn<span class="btn-destination-icon btn-destination-icon-linkedin" aria-hidden="true">in</span></a>
-              </div>
-            </div>
-          </article>
-
-        </div>
-
-        <p class="repo-empty-message" hidden>No hay proyectos para esa categoría todavía.</p>
-      </div>
-    </section>
-
-    <!-- NETWORKS -->
-    <section class="project py-5 social-section section-glow glow-social" id="networks">
-        <div class="container">
-            <div class="row">
-              <div class="col-lg-10 text-center mx-auto col-12">
-                  <small class="section-kicker">Canales de Patrones Lab</small>
-                  <h2 class="mb-3 projects-title-display">Redes y canales</h2>
-                  <p class="social-intro">
+<div aria-label="Tema" class="repo-filter-category-panel" role="group">
+<button class="repo-filter-btn" data-repo-filter="geoespacial" type="button"><span class="filter-icon">⌖</span>Geoespacial</button>
+<button class="repo-filter-btn" data-repo-filter="airbnb" type="button"><span class="filter-icon">⌂</span>Airbnb</button>
+<button class="repo-filter-btn" data-repo-filter="taxi" type="button"><span class="filter-icon">◆</span>Taxi</button>
+<button class="repo-filter-btn" data-repo-filter="futbol" type="button"><span class="filter-icon">●</span>Fútbol</button>
+<button class="repo-filter-btn" data-repo-filter="aviacion" type="button"><span class="filter-icon">✈</span>Aviación</button>
+<button class="repo-filter-btn" data-repo-filter="fraude" type="button"><span class="filter-icon">!</span>Fraude</button>
+</div>
+</div>
+</div>
+<div class="github-project-grid">
+<article class="github-project-card" data-tags="python data-storytelling aviacion data-analysis bi">
+<a class="project-image-link" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-01_trafico-aereo-aena">
+<img alt="Proyecto Vuelos en Islas Baleares" src="https://github.com/user-attachments/assets/632158bd-ec44-454c-b797-4b6e67d47672"/>
+</a>
+<div class="github-project-body">
+<h3>Análisis de Vuelos en las Islas Baleares</h3>
+<p class="project-status published">✅ publicado</p>
+<p>Análisis de tráfico aéreo en España con datos públicos de AENA, con foco en volúmenes, patrones por aeropuerto y diferencias entre categorías.</p>
+<div class="mini-tags"><span>Python</span><span>Data Storytelling</span><span>Aviación</span><span>Data Analysis</span><span>BI</span></div>
+<div class="project-links-dual project-links-editorial">
+<a class="project-link has-destination-icon" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-01_trafico-aereo-aena" rel="noopener" target="_blank">Entrar al proyecto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-github"><img alt="" src="images/patrones/github-button-icon.png"/></span></a>
+<a class="project-link secondary-project-link has-destination-icon" href="https://www.linkedin.com/pulse/turismo-en-las-islas-baleares-visto-desde-el-aire-qu%C3%A9-malcolm-dl9be" rel="noopener" target="_blank">Leer en LinkedIn<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-linkedin">in</span></a>
+</div>
+</div>
+</article>
+<article class="github-project-card featured" data-tags="python data-storytelling airbnb data-analysis bi geoespacial">
+<a class="project-image-link" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-02_airbnb-london">
+<img alt="Proyecto Airbnb en London" src="https://github.com/user-attachments/assets/1e366e5e-6271-4135-9203-6c4862f7a953"/>
+</a>
+<div class="github-project-body">
+<h3>Análisis del Alojamiento Airbnb en Londres</h3>
+<p class="project-status published">✅ publicado</p>
+<p>Análisis exploratorio del alojamiento Airbnb en Londres con foco en precio, categorías, reseñas y patrones territoriales.</p>
+<div class="mini-tags"><span>Python</span><span>Data Storytelling</span><span>Airbnb</span><span>Data Analysis</span><span>BI</span><span>Geoespacial</span></div>
+<div class="project-links-dual project-links-editorial">
+<a class="project-link has-destination-icon" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-02_airbnb-london" rel="noopener" target="_blank">Entrar al proyecto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-github"><img alt="" src="images/patrones/github-button-icon.png"/></span></a>
+<a class="project-link secondary-project-link has-destination-icon" href="https://www.linkedin.com/pulse/airbnb-en-londres-an%C3%A1lisis-del-alojamiento-precios-y-malcolm-ycoae" rel="noopener" target="_blank">Leer en LinkedIn<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-linkedin">in</span></a>
+</div>
+</div>
+</article>
+<article class="github-project-card" data-tags="python data-storytelling taxi data-analysis bi geoespacial">
+<a class="project-image-link" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-03_taxi-trip-chicago">
+<img alt="Proyecto Taxi Trip en Chicago" src="https://github.com/user-attachments/assets/b8b13d5e-4b4a-4fe4-9f9d-c164ea37ccb9"/>
+</a>
+<div class="github-project-body">
+<h3>Análisis de Viajes en Taxi en Chicago</h3>
+<p class="project-status published">✅ publicado</p>
+<p>Análisis de viajes de taxi en Chicago para estudiar duración, demanda, distribución geoespacial y patrones operativos.</p>
+<div class="mini-tags"><span>Python</span><span>Data Storytelling</span><span>Taxi</span><span>Data Analysis</span><span>BI</span><span>Geoespacial</span></div>
+<div class="project-links-dual project-links-editorial">
+<a class="project-link has-destination-icon" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-03_taxi-trip-chicago" rel="noopener" target="_blank">Entrar al proyecto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-github"><img alt="" src="images/patrones/github-button-icon.png"/></span></a>
+<a class="project-link secondary-project-link has-destination-icon" href="https://www.linkedin.com/pulse/taxi-trips-chicago-an%C3%A1lisis-sobre-la-red-urbana-de-malcolm-zo6we" rel="noopener" target="_blank">Leer en LinkedIn<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-linkedin">in</span></a>
+</div>
+</div>
+</article>
+<article class="github-project-card" data-tags="python data-storytelling airbnb data-analysis bi geoespacial data-science machine-learning knn modelo-supervisado">
+<a class="project-image-link" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-02_airbnb-london">
+<img alt="Modelo ML Airbnb London" src="https://github.com/user-attachments/assets/b5a907e0-923f-4054-8824-d88122284af1"/>
+</a>
+<div class="github-project-body">
+<h3>Modelo ML · Airbnb London</h3>
+<p class="project-status published">✅ publicado</p>
+<p>Clasificación supervisada de anuncios relativamente caros o baratos dentro de cada tipo de alojamiento.</p>
+<div class="mini-tags"><span>Python</span><span>Data Storytelling</span><span>Airbnb</span><span>Data Analysis</span><span>BI</span><span>Geoespacial</span><span>Data Science</span><span>Machine Learning</span><span>KNN</span><span>Modelo Supervisado</span></div>
+<div class="project-links-dual project-links-editorial">
+<a class="project-link has-destination-icon" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-02_airbnb-london" rel="noopener" target="_blank">Entrar al proyecto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-github"><img alt="" src="images/patrones/github-button-icon.png"/></span></a>
+<a class="project-link secondary-project-link has-destination-icon" href="https://www.linkedin.com/pulse/airbnb-en-londres-an%C3%A1lisis-del-alojamiento-precios-y-malcolm-ycoae" rel="noopener" target="_blank">Leer en LinkedIn<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-linkedin">in</span></a>
+</div>
+</div>
+</article>
+<article class="github-project-card featured" data-tags="looker-studio taxi data-analysis bi dashboard">
+<a class="project-image-link" href="https://datastudio.google.com/reporting/b0b32df2-f110-4bac-8dfb-3be359d4888d">
+<img alt="Dashboard Looker Taxi Trips Chicago" src="https://github.com/user-attachments/assets/95f703e1-cfae-4db7-9140-aff44e6b9f74"/>
+</a>
+<div class="github-project-body">
+<h3>Dashboard Looker · Taxi Trips Chicago</h3>
+<p class="project-status published">✅ publicado</p>
+<p>Dashboard interactivo en Looker Studio para explorar viajes de taxi en Chicago, indicadores operativos, patrones horarios y recorridos pickup-dropoff.</p>
+<div class="mini-tags"><span>Looker Studio</span><span>Taxi</span><span>Data Analysis</span><span>BI</span><span>Dashboard</span></div>
+<div class="project-links-dual project-links-dashboard">
+<a class="project-link has-destination-icon" href="https://datastudio.google.com/reporting/b0b32df2-f110-4bac-8dfb-3be359d4888d" rel="noopener" target="_blank">Ver dashboard<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-dashboard"><img alt="" src="images/patrones/looker-button-icon.png"/></span></a>
+<a class="project-link secondary-project-link has-destination-icon" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-03_taxi-trip-chicago" rel="noopener" target="_blank">Ver documentación<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-github"><img alt="" src="images/patrones/github-button-icon.png"/></span></a>
+</div>
+</div>
+</article>
+<article class="github-project-card muted-card" data-tags="python data-storytelling futbol data-analysis bi data-science machine-learning regresion-logistica modelo-supervisado">
+<a class="project-image-link" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-04_futbol-statsbomb">
+<img alt="Contenido en preparación" src="https://github.com/user-attachments/assets/818b147f-67a5-47f0-9f24-d0692e8c8eae"/>
+</a>
+<div class="github-project-body">
+<h3>Modelo ML · Goles Esperados (xG)</h3>
+<p class="project-status development">⚠️ en desarrollo</p>
+<p>Próximamente.</p>
+<div class="mini-tags"><span>Python</span><span>Data Storytelling</span><span>Fútbol</span><span>Data Analysis</span><span>BI</span><span>Data Science</span><span>Machine Learning</span><span>Regresión Logística</span><span>Modelo Supervisado</span></div>
+<a class="project-link has-destination-icon" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-04_futbol-statsbomb" rel="noopener" target="_blank">Entrar al proyecto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-github"><img alt="" src="images/patrones/github-button-icon.png"/></span></a>
+</div>
+</article>
+<article class="github-project-card" data-tags="python data-storytelling futbol data-analysis bi data-science">
+<a class="project-image-link" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-04_futbol-statsbomb">
+<img alt="Modelo Probabilístico xT" src="https://github.com/user-attachments/assets/627d08a0-9609-41bc-be8a-c270051e6570"/>
+</a>
+<div class="github-project-body">
+<h3>Probabilidades en el Fútbol · Peligro Esperado (xT)</h3>
+<p class="project-status published">✅ publicado</p>
+<p>Modelo Probabilístico: Peligro Esperado xT. Próximamente.</p>
+<div class="mini-tags"><span>Python</span><span>Data Storytelling</span><span>Fútbol</span><span>Data Analysis</span><span>BI</span><span>Data Science</span></div>
+<div class="project-links-dual"><a class="project-link has-destination-icon" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-04_futbol-statsbomb" rel="noopener" target="_blank">Entrar al proyecto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-github"><img alt="" src="images/patrones/github-button-icon.png"/></span></a><a aria-disabled="true" class="project-link secondary-project-link has-destination-icon linkedin-placeholder-link" href="#" role="link">Leer en LinkedIn<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-linkedin">in</span></a></div></div>
+</article>
+<article class="github-project-card" data-tags="machine-learning python clustering spss fraude k-means modelo-no-supervisado data-science">
+<a class="project-image-link" href="https://github.com/malcolmdpc/MachineLearningConPython" rel="noopener" target="_blank">
+<img alt="Modelo ML de detección de fraude con clustering K-means" referrerpolicy="no-referrer" src="https://github.com/user-attachments/assets/df046322-8737-48a1-84c9-969724ec0fca"/>
+</a>
+<div class="github-project-body">
+<h3>Modelo ML · Detección de Fraude</h3>
+<p class="project-status published">✅ publicado</p>
+<p>Clustering no supervisado con K-means para la detección de fraudes con tarjetas de crédito.</p>
+<div class="mini-tags">
+<span>Data Science</span><span>Machine Learning</span><span>Python</span><span>Clustering</span><span>SPSS</span><span>Fraude</span><span>K-means</span>
+<span>Modelo No Supervisado</span></div>
+<div class="project-links-dual">
+<a class="project-link" href="https://github.com/malcolmdpc/MachineLearningConSPSSModeler/tree/main/Clustering%20KMEANS%20%E2%80%A2%20Segmentaci%C3%B3n%20de%20Clientes" rel="noopener" target="_blank">Ver en SPSS</a>
+<a class="project-link secondary-project-link" href="https://github.com/malcolmdpc/MachineLearningConPython" rel="noopener" target="_blank">Ver en Python</a>
+</div>
+</div>
+</article>
+<article class="github-project-card" data-tags="machine-learning python clasificacion spss fraude regresion-logistica modelo-supervisado data-science">
+<a class="project-image-link" href="https://github.com/malcolmdpc/MachineLearningConSPSSModeler" rel="noopener" target="_blank">
+<img alt="Modelo ML de detección de fraude con regresión logística" referrerpolicy="no-referrer" src="https://github.com/user-attachments/assets/f9ff0e2c-c8f1-4995-b46d-ac2a93e89acb"/>
+</a>
+<div class="github-project-body">
+<h3>Modelo ML · Detección de Fraude</h3>
+<p class="project-status published">✅ publicado</p>
+<p>Clasificación supervisada mediante regresión logística para la detección de fraude con tarjeta de crédito.</p>
+<div class="mini-tags">
+<span>Data Science</span><span>Machine Learning</span><span>Python</span><span>Clasificación</span><span>SPSS</span><span>Fraude</span><span>Regresión Logística</span>
+<span>Modelo Supervisado</span></div>
+<div class="project-links-dual">
+<a class="project-link" href="https://github.com/malcolmdpc/MachineLearningConSPSSModeler" rel="noopener" target="_blank">Ver en SPSS</a>
+<a class="project-link secondary-project-link" href="https://github.com/malcolmdpc/MachineLearningConPython" rel="noopener" target="_blank">Ver en Python</a>
+</div>
+</div>
+</article>
+<article class="github-project-card" data-tags="machine-learning python clustering fraude dbscan modelo-no-supervisado data-science">
+<a class="project-image-link" href="https://github.com/malcolmdpc/MachineLearningConPython" rel="noopener" target="_blank">
+<img alt="Modelo ML de detección de fraude con clustering DBSCAN" referrerpolicy="no-referrer" src="https://github.com/user-attachments/assets/2bdeff45-b7dc-4bbe-9091-f4520707bd71"/>
+</a>
+<div class="github-project-body">
+<h3>Modelo ML · Detección de Fraude</h3>
+<p class="project-status published">✅ publicado</p>
+<p>Clustering no supervisado con DBSCAN para identificar posibles fraudes con tarjeta de crédito.</p>
+<div class="mini-tags">
+<span>Data Science</span><span>Machine Learning</span><span>Python</span><span>Clustering</span><span>Fraude</span><span>DBSCAN</span>
+<span>Modelo No Supervisado</span></div>
+<a class="project-link has-destination-icon" href="https://github.com/malcolmdpc/MachineLearningConPython/blob/master/Clustering%20DBSCAN%20%E2%80%A2%20Detecci%C3%B3n%20de%20Fraude%20con%20Tarjetas%20de%20Cr%C3%A9dito/Clustering%20DBSCAN%20%E2%80%A2%20Detecci%C3%B3n%20de%20Fraude%20con%20Tarjetas%20de%20Cr%C3%A9dito.ipynb" rel="noopener" target="_blank">Entrar al proyecto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-github"><img alt="" src="images/patrones/github-button-icon.png"/></span></a>
+</div>
+</article>
+<article class="github-project-card muted-card" data-tags="python data-storytelling futbol data-analysis bi">
+<a class="project-image-link" href="https://github.com/malcolmdpc/patrones-lab">
+<img alt="Estadísticas del Mundial de Fútbol Qatar 2022" referrerpolicy="no-referrer" src="https://github.com/user-attachments/assets/e30b2a50-8004-4a99-a5c2-c3046bad889c"/>
+</a>
+<div class="github-project-body">
+<h3>Estadísticas del Mundial de Fútbol Qatar 2022</h3>
+<p class="project-status development">⚠️ en desarrollo</p>
+<p>Próximamente.</p>
+<div class="mini-tags"><span>Python</span><span>Data Storytelling</span><span>Fútbol</span><span>Data Analysis</span><span>BI</span></div>
+<a class="project-link has-destination-icon" href="https://github.com/malcolmdpc/patrones-lab">Entrar al proyecto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-github"><img alt="" src="images/patrones/github-button-icon.png"/></span></a>
+</div>
+</article>
+<article class="github-project-card muted-card" data-tags="python data-storytelling taxi data-analysis bi geoespacial">
+<a class="project-image-link" href="https://github.com/malcolmdpc/patrones-lab">
+<img alt="Análisis Geoespacial de los Viajes en Taxi" referrerpolicy="no-referrer" src="https://github.com/user-attachments/assets/3691c5a8-7897-4edc-ad99-0144d72cec7e"/>
+</a>
+<div class="github-project-body">
+<h3>Análisis Geoespacial de los Viajes en Taxi</h3>
+<p class="project-status published">✅ publicado</p>
+<p>Próximamente.</p>
+<div class="mini-tags"><span>Python</span><span>Data Storytelling</span><span>Taxi</span><span>Data Analysis</span><span>BI</span><span>Geoespacial</span></div>
+<div class="project-links-dual project-links-editorial">
+<a class="project-link has-destination-icon" href="https://github.com/malcolmdpc/patrones-lab" rel="noopener" target="_blank">Entrar al proyecto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-github"><img alt="" src="images/patrones/github-button-icon.png"/></span></a>
+<a class="project-link secondary-project-link has-destination-icon" href="https://www.linkedin.com/pulse/taxi-trips-chicago-an%C3%A1lisis-geoespacial-qu%C3%A9-muestran-malcolm-cjjae" rel="noopener" target="_blank">Leer en LinkedIn<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-linkedin">in</span></a>
+</div>
+</div>
+</article>
+</div>
+<p class="repo-empty-message" hidden="">No hay proyectos para esa categoría todavía.</p>
+</div>
+</div></div></section>
+<!-- NETWORKS -->
+<section class="project py-5 social-section section-glow glow-social" id="networks">
+<div class="container">
+<div class="row">
+<div class="col-lg-10 text-center mx-auto col-12">
+<small class="section-kicker">Canales de Patrones Lab</small>
+<h2 class="mb-3 projects-title-display">Redes y canales</h2>
+<p class="social-intro">
                     Todo el ecosistema del proyecto en un solo lugar: visuales, notas técnicas, publicaciones,
                     dashboards, enlaces útiles y contacto profesional.
                   </p>
-
-                  <div class="social-grid social-grid-complete">
-                    <a class="social-card instagram" href="https://www.instagram.com/patroneslab/" target="_blank" rel="noopener" aria-label="Instagram Patrones Lab">
-                      <span class="social-icon">
-                        <img src="images/patrones/canales-icons/instagram.svg" alt="" aria-hidden="true">
-                      </span>
-                      <strong>Instagram</strong>
-                      <small>Visuales y posts</small>
-                    </a>
-
-                    <a class="social-card linkedin" href="https://www.linkedin.com/in/malcolmdpc/" target="_blank" rel="noopener" aria-label="LinkedIn Malcolm">
-                      <span class="social-icon">
-                        <img src="images/patrones/canales-icons/linkedin.svg" alt="" aria-hidden="true">
-                      </span>
-                      <strong>LinkedIn</strong>
-                      <small>Perfil profesional</small>
-                    </a>
-
-                    <a class="social-card medium" href="https://medium.com/@malcolmdpc" target="_blank" rel="noopener" aria-label="Medium Malcolm DPC">
-                      <span class="social-icon">
-                        <img src="images/patrones/canales-icons/medium-2026.png" alt="" aria-hidden="true">
-                      </span>
-                      <strong>Medium</strong>
-                      <small>Artículos y notas</small>
-                    </a>
-
-                    <a class="social-card linktree" href="https://linktr.ee/PatronesLab" target="_blank" rel="noopener" aria-label="Linktree Patrones Lab">
-                      <span class="social-icon">
-                        <img src="images/patrones/canales-icons/linktree.svg" alt="" aria-hidden="true">
-                      </span>
-                      <strong>Linktree</strong>
-                      <small>Todos los enlaces</small>
-                    </a>
-
-                    <a class="social-card github" href="https://github.com/malcolmdpc" target="_blank" rel="noopener" aria-label="GitHub Malcolm">
-                      <span class="social-icon">
-                        <img src="images/patrones/canales-icons/github.svg" alt="" aria-hidden="true">
-                      </span>
-                      <strong>GitHub</strong>
-                      <small>Perfil técnico</small>
-                    </a>
-
-                    <a class="social-card repo" href="https://github.com/malcolmdpc/patrones-lab" target="_blank" rel="noopener" aria-label="Repositorio Patrones Lab">
-                      <span class="social-icon">
-                        <img src="images/patrones/canales-icons/github-repo.svg" alt="" aria-hidden="true">
-                      </span>
-                      <strong>Repo</strong>
-                      <small>Patrones Lab</small>
-                    </a>
-
-                    <a class="social-card dashboard" href="https://datastudio.google.com/reporting/b0b32df2-f110-4bac-8dfb-3be359d4888d" target="_blank" rel="noopener" aria-label="Dashboard Looker Studio">
-                      <span class="social-icon">
-                        <img src="images/patrones/canales-icons/looker-studio.svg" alt="" aria-hidden="true">
-                      </span>
-                      <strong>Dashboard</strong>
-                      <small>Looker Studio</small>
-                    </a>
-
-                    <a class="social-card mail" href="mailto:encontrandopatrones@gmail.com" aria-label="Email de contacto">
-                      <span class="social-icon">
-                        <img src="images/patrones/canales-icons/gmail-2026.png" alt="" aria-hidden="true">
-                      </span>
-                      <strong>Email</strong>
-                      <small>Contacto directo</small>
-                    </a>
-                  </div>
-              </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact py-5 contact-form-section section-glow glow-contact" id="contact">
-      <div class="container">
-        <div class="row align-items-stretch justify-content-center">
-
-          <div class="col-lg-5 col-12 mb-4 mb-lg-0">
-            <div class="contact-panel">
-              <h3>Contacto</h3>
-              <p>Para oportunidades profesionales, colaboración analítica o proyectos de BI · ML · Dashboards.</p>
-              <p class="contact-email-line"><strong>correo:</strong> <a href="mailto:encontrandopatrones@gmail.com">encontrandopatrones@gmail.com</a></p>
-            </div>
-          </div>
-
-          <div class="col-lg-7 col-12">
-            <div class="contact-form boxed-mail-form">
-              <h2 class="mb-3">Dejame un mensaje</h2>
-              <p class="form-note">Escribime y te responderé a la brevedad.</p>
-
-              <form id="contactForm">
-                <div class="row">
-                  <div class="col-lg-6 col-12">
-                    <input type="text" class="form-control" name="name" placeholder="Nombre" id="name">
-                  </div>
-
-                  <div class="col-lg-6 col-12">
-                    <input type="email" class="form-control" name="email" placeholder="Email" id="email">
-                  </div>
-
-                  <div class="col-12">
-                    <textarea name="message" rows="6" class="form-control" id="message" placeholder="Mensaje"></textarea>
-                  </div>
-
-                  <div class="ml-lg-auto col-lg-5 col-12">
-                    <input type="submit" class="form-control submit-btn" value="Preparar email">
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-     <footer class="footer py-5">
-          <div class="container">
-               <div class="row">
-                    <div class="col-lg-12 col-12">
-                        <p class="copyright-text text-center">Patrones Lab® · Generando conocimiento a través de los datos</p>
-                    </div>
-               </div>
-          </div>
-     </footer>
-
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<div class="social-grid social-grid-complete">
+<a aria-label="Instagram Patrones Lab" class="social-card instagram" href="https://www.instagram.com/patroneslab/" rel="noopener" target="_blank">
+<span class="social-icon">
+<img alt="" aria-hidden="true" src="images/patrones/canales-icons/instagram.svg"/>
+</span>
+<strong>Instagram</strong>
+<small>Visuales y posts</small>
+</a>
+<a aria-label="LinkedIn Malcolm" class="social-card linkedin" href="https://www.linkedin.com/in/malcolmdpc/" rel="noopener" target="_blank">
+<span class="social-icon">
+<img alt="" aria-hidden="true" src="images/patrones/canales-icons/linkedin.svg"/>
+</span>
+<strong>LinkedIn</strong>
+<small>Perfil profesional</small>
+</a>
+<a aria-label="Medium Malcolm DPC" class="social-card medium" href="https://medium.com/@malcolmdpc" rel="noopener" target="_blank">
+<span class="social-icon">
+<img alt="" aria-hidden="true" src="images/patrones/canales-icons/medium-2026.png"/>
+</span>
+<strong>Medium</strong>
+<small>Artículos y notas</small>
+</a>
+<a aria-label="Linktree Patrones Lab" class="social-card linktree" href="https://linktr.ee/PatronesLab" rel="noopener" target="_blank">
+<span class="social-icon">
+<img alt="" aria-hidden="true" src="images/patrones/canales-icons/linktree.svg"/>
+</span>
+<strong>Linktree</strong>
+<small>Todos los enlaces</small>
+</a>
+<a aria-label="GitHub Malcolm" class="social-card github" href="https://github.com/malcolmdpc" rel="noopener" target="_blank">
+<span class="social-icon">
+<img alt="" aria-hidden="true" src="images/patrones/canales-icons/github.svg"/>
+</span>
+<strong>GitHub</strong>
+<small>Perfil técnico</small>
+</a>
+<a aria-label="Repositorio Patrones Lab" class="social-card repo" href="https://github.com/malcolmdpc/patrones-lab" rel="noopener" target="_blank">
+<span class="social-icon">
+<img alt="" aria-hidden="true" src="images/patrones/canales-icons/github-repo.svg"/>
+</span>
+<strong>Repo</strong>
+<small>Patrones Lab</small>
+</a>
+<a aria-label="Dashboard Looker Studio" class="social-card dashboard" href="https://datastudio.google.com/reporting/b0b32df2-f110-4bac-8dfb-3be359d4888d" rel="noopener" target="_blank">
+<span class="social-icon">
+<img alt="" aria-hidden="true" src="images/patrones/canales-icons/looker-studio.svg"/>
+</span>
+<strong>Dashboard</strong>
+<small>Looker Studio</small>
+</a>
+<a aria-label="Email de contacto" class="social-card mail" href="mailto:encontrandopatrones@gmail.com">
+<span class="social-icon">
+<img alt="" aria-hidden="true" src="images/patrones/canales-icons/gmail-2026.png"/>
+</span>
+<strong>Email</strong>
+<small>Contacto directo</small>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CONTACT -->
+<section class="contact py-5 contact-form-section section-glow glow-contact" id="contact">
+<div class="container">
+<div class="row align-items-stretch justify-content-center">
+<div class="col-lg-5 col-12 mb-4 mb-lg-0">
+<div class="contact-panel">
+<h3>Contacto</h3>
+<p>Para oportunidades profesionales, colaboración analítica o proyectos de BI · ML · Dashboards.</p>
+<p class="contact-email-line"><strong>correo:</strong> <a href="mailto:encontrandopatrones@gmail.com">encontrandopatrones@gmail.com</a></p>
+</div>
+</div>
+<div class="col-lg-7 col-12">
+<div class="contact-form boxed-mail-form">
+<h2 class="mb-3">Dejame un mensaje</h2>
+<p class="form-note">Escribime y te responderé a la brevedad.</p>
+<form id="contactForm">
+<div class="row">
+<div class="col-lg-6 col-12">
+<input class="form-control" id="name" name="name" placeholder="Nombre" type="text"/>
+</div>
+<div class="col-lg-6 col-12">
+<input class="form-control" id="email" name="email" placeholder="Email" type="email"/>
+</div>
+<div class="col-12">
+<textarea class="form-control" id="message" name="message" placeholder="Mensaje" rows="6"></textarea>
+</div>
+<div class="ml-lg-auto col-lg-5 col-12">
+<input class="form-control submit-btn" type="submit" value="Preparar email"/>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+<footer class="footer py-5">
+<div class="container">
+<div class="row">
+<div class="col-lg-12 col-12">
+<p class="copyright-text text-center">Patrones Lab® · Generando conocimiento a través de los datos</p>
+</div>
+</div>
+</div>
+</footer>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="js/custom.js"></script>
-
-  </body>
+</body>
 </html>
