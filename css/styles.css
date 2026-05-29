@@ -10760,3 +10760,1893 @@ html.pl-section-snap-enabled{
   }
 }
 
+/* === V50A: responsive móvil base sin afectar escritorio === */
+/*
+  Solo aplica a teléfonos/tablets chicos. Mantiene intacta la vista desktop 1920x1080.
+*/
+@media (max-width: 767px){
+  html,
+  body{
+    overflow-x:hidden !important;
+    overflow-y:auto !important;
+    height:auto !important;
+    min-height:100% !important;
+    touch-action:pan-y !important;
+    -webkit-overflow-scrolling:touch !important;
+    overscroll-behavior-y:auto !important;
+  }
+
+  body.pl-scroll-loader-complete,
+  body:not(.pl-scroll-loader-active){
+    overflow-y:auto !important;
+  }
+
+  section,
+  footer,
+  .full-screen,
+  .container{
+    touch-action:pan-y !important;
+  }
+
+  /* Metodología en mobile: priorizar scroll vertical natural con un dedo. */
+  [data-horizontal-process-section],
+  [data-horizontal-process-section] .wrapper,
+  [data-horizontal-process-section] .item,
+  .process-horizontal-guide{
+    touch-action:pan-y !important;
+  }
+
+  /* Navbar mobile: icono claro y visible sobre fondo oscuro. */
+  .navbar.pl-smart-navbar .navbar-toggler,
+  .pl-smart-navbar .navbar-toggler{
+    width:38px !important;
+    height:38px !important;
+    display:inline-flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:5px !important;
+    border:1px solid rgba(245,240,232,.18) !important;
+    border-radius:12px !important;
+    background:rgba(0,0,0,.22) !important;
+  }
+
+  .navbar.pl-smart-navbar .navbar-toggler .navbar-toggler-icon,
+  .pl-smart-navbar .navbar-toggler .navbar-toggler-icon{
+    width:22px !important;
+    height:2px !important;
+    margin:0 !important;
+    background:#f5f0e8 !important;
+    border-radius:999px !important;
+    box-shadow:0 0 10px rgba(255,194,0,.18) !important;
+    opacity:1 !important;
+  }
+
+  body:not(.dark-mode) .navbar.pl-smart-navbar .navbar-toggler .navbar-toggler-icon,
+  body:not(.dark-mode) .pl-smart-navbar .navbar-toggler .navbar-toggler-icon{
+    background:#111111 !important;
+  }
+
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:first-child{
+    top:7px !important;
+  }
+
+  .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:last-child{
+    bottom:7px !important;
+  }
+
+  /* Loader mobile: misma familia tipográfica base de la web y activación por toque. */
+  .pl-scroll-loader,
+  .pl-scroll-loader__hero-text,
+  .pl-scroll-loader__subtitle{
+    font-family:"Maven Pro", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  }
+
+  .pl-scroll-loader{
+    touch-action:manipulation !important;
+  }
+
+  .pl-scroll-loader__hero-text{
+    font-weight:700 !important;
+    font-size:clamp(3.1rem, 16vw, 5.25rem) !important;
+    letter-spacing:-.07em !important;
+  }
+
+  .pl-scroll-loader__subtitle{
+    color:#ffc200 !important;
+    font-weight:700 !important;
+    letter-spacing:.18em !important;
+  }
+
+  .pl-scroll-loader .dot{
+    transition:transform .62s cubic-bezier(.7, 0, .2, 1), box-shadow .62s ease !important;
+  }
+
+  .pl-scroll-loader.pl-mobile-loader-finishing .dot{
+    transform:scale(1200) !important;
+    box-shadow:0 0 80px rgba(255,194,0,.72) !important;
+  }
+
+  .pl-scroll-loader.pl-mobile-loader-finishing .pl-scroll-loader__next{
+    visibility:visible !important;
+    opacity:1 !important;
+  }
+
+  /* Proyectos en teléfono: dos columnas, sin tocar desktop. */
+  #projects.github-projects-section .container,
+  .github-projects-section#projects .container{
+    width:min(100%, calc(100vw - 18px)) !important;
+    max-width:100% !important;
+    padding-left:0 !important;
+    padding-right:0 !important;
+  }
+
+  #projects .github-project-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    gap:10px !important;
+    max-width:100% !important;
+    width:100% !important;
+  }
+
+  #projects .github-project-card{
+    border-radius:17px !important;
+  }
+
+  #projects .project-image-link img{
+    aspect-ratio:4 / 5 !important;
+    object-fit:cover !important;
+  }
+
+  #projects .github-project-body{
+    padding:12px 10px 13px !important;
+  }
+
+  #projects .github-project-body h3{
+    font-size:13.6px !important;
+    line-height:1.08 !important;
+    letter-spacing:-.35px !important;
+    margin-bottom:8px !important;
+  }
+
+  #projects .github-project-body p:not(.project-status){
+    font-size:10.8px !important;
+    line-height:1.35 !important;
+    margin-bottom:10px !important;
+  }
+
+  #projects .github-project-body .project-status{
+    font-size:9.5px !important;
+    padding:4px 7px !important;
+    margin-bottom:10px !important;
+  }
+
+  #projects .mini-tags{
+    gap:4px !important;
+    margin-bottom:12px !important;
+  }
+
+  #projects .mini-tags span{
+    font-size:8.2px !important;
+    min-height:18px !important;
+    padding:3px 5px !important;
+  }
+
+  #projects .github-project-card .project-link{
+    min-height:30px !important;
+    font-size:9.4px !important;
+    padding-top:6px !important;
+    padding-bottom:6px !important;
+  }
+
+  #projects .github-project-card .project-link.has-destination-icon{
+    padding-left:30px !important;
+    padding-right:30px !important;
+  }
+
+  #projects .github-project-card .project-link .btn-destination-icon{
+    width:23px !important;
+    height:23px !important;
+    min-width:23px !important;
+    max-width:23px !important;
+    min-height:23px !important;
+    max-height:23px !important;
+    right:4px !important;
+  }
+
+  #projects .github-project-card .project-link .btn-destination-icon img,
+  #projects .github-project-card .project-link .btn-destination-icon svg{
+    width:14px !important;
+    height:14px !important;
+    min-width:14px !important;
+    max-width:14px !important;
+    min-height:14px !important;
+    max-height:14px !important;
+  }
+
+  #projects .repo-filter-toolbar{
+    overflow-x:auto !important;
+    justify-content:flex-start !important;
+    flex-wrap:nowrap !important;
+    padding:0 4px 8px !important;
+    -webkit-overflow-scrolling:touch !important;
+    scrollbar-width:none;
+  }
+
+  #projects .repo-filter-toolbar::-webkit-scrollbar{
+    display:none;
+  }
+
+  #projects .repo-filter-btn,
+  #projects .repo-filter-group-trigger{
+    white-space:nowrap !important;
+    min-height:34px !important;
+    padding:7px 12px !important;
+    font-size:12px !important;
+  }
+}
+
+@media (max-width: 380px){
+  #projects .github-project-body h3{
+    font-size:12.6px !important;
+  }
+
+  #projects .github-project-body p:not(.project-status){
+    font-size:10.2px !important;
+  }
+
+  #projects .github-project-card .project-link{
+    font-size:8.7px !important;
+  }
+}
+
+
+
+/* === V50U: reconstrucción móvil limpia desde v50a === */
+/*
+  Base elegida: v50a-responsive-mobile.
+  Motivo: evita la acumulación de reglas V50B-V50T que rompían Inicio -> Metodología.
+  Alcance:
+  - solo mobile/táctil;
+  - sin pin de Metodología;
+  - sin smooth/snap entre secciones;
+  - Metodología como carrusel horizontal nativo;
+  - Redes en 4 columnas x 2 filas con iconos alineados.
+*/
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+
+  html,
+  body,
+  html.pl-section-snap-enabled,
+  html.pl-locomotive-style-active,
+  body.pl-locomotive-style-active{
+    overflow-x:hidden !important;
+    overflow-y:auto !important;
+    height:auto !important;
+    min-height:100% !important;
+    scroll-behavior:auto !important;
+    scroll-snap-type:none !important;
+    overscroll-behavior-y:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+    touch-action:pan-y !important;
+  }
+
+  body.pl-scroll-landing-lock,
+  body.pl-mobile-method-pinned,
+  body.pl-mobile-method-exit,
+  body.is-mobile-process-dragging{
+    overflow-y:auto !important;
+    height:auto !important;
+    touch-action:pan-y !important;
+  }
+
+  section,
+  footer,
+  main,
+  #about,
+  #methodology,
+  #projects,
+  #networks,
+  #contact{
+    scroll-snap-align:none !important;
+    scroll-snap-stop:normal !important;
+    scroll-margin-top:0 !important;
+    transition:none !important;
+  }
+
+  /* Inicio -> Metodología: flujo normal, sin pin, sin franja intermedia. */
+  #about{
+    margin-bottom:0 !important;
+  }
+
+  #methodology.process-horizontal-edge-section,
+  #methodology.is-mobile-method-pinned,
+  #methodology.is-mobile-process-exit,
+  #methodology.is-mobile-process-dragging{
+    position:relative !important;
+    inset:auto !important;
+    top:auto !important;
+    left:auto !important;
+    right:auto !important;
+    bottom:auto !important;
+    display:block !important;
+    width:100% !important;
+    min-height:auto !important;
+    height:auto !important;
+    max-height:none !important;
+    margin-top:0 !important;
+    padding-top:0 !important;
+    overflow:visible !important;
+    transform:none !important;
+    translate:none !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    background:#111111 !important;
+    touch-action:pan-y !important;
+    cursor:auto !important;
+    z-index:auto !important;
+    isolation:auto !important;
+  }
+
+  /* Título normal dentro de la sección: no pin, no fixed, no overlay raro. */
+  #methodology .process-horizontal-static-head{
+    position:relative !important;
+    inset:auto !important;
+    top:auto !important;
+    left:auto !important;
+    right:auto !important;
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    margin:0 !important;
+    padding:64px 18px 18px !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    transform:none !important;
+    pointer-events:none !important;
+    z-index:1 !important;
+  }
+
+  #methodology .process-horizontal-static-head h2{
+    margin:0 !important;
+    font-family:"Maven Pro", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    font-size:clamp(1.72rem, 7vw, 2.25rem) !important;
+    line-height:.95 !important;
+    letter-spacing:-.06em !important;
+    white-space:nowrap !important;
+    color:#f5f0e8 !important;
+    text-shadow:0 2px 18px rgba(0,0,0,.42) !important;
+  }
+
+  /* Carrusel nativo: deslizable lateralmente, sin capturar scroll vertical. */
+  #methodology .process-horizontal-track{
+    position:relative !important;
+    inset:auto !important;
+    display:flex !important;
+    flex-direction:row !important;
+    width:100% !important;
+    min-width:0 !important;
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none !important;
+    margin:0 !important;
+    padding:0 !important;
+    overflow-x:auto !important;
+    overflow-y:hidden !important;
+    transform:none !important;
+    translate:none !important;
+    transition:none !important;
+    will-change:auto !important;
+    background:#111111 !important;
+    touch-action:pan-x pan-y !important;
+    scroll-snap-type:x proximity !important;
+    scroll-behavior:auto !important;
+    -webkit-overflow-scrolling:touch !important;
+    scrollbar-width:none !important;
+  }
+
+  #methodology .process-horizontal-track::-webkit-scrollbar{
+    display:none !important;
+  }
+
+  #methodology .process-horizontal-panel{
+    position:relative !important;
+    inset:auto !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    flex:0 0 100vw !important;
+    width:100vw !important;
+    min-width:100vw !important;
+    min-height:calc(100svh - 72px) !important;
+    height:auto !important;
+    max-height:none !important;
+    overflow:hidden !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    transform:none !important;
+    translate:none !important;
+    touch-action:pan-x pan-y !important;
+    scroll-snap-align:start !important;
+    scroll-snap-stop:normal !important;
+    padding:0 !important;
+  }
+
+  #methodology .process-horizontal-panel__inner{
+    width:100% !important;
+    min-height:calc(100svh - 72px) !important;
+    height:auto !important;
+    max-height:none !important;
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    grid-template-rows:auto auto !important;
+    justify-content:center !important;
+    align-content:center !important;
+    gap:14px !important;
+    padding:28px 18px 58px !important;
+  }
+
+  #methodology .process-horizontal-panel__media{
+    order:-1 !important;
+    justify-self:center !important;
+    width:min(58vw, 235px) !important;
+    max-height:24svh !important;
+    border-radius:18px !important;
+    transform:translateY(-10px) !important;
+  }
+
+  #methodology .process-horizontal-panel__copy{
+    justify-self:center !important;
+    width:min(92vw, 420px) !important;
+    max-width:420px !important;
+    padding-left:30px !important;
+    margin-left:-8px !important;
+    text-align:left !important;
+    transform:translateY(14px) !important;
+  }
+
+  #methodology .process-horizontal-panel__number{
+    left:0 !important;
+    top:.02em !important;
+    transform:translate(-30%, 0) !important;
+    font-size:clamp(4.55rem, 19vw, 6.15rem) !important;
+    opacity:.15 !important;
+  }
+
+  #methodology .process-horizontal-panel h3{
+    font-size:clamp(1.92rem, 9.15vw, 3.02rem) !important;
+    line-height:.9 !important;
+    letter-spacing:-.07em !important;
+    white-space:nowrap !important;
+  }
+
+  #methodology .process-horizontal-panel small{
+    font-size:clamp(.86rem, 3.38vw, 1.06rem) !important;
+    line-height:1.08 !important;
+    white-space:nowrap !important;
+  }
+
+  #methodology .process-horizontal-panel p{
+    max-width:100% !important;
+    margin-top:12px !important;
+    font-size:clamp(.9rem, 3.55vw, 1rem) !important;
+    line-height:1.38 !important;
+  }
+
+  #methodology .process-horizontal-tech{
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    gap:5px !important;
+    margin-top:12px !important;
+    max-width:100% !important;
+    overflow:visible !important;
+  }
+
+  #methodology .process-horizontal-tech-chip{
+    flex:0 0 34px !important;
+    width:34px !important;
+    height:34px !important;
+  }
+
+  #methodology .process-horizontal-tech-chip img,
+  #methodology .process-horizontal-tech-chip svg,
+  #methodology .process-horizontal-tech-chip .process-horizontal-tech-icon--matplotlib{
+    width:22px !important;
+    height:22px !important;
+  }
+
+  #methodology .process-horizontal-guide,
+  #methodology::after{
+    display:none !important;
+    content:none !important;
+  }
+
+  /* Flechas simples, sin marco ni caja. */
+  #methodology .process-horizontal-panel::before,
+  #methodology .process-horizontal-panel::after{
+    position:absolute !important;
+    top:50% !important;
+    transform:translateY(-50%) !important;
+    z-index:40 !important;
+    width:auto !important;
+    height:auto !important;
+    background:transparent !important;
+    border:0 !important;
+    box-shadow:none !important;
+    color:#f5f0e8 !important;
+    font-size:44px !important;
+    line-height:1 !important;
+    font-weight:900 !important;
+    text-shadow:0 3px 12px rgba(0,0,0,.95), 0 0 18px rgba(255,194,0,.45) !important;
+    pointer-events:none !important;
+    opacity:.9 !important;
+  }
+
+  #methodology .process-horizontal-panel::before{
+    content:"◀" !important;
+    left:8px !important;
+  }
+
+  #methodology .process-horizontal-panel::after{
+    content:"▶" !important;
+    right:8px !important;
+  }
+
+  #methodology .process-horizontal-panel:first-child::before,
+  #methodology .process-horizontal-panel:last-child::after{
+    opacity:.24 !important;
+  }
+
+  /* Redes: 4 columnas x 2 filas, sin spans raros y sin cambiar fuentes/iconos globales. */
+  #networks .social-grid,
+  #networks .social-grid.social-grid-complete{
+    display:grid !important;
+    grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
+    grid-auto-flow:row !important;
+    gap:18px 8px !important;
+    width:100% !important;
+    max-width:100% !important;
+    align-items:start !important;
+    justify-items:center !important;
+  }
+
+  #networks .social-grid .social-card,
+  #networks .social-grid.social-grid-complete .social-card,
+  #networks .social-grid .social-card.dashboard,
+  #networks .social-grid .social-card.mail,
+  #networks .social-grid .social-card:nth-child(7),
+  #networks .social-grid .social-card:nth-child(8){
+    grid-column:auto !important;
+    grid-row:auto !important;
+    width:100% !important;
+    min-width:0 !important;
+    max-width:100% !important;
+    min-height:auto !important;
+    padding:0 !important;
+    margin:0 !important;
+    border:0 !important;
+    outline:0 !important;
+    box-shadow:none !important;
+    background:transparent !important;
+    border-radius:0 !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    text-align:center !important;
+  }
+
+  #networks .social-card .social-icon{
+    width:62px !important;
+    height:62px !important;
+    min-width:62px !important;
+    min-height:62px !important;
+    max-width:62px !important;
+    max-height:62px !important;
+    margin:0 auto 9px !important;
+    display:grid !important;
+    place-items:center !important;
+    flex:0 0 62px !important;
+  }
+
+  #networks .social-card .social-icon img,
+  #networks .social-card .social-icon svg{
+    width:auto !important;
+    height:auto !important;
+    max-width:42px !important;
+    max-height:42px !important;
+    min-width:0 !important;
+    min-height:0 !important;
+    object-fit:contain !important;
+    display:block !important;
+  }
+
+  #networks .social-card strong{
+    display:block !important;
+    font-size:clamp(14px, 3.35vw, 15.5px) !important;
+    line-height:1.05 !important;
+    margin:0 0 4px !important;
+    text-align:center !important;
+    color:#f5f0e8 !important;
+    font-weight:950 !important;
+  }
+
+  #networks .social-card small{
+    display:block !important;
+    font-size:clamp(10px, 2.55vw, 11.5px) !important;
+    line-height:1.14 !important;
+    margin:0 !important;
+    text-align:center !important;
+    color:#d6d0c7 !important;
+    font-weight:700 !important;
+    max-width:100% !important;
+  }
+}
+
+@media (max-width: 380px){
+  #methodology .process-horizontal-static-head{
+    padding-top:58px !important;
+  }
+
+  #methodology .process-horizontal-panel__media{
+    width:min(55vw, 215px) !important;
+    max-height:22svh !important;
+  }
+
+  #methodology .process-horizontal-panel__copy{
+    width:min(92vw, 390px) !important;
+    padding-left:28px !important;
+    margin-left:-10px !important;
+  }
+
+  #methodology .process-horizontal-panel h3{
+    font-size:clamp(1.72rem, 8.45vw, 2.55rem) !important;
+  }
+
+  #methodology .process-horizontal-panel small{
+    font-size:.86rem !important;
+  }
+
+  #methodology .process-horizontal-tech-chip{
+    flex-basis:31px !important;
+    width:31px !important;
+    height:31px !important;
+  }
+
+  #networks .social-card .social-icon{
+    width:58px !important;
+    height:58px !important;
+    min-width:58px !important;
+    min-height:58px !important;
+    max-width:58px !important;
+    max-height:58px !important;
+    flex-basis:58px !important;
+  }
+
+  #networks .social-card .social-icon img,
+  #networks .social-card .social-icon svg{
+    max-width:39px !important;
+    max-height:39px !important;
+  }
+
+  #networks .social-card strong{
+    font-size:13px !important;
+  }
+
+  #networks .social-card small{
+    font-size:9.5px !important;
+  }
+}
+
+
+
+/* === V50V: Metodología mobile - título interno y zonas clicables === */
+/*
+  Base: v50u limpia.
+  No reintroduce pin, fixed, sticky full-screen ni transición entre secciones.
+  Ajusta solo Metodología mobile:
+  - El título queda superpuesto dentro de la primera pantalla de la sección.
+  - El título cambia de color según la solapa activa.
+  - Mantiene carrusel lateral nativo.
+*/
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+
+  #methodology.process-horizontal-edge-section{
+    position:relative !important;
+    margin-top:0 !important;
+    padding-top:0 !important;
+    min-height:auto !important;
+    height:auto !important;
+    overflow:visible !important;
+    background:#111111 !important;
+  }
+
+  /* Título interno: ya no genera una franja propia arriba del carrusel. */
+  #methodology .process-horizontal-static-head{
+    position:absolute !important;
+    top:52px !important;
+    left:18px !important;
+    right:18px !important;
+    width:auto !important;
+    height:auto !important;
+    margin:0 !important;
+    padding:0 !important;
+    z-index:70 !important;
+    pointer-events:none !important;
+    display:block !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    transform:none !important;
+  }
+
+  #methodology .process-horizontal-static-head h2{
+    margin:0 !important;
+    font-family:"Maven Pro", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    font-size:clamp(1.72rem, 7vw, 2.25rem) !important;
+    line-height:.95 !important;
+    letter-spacing:-.06em !important;
+    white-space:nowrap !important;
+    color:#111111 !important;
+    text-shadow:0 1px 12px rgba(255,255,255,.28) !important;
+    transition:color .18s ease, text-shadow .18s ease !important;
+  }
+
+  #methodology.is-light-stage .process-horizontal-static-head h2{
+    color:#f5f0e8 !important;
+    text-shadow:
+      0 2px 18px rgba(0,0,0,.62),
+      0 0 18px rgba(255,194,0,.22) !important;
+  }
+
+  #methodology.is-dark-stage .process-horizontal-static-head h2{
+    color:#111111 !important;
+    text-shadow:0 1px 12px rgba(255,255,255,.28) !important;
+  }
+
+  #methodology .process-horizontal-track{
+    margin-top:0 !important;
+    padding-top:0 !important;
+    scroll-behavior:smooth !important;
+  }
+
+  #methodology .process-horizontal-panel{
+    min-height:100svh !important;
+    height:auto !important;
+    max-height:none !important;
+  }
+
+  #methodology .process-horizontal-panel__inner{
+    min-height:100svh !important;
+    height:auto !important;
+    max-height:none !important;
+    padding-top:116px !important;
+  }
+
+  /* Zonas clicables invisibles: el feedback visual sigue siendo la flecha existente. */
+  #methodology .process-horizontal-panel::before,
+  #methodology .process-horizontal-panel::after{
+    pointer-events:none !important;
+  }
+}
+
+@media (max-width: 380px){
+  #methodology .process-horizontal-static-head{
+    top:48px !important;
+    left:16px !important;
+    right:16px !important;
+  }
+
+  #methodology .process-horizontal-panel__inner{
+    padding-top:110px !important;
+  }
+}
+
+
+
+/* === V50W: Proyectos mobile - filtros y cards legibles === */
+/*
+  Base: v50v.
+  Alcance exclusivo: sección Proyectos en mobile.
+  No toca Metodología, Redes ni desktop.
+*/
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+
+  /* Filtros: el dropdown debe verse por encima de las cards y ajustar al contenido. */
+  #projects .repo-filter-toolbar,
+  #projects .repo-filter-toolbar-hover-groups,
+  #projects .repo-filter-group{
+    position:relative !important;
+    z-index:12000 !important;
+    overflow:visible !important;
+  }
+
+  #projects .repo-filter-toolbar{
+    overflow-x:auto !important;
+    overflow-y:visible !important;
+    justify-content:flex-start !important;
+    flex-wrap:nowrap !important;
+    padding-bottom:12px !important;
+    -webkit-overflow-scrolling:touch !important;
+    scrollbar-width:none !important;
+  }
+
+  #projects .repo-filter-toolbar::-webkit-scrollbar{
+    display:none !important;
+  }
+
+  #projects .repo-filter-group{
+    flex:0 0 auto !important;
+  }
+
+  #projects .repo-filter-category-panel{
+    position:absolute !important;
+    z-index:13000 !important;
+    width:max-content !important;
+    min-width:max-content !important;
+    max-width:calc(100vw - 28px) !important;
+    inline-size:max-content !important;
+    padding:10px !important;
+    border-radius:16px !important;
+    background:rgba(6,7,6,.96) !important;
+    border:1px solid rgba(255,194,0,.24) !important;
+    box-shadow:0 22px 70px rgba(0,0,0,.72), 0 0 0 1px rgba(255,255,255,.06) inset !important;
+    backdrop-filter:blur(12px) !important;
+    overflow:visible !important;
+  }
+
+  #projects .repo-filter-category-panel .repo-filter-btn{
+    display:flex !important;
+    width:max-content !important;
+    min-width:100% !important;
+    max-width:calc(100vw - 52px) !important;
+    justify-content:center !important;
+    align-items:center !important;
+    text-align:center !important;
+    white-space:nowrap !important;
+    margin:0 0 6px !important;
+    padding:8px 13px !important;
+    border-radius:12px !important;
+    background:rgba(255,255,255,.06) !important;
+    border:1px solid rgba(255,255,255,.08) !important;
+    font-size:12.6px !important;
+    line-height:1.1 !important;
+  }
+
+  #projects .repo-filter-category-panel .repo-filter-btn:last-child{
+    margin-bottom:0 !important;
+  }
+
+  #projects .github-project-grid,
+  #projects .github-project-card{
+    position:relative !important;
+    z-index:1 !important;
+  }
+
+  /* Cards: subir legibilidad de textos. */
+  #projects .github-project-body{
+    padding:15px 12px 16px !important;
+  }
+
+  #projects .github-project-body h3{
+    font-size:clamp(18px, 4.95vw, 21.2px) !important;
+    line-height:1.08 !important;
+    letter-spacing:-.48px !important;
+    margin-bottom:10px !important;
+  }
+
+  #projects .github-project-body .project-status,
+  #projects .project-status{
+    font-size:clamp(12px, 3.25vw, 13.4px) !important;
+    line-height:1.08 !important;
+    padding:6px 9px !important;
+    margin-bottom:12px !important;
+  }
+
+  #projects .github-project-body p:not(.project-status){
+    font-size:clamp(13.2px, 3.65vw, 14.9px) !important;
+    line-height:1.41 !important;
+    margin-bottom:13px !important;
+  }
+
+  #projects .mini-tags{
+    gap:5px !important;
+    margin-bottom:14px !important;
+  }
+
+  #projects .mini-tags span{
+    font-size:clamp(9.8px, 2.65vw, 10.8px) !important;
+    min-height:21px !important;
+    padding:4px 6px !important;
+  }
+
+  #projects .github-project-card .project-link{
+    min-height:38px !important;
+    font-size:clamp(12px, 3.15vw, 13.2px) !important;
+    line-height:1.08 !important;
+    padding-top:8px !important;
+    padding-bottom:8px !important;
+    white-space:nowrap !important;
+  }
+
+  #projects .github-project-card .project-link.has-destination-icon{
+    padding-left:34px !important;
+    padding-right:34px !important;
+  }
+
+  #projects .github-project-card .project-link .btn-destination-icon{
+    width:25px !important;
+    height:25px !important;
+    min-width:25px !important;
+    max-width:25px !important;
+    min-height:25px !important;
+    max-height:25px !important;
+    right:5px !important;
+  }
+
+  #projects .github-project-card .project-link .btn-destination-icon img,
+  #projects .github-project-card .project-link .btn-destination-icon svg{
+    width:15px !important;
+    height:15px !important;
+    min-width:15px !important;
+    max-width:15px !important;
+    min-height:15px !important;
+    max-height:15px !important;
+  }
+
+  /* Proyectos 8 y 9: SPSS/Python siempre en una línea. */
+  #projects .github-project-card:nth-of-type(8) .project-links-dual,
+  #projects .github-project-card:nth-of-type(8) .project-links-editorial,
+  #projects .github-project-card:nth-of-type(8) .project-link-row,
+  #projects .github-project-card:nth-of-type(9) .project-links-dual,
+  #projects .github-project-card:nth-of-type(9) .project-links-editorial,
+  #projects .github-project-card:nth-of-type(9) .project-link-row{
+    display:flex !important;
+    flex-direction:row !important;
+    flex-wrap:nowrap !important;
+    gap:7px !important;
+    align-items:stretch !important;
+    justify-content:space-between !important;
+    width:100% !important;
+  }
+
+  #projects .github-project-card:nth-of-type(8) .project-links-dual > *,
+  #projects .github-project-card:nth-of-type(8) .project-links-editorial > *,
+  #projects .github-project-card:nth-of-type(8) .project-link-row > *,
+  #projects .github-project-card:nth-of-type(9) .project-links-dual > *,
+  #projects .github-project-card:nth-of-type(9) .project-links-editorial > *,
+  #projects .github-project-card:nth-of-type(9) .project-link-row > *{
+    flex:1 1 0 !important;
+    min-width:0 !important;
+  }
+
+  #projects .github-project-card:nth-of-type(8) .project-link,
+  #projects .github-project-card:nth-of-type(9) .project-link{
+    flex:1 1 0 !important;
+    min-width:0 !important;
+    width:auto !important;
+    max-width:none !important;
+    white-space:nowrap !important;
+    font-size:clamp(10.2px, 2.65vw, 11.4px) !important;
+    letter-spacing:-.38px !important;
+    padding-left:4px !important;
+    padding-right:4px !important;
+  }
+}
+
+@media (max-width: 380px){
+  #projects .github-project-body h3{
+    font-size:16.4px !important;
+  }
+
+  #projects .github-project-body .project-status,
+  #projects .project-status{
+    font-size:11px !important;
+  }
+
+  #projects .github-project-body p:not(.project-status){
+    font-size:12.2px !important;
+  }
+
+  #projects .github-project-card .project-link{
+    font-size:10.8px !important;
+  }
+
+  #projects .github-project-card:nth-of-type(8) .project-link,
+  #projects .github-project-card:nth-of-type(9) .project-link{
+    font-size:9.1px !important;
+    letter-spacing:-.45px !important;
+  }
+}
+
+
+
+/* === V50X: Proyectos mobile - dropdown filtros por encima y ancho por contenido === */
+/*
+  Base: v50w.
+  Alcance exclusivo: filtros de Proyectos en mobile.
+  Objetivo:
+  - que el desplegable no quede tapado por las tarjetas;
+  - que el panel no ocupe todo el ancho;
+  - que ajuste al texto más largo de cada grupo.
+*/
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+
+  #projects{
+    position:relative !important;
+    overflow:visible !important;
+    z-index:1 !important;
+  }
+
+  #projects .container,
+  #projects .github-projects-wrapper,
+  #projects .github-projects-inner,
+  #projects .repo-filter-area,
+  #projects .repo-filter-toolbar,
+  #projects .repo-filter-toolbar-hover-groups{
+    overflow:visible !important;
+  }
+
+  #projects .repo-filter-area,
+  #projects .repo-filter-toolbar,
+  #projects .repo-filter-toolbar-hover-groups{
+    position:relative !important;
+    z-index:50000 !important;
+  }
+
+  #projects .repo-filter-toolbar{
+    overflow-x:auto !important;
+    overflow-y:visible !important;
+    isolation:isolate !important;
+    padding-bottom:18px !important;
+  }
+
+  #projects .repo-filter-group{
+    position:relative !important;
+    z-index:51000 !important;
+    overflow:visible !important;
+    flex:0 0 auto !important;
+    isolation:isolate !important;
+  }
+
+  #projects .repo-filter-group:hover,
+  #projects .repo-filter-group:focus-within,
+  #projects .repo-filter-group.is-open,
+  #projects .repo-filter-group.active{
+    z-index:52000 !important;
+  }
+
+  #projects .repo-filter-category-panel{
+    position:absolute !important;
+    top:calc(100% + 8px) !important;
+    left:0 !important;
+    right:auto !important;
+    z-index:99999 !important;
+
+    width:-moz-max-content !important;
+    width:max-content !important;
+    min-width:max-content !important;
+    max-width:calc(100vw - 32px) !important;
+    inline-size:max-content !important;
+
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+
+    padding:10px !important;
+    border-radius:16px !important;
+    background:rgba(6,7,6,.98) !important;
+    border:1px solid rgba(255,194,0,.28) !important;
+    box-shadow:0 24px 76px rgba(0,0,0,.78), 0 0 0 1px rgba(255,255,255,.07) inset !important;
+    backdrop-filter:blur(12px) !important;
+    overflow:visible !important;
+    transform:none !important;
+  }
+
+  /* Si el grupo está cerca del borde derecho, permitir que el panel se apoye a la derecha. */
+  #projects .repo-filter-group:last-child .repo-filter-category-panel,
+  #projects .repo-filter-group:nth-last-child(2) .repo-filter-category-panel{
+    left:auto !important;
+    right:0 !important;
+  }
+
+  #projects .repo-filter-category-panel .repo-filter-btn{
+    display:flex !important;
+    width:100% !important;
+    min-width:max-content !important;
+    max-width:calc(100vw - 56px) !important;
+    justify-content:center !important;
+    align-items:center !important;
+    text-align:center !important;
+    white-space:nowrap !important;
+    margin:0 0 6px !important;
+    padding:8px 14px !important;
+    border-radius:12px !important;
+    background:rgba(255,255,255,.065) !important;
+    border:1px solid rgba(255,255,255,.09) !important;
+    color:#f5f0e8 !important;
+    font-size:12.8px !important;
+    line-height:1.08 !important;
+  }
+
+  #projects .repo-filter-category-panel .repo-filter-btn:last-child{
+    margin-bottom:0 !important;
+  }
+
+  #projects .repo-filter-category-panel .repo-filter-btn:hover,
+  #projects .repo-filter-category-panel .repo-filter-btn:focus{
+    background:rgba(255,194,0,.18) !important;
+    border-color:rgba(255,194,0,.35) !important;
+  }
+
+  /* La grilla queda explícitamente por debajo del desplegable. */
+  #projects .github-project-grid,
+  #projects .github-project-card,
+  #projects .project-image-link,
+  #projects .github-project-body{
+    position:relative !important;
+    z-index:1 !important;
+  }
+}
+
+
+
+/* === V50Y: Proyectos mobile - filtros siempre al frente === */
+/*
+  Corrige la causa real: los paneles quedaban recortados por overflow del toolbar.
+  En mobile el panel se posiciona fixed al abrirse, por encima de las tarjetas.
+*/
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+
+  #projects,
+  #projects .container{
+    overflow:visible !important;
+  }
+
+  #projects .repo-filter-toolbar,
+  #projects .repo-filter-toolbar-hover-groups{
+    position:relative !important;
+    z-index:70000 !important;
+    overflow-x:auto !important;
+    overflow-y:visible !important;
+    isolation:auto !important;
+  }
+
+  #projects .repo-filter-group{
+    position:relative !important;
+    z-index:71000 !important;
+    overflow:visible !important;
+  }
+
+  /*
+    Estado fijo aplicado por JS.
+    Esto saca visualmente el panel de la caja scrolleable y evita que las tarjetas lo tapen.
+  */
+  #projects .repo-filter-category-panel.pl-mobile-filter-floating{
+    position:fixed !important;
+    top:var(--pl-filter-top, 80px) !important;
+    left:var(--pl-filter-left, 12px) !important;
+    right:auto !important;
+    z-index:2147483000 !important;
+
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+
+    width:max-content !important;
+    min-width:max-content !important;
+    max-width:calc(100vw - 24px) !important;
+    inline-size:max-content !important;
+
+    padding:10px !important;
+    border-radius:16px !important;
+    background:rgba(6,7,6,.985) !important;
+    border:1px solid rgba(255,194,0,.32) !important;
+    box-shadow:0 26px 90px rgba(0,0,0,.82), 0 0 0 1px rgba(255,255,255,.08) inset !important;
+    backdrop-filter:blur(12px) !important;
+    overflow:visible !important;
+    transform:none !important;
+  }
+
+  #projects .repo-filter-category-panel.pl-mobile-filter-floating .repo-filter-btn{
+    display:flex !important;
+    width:100% !important;
+    min-width:max-content !important;
+    max-width:calc(100vw - 48px) !important;
+    justify-content:center !important;
+    align-items:center !important;
+    text-align:center !important;
+    white-space:nowrap !important;
+    margin:0 0 6px !important;
+    padding:8px 14px !important;
+    border-radius:12px !important;
+    background:rgba(255,255,255,.065) !important;
+    border:1px solid rgba(255,255,255,.09) !important;
+    color:#f5f0e8 !important;
+    font-size:12.8px !important;
+    line-height:1.08 !important;
+  }
+
+  #projects .repo-filter-category-panel.pl-mobile-filter-floating .repo-filter-btn:last-child{
+    margin-bottom:0 !important;
+  }
+
+  #projects .github-project-grid,
+  #projects .github-project-card{
+    position:relative !important;
+    z-index:1 !important;
+  }
+}
+
+
+
+/* === V50Z: Proyectos mobile - filtros funcionales en portal === */
+/*
+  Corrige V50Y:
+  - El panel se mueve temporalmente al body al abrirse.
+  - No queda dentro del contenedor scrolleable de filtros.
+  - No se intercepta el click del botón de filtro, por lo que el filtrado original funciona.
+  - El ancho sigue ajustado al contenido.
+*/
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+
+  #projects .repo-filter-toolbar{
+    overflow-x:auto !important;
+    overflow-y:visible !important;
+    -webkit-overflow-scrolling:touch !important;
+    scrollbar-width:none !important;
+  }
+
+  #projects .repo-filter-toolbar::-webkit-scrollbar{
+    display:none !important;
+  }
+
+  #projects .repo-filter-group{
+    position:relative !important;
+    overflow:visible !important;
+  }
+
+  body > .repo-filter-category-panel.pl-mobile-filter-portal{
+    position:fixed !important;
+    top:var(--pl-filter-top, 80px) !important;
+    left:var(--pl-filter-left, 12px) !important;
+    right:auto !important;
+    z-index:2147483000 !important;
+
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+    gap:0 !important;
+
+    width:max-content !important;
+    min-width:max-content !important;
+    max-width:calc(100vw - 24px) !important;
+    inline-size:max-content !important;
+
+    max-height:none !important;
+    overflow:visible !important;
+    overflow-x:visible !important;
+    overflow-y:visible !important;
+
+    padding:10px !important;
+    border-radius:16px !important;
+    background:rgba(6,7,6,.985) !important;
+    border:1px solid rgba(255,194,0,.32) !important;
+    box-shadow:0 26px 90px rgba(0,0,0,.82), 0 0 0 1px rgba(255,255,255,.08) inset !important;
+    backdrop-filter:blur(12px) !important;
+    transform:none !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    pointer-events:auto !important;
+  }
+
+  body > .repo-filter-category-panel.pl-mobile-filter-portal .repo-filter-btn{
+    display:flex !important;
+    width:100% !important;
+    min-width:max-content !important;
+    max-width:calc(100vw - 48px) !important;
+    justify-content:center !important;
+    align-items:center !important;
+    text-align:center !important;
+    white-space:nowrap !important;
+    margin:0 0 6px !important;
+    padding:8px 14px !important;
+    border-radius:12px !important;
+    background:rgba(255,255,255,.065) !important;
+    border:1px solid rgba(255,255,255,.09) !important;
+    color:#f5f0e8 !important;
+    font-size:12.8px !important;
+    line-height:1.08 !important;
+  }
+
+  body > .repo-filter-category-panel.pl-mobile-filter-portal .repo-filter-btn:last-child{
+    margin-bottom:0 !important;
+  }
+
+  body > .repo-filter-category-panel.pl-mobile-filter-portal .repo-filter-btn.active{
+    background:rgba(255,194,0,.20) !important;
+    border-color:rgba(255,194,0,.42) !important;
+  }
+
+  #projects .github-project-grid,
+  #projects .github-project-card{
+    position:relative !important;
+    z-index:1 !important;
+  }
+}
+
+
+
+/* === V50AA: Proyectos mobile - barra de filtros estática === */
+/*
+  Base: v50z.
+  Corrige la barra de filtros móvil:
+  - elimina el scroll/arrastre horizontal del toolbar;
+  - permite que los filtros bajen a otra línea;
+  - mantiene el desplegable funcional en portal;
+  - no toca Metodología, Redes ni desktop.
+*/
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+
+  #projects .repo-filter-toolbar,
+  #projects .repo-filter-toolbar-hover-groups,
+  #projects .repo-filter-toolbar-categories{
+    display:flex !important;
+    flex-wrap:wrap !important;
+    justify-content:center !important;
+    align-items:center !important;
+    gap:9px 8px !important;
+
+    width:100% !important;
+    max-width:100% !important;
+
+    overflow-x:visible !important;
+    overflow-y:visible !important;
+    touch-action:pan-y !important;
+    overscroll-behavior-x:none !important;
+    -webkit-overflow-scrolling:auto !important;
+
+    padding-bottom:14px !important;
+    scrollbar-width:none !important;
+  }
+
+  #projects .repo-filter-toolbar::-webkit-scrollbar{
+    display:none !important;
+  }
+
+  #projects .repo-filter-toolbar > .repo-filter-btn,
+  #projects .repo-filter-group{
+    flex:0 0 auto !important;
+    min-width:0 !important;
+    max-width:100% !important;
+  }
+
+  #projects .repo-filter-group{
+    position:relative !important;
+    overflow:visible !important;
+    touch-action:manipulation !important;
+  }
+
+  #projects .repo-filter-group-trigger,
+  #projects .repo-filter-toolbar > .repo-filter-btn{
+    white-space:nowrap !important;
+    touch-action:manipulation !important;
+  }
+
+  /* Se conserva el portal de v50z para que el dropdown quede por delante. */
+  body > .repo-filter-category-panel.pl-mobile-filter-portal{
+    position:fixed !important;
+    z-index:2147483000 !important;
+    width:max-content !important;
+    min-width:max-content !important;
+    max-width:calc(100vw - 24px) !important;
+  }
+}
+
+
+
+/* === V50AB: Mobile hero y textos de secciones === */
+/*
+  Base: v50aa.
+  Alcance solo mobile/táctil:
+  - Hero más grande y en 3 líneas.
+  - Copy del hero en #f4efe7.
+  - Kicker Portfolio más grande, una línea, sin marco.
+  - Intro Proyectos en #f4efe7.
+  - Intro Redes en #f4efe7.
+*/
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+
+  /* 4) Kicker Portfolio: más grande, una línea, sin marco. */
+  #about .small-text.hero-entry-v25b-kicker,
+  #about .small-text{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 0 14px !important;
+    padding:0 !important;
+    background:transparent !important;
+    border:0 !important;
+    box-shadow:none !important;
+    outline:0 !important;
+    color:inherit !important;
+    text-align:left !important;
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow:clip !important;
+    font-size:clamp(12.8px, 3.42vw, 15px) !important;
+    line-height:1.1 !important;
+    letter-spacing:.015em !important;
+  }
+
+  #about .small-text *,
+  #about .small-text.hero-entry-v25b-kicker *{
+    white-space:nowrap !important;
+  }
+
+  /* 1) Título hero: más grande y estructura visual de 3 líneas. */
+  #about .pl-hero-title.hero-entry-v25b-title,
+  #about .pl-hero-title{
+    display:block !important;
+    width:min(100%, 10.4ch) !important;
+    max-width:10.4ch !important;
+    font-size:clamp(4.95rem, 20vw, 7.15rem) !important;
+    line-height:.81 !important;
+    letter-spacing:-.092em !important;
+    margin:0 0 18px !important;
+  }
+
+  #about .pl-hero-title .hero-line{
+    display:block !important;
+    width:10.4ch !important;
+    max-width:10.4ch !important;
+    white-space:normal !important;
+  }
+
+  #about .pl-hero-title .hero-rotator{
+    display:block !important;
+    position:relative !important;
+    min-height:1.03em !important;
+    margin-top:.08em !important;
+    text-align:left !important;
+    white-space:nowrap !important;
+  }
+
+  #about .pl-hero-title .hero-rotator span{
+    left:0 !important;
+    right:auto !important;
+    text-align:left !important;
+    white-space:nowrap !important;
+  }
+
+  /* 2) Descripción del hero. */
+  #about .about-text p.hero-entry-v25b-copy,
+  #about .about-text > p{
+    color:#f4efe7 !important;
+    opacity:1 !important;
+    text-shadow:0 2px 18px rgba(0,0,0,.36) !important;
+  }
+
+  /* 5) Intro Proyectos. */
+  #projects .projects-intro{
+    color:#f4efe7 !important;
+    opacity:1 !important;
+    text-shadow:0 2px 18px rgba(0,0,0,.28) !important;
+  }
+
+  /* 3) Intro Redes. */
+  #networks .social-intro{
+    color:#f4efe7 !important;
+    opacity:1 !important;
+    text-shadow:0 2px 18px rgba(0,0,0,.28) !important;
+  }
+}
+
+@media (max-width: 380px){
+  #about .small-text.hero-entry-v25b-kicker,
+  #about .small-text{
+    font-size:clamp(11.5px, 3.08vw, 12.6px) !important;
+    letter-spacing:-.01em !important;
+  }
+
+  #about .pl-hero-title.hero-entry-v25b-title,
+  #about .pl-hero-title{
+    font-size:clamp(4.45rem, 18.6vw, 6.25rem) !important;
+    max-width:10.2ch !important;
+  }
+}
+
+
+
+/* === V50AC: Mobile hero - restaurar color original del kicker Portfolio === */
+/*
+  Corrige V50AB:
+  - mantiene el kicker en una línea y más grande;
+  - no fuerza color ni herencia de color;
+  - deja que los colores originales del HTML/CSS previo gobiernen el texto y los destacados.
+*/
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+
+  #about .small-text.hero-entry-v25b-kicker,
+  #about .small-text{
+    color:unset !important;
+  }
+
+  #about .small-text.hero-entry-v25b-kicker *,
+  #about .small-text *{
+    color:revert-layer !important;
+  }
+
+  /* Preservar el tamaño/una línea pedido, pero sin modificar color. */
+  #about .small-text.hero-entry-v25b-kicker,
+  #about .small-text{
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow:clip !important;
+    background:transparent !important;
+    border:0 !important;
+    box-shadow:none !important;
+    outline:0 !important;
+  }
+}
+
+
+
+/* === V50AD: Mobile hero - color Portfolio corregido explícitamente === */
+/*
+  Corrige V50AB/V50AC:
+  - El texto "Portfolio de proyectos" vuelve a verse claro.
+  - Los destacados BI · ML · Python · Dashboards mantienen amarillo/naranja.
+  - Se conserva una sola línea y sin marco.
+*/
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+
+  #about .small-text.hero-entry-v25b-kicker,
+  #about .small-text{
+    color:#f4efe7 !important;
+    opacity:1 !important;
+    text-shadow:0 2px 16px rgba(0,0,0,.45) !important;
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow:clip !important;
+    background:transparent !important;
+    border:0 !important;
+    box-shadow:none !important;
+    outline:0 !important;
+  }
+
+  #about .small-text.hero-entry-v25b-kicker span,
+  #about .small-text.hero-entry-v25b-kicker strong,
+  #about .small-text.hero-entry-v25b-kicker b,
+  #about .small-text span,
+  #about .small-text strong,
+  #about .small-text b{
+    color:#ffc200 !important;
+    opacity:1 !important;
+    text-shadow:0 2px 16px rgba(0,0,0,.45) !important;
+    white-space:nowrap !important;
+  }
+}
+
+
+
+/* === V50AE: Mobile hero - Portfolio completo naranja === */
+/*
+  Corrige V50AD:
+  - "Portfolio de proyectos BI · ML · Python · Dashboards" se ve como un único texto.
+  - Todo el texto completo queda en naranja.
+  - Se mantiene una sola línea y sin marco.
+*/
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+
+  #about .small-text.hero-entry-v25b-kicker,
+  #about .small-text.hero-entry-v25b-kicker *,
+  #about .small-text,
+  #about .small-text *{
+    color:#ff9f1c !important;
+    opacity:1 !important;
+    text-shadow:0 2px 16px rgba(0,0,0,.45) !important;
+    white-space:nowrap !important;
+  }
+
+  #about .small-text.hero-entry-v25b-kicker,
+  #about .small-text{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    overflow:hidden !important;
+    text-overflow:clip !important;
+    background:transparent !important;
+    border:0 !important;
+    box-shadow:none !important;
+    outline:0 !important;
+  }
+}
+
+
+
+/* === V50AF: Mobile hero - Portfolio una sola tinta naranja === */
+/*
+  Corrige V50AE:
+  El kicker completo "Portfolio de proyectos BI · ML · Python · Dashboards"
+  debe verse como un único texto del mismo color, sin blancos ni amarillos.
+*/
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+
+  body #about .about-text .small-text.hero-entry-v25b-kicker,
+  body #about .about-text .small-text.hero-entry-v25b-kicker *,
+  body #about .about-text .small-text.hero-entry-v25b-kicker span,
+  body #about .about-text .small-text.hero-entry-v25b-kicker strong,
+  body #about .about-text .small-text.hero-entry-v25b-kicker b,
+  body #about .about-text .small-text.hero-entry-v25b-kicker em,
+  body #about .about-text .small-text.hero-entry-v25b-kicker i,
+  body.dark-mode #about .about-text .small-text.hero-entry-v25b-kicker,
+  body.dark-mode #about .about-text .small-text.hero-entry-v25b-kicker *,
+  body:not(.dark-mode) #about .about-text .small-text.hero-entry-v25b-kicker,
+  body:not(.dark-mode) #about .about-text .small-text.hero-entry-v25b-kicker *{
+    color:#ff9f1c !important;
+    -webkit-text-fill-color:#ff9f1c !important;
+    opacity:1 !important;
+  }
+
+  body #about .about-text .small-text.hero-entry-v25b-kicker{
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    white-space:nowrap !important;
+    overflow:hidden !important;
+    text-overflow:clip !important;
+    background:transparent !important;
+    border:0 !important;
+    box-shadow:none !important;
+    outline:0 !important;
+    text-shadow:0 2px 16px rgba(0,0,0,.45) !important;
+  }
+
+  body #about .about-text .small-text.hero-entry-v25b-kicker *{
+    white-space:nowrap !important;
+    text-shadow:inherit !important;
+  }
+}
+
+
+
+/* === V51B: Mobile Metodología - tarjeta arriba, texto abajo === */
+/*
+  Base válida: v51 / v50af.
+  No parte de v51a.
+  Objetivo:
+  - subir claramente la tarjeta animada;
+  - bajar claramente el bloque de número/título/subtítulo/descripción/iconos;
+  - separar ambos bloques para dar aire a la animación expandida;
+  - no tocar scroll, click zones, JS, Proyectos, Redes ni desktop.
+*/
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+
+  #methodology .process-horizontal-static-head{
+    padding-top:48px !important;
+    padding-bottom:0 !important;
+  }
+
+  #methodology .process-horizontal-static-head h2{
+    font-size:clamp(1.64rem, 6.55vw, 2.08rem) !important;
+    line-height:.96 !important;
+  }
+
+  #methodology .process-horizontal-panel{
+    min-height:calc(100svh - 56px) !important;
+  }
+
+  #methodology .process-horizontal-panel__inner{
+    min-height:calc(100svh - 56px) !important;
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    grid-template-rows:auto auto !important;
+    align-content:center !important;
+    gap:20px !important;
+    padding:6px 18px 74px !important;
+  }
+
+  /*
+    Tarjeta animada más arriba.
+    No se agranda agresivamente para no romper el estado expandido.
+  */
+  #methodology .process-horizontal-panel__media{
+    width:min(60vw, 248px) !important;
+    max-height:27svh !important;
+    justify-self:center !important;
+    transform:translateY(-42px) !important;
+    margin-bottom:-18px !important;
+    z-index:3 !important;
+  }
+
+  /*
+    Bloque inferior más abajo.
+    Esto abre espacio entre la animación expandida y el título de la solapa.
+  */
+  #methodology .process-horizontal-panel__copy{
+    width:min(92vw, 420px) !important;
+    padding-left:30px !important;
+    margin-left:-8px !important;
+    transform:translateY(34px) !important;
+    z-index:2 !important;
+  }
+
+  #methodology .process-horizontal-panel__number{
+    font-size:clamp(4.25rem, 18vw, 5.75rem) !important;
+    transform:translate(-31%, 0) !important;
+    opacity:.15 !important;
+  }
+
+  #methodology .process-horizontal-panel h3{
+    font-size:clamp(1.78rem, 8.35vw, 2.68rem) !important;
+    line-height:.92 !important;
+    margin-bottom:10px !important;
+  }
+
+  #methodology .process-horizontal-panel small{
+    font-size:clamp(.82rem, 3.18vw, .98rem) !important;
+    line-height:1.08 !important;
+    margin-bottom:8px !important;
+  }
+
+  #methodology .process-horizontal-panel p{
+    margin-top:8px !important;
+    margin-bottom:0 !important;
+    font-size:clamp(.86rem, 3.38vw, .96rem) !important;
+    line-height:1.32 !important;
+  }
+
+  #methodology .process-horizontal-tech{
+    margin-top:11px !important;
+    gap:4px !important;
+  }
+
+  #methodology .process-horizontal-tech-chip{
+    width:33px !important;
+    height:33px !important;
+    flex-basis:33px !important;
+  }
+
+  #methodology .process-horizontal-tech-chip img,
+  #methodology .process-horizontal-tech-chip svg,
+  #methodology .process-horizontal-tech-chip .process-horizontal-tech-icon--matplotlib{
+    width:21px !important;
+    height:21px !important;
+  }
+}
+
+@media (max-width: 380px){
+  #methodology .process-horizontal-static-head{
+    padding-top:44px !important;
+  }
+
+  #methodology .process-horizontal-panel__inner{
+    padding:4px 16px 70px !important;
+    gap:18px !important;
+  }
+
+  #methodology .process-horizontal-panel__media{
+    width:min(58vw, 224px) !important;
+    max-height:25svh !important;
+    transform:translateY(-38px) !important;
+    margin-bottom:-16px !important;
+  }
+
+  #methodology .process-horizontal-panel__copy{
+    width:min(93vw, 390px) !important;
+    padding-left:28px !important;
+    margin-left:-10px !important;
+    transform:translateY(30px) !important;
+  }
+
+  #methodology .process-horizontal-panel h3{
+    font-size:clamp(1.58rem, 7.7vw, 2.28rem) !important;
+  }
+
+  #methodology .process-horizontal-panel small{
+    font-size:.8rem !important;
+  }
+
+  #methodology .process-horizontal-panel p{
+    font-size:.83rem !important;
+    line-height:1.3 !important;
+  }
+
+  #methodology .process-horizontal-tech-chip{
+    width:30px !important;
+    height:30px !important;
+    flex-basis:30px !important;
+  }
+}
+
+
+
+/* === V51C: Mobile Metodología - bajar bloque inferior === */
+/*
+  Base: v51b.
+  Mantiene las tarjetas animadas donde quedaron.
+  Baja de forma explícita el bloque completo de texto/número/iconos.
+*/
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+
+  #methodology .process-horizontal-panel__copy{
+    margin-top:34px !important;
+    transform:translateY(58px) !important;
+    align-self:start !important;
+  }
+
+  #methodology .process-horizontal-panel__number{
+    transform:translate(-31%, 10px) !important;
+  }
+
+  #methodology .process-horizontal-panel h3,
+  #methodology .process-horizontal-panel small,
+  #methodology .process-horizontal-panel p,
+  #methodology .process-horizontal-tech{
+    position:relative !important;
+    top:0 !important;
+  }
+}
+
+@media (max-width: 380px){
+  #methodology .process-horizontal-panel__copy{
+    margin-top:30px !important;
+    transform:translateY(50px) !important;
+  }
+
+  #methodology .process-horizontal-panel__number{
+    transform:translate(-31%, 8px) !important;
+  }
+}
+
+
+
+/* === V51D: Mobile Metodología - título Ciclo más arriba === */
+/*
+  Base: v51c.
+  Solo sube "Ciclo de vida del dato".
+  No toca tarjetas animadas ni bloque inferior.
+*/
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+
+  #methodology .process-horizontal-static-head{
+    padding-top:26px !important;
+    padding-bottom:4px !important;
+  }
+}
+
+@media (max-width: 380px){
+  #methodology .process-horizontal-static-head{
+    padding-top:24px !important;
+    padding-bottom:4px !important;
+  }
+}
+
+
+
+/* === V51E: Mobile Metodología - separar número y título verticalmente === */
+/*
+  Base: v51d.
+  Solo ajusta la separación vertical entre el número grande y el título de cada solapa.
+  No toca tarjetas animadas, bloque general, JS, filtros, Redes, Proyectos ni desktop.
+*/
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+
+  #methodology .process-horizontal-panel__number{
+    transform:translate(-31%, -8px) !important;
+  }
+
+  #methodology .process-horizontal-panel h3{
+    margin-top:8px !important;
+  }
+}
+
+@media (max-width: 380px){
+  #methodology .process-horizontal-panel__number{
+    transform:translate(-31%, -6px) !important;
+  }
+
+  #methodology .process-horizontal-panel h3{
+    margin-top:7px !important;
+  }
+}
+

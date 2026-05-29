@@ -1625,3 +1625,401 @@
   });
 })();
 
+// === V50A: responsive móvil, loader táctil y scroll con un dedo ===
+(function(){
+  const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  const mobileWidth = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+  if(!coarsePointer && !mobileWidth) return;
+
+  const body = document.body;
+  const html = document.documentElement;
+  if(!body || !html) return;
+
+  function cleanMobileScrollLocks(){
+    const loader = document.querySelector('.pl-scroll-loader');
+
+    if(!loader){
+      body.classList.remove('pl-scroll-landing-lock');
+      body.classList.remove('pl-scroll-loader-active');
+      body.classList.remove('pl-scroll-loader-finishing');
+      body.classList.add('pl-scroll-loader-complete');
+      html.classList.remove('pl-scroll-loader-lock');
+    }
+
+    body.style.removeProperty('overflow');
+    body.style.removeProperty('height');
+    html.style.removeProperty('overflow');
+    html.style.removeProperty('height');
+  }
+
+  function refreshScrollSystems(){
+    if(typeof window.plSmoothScrollSync === 'function'){
+      window.plSmoothScrollSync();
+    }
+
+    if(window.ScrollTrigger && typeof window.ScrollTrigger.refresh === 'function'){
+      window.ScrollTrigger.refresh(true);
+    }
+  }
+
+  function killLoaderScrollTriggers(loader){
+    if(window.ScrollTrigger && typeof window.ScrollTrigger.getAll === 'function'){
+      window.ScrollTrigger.getAll().forEach(function(st){
+        try{
+          if(st && st.trigger && loader && loader.contains(st.trigger)){
+            st.kill(false);
+          }
+        }catch(error){}
+      });
+    }
+  }
+
+  function finishMobileLoader(){
+    const loader = document.querySelector('.pl-scroll-loader');
+    if(!loader) {
+      cleanMobileScrollLocks();
+      return;
+    }
+
+    if(loader.dataset.mobileFinished === 'true') return;
+    loader.dataset.mobileFinished = 'true';
+
+    const dot = loader.querySelector('.dot');
+    const next = loader.querySelector('.pl-scroll-loader__next');
+
+    body.classList.add('pl-scroll-loader-finishing');
+    loader.classList.add('pl-mobile-loader-finishing');
+
+    if(dot) dot.style.transform = 'scale(1200)';
+    if(next){
+      next.style.visibility = 'visible';
+      next.style.opacity = '1';
+    }
+
+    killLoaderScrollTriggers(loader);
+
+    window.setTimeout(function(){
+      if(loader.parentNode){
+        loader.parentNode.removeChild(loader);
+      }
+
+      body.classList.remove('pl-scroll-loader-active');
+      body.classList.remove('pl-scroll-loader-finishing');
+      body.classList.remove('pl-scroll-landing-lock');
+      body.classList.add('pl-scroll-loader-complete');
+      html.classList.remove('pl-scroll-loader-lock');
+
+      window.scrollTo(0, 0);
+      cleanMobileScrollLocks();
+      refreshScrollSystems();
+    }, 520);
+  }
+
+  function bindMobileLoader(){
+    const loader = document.querySelector('.pl-scroll-loader');
+    if(!loader) {
+      cleanMobileScrollLocks();
+      return;
+    }
+
+    loader.setAttribute('role', 'button');
+    loader.setAttribute('tabindex', '0');
+    loader.setAttribute('aria-label', 'Tocar para entrar al sitio');
+
+    loader.addEventListener('pointerdown', finishMobileLoader, {passive:true, once:true});
+    loader.addEventListener('touchstart', finishMobileLoader, {passive:true, once:true});
+    loader.addEventListener('click', finishMobileLoader, {passive:true, once:true});
+    loader.addEventListener('keydown', function(event){
+      if(event.code === 'Enter' || event.code === 'Space'){
+        finishMobileLoader();
+      }
+    }, {once:true});
+
+    // Failsafe: evita que quede bloqueado el scroll en algunos navegadores Android.
+    window.setTimeout(function(){
+      if(document.querySelector('.pl-scroll-loader')){
+        cleanMobileScrollLocks();
+      }
+    }, 6500);
+  }
+
+  bindMobileLoader();
+
+  window.addEventListener('pageshow', cleanMobileScrollLocks, {passive:true});
+  window.addEventListener('load', function(){
+    window.setTimeout(cleanMobileScrollLocks, 900);
+  }, {passive:true});
+})();
+
+
+
+// === V50U: móvil sin transiciones de sección ni motores de Metodología ===
+(function(){
+  const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  const mobileWidth = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+  if(!coarsePointer && !mobileWidth) return;
+
+  const html = document.documentElement;
+  const body = document.body;
+
+  function cleanMobileState(){
+    if(!html || !body) return;
+
+    html.classList.remove('pl-section-snap-enabled');
+    html.classList.remove('pl-locomotive-style-active');
+    body.classList.remove('pl-locomotive-style-active');
+    body.classList.remove('pl-mobile-method-pinned');
+    body.classList.remove('pl-mobile-method-exit');
+    body.classList.remove('is-mobile-process-dragging');
+
+    html.style.scrollBehavior = 'auto';
+    body.style.scrollBehavior = 'auto';
+
+    body.style.removeProperty('overflow');
+    body.style.removeProperty('height');
+    html.style.removeProperty('overflow');
+    html.style.removeProperty('height');
+  }
+
+  document.addEventListener('click', function(event){
+    const link = event.target && event.target.closest ? event.target.closest('a[href^="#"]') : null;
+    if(!link) return;
+
+    const href = link.getAttribute('href');
+    if(!href || href === '#') return;
+
+    const target = document.querySelector(href);
+    if(!target) return;
+
+    event.preventDefault();
+    target.scrollIntoView({behavior:'auto', block:'start'});
+  }, true);
+
+  window.addEventListener('pageshow', cleanMobileState, {passive:true});
+  window.addEventListener('load', cleanMobileState, {passive:true});
+  window.addEventListener('resize', cleanMobileState, {passive:true});
+  window.setTimeout(cleanMobileState, 0);
+  window.setTimeout(cleanMobileState, 500);
+  window.setTimeout(cleanMobileState, 1200);
+})();
+
+
+
+// === V50V: Metodología mobile - zonas clicables y contraste de título ===
+(function(){
+  const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  const mobileWidth = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+  if(!coarsePointer && !mobileWidth) return;
+
+  const section = document.querySelector('#methodology[data-horizontal-process-section]');
+  if(!section) return;
+
+  const track = section.querySelector('.process-horizontal-track');
+  const panels = Array.from(section.querySelectorAll('.process-horizontal-panel'));
+  if(!track || panels.length < 2) return;
+
+  let startX = 0;
+  let startY = 0;
+  let moved = false;
+  let ticking = false;
+
+  function clamp(value, min, max){
+    return Math.min(Math.max(value, min), max);
+  }
+
+  function getIndex(){
+    const width = Math.max(1, window.innerWidth);
+    return clamp(Math.round(track.scrollLeft / width), 0, panels.length - 1);
+  }
+
+  function updateTitleContrast(index){
+    const active = panels[clamp(index, 0, panels.length - 1)];
+    const needsLightTitle = active && active.classList.contains('is-light-text');
+
+    section.classList.toggle('is-light-stage', !!needsLightTitle);
+    section.classList.toggle('is-dark-stage', !needsLightTitle);
+  }
+
+  function goTo(index){
+    const nextIndex = clamp(index, 0, panels.length - 1);
+    track.scrollTo({
+      left: nextIndex * window.innerWidth,
+      behavior: 'smooth'
+    });
+    updateTitleContrast(nextIndex);
+  }
+
+  function requestContrastUpdate(){
+    if(ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(function(){
+      ticking = false;
+      updateTitleContrast(getIndex());
+    });
+  }
+
+  track.addEventListener('scroll', requestContrastUpdate, {passive:true});
+
+  section.addEventListener('touchstart', function(event){
+    const touch = event.touches && event.touches[0];
+    if(!touch) return;
+    startX = touch.clientX;
+    startY = touch.clientY;
+    moved = false;
+  }, {passive:true});
+
+  section.addEventListener('touchmove', function(event){
+    const touch = event.touches && event.touches[0];
+    if(!touch) return;
+
+    if(Math.abs(touch.clientX - startX) > 8 || Math.abs(touch.clientY - startY) > 8){
+      moved = true;
+    }
+  }, {passive:true});
+
+  section.addEventListener('click', function(event){
+    if(moved) return;
+
+    if(event.target && event.target.closest && event.target.closest('a, button')){
+      return;
+    }
+
+    const rect = section.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const width = Math.max(1, rect.width);
+    const current = getIndex();
+
+    if(x >= width * 0.80){
+      event.preventDefault();
+      goTo(current + 1);
+    }else if(x <= width * 0.20){
+      event.preventDefault();
+      goTo(current - 1);
+    }
+  }, false);
+
+  window.addEventListener('resize', function(){
+    goTo(getIndex());
+  }, {passive:true});
+
+  updateTitleContrast(0);
+})();
+
+
+
+// === V50Z: Proyectos mobile - filtros en portal sin interceptar filtrado ===
+(function(){
+  const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  const mobileWidth = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+  if(!coarsePointer && !mobileWidth) return;
+
+  const projects = document.querySelector('#projects');
+  if(!projects) return;
+
+  const groups = Array.from(projects.querySelectorAll('.repo-filter-group'));
+  if(!groups.length) return;
+
+  let active = null;
+
+  function restorePanel(){
+    if(!active) return;
+
+    const { group, panel, next } = active;
+
+    panel.classList.remove('pl-mobile-filter-portal');
+    panel.classList.remove('pl-mobile-filter-floating');
+    panel.style.removeProperty('--pl-filter-top');
+    panel.style.removeProperty('--pl-filter-left');
+
+    if(next && next.parentNode === group){
+      group.insertBefore(panel, next);
+    }else{
+      group.appendChild(panel);
+    }
+
+    const trigger = group.querySelector('.repo-filter-group-trigger');
+    if(trigger) trigger.setAttribute('aria-expanded', 'false');
+    group.classList.remove('is-filter-open');
+
+    active = null;
+  }
+
+  function positionPanel(trigger, panel){
+    panel.classList.add('pl-mobile-filter-portal');
+    panel.classList.remove('pl-mobile-filter-floating');
+
+    const rect = trigger.getBoundingClientRect();
+
+    // Panel ya está en body para medir sin recortes del toolbar.
+    const panelWidth = Math.min(panel.scrollWidth || panel.offsetWidth || 220, window.innerWidth - 24);
+    let left = rect.left;
+    const maxLeft = window.innerWidth - panelWidth - 12;
+
+    if(left > maxLeft) left = maxLeft;
+    if(left < 12) left = 12;
+
+    const top = Math.min(rect.bottom + 8, window.innerHeight - 80);
+
+    panel.style.setProperty('--pl-filter-top', top + 'px');
+    panel.style.setProperty('--pl-filter-left', left + 'px');
+  }
+
+  function openGroup(group){
+    const trigger = group.querySelector('.repo-filter-group-trigger');
+    const panel = group.querySelector('.repo-filter-category-panel') || (active && active.group === group ? active.panel : null);
+    if(!trigger || !panel) return;
+
+    if(active && active.group === group){
+      restorePanel();
+      return;
+    }
+
+    restorePanel();
+
+    const next = panel.nextSibling;
+    active = { group, panel, next };
+
+    group.classList.add('is-filter-open');
+    trigger.setAttribute('aria-expanded', 'true');
+
+    document.body.appendChild(panel);
+    positionPanel(trigger, panel);
+  }
+
+  groups.forEach(function(group){
+    const trigger = group.querySelector('.repo-filter-group-trigger');
+    if(!trigger) return;
+
+    trigger.addEventListener('click', function(event){
+      event.preventDefault();
+      openGroup(group);
+    });
+
+    trigger.addEventListener('touchend', function(event){
+      event.preventDefault();
+      openGroup(group);
+    }, {passive:false});
+  });
+
+  // No se corta el click de .repo-filter-btn: el listener original de filtrado queda activo.
+  document.addEventListener('click', function(event){
+    if(!active) return;
+
+    const target = event.target;
+    const clickedTrigger = active.group && active.group.contains(target);
+    const clickedPanel = active.panel && active.panel.contains(target);
+
+    if(clickedPanel && target.closest && target.closest('.repo-filter-btn')){
+      window.setTimeout(restorePanel, 120);
+      return;
+    }
+
+    if(clickedTrigger || clickedPanel) return;
+
+    restorePanel();
+  });
+
+  window.addEventListener('scroll', restorePanel, {passive:true});
+  window.addEventListener('resize', restorePanel, {passive:true});
+})();
+
