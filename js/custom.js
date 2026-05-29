@@ -1,3 +1,27 @@
+
+// === V52G: default inicial ES + dark mode ===
+(function(){
+  const DEFAULT_VERSION = 'v52g-default-es-dark';
+  const VERSION_KEY = 'patronesLabDefaultVersion';
+
+  try{
+    if(localStorage.getItem(VERSION_KEY) !== DEFAULT_VERSION){
+      localStorage.setItem('patronesLabLanguage', 'es');
+      localStorage.setItem(VERSION_KEY, DEFAULT_VERSION);
+    }
+  }catch(e){}
+
+  document.documentElement.lang = 'es';
+
+  if(document.body){
+    document.body.classList.add('dark-mode');
+  }else{
+    document.addEventListener('DOMContentLoaded', function(){
+      document.body.classList.add('dark-mode');
+    }, {once:true});
+  }
+})();
+
 (function ($) {
 
   "use strict";
@@ -33,11 +57,12 @@
     const name = $('#name').val() || '';
     const email = $('#email').val() || '';
     const message = $('#message').val() || '';
-    const subject = encodeURIComponent('Contacto desde Patrones Lab');
+    const isEnglish = (window.plCurrentLanguageForContact && window.plCurrentLanguageForContact() === 'en');
+    const subject = encodeURIComponent(isEnglish ? 'Contact from Patrones Lab' : 'Contacto desde Patrones Lab');
     const body = encodeURIComponent(
-      'Nombre: ' + name + '\n' +
+      (isEnglish ? 'Name: ' : 'Nombre: ') + name + '\n' +
       'Email: ' + email + '\n\n' +
-      'Mensaje:\n' + message
+      (isEnglish ? 'Message:\n' : 'Mensaje:\n') + message
     );
     window.location.href = 'mailto:encontrandopatrones@gmail.com?subject=' + subject + '&body=' + body;
   });
@@ -2021,5 +2046,1479 @@
 
   window.addEventListener('scroll', restorePanel, {passive:true});
   window.addEventListener('resize', restorePanel, {passive:true});
+})();
+
+
+
+// === V52B: selector bilingüe ES/EN ===
+(function(){
+  const STORAGE_KEY = 'patronesLabLanguage';
+  const DEFAULT_LANG = 'es';
+  const FLAG_US = 'images/patrones/language-flags/flag-us.svg';
+  const FLAG_ES = 'images/patrones/language-flags/flag-es.svg';
+
+  const dictionary = {
+    en: {
+      title: 'Patrones Lab — Data, BI & Machine Learning Portfolio',
+      metaDescription: 'Patrones Lab: a portfolio of reproducible data projects across BI, machine learning, Python, SQL, Power BI, Qlik and Looker Studio.',
+      htmlLang: 'en',
+      toggleFlag: FLAG_ES,
+      toggleLabel: 'Switch to Spanish',
+
+      text: {
+        '.floating-cta__text': 'View repository',
+
+        '.navbar-nav .nav-link[href="#about"]': 'Home',
+        '.navbar-nav .nav-link[href="#methodology"]': 'Methodology',
+        '.navbar-nav .nav-link[href="#projects"]': 'Projects',
+        '.navbar-nav .nav-link[href="#networks"]': 'Channels',
+        '.navbar-nav .nav-link[href="#contact"]': 'Contact',
+        '.color-mode': '<i class="color-mode-icon"></i>',
+
+        '#about .hero-entry-v25b-kicker': 'Project portfolio BI · ML · Python · Dashboards',
+        '#about .hero-line': 'I turn<br>data into',
+        '#about .hero-rotator span:nth-child(1)': 'evidence',
+        '#about .hero-rotator span:nth-child(2)': 'models',
+        '#about .hero-rotator span:nth-child(3)': 'dashboards',
+        '#about .hero-rotator span:nth-child(4)': 'decisions',
+        '#about .hero-rotator span:nth-child(5)': 'patterns',
+        '#about .hero-entry-v25b-copy': 'Patrones Lab is a data analytics lab focused on real-world, everyday phenomena.<br><br>It brings together independent projects built with public data, with an emphasis on finding patterns, explaining behavior and communicating insights with context.<br><br>The goal is to ask better questions, prepare reliable data, build reproducible analyses and turn results into clear visual outputs.',
+
+        '.tech-logo-card-airflow small': 'Orchestration',
+        '.tech-logo-card-sql-server small': 'Database',
+        '.tech-logo-card-numpy small': 'Numerical Computing',
+        '.tech-logo-card-matplotlib small': 'Data Visualization',
+        '.tech-logo-card-dbt small': 'Transformation',
+
+        '#methodology .process-horizontal-static-head h2': 'Data Lifecycle',
+        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Discovery',
+        '#methodology .process-horizontal-panel:nth-child(1) small': 'Context & Objective',
+        '#methodology .process-horizontal-panel:nth-child(1) p': 'Clarifying the problem, the decision to improve, the users involved and the expected outcome.',
+        '#methodology .process-horizontal-panel:nth-child(2) h3': 'Sources',
+        '#methodology .process-horizontal-panel:nth-child(2) small': 'Sources & Diagnostics',
+        '#methodology .process-horizontal-panel:nth-child(2) p': 'Mapping available data sources, including their origin, refresh cadence, reliability and main limitations.',
+        '#methodology .process-horizontal-panel:nth-child(3) h3': 'Preparation',
+        '#methodology .process-horizontal-panel:nth-child(3) small': 'Analytical Dataset',
+        '#methodology .process-horizontal-panel:nth-child(3) p': 'Structuring, cleaning and combining data into a consistent analytical dataset ready for analysis.',
+        '#methodology .process-horizontal-panel:nth-child(4) h3': 'Development',
+        '#methodology .process-horizontal-panel:nth-child(4) small': 'Solution',
+        '#methodology .process-horizontal-panel:nth-child(4) p': 'Building the analysis, model or dashboard required to address the defined objective.',
+        '#methodology .process-horizontal-panel:nth-child(5) h3': 'Validation',
+        '#methodology .process-horizontal-panel:nth-child(5) small': 'Quality & Confidence',
+        '#methodology .process-horizontal-panel:nth-child(5) p': 'Reviewing the coherence, stability and business relevance of the results before delivery.',
+        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Delivery',
+        '#methodology .process-horizontal-panel:nth-child(6) small': 'Publishing, Automation & Iteration',
+        '#methodology .process-horizontal-panel:nth-child(6) p': 'Documenting the final output, automating recurring workflows and using feedback to guide future improvements.',
+
+        '#projects .section-kicker': 'Patrones Lab Repository',
+        '#projects .projects-title-display': 'Projects',
+        '#projects .projects-intro': 'A selection of applied projects built with public data, documented methodology and visual outputs. Use the filters to explore by discipline, tool or deliverable type.',
+        '#projects .repo-filter-btn[data-repo-filter="all"]': '◎ All',
+        '#projects .repo-filter-group:nth-of-type(1) .repo-filter-group-trigger': 'Discipline',
+        '#projects .repo-filter-group:nth-of-type(2) .repo-filter-group-trigger': 'Tools',
+        '#projects .repo-filter-group:nth-of-type(3) .repo-filter-group-trigger': 'Model',
+        '#projects .repo-filter-group:nth-of-type(4) .repo-filter-group-trigger': 'Domain',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '✓ Supervised Model',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '◎ Unsupervised Model',
+        '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '≡ Classification',
+        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '⌁ Logistic Regression',
+        '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '⌖ Geospatial',
+        '#projects .repo-filter-btn[data-repo-filter="futbol"]': '● Soccer',
+        '#projects .repo-filter-btn[data-repo-filter="aviacion"]': '✈ Aviation',
+        '#projects .repo-filter-btn[data-repo-filter="fraude"]': '! Fraud',
+
+        '#projects .github-project-card:nth-of-type(1) h3': 'Balearic Islands Flight Analysis',
+        '#projects .github-project-card:nth-of-type(1) p:not(.project-status)': 'Analysis of air traffic in Spain using public AENA data, focused on volume, airport-level patterns and differences across traffic categories.',
+        '#projects .github-project-card:nth-of-type(2) h3': 'Airbnb Lodging Analysis in London',
+        '#projects .github-project-card:nth-of-type(2) p:not(.project-status)': 'Exploratory analysis of Airbnb listings in London, focused on pricing, property categories, reviews and spatial patterns.',
+        '#projects .github-project-card:nth-of-type(3) h3': 'Chicago Taxi Trip Analysis',
+        '#projects .github-project-card:nth-of-type(3) p:not(.project-status)': 'Analysis of reported Chicago taxi trips to study duration, demand, geospatial distribution and operational patterns.',
+        '#projects .github-project-card:nth-of-type(4) h3': 'ML Model · Airbnb London',
+        '#projects .github-project-card:nth-of-type(4) p:not(.project-status)': 'Supervised classification of listings as relatively expensive or inexpensive within each accommodation type.',
+        '#projects .github-project-card:nth-of-type(5) h3': 'Looker Dashboard · Chicago Taxi Trips',
+        '#projects .github-project-card:nth-of-type(5) p:not(.project-status)': 'Interactive Looker Studio dashboard for exploring Chicago taxi trips, operational indicators, hourly patterns and pickup-dropoff routes.',
+        '#projects .github-project-card:nth-of-type(6) h3': 'ML Model · Expected Goals (xG)',
+        '#projects .github-project-card:nth-of-type(6) p:not(.project-status)': 'Coming soon.',
+        '#projects .github-project-card:nth-of-type(7) h3': 'Soccer Probabilities · Expected Threat (xT)',
+        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Probabilistic model for Expected Threat (xT). Coming soon.',
+        '#projects .github-project-card:nth-of-type(8) h3': 'ML Model · Fraud Detection',
+        '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Unsupervised K-means clustering applied to credit card fraud detection.',
+        '#projects .github-project-card:nth-of-type(9) h3': 'ML Model · Fraud Detection',
+        '#projects .github-project-card:nth-of-type(9) p:not(.project-status)': 'Supervised logistic regression model for credit card fraud detection.',
+        '#projects .github-project-card:nth-of-type(10) h3': 'ML Model · Fraud Detection',
+        '#projects .github-project-card:nth-of-type(10) p:not(.project-status)': 'Unsupervised DBSCAN clustering to detect potential credit card fraud patterns.',
+        '#projects .github-project-card:nth-of-type(11) h3': 'Qatar 2022 World Cup Statistics',
+        '#projects .github-project-card:nth-of-type(11) p:not(.project-status)': 'Coming soon.',
+        '#projects .github-project-card:nth-of-type(12) h3': 'Geospatial Taxi Trip Analysis',
+        '#projects .github-project-card:nth-of-type(12) p:not(.project-status)': 'Coming soon.',
+
+        '#projects .repo-empty-message': 'There are no projects in this category yet.',
+
+        '#networks .section-kicker': 'Patrones Lab Online Presence',
+        '#networks .projects-title-display': 'Channels',
+        '#networks .social-intro': 'The full project ecosystem in one place: visuals, technical notes, articles, dashboards, useful links and professional contact channels.',
+        '#networks .social-card.instagram small': 'Visuals and posts',
+        '#networks .social-card.linkedin small': 'Professional profile',
+        '#networks .social-card.medium small': 'Articles and notes',
+        '#networks .social-card.linktree small': 'All links',
+        '#networks .social-card.github small': 'Technical profile',
+        '#networks .social-card.mail small': 'Direct contact',
+
+        '#contact .contact-panel h3': 'Contact',
+        '#contact .contact-panel p:not(.contact-email-line)': 'For professional opportunities, analytics collaboration or BI, machine learning and dashboard projects.',
+        '#contact .contact-email-line strong': 'email:',
+        '#contact .contact-form h2': 'Leave me a message',
+        '#contact .form-note': 'Send me a message and I’ll get back to you shortly.',
+
+        'footer': 'Patrones Lab® · Turning data into knowledge'
+      },
+
+      all: [
+        ['.project-status.published', '✅ published'],
+        ['.project-status.development', '⚠️ in progress'],
+        ['#projects .project-link', {
+          'Entrar al proyecto': 'Open project',
+          'Leer en LinkedIn': 'Read on LinkedIn',
+          'Ver dashboard': 'View dashboard',
+          'Ver documentación': 'View documentation',
+          'Ver en SPSS': 'View in SPSS',
+          'Ver en Python': 'View in Python'
+        }]
+      ],
+
+      attrs: {
+        '#name': {placeholder: 'Name'},
+        '#message': {placeholder: 'Message'},
+        '#contactForm .submit-btn': {value: 'Prepare email'},
+        '.floating-cta': {'aria-label': 'View Patrones Lab repository'},
+        '.navbar-toggler': {'aria-label': 'Open navigation'},
+        '#about .hero-rotator': {'aria-label': 'evidence, models, dashboards, decisions and patterns'},
+        '#about .hero-tech-marquee': {'aria-label': 'Technologies used'},
+        '#projects .repo-filter-toolbar': {'aria-label': 'Filter projects'}
+      }
+    }
+  };
+
+  const original = new Map();
+
+  function rememberElement(el){
+    if(!original.has(el)){
+      original.set(el, {
+        html: el.innerHTML,
+        text: el.textContent,
+        attrs: {}
+      });
+    }
+  }
+
+  function setHtml(selector, html){
+    const el = document.querySelector(selector);
+    if(!el) return;
+    rememberElement(el);
+    el.innerHTML = html;
+  }
+
+  function setText(selector, text){
+    const el = document.querySelector(selector);
+    if(!el) return;
+    rememberElement(el);
+    el.textContent = text;
+  }
+
+  function setAttr(selector, attrs){
+    const el = document.querySelector(selector);
+    if(!el) return;
+    rememberElement(el);
+    Object.keys(attrs).forEach(function(name){
+      if(!original.get(el).attrs[name]){
+        original.get(el).attrs[name] = el.getAttribute(name);
+      }
+      el.setAttribute(name, attrs[name]);
+    });
+  }
+
+  function restoreOriginals(){
+    original.forEach(function(value, el){
+      if(value.html !== undefined){
+        el.innerHTML = value.html;
+      }
+      Object.keys(value.attrs || {}).forEach(function(name){
+        const previous = value.attrs[name];
+        if(previous === null || previous === undefined){
+          el.removeAttribute(name);
+        }else{
+          el.setAttribute(name, previous);
+        }
+      });
+    });
+  }
+
+  function applyLanguage(lang){
+    const isEnglish = lang === 'en';
+
+    if(!isEnglish){
+      restoreOriginals();
+      document.documentElement.lang = 'es';
+      const meta = document.querySelector('meta[name="description"]');
+      if(meta){
+        meta.setAttribute('content', 'Patrones Lab: portfolio de proyectos reproducibles en BI, Machine Learning, Python, SQL, Power BI, Qlik y Looker Studio.');
+      }
+      document.title = 'Patrones Lab — Portfolio BI, ML & Data';
+
+      document.querySelectorAll('.language-toggle').forEach(function(btn){
+        const flag = btn.querySelector('.language-toggle__flag-img');
+        if(flag) flag.setAttribute('src', FLAG_US);
+        btn.setAttribute('aria-label', 'Cambiar a inglés');
+        btn.setAttribute('title', 'English');
+      });
+
+      localStorage.setItem(STORAGE_KEY, 'es');
+      document.dispatchEvent(new CustomEvent('pl-language-changed', {detail:{language:'es'}}));
+      return;
+    }
+
+    const dict = dictionary.en;
+    document.documentElement.lang = dict.htmlLang;
+    document.title = dict.title;
+
+    const meta = document.querySelector('meta[name="description"]');
+    if(meta) meta.setAttribute('content', dict.metaDescription);
+
+    Object.keys(dict.text).forEach(function(selector){
+      setHtml(selector, dict.text[selector]);
+    });
+
+    (dict.all || []).forEach(function(entry){
+      const selector = entry[0];
+      const value = entry[1];
+
+      document.querySelectorAll(selector).forEach(function(el){
+        rememberElement(el);
+
+        if(typeof value === 'string'){
+          el.innerHTML = value;
+          return;
+        }
+
+        const current = el.textContent.trim();
+        Object.keys(value).forEach(function(source){
+          if(current.indexOf(source) !== -1){
+            el.innerHTML = el.innerHTML.replace(source, value[source]);
+          }
+        });
+      });
+    });
+
+    Object.keys(dict.attrs).forEach(function(selector){
+      setAttr(selector, dict.attrs[selector]);
+    });
+
+    document.querySelectorAll('.language-toggle').forEach(function(btn){
+      const flag = btn.querySelector('.language-toggle__flag-img');
+      if(flag) flag.setAttribute('src', FLAG_ES);
+      btn.setAttribute('aria-label', dict.toggleLabel);
+      btn.setAttribute('title', 'Español');
+    });
+
+    localStorage.setItem(STORAGE_KEY, 'en');
+    document.dispatchEvent(new CustomEvent('pl-language-changed', {detail:{language:'en'}}));
+  }
+
+  function currentLang(){
+    return localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG;
+  }
+
+  document.addEventListener('click', function(event){
+    const btn = event.target.closest && event.target.closest('.language-toggle');
+    if(!btn) return;
+
+    event.preventDefault();
+    const next = currentLang() === 'en' ? 'es' : 'en';
+    applyLanguage(next);
+  });
+
+  window.plGetLanguage = currentLang;
+  window.plSetLanguage = applyLanguage;
+
+  applyLanguage(currentLang());
+
+  // Contact form language support: store lang for mailto hook below.
+  window.plCurrentLanguageForContact = currentLang;
+})();
+
+
+
+// === V52G: refuerzo de estado inicial oscuro ===
+(function(){
+  function ensureInitialDarkMode(){
+    const versionKey = 'patronesLabThemeDefaultVersion';
+    const defaultVersion = 'v52g-default-dark';
+
+    try{
+      if(localStorage.getItem(versionKey) !== defaultVersion){
+        document.body.classList.add('dark-mode');
+        localStorage.setItem(versionKey, defaultVersion);
+      }
+    }catch(e){
+      document.body.classList.add('dark-mode');
+    }
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', ensureInitialDarkMode, {once:true});
+  }else{
+    ensureInitialDarkMode();
+  }
+})();
+
+
+
+// === V52H: filtros funcionales también en inglés ===
+/*
+  El filtrado queda desacoplado del texto visible del botón.
+  Funciona aunque el idioma cambie y aunque el panel móvil sea movido temporalmente al body.
+*/
+(function(){
+  const projectsSection = document.querySelector('#projects');
+  if(!projectsSection) return;
+
+  function getCards(){
+    return Array.from(projectsSection.querySelectorAll('.github-project-card[data-tags]'));
+  }
+
+  function getButtons(){
+    return Array.from(document.querySelectorAll('.repo-filter-btn[data-repo-filter]'));
+  }
+
+  function normalizeTags(card){
+    return (card.dataset.tags || '')
+      .trim()
+      .toLowerCase()
+      .split(/\s+/)
+      .filter(Boolean);
+  }
+
+  function shouldShow(card, filter){
+    return filter === 'all' || normalizeTags(card).includes(filter);
+  }
+
+  function setActiveFilter(filter){
+    getButtons().forEach(function(button){
+      const isActive = button.dataset.repoFilter === filter;
+      button.classList.toggle('active', isActive);
+      if(isActive){
+        button.setAttribute('aria-pressed', 'true');
+      }else{
+        button.removeAttribute('aria-pressed');
+      }
+    });
+  }
+
+  function applyRepoFilter(filter){
+    const cards = getCards();
+    const empty = projectsSection.querySelector('.repo-empty-message');
+    let visibleCount = 0;
+
+    cards.forEach(function(card){
+      const show = shouldShow(card, filter);
+      card.classList.toggle('is-filtered-out', !show);
+      card.hidden = !show;
+      if(show) visibleCount += 1;
+    });
+
+    if(empty) empty.hidden = visibleCount > 0;
+
+    projectsSection.dataset.activeRepoFilter = filter;
+    setActiveFilter(filter);
+  }
+
+  document.addEventListener('click', function(event){
+    const button = event.target.closest && event.target.closest('.repo-filter-btn[data-repo-filter]');
+    if(!button) return;
+
+    const filter = button.dataset.repoFilter;
+    if(!filter) return;
+
+    event.preventDefault();
+    applyRepoFilter(filter);
+  }, true);
+
+  window.plApplyRepoFilter = applyRepoFilter;
+  window.plGetActiveRepoFilter = function(){
+    return projectsSection.dataset.activeRepoFilter || 'all';
+  };
+
+  applyRepoFilter(projectsSection.dataset.activeRepoFilter || 'all');
+
+  document.addEventListener('pl-language-changed', function(){
+    applyRepoFilter(projectsSection.dataset.activeRepoFilter || 'all');
+  });
+})();
+
+
+
+// === V52I: restauración explícita ES/EN sin depender de memoria DOM ===
+/*
+  Corrige el caso: ES -> EN -> ES dejando textos en inglés.
+  En lugar de depender de restoreOriginals(), aplica un diccionario explícito
+  para español e inglés sobre los nodos que cambian.
+*/
+(function(){
+  const STORAGE_KEY = 'patronesLabLanguage';
+  const FLAG_US = 'images/patrones/language-flags/flag-us.svg';
+  const FLAG_ES = 'images/patrones/language-flags/flag-es.svg';
+
+  const dict = {
+    es: {
+      title: 'Patrones Lab — Portfolio BI, ML & Data',
+      metaDescription: 'Patrones Lab: portfolio de proyectos reproducibles en BI, Machine Learning, Python, SQL, Power BI, Qlik y Looker Studio.',
+      htmlLang: 'es',
+      toggleFlag: FLAG_US,
+      toggleLabel: 'Cambiar a inglés',
+      toggleTitle: 'English',
+      text: {
+        '.floating-cta__text': 'Ver repo',
+
+        '.navbar-nav .nav-link[href="#about"]': 'Inicio',
+        '.navbar-nav .nav-link[href="#methodology"]': 'Metodología',
+        '.navbar-nav .nav-link[href="#projects"]': 'Proyectos',
+        '.navbar-nav .nav-link[href="#networks"]': 'Redes',
+        '.navbar-nav .nav-link[href="#contact"]': 'Contacto',
+        '.color-mode': '<i class="color-mode-icon"></i>',
+
+        '#about .hero-entry-v25b-kicker': 'Portfolio de proyectos <span class="mobile-block">BI · ML · Python · Dashboards</span>',
+        '#about .hero-line': 'Transformo datos en',
+        '#about .hero-rotator span:nth-child(1)': 'evidencia',
+        '#about .hero-rotator span:nth-child(2)': 'modelos',
+        '#about .hero-rotator span:nth-child(3)': 'dashboards',
+        '#about .hero-rotator span:nth-child(4)': 'decisiones',
+        '#about .hero-rotator span:nth-child(5)': 'patrones',
+        '#about .hero-entry-v25b-copy': 'Patrones Lab es un laboratorio de análisis de datos aplicado a fenómenos cotidianos y reales.<br><br>Aquí se trabajan proyectos independientes construidos a partir de datos públicos, con foco en detectar patrones, describir comportamientos y comunicar los hallazgos con su contexto.<br><br>El objetivo es plantear preguntas, preparar datos, construir análisis reproducibles y generar resultados visuales.',
+
+        '.tech-logo-card-airflow small': 'Orquestación',
+        '.tech-logo-card-sql-server small': 'Base de datos',
+        '.tech-logo-card-numpy small': 'Cálculo numérico',
+        '.tech-logo-card-matplotlib small': 'Visualización',
+        '.tech-logo-card-dbt small': 'Transformación',
+
+        '#methodology .process-horizontal-static-head h2': 'Ciclo de vida del dato',
+        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Descubrimiento',
+        '#methodology .process-horizontal-panel:nth-child(1) small': 'Contexto y objetivo',
+        '#methodology .process-horizontal-panel:nth-child(1) p': 'Entendimiento del problema, la decisión a mejorar, los usuarios involucrados y el resultado esperado.',
+        '#methodology .process-horizontal-panel:nth-child(2) h3': 'Fuentes',
+        '#methodology .process-horizontal-panel:nth-child(2) small': 'Datos y diagnóstico',
+        '#methodology .process-horizontal-panel:nth-child(2) p': 'Identificación de las fuentes disponibles, su origen, actualización, confiabilidad y principales limitaciones.',
+        '#methodology .process-horizontal-panel:nth-child(3) h3': 'Preparación',
+        '#methodology .process-horizontal-panel:nth-child(3) small': 'Base analítica',
+        '#methodology .process-horizontal-panel:nth-child(3) p': 'Organización, limpieza y combinación de datos para construir una base consistente y usable.',
+        '#methodology .process-horizontal-panel:nth-child(4) h3': 'Construcción',
+        '#methodology .process-horizontal-panel:nth-child(4) small': 'Solución',
+        '#methodology .process-horizontal-panel:nth-child(4) p': 'Desarrollo del análisis, modelo o dashboard necesario según el objetivo definido.',
+        '#methodology .process-horizontal-panel:nth-child(5) h3': 'Validación',
+        '#methodology .process-horizontal-panel:nth-child(5) small': 'Control y confianza',
+        '#methodology .process-horizontal-panel:nth-child(5) p': 'Revisión de la coherencia, estabilidad y alineación de los resultados con la realidad del negocio.',
+        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Entrega',
+        '#methodology .process-horizontal-panel:nth-child(6) small': 'Publicación, automatización y evolución',
+        '#methodology .process-horizontal-panel:nth-child(6) p': 'Documentación del trabajo final, automatización de procesos recurrentes y consideración del feedback para mejoras futuras.',
+
+        '#projects .section-kicker': 'Repositorio Patrones Lab',
+        '#projects .projects-title-display': 'Proyectos',
+        '#projects .projects-intro': 'Selección de proyectos aplicados con datos públicos, metodología y resultados visuales. Usá los filtros para navegar por disciplina, herramienta o tipo de entrega.',
+        '#projects .repo-filter-btn[data-repo-filter="all"]': '<span class="filter-icon">◎</span> Todos',
+        '#projects .repo-filter-group:nth-of-type(1) .repo-filter-group-trigger': 'Disciplina',
+        '#projects .repo-filter-group:nth-of-type(2) .repo-filter-group-trigger': 'Herramientas',
+        '#projects .repo-filter-group:nth-of-type(3) .repo-filter-group-trigger': 'Modelo',
+        '#projects .repo-filter-group:nth-of-type(4) .repo-filter-group-trigger': 'Tema',
+
+        '#projects .repo-filter-btn[data-repo-filter="bi"]': '<span class="filter-icon">▦</span> BI',
+        '#projects .repo-filter-btn[data-repo-filter="data-analysis"]': '<span class="filter-icon">▥</span> Data Analysis',
+        '#projects .repo-filter-btn[data-repo-filter="data-science"]': '<span class="filter-icon">⚗</span> Data Science',
+        '#projects .repo-filter-btn[data-repo-filter="machine-learning"]': '<span class="filter-icon">✦</span> Machine Learning',
+        '#projects .repo-filter-btn[data-repo-filter="data-storytelling"]': '<span class="filter-icon">✎</span> Data Storytelling',
+        '#projects .repo-filter-btn[data-repo-filter="python"]': '<span class="filter-icon">◇</span> Python',
+        '#projects .repo-filter-btn[data-repo-filter="spss"]': '<span class="filter-icon">◧</span> SPSS',
+        '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
+        '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Modelo Supervisado',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Modelo No Supervisado',
+        '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Clasificación',
+        '#projects .repo-filter-btn[data-repo-filter="clustering"]': '<span class="filter-icon">✣</span> Clustering',
+        '#projects .repo-filter-btn[data-repo-filter="knn"]': '<span class="filter-icon">↗</span> KNN',
+        '#projects .repo-filter-btn[data-repo-filter="k-means"]': '<span class="filter-icon">⌖</span> K-means',
+        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Regresión Logística',
+        '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
+        '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geoespacial',
+        '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
+        '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
+        '#projects .repo-filter-btn[data-repo-filter="futbol"]': '<span class="filter-icon">●</span> Fútbol',
+        '#projects .repo-filter-btn[data-repo-filter="aviacion"]': '<span class="filter-icon">✈</span> Aviación',
+        '#projects .repo-filter-btn[data-repo-filter="fraude"]': '<span class="filter-icon">!</span> Fraude',
+
+        '#projects .github-project-card:nth-of-type(1) h3': 'Análisis de Vuelos en las Islas Baleares',
+        '#projects .github-project-card:nth-of-type(1) p:not(.project-status)': 'Análisis de tráfico aéreo en España con datos públicos de AENA, con foco en volúmenes, patrones por aeropuerto y diferencias entre categorías.',
+        '#projects .github-project-card:nth-of-type(2) h3': 'Análisis del Alojamiento Airbnb en Londres',
+        '#projects .github-project-card:nth-of-type(2) p:not(.project-status)': 'Análisis exploratorio del alojamiento Airbnb en Londres con foco en precio, categorías, reseñas y patrones territoriales.',
+        '#projects .github-project-card:nth-of-type(3) h3': 'Análisis de Viajes en Taxi en Chicago',
+        '#projects .github-project-card:nth-of-type(3) p:not(.project-status)': 'Análisis de viajes de taxi en Chicago para estudiar duración, demanda, distribución geoespacial y patrones operativos.',
+        '#projects .github-project-card:nth-of-type(4) h3': 'Modelo ML · Airbnb London',
+        '#projects .github-project-card:nth-of-type(4) p:not(.project-status)': 'Clasificación supervisada de anuncios relativamente caros o baratos dentro de cada tipo de alojamiento.',
+        '#projects .github-project-card:nth-of-type(5) h3': 'Dashboard Looker · Taxi Trips Chicago',
+        '#projects .github-project-card:nth-of-type(5) p:not(.project-status)': 'Dashboard interactivo en Looker Studio para explorar viajes de taxi en Chicago, indicadores operativos, patrones horarios y recorridos pickup-dropoff.',
+        '#projects .github-project-card:nth-of-type(6) h3': 'Modelo ML · Goles Esperados (xG)',
+        '#projects .github-project-card:nth-of-type(6) p:not(.project-status)': 'Próximamente.',
+        '#projects .github-project-card:nth-of-type(7) h3': 'Probabilidades en el Fútbol · Peligro Esperado (xT)',
+        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Modelo Probabilístico: Peligro Esperado xT. Próximamente.',
+        '#projects .github-project-card:nth-of-type(8) h3': 'Modelo ML · Detección de Fraude',
+        '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Clustering no supervisado con K-means para la detección de fraudes con tarjetas de crédito.',
+        '#projects .github-project-card:nth-of-type(9) h3': 'Modelo ML · Detección de Fraude',
+        '#projects .github-project-card:nth-of-type(9) p:not(.project-status)': 'Clasificación supervisada mediante regresión logística para la detección de fraude con tarjeta de crédito.',
+        '#projects .github-project-card:nth-of-type(10) h3': 'Modelo ML · Detección de Fraude',
+        '#projects .github-project-card:nth-of-type(10) p:not(.project-status)': 'Clustering no supervisado con DBSCAN para identificar posibles fraudes con tarjeta de crédito.',
+        '#projects .github-project-card:nth-of-type(11) h3': 'Estadísticas del Mundial de Fútbol Qatar 2022',
+        '#projects .github-project-card:nth-of-type(11) p:not(.project-status)': 'Próximamente.',
+        '#projects .github-project-card:nth-of-type(12) h3': 'Análisis Geoespacial de los Viajes en Taxi',
+        '#projects .github-project-card:nth-of-type(12) p:not(.project-status)': 'Próximamente.',
+
+        '#projects .repo-empty-message': 'No hay proyectos para esa categoría todavía.',
+
+        '#networks .section-kicker': 'Canales de Patrones Lab',
+        '#networks .projects-title-display': 'Redes y canales',
+        '#networks .social-intro': 'Todo el ecosistema del proyecto en un solo lugar: visuales, notas técnicas, publicaciones, dashboards, enlaces útiles y contacto profesional.',
+        '#networks .social-card.instagram small': 'Visuales y posts',
+        '#networks .social-card.linkedin small': 'Perfil profesional',
+        '#networks .social-card.medium small': 'Artículos y notas',
+        '#networks .social-card.linktree small': 'Todos los enlaces',
+        '#networks .social-card.github small': 'Perfil técnico',
+        '#networks .social-card.mail small': 'Contacto directo',
+
+        '#contact .contact-panel h3': 'Contacto',
+        '#contact .contact-panel p:not(.contact-email-line)': 'Para oportunidades profesionales, colaboración analítica o proyectos de BI · ML · Dashboards.',
+        '#contact .contact-email-line strong': 'correo:',
+        '#contact .contact-form h2': 'Dejame un mensaje',
+        '#contact .form-note': 'Escribime y te responderé a la brevedad.',
+        'footer': 'Patrones Lab® · Generando conocimiento a través de los datos'
+      },
+      all: [
+        ['.project-status.published', '✅ publicado'],
+        ['.project-status.development', '⚠️ en desarrollo'],
+        ['#projects .project-link', {
+          'Open project': 'Entrar al proyecto',
+          'Read on LinkedIn': 'Leer en LinkedIn',
+          'View dashboard': 'Ver dashboard',
+          'View documentation': 'Ver documentación',
+          'View docs': 'Ver documentación',
+          'View in SPSS': 'Ver en SPSS',
+          'View in Python': 'Ver en Python'
+        }]
+      ],
+      attrs: {
+        '#name': {placeholder: 'Nombre'},
+        '#message': {placeholder: 'Mensaje'},
+        '#contactForm .submit-btn': {value: 'Preparar email'},
+        '.floating-cta': {'aria-label': 'Ver repositorio de Patrones Lab'},
+        '.navbar-toggler': {'aria-label': 'Abrir navegación'},
+        '#about .hero-rotator': {'aria-label': 'evidencia, modelos, dashboards, decisiones y patrones'},
+        '#about .hero-tech-marquee': {'aria-label': 'Tecnologías utilizadas'},
+        '#projects .repo-filter-toolbar': {'aria-label': 'Filtrar proyectos'}
+      }
+    },
+
+    en: {
+      title: 'Patrones Lab — Data, BI & Machine Learning Portfolio',
+      metaDescription: 'Patrones Lab: a portfolio of reproducible data projects across BI, machine learning, Python, SQL, Power BI, Qlik and Looker Studio.',
+      htmlLang: 'en',
+      toggleFlag: FLAG_ES,
+      toggleLabel: 'Switch to Spanish',
+      toggleTitle: 'Español',
+      text: {
+        '.floating-cta__text': 'View repository',
+
+        '.navbar-nav .nav-link[href="#about"]': 'Home',
+        '.navbar-nav .nav-link[href="#methodology"]': 'Methodology',
+        '.navbar-nav .nav-link[href="#projects"]': 'Projects',
+        '.navbar-nav .nav-link[href="#networks"]': 'Channels',
+        '.navbar-nav .nav-link[href="#contact"]': 'Contact',
+        '.color-mode': '<i class="color-mode-icon"></i>',
+
+        '#about .hero-entry-v25b-kicker': 'Project portfolio BI · ML · Python · Dashboards',
+        '#about .hero-line': 'I turn<br>data into',
+        '#about .hero-rotator span:nth-child(1)': 'evidence',
+        '#about .hero-rotator span:nth-child(2)': 'models',
+        '#about .hero-rotator span:nth-child(3)': 'dashboards',
+        '#about .hero-rotator span:nth-child(4)': 'decisions',
+        '#about .hero-rotator span:nth-child(5)': 'patterns',
+        '#about .hero-entry-v25b-copy': 'Patrones Lab is a data analytics lab focused on real-world, everyday phenomena.<br><br>It brings together independent projects built with public data, with an emphasis on finding patterns, explaining behavior and communicating insights with context.<br><br>The goal is to ask better questions, prepare reliable data, build reproducible analyses and turn results into clear visual outputs.',
+
+        '.tech-logo-card-airflow small': 'Orchestration',
+        '.tech-logo-card-sql-server small': 'Database',
+        '.tech-logo-card-numpy small': 'Numerical Computing',
+        '.tech-logo-card-matplotlib small': 'Data Visualization',
+        '.tech-logo-card-dbt small': 'Transformation',
+
+        '#methodology .process-horizontal-static-head h2': 'Data Lifecycle',
+        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Discovery',
+        '#methodology .process-horizontal-panel:nth-child(1) small': 'Context & Objective',
+        '#methodology .process-horizontal-panel:nth-child(1) p': 'Clarifying the problem, the decision to improve, the users involved and the expected outcome.',
+        '#methodology .process-horizontal-panel:nth-child(2) h3': 'Sources',
+        '#methodology .process-horizontal-panel:nth-child(2) small': 'Sources & Diagnostics',
+        '#methodology .process-horizontal-panel:nth-child(2) p': 'Mapping available data sources, including their origin, refresh cadence, reliability and main limitations.',
+        '#methodology .process-horizontal-panel:nth-child(3) h3': 'Preparation',
+        '#methodology .process-horizontal-panel:nth-child(3) small': 'Analytical Dataset',
+        '#methodology .process-horizontal-panel:nth-child(3) p': 'Structuring, cleaning and combining data into a consistent analytical dataset ready for analysis.',
+        '#methodology .process-horizontal-panel:nth-child(4) h3': 'Development',
+        '#methodology .process-horizontal-panel:nth-child(4) small': 'Solution',
+        '#methodology .process-horizontal-panel:nth-child(4) p': 'Building the analysis, model or dashboard required to address the defined objective.',
+        '#methodology .process-horizontal-panel:nth-child(5) h3': 'Validation',
+        '#methodology .process-horizontal-panel:nth-child(5) small': 'Quality & Confidence',
+        '#methodology .process-horizontal-panel:nth-child(5) p': 'Reviewing the coherence, stability and business relevance of the results before delivery.',
+        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Delivery',
+        '#methodology .process-horizontal-panel:nth-child(6) small': 'Publishing, Automation & Iteration',
+        '#methodology .process-horizontal-panel:nth-child(6) p': 'Documenting the final output, automating recurring workflows and using feedback to guide future improvements.',
+
+        '#projects .section-kicker': 'Patrones Lab Repository',
+        '#projects .projects-title-display': 'Projects',
+        '#projects .projects-intro': 'A selection of applied projects built with public data, documented methodology and visual outputs. Use the filters to explore by discipline, tool or deliverable type.',
+        '#projects .repo-filter-btn[data-repo-filter="all"]': '<span class="filter-icon">◎</span> All',
+        '#projects .repo-filter-group:nth-of-type(1) .repo-filter-group-trigger': 'Discipline',
+        '#projects .repo-filter-group:nth-of-type(2) .repo-filter-group-trigger': 'Tools',
+        '#projects .repo-filter-group:nth-of-type(3) .repo-filter-group-trigger': 'Model',
+        '#projects .repo-filter-group:nth-of-type(4) .repo-filter-group-trigger': 'Domain',
+
+        '#projects .repo-filter-btn[data-repo-filter="bi"]': '<span class="filter-icon">▦</span> BI',
+        '#projects .repo-filter-btn[data-repo-filter="data-analysis"]': '<span class="filter-icon">▥</span> Data Analysis',
+        '#projects .repo-filter-btn[data-repo-filter="data-science"]': '<span class="filter-icon">⚗</span> Data Science',
+        '#projects .repo-filter-btn[data-repo-filter="machine-learning"]': '<span class="filter-icon">✦</span> Machine Learning',
+        '#projects .repo-filter-btn[data-repo-filter="data-storytelling"]': '<span class="filter-icon">✎</span> Data Storytelling',
+        '#projects .repo-filter-btn[data-repo-filter="python"]': '<span class="filter-icon">◇</span> Python',
+        '#projects .repo-filter-btn[data-repo-filter="spss"]': '<span class="filter-icon">◧</span> SPSS',
+        '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
+        '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Supervised Model',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Unsupervised Model',
+        '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Classification',
+        '#projects .repo-filter-btn[data-repo-filter="clustering"]': '<span class="filter-icon">✣</span> Clustering',
+        '#projects .repo-filter-btn[data-repo-filter="knn"]': '<span class="filter-icon">↗</span> KNN',
+        '#projects .repo-filter-btn[data-repo-filter="k-means"]': '<span class="filter-icon">⌖</span> K-means',
+        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Logistic Regression',
+        '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
+        '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geospatial',
+        '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
+        '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
+        '#projects .repo-filter-btn[data-repo-filter="futbol"]': '<span class="filter-icon">●</span> Soccer',
+        '#projects .repo-filter-btn[data-repo-filter="aviacion"]': '<span class="filter-icon">✈</span> Aviation',
+        '#projects .repo-filter-btn[data-repo-filter="fraude"]': '<span class="filter-icon">!</span> Fraud',
+
+        '#projects .github-project-card:nth-of-type(1) h3': 'Balearic Islands Flight Analysis',
+        '#projects .github-project-card:nth-of-type(1) p:not(.project-status)': 'Analysis of air traffic in Spain using public AENA data, focused on volume, airport-level patterns and differences across traffic categories.',
+        '#projects .github-project-card:nth-of-type(2) h3': 'Airbnb Lodging Analysis in London',
+        '#projects .github-project-card:nth-of-type(2) p:not(.project-status)': 'Exploratory analysis of Airbnb listings in London, focused on pricing, property categories, reviews and spatial patterns.',
+        '#projects .github-project-card:nth-of-type(3) h3': 'Chicago Taxi Trip Analysis',
+        '#projects .github-project-card:nth-of-type(3) p:not(.project-status)': 'Analysis of reported Chicago taxi trips to study duration, demand, geospatial distribution and operational patterns.',
+        '#projects .github-project-card:nth-of-type(4) h3': 'ML Model · Airbnb London',
+        '#projects .github-project-card:nth-of-type(4) p:not(.project-status)': 'Supervised classification of listings as relatively expensive or inexpensive within each accommodation type.',
+        '#projects .github-project-card:nth-of-type(5) h3': 'Looker Dashboard · Chicago Taxi Trips',
+        '#projects .github-project-card:nth-of-type(5) p:not(.project-status)': 'Interactive Looker Studio dashboard for exploring Chicago taxi trips, operational indicators, hourly patterns and pickup-dropoff routes.',
+        '#projects .github-project-card:nth-of-type(6) h3': 'ML Model · Expected Goals (xG)',
+        '#projects .github-project-card:nth-of-type(6) p:not(.project-status)': 'Coming soon.',
+        '#projects .github-project-card:nth-of-type(7) h3': 'Soccer Probabilities · Expected Threat (xT)',
+        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Probabilistic model for Expected Threat (xT). Coming soon.',
+        '#projects .github-project-card:nth-of-type(8) h3': 'ML Model · Fraud Detection',
+        '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Unsupervised K-means clustering applied to credit card fraud detection.',
+        '#projects .github-project-card:nth-of-type(9) h3': 'ML Model · Fraud Detection',
+        '#projects .github-project-card:nth-of-type(9) p:not(.project-status)': 'Supervised logistic regression model for credit card fraud detection.',
+        '#projects .github-project-card:nth-of-type(10) h3': 'ML Model · Fraud Detection',
+        '#projects .github-project-card:nth-of-type(10) p:not(.project-status)': 'Unsupervised DBSCAN clustering to detect potential credit card fraud patterns.',
+        '#projects .github-project-card:nth-of-type(11) h3': 'Qatar 2022 World Cup Statistics',
+        '#projects .github-project-card:nth-of-type(11) p:not(.project-status)': 'Coming soon.',
+        '#projects .github-project-card:nth-of-type(12) h3': 'Geospatial Taxi Trip Analysis',
+        '#projects .github-project-card:nth-of-type(12) p:not(.project-status)': 'Coming soon.',
+
+        '#projects .repo-empty-message': 'There are no projects in this category yet.',
+
+        '#networks .section-kicker': 'Patrones Lab Online Presence',
+        '#networks .projects-title-display': 'Channels',
+        '#networks .social-intro': 'The full project ecosystem in one place: visuals, technical notes, articles, dashboards, useful links and professional contact channels.',
+        '#networks .social-card.instagram small': 'Visuals and posts',
+        '#networks .social-card.linkedin small': 'Professional profile',
+        '#networks .social-card.medium small': 'Articles and notes',
+        '#networks .social-card.linktree small': 'All links',
+        '#networks .social-card.github small': 'Technical profile',
+        '#networks .social-card.mail small': 'Direct contact',
+
+        '#contact .contact-panel h3': 'Contact',
+        '#contact .contact-panel p:not(.contact-email-line)': 'For professional opportunities, analytics collaboration or BI, machine learning and dashboard projects.',
+        '#contact .contact-email-line strong': 'email:',
+        '#contact .contact-form h2': 'Leave me a message',
+        '#contact .form-note': 'Send me a message and I’ll get back to you shortly.',
+        'footer': 'Patrones Lab® · Turning data into knowledge'
+      },
+      all: [
+        ['.project-status.published', '✅ published'],
+        ['.project-status.development', '⚠️ in progress'],
+        ['#projects .project-link', {
+          'Entrar al proyecto': 'Open project',
+          'Leer en LinkedIn': 'Read on LinkedIn',
+          'Ver dashboard': 'View dashboard',
+          'Ver documentación': 'View documentation',
+          'Ver en SPSS': 'View in SPSS',
+          'Ver en Python': 'View in Python'
+        }]
+      ],
+      attrs: {
+        '#name': {placeholder: 'Name'},
+        '#message': {placeholder: 'Message'},
+        '#contactForm .submit-btn': {value: 'Prepare email'},
+        '.floating-cta': {'aria-label': 'View Patrones Lab repository'},
+        '.navbar-toggler': {'aria-label': 'Open navigation'},
+        '#about .hero-rotator': {'aria-label': 'evidence, models, dashboards, decisions and patterns'},
+        '#about .hero-tech-marquee': {'aria-label': 'Technologies used'},
+        '#projects .repo-filter-toolbar': {'aria-label': 'Filter projects'}
+      }
+    }
+  };
+
+  function setHtml(selector, html){
+    const el = document.querySelector(selector);
+    if(el) el.innerHTML = html;
+  }
+
+  function setAttr(selector, attrs){
+    const el = document.querySelector(selector);
+    if(!el) return;
+    Object.keys(attrs).forEach(function(name){
+      el.setAttribute(name, attrs[name]);
+    });
+  }
+
+  function applyExplicitLanguage(lang){
+    const language = lang === 'en' ? 'en' : 'es';
+    const data = dict[language];
+
+    document.documentElement.lang = data.htmlLang;
+    document.title = data.title;
+
+    const meta = document.querySelector('meta[name="description"]');
+    if(meta) meta.setAttribute('content', data.metaDescription);
+
+    Object.keys(data.text).forEach(function(selector){
+      setHtml(selector, data.text[selector]);
+    });
+
+    (data.all || []).forEach(function(entry){
+      const selector = entry[0];
+      const value = entry[1];
+
+      document.querySelectorAll(selector).forEach(function(el){
+        if(typeof value === 'string'){
+          el.innerHTML = value;
+          return;
+        }
+
+        const current = el.textContent.trim();
+        Object.keys(value).forEach(function(source){
+          if(current.indexOf(source) !== -1){
+            el.innerHTML = el.innerHTML.replace(source, value[source]);
+          }
+        });
+      });
+    });
+
+    Object.keys(data.attrs).forEach(function(selector){
+      setAttr(selector, data.attrs[selector]);
+    });
+
+    document.querySelectorAll('.language-toggle').forEach(function(btn){
+      const flag = btn.querySelector('.language-toggle__flag-img');
+      if(flag) flag.setAttribute('src', data.toggleFlag);
+      btn.setAttribute('aria-label', data.toggleLabel);
+      btn.setAttribute('title', data.toggleTitle);
+    });
+
+    localStorage.setItem(STORAGE_KEY, language);
+
+    document.dispatchEvent(new CustomEvent('pl-language-changed', {detail:{language:language}}));
+
+    if(window.plApplyRepoFilter && window.plGetActiveRepoFilter){
+      window.plApplyRepoFilter(window.plGetActiveRepoFilter());
+    }
+  }
+
+  document.addEventListener('click', function(event){
+    const btn = event.target.closest && event.target.closest('.language-toggle');
+    if(!btn) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+
+    const current = localStorage.getItem(STORAGE_KEY) || 'es';
+    applyExplicitLanguage(current === 'en' ? 'es' : 'en');
+  }, true);
+
+  window.plSetLanguage = applyExplicitLanguage;
+  window.plGetLanguage = function(){
+    return localStorage.getItem(STORAGE_KEY) || 'es';
+  };
+  window.plCurrentLanguageForContact = window.plGetLanguage;
+
+  applyExplicitLanguage(localStorage.getItem(STORAGE_KEY) || 'es');
+})();
+
+
+
+// === V53D: selector multidioma explícito ES/EN/IT ===
+(function(){
+  const STORAGE_KEY = 'patronesLabLanguage';
+  const FLAGS = {
+    es: 'images/patrones/language-flags/flag-es.svg',
+    en: 'images/patrones/language-flags/flag-us.svg',
+    it: 'images/patrones/language-flags/flag-it.svg'
+  };
+
+  const langData = {
+    es: {
+      title: 'Patrones Lab — Portfolio BI, ML & Data',
+      metaDescription: 'Patrones Lab: portfolio de proyectos reproducibles en BI, Machine Learning, Python, SQL, Power BI, Qlik y Looker Studio.',
+      htmlLang: 'es',
+      currentLabel: 'Español',
+      text: {
+        '.floating-cta__text': 'Ver repo',
+        '.navbar-nav .nav-link[href="#about"]': 'Inicio',
+        '.navbar-nav .nav-link[href="#methodology"]': 'Metodología',
+        '.navbar-nav .nav-link[href="#projects"]': 'Proyectos',
+        '.navbar-nav .nav-link[href="#networks"]': 'Redes',
+        '.navbar-nav .nav-link[href="#contact"]': 'Contacto',
+        '.color-mode': '<i class="color-mode-icon"></i>',
+
+        '#about .hero-entry-v25b-kicker': 'Portfolio de proyectos <span class="mobile-block">BI · ML · Python · Dashboards</span>',
+        '#about .hero-line': 'Transformo datos en',
+        '#about .hero-rotator span:nth-child(1)': 'evidencia',
+        '#about .hero-rotator span:nth-child(2)': 'modelos',
+        '#about .hero-rotator span:nth-child(3)': 'dashboards',
+        '#about .hero-rotator span:nth-child(4)': 'decisiones',
+        '#about .hero-rotator span:nth-child(5)': 'patrones',
+        '#about .hero-entry-v25b-copy': 'Patrones Lab es un laboratorio de análisis de datos aplicado a fenómenos cotidianos y reales.<br><br>Aquí se trabajan proyectos independientes construidos a partir de datos públicos, con foco en detectar patrones, describir comportamientos y comunicar los hallazgos con su contexto.<br><br>El objetivo es plantear preguntas, preparar datos, construir análisis reproducibles y generar resultados visuales.',
+
+        '.tech-logo-card-airflow small': 'Orquestación',
+        '.tech-logo-card-sql-server small': 'Base de datos',
+        '.tech-logo-card-numpy small': 'Cálculo numérico',
+        '.tech-logo-card-matplotlib small': 'Visualización',
+        '.tech-logo-card-dbt small': 'Transformación',
+
+        '#methodology .process-horizontal-static-head h2': 'Ciclo de vida del dato',
+        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Descubrimiento',
+        '#methodology .process-horizontal-panel:nth-child(1) small': 'Contexto y objetivo',
+        '#methodology .process-horizontal-panel:nth-child(1) p': 'Entendimiento del problema, la decisión a mejorar, los usuarios involucrados y el resultado esperado.',
+        '#methodology .process-horizontal-panel:nth-child(2) h3': 'Fuentes',
+        '#methodology .process-horizontal-panel:nth-child(2) small': 'Datos y diagnóstico',
+        '#methodology .process-horizontal-panel:nth-child(2) p': 'Identificación de las fuentes disponibles, su origen, actualización, confiabilidad y principales limitaciones.',
+        '#methodology .process-horizontal-panel:nth-child(3) h3': 'Preparación',
+        '#methodology .process-horizontal-panel:nth-child(3) small': 'Base analítica',
+        '#methodology .process-horizontal-panel:nth-child(3) p': 'Organización, limpieza y combinación de datos para construir una base consistente y usable.',
+        '#methodology .process-horizontal-panel:nth-child(4) h3': 'Construcción',
+        '#methodology .process-horizontal-panel:nth-child(4) small': 'Solución',
+        '#methodology .process-horizontal-panel:nth-child(4) p': 'Desarrollo del análisis, modelo o dashboard necesario según el objetivo definido.',
+        '#methodology .process-horizontal-panel:nth-child(5) h3': 'Validación',
+        '#methodology .process-horizontal-panel:nth-child(5) small': 'Control y confianza',
+        '#methodology .process-horizontal-panel:nth-child(5) p': 'Revisión de la coherencia, estabilidad y alineación de los resultados con la realidad del negocio.',
+        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Entrega',
+        '#methodology .process-horizontal-panel:nth-child(6) small': 'Publicación, automatización y evolución',
+        '#methodology .process-horizontal-panel:nth-child(6) p': 'Documentación del trabajo final, automatización de procesos recurrentes y consideración del feedback para mejoras futuras.',
+
+        '#projects .section-kicker': 'Repositorio Patrones Lab',
+        '#projects .projects-title-display': 'Proyectos',
+        '#projects .projects-intro': 'Selección de proyectos aplicados con datos públicos, metodología y resultados visuales. Usá los filtros para navegar por disciplina, herramienta o tipo de entrega.',
+        '#projects .repo-filter-btn[data-repo-filter="all"]': '<span class="filter-icon">◎</span> Todos',
+        '#projects .repo-filter-group:nth-of-type(1) .repo-filter-group-trigger': 'Disciplina',
+        '#projects .repo-filter-group:nth-of-type(2) .repo-filter-group-trigger': 'Herramientas',
+        '#projects .repo-filter-group:nth-of-type(3) .repo-filter-group-trigger': 'Modelo',
+        '#projects .repo-filter-group:nth-of-type(4) .repo-filter-group-trigger': 'Tema',
+
+        '#projects .repo-filter-btn[data-repo-filter="bi"]': '<span class="filter-icon">▦</span> BI',
+        '#projects .repo-filter-btn[data-repo-filter="data-analysis"]': '<span class="filter-icon">▥</span> Data Analysis',
+        '#projects .repo-filter-btn[data-repo-filter="data-science"]': '<span class="filter-icon">⚗</span> Data Science',
+        '#projects .repo-filter-btn[data-repo-filter="machine-learning"]': '<span class="filter-icon">✦</span> Machine Learning',
+        '#projects .repo-filter-btn[data-repo-filter="data-storytelling"]': '<span class="filter-icon">✎</span> Data Storytelling',
+        '#projects .repo-filter-btn[data-repo-filter="python"]': '<span class="filter-icon">◇</span> Python',
+        '#projects .repo-filter-btn[data-repo-filter="spss"]': '<span class="filter-icon">◧</span> SPSS',
+        '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
+        '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Modelo Supervisado',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Modelo No Supervisado',
+        '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Clasificación',
+        '#projects .repo-filter-btn[data-repo-filter="clustering"]': '<span class="filter-icon">✣</span> Clustering',
+        '#projects .repo-filter-btn[data-repo-filter="knn"]': '<span class="filter-icon">↗</span> KNN',
+        '#projects .repo-filter-btn[data-repo-filter="k-means"]': '<span class="filter-icon">⌖</span> K-means',
+        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Regresión Logística',
+        '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
+        '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geoespacial',
+        '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
+        '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
+        '#projects .repo-filter-btn[data-repo-filter="futbol"]': '<span class="filter-icon">●</span> Fútbol',
+        '#projects .repo-filter-btn[data-repo-filter="aviacion"]': '<span class="filter-icon">✈</span> Aviación',
+        '#projects .repo-filter-btn[data-repo-filter="fraude"]': '<span class="filter-icon">!</span> Fraude',
+
+        '#projects .github-project-card:nth-of-type(1) h3': 'Análisis de Vuelos en las Islas Baleares',
+        '#projects .github-project-card:nth-of-type(1) p:not(.project-status)': 'Análisis de tráfico aéreo en España con datos públicos de AENA, con foco en volúmenes, patrones por aeropuerto y diferencias entre categorías.',
+        '#projects .github-project-card:nth-of-type(2) h3': 'Análisis del Alojamiento Airbnb en Londres',
+        '#projects .github-project-card:nth-of-type(2) p:not(.project-status)': 'Análisis exploratorio del alojamiento Airbnb en Londres con foco en precio, categorías, reseñas y patrones territoriales.',
+        '#projects .github-project-card:nth-of-type(3) h3': 'Análisis de Viajes en Taxi en Chicago',
+        '#projects .github-project-card:nth-of-type(3) p:not(.project-status)': 'Análisis de viajes de taxi en Chicago para estudiar duración, demanda, distribución geoespacial y patrones operativos.',
+        '#projects .github-project-card:nth-of-type(4) h3': 'Modelo ML · Airbnb London',
+        '#projects .github-project-card:nth-of-type(4) p:not(.project-status)': 'Clasificación supervisada de anuncios relativamente caros o baratos dentro de cada tipo de alojamiento.',
+        '#projects .github-project-card:nth-of-type(5) h3': 'Dashboard Looker · Taxi Trips Chicago',
+        '#projects .github-project-card:nth-of-type(5) p:not(.project-status)': 'Dashboard interactivo en Looker Studio para explorar viajes de taxi en Chicago, indicadores operativos, patrones horarios y recorridos pickup-dropoff.',
+        '#projects .github-project-card:nth-of-type(6) h3': 'Modelo ML · Goles Esperados (xG)',
+        '#projects .github-project-card:nth-of-type(6) p:not(.project-status)': 'Próximamente.',
+        '#projects .github-project-card:nth-of-type(7) h3': 'Probabilidades en el Fútbol · Peligro Esperado (xT)',
+        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Modelo Probabilístico: Peligro Esperado xT. Próximamente.',
+        '#projects .github-project-card:nth-of-type(8) h3': 'Modelo ML · Detección de Fraude',
+        '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Clustering no supervisado con K-means para la detección de fraudes con tarjetas de crédito.',
+        '#projects .github-project-card:nth-of-type(9) h3': 'Modelo ML · Detección de Fraude',
+        '#projects .github-project-card:nth-of-type(9) p:not(.project-status)': 'Clasificación supervisada mediante regresión logística para la detección de fraude con tarjeta de crédito.',
+        '#projects .github-project-card:nth-of-type(10) h3': 'Modelo ML · Detección de Fraude',
+        '#projects .github-project-card:nth-of-type(10) p:not(.project-status)': 'Clustering no supervisado con DBSCAN para identificar posibles fraudes con tarjeta de crédito.',
+        '#projects .github-project-card:nth-of-type(11) h3': 'Estadísticas del Mundial de Fútbol Qatar 2022',
+        '#projects .github-project-card:nth-of-type(11) p:not(.project-status)': 'Próximamente.',
+        '#projects .github-project-card:nth-of-type(12) h3': 'Análisis Geoespacial de los Viajes en Taxi',
+        '#projects .github-project-card:nth-of-type(12) p:not(.project-status)': 'Próximamente.',
+        '#projects .repo-empty-message': 'No hay proyectos para esa categoría todavía.',
+
+        '#networks .section-kicker': 'Canales de Patrones Lab',
+        '#networks .projects-title-display': 'Redes y canales',
+        '#networks .social-intro': 'Todo el ecosistema del proyecto en un solo lugar: visuales, notas técnicas, publicaciones, dashboards, enlaces útiles y contacto profesional.',
+        '#networks .social-card.instagram small': 'Visuales y posts',
+        '#networks .social-card.linkedin small': 'Perfil profesional',
+        '#networks .social-card.medium small': 'Artículos y notas',
+        '#networks .social-card.linktree small': 'Todos los enlaces',
+        '#networks .social-card.github small': 'Perfil técnico',
+        '#networks .social-card.mail small': 'Contacto directo',
+
+        '#contact .contact-panel h3': 'Contacto',
+        '#contact .contact-panel p:not(.contact-email-line)': 'Para oportunidades profesionales, colaboración analítica o proyectos de BI · ML · Dashboards.',
+        '#contact .contact-email-line strong': 'correo:',
+        '#contact .contact-form h2': 'Dejame un mensaje',
+        '#contact .form-note': 'Escribime y te responderé a la brevedad.',
+        'footer': 'Patrones Lab® · Generando conocimiento a través de los datos'
+      },
+      links: {
+        'Open project': 'Entrar al proyecto',
+        'Apri progetto': 'Entrar al proyecto',
+        'Read on LinkedIn': 'Leer en LinkedIn',
+        'Leggi su LinkedIn': 'Leer en LinkedIn',
+        'View dashboard': 'Ver dashboard',
+        'Visualizza dashboard': 'Ver dashboard',
+        'View documentation': 'Ver documentación',
+        'View docs': 'Ver documentación',
+        'Documentazione': 'Ver documentación',
+        'View in SPSS': 'Ver en SPSS',
+        'Visualizza in SPSS': 'Ver en SPSS',
+        'View in Python': 'Ver en Python',
+        'Visualizza in Python': 'Ver en Python'
+      },
+      attrs: {
+        '#name': {placeholder: 'Nombre'},
+        '#message': {placeholder: 'Mensaje'},
+        '#contactForm .submit-btn': {value: 'Preparar email'},
+        '.floating-cta': {'aria-label': 'Ver repositorio de Patrones Lab'},
+        '.navbar-toggler': {'aria-label': 'Abrir navegación'},
+        '#about .hero-rotator': {'aria-label': 'evidencia, modelos, dashboards, decisiones y patrones'},
+        '#about .hero-tech-marquee': {'aria-label': 'Tecnologías utilizadas'},
+        '#projects .repo-filter-toolbar': {'aria-label': 'Filtrar proyectos'}
+      }
+    },
+
+    en: {
+      title: 'Patrones Lab — Data, BI & Machine Learning Portfolio',
+      metaDescription: 'Patrones Lab: a portfolio of reproducible data projects across BI, machine learning, Python, SQL, Power BI, Qlik and Looker Studio.',
+      htmlLang: 'en',
+      currentLabel: 'English',
+      text: {
+        '.floating-cta__text': 'View repository',
+        '.navbar-nav .nav-link[href="#about"]': 'Home',
+        '.navbar-nav .nav-link[href="#methodology"]': 'Methodology',
+        '.navbar-nav .nav-link[href="#projects"]': 'Projects',
+        '.navbar-nav .nav-link[href="#networks"]': 'Channels',
+        '.navbar-nav .nav-link[href="#contact"]': 'Contact',
+        '.color-mode': '<i class="color-mode-icon"></i>',
+
+        '#about .hero-entry-v25b-kicker': 'Project portfolio BI · ML · Python · Dashboards',
+        '#about .hero-line': 'I turn<br>data into',
+        '#about .hero-rotator span:nth-child(1)': 'evidence',
+        '#about .hero-rotator span:nth-child(2)': 'models',
+        '#about .hero-rotator span:nth-child(3)': 'dashboards',
+        '#about .hero-rotator span:nth-child(4)': 'decisions',
+        '#about .hero-rotator span:nth-child(5)': 'patterns',
+        '#about .hero-entry-v25b-copy': 'Patrones Lab is a data analytics lab focused on real-world, everyday phenomena.<br><br>It brings together independent projects built with public data, with an emphasis on finding patterns, explaining behavior and communicating insights with context.<br><br>The goal is to ask better questions, prepare reliable data, build reproducible analyses and turn results into clear visual outputs.',
+
+        '.tech-logo-card-airflow small': 'Orchestration',
+        '.tech-logo-card-sql-server small': 'Database',
+        '.tech-logo-card-numpy small': 'Numerical Computing',
+        '.tech-logo-card-matplotlib small': 'Data Visualization',
+        '.tech-logo-card-dbt small': 'Transformation',
+
+        '#methodology .process-horizontal-static-head h2': 'Data Lifecycle',
+        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Discovery',
+        '#methodology .process-horizontal-panel:nth-child(1) small': 'Context & Objective',
+        '#methodology .process-horizontal-panel:nth-child(1) p': 'Clarifying the problem, the decision to improve, the users involved and the expected outcome.',
+        '#methodology .process-horizontal-panel:nth-child(2) h3': 'Sources',
+        '#methodology .process-horizontal-panel:nth-child(2) small': 'Sources & Diagnostics',
+        '#methodology .process-horizontal-panel:nth-child(2) p': 'Mapping available data sources, including their origin, refresh cadence, reliability and main limitations.',
+        '#methodology .process-horizontal-panel:nth-child(3) h3': 'Preparation',
+        '#methodology .process-horizontal-panel:nth-child(3) small': 'Analytical Dataset',
+        '#methodology .process-horizontal-panel:nth-child(3) p': 'Structuring, cleaning and combining data into a consistent analytical dataset ready for analysis.',
+        '#methodology .process-horizontal-panel:nth-child(4) h3': 'Development',
+        '#methodology .process-horizontal-panel:nth-child(4) small': 'Solution',
+        '#methodology .process-horizontal-panel:nth-child(4) p': 'Building the analysis, model or dashboard required to address the defined objective.',
+        '#methodology .process-horizontal-panel:nth-child(5) h3': 'Validation',
+        '#methodology .process-horizontal-panel:nth-child(5) small': 'Quality & Confidence',
+        '#methodology .process-horizontal-panel:nth-child(5) p': 'Reviewing the coherence, stability and business relevance of the results before delivery.',
+        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Delivery',
+        '#methodology .process-horizontal-panel:nth-child(6) small': 'Publishing, Automation & Iteration',
+        '#methodology .process-horizontal-panel:nth-child(6) p': 'Documenting the final output, automating recurring workflows and using feedback to guide future improvements.',
+
+        '#projects .section-kicker': 'Patrones Lab Repository',
+        '#projects .projects-title-display': 'Projects',
+        '#projects .projects-intro': 'A selection of applied projects built with public data, documented methodology and visual outputs. Use the filters to explore by discipline, tool or deliverable type.',
+        '#projects .repo-filter-btn[data-repo-filter="all"]': '<span class="filter-icon">◎</span> All',
+        '#projects .repo-filter-group:nth-of-type(1) .repo-filter-group-trigger': 'Discipline',
+        '#projects .repo-filter-group:nth-of-type(2) .repo-filter-group-trigger': 'Tools',
+        '#projects .repo-filter-group:nth-of-type(3) .repo-filter-group-trigger': 'Model',
+        '#projects .repo-filter-group:nth-of-type(4) .repo-filter-group-trigger': 'Domain',
+
+        '#projects .repo-filter-btn[data-repo-filter="bi"]': '<span class="filter-icon">▦</span> BI',
+        '#projects .repo-filter-btn[data-repo-filter="data-analysis"]': '<span class="filter-icon">▥</span> Data Analysis',
+        '#projects .repo-filter-btn[data-repo-filter="data-science"]': '<span class="filter-icon">⚗</span> Data Science',
+        '#projects .repo-filter-btn[data-repo-filter="machine-learning"]': '<span class="filter-icon">✦</span> Machine Learning',
+        '#projects .repo-filter-btn[data-repo-filter="data-storytelling"]': '<span class="filter-icon">✎</span> Data Storytelling',
+        '#projects .repo-filter-btn[data-repo-filter="python"]': '<span class="filter-icon">◇</span> Python',
+        '#projects .repo-filter-btn[data-repo-filter="spss"]': '<span class="filter-icon">◧</span> SPSS',
+        '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
+        '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Supervised Model',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Unsupervised Model',
+        '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Classification',
+        '#projects .repo-filter-btn[data-repo-filter="clustering"]': '<span class="filter-icon">✣</span> Clustering',
+        '#projects .repo-filter-btn[data-repo-filter="knn"]': '<span class="filter-icon">↗</span> KNN',
+        '#projects .repo-filter-btn[data-repo-filter="k-means"]': '<span class="filter-icon">⌖</span> K-means',
+        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Logistic Regression',
+        '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
+        '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geospatial',
+        '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
+        '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
+        '#projects .repo-filter-btn[data-repo-filter="futbol"]': '<span class="filter-icon">●</span> Soccer',
+        '#projects .repo-filter-btn[data-repo-filter="aviacion"]': '<span class="filter-icon">✈</span> Aviation',
+        '#projects .repo-filter-btn[data-repo-filter="fraude"]': '<span class="filter-icon">!</span> Fraud',
+
+        '#projects .github-project-card:nth-of-type(1) h3': 'Balearic Islands Flight Analysis',
+        '#projects .github-project-card:nth-of-type(1) p:not(.project-status)': 'Analysis of air traffic in Spain using public AENA data, focused on volume, airport-level patterns and differences across traffic categories.',
+        '#projects .github-project-card:nth-of-type(2) h3': 'Airbnb Lodging Analysis in London',
+        '#projects .github-project-card:nth-of-type(2) p:not(.project-status)': 'Exploratory analysis of Airbnb listings in London, focused on pricing, property categories, reviews and spatial patterns.',
+        '#projects .github-project-card:nth-of-type(3) h3': 'Chicago Taxi Trip Analysis',
+        '#projects .github-project-card:nth-of-type(3) p:not(.project-status)': 'Analysis of reported Chicago taxi trips to study duration, demand, geospatial distribution and operational patterns.',
+        '#projects .github-project-card:nth-of-type(4) h3': 'ML Model · Airbnb London',
+        '#projects .github-project-card:nth-of-type(4) p:not(.project-status)': 'Supervised classification of listings as relatively expensive or inexpensive within each accommodation type.',
+        '#projects .github-project-card:nth-of-type(5) h3': 'Looker Dashboard · Chicago Taxi Trips',
+        '#projects .github-project-card:nth-of-type(5) p:not(.project-status)': 'Interactive Looker Studio dashboard for exploring Chicago taxi trips, operational indicators, hourly patterns and pickup-dropoff routes.',
+        '#projects .github-project-card:nth-of-type(6) h3': 'ML Model · Expected Goals (xG)',
+        '#projects .github-project-card:nth-of-type(6) p:not(.project-status)': 'Coming soon.',
+        '#projects .github-project-card:nth-of-type(7) h3': 'Soccer Probabilities · Expected Threat (xT)',
+        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Probabilistic model for Expected Threat (xT). Coming soon.',
+        '#projects .github-project-card:nth-of-type(8) h3': 'ML Model · Fraud Detection',
+        '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Unsupervised K-means clustering applied to credit card fraud detection.',
+        '#projects .github-project-card:nth-of-type(9) h3': 'ML Model · Fraud Detection',
+        '#projects .github-project-card:nth-of-type(9) p:not(.project-status)': 'Supervised logistic regression model for credit card fraud detection.',
+        '#projects .github-project-card:nth-of-type(10) h3': 'ML Model · Fraud Detection',
+        '#projects .github-project-card:nth-of-type(10) p:not(.project-status)': 'Unsupervised DBSCAN clustering to detect potential credit card fraud patterns.',
+        '#projects .github-project-card:nth-of-type(11) h3': 'Qatar 2022 World Cup Statistics',
+        '#projects .github-project-card:nth-of-type(11) p:not(.project-status)': 'Coming soon.',
+        '#projects .github-project-card:nth-of-type(12) h3': 'Geospatial Taxi Trip Analysis',
+        '#projects .github-project-card:nth-of-type(12) p:not(.project-status)': 'Coming soon.',
+        '#projects .repo-empty-message': 'There are no projects in this category yet.',
+
+        '#networks .section-kicker': 'Patrones Lab Online Presence',
+        '#networks .projects-title-display': 'Channels',
+        '#networks .social-intro': 'The full project ecosystem in one place: visuals, technical notes, articles, dashboards, useful links and professional contact channels.',
+        '#networks .social-card.instagram small': 'Visuals and posts',
+        '#networks .social-card.linkedin small': 'Professional profile',
+        '#networks .social-card.medium small': 'Articles and notes',
+        '#networks .social-card.linktree small': 'All links',
+        '#networks .social-card.github small': 'Technical profile',
+        '#networks .social-card.mail small': 'Direct contact',
+
+        '#contact .contact-panel h3': 'Contact',
+        '#contact .contact-panel p:not(.contact-email-line)': 'For professional opportunities, analytics collaboration or BI, machine learning and dashboard projects.',
+        '#contact .contact-email-line strong': 'email:',
+        '#contact .contact-form h2': 'Leave me a message',
+        '#contact .form-note': 'Send me a message and I’ll get back to you shortly.',
+        'footer': 'Patrones Lab® · Turning data into knowledge'
+      },
+      links: {
+        'Entrar al proyecto': 'Open project',
+        'Apri progetto': 'Open project',
+        'Leer en LinkedIn': 'Read on LinkedIn',
+        'Leggi su LinkedIn': 'Read on LinkedIn',
+        'Ver dashboard': 'View dashboard',
+        'Visualizza dashboard': 'View dashboard',
+        'Ver documentación': 'View documentation',
+        'Documentazione': 'View documentation',
+        'Ver en SPSS': 'View in SPSS',
+        'Visualizza in SPSS': 'View in SPSS',
+        'Ver en Python': 'View in Python',
+        'Visualizza in Python': 'View in Python'
+      },
+      attrs: {
+        '#name': {placeholder: 'Name'},
+        '#message': {placeholder: 'Message'},
+        '#contactForm .submit-btn': {value: 'Prepare email'},
+        '.floating-cta': {'aria-label': 'View Patrones Lab repository'},
+        '.navbar-toggler': {'aria-label': 'Open navigation'},
+        '#about .hero-rotator': {'aria-label': 'evidence, models, dashboards, decisions and patterns'},
+        '#about .hero-tech-marquee': {'aria-label': 'Technologies used'},
+        '#projects .repo-filter-toolbar': {'aria-label': 'Filter projects'}
+      }
+    },
+
+    it: {
+      title: 'Patrones Lab — Portfolio dati, BI e Machine Learning',
+      metaDescription: 'Patrones Lab: portfolio di progetti dati riproducibili in BI, machine learning, Python, SQL, Power BI, Qlik e Looker Studio.',
+      htmlLang: 'it',
+      currentLabel: 'Italiano',
+      text: {
+        '.floating-cta__text': 'Vedi repo',
+        '.navbar-nav .nav-link[href="#about"]': 'Inizio',
+        '.navbar-nav .nav-link[href="#methodology"]': 'Metodologia',
+        '.navbar-nav .nav-link[href="#projects"]': 'Progetti',
+        '.navbar-nav .nav-link[href="#networks"]': 'Canali',
+        '.navbar-nav .nav-link[href="#contact"]': 'Contatto',
+        '.color-mode': '<i class="color-mode-icon"></i>',
+
+        '#about .hero-entry-v25b-kicker': 'Portfolio di progetti BI · ML · Python · Dashboard',
+        '#about .hero-line': 'Trasformo<br class="pl-it-mobile-break"><span class="pl-it-desktop-space"> </span>dati in',
+        '#about .hero-rotator span:nth-child(1)': 'evidenze',
+        '#about .hero-rotator span:nth-child(2)': 'modelli',
+        '#about .hero-rotator span:nth-child(3)': 'dashboard',
+        '#about .hero-rotator span:nth-child(4)': 'decisioni',
+        '#about .hero-rotator span:nth-child(5)': 'pattern',
+        '#about .hero-entry-v25b-copy': 'Patrones Lab è un laboratorio di analisi dati applicata a fenomeni quotidiani e reali.<br><br>Raccoglie progetti indipendenti costruiti con dati pubblici, con attenzione alla ricerca di pattern, alla descrizione dei comportamenti e alla comunicazione dei risultati nel loro contesto.<br><br>L’obiettivo è porre domande migliori, preparare dati affidabili, costruire analisi riproducibili e trasformare i risultati in output visuali chiari.',
+
+        '.tech-logo-card-airflow small': 'Orchestrazione',
+        '.tech-logo-card-sql-server small': 'Database',
+        '.tech-logo-card-numpy small': 'Calcolo numerico',
+        '.tech-logo-card-matplotlib small': 'Visualizzazione dati',
+        '.tech-logo-card-dbt small': 'Trasformazione',
+
+        '#methodology .process-horizontal-static-head h2': 'Ciclo di vita del dato',
+        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Scoperta',
+        '#methodology .process-horizontal-panel:nth-child(1) small': 'Contesto e obiettivo',
+        '#methodology .process-horizontal-panel:nth-child(1) p': 'Comprensione del problema, della decisione da migliorare, degli utenti coinvolti e del risultato atteso.',
+        '#methodology .process-horizontal-panel:nth-child(2) h3': 'Fonti',
+        '#methodology .process-horizontal-panel:nth-child(2) small': 'Dati e diagnosi',
+        '#methodology .process-horizontal-panel:nth-child(2) p': 'Identificazione delle fonti disponibili, della loro origine, frequenza di aggiornamento, affidabilità e principali limiti.',
+        '#methodology .process-horizontal-panel:nth-child(3) h3': 'Preparazione',
+        '#methodology .process-horizontal-panel:nth-child(3) small': 'Base analitica',
+        '#methodology .process-horizontal-panel:nth-child(3) p': 'Organizzazione, pulizia e integrazione dei dati per costruire una base coerente e utilizzabile.',
+        '#methodology .process-horizontal-panel:nth-child(4) h3': 'Costruzione',
+        '#methodology .process-horizontal-panel:nth-child(4) small': 'Soluzione',
+        '#methodology .process-horizontal-panel:nth-child(4) p': 'Sviluppo dell’analisi, del modello o del dashboard necessario in base all’obiettivo definito.',
+        '#methodology .process-horizontal-panel:nth-child(5) h3': 'Validazione',
+        '#methodology .process-horizontal-panel:nth-child(5) small': 'Controllo e affidabilità',
+        '#methodology .process-horizontal-panel:nth-child(5) p': 'Revisione della coerenza, della stabilità e dell’allineamento dei risultati con la realtà del business.',
+        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Consegna',
+        '#methodology .process-horizontal-panel:nth-child(6) small': 'Pubblicazione, automazione ed evoluzione',
+        '#methodology .process-horizontal-panel:nth-child(6) p': 'Documentazione del lavoro finale, automazione dei processi ricorrenti e uso del feedback per miglioramenti futuri.',
+
+        '#projects .section-kicker': 'Repository Patrones Lab',
+        '#projects .projects-title-display': 'Progetti',
+        '#projects .projects-intro': 'Selezione di progetti applicati con dati pubblici, metodologia documentata e risultati visuali. Usa i filtri per esplorare per disciplina, strumento o tipo di consegna.',
+        '#projects .repo-filter-btn[data-repo-filter="all"]': '<span class="filter-icon">◎</span> Tutti',
+        '#projects .repo-filter-group:nth-of-type(1) .repo-filter-group-trigger': 'Disciplina',
+        '#projects .repo-filter-group:nth-of-type(2) .repo-filter-group-trigger': 'Strumenti',
+        '#projects .repo-filter-group:nth-of-type(3) .repo-filter-group-trigger': 'Modello',
+        '#projects .repo-filter-group:nth-of-type(4) .repo-filter-group-trigger': 'Ambito',
+
+        '#projects .repo-filter-btn[data-repo-filter="bi"]': '<span class="filter-icon">▦</span> BI',
+        '#projects .repo-filter-btn[data-repo-filter="data-analysis"]': '<span class="filter-icon">▥</span> Data Analysis',
+        '#projects .repo-filter-btn[data-repo-filter="data-science"]': '<span class="filter-icon">⚗</span> Data Science',
+        '#projects .repo-filter-btn[data-repo-filter="machine-learning"]': '<span class="filter-icon">✦</span> Machine Learning',
+        '#projects .repo-filter-btn[data-repo-filter="data-storytelling"]': '<span class="filter-icon">✎</span> Data Storytelling',
+        '#projects .repo-filter-btn[data-repo-filter="python"]': '<span class="filter-icon">◇</span> Python',
+        '#projects .repo-filter-btn[data-repo-filter="spss"]': '<span class="filter-icon">◧</span> SPSS',
+        '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
+        '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Modello supervisionato',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Modello non supervisionato',
+        '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Classificazione',
+        '#projects .repo-filter-btn[data-repo-filter="clustering"]': '<span class="filter-icon">✣</span> Clustering',
+        '#projects .repo-filter-btn[data-repo-filter="knn"]': '<span class="filter-icon">↗</span> KNN',
+        '#projects .repo-filter-btn[data-repo-filter="k-means"]': '<span class="filter-icon">⌖</span> K-means',
+        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Regressione logistica',
+        '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
+        '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geospaziale',
+        '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
+        '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
+        '#projects .repo-filter-btn[data-repo-filter="futbol"]': '<span class="filter-icon">●</span> Calcio',
+        '#projects .repo-filter-btn[data-repo-filter="aviacion"]': '<span class="filter-icon">✈</span> Aviazione',
+        '#projects .repo-filter-btn[data-repo-filter="fraude"]': '<span class="filter-icon">!</span> Frode',
+
+        '#projects .github-project-card:nth-of-type(1) h3': 'Analisi dei voli nelle Isole Baleari',
+        '#projects .github-project-card:nth-of-type(1) p:not(.project-status)': 'Analisi del traffico aereo in Spagna con dati pubblici AENA, con focus su volumi, pattern per aeroporto e differenze tra categorie.',
+        '#projects .github-project-card:nth-of-type(2) h3': 'Analisi degli alloggi Airbnb a Londra',
+        '#projects .github-project-card:nth-of-type(2) p:not(.project-status)': 'Analisi esplorativa degli annunci Airbnb a Londra, con focus su prezzi, categorie, recensioni e pattern territoriali.',
+        '#projects .github-project-card:nth-of-type(3) h3': 'Analisi dei viaggi in taxi a Chicago',
+        '#projects .github-project-card:nth-of-type(3) p:not(.project-status)': 'Analisi dei viaggi in taxi registrati a Chicago per studiare durata, domanda, distribuzione geospaziale e pattern operativi.',
+        '#projects .github-project-card:nth-of-type(4) h3': 'Modello ML · Airbnb London',
+        '#projects .github-project-card:nth-of-type(4) p:not(.project-status)': 'Classificazione supervisionata degli annunci relativamente cari o economici all’interno di ogni tipo di alloggio.',
+        '#projects .github-project-card:nth-of-type(5) h3': 'Dashboard Looker · Taxi Trips Chicago',
+        '#projects .github-project-card:nth-of-type(5) p:not(.project-status)': 'Dashboard interattivo in Looker Studio per esplorare viaggi in taxi a Chicago, indicatori operativi, pattern orari e percorsi pickup-dropoff.',
+        '#projects .github-project-card:nth-of-type(6) h3': 'Modello ML · Expected Goals (xG)',
+        '#projects .github-project-card:nth-of-type(6) p:not(.project-status)': 'Prossimamente.',
+        '#projects .github-project-card:nth-of-type(7) h3': 'Probabilità nel calcio · Expected Threat (xT)',
+        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Modello probabilistico per Expected Threat (xT). Prossimamente.',
+        '#projects .github-project-card:nth-of-type(8) h3': 'Modello ML · Rilevamento frodi',
+        '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Clustering non supervisionato con K-means applicato al rilevamento di frodi con carta di credito.',
+        '#projects .github-project-card:nth-of-type(9) h3': 'Modello ML · Rilevamento frodi',
+        '#projects .github-project-card:nth-of-type(9) p:not(.project-status)': 'Modello supervisionato di regressione logistica per il rilevamento di frodi con carta di credito.',
+        '#projects .github-project-card:nth-of-type(10) h3': 'Modello ML · Rilevamento frodi',
+        '#projects .github-project-card:nth-of-type(10) p:not(.project-status)': 'Clustering non supervisionato con DBSCAN per individuare possibili pattern di frode con carta di credito.',
+        '#projects .github-project-card:nth-of-type(11) h3': 'Statistiche Mondiali Qatar 2022',
+        '#projects .github-project-card:nth-of-type(11) p:not(.project-status)': 'Prossimamente.',
+        '#projects .github-project-card:nth-of-type(12) h3': 'Analisi geospaziale dei viaggi in taxi',
+        '#projects .github-project-card:nth-of-type(12) p:not(.project-status)': 'Prossimamente.',
+        '#projects .repo-empty-message': 'Non ci sono ancora progetti per questa categoria.',
+
+        '#networks .section-kicker': 'Presenza online di Patrones Lab',
+        '#networks .projects-title-display': 'Canali',
+        '#networks .social-intro': 'L’intero ecosistema del progetto in un unico luogo: visual, note tecniche, articoli, dashboard, link utili e canali di contatto professionale.',
+        '#networks .social-card.instagram small': 'Visual e post',
+        '#networks .social-card.linkedin small': 'Profilo professionale',
+        '#networks .social-card.medium small': 'Articoli e note',
+        '#networks .social-card.linktree small': 'Tutti i link',
+        '#networks .social-card.github small': 'Profilo tecnico',
+        '#networks .social-card.mail small': 'Contatto diretto',
+
+        '#contact .contact-panel h3': 'Contatto',
+        '#contact .contact-panel p:not(.contact-email-line)': 'Per opportunità professionali, collaborazioni analitiche o progetti di BI, machine learning e dashboard.',
+        '#contact .contact-email-line strong': 'email:',
+        '#contact .contact-form h2': 'Lasciami un messaggio',
+        '#contact .form-note': 'Scrivimi e ti risponderò al più presto.',
+        'footer': 'Patrones Lab® · Generare conoscenza attraverso i dati'
+      },
+      links: {
+        'Entrar al proyecto': 'Apri progetto',
+        'Open project': 'Apri progetto',
+        'Leer en LinkedIn': 'Leggi su LinkedIn',
+        'Read on LinkedIn': 'Leggi su LinkedIn',
+        'Ver dashboard': 'Visualizza dashboard',
+        'View dashboard': 'Visualizza dashboard',
+        'Ver documentación': 'Documentazione',
+        'View documentation': 'Documentazione',
+        'View docs': 'Documentazione',
+        'Ver en SPSS': 'Visualizza in SPSS',
+        'View in SPSS': 'Visualizza in SPSS',
+        'Ver en Python': 'Visualizza in Python',
+        'View in Python': 'Visualizza in Python'
+      },
+      attrs: {
+        '#name': {placeholder: 'Nome'},
+        '#message': {placeholder: 'Messaggio'},
+        '#contactForm .submit-btn': {value: 'Prepara email'},
+        '.floating-cta': {'aria-label': 'Vedi repository Patrones Lab'},
+        '.navbar-toggler': {'aria-label': 'Apri navigazione'},
+        '#about .hero-rotator': {'aria-label': 'evidenze, modelli, dashboard, decisioni e pattern'},
+        '#about .hero-tech-marquee': {'aria-label': 'Tecnologie utilizzate'},
+        '#projects .repo-filter-toolbar': {'aria-label': 'Filtra progetti'}
+      }
+    }
+  };
+
+  const statusLabels = {
+    es: {published:'✅ publicado', development:'⚠️ en desarrollo'},
+    en: {published:'✅ published', development:'⚠️ in progress'},
+    it: {published:'✅ pubblicato', development:'⚠️ in sviluppo'}
+  };
+
+  function setHtml(selector, html){
+    const el = document.querySelector(selector);
+    if(el) el.innerHTML = html;
+  }
+
+  function setAttr(selector, attrs){
+    const el = document.querySelector(selector);
+    if(!el) return;
+    Object.keys(attrs).forEach(function(name){
+      el.setAttribute(name, attrs[name]);
+    });
+  }
+
+  function replaceLinkLabels(lang){
+    const mapping = langData[lang].links || {};
+    document.querySelectorAll('#projects .project-link').forEach(function(link){
+      Object.keys(mapping).forEach(function(source){
+        if(link.innerHTML.indexOf(source) !== -1){
+          link.innerHTML = link.innerHTML.replace(source, mapping[source]);
+        }
+      });
+    });
+  }
+
+  function updateStatusLabels(lang){
+    const labels = statusLabels[lang] || statusLabels.es;
+    document.querySelectorAll('.project-status.published').forEach(function(el){
+      el.innerHTML = labels.published;
+    });
+    document.querySelectorAll('.project-status.development').forEach(function(el){
+      el.innerHTML = labels.development;
+    });
+  }
+
+  function updateLanguageSelector(lang){
+    document.querySelectorAll('.language-selector').forEach(function(selector){
+      const toggle = selector.querySelector('.language-select-toggle');
+      const current = selector.querySelector('.language-select-current-img');
+      if(toggle){
+        toggle.setAttribute('aria-label', 'Idioma: ' + langData[lang].currentLabel);
+        toggle.setAttribute('title', langData[lang].currentLabel);
+        toggle.setAttribute('aria-expanded', selector.classList.contains('is-open') ? 'true' : 'false');
+      }
+      if(current){
+        current.setAttribute('src', FLAGS[lang]);
+      }
+    });
+
+    document.querySelectorAll('.language-option').forEach(function(option){
+      const active = option.dataset.lang === lang;
+      option.classList.toggle('is-active', active);
+      option.setAttribute('aria-current', active ? 'true' : 'false');
+    });
+  }
+
+  function closeLanguageMenus(){
+    document.querySelectorAll('.language-selector.is-open').forEach(function(selector){
+      selector.classList.remove('is-open');
+      const toggle = selector.querySelector('.language-select-toggle');
+      if(toggle) toggle.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function applyLanguage(lang){
+    const language = langData[lang] ? lang : 'es';
+    const data = langData[language];
+
+    document.documentElement.lang = data.htmlLang;
+    document.title = data.title;
+
+    const meta = document.querySelector('meta[name="description"]');
+    if(meta) meta.setAttribute('content', data.metaDescription);
+
+    Object.keys(data.text).forEach(function(selector){
+      setHtml(selector, data.text[selector]);
+    });
+
+    Object.keys(data.attrs).forEach(function(selector){
+      setAttr(selector, data.attrs[selector]);
+    });
+
+    replaceLinkLabels(language);
+    updateStatusLabels(language);
+    updateLanguageSelector(language);
+
+    try{
+      localStorage.setItem(STORAGE_KEY, language);
+    }catch(e){}
+
+    document.dispatchEvent(new CustomEvent('pl-language-changed', {detail:{language:language}}));
+
+    if(window.plApplyRepoFilter && window.plGetActiveRepoFilter){
+      window.plApplyRepoFilter(window.plGetActiveRepoFilter());
+    }
+  }
+
+  document.addEventListener('click', function(event){
+    const toggle = event.target.closest && event.target.closest('.language-select-toggle');
+    const option = event.target.closest && event.target.closest('.language-option');
+
+    if(toggle){
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+
+      const selector = toggle.closest('.language-selector');
+      const willOpen = !selector.classList.contains('is-open');
+      closeLanguageMenus();
+      selector.classList.toggle('is-open', willOpen);
+      toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      return;
+    }
+
+    if(option){
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+
+      const lang = option.dataset.lang || 'es';
+      applyLanguage(lang);
+      closeLanguageMenus();
+      return;
+    }
+
+    if(!event.target.closest || !event.target.closest('.language-selector')){
+      closeLanguageMenus();
+    }
+  }, true);
+
+  document.addEventListener('keydown', function(event){
+    if(event.key === 'Escape'){
+      closeLanguageMenus();
+    }
+  });
+
+  window.plSetLanguage = applyLanguage;
+  window.plGetLanguage = function(){
+    try{
+      return localStorage.getItem(STORAGE_KEY) || 'es';
+    }catch(e){
+      return 'es';
+    }
+  };
+  window.plCurrentLanguageForContact = window.plGetLanguage;
+
+  applyLanguage(window.plGetLanguage());
+})();
+
+
+
+
+// === V53D: contacto multidioma ES/EN/IT ===
+(function(){
+  const form = document.querySelector('#contactForm');
+  if(!form) return;
+
+  form.addEventListener('submit', function(event){
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+
+    const lang = (window.plGetLanguage && window.plGetLanguage()) || 'es';
+    const name = (document.querySelector('#name') || {}).value || '';
+    const email = (document.querySelector('#email') || {}).value || '';
+    const message = (document.querySelector('#message') || {}).value || '';
+
+    const labels = {
+      es: {subject:'Contacto desde Patrones Lab', name:'Nombre: ', message:'Mensaje:\n'},
+      en: {subject:'Contact from Patrones Lab', name:'Name: ', message:'Message:\n'},
+      it: {subject:'Contatto da Patrones Lab', name:'Nome: ', message:'Messaggio:\n'}
+    };
+
+    const data = labels[lang] || labels.es;
+    const subject = encodeURIComponent(data.subject);
+    const body = encodeURIComponent(
+      data.name + name + '\n' +
+      'Email: ' + email + '\n\n' +
+      data.message + message
+    );
+
+    window.location.href = 'mailto:encontrandopatrones@gmail.com?subject=' + subject + '&body=' + body;
+  }, true);
 })();
 

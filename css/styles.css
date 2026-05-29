@@ -12650,3 +12650,593 @@ html.pl-section-snap-enabled{
   }
 }
 
+
+
+/* === V52B: Selector bilingüe ES/EN === */
+/*
+  Español queda como idioma base.
+  El botón alterna:
+  - ES: muestra 🇺🇸 para pasar a inglés.
+  - EN: muestra 🇪🇸 para volver a español.
+  Desktop: a la izquierda de Modo.
+  Mobile: a la izquierda del menú, fuera del collapse.
+*/
+.language-toggle{
+  border:0;
+  outline:0;
+  appearance:none;
+  -webkit-appearance:none;
+  background:rgba(255,255,255,.07);
+  color:#f5f0e8;
+  width:34px;
+  height:34px;
+  min-width:34px;
+  border-radius:999px;
+  display:inline-grid;
+  place-items:center;
+  padding:0;
+  line-height:1;
+  cursor:pointer;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.12), 0 10px 24px rgba(0,0,0,.16);
+  transition:transform .18s ease, background .18s ease, box-shadow .18s ease;
+}
+
+.language-toggle:hover,
+.language-toggle:focus-visible{
+  transform:translateY(-1px);
+  background:rgba(255,194,0,.14);
+  box-shadow:inset 0 0 0 1px rgba(255,194,0,.28), 0 12px 28px rgba(0,0,0,.2);
+}
+
+.language-toggle__flag{
+  display:block;
+  font-size:18px;
+  line-height:1;
+  transform:translateY(.5px);
+}
+
+.language-toggle-desktop{
+  margin-right:12px;
+}
+
+.navbar-mobile-actions{
+  display:none;
+}
+
+@media (min-width: 768px){
+  .language-toggle-mobile{
+    display:none !important;
+  }
+
+  .language-toggle-desktop{
+    display:inline-grid !important;
+    vertical-align:middle;
+  }
+
+  .color-mode{
+    display:inline-flex !important;
+  }
+}
+
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+  .navbar .container{
+    display:flex;
+    align-items:center;
+  }
+
+  .navbar-mobile-actions{
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+    margin-left:auto;
+    margin-right:10px;
+    flex:0 0 auto;
+  }
+
+  .language-toggle-mobile{
+    display:inline-grid !important;
+    width:32px;
+    height:32px;
+    min-width:32px;
+  }
+
+  .language-toggle-mobile .language-toggle__flag{
+    font-size:17px;
+  }
+
+  .language-toggle-desktop{
+    display:none !important;
+  }
+}
+
+
+
+/* === V52B fix: banderas como imágenes SVG === */
+.language-toggle__flag-img{
+  display:block;
+  width:23px;
+  height:23px;
+  border-radius:50%;
+  object-fit:cover;
+  box-shadow:0 0 0 1px rgba(255,255,255,.22);
+}
+
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+  .language-toggle-mobile .language-toggle__flag-img{
+    width:22px;
+    height:22px;
+  }
+}
+
+
+
+/* === V52D: navbar mode icon only === */
+/*
+  Quita el texto Modo/Mode y deja solo el ícono luna/sol.
+  Mismo tamaño visual que el selector de idioma.
+  Sin marco, sin fondo y sin sombra.
+*/
+.color-mode{
+  width:34px !important;
+  height:34px !important;
+  min-width:34px !important;
+  min-height:34px !important;
+  max-width:34px !important;
+  max-height:34px !important;
+  padding:0 !important;
+  margin:0 !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  font-size:0 !important;
+  line-height:1 !important;
+  background:transparent !important;
+  border:0 !important;
+  outline:0 !important;
+  box-shadow:none !important;
+  border-radius:0 !important;
+  cursor:pointer !important;
+}
+
+.color-mode::before,
+.color-mode::after{
+  display:none !important;
+  content:none !important;
+}
+
+.color-mode .color-mode-icon{
+  margin:0 !important;
+  padding:0 !important;
+  width:34px !important;
+  height:34px !important;
+  min-width:34px !important;
+  min-height:34px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  font-size:22px !important;
+  line-height:1 !important;
+}
+
+.color-mode .color-mode-icon::before{
+  margin:0 !important;
+}
+
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+  .color-mode{
+    width:32px !important;
+    height:32px !important;
+    min-width:32px !important;
+    min-height:32px !important;
+    max-width:32px !important;
+    max-height:32px !important;
+  }
+
+  .color-mode .color-mode-icon{
+    width:32px !important;
+    height:32px !important;
+    min-width:32px !important;
+    min-height:32px !important;
+    font-size:21px !important;
+  }
+}
+
+
+
+/* === V52E: navbar idioma/modo alineados + sol por default en dark mode === */
+/*
+  Ajuste visual:
+  - bandera e ícono de modo alineados al centro;
+  - mayor separación entre ambos;
+  - si la web inicia en dark-mode, el icono visible es el sol,
+    porque representa la acción de pasar a modo claro.
+*/
+.navbar .ml-lg-auto,
+.navbar .ml-lg-4{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+
+.language-toggle-desktop{
+  margin-right:18px !important;
+}
+
+.language-toggle,
+.color-mode{
+  vertical-align:middle !important;
+  align-self:center !important;
+}
+
+.color-mode{
+  transform:translateY(0) !important;
+}
+
+.color-mode .color-mode-icon{
+  transform:translateY(0) !important;
+}
+
+/* Default real: body.dark-mode debe mostrar sol como acción para cambiar a claro. */
+body.dark-mode .color-mode-icon:before{
+  content:"\eb65" !important; /* uil-sun */
+}
+
+/* En modo claro, mostrar luna como acción para volver a oscuro. */
+body:not(.dark-mode) .color-mode-icon:before{
+  content:"\eb9f" !important; /* uil-moon */
+}
+
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+  .navbar-mobile-actions{
+    margin-right:14px !important;
+  }
+
+  .language-toggle-mobile{
+    margin-right:0 !important;
+  }
+
+  .language-toggle,
+  .color-mode{
+    align-self:center !important;
+  }
+}
+
+
+
+/* === V52F: navbar click interaction fix === */
+/*
+  Corrige interacción visual entre bandera e icono de modo:
+  - unifica alineación con gap real entre controles;
+  - elimina el pseudo-elemento ::before agregado antes;
+  - deja luna/sol solo en ::after, como en la implementación original;
+  - dark-mode muestra sol como acción para pasar a claro;
+  - light-mode muestra luna como acción para pasar a oscuro.
+*/
+.navbar .ml-lg-4{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:22px !important;
+}
+
+.language-toggle-desktop{
+  margin-right:0 !important;
+}
+
+.language-toggle,
+.color-mode{
+  flex:0 0 auto !important;
+  align-self:center !important;
+}
+
+.color-mode{
+  position:relative !important;
+  width:34px !important;
+  height:34px !important;
+  min-width:34px !important;
+  min-height:34px !important;
+  max-width:34px !important;
+  max-height:34px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:0 !important;
+  margin:0 !important;
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  font-size:0 !important;
+  line-height:1 !important;
+}
+
+.color-mode .color-mode-icon{
+  position:relative !important;
+  right:auto !important;
+  inset:auto !important;
+  width:34px !important;
+  height:34px !important;
+  min-width:34px !important;
+  min-height:34px !important;
+  margin:0 !important;
+  padding:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  line-height:1 !important;
+  transform:none !important;
+}
+
+/* No usar ::before: era la causa del sol/luna duplicado o desfasado. */
+.color-mode .color-mode-icon::before,
+body.dark-mode .color-mode-icon::before,
+body:not(.dark-mode) .color-mode-icon::before{
+  content:none !important;
+  display:none !important;
+}
+
+/* Icono único por ::after. */
+.color-mode .color-mode-icon::after{
+  font-family:'unicons' !important;
+  display:block !important;
+  position:static !important;
+  inset:auto !important;
+  width:34px !important;
+  height:34px !important;
+  margin:0 !important;
+  padding:0 !important;
+  text-align:center !important;
+  line-height:34px !important;
+  font-size:24px !important;
+  font-weight:300 !important;
+  font-style:normal !important;
+  transform:none !important;
+}
+
+/* Web en oscuro: mostrar sol para indicar cambio a claro. */
+body.dark-mode .color-mode-icon::after,
+body.dark-mode .color-mode-icon.active::after{
+  content:"\eb65" !important;
+  color:#f5f0e8 !important;
+}
+
+/* Web en claro: mostrar luna para indicar cambio a oscuro. */
+body:not(.dark-mode) .color-mode-icon::after,
+body:not(.dark-mode) .color-mode-icon:not(.active)::after{
+  content:"\ea9f" !important;
+  color:#2a2a2a !important;
+}
+
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+  .navbar-mobile-actions{
+    margin-left:auto !important;
+    margin-right:16px !important;
+  }
+
+  .language-toggle-mobile{
+    margin:0 !important;
+  }
+
+  .color-mode,
+  .color-mode .color-mode-icon,
+  .color-mode .color-mode-icon::after{
+    width:32px !important;
+    height:32px !important;
+    min-width:32px !important;
+    min-height:32px !important;
+    line-height:32px !important;
+  }
+
+  .color-mode .color-mode-icon::after{
+    font-size:23px !important;
+  }
+}
+
+
+
+/* === V53B: desktop Redes - quitar solo marco externo de cards === */
+@media (min-width: 768px){
+
+  #networks .social-card{
+    border:0 !important;
+    outline:0 !important;
+    box-shadow:none !important;
+    background:transparent !important;
+  }
+
+  #networks .social-card::before,
+  #networks .social-card::after{
+    border:0 !important;
+    outline:0 !important;
+    box-shadow:none !important;
+    background:transparent !important;
+  }
+}
+
+
+
+/* === V53D: selector multidioma ES/EN/IT === */
+.language-selector{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  z-index:100000;
+}
+
+.language-select-toggle{
+  border:0;
+  outline:0;
+  appearance:none;
+  -webkit-appearance:none;
+  background:rgba(255,255,255,.07);
+  color:#f5f0e8;
+  width:34px;
+  height:34px;
+  min-width:34px;
+  border-radius:999px;
+  display:inline-grid;
+  place-items:center;
+  padding:0;
+  line-height:1;
+  cursor:pointer;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.12), 0 10px 24px rgba(0,0,0,.16);
+  transition:transform .18s ease, background .18s ease, box-shadow .18s ease;
+}
+
+.language-select-toggle:hover,
+.language-select-toggle:focus-visible{
+  transform:translateY(-1px);
+  background:rgba(255,194,0,.14);
+  box-shadow:inset 0 0 0 1px rgba(255,194,0,.28), 0 12px 28px rgba(0,0,0,.2);
+}
+
+.language-select-current-img,
+.language-option-img{
+  display:block;
+  width:23px;
+  height:23px;
+  border-radius:50%;
+  object-fit:cover;
+  box-shadow:0 0 0 1px rgba(255,255,255,.22);
+}
+
+.language-menu{
+  position:absolute;
+  top:calc(100% + 10px);
+  right:0;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  justify-content:center;
+  padding:8px;
+  border-radius:999px;
+  background:rgba(8,9,8,.96);
+  border:1px solid rgba(255,194,0,.24);
+  box-shadow:0 20px 60px rgba(0,0,0,.48);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transform:translateY(-4px);
+  transition:opacity .18s ease, transform .18s ease, visibility .18s ease;
+}
+
+.language-selector.is-open .language-menu{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translateY(0);
+}
+
+.language-option{
+  border:0;
+  outline:0;
+  background:transparent;
+  width:30px;
+  height:30px;
+  min-width:30px;
+  border-radius:999px;
+  display:grid;
+  place-items:center;
+  padding:0;
+  cursor:pointer;
+  opacity:.72;
+  transition:opacity .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+
+.language-option:hover,
+.language-option:focus-visible,
+.language-option.is-active{
+  opacity:1;
+  transform:translateY(-1px);
+}
+
+.language-option.is-active{
+  box-shadow:0 0 0 2px rgba(255,194,0,.46);
+}
+
+.language-toggle,
+.language-toggle-desktop,
+.language-toggle-mobile{
+  display:none !important;
+}
+
+@media (min-width: 768px){
+  .language-selector-mobile{
+    display:none !important;
+  }
+
+  .language-selector-desktop{
+    display:inline-flex !important;
+    margin-right:0 !important;
+  }
+
+  .navbar .ml-lg-4{
+    gap:22px !important;
+  }
+}
+
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+  .language-selector-desktop{
+    display:none !important;
+  }
+
+  .language-selector-mobile{
+    display:inline-flex !important;
+  }
+
+  .language-select-toggle-mobile{
+    width:32px;
+    height:32px;
+    min-width:32px;
+  }
+
+  .language-select-toggle-mobile .language-select-current-img,
+  .language-selector-mobile .language-option-img{
+    width:22px;
+    height:22px;
+  }
+
+  .language-selector-mobile .language-menu{
+    right:-4px;
+    top:calc(100% + 9px);
+  }
+
+  .navbar-mobile-actions{
+    display:flex !important;
+    align-items:center;
+    justify-content:center;
+    margin-left:auto;
+    margin-right:16px !important;
+    flex:0 0 auto;
+  }
+}
+
+
+
+/* === V53E: mobile IT hero line break only === */
+/*
+  Solo afecta al idioma italiano en móvil:
+  línea 1: Trasformo
+  línea 2: dati in
+  línea 3: texto rotativo.
+  No cambia color, tamaño, fuente ni formato general.
+*/
+#about .pl-it-mobile-break{
+  display:none !important;
+}
+
+#about .pl-it-desktop-space{
+  display:inline !important;
+}
+
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+  html[lang="it"] #about .pl-it-mobile-break{
+    display:block !important;
+  }
+
+  html[lang="it"] #about .pl-it-desktop-space{
+    display:none !important;
+  }
+}
+
