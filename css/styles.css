@@ -13240,3 +13240,378 @@ body:not(.dark-mode) .color-mode-icon:not(.active)::after{
   }
 }
 
+
+
+/* === V53Q: modo claro - contraste visual en sección Proyectos === */
+/*
+  Alcance:
+  - solo modo claro;
+  - solo sección Proyectos;
+  - mejora contraste de filtros y controles sobre fondo blanco;
+  - no toca modo oscuro, loader, traducciones ni lógica JS.
+*/
+body:not(.dark-mode) #projects .repo-filter-toolbar{
+  position:relative;
+  z-index:30;
+}
+
+body:not(.dark-mode) #projects .repo-filter-btn,
+body:not(.dark-mode) #projects .repo-filter-group-trigger{
+  color:#1f2328 !important;
+  background:rgba(255,255,255,.94) !important;
+  border:1px solid rgba(31,35,40,.16) !important;
+  box-shadow:0 10px 28px rgba(31,35,40,.10) !important;
+}
+
+body:not(.dark-mode) #projects .repo-filter-btn:hover,
+body:not(.dark-mode) #projects .repo-filter-btn:focus-visible,
+body:not(.dark-mode) #projects .repo-filter-group-trigger:hover,
+body:not(.dark-mode) #projects .repo-filter-group-trigger:focus-visible{
+  color:#111111 !important;
+  background:#ffffff !important;
+  border-color:rgba(255,183,0,.55) !important;
+  box-shadow:0 12px 32px rgba(31,35,40,.14), 0 0 0 3px rgba(255,183,0,.16) !important;
+}
+
+body:not(.dark-mode) #projects .repo-filter-btn.is-active,
+body:not(.dark-mode) #projects .repo-filter-btn[aria-pressed="true"],
+body:not(.dark-mode) #projects .repo-filter-btn[data-active="true"]{
+  color:#101010 !important;
+  background:#ffc400 !important;
+  border-color:#ffc400 !important;
+  box-shadow:0 12px 28px rgba(255,196,0,.30) !important;
+}
+
+body:not(.dark-mode) #projects .repo-filter-category-panel{
+  color:#1f2328 !important;
+  background:rgba(255,255,255,.98) !important;
+  border:1px solid rgba(31,35,40,.16) !important;
+  box-shadow:0 18px 44px rgba(31,35,40,.16) !important;
+}
+
+body:not(.dark-mode) #projects .repo-filter-category-panel .repo-filter-btn{
+  color:#1f2328 !important;
+  background:rgba(246,247,249,.96) !important;
+  border-color:rgba(31,35,40,.14) !important;
+}
+
+body:not(.dark-mode) #projects .filter-icon{
+  color:currentColor !important;
+}
+
+body:not(.dark-mode) #projects .section-kicker{
+  color:#b88600 !important;
+}
+
+body:not(.dark-mode) #projects .projects-intro{
+  color:rgba(31,35,40,.70) !important;
+}
+
+
+
+/* === V53R: modo claro - filtros de Proyectos legibles === */
+/*
+  Corrige v53q:
+  - fuerza texto oscuro en filtros inactivos;
+  - elimina baja opacidad heredada;
+  - corrige contenido del desplegable;
+  - mantiene intacto modo oscuro, loader y JS.
+*/
+
+body:not(.dark-mode) #projects .repo-filter-toolbar,
+body.light-mode #projects .repo-filter-toolbar,
+html:not(.dark-mode) body:not(.dark-mode) #projects .repo-filter-toolbar{
+  position:relative !important;
+  z-index:80 !important;
+  overflow:visible !important;
+}
+
+/* Botones principales: All / Discipline / Tools / Model / Domain */
+body:not(.dark-mode) #projects .repo-filter-toolbar button,
+body.light-mode #projects .repo-filter-toolbar button,
+html:not(.dark-mode) body:not(.dark-mode) #projects .repo-filter-toolbar button,
+body:not(.dark-mode) #projects .repo-filter-btn,
+body:not(.dark-mode) #projects .repo-filter-group-trigger,
+body.light-mode #projects .repo-filter-btn,
+body.light-mode #projects .repo-filter-group-trigger{
+  color:#16181d !important;
+  -webkit-text-fill-color:#16181d !important;
+  opacity:1 !important;
+  background:#ffffff !important;
+  border:1px solid rgba(22,24,29,.22) !important;
+  box-shadow:0 12px 30px rgba(22,24,29,.12) !important;
+  text-shadow:none !important;
+  filter:none !important;
+}
+
+/* Texto interno, iconos y posibles spans generados por JS */
+body:not(.dark-mode) #projects .repo-filter-toolbar button *,
+body.light-mode #projects .repo-filter-toolbar button *,
+html:not(.dark-mode) body:not(.dark-mode) #projects .repo-filter-toolbar button *{
+  color:inherit !important;
+  -webkit-text-fill-color:inherit !important;
+  opacity:1 !important;
+  text-shadow:none !important;
+  filter:none !important;
+}
+
+/* Activo */
+body:not(.dark-mode) #projects .repo-filter-btn.is-active,
+body:not(.dark-mode) #projects .repo-filter-btn.active,
+body:not(.dark-mode) #projects .repo-filter-btn[aria-pressed="true"],
+body.light-mode #projects .repo-filter-btn.is-active,
+body.light-mode #projects .repo-filter-btn.active,
+body.light-mode #projects .repo-filter-btn[aria-pressed="true"]{
+  color:#0f1115 !important;
+  -webkit-text-fill-color:#0f1115 !important;
+  background:#ffc400 !important;
+  border-color:#ffc400 !important;
+  box-shadow:0 14px 30px rgba(255,196,0,.32) !important;
+}
+
+/* Hover/focus */
+body:not(.dark-mode) #projects .repo-filter-toolbar button:hover,
+body:not(.dark-mode) #projects .repo-filter-toolbar button:focus-visible,
+body.light-mode #projects .repo-filter-toolbar button:hover,
+body.light-mode #projects .repo-filter-toolbar button:focus-visible{
+  color:#0f1115 !important;
+  -webkit-text-fill-color:#0f1115 !important;
+  background:#fffaf0 !important;
+  border-color:rgba(255,183,0,.72) !important;
+  box-shadow:0 16px 36px rgba(22,24,29,.16), 0 0 0 3px rgba(255,196,0,.18) !important;
+}
+
+/* Panel desplegable */
+body:not(.dark-mode) #projects .repo-filter-category-panel,
+body.light-mode #projects .repo-filter-category-panel,
+html:not(.dark-mode) body:not(.dark-mode) #projects .repo-filter-category-panel{
+  color:#16181d !important;
+  -webkit-text-fill-color:#16181d !important;
+  opacity:1 !important;
+  background:#ffffff !important;
+  border:1px solid rgba(22,24,29,.18) !important;
+  box-shadow:0 22px 54px rgba(22,24,29,.20) !important;
+  text-shadow:none !important;
+  filter:none !important;
+  z-index:120 !important;
+}
+
+/* Botones dentro del desplegable */
+body:not(.dark-mode) #projects .repo-filter-category-panel .repo-filter-btn,
+body.light-mode #projects .repo-filter-category-panel .repo-filter-btn,
+html:not(.dark-mode) body:not(.dark-mode) #projects .repo-filter-category-panel .repo-filter-btn{
+  color:#16181d !important;
+  -webkit-text-fill-color:#16181d !important;
+  opacity:1 !important;
+  background:#f6f7f9 !important;
+  border:1px solid rgba(22,24,29,.16) !important;
+  box-shadow:none !important;
+}
+
+/* Cualquier texto dentro del panel */
+body:not(.dark-mode) #projects .repo-filter-category-panel *,
+body.light-mode #projects .repo-filter-category-panel *,
+html:not(.dark-mode) body:not(.dark-mode) #projects .repo-filter-category-panel *{
+  color:inherit !important;
+  -webkit-text-fill-color:inherit !important;
+  opacity:1 !important;
+  text-shadow:none !important;
+  filter:none !important;
+}
+
+/* Descripción de proyectos en modo claro */
+body:not(.dark-mode) #projects .section-kicker,
+body.light-mode #projects .section-kicker{
+  color:#9a6a00 !important;
+  -webkit-text-fill-color:#9a6a00 !important;
+  opacity:1 !important;
+}
+
+body:not(.dark-mode) #projects .projects-intro,
+body.light-mode #projects .projects-intro{
+  color:rgba(22,24,29,.72) !important;
+  -webkit-text-fill-color:rgba(22,24,29,.72) !important;
+  opacity:1 !important;
+}
+
+/* Flechita del trigger si existe como pseudo o texto */
+body:not(.dark-mode) #projects .repo-filter-group-trigger::after,
+body.light-mode #projects .repo-filter-group-trigger::after{
+  color:#16181d !important;
+  opacity:1 !important;
+}
+
+
+
+/* === V53S: modo claro - cards de Proyectos blancas === */
+/*
+  Alcance:
+  - solo modo claro;
+  - solo sección Proyectos;
+  - cards con fondo blanco, trama gris clara y textos oscuros;
+  - mantiene intactos modo oscuro, loader, JS, filtros y traducciones.
+*/
+
+body:not(.dark-mode) #projects .github-project-card,
+body.light-mode #projects .github-project-card,
+html:not(.dark-mode) body:not(.dark-mode) #projects .github-project-card{
+  color:#15171c !important;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(22,24,29,.035) 0px,
+      rgba(22,24,29,.035) 1px,
+      transparent 1px,
+      transparent 13px
+    ),
+    linear-gradient(180deg, #ffffff 0%, #f6f7f9 100%) !important;
+  border:1px solid rgba(22,24,29,.14) !important;
+  box-shadow:0 18px 48px rgba(22,24,29,.14) !important;
+}
+
+body:not(.dark-mode) #projects .github-project-card::before,
+body.light-mode #projects .github-project-card::before,
+html:not(.dark-mode) body:not(.dark-mode) #projects .github-project-card::before{
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255,196,0,.16), transparent 34%),
+    radial-gradient(circle at 88% 6%, rgba(22,24,29,.08), transparent 32%) !important;
+  opacity:.75 !important;
+}
+
+body:not(.dark-mode) #projects .github-project-card::after,
+body.light-mode #projects .github-project-card::after,
+html:not(.dark-mode) body:not(.dark-mode) #projects .github-project-card::after{
+  border-color:rgba(22,24,29,.10) !important;
+  opacity:.65 !important;
+}
+
+/* Títulos y textos */
+body:not(.dark-mode) #projects .github-project-card h3,
+body.light-mode #projects .github-project-card h3{
+  color:#14161b !important;
+  -webkit-text-fill-color:#14161b !important;
+  text-shadow:none !important;
+}
+
+body:not(.dark-mode) #projects .github-project-card p,
+body:not(.dark-mode) #projects .github-project-card .project-description,
+body.light-mode #projects .github-project-card p,
+body.light-mode #projects .github-project-card .project-description{
+  color:rgba(22,24,29,.76) !important;
+  -webkit-text-fill-color:rgba(22,24,29,.76) !important;
+  text-shadow:none !important;
+}
+
+body:not(.dark-mode) #projects .github-project-card .project-status,
+body.light-mode #projects .github-project-card .project-status{
+  color:#145a32 !important;
+  -webkit-text-fill-color:#145a32 !important;
+  background:rgba(46,204,113,.16) !important;
+  border:1px solid rgba(46,204,113,.30) !important;
+}
+
+body:not(.dark-mode) #projects .github-project-card .project-status.development,
+body.light-mode #projects .github-project-card .project-status.development{
+  color:#7a5700 !important;
+  -webkit-text-fill-color:#7a5700 !important;
+  background:rgba(255,196,0,.20) !important;
+  border-color:rgba(255,196,0,.38) !important;
+}
+
+/* Chips/tags visuales de cada card */
+body:not(.dark-mode) #projects .github-project-card .mini-tags span,
+body.light-mode #projects .github-project-card .mini-tags span{
+  color:#20242b !important;
+  -webkit-text-fill-color:#20242b !important;
+  background:rgba(22,24,29,.07) !important;
+  border:1px solid rgba(22,24,29,.16) !important;
+  box-shadow:none !important;
+  text-shadow:none !important;
+}
+
+/* Links/botones dentro de cards */
+body:not(.dark-mode) #projects .github-project-card .project-link,
+body.light-mode #projects .github-project-card .project-link{
+  text-shadow:none !important;
+}
+
+body:not(.dark-mode) #projects .github-project-card .project-link:not(.primary),
+body.light-mode #projects .github-project-card .project-link:not(.primary){
+  color:#1d232b !important;
+  -webkit-text-fill-color:#1d232b !important;
+  border-color:rgba(255,196,0,.80) !important;
+  background:rgba(255,255,255,.80) !important;
+}
+
+body:not(.dark-mode) #projects .github-project-card .project-link.primary,
+body.light-mode #projects .github-project-card .project-link.primary{
+  color:#101010 !important;
+  -webkit-text-fill-color:#101010 !important;
+  background:#ffc400 !important;
+  border-color:#ffc400 !important;
+  box-shadow:0 12px 26px rgba(255,196,0,.25) !important;
+}
+
+/* Íconos circulares al final de los botones */
+body:not(.dark-mode) #projects .github-project-card .project-link .project-link-icon,
+body.light-mode #projects .github-project-card .project-link .project-link-icon,
+body:not(.dark-mode) #projects .github-project-card .project-link .link-icon,
+body.light-mode #projects .github-project-card .project-link .link-icon{
+  background:#ffffff !important;
+  box-shadow:0 4px 12px rgba(22,24,29,.16) !important;
+}
+
+/* Imagen superior: separar visualmente del cuerpo blanco */
+body:not(.dark-mode) #projects .github-project-card .project-image-link,
+body.light-mode #projects .github-project-card .project-image-link{
+  border-bottom:1px solid rgba(22,24,29,.12) !important;
+}
+
+body:not(.dark-mode) #projects .github-project-card img,
+body.light-mode #projects .github-project-card img{
+  box-shadow:none !important;
+}
+
+/* Seguridad: cualquier texto interno no específico queda oscuro */
+body:not(.dark-mode) #projects .github-project-card :is(h3, p, span, small, strong, a),
+body.light-mode #projects .github-project-card :is(h3, p, span, small, strong, a){
+  text-shadow:none !important;
+}
+
+
+
+/* === V53T: contraste de descripciones bajo títulos === */
+/*
+  Alcance exacto:
+  - Inicio: descripción del hero.
+  - Proyectos: texto introductorio bajo el título.
+  - Redes: texto introductorio bajo el título.
+  No toca títulos, cards, filtros, loader, JS ni estructura.
+*/
+
+/* Tema oscuro: descripciones más claras */
+body.dark-mode #about .hero-entry-v25b-copy,
+.dark-mode #about .hero-entry-v25b-copy,
+body.dark-mode #projects .projects-intro,
+.dark-mode #projects .projects-intro,
+body.dark-mode #networks .social-intro,
+.dark-mode #networks .social-intro{
+  color:#f4efe7 !important;
+  -webkit-text-fill-color:#f4efe7 !important;
+  opacity:1 !important;
+  text-shadow:none !important;
+}
+
+/* Tema claro: descripciones más oscuras */
+body:not(.dark-mode) #about .hero-entry-v25b-copy,
+body:not(.dark-mode) #projects .projects-intro,
+body:not(.dark-mode) #networks .social-intro,
+body.light-mode #about .hero-entry-v25b-copy,
+body.light-mode #projects .projects-intro,
+body.light-mode #networks .social-intro{
+  color:#2f333a !important;
+  -webkit-text-fill-color:#2f333a !important;
+  opacity:1 !important;
+  text-shadow:none !important;
+}
+

@@ -2066,6 +2066,16 @@
       toggleLabel: 'Switch to Spanish',
 
       text: {
+        '.tech-logo-card-power-bi small': 'Business Intelligence',
+        '.tech-logo-card-qlik small': 'Visual analytics',
+        '.tech-logo-card-looker small': 'Dashboards',
+        '.tech-logo-card-python small': 'Analysis and modeling',
+        '.tech-logo-card-pandas small': 'Data manipulation',
+        '.tech-logo-card-scikit small': 'Machine Learning',
+        '.tech-logo-card-plotly small': 'Interactive visualization',
+        '.tech-logo-card-spss small': 'Visual modeling',
+        '.tech-logo-card-snowflake small': 'Data warehouse',
+        '.tech-logo-card-databricks small': 'Lakehouse',
         '.floating-cta__text': 'View repository',
 
         '.navbar-nav .nav-link[href="#about"]': 'Home',
@@ -2106,7 +2116,7 @@
         '#methodology .process-horizontal-panel:nth-child(5) h3': 'Validation',
         '#methodology .process-horizontal-panel:nth-child(5) small': 'Quality & Confidence',
         '#methodology .process-horizontal-panel:nth-child(5) p': 'Reviewing the coherence, stability and business relevance of the results before delivery.',
-        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Delivery',
+        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Pubblicazione',
         '#methodology .process-horizontal-panel:nth-child(6) small': 'Publishing, Automation & Iteration',
         '#methodology .process-horizontal-panel:nth-child(6) p': 'Documenting the final output, automating recurring workflows and using feedback to guide future improvements.',
 
@@ -2212,28 +2222,28 @@
   }
 
   function setHtml(selector, html){
-    const el = document.querySelector(selector);
-    if(!el) return;
-    rememberElement(el);
-    el.innerHTML = html;
+    document.querySelectorAll(selector).forEach(function(el){
+      rememberElement(el);
+      el.innerHTML = html;
+    });
   }
 
   function setText(selector, text){
-    const el = document.querySelector(selector);
-    if(!el) return;
-    rememberElement(el);
-    el.textContent = text;
+    document.querySelectorAll(selector).forEach(function(el){
+      rememberElement(el);
+      el.textContent = text;
+    });
   }
 
   function setAttr(selector, attrs){
-    const el = document.querySelector(selector);
-    if(!el) return;
-    rememberElement(el);
-    Object.keys(attrs).forEach(function(name){
-      if(!original.get(el).attrs[name]){
-        original.get(el).attrs[name] = el.getAttribute(name);
-      }
-      el.setAttribute(name, attrs[name]);
+    document.querySelectorAll(selector).forEach(function(el){
+      rememberElement(el);
+      Object.keys(attrs).forEach(function(name){
+        if(!original.get(el).attrs[name]){
+          original.get(el).attrs[name] = el.getAttribute(name);
+        }
+        el.setAttribute(name, attrs[name]);
+      });
     });
   }
 
@@ -2477,6 +2487,16 @@
       toggleLabel: 'Cambiar a inglés',
       toggleTitle: 'English',
       text: {
+        '.tech-logo-card-power-bi small': 'Inteligencia de negocio',
+        '.tech-logo-card-qlik small': 'Analítica visual',
+        '.tech-logo-card-looker small': 'Dashboards',
+        '.tech-logo-card-python small': 'Análisis y modelado',
+        '.tech-logo-card-pandas small': 'Manipulación de datos',
+        '.tech-logo-card-scikit small': 'Machine Learning',
+        '.tech-logo-card-plotly small': 'Visualización interactiva',
+        '.tech-logo-card-spss small': 'Modelado visual',
+        '.tech-logo-card-snowflake small': 'Data warehouse',
+        '.tech-logo-card-databricks small': 'Lakehouse',
         '.floating-cta__text': 'Ver repo',
 
         '.navbar-nav .nav-link[href="#about"]': 'Inicio',
@@ -2539,13 +2559,13 @@
         '#projects .repo-filter-btn[data-repo-filter="spss"]': '<span class="filter-icon">◧</span> SPSS',
         '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
         '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Modelo Supervisado',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Modelo No Supervisado',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Modelo supervisado',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Modelo no supervisado',
         '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Clasificación',
         '#projects .repo-filter-btn[data-repo-filter="clustering"]': '<span class="filter-icon">✣</span> Clustering',
         '#projects .repo-filter-btn[data-repo-filter="knn"]': '<span class="filter-icon">↗</span> KNN',
         '#projects .repo-filter-btn[data-repo-filter="k-means"]': '<span class="filter-icon">⌖</span> K-means',
-        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Regresión Logística',
+        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Regresión logística',
         '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
         '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geoespacial',
         '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
@@ -2671,7 +2691,7 @@
         '#methodology .process-horizontal-panel:nth-child(5) h3': 'Validation',
         '#methodology .process-horizontal-panel:nth-child(5) small': 'Quality & Confidence',
         '#methodology .process-horizontal-panel:nth-child(5) p': 'Reviewing the coherence, stability and business relevance of the results before delivery.',
-        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Delivery',
+        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Pubblicazione',
         '#methodology .process-horizontal-panel:nth-child(6) small': 'Publishing, Automation & Iteration',
         '#methodology .process-horizontal-panel:nth-child(6) p': 'Documenting the final output, automating recurring workflows and using feedback to guide future improvements.',
 
@@ -2693,13 +2713,13 @@
         '#projects .repo-filter-btn[data-repo-filter="spss"]': '<span class="filter-icon">◧</span> SPSS',
         '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
         '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Supervised Model',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Unsupervised Model',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Supervised model',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Unsupervised model',
         '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Classification',
         '#projects .repo-filter-btn[data-repo-filter="clustering"]': '<span class="filter-icon">✣</span> Clustering',
         '#projects .repo-filter-btn[data-repo-filter="knn"]': '<span class="filter-icon">↗</span> KNN',
         '#projects .repo-filter-btn[data-repo-filter="k-means"]': '<span class="filter-icon">⌖</span> K-means',
-        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Logistic Regression',
+        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Logistic regression',
         '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
         '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geospatial',
         '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
@@ -2778,15 +2798,16 @@
   };
 
   function setHtml(selector, html){
-    const el = document.querySelector(selector);
-    if(el) el.innerHTML = html;
+    document.querySelectorAll(selector).forEach(function(el){
+      el.innerHTML = html;
+    });
   }
 
   function setAttr(selector, attrs){
-    const el = document.querySelector(selector);
-    if(!el) return;
-    Object.keys(attrs).forEach(function(name){
-      el.setAttribute(name, attrs[name]);
+    document.querySelectorAll(selector).forEach(function(el){
+      Object.keys(attrs).forEach(function(name){
+        el.setAttribute(name, attrs[name]);
+      });
     });
   }
 
@@ -2943,13 +2964,13 @@
         '#projects .repo-filter-btn[data-repo-filter="spss"]': '<span class="filter-icon">◧</span> SPSS',
         '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
         '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Modelo Supervisado',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Modelo No Supervisado',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Modelo supervisado',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Modelo no supervisado',
         '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Clasificación',
         '#projects .repo-filter-btn[data-repo-filter="clustering"]': '<span class="filter-icon">✣</span> Clustering',
         '#projects .repo-filter-btn[data-repo-filter="knn"]': '<span class="filter-icon">↗</span> KNN',
         '#projects .repo-filter-btn[data-repo-filter="k-means"]': '<span class="filter-icon">⌖</span> K-means',
-        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Regresión Logística',
+        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Regresión logística',
         '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
         '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geoespacial',
         '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
@@ -3073,7 +3094,7 @@
         '#methodology .process-horizontal-panel:nth-child(5) h3': 'Validation',
         '#methodology .process-horizontal-panel:nth-child(5) small': 'Quality & Confidence',
         '#methodology .process-horizontal-panel:nth-child(5) p': 'Reviewing the coherence, stability and business relevance of the results before delivery.',
-        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Delivery',
+        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Pubblicazione',
         '#methodology .process-horizontal-panel:nth-child(6) small': 'Publishing, Automation & Iteration',
         '#methodology .process-horizontal-panel:nth-child(6) p': 'Documenting the final output, automating recurring workflows and using feedback to guide future improvements.',
 
@@ -3095,13 +3116,13 @@
         '#projects .repo-filter-btn[data-repo-filter="spss"]': '<span class="filter-icon">◧</span> SPSS',
         '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
         '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Supervised Model',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Unsupervised Model',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Supervised model',
+        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Unsupervised model',
         '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Classification',
         '#projects .repo-filter-btn[data-repo-filter="clustering"]': '<span class="filter-icon">✣</span> Clustering',
         '#projects .repo-filter-btn[data-repo-filter="knn"]': '<span class="filter-icon">↗</span> KNN',
         '#projects .repo-filter-btn[data-repo-filter="k-means"]': '<span class="filter-icon">⌖</span> K-means',
-        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Logistic Regression',
+        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Logistic regression',
         '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
         '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geospatial',
         '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
@@ -3180,68 +3201,78 @@
     },
 
     it: {
-      title: 'Patrones Lab — Portfolio dati, BI e Machine Learning',
-      metaDescription: 'Patrones Lab: portfolio di progetti dati riproducibili in BI, machine learning, Python, SQL, Power BI, Qlik e Looker Studio.',
+      title: 'Patrones Lab — Portfolio Dati, BI e Machine Learning',
+      metaDescription: 'Patrones Lab: portfolio di progetti basati sui dati e riproducibili in BI, machine learning, Python, SQL, Power BI, Qlik e Looker Studio.',
       htmlLang: 'it',
       currentLabel: 'Italiano',
       text: {
+        '.tech-logo-card-power-bi small': 'Business Intelligence',
+        '.tech-logo-card-qlik small': 'Analisi visuale',
+        '.tech-logo-card-looker small': 'Dashboard',
+        '.tech-logo-card-python small': 'Analisi e modellazione',
+        '.tech-logo-card-pandas small': 'Manipolazione dati',
+        '.tech-logo-card-scikit small': 'Machine Learning',
+        '.tech-logo-card-plotly small': 'Visualizzazione interattiva',
+        '.tech-logo-card-spss small': 'Modellazione visuale',
+        '.tech-logo-card-snowflake small': 'Data warehouse',
+        '.tech-logo-card-databricks small': 'Lakehouse',
         '.floating-cta__text': 'Vedi repo',
-        '.navbar-nav .nav-link[href="#about"]': 'Inizio',
+        '.navbar-nav .nav-link[href="#about"]': 'Home',
         '.navbar-nav .nav-link[href="#methodology"]': 'Metodologia',
         '.navbar-nav .nav-link[href="#projects"]': 'Progetti',
         '.navbar-nav .nav-link[href="#networks"]': 'Canali',
-        '.navbar-nav .nav-link[href="#contact"]': 'Contatto',
+        '.navbar-nav .nav-link[href="#contact"]': 'Contatti',
         '.color-mode': '<i class="color-mode-icon"></i>',
 
-        '#about .hero-entry-v25b-kicker': 'Portfolio di progetti BI · ML · Python · Dashboard',
-        '#about .hero-line': 'Trasformo<br class="pl-it-mobile-break"><span class="pl-it-desktop-space"> </span>dati in',
+        '#about .hero-entry-v25b-kicker': 'Portfolio progetti Dati · BI · ML · Python',
+        '#about .hero-line': 'Trasformo<br class="pl-it-mobile-break"><span class="pl-it-desktop-space"> </span>i dati in',
         '#about .hero-rotator span:nth-child(1)': 'evidenze',
         '#about .hero-rotator span:nth-child(2)': 'modelli',
         '#about .hero-rotator span:nth-child(3)': 'dashboard',
         '#about .hero-rotator span:nth-child(4)': 'decisioni',
         '#about .hero-rotator span:nth-child(5)': 'pattern',
-        '#about .hero-entry-v25b-copy': 'Patrones Lab è un laboratorio di analisi dati applicata a fenomeni quotidiani e reali.<br><br>Raccoglie progetti indipendenti costruiti con dati pubblici, con attenzione alla ricerca di pattern, alla descrizione dei comportamenti e alla comunicazione dei risultati nel loro contesto.<br><br>L’obiettivo è porre domande migliori, preparare dati affidabili, costruire analisi riproducibili e trasformare i risultati in output visuali chiari.',
+        '#about .hero-entry-v25b-copy': 'Patrones Lab è un laboratorio di analisi dei dati applicata a fenomeni reali e quotidiani.<br><br>Raccoglie progetti indipendenti basati su dati pubblici, con attenzione all’individuazione di pattern, alla spiegazione dei comportamenti e alla comunicazione di evidenze contestualizzate.<br><br>L’obiettivo è formulare domande migliori, costruire dataset affidabili, sviluppare analisi riproducibili e trasformare i risultati in output visuali chiari.',
 
         '.tech-logo-card-airflow small': 'Orchestrazione',
         '.tech-logo-card-sql-server small': 'Database',
         '.tech-logo-card-numpy small': 'Calcolo numerico',
         '.tech-logo-card-matplotlib small': 'Visualizzazione dati',
-        '.tech-logo-card-dbt small': 'Trasformazione',
+        '.tech-logo-card-dbt small': 'Trasformazione dati',
 
-        '#methodology .process-horizontal-static-head h2': 'Ciclo di vita del dato',
-        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Scoperta',
+        '#methodology .process-horizontal-static-head h2': 'Ciclo di vita dei dati',
+        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Discovery',
         '#methodology .process-horizontal-panel:nth-child(1) small': 'Contesto e obiettivo',
-        '#methodology .process-horizontal-panel:nth-child(1) p': 'Comprensione del problema, della decisione da migliorare, degli utenti coinvolti e del risultato atteso.',
-        '#methodology .process-horizontal-panel:nth-child(2) h3': 'Fonti',
-        '#methodology .process-horizontal-panel:nth-child(2) small': 'Dati e diagnosi',
-        '#methodology .process-horizontal-panel:nth-child(2) p': 'Identificazione delle fonti disponibili, della loro origine, frequenza di aggiornamento, affidabilità e principali limiti.',
+        '#methodology .process-horizontal-panel:nth-child(1) p': 'Definizione del problema, della decisione da supportare, degli utenti coinvolti e dell’output atteso.',
+        '#methodology .process-horizontal-panel:nth-child(2) h3': 'Sorgenti dati',
+        '#methodology .process-horizontal-panel:nth-child(2) small': 'Sorgenti e qualità dei dati',
+        '#methodology .process-horizontal-panel:nth-child(2) p': 'Mappatura delle sorgenti disponibili, della loro origine, frequenza di aggiornamento, affidabilità e principali limiti di qualità.',
         '#methodology .process-horizontal-panel:nth-child(3) h3': 'Preparazione',
-        '#methodology .process-horizontal-panel:nth-child(3) small': 'Base analitica',
-        '#methodology .process-horizontal-panel:nth-child(3) p': 'Organizzazione, pulizia e integrazione dei dati per costruire una base coerente e utilizzabile.',
-        '#methodology .process-horizontal-panel:nth-child(4) h3': 'Costruzione',
+        '#methodology .process-horizontal-panel:nth-child(3) small': 'Dataset analitico',
+        '#methodology .process-horizontal-panel:nth-child(3) p': 'Pulizia, normalizzazione e integrazione dei dati per costruire un dataset coerente, tracciabile e pronto per l’analisi.',
+        '#methodology .process-horizontal-panel:nth-child(4) h3': 'Sviluppo',
         '#methodology .process-horizontal-panel:nth-child(4) small': 'Soluzione',
-        '#methodology .process-horizontal-panel:nth-child(4) p': 'Sviluppo dell’analisi, del modello o del dashboard necessario in base all’obiettivo definito.',
+        '#methodology .process-horizontal-panel:nth-child(4) p': 'Sviluppo dell’analisi, del modello o della dashboard più adatta all’obiettivo definito.',
         '#methodology .process-horizontal-panel:nth-child(5) h3': 'Validazione',
-        '#methodology .process-horizontal-panel:nth-child(5) small': 'Controllo e affidabilità',
-        '#methodology .process-horizontal-panel:nth-child(5) p': 'Revisione della coerenza, della stabilità e dell’allineamento dei risultati con la realtà del business.',
-        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Consegna',
-        '#methodology .process-horizontal-panel:nth-child(6) small': 'Pubblicazione, automazione ed evoluzione',
-        '#methodology .process-horizontal-panel:nth-child(6) p': 'Documentazione del lavoro finale, automazione dei processi ricorrenti e uso del feedback per miglioramenti futuri.',
+        '#methodology .process-horizontal-panel:nth-child(5) small': 'Qualità e affidabilità',
+        '#methodology .process-horizontal-panel:nth-child(5) p': 'Controllo della coerenza, stabilità e rilevanza operativa dei risultati prima della pubblicazione.',
+        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Pubblicazione',
+        '#methodology .process-horizontal-panel:nth-child(6) small': 'Pubblicazione, automazione e miglioramento',
+        '#methodology .process-horizontal-panel:nth-child(6) p': 'Documentazione dell’output finale, automazione dei flussi di lavoro ricorrenti e uso del feedback per miglioramenti successivi.',
 
         '#projects .section-kicker': 'Repository Patrones Lab',
         '#projects .projects-title-display': 'Progetti',
-        '#projects .projects-intro': 'Selezione di progetti applicati con dati pubblici, metodologia documentata e risultati visuali. Usa i filtri per esplorare per disciplina, strumento o tipo di consegna.',
+        '#projects .projects-intro': 'Selezione di progetti basati sui dati pubblici, con metodologia documentata e output visuali. Usa i filtri per esplorare per disciplina, strumento o tipo di risultato.',
         '#projects .repo-filter-btn[data-repo-filter="all"]': '<span class="filter-icon">◎</span> Tutti',
         '#projects .repo-filter-group:nth-of-type(1) .repo-filter-group-trigger': 'Disciplina',
         '#projects .repo-filter-group:nth-of-type(2) .repo-filter-group-trigger': 'Strumenti',
         '#projects .repo-filter-group:nth-of-type(3) .repo-filter-group-trigger': 'Modello',
-        '#projects .repo-filter-group:nth-of-type(4) .repo-filter-group-trigger': 'Ambito',
+        '#projects .repo-filter-group:nth-of-type(4) .repo-filter-group-trigger': 'Dominio',
 
         '#projects .repo-filter-btn[data-repo-filter="bi"]': '<span class="filter-icon">▦</span> BI',
-        '#projects .repo-filter-btn[data-repo-filter="data-analysis"]': '<span class="filter-icon">▥</span> Data Analysis',
-        '#projects .repo-filter-btn[data-repo-filter="data-science"]': '<span class="filter-icon">⚗</span> Data Science',
+        '#projects .repo-filter-btn[data-repo-filter="data-analysis"]': '<span class="filter-icon">▥</span> Analisi dati',
+        '#projects .repo-filter-btn[data-repo-filter="data-science"]': '<span class="filter-icon">⚗</span> Scienza dei dati',
         '#projects .repo-filter-btn[data-repo-filter="machine-learning"]': '<span class="filter-icon">✦</span> Machine Learning',
-        '#projects .repo-filter-btn[data-repo-filter="data-storytelling"]': '<span class="filter-icon">✎</span> Data Storytelling',
+        '#projects .repo-filter-btn[data-repo-filter="data-storytelling"]': '<span class="filter-icon">✎</span> Data storytelling',
         '#projects .repo-filter-btn[data-repo-filter="python"]': '<span class="filter-icon">◇</span> Python',
         '#projects .repo-filter-btn[data-repo-filter="spss"]': '<span class="filter-icon">◧</span> SPSS',
         '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
@@ -3261,35 +3292,35 @@
         '#projects .repo-filter-btn[data-repo-filter="aviacion"]': '<span class="filter-icon">✈</span> Aviazione',
         '#projects .repo-filter-btn[data-repo-filter="fraude"]': '<span class="filter-icon">!</span> Frode',
 
-        '#projects .github-project-card:nth-of-type(1) h3': 'Analisi dei voli nelle Isole Baleari',
-        '#projects .github-project-card:nth-of-type(1) p:not(.project-status)': 'Analisi del traffico aereo in Spagna con dati pubblici AENA, con focus su volumi, pattern per aeroporto e differenze tra categorie.',
-        '#projects .github-project-card:nth-of-type(2) h3': 'Analisi degli alloggi Airbnb a Londra',
-        '#projects .github-project-card:nth-of-type(2) p:not(.project-status)': 'Analisi esplorativa degli annunci Airbnb a Londra, con focus su prezzi, categorie, recensioni e pattern territoriali.',
-        '#projects .github-project-card:nth-of-type(3) h3': 'Analisi dei viaggi in taxi a Chicago',
-        '#projects .github-project-card:nth-of-type(3) p:not(.project-status)': 'Analisi dei viaggi in taxi registrati a Chicago per studiare durata, domanda, distribuzione geospaziale e pattern operativi.',
+        '#projects .github-project-card:nth-of-type(1) h3': 'Analisi del traffico aereo nelle Isole Baleari',
+        '#projects .github-project-card:nth-of-type(1) p:not(.project-status)': 'Analisi del traffico aereo in Spagna con dati pubblici AENA, con focus su volumi, pattern per aeroporto e differenze tra categorie di traffico.',
+        '#projects .github-project-card:nth-of-type(2) h3': 'Analisi degli annunci Airbnb a Londra',
+        '#projects .github-project-card:nth-of-type(2) p:not(.project-status)': 'Analisi esplorativa degli annunci Airbnb a Londra, con focus su pricing, categorie di alloggio, recensioni e pattern territoriali.',
+        '#projects .github-project-card:nth-of-type(3) h3': 'Analisi delle corse taxi a Chicago',
+        '#projects .github-project-card:nth-of-type(3) p:not(.project-status)': 'Analisi delle corse taxi registrate a Chicago per studiare durata, domanda, distribuzione geospaziale e pattern operativi.',
         '#projects .github-project-card:nth-of-type(4) h3': 'Modello ML · Airbnb London',
-        '#projects .github-project-card:nth-of-type(4) p:not(.project-status)': 'Classificazione supervisionata degli annunci relativamente cari o economici all’interno di ogni tipo di alloggio.',
+        '#projects .github-project-card:nth-of-type(4) p:not(.project-status)': 'Classificazione supervisionata degli annunci relativamente costosi o economici all’interno di ciascuna tipologia di alloggio.',
         '#projects .github-project-card:nth-of-type(5) h3': 'Dashboard Looker · Taxi Trips Chicago',
-        '#projects .github-project-card:nth-of-type(5) p:not(.project-status)': 'Dashboard interattivo in Looker Studio per esplorare viaggi in taxi a Chicago, indicatori operativi, pattern orari e percorsi pickup-dropoff.',
+        '#projects .github-project-card:nth-of-type(5) p:not(.project-status)': 'Dashboard interattiva in Looker Studio per esplorare corse taxi a Chicago, indicatori operativi, pattern orari e percorsi pickup-dropoff.',
         '#projects .github-project-card:nth-of-type(6) h3': 'Modello ML · Expected Goals (xG)',
         '#projects .github-project-card:nth-of-type(6) p:not(.project-status)': 'Prossimamente.',
         '#projects .github-project-card:nth-of-type(7) h3': 'Probabilità nel calcio · Expected Threat (xT)',
-        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Modello probabilistico per Expected Threat (xT). Prossimamente.',
+        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Modello probabilistico per stimare l’Expected Threat (xT). Prossimamente.',
         '#projects .github-project-card:nth-of-type(8) h3': 'Modello ML · Rilevamento frodi',
-        '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Clustering non supervisionato con K-means applicato al rilevamento di frodi con carta di credito.',
+        '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Clustering non supervisionato con K-means applicato al rilevamento di frodi su transazioni con carta di credito.',
         '#projects .github-project-card:nth-of-type(9) h3': 'Modello ML · Rilevamento frodi',
-        '#projects .github-project-card:nth-of-type(9) p:not(.project-status)': 'Modello supervisionato di regressione logistica per il rilevamento di frodi con carta di credito.',
+        '#projects .github-project-card:nth-of-type(9) p:not(.project-status)': 'Modello supervisionato di regressione logistica per il rilevamento di frodi su transazioni con carta di credito.',
         '#projects .github-project-card:nth-of-type(10) h3': 'Modello ML · Rilevamento frodi',
-        '#projects .github-project-card:nth-of-type(10) p:not(.project-status)': 'Clustering non supervisionato con DBSCAN per individuare possibili pattern di frode con carta di credito.',
+        '#projects .github-project-card:nth-of-type(10) p:not(.project-status)': 'Clustering non supervisionato con DBSCAN per individuare possibili pattern anomali nelle transazioni con carta di credito.',
         '#projects .github-project-card:nth-of-type(11) h3': 'Statistiche Mondiali Qatar 2022',
         '#projects .github-project-card:nth-of-type(11) p:not(.project-status)': 'Prossimamente.',
-        '#projects .github-project-card:nth-of-type(12) h3': 'Analisi geospaziale dei viaggi in taxi',
+        '#projects .github-project-card:nth-of-type(12) h3': 'Analisi geospaziale delle corse taxi',
         '#projects .github-project-card:nth-of-type(12) p:not(.project-status)': 'Prossimamente.',
         '#projects .repo-empty-message': 'Non ci sono ancora progetti per questa categoria.',
 
-        '#networks .section-kicker': 'Presenza online di Patrones Lab',
+        '#networks .section-kicker': 'Presenza digitale di Patrones Lab',
         '#networks .projects-title-display': 'Canali',
-        '#networks .social-intro': 'L’intero ecosistema del progetto in un unico luogo: visual, note tecniche, articoli, dashboard, link utili e canali di contatto professionale.',
+        '#networks .social-intro': 'L’intero ecosistema del progetto in un unico punto: visual, note tecniche, articoli, dashboard, link utili e canali di contatto professionale.',
         '#networks .social-card.instagram small': 'Visual e post',
         '#networks .social-card.linkedin small': 'Profilo professionale',
         '#networks .social-card.medium small': 'Articoli e note',
@@ -3297,12 +3328,12 @@
         '#networks .social-card.github small': 'Profilo tecnico',
         '#networks .social-card.mail small': 'Contatto diretto',
 
-        '#contact .contact-panel h3': 'Contatto',
-        '#contact .contact-panel p:not(.contact-email-line)': 'Per opportunità professionali, collaborazioni analitiche o progetti di BI, machine learning e dashboard.',
+        '#contact .contact-panel h3': 'Contatti',
+        '#contact .contact-panel p:not(.contact-email-line)': 'Per opportunità professionali, collaborazioni in ambito analitico o progetti di BI, machine learning e dashboard.',
         '#contact .contact-email-line strong': 'email:',
         '#contact .contact-form h2': 'Lasciami un messaggio',
-        '#contact .form-note': 'Scrivimi e ti risponderò al più presto.',
-        'footer': 'Patrones Lab® · Generare conoscenza attraverso i dati'
+        '#contact .form-note': 'Scrivimi e ti risponderò appena possibile.',
+        'footer': 'Patrones Lab® · Generare conoscenza a partire dai dati'
       },
       links: {
         'Entrar al proyecto': 'Apri progetto',
@@ -3520,5 +3551,1580 @@
 
     window.location.href = 'mailto:encontrandopatrones@gmail.com?subject=' + subject + '&body=' + body;
   }, true);
+})();
+
+
+
+// === V53F: corrección de textos visibles faltantes ES/EN/IT ===
+(function(){
+  const translations = {
+    es: {
+      scroll: 'Explorar',
+      networkRepoStrong: 'Repo',
+      networkRepoSmall: 'Patrones Lab',
+      networkDashboardStrong: 'Dashboard',
+      networkDashboardSmall: 'Looker Studio',
+      tags: {
+        'Supervised Model': 'Modelo Supervisado',
+        'Modello supervisionato': 'Modelo Supervisado',
+        'Unsupervised Model': 'Modelo No Supervisado',
+        'Modello non supervisionato': 'Modelo No Supervisado',
+        'Classification': 'Clasificación',
+        'Classificazione': 'Clasificación',
+        'Logistic Regression': 'Regresión Logística',
+        'Regressione logistica': 'Regresión Logística',
+        'Geospatial': 'Geoespacial',
+        'Geospaziale': 'Geoespacial',
+        'Soccer': 'Fútbol',
+        'Calcio': 'Fútbol',
+        'Aviation': 'Aviación',
+        'Aviazione': 'Aviación',
+        'Fraud': 'Fraude',
+        'Frode': 'Fraude'
+      }
+    },
+    en: {
+      scroll: 'Explore',
+      networkRepoStrong: 'Repository',
+      networkRepoSmall: 'Patrones Lab',
+      networkDashboardStrong: 'Dashboard',
+      networkDashboardSmall: 'Looker Studio',
+      tags: {
+        'Modelo Supervisado': 'Supervised Model',
+        'Modello supervisionato': 'Supervised Model',
+        'Modelo No Supervisado': 'Unsupervised Model',
+        'Modello non supervisionato': 'Unsupervised Model',
+        'Clasificación': 'Classification',
+        'Classificazione': 'Classification',
+        'Regresión Logística': 'Logistic Regression',
+        'Regressione logistica': 'Logistic Regression',
+        'Geoespacial': 'Geospatial',
+        'Geospaziale': 'Geospatial',
+        'Fútbol': 'Soccer',
+        'Calcio': 'Soccer',
+        'Aviación': 'Aviation',
+        'Aviazione': 'Aviation',
+        'Fraude': 'Fraud',
+        'Frode': 'Fraud'
+      }
+    },
+    it: {
+      scroll: 'Esplora',
+      networkRepoStrong: 'Repository',
+      networkRepoSmall: 'Patrones Lab',
+      networkDashboardStrong: 'Dashboard',
+      networkDashboardSmall: 'Looker Studio',
+      tags: {
+        'Modelo Supervisado': 'Modello supervisionato',
+        'Supervised Model': 'Modello supervisionato',
+        'Modelo No Supervisado': 'Modello non supervisionato',
+        'Unsupervised Model': 'Modello non supervisionato',
+        'Clasificación': 'Classificazione',
+        'Classification': 'Classificazione',
+        'Regresión Logística': 'Regressione logistica',
+        'Logistic Regression': 'Regressione logistica',
+        'Geoespacial': 'Geospaziale',
+        'Geospatial': 'Geospaziale',
+        'Fútbol': 'Calcio',
+        'Soccer': 'Calcio',
+        'Aviación': 'Aviazione',
+        'Aviation': 'Aviazione',
+        'Fraude': 'Frode',
+        'Fraud': 'Frode'
+      }
+    }
+  };
+
+  function currentLang(){
+    if(window.plGetLanguage){
+      return window.plGetLanguage();
+    }
+    try{
+      return localStorage.getItem('patronesLabLanguage') || 'es';
+    }catch(e){
+      return 'es';
+    }
+  }
+
+  function setText(selector, text){
+    document.querySelectorAll(selector).forEach(function(el){
+      el.textContent = text;
+    });
+  }
+
+  function patchProjectTags(lang){
+    const data = translations[lang] || translations.es;
+    const map = data.tags || {};
+
+    document.querySelectorAll('#projects .project-tags span').forEach(function(tag){
+      const current = tag.textContent.trim();
+      if(map[current]){
+        tag.textContent = map[current];
+      }
+    });
+  }
+
+  function patchNetworkCards(lang){
+    const data = translations[lang] || translations.es;
+
+    setText('#networks .social-card.repo strong', data.networkRepoStrong);
+    setText('#networks .social-card.repo small', data.networkRepoSmall);
+    setText('#networks .social-card.dashboard strong', data.networkDashboardStrong);
+    setText('#networks .social-card.dashboard small', data.networkDashboardSmall);
+  }
+
+  function patchVisibleTexts(lang){
+    const data = translations[lang] || translations.es;
+
+    setText('#about .hero-scroll-indicator__text', data.scroll);
+    patchProjectTags(lang);
+    patchNetworkCards(lang);
+  }
+
+  document.addEventListener('pl-language-changed', function(event){
+    const lang = event.detail && event.detail.language ? event.detail.language : currentLang();
+    patchVisibleTexts(lang);
+  });
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){
+      patchVisibleTexts(currentLang());
+    }, {once:true});
+  }else{
+    patchVisibleTexts(currentLang());
+  }
+
+  window.plPatchVisibleTranslations = patchVisibleTexts;
+})();
+
+
+
+// === V53I: auditoría exhaustiva de textos visibles traducibles ===
+(function(){
+  const techLabels = {
+    es: {
+      'power-bi':'Inteligencia de negocio',
+      'qlik':'Analítica visual',
+      'looker':'Dashboards',
+      'sql-server':'Base de datos',
+      'python':'Análisis y modelado',
+      'pandas':'Manipulación de datos',
+      'numpy':'Cálculo numérico',
+      'scikit':'Machine Learning',
+      'matplotlib':'Visualización',
+      'plotly':'Visualización interactiva',
+      'spss':'Modelado visual',
+      'airflow':'Orquestación',
+      'snowflake':'Data warehouse',
+      'databricks':'Lakehouse',
+      'dbt':'Transformación'
+    },
+    en: {
+      'power-bi':'Business Intelligence',
+      'qlik':'Visual analytics',
+      'looker':'Dashboards',
+      'sql-server':'Database',
+      'python':'Analysis and modeling',
+      'pandas':'Data manipulation',
+      'numpy':'Numerical computing',
+      'scikit':'Machine Learning',
+      'matplotlib':'Data visualization',
+      'plotly':'Interactive visualization',
+      'spss':'Visual modeling',
+      'airflow':'Orchestration',
+      'snowflake':'Data warehouse',
+      'databricks':'Lakehouse',
+      'dbt':'Transformation'
+    },
+    it: {
+      'power-bi':'Business Intelligence',
+      'qlik':'Analisi visuale',
+      'looker':'Dashboard',
+      'sql-server':'Database',
+      'python':'Analisi e modellazione',
+      'pandas':'Manipolazione dati',
+      'numpy':'Calcolo numerico',
+      'scikit':'Machine Learning',
+      'matplotlib':'Visualizzazione dati',
+      'plotly':'Visualizzazione interattiva',
+      'spss':'Modellazione visuale',
+      'airflow':'Orchestrazione',
+      'snowflake':'Data warehouse',
+      'databricks':'Lakehouse',
+      'dbt':'Trasformazione dati'
+    }
+  };
+
+  function currentLang(){
+    if(window.plGetLanguage){
+      return window.plGetLanguage();
+    }
+    try{
+      return localStorage.getItem('patronesLabLanguage') || 'es';
+    }catch(e){
+      return 'es';
+    }
+  }
+
+  function patchTechLabels(lang){
+    const labels = techLabels[lang] || techLabels.es;
+
+    Object.keys(labels).forEach(function(key){
+      document.querySelectorAll('.tech-logo-card-' + key + ' small').forEach(function(el){
+        el.textContent = labels[key];
+      });
+    });
+  }
+
+  function patchAllVisibleTranslations(lang){
+    patchTechLabels(lang);
+
+    if(window.plPatchVisibleTranslations){
+      window.plPatchVisibleTranslations(lang);
+    }
+
+    if(window.plApplyRepoFilter && window.plGetActiveRepoFilter){
+      window.plApplyRepoFilter(window.plGetActiveRepoFilter());
+    }
+  }
+
+  document.addEventListener('pl-language-changed', function(event){
+    const lang = event.detail && event.detail.language ? event.detail.language : currentLang();
+    patchAllVisibleTranslations(lang);
+  });
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){
+      patchAllVisibleTranslations(currentLang());
+    }, {once:true});
+  }else{
+    patchAllVisibleTranslations(currentLang());
+  }
+
+  window.plPatchAllVisibleTranslations = patchAllVisibleTranslations;
+})();
+
+
+
+// === V53J: tags visibles de proyectos desde data-tags ES/EN/IT ===
+(function(){
+  const tagLabels = {
+    es: {
+      'bi': 'BI',
+      'data-analysis': 'Data Analysis',
+      'data-science': 'Data Science',
+      'data-storytelling': 'Data Storytelling',
+      'machine-learning': 'Machine Learning',
+      'python': 'Python',
+      'spss': 'SPSS',
+      'looker-studio': 'Looker Studio',
+      'dashboard': 'Dashboard',
+      'modelo-supervisado': 'Modelo Supervisado',
+      'modelo-no-supervisado': 'Modelo No Supervisado',
+      'clasificacion': 'Clasificación',
+      'clustering': 'Clustering',
+      'knn': 'KNN',
+      'k-means': 'K-means',
+      'regresion-logistica': 'Regresión Logística',
+      'dbscan': 'DBSCAN',
+      'geoespacial': 'Geoespacial',
+      'airbnb': 'Airbnb',
+      'taxi': 'Taxi',
+      'futbol': 'Fútbol',
+      'aviacion': 'Aviación',
+      'fraude': 'Fraude'
+    },
+    en: {
+      'bi': 'BI',
+      'data-analysis': 'Data Analysis',
+      'data-science': 'Data Science',
+      'data-storytelling': 'Data Storytelling',
+      'machine-learning': 'Machine Learning',
+      'python': 'Python',
+      'spss': 'SPSS',
+      'looker-studio': 'Looker Studio',
+      'dashboard': 'Dashboard',
+      'modelo-supervisado': 'Supervised Model',
+      'modelo-no-supervisado': 'Unsupervised Model',
+      'clasificacion': 'Classification',
+      'clustering': 'Clustering',
+      'knn': 'KNN',
+      'k-means': 'K-means',
+      'regresion-logistica': 'Logistic Regression',
+      'dbscan': 'DBSCAN',
+      'geoespacial': 'Geospatial',
+      'airbnb': 'Airbnb',
+      'taxi': 'Taxi',
+      'futbol': 'Soccer',
+      'aviacion': 'Aviation',
+      'fraude': 'Fraud'
+    },
+    it: {
+      'bi': 'BI',
+      'data-analysis': 'Analisi dati',
+      'data-science': 'Scienza dei dati',
+      'data-storytelling': 'Data storytelling',
+      'machine-learning': 'Machine Learning',
+      'python': 'Python',
+      'spss': 'SPSS',
+      'looker-studio': 'Looker Studio',
+      'dashboard': 'Dashboard',
+      'modelo-supervisado': 'Modello supervisionato',
+      'modelo-no-supervisado': 'Modello non supervisionato',
+      'clasificacion': 'Classificazione',
+      'clustering': 'Clustering',
+      'knn': 'KNN',
+      'k-means': 'K-means',
+      'regresion-logistica': 'Regressione logistica',
+      'dbscan': 'DBSCAN',
+      'geoespacial': 'Geospaziale',
+      'airbnb': 'Airbnb',
+      'taxi': 'Taxi',
+      'futbol': 'Calcio',
+      'aviacion': 'Aviazione',
+      'fraude': 'Frode'
+    }
+  };
+
+  function currentLang(){
+    if(window.plGetLanguage){
+      return window.plGetLanguage();
+    }
+    try{
+      return localStorage.getItem('patronesLabLanguage') || 'es';
+    }catch(e){
+      return 'es';
+    }
+  }
+
+  function renderProjectTags(lang){
+    const labels = tagLabels[lang] || tagLabels.es;
+
+    document.querySelectorAll('#projects .github-project-card[data-tags]').forEach(function(card){
+      const holder = card.querySelector('.project-tags');
+      if(!holder) return;
+
+      const tokens = (card.dataset.tags || '').trim().split(/\s+/).filter(Boolean);
+      const existing = Array.from(holder.querySelectorAll('span'));
+
+      tokens.forEach(function(token, index){
+        const label = labels[token] || token;
+        let span = existing[index];
+
+        if(!span){
+          span = document.createElement('span');
+          holder.appendChild(span);
+        }
+
+        span.textContent = label;
+        span.setAttribute('data-tag-token', token);
+        span.setAttribute('data-lang', lang);
+      });
+
+      existing.slice(tokens.length).forEach(function(span){
+        span.remove();
+      });
+    });
+  }
+
+  function validateVisibleTags(lang){
+    const labels = tagLabels[lang] || tagLabels.es;
+    const mismatches = [];
+
+    document.querySelectorAll('#projects .github-project-card[data-tags]').forEach(function(card, cardIndex){
+      const tokens = (card.dataset.tags || '').trim().split(/\s+/).filter(Boolean);
+      const spans = Array.from(card.querySelectorAll('.project-tags span'));
+
+      tokens.forEach(function(token, index){
+        const expected = labels[token] || token;
+        const actual = spans[index] ? spans[index].textContent.trim() : '';
+        if(actual !== expected){
+          mismatches.push({
+            card: cardIndex + 1,
+            token: token,
+            expected: expected,
+            actual: actual
+          });
+        }
+      });
+    });
+
+    window.plProjectTagTranslationAudit = {
+      language: lang,
+      mismatches: mismatches,
+      ok: mismatches.length === 0
+    };
+
+    return window.plProjectTagTranslationAudit;
+  }
+
+  function applyProjectTagTranslations(lang){
+    const language = tagLabels[lang] ? lang : currentLang();
+    renderProjectTags(language);
+    validateVisibleTags(language);
+  }
+
+  document.addEventListener('pl-language-changed', function(event){
+    const lang = event.detail && event.detail.language ? event.detail.language : currentLang();
+    applyProjectTagTranslations(lang);
+  });
+
+  document.addEventListener('click', function(event){
+    if(event.target.closest && event.target.closest('.repo-filter-btn[data-repo-filter]')){
+      window.requestAnimationFrame(function(){
+        applyProjectTagTranslations(currentLang());
+      });
+    }
+  }, true);
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){
+      applyProjectTagTranslations(currentLang());
+    }, {once:true});
+  }else{
+    applyProjectTagTranslations(currentLang());
+  }
+
+  window.plApplyProjectTagTranslations = applyProjectTagTranslations;
+  window.plValidateProjectTagTranslations = validateVisibleTags;
+  window.plProjectTagLabels = tagLabels;
+})();
+
+
+
+// === V53K: fuente única de verdad para filtros y tags de proyectos ===
+/*
+  Este bloque elimina la inconsistencia entre:
+  - texto visible de filtros;
+  - texto visible de tags dentro de las cards;
+  - data-tags reales usados para filtrar.
+
+  Todo sale de TAG_LABELS_BY_TOKEN.
+  Si un proyecto tiene data-tags="modelo-supervisado", el filtro y el tag visible
+  usan exactamente la misma etiqueta del idioma activo.
+*/
+(function(){
+  const TAG_LABELS_BY_TOKEN = {
+    "all": {
+        "icon": "◎",
+        "es": "Todos",
+        "en": "All",
+        "it": "Tutti"
+    },
+    "bi": {
+        "icon": "▦",
+        "es": "BI",
+        "en": "BI",
+        "it": "BI"
+    },
+    "data-analysis": {
+        "icon": "▥",
+        "es": "Data Analysis",
+        "en": "Data analysis",
+        "it": "Analisi dati"
+    },
+    "data-science": {
+        "icon": "⚗",
+        "es": "Data Science",
+        "en": "Data science",
+        "it": "Scienza dei dati"
+    },
+    "data-storytelling": {
+        "icon": "✎",
+        "es": "Data Storytelling",
+        "en": "Data Storytelling",
+        "it": "Data storytelling"
+    },
+    "machine-learning": {
+        "icon": "✦",
+        "es": "Machine Learning",
+        "en": "Machine Learning",
+        "it": "Machine Learning"
+    },
+    "python": {
+        "icon": "◇",
+        "es": "Python",
+        "en": "Python",
+        "it": "Python"
+    },
+    "spss": {
+        "icon": "◧",
+        "es": "SPSS",
+        "en": "SPSS",
+        "it": "SPSS"
+    },
+    "looker-studio": {
+        "icon": "◉",
+        "es": "Looker Studio",
+        "en": "Looker Studio",
+        "it": "Looker Studio"
+    },
+    "dashboard": {
+        "icon": "▣",
+        "es": "Dashboard",
+        "en": "Dashboard",
+        "it": "Dashboard"
+    },
+    "modelo-supervisado": {
+        "icon": "✓",
+        "es": "Modelo supervisado",
+        "en": "Supervised model",
+        "it": "Modello supervisionato"
+    },
+    "modelo-no-supervisado": {
+        "icon": "◎",
+        "es": "Modelo no supervisado",
+        "en": "Unsupervised model",
+        "it": "Modello non supervisionato"
+    },
+    "clasificacion": {
+        "icon": "≡",
+        "es": "Clasificación",
+        "en": "Classification",
+        "it": "Classificazione"
+    },
+    "clustering": {
+        "icon": "✣",
+        "es": "Clustering",
+        "en": "Clustering",
+        "it": "Clustering"
+    },
+    "knn": {
+        "icon": "↗",
+        "es": "KNN",
+        "en": "KNN",
+        "it": "KNN"
+    },
+    "k-means": {
+        "icon": "⌖",
+        "es": "K-means",
+        "en": "K-means",
+        "it": "K-means"
+    },
+    "regresion-logistica": {
+        "icon": "⌁",
+        "es": "Regresión logística",
+        "en": "Logistic regression",
+        "it": "Regressione logistica"
+    },
+    "dbscan": {
+        "icon": "⊙",
+        "es": "DBSCAN",
+        "en": "DBSCAN",
+        "it": "DBSCAN"
+    },
+    "geoespacial": {
+        "icon": "⌖",
+        "es": "Geoespacial",
+        "en": "Geospatial",
+        "it": "Geospaziale"
+    },
+    "airbnb": {
+        "icon": "⌂",
+        "es": "Airbnb",
+        "en": "Airbnb",
+        "it": "Airbnb"
+    },
+    "taxi": {
+        "icon": "◆",
+        "es": "Taxi",
+        "en": "Taxi",
+        "it": "Taxi"
+    },
+    "futbol": {
+        "icon": "●",
+        "es": "Fútbol",
+        "en": "Soccer",
+        "it": "Calcio"
+    },
+    "aviacion": {
+        "icon": "✈",
+        "es": "Aviación",
+        "en": "Aviation",
+        "it": "Aviazione"
+    },
+    "fraude": {
+        "icon": "!",
+        "es": "Fraude",
+        "en": "Fraud",
+        "it": "Frode"
+    }
+};
+
+  function currentLang(){
+    if(window.plGetLanguage){
+      const lang = window.plGetLanguage();
+      if(['es','en','it'].includes(lang)) return lang;
+    }
+    try{
+      const stored = localStorage.getItem('patronesLabLanguage');
+      if(['es','en','it'].includes(stored)) return stored;
+    }catch(e){}
+    return 'es';
+  }
+
+  function labelFor(token, lang){
+    const data = TAG_LABELS_BY_TOKEN[token];
+    if(!data) return token;
+    return data[lang] || data.es || token;
+  }
+
+  function iconFor(token){
+    const data = TAG_LABELS_BY_TOKEN[token];
+    return data && data.icon ? data.icon : '';
+  }
+
+  function renderFilterButton(button, lang){
+    const token = button.dataset.repoFilter;
+    if(!token) return;
+
+    const icon = iconFor(token);
+    const label = labelFor(token, lang);
+
+    button.innerHTML = icon
+      ? '<span class="filter-icon">' + icon + '</span> ' + label
+      : label;
+
+    button.setAttribute('data-label-token', token);
+    button.setAttribute('data-label-lang', lang);
+  }
+
+  function renderAllFilterButtons(lang){
+    document.querySelectorAll('#projects .repo-filter-btn[data-repo-filter]').forEach(function(button){
+      renderFilterButton(button, lang);
+    });
+  }
+
+  function renderCardTags(card, lang){
+    const holder = card.querySelector('.project-tags');
+    if(!holder) return;
+
+    const tokens = (card.dataset.tags || '').trim().split(/\s+/).filter(Boolean);
+    holder.innerHTML = '';
+
+    tokens.forEach(function(token){
+      const span = document.createElement('span');
+      span.textContent = labelFor(token, lang);
+      span.setAttribute('data-tag-token', token);
+      span.setAttribute('data-label-lang', lang);
+      holder.appendChild(span);
+    });
+  }
+
+  function renderAllCardTags(lang){
+    document.querySelectorAll('#projects .github-project-card[data-tags]').forEach(function(card){
+      renderCardTags(card, lang);
+    });
+  }
+
+  function auditTagsAndFilters(lang){
+    const problems = [];
+    const filterLabels = {};
+
+    document.querySelectorAll('#projects .repo-filter-btn[data-repo-filter]').forEach(function(button){
+      const token = button.dataset.repoFilter;
+      const text = button.textContent.replace(/^\s*[◎▦▥⚗✦✎◇◧◉▣✓≡✣↗⌖⌁⊙●✈!]+\s*/, '').trim();
+      const expected = labelFor(token, lang);
+
+      filterLabels[token] = text;
+
+      if(text !== expected){
+        problems.push({
+          type: 'filter-label-mismatch',
+          token: token,
+          expected: expected,
+          actual: text
+        });
+      }
+    });
+
+    document.querySelectorAll('#projects .github-project-card[data-tags]').forEach(function(card, cardIndex){
+      const tokens = (card.dataset.tags || '').trim().split(/\s+/).filter(Boolean);
+      const spans = Array.from(card.querySelectorAll('.project-tags span'));
+
+      tokens.forEach(function(token, index){
+        const expected = labelFor(token, lang);
+        const actual = spans[index] ? spans[index].textContent.trim() : '';
+        const filterText = filterLabels[token];
+
+        if(actual !== expected){
+          problems.push({
+            type: 'card-tag-mismatch',
+            card: cardIndex + 1,
+            token: token,
+            expected: expected,
+            actual: actual
+          });
+        }
+
+        if(filterText && actual !== filterText){
+          problems.push({
+            type: 'filter-card-label-different',
+            card: cardIndex + 1,
+            token: token,
+            filter: filterText,
+            cardTag: actual
+          });
+        }
+      });
+
+      if(spans.length !== tokens.length){
+        problems.push({
+          type: 'card-tag-count-mismatch',
+          card: cardIndex + 1,
+          expected: tokens.length,
+          actual: spans.length
+        });
+      }
+    });
+
+    window.plTagsFiltersAudit = {
+      language: lang,
+      ok: problems.length === 0,
+      problems: problems
+    };
+
+    return window.plTagsFiltersAudit;
+  }
+
+  function syncProjectFiltersAndTags(lang){
+    const language = ['es','en','it'].includes(lang) ? lang : currentLang();
+
+    renderAllFilterButtons(language);
+    renderAllCardTags(language);
+
+    if(window.plApplyRepoFilter && window.plGetActiveRepoFilter){
+      window.plApplyRepoFilter(window.plGetActiveRepoFilter());
+    }
+
+    // Reaplicar porque algunos filtros previos pueden haber reescrito clases/estado.
+    renderAllFilterButtons(language);
+    renderAllCardTags(language);
+
+    auditTagsAndFilters(language);
+  }
+
+  document.addEventListener('pl-language-changed', function(event){
+    const lang = event.detail && event.detail.language ? event.detail.language : currentLang();
+
+    window.requestAnimationFrame(function(){
+      syncProjectFiltersAndTags(lang);
+    });
+
+    setTimeout(function(){
+      syncProjectFiltersAndTags(lang);
+    }, 0);
+  });
+
+  document.addEventListener('click', function(event){
+    if(event.target.closest && event.target.closest('.repo-filter-btn[data-repo-filter]')){
+      const lang = currentLang();
+
+      window.requestAnimationFrame(function(){
+        syncProjectFiltersAndTags(lang);
+      });
+
+      setTimeout(function(){
+        syncProjectFiltersAndTags(lang);
+      }, 0);
+    }
+  }, true);
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){
+      syncProjectFiltersAndTags(currentLang());
+    }, {once:true});
+  }else{
+    syncProjectFiltersAndTags(currentLang());
+  }
+
+  window.plSyncProjectFiltersAndTags = syncProjectFiltersAndTags;
+  window.plAuditTagsAndFilters = auditTagsAndFilters;
+  window.plProjectFilterTagLabels = TAG_LABELS_BY_TOKEN;
+})();
+
+
+
+// === V53L: sincronización final real de filtros y tags visibles ===
+/*
+  Fuente única final para filtros y tags internos.
+  Este bloque corre al final del archivo y corrige cualquier reescritura previa.
+  Objetivo: filtro visible y tag visible deben coincidir siempre por token e idioma.
+*/
+(function(){
+  const FINAL_TAG_LABELS = {
+    "all": {
+        "icon": "◎",
+        "es": "Todos",
+        "en": "All",
+        "it": "Tutti"
+    },
+    "bi": {
+        "icon": "▦",
+        "es": "BI",
+        "en": "BI",
+        "it": "BI"
+    },
+    "data-analysis": {
+        "icon": "▥",
+        "es": "Análisis de datos",
+        "en": "Data analysis",
+        "it": "Analisi dati"
+    },
+    "data-science": {
+        "icon": "⚗",
+        "es": "Ciencia de datos",
+        "en": "Data science",
+        "it": "Scienza dei dati"
+    },
+    "data-storytelling": {
+        "icon": "✎",
+        "es": "Data Storytelling",
+        "en": "Data Storytelling",
+        "it": "Data Storytelling"
+    },
+    "machine-learning": {
+        "icon": "✦",
+        "es": "Machine Learning",
+        "en": "Machine Learning",
+        "it": "Machine Learning"
+    },
+    "python": {
+        "icon": "◇",
+        "es": "Python",
+        "en": "Python",
+        "it": "Python"
+    },
+    "spss": {
+        "icon": "◧",
+        "es": "SPSS",
+        "en": "SPSS",
+        "it": "SPSS"
+    },
+    "looker-studio": {
+        "icon": "◉",
+        "es": "Looker Studio",
+        "en": "Looker Studio",
+        "it": "Looker Studio"
+    },
+    "dashboard": {
+        "icon": "▣",
+        "es": "Dashboard",
+        "en": "Dashboard",
+        "it": "Dashboard"
+    },
+    "modelo-supervisado": {
+        "icon": "✓",
+        "es": "Modelo supervisado",
+        "en": "Supervised model",
+        "it": "Modello supervisionato"
+    },
+    "modelo-no-supervisado": {
+        "icon": "◎",
+        "es": "Modelo no supervisado",
+        "en": "Unsupervised model",
+        "it": "Modello non supervisionato"
+    },
+    "clasificacion": {
+        "icon": "≡",
+        "es": "Clasificación",
+        "en": "Classification",
+        "it": "Classificazione"
+    },
+    "clustering": {
+        "icon": "✣",
+        "es": "Clustering",
+        "en": "Clustering",
+        "it": "Clustering"
+    },
+    "knn": {
+        "icon": "↗",
+        "es": "KNN",
+        "en": "KNN",
+        "it": "KNN"
+    },
+    "k-means": {
+        "icon": "⌖",
+        "es": "K-means",
+        "en": "K-means",
+        "it": "K-means"
+    },
+    "regresion-logistica": {
+        "icon": "⌁",
+        "es": "Regresión logística",
+        "en": "Logistic regression",
+        "it": "Regressione logistica"
+    },
+    "dbscan": {
+        "icon": "⊙",
+        "es": "DBSCAN",
+        "en": "DBSCAN",
+        "it": "DBSCAN"
+    },
+    "geoespacial": {
+        "icon": "⌖",
+        "es": "Geoespacial",
+        "en": "Geospatial",
+        "it": "Geospaziale"
+    },
+    "airbnb": {
+        "icon": "⌂",
+        "es": "Airbnb",
+        "en": "Airbnb",
+        "it": "Airbnb"
+    },
+    "taxi": {
+        "icon": "◆",
+        "es": "Taxi",
+        "en": "Taxi",
+        "it": "Taxi"
+    },
+    "futbol": {
+        "icon": "●",
+        "es": "Fútbol",
+        "en": "Soccer",
+        "it": "Calcio"
+    },
+    "aviacion": {
+        "icon": "✈",
+        "es": "Aviación",
+        "en": "Aviation",
+        "it": "Aviazione"
+    },
+    "fraude": {
+        "icon": "!",
+        "es": "Fraude",
+        "en": "Fraud",
+        "it": "Frode"
+    }
+};
+  let isSyncing = false;
+
+  function getLang(){
+    if(window.plGetLanguage){
+      const lang = window.plGetLanguage();
+      if(['es','en','it'].includes(lang)) return lang;
+    }
+
+    try{
+      const stored = localStorage.getItem('patronesLabLanguage');
+      if(['es','en','it'].includes(stored)) return stored;
+    }catch(e){}
+
+    return document.documentElement.lang || 'es';
+  }
+
+  function getLabel(token, lang){
+    const item = FINAL_TAG_LABELS[token];
+    if(!item) return token;
+    return item[lang] || item.es || token;
+  }
+
+  function getIcon(token){
+    const item = FINAL_TAG_LABELS[token];
+    return item && item.icon ? item.icon : '';
+  }
+
+  function cleanFilterText(text){
+    return (text || '').replace(/^\s*[◎▦▥⚗✦✎◇◧◉▣✓≡✣↗⌖⌁⊙●✈!]+\s*/, '').trim();
+  }
+
+  function renderOneFilter(button, lang){
+    const token = button.dataset.repoFilter;
+    if(!token) return;
+
+    const icon = getIcon(token);
+    const label = getLabel(token, lang);
+
+    const nextHtml = icon
+      ? '<span class="filter-icon">' + icon + '</span> ' + label
+      : label;
+
+    if(button.innerHTML !== nextHtml){
+      button.innerHTML = nextHtml;
+    }
+
+    if(button.dataset.labelToken !== token){
+      button.dataset.labelToken = token;
+    }
+
+    if(button.dataset.labelLang !== lang){
+      button.dataset.labelLang = lang;
+    }
+  }
+
+  function renderFilters(lang){
+    document.querySelectorAll('#projects .repo-filter-btn[data-repo-filter]').forEach(function(button){
+      renderOneFilter(button, lang);
+    });
+  }
+
+  function renderOneCardTags(card, lang){
+    /*
+      V53N:
+      No inyectar .project-tags dentro de la card.
+      En el HTML/CSS base no existe un contenedor visual para esto; crearlo por JS
+      generaba texto crudo concatenado debajo de las pills.
+      Los tags/chips reales visibles de la card se mantienen intactos.
+    */
+    return;
+  }
+
+  function renderCardTags(lang){
+    document.querySelectorAll('#projects .github-project-card[data-tags]').forEach(function(card){
+      renderOneCardTags(card, lang);
+    });
+  }
+
+  function audit(lang){
+    const problems = [];
+    const filterMap = {};
+
+    document.querySelectorAll('#projects .repo-filter-btn[data-repo-filter]').forEach(function(button){
+      const token = button.dataset.repoFilter;
+      const expected = getLabel(token, lang);
+      const actual = cleanFilterText(button.textContent);
+
+      filterMap[token] = actual;
+
+      if(actual !== expected){
+        problems.push({
+          type: 'filter-not-translated',
+          token: token,
+          expected: expected,
+          actual: actual
+        });
+      }
+    });
+
+    window.plFinalTagsFiltersAudit = {
+      language: lang,
+      ok: problems.length === 0,
+      problems: problems,
+      note: 'V53N: se auditan filtros; no se inyectan project-tags para evitar texto crudo.'
+    };
+
+    return window.plFinalTagsFiltersAudit;
+  }
+
+  function sync(lang){
+    if(isSyncing) return;
+
+    isSyncing = true;
+
+    const language = ['es','en','it'].includes(lang) ? lang : getLang();
+
+    renderFilters(language);
+    renderCardTags(language);
+    audit(language);
+
+    isSyncing = false;
+  }
+
+  function syncSoon(lang){
+    const language = ['es','en','it'].includes(lang) ? lang : getLang();
+
+    sync(language);
+
+    window.requestAnimationFrame(function(){
+      sync(language);
+    });
+
+    setTimeout(function(){
+      sync(language);
+    }, 0);
+
+    setTimeout(function(){
+      sync(language);
+    }, 150);
+  }
+
+  document.addEventListener('pl-language-changed', function(event){
+    const lang = event.detail && event.detail.language ? event.detail.language : getLang();
+    syncSoon(lang);
+  });
+
+  document.addEventListener('click', function(event){
+    if(event.target.closest && (
+      event.target.closest('.language-option') ||
+      event.target.closest('.repo-filter-btn[data-repo-filter]')
+    )){
+      syncSoon(getLang());
+    }
+  }, true);
+
+  /*
+    V53M: se elimina el observador automático de #projects.
+    Motivo: reaccionaba a cambios generados por este mismo bloque y podía provocar
+    re-renderizados repetidos durante el loader.
+    La sincronización queda controlada por:
+    - carga inicial;
+    - cambio de idioma;
+    - clic en filtros.
+  */
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){
+      syncSoon(getLang());
+    }, {once:true});
+  }else{
+    syncSoon(getLang());
+  }
+
+  window.plSyncFinalTagsFilters = syncSoon;
+  window.plAuditFinalTagsFilters = audit;
+  window.plFinalTagLabels = FINAL_TAG_LABELS;
+})();
+
+
+
+// === V53N: eliminar tags crudos inyectados en cards ===
+(function(){
+  function removeInjectedProjectTags(){
+    document.querySelectorAll('#projects .github-project-card .project-tags').forEach(function(holder){
+      holder.remove();
+    });
+  }
+
+  document.addEventListener('pl-language-changed', function(){
+    window.requestAnimationFrame(removeInjectedProjectTags);
+    setTimeout(removeInjectedProjectTags, 0);
+  });
+
+  document.addEventListener('click', function(event){
+    if(event.target.closest && event.target.closest('.repo-filter-btn[data-repo-filter]')){
+      window.requestAnimationFrame(removeInjectedProjectTags);
+      setTimeout(removeInjectedProjectTags, 0);
+    }
+  }, true);
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', removeInjectedProjectTags, {once:true});
+  }else{
+    removeInjectedProjectTags();
+  }
+
+  window.plRemoveInjectedProjectTags = removeInjectedProjectTags;
+})();
+
+
+
+// === V53O: traducción real de chips .mini-tags y filtros desde una única fuente ===
+/*
+  Los chips visibles reales de cada card son .mini-tags span.
+  Versiones anteriores intentaron usar .project-tags, que no existe en el HTML/CSS base.
+  Este bloque sincroniza:
+  - filtros .repo-filter-btn[data-repo-filter]
+  - chips visibles .mini-tags span
+  usando exactamente FINAL_PROJECT_LABELS.
+*/
+(function(){
+  const FINAL_PROJECT_LABELS = {
+    "all": {
+        "icon": "◎",
+        "es": "Todos",
+        "en": "All",
+        "it": "Tutti"
+    },
+    "bi": {
+        "icon": "▦",
+        "es": "BI",
+        "en": "BI",
+        "it": "BI"
+    },
+    "data-analysis": {
+        "icon": "▥",
+        "es": "Análisis de datos",
+        "en": "Data analysis",
+        "it": "Analisi dati"
+    },
+    "data-science": {
+        "icon": "⚗",
+        "es": "Ciencia de datos",
+        "en": "Data science",
+        "it": "Scienza dei dati"
+    },
+    "data-storytelling": {
+        "icon": "✎",
+        "es": "Data Storytelling",
+        "en": "Data Storytelling",
+        "it": "Data Storytelling"
+    },
+    "machine-learning": {
+        "icon": "✦",
+        "es": "Machine Learning",
+        "en": "Machine Learning",
+        "it": "Machine Learning"
+    },
+    "python": {
+        "icon": "◇",
+        "es": "Python",
+        "en": "Python",
+        "it": "Python"
+    },
+    "spss": {
+        "icon": "◧",
+        "es": "SPSS",
+        "en": "SPSS",
+        "it": "SPSS"
+    },
+    "looker-studio": {
+        "icon": "◉",
+        "es": "Looker Studio",
+        "en": "Looker Studio",
+        "it": "Looker Studio"
+    },
+    "dashboard": {
+        "icon": "▣",
+        "es": "Dashboard",
+        "en": "Dashboard",
+        "it": "Dashboard"
+    },
+    "modelo-supervisado": {
+        "icon": "✓",
+        "es": "Modelo supervisado",
+        "en": "Supervised model",
+        "it": "Modello supervisionato"
+    },
+    "modelo-no-supervisado": {
+        "icon": "◎",
+        "es": "Modelo no supervisado",
+        "en": "Unsupervised model",
+        "it": "Modello non supervisionato"
+    },
+    "clasificacion": {
+        "icon": "≡",
+        "es": "Clasificación",
+        "en": "Classification",
+        "it": "Classificazione"
+    },
+    "clustering": {
+        "icon": "✣",
+        "es": "Clustering",
+        "en": "Clustering",
+        "it": "Clustering"
+    },
+    "knn": {
+        "icon": "↗",
+        "es": "KNN",
+        "en": "KNN",
+        "it": "KNN"
+    },
+    "k-means": {
+        "icon": "⌖",
+        "es": "K-means",
+        "en": "K-means",
+        "it": "K-means"
+    },
+    "regresion-logistica": {
+        "icon": "⌁",
+        "es": "Regresión logística",
+        "en": "Logistic regression",
+        "it": "Regressione logistica"
+    },
+    "dbscan": {
+        "icon": "⊙",
+        "es": "DBSCAN",
+        "en": "DBSCAN",
+        "it": "DBSCAN"
+    },
+    "geoespacial": {
+        "icon": "⌖",
+        "es": "Geoespacial",
+        "en": "Geospatial",
+        "it": "Geospaziale"
+    },
+    "airbnb": {
+        "icon": "⌂",
+        "es": "Airbnb",
+        "en": "Airbnb",
+        "it": "Airbnb"
+    },
+    "taxi": {
+        "icon": "◆",
+        "es": "Taxi",
+        "en": "Taxi",
+        "it": "Taxi"
+    },
+    "futbol": {
+        "icon": "●",
+        "es": "Fútbol",
+        "en": "Soccer",
+        "it": "Calcio"
+    },
+    "aviacion": {
+        "icon": "✈",
+        "es": "Aviación",
+        "en": "Aviation",
+        "it": "Aviazione"
+    },
+    "fraude": {
+        "icon": "!",
+        "es": "Fraude",
+        "en": "Fraud",
+        "it": "Frode"
+    }
+};
+
+  function getLang(){
+    if(window.plGetLanguage){
+      const lang = window.plGetLanguage();
+      if(['es','en','it'].includes(lang)) return lang;
+    }
+
+    try{
+      const stored = localStorage.getItem('patronesLabLanguage');
+      if(['es','en','it'].includes(stored)) return stored;
+    }catch(e){}
+
+    const htmlLang = document.documentElement.lang;
+    return ['es','en','it'].includes(htmlLang) ? htmlLang : 'es';
+  }
+
+  function labelFor(token, lang){
+    const data = FINAL_PROJECT_LABELS[token];
+    if(!data) return token;
+    return data[lang] || data.es || token;
+  }
+
+  function iconFor(token){
+    const data = FINAL_PROJECT_LABELS[token];
+    return data && data.icon ? data.icon : '';
+  }
+
+  function stripIcon(text){
+    return (text || '').replace(/^\s*[◎▦▥⚗✦✎◇◧◉▣✓≡✣↗⌖⌁⊙●✈!]+\s*/, '').trim();
+  }
+
+  function renderFilters(lang){
+    document.querySelectorAll('#projects .repo-filter-btn[data-repo-filter]').forEach(function(button){
+      const token = button.dataset.repoFilter;
+      if(!token) return;
+
+      const icon = iconFor(token);
+      const label = labelFor(token, lang);
+      const html = icon
+        ? '<span class="filter-icon">' + icon + '</span>' + label
+        : label;
+
+      if(button.innerHTML !== html){
+        button.innerHTML = html;
+      }
+
+      button.dataset.labelToken = token;
+      button.dataset.labelLang = lang;
+    });
+  }
+
+  function renderMiniTags(lang){
+    document.querySelectorAll('#projects .github-project-card[data-tags]').forEach(function(card){
+      const tokens = (card.dataset.tags || '').trim().split(/\s+/).filter(Boolean);
+      const holder = card.querySelector('.mini-tags');
+
+      if(!holder) return;
+
+      const existing = Array.from(holder.querySelectorAll('span'));
+
+      tokens.forEach(function(token, index){
+        let span = existing[index];
+
+        if(!span){
+          span = document.createElement('span');
+          holder.appendChild(span);
+        }
+
+        const label = labelFor(token, lang);
+
+        if(span.textContent.trim() !== label){
+          span.textContent = label;
+        }
+
+        span.dataset.tagToken = token;
+        span.dataset.labelLang = lang;
+      });
+
+      existing.slice(tokens.length).forEach(function(extra){
+        extra.remove();
+      });
+
+      holder.dataset.labelLang = lang;
+    });
+  }
+
+  function removeInjectedProjectTags(){
+    document.querySelectorAll('#projects .github-project-card .project-tags').forEach(function(holder){
+      holder.remove();
+    });
+  }
+
+  function audit(lang){
+    const problems = [];
+    const filters = {};
+
+    document.querySelectorAll('#projects .repo-filter-btn[data-repo-filter]').forEach(function(button){
+      const token = button.dataset.repoFilter;
+      const expected = labelFor(token, lang);
+      const actual = stripIcon(button.textContent);
+
+      filters[token] = actual;
+
+      if(actual !== expected){
+        problems.push({
+          type: 'filter-label-mismatch',
+          token: token,
+          expected: expected,
+          actual: actual
+        });
+      }
+    });
+
+    document.querySelectorAll('#projects .github-project-card[data-tags]').forEach(function(card, cardIndex){
+      const tokens = (card.dataset.tags || '').trim().split(/\s+/).filter(Boolean);
+      const spans = Array.from(card.querySelectorAll('.mini-tags span'));
+
+      if(tokens.length !== spans.length){
+        problems.push({
+          type: 'mini-tag-count-mismatch',
+          card: cardIndex + 1,
+          expected: tokens.length,
+          actual: spans.length
+        });
+      }
+
+      tokens.forEach(function(token, index){
+        const expected = labelFor(token, lang);
+        const actual = spans[index] ? spans[index].textContent.trim() : '';
+        const filter = filters[token];
+
+        if(actual !== expected){
+          problems.push({
+            type: 'mini-tag-label-mismatch',
+            card: cardIndex + 1,
+            token: token,
+            expected: expected,
+            actual: actual
+          });
+        }
+
+        if(filter && filter !== actual){
+          problems.push({
+            type: 'filter-mini-tag-different',
+            card: cardIndex + 1,
+            token: token,
+            filter: filter,
+            miniTag: actual
+          });
+        }
+      });
+    });
+
+    window.plMiniTagsFiltersAudit = {
+      language: lang,
+      ok: problems.length === 0,
+      problems: problems
+    };
+
+    return window.plMiniTagsFiltersAudit;
+  }
+
+  function sync(lang){
+    const language = ['es','en','it'].includes(lang) ? lang : getLang();
+
+    removeInjectedProjectTags();
+    renderFilters(language);
+    renderMiniTags(language);
+
+    if(window.plApplyRepoFilter && window.plGetActiveRepoFilter){
+      window.plApplyRepoFilter(window.plGetActiveRepoFilter());
+    }
+
+    // Reaplicar después del filtro porque otros handlers pueden tocar clases/estado.
+    renderFilters(language);
+    renderMiniTags(language);
+    removeInjectedProjectTags();
+
+    audit(language);
+  }
+
+  function syncSoon(lang){
+    const language = ['es','en','it'].includes(lang) ? lang : getLang();
+
+    sync(language);
+
+    window.requestAnimationFrame(function(){
+      sync(language);
+    });
+
+    setTimeout(function(){
+      sync(language);
+    }, 0);
+  }
+
+  document.addEventListener('pl-language-changed', function(event){
+    const lang = event.detail && event.detail.language ? event.detail.language : getLang();
+    syncSoon(lang);
+  });
+
+  document.addEventListener('click', function(event){
+    if(event.target.closest && (
+      event.target.closest('.language-option') ||
+      event.target.closest('.repo-filter-btn[data-repo-filter]')
+    )){
+      syncSoon(getLang());
+    }
+  }, true);
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){
+      syncSoon(getLang());
+    }, {once:true});
+  }else{
+    syncSoon(getLang());
+  }
+
+  window.plSyncMiniTagsAndFilters = syncSoon;
+  window.plAuditMiniTagsAndFilters = audit;
+  window.plProjectLabelSource = FINAL_PROJECT_LABELS;
+})();
+
+
+
+// === V53P: normalización final de capitalización en filtros y chips ===
+(function(){
+  function currentLang(){
+    if(window.plGetLanguage){
+      return window.plGetLanguage();
+    }
+
+    try{
+      return localStorage.getItem('patronesLabLanguage') || 'es';
+    }catch(e){
+      return document.documentElement.lang || 'es';
+    }
+  }
+
+  function rerender(){
+    if(window.plSyncMiniTagsAndFilters){
+      window.plSyncMiniTagsAndFilters(currentLang());
+    }
+  }
+
+  document.addEventListener('pl-language-changed', function(){
+    window.requestAnimationFrame(rerender);
+    setTimeout(rerender, 0);
+  });
+
+  document.addEventListener('click', function(event){
+    if(event.target.closest && event.target.closest('.repo-filter-btn[data-repo-filter]')){
+      window.requestAnimationFrame(rerender);
+      setTimeout(rerender, 0);
+    }
+  }, true);
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', rerender, {once:true});
+  }else{
+    rerender();
+  }
 })();
 
