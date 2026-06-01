@@ -13617,29 +13617,44 @@ body.light-mode #networks .social-intro{
 
 
 
-/* === V54E: footer legible definitivo === */
+/* === V54G: footer oscuro legible final === */
 /*
-  Alcance:
-  - solo footer;
-  - escritorio y móvil;
-  - modo oscuro y modo claro;
-  - no modifica colores globales, cards, filtros, hero, loader ni secciones.
+  Solución final del footer:
+  - fuerza opacidad del contenedor y de todos sus wrappers;
+  - evita que una opacidad/herencia del footer apague el color;
+  - aplica a escritorio y móvil;
+  - no toca hero, metodología, proyectos, redes, contacto, loader ni metadata.
 */
+
 html body footer.footer,
 html body.dark-mode footer.footer,
 html body:not(.dark-mode) footer.footer{
+  color:#f4efe7 !important;
+  -webkit-text-fill-color:#f4efe7 !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
   text-align:center !important;
+  background:#050606 !important;
   isolation:isolate !important;
 }
 
 html body footer.footer .container,
 html body footer.footer .row,
 html body footer.footer [class*="col-"]{
+  opacity:1 !important;
+  visibility:visible !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
   text-align:center !important;
+  color:inherit !important;
+  -webkit-text-fill-color:inherit !important;
 }
 
 html body footer.footer p.copyright-text,
 html body footer.footer .copyright-text,
+html body footer.footer .copyright-text.text-center,
 html body.dark-mode footer.footer p.copyright-text,
 html body.dark-mode footer.footer .copyright-text,
 html body:not(.dark-mode) footer.footer p.copyright-text,
@@ -13656,13 +13671,17 @@ html body:not(.dark-mode) footer.footer .copyright-text{
   opacity:1 !important;
   visibility:visible !important;
 
+  font-size:14px !important;
   font-weight:500 !important;
+  line-height:1.6 !important;
+  letter-spacing:.01em !important;
+
   text-shadow:none !important;
   filter:none !important;
   mix-blend-mode:normal !important;
-  background:none !important;
-  -webkit-background-clip:initial !important;
-  background-clip:initial !important;
+  background:transparent !important;
+  -webkit-background-clip:border-box !important;
+  background-clip:border-box !important;
 }
 
 html body footer.footer p.copyright-text *,
@@ -13670,11 +13689,23 @@ html body footer.footer .copyright-text *{
   color:#f4efe7 !important;
   -webkit-text-fill-color:#f4efe7 !important;
   opacity:1 !important;
+  visibility:visible !important;
   filter:none !important;
   mix-blend-mode:normal !important;
 }
 
 html body footer.footer .pl-footer-author-note{
   display:none !important;
+}
+
+/* Mobile: misma legibilidad, tamaño apenas menor */
+@media (max-width: 767px){
+  html body footer.footer p.copyright-text,
+  html body footer.footer .copyright-text{
+    font-size:12.5px !important;
+    line-height:1.55 !important;
+    padding-left:18px !important;
+    padding-right:18px !important;
+  }
 }
 

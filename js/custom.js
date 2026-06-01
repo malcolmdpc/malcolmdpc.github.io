@@ -2101,7 +2101,7 @@
         '.tech-logo-card-dbt small': 'Transformation',
 
         '#methodology .process-horizontal-static-head h2': 'Data Lifecycle',
-        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Discovery',
+        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Esplorazione',
         '#methodology .process-horizontal-panel:nth-child(1) small': 'Context & Objective',
         '#methodology .process-horizontal-panel:nth-child(1) p': 'Clarifying the problem, the decision to improve, the users involved and the expected outcome.',
         '#methodology .process-horizontal-panel:nth-child(2) h3': 'Sources',
@@ -2271,9 +2271,9 @@
       document.documentElement.lang = 'es';
       const meta = document.querySelector('meta[name="description"]');
       if(meta){
-        meta.setAttribute('content', 'Patrones Lab: portfolio de proyectos reproducibles en BI, Machine Learning, Python, SQL, Power BI, Qlik y Looker Studio.');
+        meta.setAttribute('content', 'Patrones Lab reúne proyectos de analítica de datos, Business Intelligence y Machine Learning para explorar datos, detectar patrones, generar conocimiento y representar visualmente los descubrimientos.');
       }
-      document.title = 'Patrones Lab — Portfolio BI, ML & Data';
+      document.title = 'Patrones Lab · Analítica de Datos · Portfolio de proyectos ML y BI';
 
       document.querySelectorAll('.language-toggle').forEach(function(btn){
         const flag = btn.querySelector('.language-toggle__flag-img');
@@ -2480,8 +2480,8 @@
 
   const dict = {
     es: {
-      title: 'Patrones Lab — Portfolio BI, ML & Data',
-      metaDescription: 'Patrones Lab: portfolio de proyectos reproducibles en BI, Machine Learning, Python, SQL, Power BI, Qlik y Looker Studio.',
+      title: 'Patrones Lab · Analítica de Datos · Portfolio de proyectos ML y BI',
+      metaDescription: 'Patrones Lab reúne proyectos de analítica de datos, Business Intelligence y Machine Learning para explorar datos, detectar patrones, generar conocimiento y representar visualmente los descubrimientos.',
       htmlLang: 'es',
       toggleFlag: FLAG_US,
       toggleLabel: 'Cambiar a inglés',
@@ -2513,7 +2513,7 @@
         '#about .hero-rotator span:nth-child(3)': 'dashboards',
         '#about .hero-rotator span:nth-child(4)': 'decisiones',
         '#about .hero-rotator span:nth-child(5)': 'patrones',
-        '#about .hero-entry-v25b-copy': 'Patrones Lab es un laboratorio de análisis de datos aplicado a fenómenos cotidianos y reales.<br><br>Aquí se trabajan proyectos independientes construidos a partir de datos públicos, con foco en detectar patrones, describir comportamientos y comunicar los hallazgos con su contexto.<br><br>El objetivo es plantear preguntas, preparar datos, construir análisis reproducibles y generar resultados visuales.',
+        '#about .hero-entry-v25b-copy': 'Patrones Lab es un laboratorio de análisis de datos aplicado a fenómenos cotidianos y reales.<br><br>Aquí se trabajan proyectos independientes construidos a partir de datos públicos, con foco en detectar patrones, describir comportamientos y comunicar los hallazgos con su contexto.<br><br>El objetivo es plantear preguntas, preparar datos, construir análisis claros y generar resultados visuales.',
 
         '.tech-logo-card-airflow small': 'Orquestación',
         '.tech-logo-card-sql-server small': 'Base de datos',
@@ -2676,7 +2676,7 @@
         '.tech-logo-card-dbt small': 'Transformation',
 
         '#methodology .process-horizontal-static-head h2': 'Data Lifecycle',
-        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Discovery',
+        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Esplorazione',
         '#methodology .process-horizontal-panel:nth-child(1) small': 'Context & Objective',
         '#methodology .process-horizontal-panel:nth-child(1) p': 'Clarifying the problem, the decision to improve, the users involved and the expected outcome.',
         '#methodology .process-horizontal-panel:nth-child(2) h3': 'Sources',
@@ -2898,8 +2898,8 @@
 
   const langData = {
     es: {
-      title: 'Patrones Lab — Portfolio BI, ML & Data',
-      metaDescription: 'Patrones Lab: portfolio de proyectos reproducibles en BI, Machine Learning, Python, SQL, Power BI, Qlik y Looker Studio.',
+      title: 'Patrones Lab · Analítica de Datos · Portfolio de proyectos ML y BI',
+      metaDescription: 'Patrones Lab reúne proyectos de analítica de datos, Business Intelligence y Machine Learning para explorar datos, detectar patrones, generar conocimiento y representar visualmente los descubrimientos.',
       htmlLang: 'es',
       currentLabel: 'Español',
       text: {
@@ -2918,7 +2918,7 @@
         '#about .hero-rotator span:nth-child(3)': 'dashboards',
         '#about .hero-rotator span:nth-child(4)': 'decisiones',
         '#about .hero-rotator span:nth-child(5)': 'patrones',
-        '#about .hero-entry-v25b-copy': 'Patrones Lab es un laboratorio de análisis de datos aplicado a fenómenos cotidianos y reales.<br><br>Aquí se trabajan proyectos independientes construidos a partir de datos públicos, con foco en detectar patrones, describir comportamientos y comunicar los hallazgos con su contexto.<br><br>El objetivo es plantear preguntas, preparar datos, construir análisis reproducibles y generar resultados visuales.',
+        '#about .hero-entry-v25b-copy': 'Patrones Lab es un laboratorio de análisis de datos aplicado a fenómenos cotidianos y reales.<br><br>Aquí se trabajan proyectos independientes construidos a partir de datos públicos, con foco en detectar patrones, describir comportamientos y comunicar los hallazgos con su contexto.<br><br>El objetivo es plantear preguntas, preparar datos, construir análisis claros y generar resultados visuales.',
 
         '.tech-logo-card-airflow small': 'Orquestación',
         '.tech-logo-card-sql-server small': 'Base de datos',
@@ -3079,7 +3079,7 @@
         '.tech-logo-card-dbt small': 'Transformation',
 
         '#methodology .process-horizontal-static-head h2': 'Data Lifecycle',
-        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Discovery',
+        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Esplorazione',
         '#methodology .process-horizontal-panel:nth-child(1) small': 'Context & Objective',
         '#methodology .process-horizontal-panel:nth-child(1) p': 'Clarifying the problem, the decision to improve, the users involved and the expected outcome.',
         '#methodology .process-horizontal-panel:nth-child(2) h3': 'Sources',
@@ -3240,7 +3240,7 @@
         '.tech-logo-card-dbt small': 'Trasformazione dati',
 
         '#methodology .process-horizontal-static-head h2': 'Ciclo di vita dei dati',
-        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Discovery',
+        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Esplorazione',
         '#methodology .process-horizontal-panel:nth-child(1) small': 'Contesto e obiettivo',
         '#methodology .process-horizontal-panel:nth-child(1) p': 'Definizione del problema, della decisione da supportare, degli utenti coinvolti e dell’output atteso.',
         '#methodology .process-horizontal-panel:nth-child(2) h3': 'Sorgenti dati',
@@ -5182,6 +5182,153 @@
   }
 
   window.plApplyFooterText = applyFooterText;
+})();
+
+
+
+// === V54H: correzione traduzioni Metodologia ES/EN/IT ===
+(function(){
+  const methodologyTexts = {
+  "es": {
+    "title": "Ciclo de vida del dato",
+    "steps": [
+      [
+        "Descubrimiento",
+        "Contexto y objetivo"
+      ],
+      [
+        "Fuentes",
+        "Datos y diagnóstico"
+      ],
+      [
+        "Preparación",
+        "Base analítica"
+      ],
+      [
+        "Modelado",
+        "Patrones y señales"
+      ],
+      [
+        "Validación",
+        "Control y confianza"
+      ],
+      [
+        "Publicación",
+        "Entrega y aprendizaje"
+      ]
+    ]
+  },
+  "en": {
+    "title": "Data lifecycle",
+    "steps": [
+      [
+        "Discovery",
+        "Context and objective"
+      ],
+      [
+        "Sources",
+        "Data and diagnosis"
+      ],
+      [
+        "Preparation",
+        "Analytical base"
+      ],
+      [
+        "Modeling",
+        "Patterns and signals"
+      ],
+      [
+        "Validation",
+        "Control and confidence"
+      ],
+      [
+        "Publication",
+        "Delivery and learning"
+      ]
+    ]
+  },
+  "it": {
+    "title": "Ciclo di vita dei dati",
+    "steps": [
+      [
+        "Esplorazione",
+        "Contesto e obiettivo"
+      ],
+      [
+        "Fonti dati",
+        "Dati e diagnosi"
+      ],
+      [
+        "Preparazione",
+        "Base analitica"
+      ],
+      [
+        "Modellazione",
+        "Pattern e segnali"
+      ],
+      [
+        "Validazione",
+        "Controllo e affidabilità"
+      ],
+      [
+        "Pubblicazione",
+        "Consegna e apprendimento"
+      ]
+    ]
+  }
+};
+
+  function currentLang(){
+    if(window.plGetLanguage){
+      const lang = window.plGetLanguage();
+      if(methodologyTexts[lang]) return lang;
+    }
+
+    try{
+      const stored = localStorage.getItem('patronesLabLanguage');
+      if(methodologyTexts[stored]) return stored;
+    }catch(e){}
+
+    const htmlLang = document.documentElement.lang;
+    return methodologyTexts[htmlLang] ? htmlLang : 'es';
+  }
+
+  function setText(selector, value){
+    const el = document.querySelector(selector);
+    if(el && el.textContent !== value){
+      el.textContent = value;
+    }
+  }
+
+  function applyMethodologyTexts(lang){
+    const language = methodologyTexts[lang] ? lang : currentLang();
+    const pack = methodologyTexts[language];
+
+    setText('#methodology .process-horizontal-static-head h2', pack.title);
+
+    pack.steps.forEach(function(step, index){
+      const n = index + 1;
+      setText('#methodology .process-horizontal-panel:nth-child(' + n + ') h3', step[0]);
+      setText('#methodology .process-horizontal-panel:nth-child(' + n + ') small', step[1]);
+    });
+  }
+
+  document.addEventListener('pl-language-changed', function(event){
+    const lang = event.detail && event.detail.language ? event.detail.language : currentLang();
+    applyMethodologyTexts(lang);
+    window.requestAnimationFrame(function(){ applyMethodologyTexts(lang); });
+    setTimeout(function(){ applyMethodologyTexts(lang); }, 0);
+  });
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){
+      applyMethodologyTexts(currentLang());
+    }, {once:true});
+  }else{
+    applyMethodologyTexts(currentLang());
+  }
+
+  window.plApplyMethodologyTranslations = applyMethodologyTexts;
 })();
 
 
