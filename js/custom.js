@@ -2180,7 +2180,7 @@
         '#contact .contact-form h2': 'Leave me a message',
         '#contact .form-note': 'Send me a message and I’ll get back to you shortly.',
 
-        'footer': 'Patrones Lab® · Turning data into knowledge'
+        'footer': 'Patrones Lab® · Generating knowledge from data · by Malcolm Di Pietro Cagliari'
       },
 
       all: [
@@ -2616,7 +2616,7 @@
         '#contact .contact-email-line strong': 'correo:',
         '#contact .contact-form h2': 'Dejame un mensaje',
         '#contact .form-note': 'Escribime y te responderé a la brevedad.',
-        'footer': 'Patrones Lab® · Generando conocimiento a través de los datos'
+        'footer': 'Patrones Lab® · Generando conocimiento a partir de los datos · por Malcolm Di Pietro Cagliari'
       },
       all: [
         ['.project-status.published', '✅ publicado'],
@@ -2770,7 +2770,7 @@
         '#contact .contact-email-line strong': 'email:',
         '#contact .contact-form h2': 'Leave me a message',
         '#contact .form-note': 'Send me a message and I’ll get back to you shortly.',
-        'footer': 'Patrones Lab® · Turning data into knowledge'
+        'footer': 'Patrones Lab® · Generating knowledge from data · by Malcolm Di Pietro Cagliari'
       },
       all: [
         ['.project-status.published', '✅ published'],
@@ -3020,7 +3020,7 @@
         '#contact .contact-email-line strong': 'correo:',
         '#contact .contact-form h2': 'Dejame un mensaje',
         '#contact .form-note': 'Escribime y te responderé a la brevedad.',
-        'footer': 'Patrones Lab® · Generando conocimiento a través de los datos'
+        'footer': 'Patrones Lab® · Generando conocimiento a partir de los datos · por Malcolm Di Pietro Cagliari'
       },
       links: {
         'Open project': 'Entrar al proyecto',
@@ -3172,7 +3172,7 @@
         '#contact .contact-email-line strong': 'email:',
         '#contact .contact-form h2': 'Leave me a message',
         '#contact .form-note': 'Send me a message and I’ll get back to you shortly.',
-        'footer': 'Patrones Lab® · Turning data into knowledge'
+        'footer': 'Patrones Lab® · Generating knowledge from data · by Malcolm Di Pietro Cagliari'
       },
       links: {
         'Entrar al proyecto': 'Open project',
@@ -3333,7 +3333,7 @@
         '#contact .contact-email-line strong': 'email:',
         '#contact .contact-form h2': 'Lasciami un messaggio',
         '#contact .form-note': 'Scrivimi e ti risponderò appena possibile.',
-        'footer': 'Patrones Lab® · Generare conoscenza a partire dai dati'
+        'footer': 'Patrones Lab® · Generando conoscenza a partire dai dati · di Malcolm Di Pietro Cagliari'
       },
       links: {
         'Entrar al proyecto': 'Apri progetto',
@@ -5127,4 +5127,61 @@
     rerender();
   }
 })();
+
+
+
+// === V54C: footer centrado y traducido ES/EN/IT ===
+(function(){
+  const footerTexts = {
+    es: "Patrones Lab® · Generando conocimiento a partir de los datos · por Malcolm Di Pietro Cagliari",
+    en: "Patrones Lab® · Generating knowledge from data · by Malcolm Di Pietro Cagliari",
+    it: "Patrones Lab® · Generando conoscenza a partire dai dati · di Malcolm Di Pietro Cagliari"
+  };
+
+  function currentLang(){
+    if(window.plGetLanguage){
+      const lang = window.plGetLanguage();
+      if(footerTexts[lang]) return lang;
+    }
+
+    try{
+      const stored = localStorage.getItem('patronesLabLanguage');
+      if(footerTexts[stored]) return stored;
+    }catch(e){}
+
+    const htmlLang = document.documentElement.lang;
+    return footerTexts[htmlLang] ? htmlLang : 'es';
+  }
+
+  function applyFooterText(lang){
+    const language = footerTexts[lang] ? lang : currentLang();
+    const footer = document.querySelector('footer.footer');
+    const text = document.querySelector('footer.footer .copyright-text');
+
+    if(!footer || !text) return;
+
+    footer.querySelectorAll('.pl-footer-author-note').forEach(function(note){
+      note.remove();
+    });
+
+    text.textContent = footerTexts[language];
+    text.setAttribute('data-footer-lang', language);
+  }
+
+  document.addEventListener('pl-language-changed', function(event){
+    const lang = event.detail && event.detail.language ? event.detail.language : currentLang();
+    applyFooterText(lang);
+  });
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){
+      applyFooterText(currentLang());
+    }, {once:true});
+  }else{
+    applyFooterText(currentLang());
+  }
+
+  window.plApplyFooterText = applyFooterText;
+})();
+
 

@@ -13615,3 +13615,66 @@ body.light-mode #networks .social-intro{
   text-shadow:none !important;
 }
 
+
+
+/* === V54E: footer legible definitivo === */
+/*
+  Alcance:
+  - solo footer;
+  - escritorio y móvil;
+  - modo oscuro y modo claro;
+  - no modifica colores globales, cards, filtros, hero, loader ni secciones.
+*/
+html body footer.footer,
+html body.dark-mode footer.footer,
+html body:not(.dark-mode) footer.footer{
+  text-align:center !important;
+  isolation:isolate !important;
+}
+
+html body footer.footer .container,
+html body footer.footer .row,
+html body footer.footer [class*="col-"]{
+  text-align:center !important;
+}
+
+html body footer.footer p.copyright-text,
+html body footer.footer .copyright-text,
+html body.dark-mode footer.footer p.copyright-text,
+html body.dark-mode footer.footer .copyright-text,
+html body:not(.dark-mode) footer.footer p.copyright-text,
+html body:not(.dark-mode) footer.footer .copyright-text{
+  display:block !important;
+  width:100% !important;
+  max-width:none !important;
+  margin:0 auto !important;
+  padding:0 16px !important;
+  text-align:center !important;
+
+  color:#f4efe7 !important;
+  -webkit-text-fill-color:#f4efe7 !important;
+  opacity:1 !important;
+  visibility:visible !important;
+
+  font-weight:500 !important;
+  text-shadow:none !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
+  background:none !important;
+  -webkit-background-clip:initial !important;
+  background-clip:initial !important;
+}
+
+html body footer.footer p.copyright-text *,
+html body footer.footer .copyright-text *{
+  color:#f4efe7 !important;
+  -webkit-text-fill-color:#f4efe7 !important;
+  opacity:1 !important;
+  filter:none !important;
+  mix-blend-mode:normal !important;
+}
+
+html body footer.footer .pl-footer-author-note{
+  display:none !important;
+}
+
