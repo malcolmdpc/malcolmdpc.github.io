@@ -1,6 +1,3 @@
-/* Base styles */
-
-
 @import url("https://fonts.googleapis.com/css?family=Maven+Pro:400,700");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&display=swap");
 body {
@@ -564,8 +561,6 @@ b, strong {
   }
 }
 
-
-/* === Patrones Lab customization === */
 :root{
   --pl-bg:#0d0f0d;
   --pl-panel:#141814;
@@ -783,8 +778,6 @@ body{
   }
 }
 
-
-/* === GitHub-style project grid replacing contact form === */
 .github-projects-section{
   position:relative;
   overflow:hidden;
@@ -975,8 +968,6 @@ body{
   }
 }
 
-
-/* === Pinned scroll timeline === */
 .timeline-scroll-note{
   max-width:520px;
   margin:-10px 0 34px;
@@ -1038,7 +1029,7 @@ body{
   color:#ffc200;
 }
 
-/* Desktop: the whole section stays pinned while the timeline advances */
+
 @media (min-width: 992px){
   .pinned-timeline-section{
     min-height:420vh;
@@ -1071,7 +1062,7 @@ body{
   }
 }
 
-/* Tablet/mobile: keep it normal. Avoid hijacking touch scroll. */
+
 @media (max-width: 991px){
   .timeline-scroll-note{
     display:none;
@@ -1088,9 +1079,6 @@ body{
   }
 }
 
-
-/* === Pinned timeline alignment fix === */
-/* Fixes: no horizontal jumping, no gap between original black line and yellow progress line. */
 .process-timeline{
   --timeline-line-x:42px;
 }
@@ -1106,7 +1094,7 @@ body{
   border-radius:999px;
   pointer-events:none;
 }
-/* Put the original line exactly under the progress line */
+
 .process-timeline .timeline-wrapper:before{
   left:var(--timeline-line-x) !important;
   transform:translateX(-50%) !important;
@@ -1114,18 +1102,18 @@ body{
   background:#474559 !important;
   z-index:0 !important;
 }
-/* Circles should sit above both lines */
+
 .process-timeline .timeline-yr{
   position:relative;
   z-index:2;
 }
-/* Stop the active step from moving sideways */
+
 .process-timeline .timeline-wrapper,
 .process-timeline .timeline-wrapper.is-active,
 .process-timeline .timeline-wrapper.is-complete{
   transform:none !important;
 }
-/* Use visual emphasis without changing layout */
+
 .process-timeline .timeline-wrapper.is-active .timeline-info{
   transform:scale(1.015);
   transform-origin:left center;
@@ -1133,7 +1121,7 @@ body{
 .process-timeline .timeline-wrapper .timeline-info{
   transition:transform .25s ease, opacity .25s ease;
 }
-/* Keep inactive steps readable but subdued */
+
 .process-timeline .timeline-wrapper{
   opacity:.52;
 }
@@ -1141,7 +1129,7 @@ body{
 .process-timeline .timeline-wrapper.is-complete{
   opacity:1;
 }
-/* Dark mode line base */
+
 .dark-mode .process-timeline .timeline-wrapper:before{
   background:#2d2d37 !important;
 }
@@ -1149,7 +1137,7 @@ body{
   background:#ffc200 !important;
 }
 
-/* More stable pinned layout */
+
 @media (min-width: 992px){
   .pinned-timeline-section > .container{
     align-items:center !important;
@@ -1164,7 +1152,7 @@ body{
   }
 }
 
-/* Tablet/mobile: normal timeline, no artificial progress line */
+
 @media (max-width: 991px){
   .process-timeline .timeline-progress-line{
     display:none !important;
@@ -1181,10 +1169,6 @@ body{
   }
 }
 
-
-/* === Major layout update: profile hero, large animated headline, social icons, repo filters and contact form === */
-
-/* Hero photo */
 .profile-hero-card{
   position:relative;
   display:flex;
@@ -1203,7 +1187,7 @@ body{
   box-shadow:0 32px 90px rgba(0,0,0,.45);
 }
 
-/* Bigger hero copy without overlap */
+
 .pl-hero-title{
   font-size:clamp(54px, 6.9vw, 92px);
   line-height:.88;
@@ -1232,7 +1216,7 @@ body{
   white-space:nowrap;
 }
 
-/* Social channels replacing carousel */
+
 .social-section{
   position:relative;
   overflow:hidden;
@@ -1326,7 +1310,7 @@ body{
   color:#a9a39a;
 }
 
-/* Repository filter toolbar */
+
 .repo-filter-toolbar{
   width:min(980px, 100%);
   margin:28px auto 34px;
@@ -1395,7 +1379,7 @@ body{
   color:#a9a39a;
 }
 
-/* Contact form restored */
+
 .contact-form-section{
   position:relative;
   background:linear-gradient(180deg, transparent, rgba(0,0,0,.02));
@@ -1417,7 +1401,7 @@ body{
   color:#ffffff;
 }
 
-/* Responsive refinements */
+
 @media (max-width:1199px){
   .social-grid{
     grid-template-columns:repeat(3, minmax(0, 1fr));
@@ -1490,8 +1474,6 @@ body{
   }
 }
 
-
-/* === Completion pass: robust hero rotator, real social icons and fuller filters === */
 .pl-hero-title{
   display:block;
   max-width:720px;
@@ -1605,10 +1587,6 @@ body{
   }
 }
 
-
-/* === Final corrections requested === */
-
-/* 1) Contact form visibility and elegant box */
 .contact-form-section{
   display:block !important;
   background:
@@ -1632,7 +1610,7 @@ body{
   box-shadow:none;
 }
 
-/* 3) GitHub project images: preserve 4:5 ratio in thumbnails */
+
 .github-project-grid{
   align-items:stretch;
 }
@@ -1658,7 +1636,7 @@ body{
   margin-top:auto;
 }
 
-/* 4) Bigger labels inside timeline and stack circles */
+
 .timeline-yr span{
   font-size:19px !important;
   font-weight:900 !important;
@@ -1668,7 +1646,7 @@ body{
   font-size:18px !important;
 }
 
-/* 5) Timeline alignment: text starts aligned to the circle start, not visually drifting */
+
 .process-timeline{
   --circle-size:74px;
   --circle-x:38px;
@@ -1727,14 +1705,14 @@ body{
   min-width:160px;
 }
 
-/* Stack circles also bigger but less intrusive */
+
 .stack-timeline .timeline-yr{
   width:68px !important;
   height:68px !important;
   line-height:68px !important;
 }
 
-/* 6) Filter toolbar must be visible and centered */
+
 .repo-filter-toolbar{
   display:flex !important;
   width:min(1100px, 100%);
@@ -1785,7 +1763,7 @@ body{
   border-color:#ffc200;
 }
 
-/* Filter transition */
+
 .github-project-card{
   transition:opacity .2s ease, transform .28s ease, box-shadow .28s ease, border-color .28s ease;
 }
@@ -1793,7 +1771,7 @@ body{
   display:none !important;
 }
 
-/* Mobile timeline remains normal and readable */
+
 @media (max-width:991px){
   .process-timeline .timeline-wrapper{
     min-height:auto;
@@ -1834,10 +1812,6 @@ body{
   }
 }
 
-
-/* === V4 requested corrections === */
-
-/* Section background glows: stronger, varied and professional */
 .section-glow{
   position:relative;
   overflow:hidden;
@@ -1906,7 +1880,7 @@ body{
     radial-gradient(circle at 88% 72%, rgba(255,194,0,.13), transparent 27%);
 }
 
-/* Contact corrections */
+
 .contact-panel .contact-email-line{
   margin-top:12px;
   font-size:17px;
@@ -1924,7 +1898,7 @@ body{
   color:#b8b0a3;
 }
 
-/* Compact status pills */
+
 .project-status{
   width:auto !important;
   max-width:max-content !important;
@@ -1937,7 +1911,7 @@ body{
   line-height:1 !important;
 }
 
-/* Filters: no outer box, larger labels, small icons */
+
 .repo-filter-toolbar{
   border:0 !important;
   background:transparent !important;
@@ -1978,7 +1952,7 @@ body{
   background:rgba(0,0,0,.18);
 }
 
-/* Timeline: line ends exactly at circle 04 */
+
 .process-timeline{
   --circle-size:74px;
   --circle-x:38px;
@@ -2059,18 +2033,18 @@ body{
   background:#ffc200;
 }
 
-/* Profile image PNG target */
+
 .profile-hero-card img{
   image-rendering:auto;
 }
 
-/* Footer professionalism */
+
 .footer .copyright-text{
   font-weight:700;
   letter-spacing:-.01em;
 }
 
-/* Mobile */
+
 @media (max-width:991px){
   .process-timeline .timeline-wrapper{
     min-height:auto;
@@ -2115,10 +2089,6 @@ body{
   }
 }
 
-
-/* === V5: repair pinned timeline layout === */
-/* The previous pinned section created excessive scroll distance and compressed/desaligned the content.
-   This version keeps a short pinned interaction on desktop and a normal flow on mobile. */
 @media (min-width: 992px){
   .pinned-timeline-section{
     min-height:185vh !important;
@@ -2145,7 +2115,7 @@ body{
   }
 }
 
-/* Normal section spacing outside desktop pin */
+
 @media (max-width: 991px){
   .pinned-timeline-section{
     min-height:auto !important;
@@ -2161,7 +2131,7 @@ body{
   }
 }
 
-/* Shared clean timeline geometry */
+
 .process-timeline,
 .stack-timeline{
   position:relative !important;
@@ -2178,14 +2148,14 @@ body{
   --text-x:104px;
 }
 
-/* Remove all legacy line systems */
+
 .process-timeline .timeline-progress-line,
 .process-timeline .timeline-wrapper:before,
 .stack-timeline .timeline-wrapper:before{
   display:none !important;
 }
 
-/* Base wrappers */
+
 .process-timeline .timeline-wrapper,
 .stack-timeline .timeline-wrapper{
   position:relative !important;
@@ -2208,7 +2178,7 @@ body{
   min-height:68px !important;
 }
 
-/* Line segments: they stop at the last circle; no trailing line */
+
 .process-timeline .timeline-segment,
 .stack-timeline .timeline-wrapper::after{
   content:"";
@@ -2231,7 +2201,7 @@ body{
   background:#ffc200;
 }
 
-/* Circles */
+
 .process-timeline .timeline-yr,
 .stack-timeline .timeline-yr{
   position:absolute !important;
@@ -2254,7 +2224,7 @@ body{
   font-size:18px !important;
 }
 
-/* Text blocks */
+
 .process-timeline .timeline-info,
 .stack-timeline .timeline-info{
   margin-left:var(--text-x) !important;
@@ -2279,7 +2249,7 @@ body{
   margin-left:0 !important;
 }
 
-/* Active state without shifting */
+
 .process-timeline .timeline-wrapper{
   opacity:.42;
 }
@@ -2300,7 +2270,7 @@ body{
   color:#111 !important;
 }
 
-/* Stack line and circles remain stable */
+
 .stack-timeline .timeline-wrapper::after{
   background:#474559;
 }
@@ -2311,13 +2281,13 @@ body{
   color:#fff !important;
 }
 
-/* Dark mode consistency */
+
 .dark-mode .stack-timeline .timeline-wrapper::after,
 .dark-mode .process-timeline .timeline-wrapper:not(.is-complete):not(.is-active) .timeline-segment{
   background:#474559 !important;
 }
 
-/* Mobile: use a simple readable timeline */
+
 @media (max-width: 991px){
   .timeline-scroll-note{
     display:none !important;
@@ -2344,9 +2314,6 @@ body{
   }
 }
 
-
-/* === V6: controlled wheel timeline without giant whitespace === */
-/* Normal vertical space: no 185vh/420vh sticky spacer. */
 @media (min-width: 992px){
   .pinned-timeline-section{
     min-height:auto !important;
@@ -2386,7 +2353,7 @@ body{
   padding-bottom:0 !important;
 }
 
-/* Stable two-column layout */
+
 .pinned-timeline-section .col-lg-6{
   padding-left:15px !important;
   padding-right:15px !important;
@@ -2399,7 +2366,7 @@ body{
   margin:0 0 30px !important;
 }
 
-/* Clean geometry for both timelines */
+
 .process-timeline,
 .stack-timeline{
   position:relative !important;
@@ -2416,14 +2383,14 @@ body{
   --text-x:104px;
 }
 
-/* Kill legacy progress systems completely */
+
 .process-timeline .timeline-progress-line,
 .process-timeline .timeline-wrapper:before,
 .stack-timeline .timeline-wrapper:before{
   display:none !important;
 }
 
-/* Process timeline wrappers */
+
 .process-timeline .timeline-wrapper,
 .stack-timeline .timeline-wrapper{
   position:relative !important;
@@ -2445,7 +2412,7 @@ body{
   min-height:68px !important;
 }
 
-/* Segmented line: no trailing line after last circle */
+
 .process-timeline .timeline-segment,
 .stack-timeline .timeline-wrapper::after{
   content:"";
@@ -2468,7 +2435,7 @@ body{
   background:#ffc200 !important;
 }
 
-/* Circles */
+
 .process-timeline .timeline-yr,
 .stack-timeline .timeline-yr{
   position:absolute !important;
@@ -2491,7 +2458,7 @@ body{
   font-size:18px !important;
 }
 
-/* Text alignment */
+
 .process-timeline .timeline-info,
 .stack-timeline .timeline-info{
   margin-left:var(--text-x) !important;
@@ -2516,7 +2483,7 @@ body{
   margin-left:0 !important;
 }
 
-/* Active step without layout movement */
+
 .process-timeline .timeline-wrapper.is-active,
 .process-timeline .timeline-wrapper.is-complete{
   opacity:1;
@@ -2534,7 +2501,7 @@ body{
   color:#111 !important;
 }
 
-/* Stack stable */
+
 .stack-timeline .timeline-wrapper::after{
   background:#474559 !important;
 }
@@ -2545,12 +2512,12 @@ body{
   color:#fff !important;
 }
 
-/* Desktop locked state: visual cue only */
+
 body.timeline-wheel-lock .pinned-timeline-section{
   outline:0;
 }
 
-/* Mobile/tablet: normal vertical flow */
+
 @media (max-width: 991px){
   .pinned-timeline-section{
     padding-top:64px !important;
@@ -2584,10 +2551,6 @@ body.timeline-wheel-lock .pinned-timeline-section{
   }
 }
 
-
-/* === V7: smoother timeline and moving background icons === */
-
-/* Content always above subtle moving background icons */
 body{
   position:relative;
 }
@@ -2631,7 +2594,7 @@ footer{
   }
 }
 
-/* Smoother timeline state change */
+
 .process-timeline .timeline-wrapper{
   transition:
     opacity .72s ease,
@@ -2659,7 +2622,7 @@ footer{
   transform:scale(1.04) !important;
 }
 
-/* Avoid the method section feeling excessively tall */
+
 .pinned-timeline-section{
   padding-top:72px !important;
   padding-bottom:72px !important;
@@ -2673,10 +2636,6 @@ footer{
   }
 }
 
-
-/* === V8: document-based floating full-bulb icons === */
-/* Icons live in the page background, not fixed to the viewport.
-   When the user scrolls, old icons remain in their document position and new ones appear further down. */
 .floating-icon-layer{
   position:absolute !important;
   left:0;
@@ -2724,8 +2683,6 @@ footer{
   }
 }
 
-
-/* === V9: adjusted floating lamps only === */
 .floating-icon-layer{
   position:absolute !important;
   left:0 !important;
@@ -2757,10 +2714,6 @@ footer{
   }
 }
 
-
-/* === V10: requested refinements === */
-
-/* Brand image replacing PL initials */
 .brand-image-badge{
   width:36px !important;
   height:36px !important;
@@ -2783,7 +2736,7 @@ footer{
   background:#111 !important;
 }
 
-/* Hero rotator with 4 words: evidencia / modelos / dashboards / decisiones */
+
 .hero-rotator span{
   animation:plHeroWordsV10 9.6s infinite !important;
 }
@@ -2796,7 +2749,7 @@ footer{
   29%,100%{opacity:0;transform:translateY(-34%)}
 }
 
-/* Project cards: 4 columns on wide desktop */
+
 @media (min-width: 1200px){
   .github-project-grid{
     grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
@@ -2819,7 +2772,7 @@ footer{
   }
 }
 
-/* Floating lamps: larger, balanced, not too crowded */
+
 .bg-floating-icon{
   width:var(--size, 150px) !important;
   opacity:var(--opacity, .085) !important;
@@ -2840,8 +2793,6 @@ footer{
   }
 }
 
-
-/* === V11: compact smart top navigation === */
 :root{
   --pl-nav-height:54px;
 }
@@ -2974,10 +2925,6 @@ body{
   }
 }
 
-
-/* === V12: navbar repair + remove footer whitespace === */
-
-/* The floating icon layer must never create document height. */
 .floating-icon-layer{
   position:fixed !important;
   inset:0 !important;
@@ -2990,7 +2937,7 @@ body{
   pointer-events:none !important;
 }
 
-/* Keep content above the background layer. */
+
 .navbar,
 section,
 footer{
@@ -2998,14 +2945,14 @@ footer{
   z-index:2;
 }
 
-/* Avoid extra bottom scroll caused by absolute/fixed decorative elements. */
+
 html,
 body{
   min-height:100%;
   overflow-x:hidden;
 }
 
-/* Compact navbar without distorting the page layout. */
+
 :root{
   --pl-nav-height:48px;
 }
@@ -3092,7 +3039,7 @@ body{
   margin-right:5px !important;
 }
 
-/* Navbar visibility states. */
+
 .pl-smart-navbar.nav-hidden{
   transform:translateY(calc(-1 * var(--pl-nav-height) - 8px)) !important;
 }
@@ -3104,18 +3051,18 @@ body{
   transform:translateY(0) !important;
 }
 
-/* Prevent old Headroom classes from fighting with the custom logic. */
+
 .pl-smart-navbar.headroom--pinned,
 .pl-smart-navbar.headroom--unpinned{
   will-change:transform;
 }
 
-/* Hero gets enough room under the fixed navbar without pushing the whole document down. */
+
 .about.full-screen{
   padding-top:calc(var(--pl-nav-height) + 42px) !important;
 }
 
-/* Footer should finish cleanly. */
+
 .footer{
   padding-bottom:28px !important;
   margin-bottom:0 !important;
@@ -3159,9 +3106,6 @@ body{
   }
 }
 
-
-/* === V13: stable navbar visual reset === */
-/* Final override: clean, compact, fixed navigation without layout distortion. */
 :root{
   --pl-nav-height:62px;
 }
@@ -3278,12 +3222,12 @@ body{
   margin-right:6px !important;
 }
 
-/* Keep hero visually separated from the fixed bar, but do not stretch the whole page. */
+
 .about.full-screen{
   padding-top:calc(var(--pl-nav-height) + 52px) !important;
 }
 
-/* Mobile: allow the opened menu to expand naturally; only the closed bar is compact. */
+
 @media (max-width:767px){
   :root{
     --pl-nav-height:58px;
@@ -3338,9 +3282,6 @@ body{
   }
 }
 
-
-/* === V14: clean final navbar === */
-/* Fixes duplicated nav words and mode button alignment. */
 :root{
   --pl-nav-height:58px;
 }
@@ -3449,7 +3390,7 @@ body{
   overflow:hidden !important;
 }
 
-/* Disable old data-hover pseudo text that caused duplicated labels. */
+
 .pl-smart-navbar .navbar-nav .nav-link span:before,
 .pl-smart-navbar .navbar-nav .nav-link span:after,
 .pl-smart-navbar .navbar-nav .nav-link:before,
@@ -3487,7 +3428,7 @@ body{
   vertical-align:middle !important;
 }
 
-/* Keep the icon graphic inside the button instead of floating away. */
+
 .pl-smart-navbar .color-mode-icon:before{
   position:absolute !important;
   inset:0 !important;
@@ -3499,12 +3440,12 @@ body{
   transform:none !important;
 }
 
-/* Hero spacing under fixed navbar. */
+
 .about.full-screen{
   padding-top:calc(var(--pl-nav-height) + 52px) !important;
 }
 
-/* Mobile menu: clean and not duplicated. */
+
 @media (max-width:767px){
   :root{
     --pl-nav-height:58px;
@@ -3566,9 +3507,6 @@ body{
   }
 }
 
-
-/* === V15: six-step process timeline === */
-/* Keeps pinned/wheel-controlled behavior but accommodates 6 stages cleanly. */
 .process-timeline{
   --circle-size:68px !important;
   --circle-x:34px !important;
@@ -3616,7 +3554,7 @@ body{
   line-height:1.48;
 }
 
-/* Slightly lengthen the scroll interaction now that there are six steps. */
+
 @media (min-width:992px){
   .pinned-timeline-section{
     padding-top:76px !important;
@@ -3649,11 +3587,6 @@ body{
   }
 }
 
-
-/* === V16: restore timeline scale and Stack bar === */
-/* Restores the larger previous visual scale after adding the 6-step sequence. */
-
-/* Section sizing: no excessive blank space, but enough height for 6 large steps. */
 .pinned-timeline-section{
   padding-top:82px !important;
   padding-bottom:86px !important;
@@ -3673,7 +3606,7 @@ body{
   }
 }
 
-/* Process: restore previous circle/text size */
+
 .process-timeline{
   --circle-size:74px !important;
   --circle-x:37px !important;
@@ -3770,7 +3703,7 @@ body{
   line-height:1.45 !important;
 }
 
-/* Active/completed state: no lateral movement */
+
 .process-timeline .timeline-wrapper{
   opacity:.42 !important;
 }
@@ -3801,7 +3734,7 @@ body{
   color:#111 !important;
 }
 
-/* Stack: restore original side vertical bar and circle alignment */
+
 .stack-timeline{
   --stack-circle-size:68px;
   --stack-circle-x:34px;
@@ -3826,7 +3759,7 @@ body{
   display:none !important;
 }
 
-/* This is the Stack vertical bar. */
+
 .stack-timeline .timeline-wrapper::after{
   content:"" !important;
   position:absolute !important;
@@ -3936,10 +3869,6 @@ body{
   }
 }
 
-
-/* === V19B: Timeline cinematográfica estable === */
-/* Parte de v18. No agrega otro sistema de navegación: solo mejora el visual de la timeline existente. */
-
 .process-timeline{
   --pl-cinema-yellow:#ffc200;
   --pl-cinema-line:#3f3d4e;
@@ -3947,7 +3876,7 @@ body{
   --pl-cinema-glow:rgba(255,194,0,.32);
 }
 
-/* Línea base y relleno por tramo */
+
 .process-timeline .timeline-segment{
   overflow:hidden !important;
   background:var(--pl-cinema-line) !important;
@@ -3973,7 +3902,7 @@ body{
   height:100%;
 }
 
-/* Círculo activo con respiración suave */
+
 .process-timeline .timeline-yr{
   transition:
     background-color .52s ease,
@@ -4001,7 +3930,7 @@ body{
   }
 }
 
-/* Textos: aparición más gradual y foco claro */
+
 .process-timeline .timeline-info{
   transition:
     opacity .64s ease,
@@ -4048,7 +3977,7 @@ body{
   opacity:.96;
 }
 
-/* Reveal inicial escalonado, solo visual */
+
 .pinned-timeline-section.timeline-cinema-ready .process-timeline .timeline-wrapper{
   animation:timelineRevealStable .72s cubic-bezier(.16,1,.3,1) both;
   animation-delay:calc(var(--step-index, 0) * .055s);
@@ -4065,7 +3994,7 @@ body{
   }
 }
 
-/* Halo muy leve detrás del texto activo */
+
 .process-timeline .timeline-info{
   position:relative;
 }
@@ -4082,12 +4011,12 @@ body{
   z-index:-1;
 }
 
-/* Evita que la animación inicial pise el estado activo luego de reproducirse */
+
 .pinned-timeline-section.timeline-cinema-ready.timeline-cinema-settled .process-timeline .timeline-wrapper{
   animation:none !important;
 }
 
-/* Mobile/tablet: no bloqueo, solo estado completo y lectura limpia */
+
 @media (max-width:991px){
   .process-timeline .timeline-wrapper{
     animation:none !important;
@@ -4116,9 +4045,6 @@ body{
   }
 }
 
-
-/* === V19C: remove active timeline yellow background block === */
-/* Mantiene la transición cinematográfica, pero elimina el halo/rectángulo amarillo detrás del texto activo. */
 .process-timeline .timeline-wrapper.is-active .timeline-info::before,
 .process-timeline .timeline-info::before{
   content:none !important;
@@ -4136,8 +4062,6 @@ body{
   text-shadow:0 0 18px rgba(255,194,0,.10) !important;
 }
 
-
-/* === V20: floating CTA discreto === */
 .floating-cta{
   position:fixed;
   right:24px;
@@ -4240,8 +4164,6 @@ body{
   }
 }
 
-
-/* === V21: indicador visual de scroll debajo del hero === */
 .hero-scroll-indicator{
   display:inline-flex;
   align-items:center;
@@ -4366,10 +4288,6 @@ body:not(.dark-mode) .hero-scroll-indicator__line{
   }
 }
 
-
-/* === V22: secciones principales a pantalla completa === */
-/* Prueba: que el indicador de scroll tenga más sentido, evitando que se vea parte de la sección siguiente al 100%. */
-
 @media (min-width: 992px){
   .fullscreen-sections-experiment section:not(.github-projects-section){
     min-height:100vh;
@@ -4438,10 +4356,6 @@ body:not(.dark-mode) .hero-scroll-indicator__line{
   }
 }
 
-
-/* === V23: ajuste de cierre contacto + footer compacto === */
-/* Mantiene el experimento fullscreen, pero evita que Contacto genere un vacío grande antes del footer. */
-
 @media (min-width: 992px){
   .fullscreen-sections-experiment .contact-form-section{
     min-height:auto !important;
@@ -4456,7 +4370,7 @@ body:not(.dark-mode) .hero-scroll-indicator__line{
   }
 }
 
-/* Reduce el espacio vertical del cierre general de la web. */
+
 .footer,
 footer.footer{
   padding-top:18px !important;
@@ -4482,7 +4396,7 @@ footer.footer .copyright-text{
   font-weight:700;
 }
 
-/* Evita márgenes residuales entre contacto y footer. */
+
 .contact-form-section + .footer,
 .contact-form-section + footer.footer{
   margin-top:0 !important;
@@ -4505,10 +4419,6 @@ footer.footer .copyright-text{
     line-height:1.18 !important;
   }
 }
-
-
-/* === V24: navbar fija con estado activo === */
-/* Barra superior fija, tipografía levemente mayor y sección activa visible. */
 
 :root{
   --pl-navbar-height:68px;
@@ -4606,7 +4516,7 @@ body:not(.dark-mode) .navbar.pl-active-navbar{
     transform .22s ease;
 }
 
-/* Evita doble render de textos si quedaran restos del hover del template. */
+
 .pl-active-navbar .navbar-nav .nav-link::before,
 .pl-active-navbar .navbar-nav .nav-link::after,
 .pl-active-navbar .navbar-nav .nav-link span::before,
@@ -4671,13 +4581,13 @@ body:not(.dark-mode) .pl-active-navbar .color-mode{
   margin-right:0 !important;
 }
 
-/* El hero no queda tapado por la barra fija. */
+
 .fullscreen-sections-experiment .about.full-screen,
 .about.full-screen{
   padding-top:calc(var(--pl-navbar-height) + 42px) !important;
 }
 
-/* Mobile/tablet */
+
 @media (max-width:767px){
   :root{
     --pl-navbar-height:62px;
@@ -4736,51 +4646,47 @@ body:not(.dark-mode) .pl-active-navbar .color-mode{
   }
 }
 
-
-/* === V25B: hero microanimación estricta sobre v24 === */
-/* Solo agrega fade + slide de entrada. No modifica colores, fondos, imagen, sombras ni estilos base. */
-
-.hero-entry-v25b-section .hero-entry-v25b{
+.hero-entry-section .hero-entry{
   opacity:0;
   transform:translate3d(0, 18px, 0);
   will-change:opacity, transform;
 }
 
-body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b{
-  animation:v25bHeroFadeSlide .78s cubic-bezier(.16,1,.3,1) forwards;
+body.hero-entry-ready .hero-entry-section .hero-entry{
+  animation:heroFadeSlide .78s cubic-bezier(.16,1,.3,1) forwards;
 }
 
-body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-kicker{
+body.hero-entry-ready .hero-entry-section .hero-entry-kicker{
   animation-delay:.04s;
 }
 
-body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-title{
+body.hero-entry-ready .hero-entry-section .hero-entry-title{
   animation-delay:.12s;
 }
 
-body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-copy{
+body.hero-entry-ready .hero-entry-section .hero-entry-copy{
   animation-delay:.22s;
 }
 
-body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-buttons{
+body.hero-entry-ready .hero-entry-section .hero-entry-buttons{
   animation-delay:.32s;
 }
 
-body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-scroll{
+body.hero-entry-ready .hero-entry-section .hero-entry-scroll{
   animation-delay:.42s;
 }
 
-/* Foto/card: mismo color e imagen que v24. Solo desplazamiento de entrada, sin filtros ni escala. */
-.hero-entry-v25b-section .hero-entry-v25b-image{
+
+.hero-entry-section .hero-entry-image{
   transform:translate3d(22px, 0, 0);
 }
 
-body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
-  animation:v25bHeroImageSlide .84s cubic-bezier(.16,1,.3,1) forwards;
+body.hero-entry-ready .hero-entry-section .hero-entry-image{
+  animation:heroImageSlide .84s cubic-bezier(.16,1,.3,1) forwards;
   animation-delay:.18s;
 }
 
-@keyframes v25bHeroFadeSlide{
+@keyframes heroFadeSlide{
   from{
     opacity:0;
     transform:translate3d(0, 18px, 0);
@@ -4791,7 +4697,7 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
   }
 }
 
-@keyframes v25bHeroImageSlide{
+@keyframes heroImageSlide{
   from{
     opacity:0;
     transform:translate3d(22px, 0, 0);
@@ -4803,16 +4709,12 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
 }
 
 @media (prefers-reduced-motion: reduce){
-  .hero-entry-v25b-section .hero-entry-v25b{
+  .hero-entry-section .hero-entry{
     opacity:1 !important;
     transform:none !important;
     animation:none !important;
   }
 }
-
-
-/* === V26B: filtros de proyectos con reacomodamiento FLIP === */
-/* Rehecho para evitar trabas: no usa min-height forzado ni blur pesado; anima posiciones reales. */
 
 .github-project-grid{
   contain:layout paint;
@@ -4866,10 +4768,6 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
   }
 }
 
-
-/* === V27B: animación de entrada por sección segura === */
-/* No modifica HTML ni layout. Solo oculta temporalmente elementos marcados por JS y los revela una vez. */
-
 .pl-section-reveal-pending{
   opacity:0;
   transform:translate3d(0, 20px, 0);
@@ -4885,7 +4783,7 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
   transition-delay:calc(var(--pl-reveal-order, 0) * 46ms);
 }
 
-/* Variantes suaves por tipo de elemento */
+
 .pl-section-reveal-title.pl-section-reveal-pending{
   transform:translate3d(0, 14px, 0);
 }
@@ -4898,12 +4796,12 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
   transform:translate3d(18px, 0, 0);
 }
 
-/* No competir con el filtro FLIP una vez reveladas las cards */
+
 .github-project-card.pl-section-reveal-visible{
   will-change:auto;
 }
 
-/* Si la grilla está filtrando, la lógica FLIP manda */
+
 .github-project-grid.is-filtering .github-project-card{
   transition-delay:0ms !important;
 }
@@ -4928,10 +4826,6 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
     will-change:auto !important;
   }
 }
-
-
-/* === V28: método compacto para pantalla completa === */
-/* Objetivo: que Proceso analítico + Stack entren mejor en la pantalla visible cuando la sección está pinneada. */
 
 @media (min-width: 992px){
   .fullscreen-sections-experiment .pinned-timeline-section{
@@ -4964,7 +4858,7 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
     max-width:520px;
   }
 
-  /* Proceso analítico: compacta verticalmente sin achicarlo en exceso. */
+  
   .process-timeline{
     --circle-size:58px !important;
     --circle-x:29px !important;
@@ -5022,7 +4916,7 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
     margin-bottom:0 !important;
   }
 
-  /* Stack lateral: ocupa el alto de forma equilibrada y no queda desbordado. */
+  
   .stack-timeline{
     --stack-circle-size:56px !important;
     --stack-circle-x:28px !important;
@@ -5092,7 +4986,7 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
   }
 }
 
-/* Pantallas desktop bajas: compactación extra para que el efecto pinneado no corte contenido. */
+
 @media (min-width: 992px) and (max-height: 820px){
   .fullscreen-sections-experiment .pinned-timeline-section{
     padding-top:calc(var(--pl-navbar-height, 68px) + 14px) !important;
@@ -5223,7 +5117,7 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
   }
 }
 
-/* Pantallas muy bajas: se privilegia que toda la sección sea visible, sin aplastar la experiencia móvil. */
+
 @media (min-width: 992px) and (max-height: 700px){
   .fullscreen-sections-experiment .pinned-timeline-section{
     min-height:auto !important;
@@ -5247,10 +5141,6 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
   }
 }
 
-
-/* === V28B: método compacto ajustado === */
-/* Recupera tamaño de letra, compacta por espaciado y centra textos en círculos. */
-
 @media (min-width: 992px){
   .fullscreen-sections-experiment .pinned-timeline-section{
     padding-top:calc(var(--pl-navbar-height, 68px) + 18px) !important;
@@ -5269,7 +5159,7 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
     line-height:1.28 !important;
   }
 
-  /* Proceso: más legible, menos espacio muerto entre etapas. */
+  
   .process-timeline{
     --circle-size:60px !important;
     --circle-x:30px !important;
@@ -5342,7 +5232,7 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
     margin-bottom:0 !important;
   }
 
-  /* Stack: mismos criterios, con círculos centrados. */
+  
   .stack-timeline{
     --stack-circle-size:58px !important;
     --stack-circle-x:29px !important;
@@ -5427,7 +5317,7 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
   }
 }
 
-/* Desktop bajo: conservar legibilidad; compactar más por separación, no tanto por fuente. */
+
 @media (min-width: 992px) and (max-height: 820px){
   .fullscreen-sections-experiment .pinned-timeline-section{
     padding-top:calc(var(--pl-navbar-height, 68px) + 10px) !important;
@@ -5550,7 +5440,7 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
   }
 }
 
-/* Pantallas muy bajas: mantener la suavidad de lectura antes que cortar contenido. */
+
 @media (min-width: 992px) and (max-height: 700px){
   .process-timeline .timeline-wrapper,
   .stack-timeline .timeline-wrapper{
@@ -5568,10 +5458,6 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
   }
 }
 
-
-/* === V29D: Canales hover solo en recuadro y nombre === */
-/* Parte de v28b. No modifica íconos: no color, no fill, no stroke, no filter, no fondo, no escala. */
-
 .social-section .social-card{
   position:relative;
   overflow:hidden;
@@ -5583,7 +5469,7 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
     box-shadow .32s cubic-bezier(.16,1,.3,1) !important;
 }
 
-/* Capa de brillo restringida al recuadro: queda detrás del contenido y no toca el ícono. */
+
 .social-section .social-card::before{
   content:"";
   position:absolute;
@@ -5598,7 +5484,7 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
   transition:opacity .28s ease;
 }
 
-/* Borde interno amarillo muy sutil. */
+
 .social-section .social-card::after{
   content:"";
   position:absolute;
@@ -5613,7 +5499,7 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
   transition:opacity .28s ease;
 }
 
-/* Asegura que el contenido quede por encima de las capas de recuadro. */
+
 .social-section .social-card > *{
   position:relative;
   z-index:1;
@@ -5635,19 +5521,19 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
   opacity:1;
 }
 
-/* El nombre pasa a amarillo. No afecta ícono ni subtítulo. */
+
 .social-section .social-card:hover strong,
 .social-section .social-card:focus-within strong{
   color:#ffc200 !important;
 }
 
-/* Anulación precisa del efecto base que escalaba/rotaba el ícono al hover. */
+
 .social-section .social-card:hover .social-icon,
 .social-section .social-card:focus-within .social-icon{
   transform:none !important;
 }
 
-/* Blindaje: los SVG, imágenes o letras dentro del ícono no reciben estilos de hover. */
+
 .social-section .social-card:hover .social-icon svg,
 .social-section .social-card:focus-within .social-icon svg,
 .social-section .social-card:hover .social-icon img,
@@ -5658,7 +5544,7 @@ body.hero-entry-v25b-ready .hero-entry-v25b-section .hero-entry-v25b-image{
   filter:none !important;
 }
 
-/* Modo claro: sombra más liviana. */
+
 body:not(.dark-mode) .social-section .social-card:hover,
 body:not(.dark-mode) .social-section .social-card:focus-within{
   border-color:rgba(255,194,0,.48) !important;
@@ -5688,8 +5574,6 @@ body:not(.dark-mode) .social-section .social-card::after{
   }
 }
 
-
-/* === V33: card proyecto fraude con doble enlace === */
 .project-links-dual{
   display:flex;
   flex-wrap:wrap;
@@ -5724,8 +5608,6 @@ body:not(.dark-mode) .social-section .social-card::after{
   }
 }
 
-
-/* === V33E: botones fraude en una sola fila === */
 .github-project-card[data-tags*="fraude"] .project-links-dual{
   display:grid !important;
   grid-template-columns:minmax(0, 1fr) minmax(0, 1fr) !important;
@@ -5749,7 +5631,7 @@ body:not(.dark-mode) .social-section .social-card::after{
   line-height:1 !important;
 }
 
-/* Pisa la regla mobile anterior que los apilaba verticalmente. */
+
 @media (max-width:575px){
   .github-project-card[data-tags*="fraude"] .project-links-dual{
     display:grid !important;
@@ -5763,10 +5645,6 @@ body:not(.dark-mode) .social-section .social-card::after{
     font-size:11.5px !important;
   }
 }
-
-
-/* === V34: hover legible en botones de Proyectos === */
-/* Corrige botones de cards: al pasar el mouse, fondo amarillo y texto negro. */
 
 .github-projects-section .github-project-card .project-link:hover,
 .github-projects-section .github-project-card .project-link:focus,
@@ -5785,7 +5663,7 @@ body:not(.dark-mode) .social-section .social-card::after{
   color:#111111 !important;
 }
 
-/* Mantiene coherencia para botones secundarios de la card de fraude. */
+
 .github-projects-section .github-project-card .secondary-project-link:hover,
 .github-projects-section .github-project-card .secondary-project-link:focus,
 .github-projects-section .github-project-card .secondary-project-link:active,
@@ -5795,14 +5673,12 @@ body:not(.dark-mode) .social-section .social-card::after{
   border-color:#ffc200 !important;
 }
 
-/* Accesibilidad: foco visible sin perder contraste. */
+
 .github-projects-section .github-project-card .project-link:focus-visible{
   outline:2px solid rgba(255,194,0,.55);
   outline-offset:3px;
 }
 
-
-/* === V35: card fraude regresión logística === */
 .github-project-card img[src^="https://github.com/user-attachments/assets/fbd23c5f-10ee-4f3a-8291-61e9dc0b75cf"]{
   width:100%;
   height:100%;
@@ -5811,8 +5687,6 @@ body:not(.dark-mode) .social-section .social-card::after{
   display:block;
 }
 
-
-/* === V36: URLs actualizadas para imágenes de fraude === */
 .github-project-card img[src^="https://github.com/user-attachments/assets/df046322-8737-48a1-84c9-969724ec0fca"],
 .github-project-card img[src^="https://github.com/user-attachments/assets/f9ff0e2c-c8f1-4995-b46d-ac2a93e89acb"]{
   width:100%;
@@ -5822,8 +5696,6 @@ body:not(.dark-mode) .social-section .social-card::after{
   display:block;
 }
 
-
-/* === V37: card fraude DBSCAN === */
 .github-project-card img[src^="https://github.com/user-attachments/assets/2bdeff45-b7dc-4bbe-9091-f4520707bd71"]{
   width:100%;
   height:100%;
@@ -5832,8 +5704,6 @@ body:not(.dark-mode) .social-section .social-card::after{
   display:block;
 }
 
-
-/* === V38: links y tags editoriales proyectos 1 a 4 === */
 .github-project-card .project-links-editorial{
   display:grid !important;
   grid-template-columns:minmax(0, 1fr) minmax(0, 1fr) !important;
@@ -5886,10 +5756,6 @@ body:not(.dark-mode) .social-section .social-card::after{
   }
 }
 
-
-/* === V39: botones verticales proyectos 1 a 4 === */
-/* Los botones Entrar al proyecto / Leer en LinkedIn vuelven a ubicarse uno debajo del otro. */
-
 .github-project-card .project-links-editorial{
   display:flex !important;
   flex-direction:column !important;
@@ -5929,10 +5795,6 @@ body:not(.dark-mode) .social-section .social-card::after{
   }
 }
 
-
-/* === V40: tamaño de letra estándar en botones proyectos 1 a 4 === */
-/* Mantiene los botones uno debajo del otro, pero recupera el tamaño visual del resto de proyectos. */
-
 .github-project-card .project-links-editorial .project-link{
   font-size:13px !important;
   line-height:1.08 !important;
@@ -5947,10 +5809,6 @@ body:not(.dark-mode) .social-section .social-card::after{
     padding:12px 11px !important;
   }
 }
-
-
-/* === V41: botones uniformes al pie de cards de Proyectos === */
-/* Todas las cards de proyectos pasan a tener cuerpo flexible y botones alineados al pie. */
 
 .github-project-grid{
   align-items:stretch !important;
@@ -5972,7 +5830,7 @@ body:not(.dark-mode) .social-section .social-card::after{
   flex-direction:column !important;
 }
 
-/* Los tags quedan antes del bloque de botones; el botón/bloque se empuja al pie. */
+
 .github-project-card .mini-tags{
   margin-bottom:14px !important;
 }
@@ -5983,7 +5841,7 @@ body:not(.dark-mode) .social-section .social-card::after{
   margin-top:auto !important;
 }
 
-/* Tipografía uniforme para todos los botones de proyectos, tomando como referencia visual el botón estándar. */
+
 .github-project-card .project-link,
 .github-project-card .project-links-dual .project-link,
 .github-project-card .project-links-editorial .project-link{
@@ -5995,7 +5853,7 @@ body:not(.dark-mode) .social-section .social-card::after{
   padding:12px 13px !important;
 }
 
-/* Mantiene los proyectos 1 a 4 con botones verticales y mismo tamaño. */
+
 .github-project-card .project-links-editorial{
   display:flex !important;
   flex-direction:column !important;
@@ -6005,7 +5863,7 @@ body:not(.dark-mode) .social-section .social-card::after{
   width:100%;
 }
 
-/* Mantiene los proyectos de fraude con botones en una misma fila. */
+
 .github-project-card[data-tags*="fraude"] .project-links-dual{
   display:grid !important;
   grid-template-columns:minmax(0, 1fr) minmax(0, 1fr) !important;
@@ -6019,7 +5877,7 @@ body:not(.dark-mode) .social-section .social-card::after{
   font-size:13px !important;
 }
 
-/* En pantallas muy angostas, prioriza que el texto no se corte. */
+
 @media (max-width:575px){
   .github-project-card .project-link,
   .github-project-card .project-links-dual .project-link,
@@ -6035,10 +5893,6 @@ body:not(.dark-mode) .social-section .social-card::after{
     padding:11px 8px !important;
   }
 }
-
-
-/* === V41A: ajuste botones al pie proyecto 8 === */
-/* Refuerzo específico para la card 8 / K-means: el bloque de botones queda pegado al pie del box. */
 
 .github-project-card[data-tags*="k-means"]{
   height:100% !important;
@@ -6059,13 +5913,11 @@ body:not(.dark-mode) .social-section .social-card::after{
   width:100% !important;
 }
 
-/* Evita que los tags empujen visualmente el bloque de botones fuera de alineación. */
+
 .github-project-card[data-tags*="k-means"] .mini-tags{
   margin-bottom:14px !important;
 }
 
-
-/* === V41B: ajustes links/tags proyectos 5 a 10 === */
 .github-project-card .project-links-dashboard{
   display:grid !important;
   grid-template-columns:minmax(0, 1fr) minmax(0, 1fr) !important;
@@ -6112,10 +5964,6 @@ body:not(.dark-mode) .social-section .social-card::after{
   }
 }
 
-
-/* === V41C: proyecto 5 botones verticales === */
-/* El proyecto 5 mantiene dos botones, pero uno debajo del otro. */
-
 .github-project-card.featured .project-links-dashboard{
   display:flex !important;
   flex-direction:column !important;
@@ -6155,8 +6003,6 @@ body:not(.dark-mode) .social-section .social-card::after{
   }
 }
 
-
-/* === V41E: imágenes proyectos 11 y 12 + texto Inicio === */
 .github-project-card img[src^="https://github.com/user-attachments/assets/e30b2a50-8004-4a99-a5c2-c3046bad889c"],
 .github-project-card img[src^="https://github.com/user-attachments/assets/3691c5a8-7897-4edc-ad99-0144d72cec7e"]{
   width:100%;
@@ -6165,10 +6011,6 @@ body:not(.dark-mode) .social-section .social-card::after{
   object-position:center center;
   display:block;
 }
-
-
-/* === V42A: iconos de destino en botones de Proyectos === */
-/* Iconos internos a la derecha, sin cambiar alto/ancho de botones ni aplicar a Python/SPSS. */
 
 .github-project-card .project-link.has-destination-icon{
   gap:7px !important;
@@ -6235,10 +6077,6 @@ body:not(.dark-mode) .social-section .social-card::after{
   }
 }
 
-
-/* === V42B: iconos tipo badge derecho en botones de Proyectos === */
-/* Ajusta v42a: el icono queda como círculo a la derecha, sin alterar alto/ancho del botón. */
-
 .github-project-card .project-link.has-destination-icon{
   position:relative !important;
   gap:0 !important;
@@ -6246,7 +6084,7 @@ body:not(.dark-mode) .social-section .social-card::after{
   overflow:hidden !important;
 }
 
-/* Badge base: más grande, circular, ubicado a la derecha como en la referencia. */
+
 .github-project-card .project-link .btn-destination-icon{
   position:absolute !important;
   right:5px !important;
@@ -6277,14 +6115,14 @@ body:not(.dark-mode) .social-section .social-card::after{
   pointer-events:none !important;
 }
 
-/* GitHub / repositorios */
+
 .github-project-card .project-link .btn-destination-icon-github{
   background:#171b21 !important;
   color:#ffffff !important;
   font-size:9px !important;
 }
 
-/* LinkedIn */
+
 .github-project-card .project-link .btn-destination-icon-linkedin{
   background:#2f8fca !important;
   color:#ffffff !important;
@@ -6294,7 +6132,7 @@ body:not(.dark-mode) .social-section .social-card::after{
   text-transform:none !important;
 }
 
-/* Documentación */
+
 .github-project-card .project-link .btn-destination-icon-docs{
   background:#f4f0df !important;
   color:#171b21 !important;
@@ -6302,7 +6140,7 @@ body:not(.dark-mode) .social-section .social-card::after{
   letter-spacing:-.08em !important;
 }
 
-/* Looker Studio / dashboard */
+
 .github-project-card .project-link .btn-destination-icon-dashboard{
   background:linear-gradient(135deg, #4285f4 0 45%, #34a853 45% 70%, #fbbc04 70% 100%) !important;
   color:#ffffff !important;
@@ -6310,14 +6148,14 @@ body:not(.dark-mode) .social-section .social-card::after{
   letter-spacing:-.08em !important;
 }
 
-/* Externos genéricos */
+
 .github-project-card .project-link .btn-destination-icon-external{
   background:#ffc200 !important;
   color:#111111 !important;
   font-size:15px !important;
 }
 
-/* En hover amarillo, el badge se mantiene reconocible. */
+
 .github-project-card .project-link:hover .btn-destination-icon,
 .github-project-card .project-link:focus .btn-destination-icon,
 .github-project-card .project-link:active .btn-destination-icon,
@@ -6328,7 +6166,7 @@ body:not(.dark-mode) .social-section .social-card::after{
     0 6px 14px rgba(0,0,0,.26) !important;
 }
 
-/* No aplicar iconos ni reservas de espacio a Python/SPSS porque no tienen span. */
+
 .github-project-card .project-link:not(.has-destination-icon){
   padding-right:13px !important;
 }
@@ -6350,8 +6188,6 @@ body:not(.dark-mode) .social-section .social-card::after{
   }
 }
 
-
-/* === V42C: iconos reales en badges de botones + proyectos 11/12 === */
 .github-project-card .project-link .btn-destination-icon img{
   display:block;
   width:18px;
@@ -6360,7 +6196,7 @@ body:not(.dark-mode) .social-section .social-card::after{
   pointer-events:none;
 }
 
-/* GitHub usa imagen negra original convertida a blanco sobre badge oscuro. */
+
 .github-project-card .project-link .btn-destination-icon-github{
   background:#171b21 !important;
 }
@@ -6371,7 +6207,7 @@ body:not(.dark-mode) .social-section .social-card::after{
   height:18px;
 }
 
-/* Looker: badge blanco para respetar el logo multicolor. */
+
 .github-project-card .project-link .btn-destination-icon-dashboard{
   background:#ffffff !important;
 }
@@ -6382,24 +6218,19 @@ body:not(.dark-mode) .social-section .social-card::after{
   filter:none !important;
 }
 
-/* LinkedIn se mantiene como texto "in" dentro del círculo azul. */
+
 .github-project-card .project-link .btn-destination-icon-linkedin{
   background:#2f8fca !important;
   color:#ffffff !important;
 }
 
-/* Estado en desarrollo más consistente si la clase no existía. */
+
 .github-project-card .project-status.development{
   background:rgba(255,194,0,.14);
   color:#ffc200;
   border:1px solid rgba(255,194,0,.26);
 }
 
-
-/* === V43C: hero corregido sin cajas externas === */
-/* Corrige ancho del texto, elimina caja del kicker y deja la barra de tecnologías sin contenedor visible. */
-
-/* El texto vuelve a comportarse como en v42c: no cruza hacia la imagen. */
 #about .about-text{
   width:100%;
   max-width:640px !important;
@@ -6407,7 +6238,7 @@ body:not(.dark-mode) .social-section .social-card::after{
   z-index:2;
 }
 
-#about .hero-entry-v25b-copy{
+#about .hero-entry-copy{
   display:block !important;
   width:100% !important;
   max-width:590px !important;
@@ -6418,8 +6249,8 @@ body:not(.dark-mode) .social-section .social-card::after{
   overflow-wrap:normal;
 }
 
-/* Kicker sin caja, solo texto naranja. */
-#about .small-text.hero-entry-v25b-kicker{
+
+#about .small-text.hero-entry-kicker{
   background:transparent !important;
   border:0 !important;
   box-shadow:none !important;
@@ -6428,11 +6259,11 @@ body:not(.dark-mode) .social-section .social-card::after{
   color:#ff9f1c !important;
 }
 
-#about .small-text.hero-entry-v25b-kicker span{
+#about .small-text.hero-entry-kicker span{
   color:#ff9f1c !important;
 }
 
-/* Barra automática sin box externo. Solo quedan las tarjetas individuales. */
+
 .hero-tech-marquee{
   width:min(86%, 590px);
   max-width:100%;
@@ -6561,8 +6392,8 @@ body:not(.dark-mode) .social-section .social-card::after{
   }
 }
 
-body:not(.dark-mode) #about .small-text.hero-entry-v25b-kicker,
-body:not(.dark-mode) #about .small-text.hero-entry-v25b-kicker span{
+body:not(.dark-mode) #about .small-text.hero-entry-kicker,
+body:not(.dark-mode) #about .small-text.hero-entry-kicker span{
   color:#ff9f1c !important;
 }
 
@@ -6591,7 +6422,7 @@ body:not(.dark-mode) .tech-logo-text small{
 
 @media (max-width:991px){
   #about .about-text,
-  #about .hero-entry-v25b-copy{
+  #about .hero-entry-copy{
     max-width:100% !important;
   }
 
@@ -6646,11 +6477,7 @@ body:not(.dark-mode) .tech-logo-text small{
   }
 }
 
-
-/* === V43D: iconos negros y más visibles en barra de tecnologías === */
-/* Mantiene la distribución de v43c, pero recupera el estilo oscuro/visible de v43b. */
-
-#about .hero-entry-v25b-copy{
+#about .hero-entry-copy{
   max-width:590px !important;
 }
 
@@ -6661,7 +6488,7 @@ body:not(.dark-mode) .tech-logo-text small{
     0 8px 18px rgba(0,0,0,.24) !important;
 }
 
-/* Los SVG externos de Simple Icons se muestran negros y con mayor presencia. */
+
 .tech-logo-icon-wrap img{
   width:25px !important;
   height:25px !important;
@@ -6670,14 +6497,14 @@ body:not(.dark-mode) .tech-logo-text small{
   opacity:.96 !important;
 }
 
-/* Looker Studio local: también pasa a monocromo para conservar coherencia visual. */
+
 .tech-logo-icon-wrap img[src$="looker-button-icon.png"]{
   filter:grayscale(1) brightness(0) contrast(1.35) !important;
   width:27px !important;
   height:27px !important;
 }
 
-/* Fallback textual si algún logo remoto no carga. */
+
 .tech-logo-fallback{
   display:none;
   width:100%;
@@ -6691,7 +6518,7 @@ body:not(.dark-mode) .tech-logo-text small{
   letter-spacing:-.07em;
 }
 
-/* Un poco más de contraste para las tarjetas sin recrear el box externo. */
+
 .tech-logo-card{
   background:rgba(255,255,255,.070) !important;
   border-color:rgba(245,240,232,.14) !important;
@@ -6713,14 +6540,6 @@ body:not(.dark-mode) .tech-logo-card{
     height:24px !important;
   }
 }
-
-
-
-
-
-
-/* === V43G: logos tecnológicos locales y limpieza de assets === */
-/* Continúa desde v43f: la barra ya no depende de imágenes externas. */
 
 .tech-logo-icon-wrap{
   width:39px !important;
@@ -6831,8 +6650,6 @@ body:not(.dark-mode) .tech-logo-card{
   }
 }
 
-
-/* === V43H: descripciones actualizadas y Matplotlib en barra tecnológica === */
 .tech-logo-img-matplotlib{
   width:27px !important;
   height:27px !important;
@@ -6857,10 +6674,6 @@ body:not(.dark-mode) .tech-logo-card{
   }
 }
 
-
-/* === V43I: corrección icono Matplotlib === */
-/* Usa el SVG oficial de Matplotlib y conserva sus colores para evitar el círculo negro/hueco. */
-
 .tech-logo-img-matplotlib{
   filter:none !important;
   width:31px !important;
@@ -6881,8 +6694,6 @@ body:not(.dark-mode) .tech-logo-card{
   }
 }
 
-
-/* === V44: filtros sincronizados con tags reales de proyectos === */
 .repo-filter-toolbar{
   gap:12px !important;
   row-gap:14px !important;
@@ -6904,8 +6715,6 @@ body:not(.dark-mode) .tech-logo-card{
   }
 }
 
-
-/* === V44B: filtros por categorías desplegables === */
 .repo-filter-toolbar-categories{
   gap:12px !important;
   row-gap:14px !important;
@@ -6972,10 +6781,6 @@ body:not(.dark-mode) .repo-filter-category-panel{
     transform:none;
   }
 }
-
-
-/* === V44G: filtros por categorías desplegables al pasar el mouse === */
-/* Variante basada en v44b: grupos Todos, Disciplina, Herramientas, Modelo y Tema. */
 
 .repo-filter-toolbar-hover-groups{
   gap:12px !important;
@@ -7109,13 +6914,6 @@ body:not(.dark-mode) .repo-filter-toolbar-hover-groups .repo-filter-category-pan
   }
 }
 
-
-
-
-
-/* === V44I: grilla de proyectos restaurada a 4 columnas === */
-/* Corrige v44h: la grilla vuelve a 4 columnas en desktop, sin tocar filtros ni tags. */
-
 .github-project-grid{
   width:min(1320px, 100%) !important;
   margin-left:auto !important;
@@ -7148,7 +6946,7 @@ body:not(.dark-mode) .repo-filter-toolbar-hover-groups .repo-filter-category-pan
   }
 }
 
-/* Mantiene el comportamiento de filtros por categorías con hover de v44g/v44h. */
+
 .repo-filter-toolbar-hover-groups{
   gap:12px !important;
   row-gap:14px !important;
@@ -7270,10 +7068,6 @@ body:not(.dark-mode) .repo-filter-toolbar-hover-groups .repo-filter-category-pan
   }
 }
 
-
-/* === V44J: ancho de Proyectos restaurado como referencia v42c === */
-/* La grilla usa 4 columnas y el contenedor padre deja de limitarla a ancho Bootstrap estándar. */
-
 .github-projects-section .container{
   max-width:1380px !important;
 }
@@ -7324,10 +7118,6 @@ body:not(.dark-mode) .repo-filter-toolbar-hover-groups .repo-filter-category-pan
   }
 }
 
-
-/* === V44K: filtro estable de proyectos === */
-/* Refuerza que una card filtrada no quede visible por estados de animación anteriores. */
-
 .github-project-card.is-filtered-out,
 .github-project-card[hidden]{
   display:none !important;
@@ -7343,9 +7133,6 @@ body:not(.dark-mode) .repo-filter-toolbar-hover-groups .repo-filter-category-pan
   max-width:1380px !important;
 }
 
-
-
-/* === PRELOADER SYSTEM PRO === */
 body.preloader-active{
   overflow:hidden !important;
 }
@@ -7490,8 +7277,6 @@ body.preloader-active{
   }
 }
 
-
-/* V44R · Cinematic zoom */
 .pl-preloader--r .pl-preloader__bg{
   background:
     radial-gradient(circle at 50% 45%, rgba(255,194,0,.16), transparent 24%),
@@ -7531,10 +7316,6 @@ body.preloader-active{
   to{opacity:1; transform:translateY(0)}
 }
 
-
-
-/* === V44R1: preloader profesional sin texto aclaratorio === */
-/* Mantiene el zoom cinematográfico, pero elimina copy explicativo de prototipo. */
 .pl-preloader--r .pl-preloader__progress{
   margin-top:30px;
 }
@@ -7543,8 +7324,6 @@ body.preloader-active{
   margin-top:14px;
 }
 
-
-/* === V44R2: textos profesionales y título de proyectos refinado === */
 .projects-title-display{
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
   font-size: clamp(2.7rem, 5.2vw, 5.25rem) !important;
@@ -7566,8 +7345,6 @@ body:not(.dark-mode) .projects-title-display{
   }
 }
 
-
-/* === V44R2B: carpeta canales-icons y ajustes Medium/Gmail 2026 === */
 .social-section .social-icon img{
   width:42px;
   height:42px;
@@ -7582,8 +7359,6 @@ body:not(.dark-mode) .projects-title-display{
   }
 }
 
-
-/* === V44R2B: carpeta canales-icons y ajustes Medium/Gmail 2026 === */
 .social-section .social-card.mail .social-icon{
   background:#ffffff !important;
 }
@@ -7609,8 +7384,6 @@ body:not(.dark-mode) .projects-title-display{
   }
 }
 
-
-/* === V44R2C: corrección iconos oficiales Medium 2026 y Gmail 2026 === */
 .social-section .social-card.medium .social-icon{
   background:#111111 !important;
 }
@@ -7634,14 +7407,10 @@ body:not(.dark-mode) .projects-title-display{
   }
 }
 
-
-/* === V45A: icono animado en navbar === */
 .brand-image-badge img{
   object-fit:contain !important;
 }
 
-
-/* === V45C: loader por scroll oscuro + entrada sin arrastre de scroll === */
 html.pl-scroll-loader-lock,
 html.pl-scroll-loader-lock body{
   scroll-behavior:auto !important;
@@ -7804,8 +7573,6 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   }
 }
 
-
-/* === V45N: horizontal pin fade replicado con paneles planos === */
 .process-horizontal-edge-section{
   position:relative;
   min-height:100vh;
@@ -7965,8 +7732,6 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   }
 }
 
-
-/* === V45O: refinamiento horizontal process panels === */
 .process-horizontal-edge-section{background:#0d0f0d !important;}
 .process-horizontal-panel__inner{width:min(1440px,100%) !important;grid-template-columns:minmax(0,.72fr) minmax(430px,.78fr) !important;gap:clamp(36px,7vw,132px) !important;padding-left:clamp(32px,7vw,104px) !important;padding-right:clamp(14px,3.2vw,42px) !important;}
 .process-horizontal-panel__number{font-size:clamp(3.4rem,8.5vw,8rem) !important;line-height:.80 !important;margin-bottom:clamp(14px,2vw,26px) !important;letter-spacing:-.08em !important;opacity:.16 !important;}
@@ -7987,9 +7752,6 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
 .process-horizontal-edge-section.is-light-stage .process-horizontal-guide__bullet.is-active{background:#ffc200;box-shadow:0 0 0 8px rgba(255,194,0,.24);}
 @media (max-width:991px){.process-horizontal-panel__inner{grid-template-columns:1fr !important;padding:72px 22px !important;}.process-horizontal-panel__media{transform:none !important;justify-self:start !important;}.process-horizontal-guide{display:none !important;}}
 
-
-
-/* === V45P: refinamiento visual y drag global de la sección horizontal === */
 .process-horizontal-edge-section{
   cursor:grab;
 }
@@ -8161,8 +7923,6 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   .process-horizontal-tech-chip img{width:42px !important;height:42px !important;}
 }
 
-
-/* === V45Q: contraste fino en horizontal process === */
 .process-horizontal-static-head{
   max-width:none !important;
   width:auto !important;
@@ -8289,8 +8049,6 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   box-shadow:0 0 0 8px rgba(255,194,0,.25), 0 0 20px rgba(255,194,0,.42) !important;
 }
 
-
-/* === V45R: ajuste número, título estático limpio y hover de imágenes horizontales === */
 .process-horizontal-static-head__kicker{
   display:none !important;
 }
@@ -8327,7 +8085,7 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   z-index:2;
 }
 
-/* Hover visual sobre la imagen, tomando el criterio de interacción de los íconos de redes */
+
 .process-horizontal-panel__media{
   transition:
     transform .42s cubic-bezier(.22,.61,.36,1),
@@ -8387,22 +8145,18 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   }
 }
 
-
-/* === V45S: corrección texto, número lateral y card stack en solapas === */
-
-/* El título estático baja para no superponerse con la navbar */
 .process-horizontal-static-head{
   top:clamp(82px, 9.5vh, 118px) !important;
 }
 
-/* Se restaura la posición del texto previa: el número no empuja el contenido */
+
 .process-horizontal-panel__copy{
   padding-left:0 !important;
   position:relative !important;
   isolation:isolate;
 }
 
-/* Número grande más separado hacia la izquierda, sin desplazar título/subtítulo/texto */
+
 .process-horizontal-panel__number{
   position:absolute !important;
   left:calc(-1 * clamp(120px, 13vw, 260px)) !important;
@@ -8417,7 +8171,7 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   opacity:.15 !important;
 }
 
-/* Se elimina el hover anterior de la imagen contenedora */
+
 .process-horizontal-panel__media{
   display:grid !important;
   place-items:center !important;
@@ -8444,7 +8198,7 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   transform:none !important;
 }
 
-/* Card swiper adaptado del efecto adjunto, aplicado solo al visual de cada solapa */
+
 .process-card-swiper .card-groups,
 .process-card-swiper .card-group,
 .process-card-swiper .card{
@@ -8586,10 +8340,6 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   }
 }
 
-
-/* === V45T: fixes card stack visible, número, título y contraste Matplotlib === */
-
-/* Título estático: más abajo, apenas a la derecha y sin Inter */
 .process-horizontal-static-head{
   top:clamp(108px, 12vh, 148px) !important;
   left:clamp(42px, 5.8vw, 96px) !important;
@@ -8600,7 +8350,7 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   letter-spacing:-.045em !important;
 }
 
-/* Número: no desplaza texto, está más cerca que en v45s y arranca a la altura superior del título */
+
 .process-horizontal-panel__copy{
   padding-left:0 !important;
   position:relative !important;
@@ -8620,7 +8370,7 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   opacity:.15 !important;
 }
 
-/* Las tarjetas ahora usan <img>, no background-image, para evitar transparencias */
+
 .process-card-swiper .card{
   overflow:hidden;
   background-image:none !important;
@@ -8636,7 +8386,7 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   -webkit-user-drag:none;
 }
 
-/* Centrado y dimensión real del stack para que todas las imágenes se vean */
+
 .process-card-swiper .card-groups{
   width:min(30vmin, 310px) !important;
   aspect-ratio:5 / 7;
@@ -8661,7 +8411,7 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   height:auto !important;
 }
 
-/* Matplotlib: evitar que quede como bola plana */
+
 .process-horizontal-tech-chip img[src$="matplotlib.svg"]{
   filter:none !important;
   background:#fff8de;
@@ -8686,10 +8436,6 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   }
 }
 
-
-/* === V45U: alineación fina, tipografía restaurada y tech chips completos === */
-
-/* Título estático vuelve a la familia anterior */
 .process-horizontal-static-head h2{
   font-family:"Maven Pro", sans-serif !important;
   font-weight:900 !important;
@@ -8697,7 +8443,7 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   left:auto !important;
 }
 
-/* Alineación uniforme del bloque de texto en todas las solapas, tomando como referencia solapa 1 */
+
 .process-horizontal-panel__copy{
   width:min(540px, 100%) !important;
   padding-left:0 !important;
@@ -8725,7 +8471,7 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   max-width:540px !important;
 }
 
-/* Números alineados todos al mismo punto superior izquierdo que la solapa 1 */
+
 .process-horizontal-panel__number{
   left:calc(-1 * clamp(42px, 5vw, 92px)) !important;
   top:6px !important;
@@ -8735,7 +8481,7 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   transform:none !important;
 }
 
-/* El icono de Matplotlib ya no lleva aro forzado */
+
 .process-horizontal-tech-chip img[src$="matplotlib.svg"]{
   background:transparent !important;
   border-radius:0 !important;
@@ -8743,7 +8489,7 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   box-shadow:none !important;
 }
 
-/* Cards visibles y no repetidas */
+
 .process-card-swiper .card{
   background:#111 !important;
 }
@@ -8754,7 +8500,7 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   display:block;
 }
 
-/* Mantener consistencia visual del contenido */
+
 @media (max-width:991px){
   .process-horizontal-panel__copy,
   .process-horizontal-panel h3,
@@ -8765,10 +8511,6 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   }
 }
 
-
-/* === V45V: separación número/contenido y Matplotlib plain === */
-
-/* Volver a la tipografía previa del título estático */
 .process-horizontal-static-head h2{
   font-family:"Maven Pro", sans-serif !important;
   font-weight:900 !important;
@@ -8776,7 +8518,7 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   white-space:nowrap !important;
 }
 
-/* Mover texto e íconos apenas a la derecha para despegar del número */
+
 .process-horizontal-panel__copy{
   width:min(560px, 100%) !important;
   max-width:560px !important;
@@ -8786,7 +8528,7 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   box-sizing:border-box;
 }
 
-/* El número queda más a la izquierda, pero respetando el alto superior del título */
+
 .process-horizontal-panel__number{
   left:calc(-1 * clamp(86px, 8.4vw, 166px)) !important;
   top:0 !important;
@@ -8796,7 +8538,7 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   font-variant-numeric:tabular-nums lining-nums;
 }
 
-/* Todos los títulos, subtítulos y textos arrancan desde la misma columna */
+
 .process-horizontal-panel h3,
 .process-horizontal-panel small,
 .process-horizontal-panel p,
@@ -8806,7 +8548,7 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   max-width:520px !important;
 }
 
-/* Títulos y subtítulos en una sola línea */
+
 .process-horizontal-panel h3{
   white-space:nowrap !important;
   overflow:visible !important;
@@ -8823,12 +8565,12 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   letter-spacing:.055em !important;
 }
 
-/* La fila de tecnologías sigue la misma columna del texto */
+
 .process-horizontal-tech{
   justify-content:flex-start !important;
 }
 
-/* Matplotlib plain: sin aro, sin fondo, recoloreable según archivo SVG */
+
 .process-horizontal-tech-chip img[src$="matplotlib.svg"]{
   background:transparent !important;
   border-radius:0 !important;
@@ -8863,8 +8605,6 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   }
 }
 
-
-/* === V45W: textos finales de etapas y ajuste de subtítulo largo === */
 .process-horizontal-panel small{
   white-space:nowrap !important;
 }
@@ -8879,8 +8619,6 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   max-width:620px !important;
 }
 
-
-/* === V45X: Matplotlib con imagen subida y solapa 1 con imágenes adjuntas === */
 .process-horizontal-tech-chip--matplotlib .process-horizontal-tech-icon--matplotlib{
   width:54px;
   height:54px;
@@ -8912,8 +8650,6 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   background:#f5f1ea;
 }
 
-
-/* === V46C: ajustes de títulos y posición de Redes === */
 .social-section{
   padding-top:3.25rem !important;
 }
@@ -8938,8 +8674,6 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   }
 }
 
-
-/* === V46D: hero rotator con patrones === */
 .hero-rotator span{
   animation:plHeroWordsV46D 12s infinite !important;
 }
@@ -8960,8 +8694,6 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   23%,100%{opacity:0;transform:translateY(-34%)}
 }
 
-
-/* === V46E: alinear Redes con Proyectos sin tocar Proyectos === */
 .social-section{
   padding-top:3rem !important;
 }
@@ -8988,9 +8720,6 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   }
 }
 
-
-/* === V46F: subir claramente el bloque completo de Redes === */
-/* Solo afecta la sección Redes. No modifica Proyectos. */
 #networks.social-section{
   padding-top:0 !important;
   padding-bottom:6.5rem !important;
@@ -9026,9 +8755,6 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   }
 }
 
-
-/* === V46G: ajuste fino vertical de Redes para alinear título con Proyectos === */
-/* Solo afecta la sección Redes. No modifica Proyectos. */
 #networks.social-section{
   padding-top:2.25rem !important;
   padding-bottom:5.25rem !important;
@@ -9060,8 +8786,6 @@ body.pl-scroll-loader-finishing .pl-scroll-loader__next{
   }
 }
 
-
-/* === V46H: efecto global tipo Locomotive Scroll === */
 html.pl-locomotive-style-active{
   scroll-behavior:auto !important;
 }
@@ -9078,8 +8802,6 @@ body.pl-locomotive-style-active{
   }
 }
 
-
-/* === V46I: estado activo del scroll con inercia reforzada === */
 html.pl-locomotive-style-active{
   scroll-behavior:auto !important;
 }
@@ -9088,14 +8810,10 @@ body.pl-locomotive-style-active{
   overscroll-behavior-y:none;
 }
 
-
-/* === V47A: section auto-snap estático compatible con GitHub Pages === */
 html.pl-section-snap-enabled{
   scroll-behavior:auto !important;
 }
 
-
-/* === V47C: quitar recuadro interno de navbar sin cambiar contraste de texto === */
 .pl-active-navbar .navbar-collapse,
 .navbar.pl-active-navbar .navbar-collapse,
 .pl-active-navbar .navbar-collapse.show,
@@ -9121,7 +8839,7 @@ html.pl-section-snap-enabled{
   content:none !important;
 }
 
-/* En móvil se mantiene el menú legible, pero sin bloque rectangular opaco heredado. */
+
 @media (max-width:767px){
   .pl-active-navbar .navbar-collapse,
   .navbar.pl-active-navbar .navbar-collapse{
@@ -9130,8 +8848,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-/* === V47E: tarjetas de Metodología con bordes redondeados y contorno limpio === */
 .process-card-swiper .card{
   overflow:hidden !important;
   border-radius:clamp(14px, 1.9vmin, 24px) !important;
@@ -9166,7 +8882,7 @@ html.pl-section-snap-enabled{
   backface-visibility:hidden;
 }
 
-/* Mantiene el efecto de apertura, pero con sombra más limpia y consistente. */
+
 .process-card-swiper .card-group:hover > .card,
 .process-horizontal-panel__media:hover .card-group > .card{
   box-shadow:
@@ -9175,7 +8891,7 @@ html.pl-section-snap-enabled{
   border-color:rgba(18,20,18,.46) !important;
 }
 
-/* En fondos oscuros, el contorno claro evita cortes visuales en las esquinas. */
+
 .process-horizontal-panel.is-light-text .process-card-swiper .card{
   border-color:rgba(255,248,222,.28) !important;
   outline-color:rgba(255,255,255,.42) !important;
@@ -9192,12 +8908,8 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-/* === V49A: sección de proyectos estilo CodePen, sin tocar Proyectos original === */
 .pl-codepen-projects-section{background:#212121;color:#fff;overflow:hidden;padding:0}.dark-mode .pl-codepen-projects-section{background:#10120f}.pl-codepen-cards{background:#212121;margin-left:0;margin-right:0}.dark-mode .pl-codepen-cards{background:#10120f}.pl-codepen-cards:hover .pl-codepen-card-single{opacity:.15}.pl-codepen-cards .pl-codepen-card-single{background:#212121;padding:0;opacity:1;transition:opacity .5s ease-in-out}.dark-mode .pl-codepen-cards .pl-codepen-card-single{background:#10120f}.pl-codepen-cards .pl-codepen-card-single:hover{opacity:1}.pl-codepen-card-single>.row{min-height:550px}.pl-codepen-card-img{padding:0;min-height:550px;background:#0f110f}.pl-codepen-img-link{display:block;height:100%;min-height:550px;overflow:hidden}.pl-codepen-card-img .carousel,.pl-codepen-card-img .carousel-inner,.pl-codepen-card-img .carousel-item{height:550px;min-height:550px}.pl-codepen-card-img .carousel-item{background-position:center;background-size:cover;background-repeat:no-repeat;transition:transform .55s ease,filter .55s ease}.pl-codepen-card-single:hover .carousel-item{transform:scale(1.055);filter:saturate(1.08) contrast(1.04)}.pl-codepen-card-content{height:550px;min-height:550px;padding:40px;color:#fff;background:repeating-linear-gradient(-45deg,rgba(255,255,255,.035) 0 1px,transparent 1px 9px),#212121}.dark-mode .pl-codepen-card-content{background:repeating-linear-gradient(-45deg,rgba(255,255,255,.035) 0 1px,transparent 1px 9px),#141814}.pl-codepen-card-height{height:100%}.pl-codepen-card-text{width:100%;max-width:600px;text-align:left}.pl-codepen-card-text h2{color:#ffca28;margin-bottom:20px;font-family:var(--font-heading,inherit);text-transform:none;font-size:clamp(28px,2.7vw,46px);line-height:.98;letter-spacing:-1.4px}.pl-codepen-card-text p{color:rgba(255,255,255,.78);font-size:15px;line-height:1.55}.pl-codepen-card-text .project-status{margin-bottom:14px}.pl-codepen-card-text .mini-tags{margin-top:18px;margin-bottom:20px}.pl-codepen-card-text .mini-tags span{background:rgba(255,255,255,.09);color:#f7f3ea;border:1px solid rgba(255,255,255,.11)}.pl-codepen-card-links,.pl-codepen-card-text .project-links-dual,.pl-codepen-card-text .project-links-editorial{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.pl-codepen-card-text .project-link{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:9px 14px;border-radius:999px;background:#ffca28;color:#111;font-weight:900;font-size:13px;text-decoration:none;transition:background .35s ease,color .35s ease,transform .25s ease}.pl-codepen-card-text .project-link:hover{background:#fff;color:#212121;transform:translateY(-2px)}.pl-codepen-card-text .secondary-project-link{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.32)}.pl-codepen-card-text .secondary-project-link:hover{background:#fff;color:#212121}.pl-codepen-card-img .carousel-indicators{bottom:18px;margin-bottom:0}.pl-codepen-card-img .carousel-indicators li{height:10px;width:10px;border-radius:50%;background-color:#ffca28;opacity:.45}.pl-codepen-card-img .carousel-indicators .active{opacity:1}@media(max-width:1199px){.pl-codepen-card-single>.row,.pl-codepen-card-img,.pl-codepen-img-link,.pl-codepen-card-img .carousel,.pl-codepen-card-img .carousel-inner,.pl-codepen-card-img .carousel-item,.pl-codepen-card-content{min-height:520px;height:520px}.pl-codepen-card-content{padding:34px}}@media(max-width:991px){.pl-codepen-cards:hover .pl-codepen-card-single{opacity:1}.pl-codepen-card-single{max-width:920px;margin-left:auto;margin-right:auto}}@media(max-width:767px){.pl-codepen-card-single>.row{min-height:auto}.pl-codepen-card-img,.pl-codepen-img-link,.pl-codepen-card-img .carousel,.pl-codepen-card-img .carousel-inner,.pl-codepen-card-img .carousel-item{height:360px;min-height:360px}.pl-codepen-card-content{height:auto;min-height:auto;padding:28px 24px 32px}}
 
-
-/* === V49B: CodePen proyectos 4:5 completos e intercalado por filas === */
 .pl-codepen-projects-section{
   background:#080909 !important;
   padding:64px 0 !important;
@@ -9437,9 +9149,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-/* === V49C: formato editorial oscuro para descripciones del showcase de Proyectos === */
-/* Ajusta trama, tipografía, tamaños y jerarquía visual sin eliminar íconos. */
 #projects-showcase .pl-codepen-text-cell{
   position:relative;
   background:
@@ -9645,9 +9354,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-/* === V49D: formato de descripción aplicado a cards originales de Proyectos === */
-/* Aplica el estilo de la referencia directamente sobre #projects, sin quitar íconos ni tocar HTML. */
 #projects .github-project-card{
   background:
     repeating-linear-gradient(
@@ -9853,10 +9559,6 @@ html.pl-section-snap-enabled{
     font-size:14px !important;
   }
 }
-
-
-/* === V49G: restauración final de botones e íconos de Proyectos === */
-/* Regla central: usar siempre badge .btn-destination-icon; no img/svg sueltos. */
 
 #projects .github-project-card .project-link-row,
 #projects .github-project-card .project-links-dual,
@@ -10081,10 +9783,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-/* === V49H: ajuste final de espaciado y nowrap botones Proyectos 7-9 === */
-
-/* Proyecto 7: mismo espaciado vertical que el resto de botones. */
 #projects .github-project-card:nth-of-type(7) .project-link-row,
 #projects .github-project-card:nth-of-type(7) .project-links-dual,
 #projects .github-project-card:nth-of-type(7) .project-links-editorial,
@@ -10104,13 +9802,13 @@ html.pl-section-snap-enabled{
   margin-bottom:0 !important;
 }
 
-/* LinkedIn del proyecto 7: conservar ancho completo pero sin separación extra. */
+
 #projects .github-project-card:nth-of-type(7) .linkedin-placeholder-link,
 #projects-showcase .pl-codepen-text-cell[data-project-index="7"] .linkedin-placeholder-link{
   margin-top:0 !important;
 }
 
-/* Proyectos 8 y 9: los botones técnicos no deben partirse en dos líneas. */
+
 #projects .github-project-card:nth-of-type(8) .project-link-row,
 #projects .github-project-card:nth-of-type(8) .project-links-dual,
 #projects .github-project-card:nth-of-type(8) .project-links-editorial,
@@ -10151,7 +9849,7 @@ html.pl-section-snap-enabled{
   padding-right:9px !important;
 }
 
-/* El texto dentro del botón tampoco debe envolver. */
+
 #projects .github-project-card:nth-of-type(8) .project-link *,
 #projects .github-project-card:nth-of-type(9) .project-link *,
 #projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-link *,
@@ -10159,7 +9857,7 @@ html.pl-section-snap-enabled{
   white-space:nowrap !important;
 }
 
-/* Mantener badges centrados y sin afectar SPSS/Python, que no tienen ícono. */
+
 #projects .github-project-card:nth-of-type(8) .project-link:not(.has-destination-icon),
 #projects .github-project-card:nth-of-type(9) .project-link:not(.has-destination-icon),
 #projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-link:not(.has-destination-icon),
@@ -10167,7 +9865,7 @@ html.pl-section-snap-enabled{
   padding-right:9px !important;
 }
 
-/* En pantallas menores, permitimos wrap del contenedor, pero cada botón sigue en una línea. */
+
 @media (max-width:991px){
   #projects .github-project-card:nth-of-type(8) .project-link-row,
   #projects .github-project-card:nth-of-type(8) .project-links-dual,
@@ -10187,10 +9885,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-/* === V49I: ancho de grilla y botones full-width Proyectos 7-9 === */
-
-/* Ensanchar un poco el bloque de tarjetas original, sin cambiar 4 columnas. */
 #projects.github-projects-section .container,
 .github-projects-section#projects .container{
   width:min(1480px, calc(100vw - 40px)) !important;
@@ -10207,7 +9901,7 @@ html.pl-section-snap-enabled{
   grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
 }
 
-/* Proyecto 7: mismo comportamiento visual que proyecto 5: botones full-width apilados y compactos. */
+
 #projects .github-project-card:nth-of-type(7) .project-links-dual,
 #projects .github-project-card:nth-of-type(7) .project-links-editorial,
 #projects .github-project-card:nth-of-type(7) .project-link-row,
@@ -10232,7 +9926,7 @@ html.pl-section-snap-enabled{
   margin:0 !important;
 }
 
-/* Proyectos 8 y 9: botones técnicos full-width, uno debajo del otro. */
+
 #projects .github-project-card:nth-of-type(8) .project-links-dual,
 #projects .github-project-card:nth-of-type(8) .project-links-editorial,
 #projects .github-project-card:nth-of-type(8) .project-link-row,
@@ -10273,7 +9967,7 @@ html.pl-section-snap-enabled{
   padding-right:14px !important;
 }
 
-/* Mantener responsive original. */
+
 @media (max-width:1199px){
   #projects.github-projects-section .container,
   .github-projects-section#projects .container{
@@ -10310,10 +10004,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-/* === V49J: loader amarillo, grilla más ancha y botones 7-9 corregidos === */
-
-/* Loader: "Data & Analytics" en amarillo Patrones Lab */
 .pl-preloader,
 .pl-preloader *{
   --pl-loader-yellow:#ffc200;
@@ -10329,7 +10019,7 @@ html.pl-section-snap-enabled{
   color:#ffc200 !important;
 }
 
-/* Fallback directo por texto visible: si el loader usa strong/small/span genéricos, colorear el texto secundario. */
+
 .pl-preloader strong + span,
 .pl-preloader strong + small,
 .pl-preloader .pl-preloader__content span,
@@ -10337,7 +10027,7 @@ html.pl-section-snap-enabled{
   color:#ffc200 !important;
 }
 
-/* Grilla original de Proyectos: un poco más ancha, sin cambiar 4 columnas. */
+
 #projects.github-projects-section .container,
 .github-projects-section#projects .container{
   width:min(1540px, calc(100vw - 28px)) !important;
@@ -10355,7 +10045,7 @@ html.pl-section-snap-enabled{
   gap:18px !important;
 }
 
-/* PROYECTO 7: dos botones apilados con distancia real corta, igual lógica que proyecto 5. */
+
 #projects .github-project-card:nth-of-type(7) .project-links-dual,
 #projects .github-project-card:nth-of-type(7) .project-links-editorial,
 #projects .github-project-card:nth-of-type(7) .project-link-row,
@@ -10381,14 +10071,14 @@ html.pl-section-snap-enabled{
   margin:0 !important;
 }
 
-/* Evita que reglas anteriores agreguen separación vertical específica al LinkedIn del proyecto 7. */
+
 #projects .github-project-card:nth-of-type(7) .linkedin-placeholder-link,
 #projects-showcase .pl-codepen-text-cell[data-project-index="7"] .linkedin-placeholder-link{
   margin-top:0 !important;
   margin-bottom:0 !important;
 }
 
-/* PROYECTOS 8 Y 9: Ver en SPSS + Ver en Python en una sola fila horizontal. */
+
 #projects .github-project-card:nth-of-type(8) .project-links-dual,
 #projects .github-project-card:nth-of-type(8) .project-links-editorial,
 #projects .github-project-card:nth-of-type(8) .project-link-row,
@@ -10430,7 +10120,7 @@ html.pl-section-snap-enabled{
   padding-right:6px !important;
 }
 
-/* Reafirma que el texto interno tampoco pueda quebrarse. */
+
 #projects .github-project-card:nth-of-type(8) .project-link *,
 #projects .github-project-card:nth-of-type(9) .project-link *,
 #projects-showcase .pl-codepen-text-cell[data-project-index="8"] .project-link *,
@@ -10439,7 +10129,7 @@ html.pl-section-snap-enabled{
   word-break:keep-all !important;
 }
 
-/* Responsive: conservar comportamiento previo. */
+
 @media (max-width:1199px){
   #projects.github-projects-section .container,
   .github-projects-section#projects .container{
@@ -10488,17 +10178,13 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-/* === V49K: corrección real loader y botones proyectos 7-9 === */
-
-/* Loader real: el subtítulo Data & Analytics usa esta clase. */
 .pl-scroll-loader .pl-scroll-loader__subtitle,
 .pl-scroll-loader__subtitle{
   color:#ffc200 !important;
   text-shadow:0 0 18px rgba(255,194,0,.22) !important;
 }
 
-/* Proyecto 7: ahora ambos botones están en el mismo contenedor. Gap real compacto. */
+
 #projects .github-project-card:nth-of-type(7) .project-links-dual,
 #projects .github-project-card:nth-of-type(7) .project-links-editorial,
 #projects .github-project-card:nth-of-type(7) .project-link-row,
@@ -10523,14 +10209,14 @@ html.pl-section-snap-enabled{
   margin:0 !important;
 }
 
-/* Evitar que reglas anteriores separen el botón LinkedIn. */
+
 #projects .github-project-card:nth-of-type(7) .linkedin-placeholder-link,
 #projects-showcase .pl-codepen-text-cell[data-project-index="7"] .linkedin-placeholder-link{
   margin-top:0 !important;
   margin-bottom:0 !important;
 }
 
-/* Proyectos 8 y 9: fila horizontal definitiva. */
+
 #projects .github-project-card:nth-of-type(8) .project-links-dual,
 #projects .github-project-card:nth-of-type(8) .project-links-editorial,
 #projects .github-project-card:nth-of-type(8) .project-link-row,
@@ -10576,7 +10262,7 @@ html.pl-section-snap-enabled{
   padding-right:5px !important;
 }
 
-/* Ensanchar un poco más la grilla original de Proyectos. */
+
 #projects.github-projects-section .container,
 .github-projects-section#projects .container{
   width:min(1580px, calc(100vw - 24px)) !important;
@@ -10641,16 +10327,12 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-/* === V49L: estilo final cards Proyectos, filtros y dropdowns === */
-
-/* Títulos de tarjetas en crema, no amarillo. */
 #projects .github-project-body h3,
 #projects-showcase .pl-codepen-text-cell h2{
   color:#f5f0e8 !important;
 }
 
-/* Estado más legible. */
+
 #projects .github-project-body .project-status,
 #projects-showcase .pl-codepen-text-cell .project-status{
   font-size:12.8px !important;
@@ -10661,14 +10343,14 @@ html.pl-section-snap-enabled{
   letter-spacing:-.05px !important;
 }
 
-/* Descripción con mayor contraste contra fondo oscuro. */
+
 #projects .github-project-body p:not(.project-status),
 #projects-showcase .pl-codepen-text-cell p:not(.project-status){
   color:rgba(245,240,232,.92) !important;
   font-weight:650 !important;
 }
 
-/* Filtros: más planos, algo más compactos y más vistosos. */
+
 #projects .repo-filter-toolbar{
   gap:10px !important;
   row-gap:12px !important;
@@ -10703,12 +10385,12 @@ html.pl-section-snap-enabled{
   transform:translateY(-1px) !important;
 }
 
-/* Panel de filtros más definido y sin cerrar al bajar el mouse desde el botón. */
+
 #projects .repo-filter-group{
   position:relative !important;
 }
 
-/* Puente invisible entre botón y panel para que no se pierda el hover al mover el mouse hacia abajo. */
+
 #projects .repo-filter-group::after{
   content:"";
   position:absolute;
@@ -10739,7 +10421,7 @@ html.pl-section-snap-enabled{
   border-color:rgba(255,255,255,.12) !important;
 }
 
-/* Mantener dropdown visible si JS dejó aria-expanded=true. */
+
 #projects .repo-filter-group:has(.repo-filter-group-trigger[aria-expanded="true"]) .repo-filter-category-panel{
   opacity:1;
   visibility:visible;
@@ -10747,7 +10429,7 @@ html.pl-section-snap-enabled{
   transform:translateX(-50%) translateY(0);
 }
 
-/* Soporte mobile: mantener el panel usable. */
+
 @media (max-width:575px){
   #projects .repo-filter-btn,
   #projects .repo-filter-group-trigger{
@@ -10760,10 +10442,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-/* === V50A: responsive móvil base sin afectar escritorio === */
-/*
-  Solo aplica a teléfonos/tablets chicos. Mantiene intacta la vista desktop 1920x1080.
-*/
 @media (max-width: 767px){
   html,
   body{
@@ -10788,7 +10466,7 @@ html.pl-section-snap-enabled{
     touch-action:pan-y !important;
   }
 
-  /* Metodología en mobile: priorizar scroll vertical natural con un dedo. */
+  
   [data-horizontal-process-section],
   [data-horizontal-process-section] .wrapper,
   [data-horizontal-process-section] .item,
@@ -10796,7 +10474,7 @@ html.pl-section-snap-enabled{
     touch-action:pan-y !important;
   }
 
-  /* Navbar mobile: icono claro y visible sobre fondo oscuro. */
+  
   .navbar.pl-smart-navbar .navbar-toggler,
   .pl-smart-navbar .navbar-toggler{
     width:38px !important;
@@ -10835,7 +10513,7 @@ html.pl-section-snap-enabled{
     bottom:7px !important;
   }
 
-  /* Loader mobile: misma familia tipográfica base de la web y activación por toque. */
+  
   .pl-scroll-loader,
   .pl-scroll-loader__hero-text,
   .pl-scroll-loader__subtitle{
@@ -10872,7 +10550,7 @@ html.pl-section-snap-enabled{
     opacity:1 !important;
   }
 
-  /* Proyectos en teléfono: dos columnas, sin tocar desktop. */
+  
   #projects.github-projects-section .container,
   .github-projects-section#projects .container{
     width:min(100%, calc(100vw - 18px)) !important;
@@ -10999,19 +10677,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-
-/* === V50U: reconstrucción móvil limpia desde v50a === */
-/*
-  Base elegida: v50a-responsive-mobile.
-  Motivo: evita la acumulación de reglas V50B-V50T que rompían Inicio -> Metodología.
-  Alcance:
-  - solo mobile/táctil;
-  - sin pin de Metodología;
-  - sin smooth/snap entre secciones;
-  - Metodología como carrusel horizontal nativo;
-  - Redes en 4 columnas x 2 filas con iconos alineados.
-*/
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
 
   html,
@@ -11053,7 +10718,7 @@ html.pl-section-snap-enabled{
     transition:none !important;
   }
 
-  /* Inicio -> Metodología: flujo normal, sin pin, sin franja intermedia. */
+  
   #about{
     margin-bottom:0 !important;
   }
@@ -11087,7 +10752,7 @@ html.pl-section-snap-enabled{
     isolation:auto !important;
   }
 
-  /* Título normal dentro de la sección: no pin, no fixed, no overlay raro. */
+  
   #methodology .process-horizontal-static-head{
     position:relative !important;
     inset:auto !important;
@@ -11117,7 +10782,7 @@ html.pl-section-snap-enabled{
     text-shadow:0 2px 18px rgba(0,0,0,.42) !important;
   }
 
-  /* Carrusel nativo: deslizable lateralmente, sin capturar scroll vertical. */
+  
   #methodology .process-horizontal-track{
     position:relative !important;
     inset:auto !important;
@@ -11260,7 +10925,7 @@ html.pl-section-snap-enabled{
     content:none !important;
   }
 
-  /* Flechas simples, sin marco ni caja. */
+  
   #methodology .process-horizontal-panel::before,
   #methodology .process-horizontal-panel::after{
     position:absolute !important;
@@ -11296,7 +10961,7 @@ html.pl-section-snap-enabled{
     opacity:.24 !important;
   }
 
-  /* Redes: 4 columnas x 2 filas, sin spans raros y sin cambiar fuentes/iconos globales. */
+  
   #networks .social-grid,
   #networks .social-grid.social-grid-complete{
     display:grid !important;
@@ -11437,17 +11102,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-
-/* === V50V: Metodología mobile - título interno y zonas clicables === */
-/*
-  Base: v50u limpia.
-  No reintroduce pin, fixed, sticky full-screen ni transición entre secciones.
-  Ajusta solo Metodología mobile:
-  - El título queda superpuesto dentro de la primera pantalla de la sección.
-  - El título cambia de color según la solapa activa.
-  - Mantiene carrusel lateral nativo.
-*/
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
 
   #methodology.process-horizontal-edge-section{
@@ -11460,7 +11114,7 @@ html.pl-section-snap-enabled{
     background:#111111 !important;
   }
 
-  /* Título interno: ya no genera una franja propia arriba del carrusel. */
+  
   #methodology .process-horizontal-static-head{
     position:absolute !important;
     top:52px !important;
@@ -11521,7 +11175,7 @@ html.pl-section-snap-enabled{
     padding-top:116px !important;
   }
 
-  /* Zonas clicables invisibles: el feedback visual sigue siendo la flecha existente. */
+  
   #methodology .process-horizontal-panel::before,
   #methodology .process-horizontal-panel::after{
     pointer-events:none !important;
@@ -11540,17 +11194,9 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-
-/* === V50W: Proyectos mobile - filtros y cards legibles === */
-/*
-  Base: v50v.
-  Alcance exclusivo: sección Proyectos en mobile.
-  No toca Metodología, Redes ni desktop.
-*/
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
 
-  /* Filtros: el dropdown debe verse por encima de las cards y ajustar al contenido. */
+  
   #projects .repo-filter-toolbar,
   #projects .repo-filter-toolbar-hover-groups,
   #projects .repo-filter-group{
@@ -11621,7 +11267,7 @@ html.pl-section-snap-enabled{
     z-index:1 !important;
   }
 
-  /* Cards: subir legibilidad de textos. */
+  
   #projects .github-project-body{
     padding:15px 12px 16px !important;
   }
@@ -11692,7 +11338,7 @@ html.pl-section-snap-enabled{
     max-height:15px !important;
   }
 
-  /* Proyectos 8 y 9: SPSS/Python siempre en una línea. */
+  
   #projects .github-project-card:nth-of-type(8) .project-links-dual,
   #projects .github-project-card:nth-of-type(8) .project-links-editorial,
   #projects .github-project-card:nth-of-type(8) .project-link-row,
@@ -11757,17 +11403,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-
-/* === V50X: Proyectos mobile - dropdown filtros por encima y ancho por contenido === */
-/*
-  Base: v50w.
-  Alcance exclusivo: filtros de Proyectos en mobile.
-  Objetivo:
-  - que el desplegable no quede tapado por las tarjetas;
-  - que el panel no ocupe todo el ancho;
-  - que ajuste al texto más largo de cada grupo.
-*/
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
 
   #projects{
@@ -11841,7 +11476,7 @@ html.pl-section-snap-enabled{
     transform:none !important;
   }
 
-  /* Si el grupo está cerca del borde derecho, permitir que el panel se apoye a la derecha. */
+  
   #projects .repo-filter-group:last-child .repo-filter-category-panel,
   #projects .repo-filter-group:nth-last-child(2) .repo-filter-category-panel{
     left:auto !important;
@@ -11877,7 +11512,7 @@ html.pl-section-snap-enabled{
     border-color:rgba(255,194,0,.35) !important;
   }
 
-  /* La grilla queda explícitamente por debajo del desplegable. */
+  
   #projects .github-project-grid,
   #projects .github-project-card,
   #projects .project-image-link,
@@ -11887,13 +11522,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-
-/* === V50Y: Proyectos mobile - filtros siempre al frente === */
-/*
-  Corrige la causa real: los paneles quedaban recortados por overflow del toolbar.
-  En mobile el panel se posiciona fixed al abrirse, por encima de las tarjetas.
-*/
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
 
   #projects,
@@ -11916,10 +11544,7 @@ html.pl-section-snap-enabled{
     overflow:visible !important;
   }
 
-  /*
-    Estado fijo aplicado por JS.
-    Esto saca visualmente el panel de la caja scrolleable y evita que las tarjetas lo tapen.
-  */
+  
   #projects .repo-filter-category-panel.pl-mobile-filter-floating{
     position:fixed !important;
     top:var(--pl-filter-top, 80px) !important;
@@ -11976,16 +11601,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-
-/* === V50Z: Proyectos mobile - filtros funcionales en portal === */
-/*
-  Corrige V50Y:
-  - El panel se mueve temporalmente al body al abrirse.
-  - No queda dentro del contenedor scrolleable de filtros.
-  - No se intercepta el click del botón de filtro, por lo que el filtrado original funciona.
-  - El ancho sigue ajustado al contenido.
-*/
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
 
   #projects .repo-filter-toolbar{
@@ -12073,17 +11688,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-
-/* === V50AA: Proyectos mobile - barra de filtros estática === */
-/*
-  Base: v50z.
-  Corrige la barra de filtros móvil:
-  - elimina el scroll/arrastre horizontal del toolbar;
-  - permite que los filtros bajen a otra línea;
-  - mantiene el desplegable funcional en portal;
-  - no toca Metodología, Redes ni desktop.
-*/
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
 
   #projects .repo-filter-toolbar,
@@ -12131,7 +11735,7 @@ html.pl-section-snap-enabled{
     touch-action:manipulation !important;
   }
 
-  /* Se conserva el portal de v50z para que el dropdown quede por delante. */
+  
   body > .repo-filter-category-panel.pl-mobile-filter-portal{
     position:fixed !important;
     z-index:2147483000 !important;
@@ -12141,22 +11745,10 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-
-/* === V50AB: Mobile hero y textos de secciones === */
-/*
-  Base: v50aa.
-  Alcance solo mobile/táctil:
-  - Hero más grande y en 3 líneas.
-  - Copy del hero en #f4efe7.
-  - Kicker Portfolio más grande, una línea, sin marco.
-  - Intro Proyectos en #f4efe7.
-  - Intro Redes en #f4efe7.
-*/
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
 
-  /* 4) Kicker Portfolio: más grande, una línea, sin marco. */
-  #about .small-text.hero-entry-v25b-kicker,
+  
+  #about .small-text.hero-entry-kicker,
   #about .small-text{
     display:block !important;
     width:100% !important;
@@ -12178,12 +11770,12 @@ html.pl-section-snap-enabled{
   }
 
   #about .small-text *,
-  #about .small-text.hero-entry-v25b-kicker *{
+  #about .small-text.hero-entry-kicker *{
     white-space:nowrap !important;
   }
 
-  /* 1) Título hero: más grande y estructura visual de 3 líneas. */
-  #about .pl-hero-title.hero-entry-v25b-title,
+  
+  #about .pl-hero-title.hero-entry-title,
   #about .pl-hero-title{
     display:block !important;
     width:min(100%, 10.4ch) !important;
@@ -12217,22 +11809,22 @@ html.pl-section-snap-enabled{
     white-space:nowrap !important;
   }
 
-  /* 2) Descripción del hero. */
-  #about .about-text p.hero-entry-v25b-copy,
+  
+  #about .about-text p.hero-entry-copy,
   #about .about-text > p{
     color:#f4efe7 !important;
     opacity:1 !important;
     text-shadow:0 2px 18px rgba(0,0,0,.36) !important;
   }
 
-  /* 5) Intro Proyectos. */
+  
   #projects .projects-intro{
     color:#f4efe7 !important;
     opacity:1 !important;
     text-shadow:0 2px 18px rgba(0,0,0,.28) !important;
   }
 
-  /* 3) Intro Redes. */
+  
   #networks .social-intro{
     color:#f4efe7 !important;
     opacity:1 !important;
@@ -12241,42 +11833,33 @@ html.pl-section-snap-enabled{
 }
 
 @media (max-width: 380px){
-  #about .small-text.hero-entry-v25b-kicker,
+  #about .small-text.hero-entry-kicker,
   #about .small-text{
     font-size:clamp(11.5px, 3.08vw, 12.6px) !important;
     letter-spacing:-.01em !important;
   }
 
-  #about .pl-hero-title.hero-entry-v25b-title,
+  #about .pl-hero-title.hero-entry-title,
   #about .pl-hero-title{
     font-size:clamp(4.45rem, 18.6vw, 6.25rem) !important;
     max-width:10.2ch !important;
   }
 }
 
-
-
-/* === V50AC: Mobile hero - restaurar color original del kicker Portfolio === */
-/*
-  Corrige V50AB:
-  - mantiene el kicker en una línea y más grande;
-  - no fuerza color ni herencia de color;
-  - deja que los colores originales del HTML/CSS previo gobiernen el texto y los destacados.
-*/
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
 
-  #about .small-text.hero-entry-v25b-kicker,
+  #about .small-text.hero-entry-kicker,
   #about .small-text{
     color:unset !important;
   }
 
-  #about .small-text.hero-entry-v25b-kicker *,
+  #about .small-text.hero-entry-kicker *,
   #about .small-text *{
     color:revert-layer !important;
   }
 
-  /* Preservar el tamaño/una línea pedido, pero sin modificar color. */
-  #about .small-text.hero-entry-v25b-kicker,
+  
+  #about .small-text.hero-entry-kicker,
   #about .small-text{
     white-space:nowrap !important;
     overflow:hidden !important;
@@ -12288,18 +11871,9 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-
-/* === V50AD: Mobile hero - color Portfolio corregido explícitamente === */
-/*
-  Corrige V50AB/V50AC:
-  - El texto "Portfolio de proyectos" vuelve a verse claro.
-  - Los destacados BI · ML · Python · Dashboards mantienen amarillo/naranja.
-  - Se conserva una sola línea y sin marco.
-*/
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
 
-  #about .small-text.hero-entry-v25b-kicker,
+  #about .small-text.hero-entry-kicker,
   #about .small-text{
     color:#f4efe7 !important;
     opacity:1 !important;
@@ -12313,9 +11887,9 @@ html.pl-section-snap-enabled{
     outline:0 !important;
   }
 
-  #about .small-text.hero-entry-v25b-kicker span,
-  #about .small-text.hero-entry-v25b-kicker strong,
-  #about .small-text.hero-entry-v25b-kicker b,
+  #about .small-text.hero-entry-kicker span,
+  #about .small-text.hero-entry-kicker strong,
+  #about .small-text.hero-entry-kicker b,
   #about .small-text span,
   #about .small-text strong,
   #about .small-text b{
@@ -12326,19 +11900,10 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-
-/* === V50AE: Mobile hero - Portfolio completo naranja === */
-/*
-  Corrige V50AD:
-  - "Portfolio de proyectos BI · ML · Python · Dashboards" se ve como un único texto.
-  - Todo el texto completo queda en naranja.
-  - Se mantiene una sola línea y sin marco.
-*/
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
 
-  #about .small-text.hero-entry-v25b-kicker,
-  #about .small-text.hero-entry-v25b-kicker *,
+  #about .small-text.hero-entry-kicker,
+  #about .small-text.hero-entry-kicker *,
   #about .small-text,
   #about .small-text *{
     color:#ff9f1c !important;
@@ -12347,7 +11912,7 @@ html.pl-section-snap-enabled{
     white-space:nowrap !important;
   }
 
-  #about .small-text.hero-entry-v25b-kicker,
+  #about .small-text.hero-entry-kicker,
   #about .small-text{
     display:block !important;
     width:100% !important;
@@ -12361,33 +11926,25 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-
-/* === V50AF: Mobile hero - Portfolio una sola tinta naranja === */
-/*
-  Corrige V50AE:
-  El kicker completo "Portfolio de proyectos BI · ML · Python · Dashboards"
-  debe verse como un único texto del mismo color, sin blancos ni amarillos.
-*/
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
 
-  body #about .about-text .small-text.hero-entry-v25b-kicker,
-  body #about .about-text .small-text.hero-entry-v25b-kicker *,
-  body #about .about-text .small-text.hero-entry-v25b-kicker span,
-  body #about .about-text .small-text.hero-entry-v25b-kicker strong,
-  body #about .about-text .small-text.hero-entry-v25b-kicker b,
-  body #about .about-text .small-text.hero-entry-v25b-kicker em,
-  body #about .about-text .small-text.hero-entry-v25b-kicker i,
-  body.dark-mode #about .about-text .small-text.hero-entry-v25b-kicker,
-  body.dark-mode #about .about-text .small-text.hero-entry-v25b-kicker *,
-  body:not(.dark-mode) #about .about-text .small-text.hero-entry-v25b-kicker,
-  body:not(.dark-mode) #about .about-text .small-text.hero-entry-v25b-kicker *{
+  body #about .about-text .small-text.hero-entry-kicker,
+  body #about .about-text .small-text.hero-entry-kicker *,
+  body #about .about-text .small-text.hero-entry-kicker span,
+  body #about .about-text .small-text.hero-entry-kicker strong,
+  body #about .about-text .small-text.hero-entry-kicker b,
+  body #about .about-text .small-text.hero-entry-kicker em,
+  body #about .about-text .small-text.hero-entry-kicker i,
+  body.dark-mode #about .about-text .small-text.hero-entry-kicker,
+  body.dark-mode #about .about-text .small-text.hero-entry-kicker *,
+  body:not(.dark-mode) #about .about-text .small-text.hero-entry-kicker,
+  body:not(.dark-mode) #about .about-text .small-text.hero-entry-kicker *{
     color:#ff9f1c !important;
     -webkit-text-fill-color:#ff9f1c !important;
     opacity:1 !important;
   }
 
-  body #about .about-text .small-text.hero-entry-v25b-kicker{
+  body #about .about-text .small-text.hero-entry-kicker{
     display:block !important;
     width:100% !important;
     max-width:100% !important;
@@ -12401,24 +11958,12 @@ html.pl-section-snap-enabled{
     text-shadow:0 2px 16px rgba(0,0,0,.45) !important;
   }
 
-  body #about .about-text .small-text.hero-entry-v25b-kicker *{
+  body #about .about-text .small-text.hero-entry-kicker *{
     white-space:nowrap !important;
     text-shadow:inherit !important;
   }
 }
 
-
-
-/* === V51B: Mobile Metodología - tarjeta arriba, texto abajo === */
-/*
-  Base válida: v51 / v50af.
-  No parte de v51a.
-  Objetivo:
-  - subir claramente la tarjeta animada;
-  - bajar claramente el bloque de número/título/subtítulo/descripción/iconos;
-  - separar ambos bloques para dar aire a la animación expandida;
-  - no tocar scroll, click zones, JS, Proyectos, Redes ni desktop.
-*/
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
 
   #methodology .process-horizontal-static-head{
@@ -12445,10 +11990,7 @@ html.pl-section-snap-enabled{
     padding:6px 18px 74px !important;
   }
 
-  /*
-    Tarjeta animada más arriba.
-    No se agranda agresivamente para no romper el estado expandido.
-  */
+  
   #methodology .process-horizontal-panel__media{
     width:min(60vw, 248px) !important;
     max-height:27svh !important;
@@ -12458,10 +12000,7 @@ html.pl-section-snap-enabled{
     z-index:3 !important;
   }
 
-  /*
-    Bloque inferior más abajo.
-    Esto abre espacio entre la animación expandida y el título de la solapa.
-  */
+  
   #methodology .process-horizontal-panel__copy{
     width:min(92vw, 420px) !important;
     padding-left:30px !important;
@@ -12558,14 +12097,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-
-/* === V51C: Mobile Metodología - bajar bloque inferior === */
-/*
-  Base: v51b.
-  Mantiene las tarjetas animadas donde quedaron.
-  Baja de forma explícita el bloque completo de texto/número/iconos.
-*/
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
 
   #methodology .process-horizontal-panel__copy{
@@ -12598,14 +12129,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-
-/* === V51D: Mobile Metodología - título Ciclo más arriba === */
-/*
-  Base: v51c.
-  Solo sube "Ciclo de vida del dato".
-  No toca tarjetas animadas ni bloque inferior.
-*/
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
 
   #methodology .process-horizontal-static-head{
@@ -12621,14 +12144,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-
-/* === V51E: Mobile Metodología - separar número y título verticalmente === */
-/*
-  Base: v51d.
-  Solo ajusta la separación vertical entre el número grande y el título de cada solapa.
-  No toca tarjetas animadas, bloque general, JS, filtros, Redes, Proyectos ni desktop.
-*/
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
 
   #methodology .process-horizontal-panel__number{
@@ -12650,17 +12165,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-
-/* === V52B: Selector bilingüe ES/EN === */
-/*
-  Español queda como idioma base.
-  El botón alterna:
-  - ES: muestra 🇺🇸 para pasar a inglés.
-  - EN: muestra 🇪🇸 para volver a español.
-  Desktop: a la izquierda de Modo.
-  Mobile: a la izquierda del menú, fuera del collapse.
-*/
 .language-toggle{
   border:0;
   outline:0;
@@ -12749,9 +12253,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-
-/* === V52B fix: banderas como imágenes SVG === */
 .language-toggle__flag-img{
   display:block;
   width:23px;
@@ -12768,14 +12269,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-
-/* === V52D: navbar mode icon only === */
-/*
-  Quita el texto Modo/Mode y deja solo el ícono luna/sol.
-  Mismo tamaño visual que el selector de idioma.
-  Sin marco, sin fondo y sin sombra.
-*/
 .color-mode{
   width:34px !important;
   height:34px !important;
@@ -12841,16 +12334,6 @@ html.pl-section-snap-enabled{
   }
 }
 
-
-
-/* === V52E: navbar idioma/modo alineados + sol por default en dark mode === */
-/*
-  Ajuste visual:
-  - bandera e ícono de modo alineados al centro;
-  - mayor separación entre ambos;
-  - si la web inicia en dark-mode, el icono visible es el sol,
-    porque representa la acción de pasar a modo claro.
-*/
 .navbar .ml-lg-auto,
 .navbar .ml-lg-4{
   display:flex !important;
@@ -12876,14 +12359,14 @@ html.pl-section-snap-enabled{
   transform:translateY(0) !important;
 }
 
-/* Default real: body.dark-mode debe mostrar sol como acción para cambiar a claro. */
+
 body.dark-mode .color-mode-icon:before{
-  content:"\eb65" !important; /* uil-sun */
+  content:"\eb65" !important; 
 }
 
-/* En modo claro, mostrar luna como acción para volver a oscuro. */
+
 body:not(.dark-mode) .color-mode-icon:before{
-  content:"\eb9f" !important; /* uil-moon */
+  content:"\eb9f" !important; 
 }
 
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
@@ -12901,17 +12384,6 @@ body:not(.dark-mode) .color-mode-icon:before{
   }
 }
 
-
-
-/* === V52F: navbar click interaction fix === */
-/*
-  Corrige interacción visual entre bandera e icono de modo:
-  - unifica alineación con gap real entre controles;
-  - elimina el pseudo-elemento ::before agregado antes;
-  - deja luna/sol solo en ::after, como en la implementación original;
-  - dark-mode muestra sol como acción para pasar a claro;
-  - light-mode muestra luna como acción para pasar a oscuro.
-*/
 .navbar .ml-lg-4{
   display:flex !important;
   align-items:center !important;
@@ -12966,7 +12438,7 @@ body:not(.dark-mode) .color-mode-icon:before{
   transform:none !important;
 }
 
-/* No usar ::before: era la causa del sol/luna duplicado o desfasado. */
+
 .color-mode .color-mode-icon::before,
 body.dark-mode .color-mode-icon::before,
 body:not(.dark-mode) .color-mode-icon::before{
@@ -12974,7 +12446,7 @@ body:not(.dark-mode) .color-mode-icon::before{
   display:none !important;
 }
 
-/* Icono único por ::after. */
+
 .color-mode .color-mode-icon::after{
   font-family:'unicons' !important;
   display:block !important;
@@ -12992,14 +12464,14 @@ body:not(.dark-mode) .color-mode-icon::before{
   transform:none !important;
 }
 
-/* Web en oscuro: mostrar sol para indicar cambio a claro. */
+
 body.dark-mode .color-mode-icon::after,
 body.dark-mode .color-mode-icon.active::after{
   content:"\eb65" !important;
   color:#f5f0e8 !important;
 }
 
-/* Web en claro: mostrar luna para indicar cambio a oscuro. */
+
 body:not(.dark-mode) .color-mode-icon::after,
 body:not(.dark-mode) .color-mode-icon:not(.active)::after{
   content:"\ea9f" !important;
@@ -13031,9 +12503,6 @@ body:not(.dark-mode) .color-mode-icon:not(.active)::after{
   }
 }
 
-
-
-/* === V53B: desktop Redes - quitar solo marco externo de cards === */
 @media (min-width: 768px){
 
   #networks .social-card{
@@ -13052,9 +12521,6 @@ body:not(.dark-mode) .color-mode-icon:not(.active)::after{
   }
 }
 
-
-
-/* === V53D: selector multidioma ES/EN/IT === */
 .language-selector{
   position:relative;
   display:inline-flex;
@@ -13212,16 +12678,6 @@ body:not(.dark-mode) .color-mode-icon:not(.active)::after{
   }
 }
 
-
-
-/* === V53E: mobile IT hero line break only === */
-/*
-  Solo afecta al idioma italiano en móvil:
-  línea 1: Trasformo
-  línea 2: dati in
-  línea 3: texto rotativo.
-  No cambia color, tamaño, fuente ni formato general.
-*/
 #about .pl-it-mobile-break{
   display:none !important;
 }
@@ -13240,16 +12696,6 @@ body:not(.dark-mode) .color-mode-icon:not(.active)::after{
   }
 }
 
-
-
-/* === V53Q: modo claro - contraste visual en sección Proyectos === */
-/*
-  Alcance:
-  - solo modo claro;
-  - solo sección Proyectos;
-  - mejora contraste de filtros y controles sobre fondo blanco;
-  - no toca modo oscuro, loader, traducciones ni lógica JS.
-*/
 body:not(.dark-mode) #projects .repo-filter-toolbar{
   position:relative;
   z-index:30;
@@ -13307,17 +12753,6 @@ body:not(.dark-mode) #projects .projects-intro{
   color:rgba(31,35,40,.70) !important;
 }
 
-
-
-/* === V53R: modo claro - filtros de Proyectos legibles === */
-/*
-  Corrige v53q:
-  - fuerza texto oscuro en filtros inactivos;
-  - elimina baja opacidad heredada;
-  - corrige contenido del desplegable;
-  - mantiene intacto modo oscuro, loader y JS.
-*/
-
 body:not(.dark-mode) #projects .repo-filter-toolbar,
 body.light-mode #projects .repo-filter-toolbar,
 html:not(.dark-mode) body:not(.dark-mode) #projects .repo-filter-toolbar{
@@ -13326,7 +12761,7 @@ html:not(.dark-mode) body:not(.dark-mode) #projects .repo-filter-toolbar{
   overflow:visible !important;
 }
 
-/* Botones principales: All / Discipline / Tools / Model / Domain */
+
 body:not(.dark-mode) #projects .repo-filter-toolbar button,
 body.light-mode #projects .repo-filter-toolbar button,
 html:not(.dark-mode) body:not(.dark-mode) #projects .repo-filter-toolbar button,
@@ -13344,7 +12779,7 @@ body.light-mode #projects .repo-filter-group-trigger{
   filter:none !important;
 }
 
-/* Texto interno, iconos y posibles spans generados por JS */
+
 body:not(.dark-mode) #projects .repo-filter-toolbar button *,
 body.light-mode #projects .repo-filter-toolbar button *,
 html:not(.dark-mode) body:not(.dark-mode) #projects .repo-filter-toolbar button *{
@@ -13355,7 +12790,7 @@ html:not(.dark-mode) body:not(.dark-mode) #projects .repo-filter-toolbar button 
   filter:none !important;
 }
 
-/* Activo */
+
 body:not(.dark-mode) #projects .repo-filter-btn.is-active,
 body:not(.dark-mode) #projects .repo-filter-btn.active,
 body:not(.dark-mode) #projects .repo-filter-btn[aria-pressed="true"],
@@ -13369,7 +12804,7 @@ body.light-mode #projects .repo-filter-btn[aria-pressed="true"]{
   box-shadow:0 14px 30px rgba(255,196,0,.32) !important;
 }
 
-/* Hover/focus */
+
 body:not(.dark-mode) #projects .repo-filter-toolbar button:hover,
 body:not(.dark-mode) #projects .repo-filter-toolbar button:focus-visible,
 body.light-mode #projects .repo-filter-toolbar button:hover,
@@ -13381,7 +12816,7 @@ body.light-mode #projects .repo-filter-toolbar button:focus-visible{
   box-shadow:0 16px 36px rgba(22,24,29,.16), 0 0 0 3px rgba(255,196,0,.18) !important;
 }
 
-/* Panel desplegable */
+
 body:not(.dark-mode) #projects .repo-filter-category-panel,
 body.light-mode #projects .repo-filter-category-panel,
 html:not(.dark-mode) body:not(.dark-mode) #projects .repo-filter-category-panel{
@@ -13396,7 +12831,7 @@ html:not(.dark-mode) body:not(.dark-mode) #projects .repo-filter-category-panel{
   z-index:120 !important;
 }
 
-/* Botones dentro del desplegable */
+
 body:not(.dark-mode) #projects .repo-filter-category-panel .repo-filter-btn,
 body.light-mode #projects .repo-filter-category-panel .repo-filter-btn,
 html:not(.dark-mode) body:not(.dark-mode) #projects .repo-filter-category-panel .repo-filter-btn{
@@ -13408,7 +12843,7 @@ html:not(.dark-mode) body:not(.dark-mode) #projects .repo-filter-category-panel 
   box-shadow:none !important;
 }
 
-/* Cualquier texto dentro del panel */
+
 body:not(.dark-mode) #projects .repo-filter-category-panel *,
 body.light-mode #projects .repo-filter-category-panel *,
 html:not(.dark-mode) body:not(.dark-mode) #projects .repo-filter-category-panel *{
@@ -13419,7 +12854,7 @@ html:not(.dark-mode) body:not(.dark-mode) #projects .repo-filter-category-panel 
   filter:none !important;
 }
 
-/* Descripción de proyectos en modo claro */
+
 body:not(.dark-mode) #projects .section-kicker,
 body.light-mode #projects .section-kicker{
   color:#9a6a00 !important;
@@ -13434,23 +12869,12 @@ body.light-mode #projects .projects-intro{
   opacity:1 !important;
 }
 
-/* Flechita del trigger si existe como pseudo o texto */
+
 body:not(.dark-mode) #projects .repo-filter-group-trigger::after,
 body.light-mode #projects .repo-filter-group-trigger::after{
   color:#16181d !important;
   opacity:1 !important;
 }
-
-
-
-/* === V53S: modo claro - cards de Proyectos blancas === */
-/*
-  Alcance:
-  - solo modo claro;
-  - solo sección Proyectos;
-  - cards con fondo blanco, trama gris clara y textos oscuros;
-  - mantiene intactos modo oscuro, loader, JS, filtros y traducciones.
-*/
 
 body:not(.dark-mode) #projects .github-project-card,
 body.light-mode #projects .github-project-card,
@@ -13485,7 +12909,7 @@ html:not(.dark-mode) body:not(.dark-mode) #projects .github-project-card::after{
   opacity:.65 !important;
 }
 
-/* Títulos y textos */
+
 body:not(.dark-mode) #projects .github-project-card h3,
 body.light-mode #projects .github-project-card h3{
   color:#14161b !important;
@@ -13518,7 +12942,7 @@ body.light-mode #projects .github-project-card .project-status.development{
   border-color:rgba(255,196,0,.38) !important;
 }
 
-/* Chips/tags visuales de cada card */
+
 body:not(.dark-mode) #projects .github-project-card .mini-tags span,
 body.light-mode #projects .github-project-card .mini-tags span{
   color:#20242b !important;
@@ -13529,7 +12953,7 @@ body.light-mode #projects .github-project-card .mini-tags span{
   text-shadow:none !important;
 }
 
-/* Links/botones dentro de cards */
+
 body:not(.dark-mode) #projects .github-project-card .project-link,
 body.light-mode #projects .github-project-card .project-link{
   text-shadow:none !important;
@@ -13552,7 +12976,7 @@ body.light-mode #projects .github-project-card .project-link.primary{
   box-shadow:0 12px 26px rgba(255,196,0,.25) !important;
 }
 
-/* Íconos circulares al final de los botones */
+
 body:not(.dark-mode) #projects .github-project-card .project-link .project-link-icon,
 body.light-mode #projects .github-project-card .project-link .project-link-icon,
 body:not(.dark-mode) #projects .github-project-card .project-link .link-icon,
@@ -13561,7 +12985,7 @@ body.light-mode #projects .github-project-card .project-link .link-icon{
   box-shadow:0 4px 12px rgba(22,24,29,.16) !important;
 }
 
-/* Imagen superior: separar visualmente del cuerpo blanco */
+
 body:not(.dark-mode) #projects .github-project-card .project-image-link,
 body.light-mode #projects .github-project-card .project-image-link{
   border-bottom:1px solid rgba(22,24,29,.12) !important;
@@ -13572,26 +12996,14 @@ body.light-mode #projects .github-project-card img{
   box-shadow:none !important;
 }
 
-/* Seguridad: cualquier texto interno no específico queda oscuro */
+
 body:not(.dark-mode) #projects .github-project-card :is(h3, p, span, small, strong, a),
 body.light-mode #projects .github-project-card :is(h3, p, span, small, strong, a){
   text-shadow:none !important;
 }
 
-
-
-/* === V53T: contraste de descripciones bajo títulos === */
-/*
-  Alcance exacto:
-  - Inicio: descripción del hero.
-  - Proyectos: texto introductorio bajo el título.
-  - Redes: texto introductorio bajo el título.
-  No toca títulos, cards, filtros, loader, JS ni estructura.
-*/
-
-/* Tema oscuro: descripciones más claras */
-body.dark-mode #about .hero-entry-v25b-copy,
-.dark-mode #about .hero-entry-v25b-copy,
+body.dark-mode #about .hero-entry-copy,
+.dark-mode #about .hero-entry-copy,
 body.dark-mode #projects .projects-intro,
 .dark-mode #projects .projects-intro,
 body.dark-mode #networks .social-intro,
@@ -13602,11 +13014,11 @@ body.dark-mode #networks .social-intro,
   text-shadow:none !important;
 }
 
-/* Tema claro: descripciones más oscuras */
-body:not(.dark-mode) #about .hero-entry-v25b-copy,
+
+body:not(.dark-mode) #about .hero-entry-copy,
 body:not(.dark-mode) #projects .projects-intro,
 body:not(.dark-mode) #networks .social-intro,
-body.light-mode #about .hero-entry-v25b-copy,
+body.light-mode #about .hero-entry-copy,
 body.light-mode #projects .projects-intro,
 body.light-mode #networks .social-intro{
   color:#2f333a !important;
@@ -13614,17 +13026,6 @@ body.light-mode #networks .social-intro{
   opacity:1 !important;
   text-shadow:none !important;
 }
-
-
-
-/* === V54G: footer oscuro legible final === */
-/*
-  Solución final del footer:
-  - fuerza opacidad del contenedor y de todos sus wrappers;
-  - evita que una opacidad/herencia del footer apague el color;
-  - aplica a escritorio y móvil;
-  - no toca hero, metodología, proyectos, redes, contacto, loader ni metadata.
-*/
 
 html body footer.footer,
 html body.dark-mode footer.footer,
@@ -13698,7 +13099,7 @@ html body footer.footer .pl-footer-author-note{
   display:none !important;
 }
 
-/* Mobile: misma legibilidad, tamaño apenas menor */
+
 @media (max-width: 767px){
   html body footer.footer p.copyright-text,
   html body footer.footer .copyright-text{
@@ -13708,4 +13109,3 @@ html body footer.footer .pl-footer-author-note{
     padding-right:18px !important;
   }
 }
-

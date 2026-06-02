@@ -1,7 +1,5 @@
-
-// === V52G: default inicial ES + dark mode ===
 (function(){
-  const DEFAULT_VERSION = 'v52g-default-es-dark';
+  const DEFAULT_VERSION = 'default-es-dark';
   const VERSION_KEY = 'patronesLabDefaultVersion';
 
   try{
@@ -26,7 +24,6 @@
 
   "use strict";
 
-  // Color mode: dark by default, while still respecting a saved light preference
   const savedMode = localStorage.getItem('patrones-lab-color-mode');
   const shouldUseDark = savedMode === null || savedMode === 'dark';
 
@@ -39,8 +36,6 @@
     $('.color-mode-icon').toggleClass('active', nextIsDark);
     localStorage.setItem('patrones-lab-color-mode', nextIsDark ? 'dark' : 'light');
   });
-  // Header behavior is handled by the custom compact navbar controller below.
-// Smooth scroll
   $('.nav-link, .custom-btn-link, .custom-btn[href^="#"]').on('click', function(event) {
     const href = $(this).attr('href');
     if(href && href.startsWith('#') && $(href).length){
@@ -51,7 +46,6 @@
     }
   });
 
-  // Contact form: mailto fallback for static hosting
   $('#contactForm').on('submit', function(event){
     event.preventDefault();
     const name = $('#name').val() || '';
@@ -70,10 +64,6 @@
 })(jQuery);
 
 
-
-
-
-// V48D: filtro estable de Proyectos por data-tags
 (function(){
   const projectsSection = document.querySelector('#projects');
   if(!projectsSection) return;
@@ -145,7 +135,6 @@
 })();
 
 
-// V12: fixed background lamps, no document-height side effects
 (function(){
   const layer = document.querySelector('.floating-icon-layer');
   if(!layer) return;
@@ -214,9 +203,6 @@
 })();
 
 
-
-
-// V19B: stable cinematic wheel-controlled timeline
 (function(){
   const section = document.querySelector('[data-pinned-timeline]');
   const timeline = document.querySelector('[data-process-timeline]');
@@ -374,7 +360,6 @@
   syncOutsideSection();
 })();
 
-// V14: clean navbar show/hide controller
 (function(){
   const nav = document.querySelector('.pl-smart-navbar');
   if(!nav) return;
@@ -431,7 +416,6 @@
 })();
 
 
-// V20: show floating CTA after hero
 (function(){
   const cta = document.querySelector('.floating-cta');
   const hero = document.querySelector('#about');
@@ -451,7 +435,6 @@
 })();
 
 
-// V21: hero scroll indicator
 (function(){
   const indicator = document.querySelector('.hero-scroll-indicator');
   if(!indicator) return;
@@ -473,7 +456,6 @@
 })();
 
 
-// V48H: navbar active section state con Inicio por default tras loader
 (function(){
   const nav = document.querySelector('.pl-active-navbar');
   if(!nav) return;
@@ -504,11 +486,7 @@
   }
 
   function getCurrentSection(){
-    /*
-      Prioridad absoluta: si la página está arriba, la sección activa es Inicio.
-      Esto evita que, durante/tras el loader, el cálculo de "final de página"
-      marque Contacto cuando el documento todavía no estabilizó altura/scroll.
-    */
+    
     if(window.scrollY <= 96){
       return firstSectionId;
     }
@@ -524,7 +502,6 @@
       }
     });
 
-    // Refuerzo para el final real de página: marcar Contacto solo si no estamos arriba.
     const reachedRealBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 8;
     if(window.scrollY > 96 && reachedRealBottom){
       const contact = sectionPairs.find(pair => pair.target.id === 'contact');
@@ -548,7 +525,6 @@
     }
   }
 
-  // Estado inicial explícito: la web abre siempre en Inicio tras el loader.
   setActiveById(firstSectionId);
 
   window.addEventListener('scroll', requestUpdate, {passive:true});
@@ -563,21 +539,16 @@
     });
   });
 
-  /*
-    Rechequeos posteriores al loader/layout.
-    Mantienen Inicio activo si la pantalla quedó arriba, y corrigen si el usuario
-    vuelve con historial o un ancla.
-  */
+  
   window.setTimeout(updateActive, 120);
   window.setTimeout(updateActive, 480);
   window.setTimeout(updateActive, 1100);
 })();
 
 
-// V25B: hero microanimation trigger, strictly preserving v24
 (function(){
   function startHeroEntry(){
-    document.body.classList.add('hero-entry-v25b-ready');
+    document.body.classList.add('hero-entry-ready');
   }
 
   if(document.readyState === 'loading'){
@@ -590,8 +561,6 @@
 })();
 
 
-
-// V27B: safe section reveal without changing layout
 (function(){
   const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -684,7 +653,6 @@
       item.classList.add('pl-section-reveal-visible');
       item.classList.remove('pl-section-reveal-pending');
 
-      // Limpieza posterior para evitar interferencias con filtros FLIP y hover.
       window.setTimeout(() => {
         item.classList.remove(
           'pl-section-reveal-visible',
@@ -716,7 +684,6 @@
 
   sections.forEach(group => observer.observe(group.section));
 
-  // Fallback para secciones que ya estén visibles al cargar o al volver con historial.
   window.setTimeout(() => {
     sections.forEach(group => {
       if(group.section.classList.contains('pl-section-revealed')) return;
@@ -733,8 +700,6 @@
 })();
 
 
-
-// V29D: pointer-aware card glow for social section only
 (function(){
   const cards = Array.from(document.querySelectorAll('.social-section .social-card'));
   if(!cards.length) return;
@@ -757,7 +722,6 @@
 })();
 
 
-// V44G: estado accesible para grupos de filtros desplegables por hover/focus
 (function(){
   const groups = Array.from(document.querySelectorAll('.repo-filter-group'));
   if(!groups.length) return;
@@ -784,7 +748,6 @@
 })();
 
 
-// V44H: estado accesible para grupos de filtros desplegables por hover/focus
 (function(){
   const groups = Array.from(document.querySelectorAll('.repo-filter-group'));
   if(!groups.length) return;
@@ -811,8 +774,6 @@
 })();
 
 
-
-// === PRELOADER SYSTEM PRO ===
 (function(){
   const preloader = document.querySelector('.pl-preloader');
   if(!preloader) return;
@@ -852,7 +813,6 @@
 })();
 
 
-// === V45D: ajuste final del loader sin rebote de zoom ===
 (function(){
   const loader = document.querySelector('.pl-scroll-loader');
   if(!loader) return;
@@ -940,11 +900,7 @@
       next.style.opacity = '1';
     }
 
-    /*
-      V45D: primero congelamos el timeline/ScrollTrigger en el estado final.
-      Si se fuerza el scroll a 0 antes de matar el ScrollTrigger, el scrub intenta
-      volver hacia atrás y genera un pequeño rebote visual justo antes de mostrar la web.
-    */
+    
     cleanupScrollTrigger();
 
     forceTopFor(850);
@@ -1014,7 +970,6 @@
 })();
 
 
-// === V45P: Horizontal pinned panels con drag en toda la sección y barra mejorada ===
 (function(){
   const horizontalSection=document.querySelector('[data-horizontal-process-section]');
   if(!horizontalSection||!window.gsap||!window.ScrollTrigger)return;
@@ -1044,10 +999,7 @@
 
     if(title && window.innerWidth){
       const rect = title.getBoundingClientRect();
-      /*
-        El panel siguiente entra desde el borde derecho.
-        Cambiamos el color recién cuando ese borde alcanza el área real del título.
-      */
+      
       threshold = clamp(1 - ((rect.right + 8) / window.innerWidth), .58, .88);
     }
 
@@ -1158,7 +1110,6 @@
   horizontalSection.addEventListener('pointerleave', function(event){ if(isDragging && event.buttons===0) endDrag(event); });
   initScroll();
 
-  // V48G: navegación directa a Metodología siempre vuelve a la solapa 1.
   window.plGoToMethodologyFirstPanel = function(options){
     const opts = options || {};
     const smooth = opts.smooth !== false;
@@ -1199,8 +1150,6 @@
 })();
 
 
-// === V46I: Locomotive-style scroll más perceptible ===
-// Scroll suave global con inercia visible. No usa wrapper transformado para no romper ScrollTrigger/pin.
 (function(){
   const root = document.documentElement;
   const body = document.body;
@@ -1322,7 +1271,6 @@
     lastInputAt = performance.now();
     target = clamp(target + delta, 0, maxScroll());
 
-    // Si el usuario vuelve a scrollear mientras hay inercia, mantiene continuidad.
     if(!isAnimating){
       current = window.scrollY || window.pageYOffset || 0;
     }
@@ -1335,10 +1283,7 @@
     const y = window.scrollY || window.pageYOffset || 0;
     const now = performance.now();
 
-    /*
-      Si el scroll lo cambia un ancla, un drag interno, una navegación programática
-      o ScrollTrigger, sincronizamos. Si viene de nuestra animación, no pisamos target.
-    */
+    
     const isRecentWheel = now - lastInputAt < 180;
     const isOurAnimation = isAnimating || isRecentWheel;
 
@@ -1391,8 +1336,6 @@
 })();
 
 
-// === V47A: auto-snap suave entre secciones, compatible con GitHub Pages ===
-// No usa backend ni librerías nuevas. Ajusta solo cuando el usuario ya terminó de scrollear.
 (function(){
   const root = document.documentElement;
   const body = document.body;
@@ -1461,11 +1404,7 @@
     sections.forEach(function(section){
       const rect = section.getBoundingClientRect();
 
-      /*
-        Regla: solo snap cuando el borde superior de la nueva sección está cerca
-        del borde superior del viewport. Esto evita que salte dentro de Metodología
-        mientras corre la parte pinned/horizontal.
-      */
+      
       const distance = Math.abs(rect.top - viewportTop);
 
       const isNearTop = distance <= config.threshold;
@@ -1534,10 +1473,7 @@
 
     const target = clamp(sectionTop(candidate.section), 0, maxScroll());
 
-    /*
-      Si ya está prácticamente alineada, no hacemos nada.
-      Esto evita microcorrecciones molestas.
-    */
+    
     if(Math.abs(window.scrollY - target) < 4) return;
 
     animateTo(target);
@@ -1565,10 +1501,7 @@
       if(keys.includes(event.code)) markUserInput();
     }, { passive:true });
 
-    /*
-      También escuchamos scroll para capturar trackpads, barra lateral del navegador
-      y navegación interna por anclas.
-    */
+    
     window.addEventListener('scroll', scheduleSnap, { passive:true });
     window.addEventListener('resize', function(){
       window.clearTimeout(timer);
@@ -1587,7 +1520,6 @@
   waitForLoader();
 })();
 
-// === V48G: navbar Metodología siempre inicia en solapa 1 ===
 (function(){
   document.addEventListener('click', function(event){
     const link = event.target && event.target.closest ? event.target.closest('.navbar a[href="#methodology"]') : null;
@@ -1610,7 +1542,6 @@
 })();
 
 
-// === V49L: dropdowns de filtros con cierre demorado y hover estable ===
 (function(){
   const projectsSection = document.querySelector('#projects');
   if(!projectsSection) return;
@@ -1650,7 +1581,6 @@
   });
 })();
 
-// === V50A: responsive móvil, loader táctil y scroll con un dedo ===
 (function(){
   const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
   const mobileWidth = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
@@ -1760,7 +1690,6 @@
       }
     }, {once:true});
 
-    // Failsafe: evita que quede bloqueado el scroll en algunos navegadores Android.
     window.setTimeout(function(){
       if(document.querySelector('.pl-scroll-loader')){
         cleanMobileScrollLocks();
@@ -1777,8 +1706,6 @@
 })();
 
 
-
-// === V50U: móvil sin transiciones de sección ni motores de Metodología ===
 (function(){
   const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
   const mobileWidth = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
@@ -1829,8 +1756,6 @@
 })();
 
 
-
-// === V50V: Metodología mobile - zonas clicables y contraste de título ===
 (function(){
   const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
   const mobileWidth = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
@@ -1931,8 +1856,6 @@
 })();
 
 
-
-// === V50Z: Proyectos mobile - filtros en portal sin interceptar filtrado ===
 (function(){
   const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
   const mobileWidth = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
@@ -1975,7 +1898,6 @@
 
     const rect = trigger.getBoundingClientRect();
 
-    // Panel ya está en body para medir sin recortes del toolbar.
     const panelWidth = Math.min(panel.scrollWidth || panel.offsetWidth || 220, window.innerWidth - 24);
     let left = rect.left;
     const maxLeft = window.innerWidth - panelWidth - 12;
@@ -2026,7 +1948,6 @@
     }, {passive:false});
   });
 
-  // No se corta el click de .repo-filter-btn: el listener original de filtrado queda activo.
   document.addEventListener('click', function(event){
     if(!active) return;
 
@@ -2049,8 +1970,6 @@
 })();
 
 
-
-// === V52B: selector bilingüe ES/EN ===
 (function(){
   const STORAGE_KEY = 'patronesLabLanguage';
   const DEFAULT_LANG = 'es';
@@ -2085,14 +2004,14 @@
         '.navbar-nav .nav-link[href="#contact"]': 'Contact',
         '.color-mode': '<i class="color-mode-icon"></i>',
 
-        '#about .hero-entry-v25b-kicker': 'Project portfolio BI · ML · Python · Dashboards',
+        '#about .hero-entry-kicker': 'Project portfolio BI · ML · Python · Dashboards',
         '#about .hero-line': 'I turn<br>data into',
         '#about .hero-rotator span:nth-child(1)': 'evidence',
         '#about .hero-rotator span:nth-child(2)': 'models',
         '#about .hero-rotator span:nth-child(3)': 'dashboards',
         '#about .hero-rotator span:nth-child(4)': 'decisions',
         '#about .hero-rotator span:nth-child(5)': 'patterns',
-        '#about .hero-entry-v25b-copy': 'Patrones Lab is a data analytics lab focused on real-world, everyday phenomena.<br><br>It brings together independent projects built with public data, with an emphasis on finding patterns, explaining behavior and communicating insights with context.<br><br>The goal is to ask better questions, prepare reliable data, build reproducible analyses and turn results into clear visual outputs.',
+        '#about .hero-entry-copy': 'Patrones Lab is a data analytics lab focused on real-world, everyday phenomena.<br><br>It brings together independent projects built with public data, with an emphasis on finding patterns, explaining behavior and communicating insights with context.<br><br>The goal is to ask better questions, prepare reliable data, build reproducible analyses and turn results into clear visual outputs.',
 
         '.tech-logo-card-airflow small': 'Orchestration',
         '.tech-logo-card-sql-server small': 'Database',
@@ -2352,17 +2271,14 @@
 
   applyLanguage(currentLang());
 
-  // Contact form language support: store lang for mailto hook below.
   window.plCurrentLanguageForContact = currentLang;
 })();
 
 
-
-// === V52G: refuerzo de estado inicial oscuro ===
 (function(){
   function ensureInitialDarkMode(){
     const versionKey = 'patronesLabThemeDefaultVersion';
-    const defaultVersion = 'v52g-default-dark';
+    const defaultVersion = 'default-dark';
 
     try{
       if(localStorage.getItem(versionKey) !== defaultVersion){
@@ -2382,12 +2298,6 @@
 })();
 
 
-
-// === V52H: filtros funcionales también en inglés ===
-/*
-  El filtrado queda desacoplado del texto visible del botón.
-  Funciona aunque el idioma cambie y aunque el panel móvil sea movido temporalmente al body.
-*/
 (function(){
   const projectsSection = document.querySelector('#projects');
   if(!projectsSection) return;
@@ -2466,13 +2376,6 @@
 })();
 
 
-
-// === V52I: restauración explícita ES/EN sin depender de memoria DOM ===
-/*
-  Corrige el caso: ES -> EN -> ES dejando textos en inglés.
-  En lugar de depender de restoreOriginals(), aplica un diccionario explícito
-  para español e inglés sobre los nodos que cambian.
-*/
 (function(){
   const STORAGE_KEY = 'patronesLabLanguage';
   const FLAG_US = 'images/patrones/language-flags/flag-us.svg';
@@ -2506,14 +2409,14 @@
         '.navbar-nav .nav-link[href="#contact"]': 'Contacto',
         '.color-mode': '<i class="color-mode-icon"></i>',
 
-        '#about .hero-entry-v25b-kicker': 'Portfolio de proyectos <span class="mobile-block">BI · ML · Python · Dashboards</span>',
+        '#about .hero-entry-kicker': 'Portfolio de proyectos <span class="mobile-block">BI · ML · Python · Dashboards</span>',
         '#about .hero-line': 'Transformo datos en',
         '#about .hero-rotator span:nth-child(1)': 'evidencia',
         '#about .hero-rotator span:nth-child(2)': 'modelos',
         '#about .hero-rotator span:nth-child(3)': 'dashboards',
         '#about .hero-rotator span:nth-child(4)': 'decisiones',
         '#about .hero-rotator span:nth-child(5)': 'patrones',
-        '#about .hero-entry-v25b-copy': 'Patrones Lab es un laboratorio de análisis de datos aplicado a fenómenos cotidianos y reales.<br><br>Aquí se trabajan proyectos independientes construidos a partir de datos públicos, con foco en detectar patrones, describir comportamientos y comunicar los hallazgos con su contexto.<br><br>El objetivo es plantear preguntas, preparar datos, construir análisis claros y generar resultados visuales.',
+        '#about .hero-entry-copy': 'Patrones Lab es un laboratorio de análisis de datos aplicado a fenómenos cotidianos y reales.<br><br>Aquí se trabajan proyectos independientes construidos a partir de datos públicos, con foco en detectar patrones, describir comportamientos y comunicar los hallazgos con su contexto.<br><br>El objetivo es plantear preguntas, preparar datos, construir análisis claros y generar resultados visuales.',
 
         '.tech-logo-card-airflow small': 'Orquestación',
         '.tech-logo-card-sql-server small': 'Base de datos',
@@ -2660,14 +2563,14 @@
         '.navbar-nav .nav-link[href="#contact"]': 'Contact',
         '.color-mode': '<i class="color-mode-icon"></i>',
 
-        '#about .hero-entry-v25b-kicker': 'Project portfolio BI · ML · Python · Dashboards',
+        '#about .hero-entry-kicker': 'Project portfolio BI · ML · Python · Dashboards',
         '#about .hero-line': 'I turn<br>data into',
         '#about .hero-rotator span:nth-child(1)': 'evidence',
         '#about .hero-rotator span:nth-child(2)': 'models',
         '#about .hero-rotator span:nth-child(3)': 'dashboards',
         '#about .hero-rotator span:nth-child(4)': 'decisions',
         '#about .hero-rotator span:nth-child(5)': 'patterns',
-        '#about .hero-entry-v25b-copy': 'Patrones Lab is a data analytics lab focused on real-world, everyday phenomena.<br><br>It brings together independent projects built with public data, with an emphasis on finding patterns, explaining behavior and communicating insights with context.<br><br>The goal is to ask better questions, prepare reliable data, build reproducible analyses and turn results into clear visual outputs.',
+        '#about .hero-entry-copy': 'Patrones Lab is a data analytics lab focused on real-world, everyday phenomena.<br><br>It brings together independent projects built with public data, with an emphasis on finding patterns, explaining behavior and communicating insights with context.<br><br>The goal is to ask better questions, prepare reliable data, build reproducible analyses and turn results into clear visual outputs.',
 
         '.tech-logo-card-airflow small': 'Orchestration',
         '.tech-logo-card-sql-server small': 'Database',
@@ -2886,8 +2789,6 @@
 })();
 
 
-
-// === V53D: selector multidioma explícito ES/EN/IT ===
 (function(){
   const STORAGE_KEY = 'patronesLabLanguage';
   const FLAGS = {
@@ -2911,14 +2812,14 @@
         '.navbar-nav .nav-link[href="#contact"]': 'Contacto',
         '.color-mode': '<i class="color-mode-icon"></i>',
 
-        '#about .hero-entry-v25b-kicker': 'Portfolio de proyectos <span class="mobile-block">BI · ML · Python · Dashboards</span>',
+        '#about .hero-entry-kicker': 'Portfolio de proyectos <span class="mobile-block">BI · ML · Python · Dashboards</span>',
         '#about .hero-line': 'Transformo datos en',
         '#about .hero-rotator span:nth-child(1)': 'evidencia',
         '#about .hero-rotator span:nth-child(2)': 'modelos',
         '#about .hero-rotator span:nth-child(3)': 'dashboards',
         '#about .hero-rotator span:nth-child(4)': 'decisiones',
         '#about .hero-rotator span:nth-child(5)': 'patrones',
-        '#about .hero-entry-v25b-copy': 'Patrones Lab es un laboratorio de análisis de datos aplicado a fenómenos cotidianos y reales.<br><br>Aquí se trabajan proyectos independientes construidos a partir de datos públicos, con foco en detectar patrones, describir comportamientos y comunicar los hallazgos con su contexto.<br><br>El objetivo es plantear preguntas, preparar datos, construir análisis claros y generar resultados visuales.',
+        '#about .hero-entry-copy': 'Patrones Lab es un laboratorio de análisis de datos aplicado a fenómenos cotidianos y reales.<br><br>Aquí se trabajan proyectos independientes construidos a partir de datos públicos, con foco en detectar patrones, describir comportamientos y comunicar los hallazgos con su contexto.<br><br>El objetivo es plantear preguntas, preparar datos, construir análisis claros y generar resultados visuales.',
 
         '.tech-logo-card-airflow small': 'Orquestación',
         '.tech-logo-card-sql-server small': 'Base de datos',
@@ -3063,14 +2964,14 @@
         '.navbar-nav .nav-link[href="#contact"]': 'Contact',
         '.color-mode': '<i class="color-mode-icon"></i>',
 
-        '#about .hero-entry-v25b-kicker': 'Project portfolio BI · ML · Python · Dashboards',
+        '#about .hero-entry-kicker': 'Project portfolio BI · ML · Python · Dashboards',
         '#about .hero-line': 'I turn<br>data into',
         '#about .hero-rotator span:nth-child(1)': 'evidence',
         '#about .hero-rotator span:nth-child(2)': 'models',
         '#about .hero-rotator span:nth-child(3)': 'dashboards',
         '#about .hero-rotator span:nth-child(4)': 'decisions',
         '#about .hero-rotator span:nth-child(5)': 'patterns',
-        '#about .hero-entry-v25b-copy': 'Patrones Lab is a data analytics lab focused on real-world, everyday phenomena.<br><br>It brings together independent projects built with public data, with an emphasis on finding patterns, explaining behavior and communicating insights with context.<br><br>The goal is to ask better questions, prepare reliable data, build reproducible analyses and turn results into clear visual outputs.',
+        '#about .hero-entry-copy': 'Patrones Lab is a data analytics lab focused on real-world, everyday phenomena.<br><br>It brings together independent projects built with public data, with an emphasis on finding patterns, explaining behavior and communicating insights with context.<br><br>The goal is to ask better questions, prepare reliable data, build reproducible analyses and turn results into clear visual outputs.',
 
         '.tech-logo-card-airflow small': 'Orchestration',
         '.tech-logo-card-sql-server small': 'Database',
@@ -3224,14 +3125,14 @@
         '.navbar-nav .nav-link[href="#contact"]': 'Contatti',
         '.color-mode': '<i class="color-mode-icon"></i>',
 
-        '#about .hero-entry-v25b-kicker': 'Portfolio progetti Dati · BI · ML · Python',
+        '#about .hero-entry-kicker': 'Portfolio progetti Dati · BI · ML · Python',
         '#about .hero-line': 'Trasformo<br class="pl-it-mobile-break"><span class="pl-it-desktop-space"> </span>i dati in',
         '#about .hero-rotator span:nth-child(1)': 'evidenze',
         '#about .hero-rotator span:nth-child(2)': 'modelli',
         '#about .hero-rotator span:nth-child(3)': 'dashboard',
         '#about .hero-rotator span:nth-child(4)': 'decisioni',
         '#about .hero-rotator span:nth-child(5)': 'pattern',
-        '#about .hero-entry-v25b-copy': 'Patrones Lab è un laboratorio di analisi dei dati applicata a fenomeni reali e quotidiani.<br><br>Raccoglie progetti indipendenti basati su dati pubblici, con attenzione all’individuazione di pattern, alla spiegazione dei comportamenti e alla comunicazione di evidenze contestualizzate.<br><br>L’obiettivo è formulare domande migliori, costruire dataset affidabili, sviluppare analisi riproducibili e trasformare i risultati in output visuali chiari.',
+        '#about .hero-entry-copy': 'Patrones Lab è un laboratorio di analisi dei dati applicata a fenomeni reali e quotidiani.<br><br>Raccoglie progetti indipendenti basati su dati pubblici, con attenzione all’individuazione di pattern, alla spiegazione dei comportamenti e alla comunicazione di evidenze contestualizzate.<br><br>L’obiettivo è formulare domande migliori, costruire dataset affidabili, sviluppare analisi riproducibili e trasformare i risultati in output visuali chiari.',
 
         '.tech-logo-card-airflow small': 'Orchestrazione',
         '.tech-logo-card-sql-server small': 'Database',
@@ -3518,9 +3419,6 @@
 })();
 
 
-
-
-// === V53D: contacto multidioma ES/EN/IT ===
 (function(){
   const form = document.querySelector('#contactForm');
   if(!form) return;
@@ -3554,8 +3452,6 @@
 })();
 
 
-
-// === V53F: corrección de textos visibles faltantes ES/EN/IT ===
 (function(){
   const translations = {
     es: {
@@ -3698,8 +3594,6 @@
 })();
 
 
-
-// === V53I: auditoría exhaustiva de textos visibles traducibles ===
 (function(){
   const techLabels = {
     es: {
@@ -3805,8 +3699,6 @@
 })();
 
 
-
-// === V53J: tags visibles de proyectos desde data-tags ES/EN/IT ===
 (function(){
   const tagLabels = {
     es: {
@@ -3991,18 +3883,6 @@
 })();
 
 
-
-// === V53K: fuente única de verdad para filtros y tags de proyectos ===
-/*
-  Este bloque elimina la inconsistencia entre:
-  - texto visible de filtros;
-  - texto visible de tags dentro de las cards;
-  - data-tags reales usados para filtrar.
-
-  Todo sale de TAG_LABELS_BY_TOKEN.
-  Si un proyecto tiene data-tags="modelo-supervisado", el filtro y el tag visible
-  usan exactamente la misma etiqueta del idioma activo.
-*/
 (function(){
   const TAG_LABELS_BY_TOKEN = {
     "all": {
@@ -4297,7 +4177,6 @@
       window.plApplyRepoFilter(window.plGetActiveRepoFilter());
     }
 
-    // Reaplicar porque algunos filtros previos pueden haber reescrito clases/estado.
     renderAllFilterButtons(language);
     renderAllCardTags(language);
 
@@ -4344,13 +4223,6 @@
 })();
 
 
-
-// === V53L: sincronización final real de filtros y tags visibles ===
-/*
-  Fuente única final para filtros y tags internos.
-  Este bloque corre al final del archivo y corrige cualquier reescritura previa.
-  Objetivo: filtro visible y tag visible deben coincidir siempre por token e idioma.
-*/
 (function(){
   const FINAL_TAG_LABELS = {
     "all": {
@@ -4560,13 +4432,7 @@
   }
 
   function renderOneCardTags(card, lang){
-    /*
-      V53N:
-      No inyectar .project-tags dentro de la card.
-      En el HTML/CSS base no existe un contenedor visual para esto; crearlo por JS
-      generaba texto crudo concatenado debajo de las pills.
-      Los tags/chips reales visibles de la card se mantienen intactos.
-    */
+    
     return;
   }
 
@@ -4601,7 +4467,7 @@
       language: lang,
       ok: problems.length === 0,
       problems: problems,
-      note: 'V53N: se auditan filtros; no se inyectan project-tags para evitar texto crudo.'
+      note: 'TagsCleanup: se auditan filtros; no se inyectan project-tags para evitar texto crudo.'
     };
 
     return window.plFinalTagsFiltersAudit;
@@ -4653,15 +4519,7 @@
     }
   }, true);
 
-  /*
-    V53M: se elimina el observador automático de #projects.
-    Motivo: reaccionaba a cambios generados por este mismo bloque y podía provocar
-    re-renderizados repetidos durante el loader.
-    La sincronización queda controlada por:
-    - carga inicial;
-    - cambio de idioma;
-    - clic en filtros.
-  */
+  
 
   if(document.readyState === 'loading'){
     document.addEventListener('DOMContentLoaded', function(){
@@ -4677,8 +4535,6 @@
 })();
 
 
-
-// === V53N: eliminar tags crudos inyectados en cards ===
 (function(){
   function removeInjectedProjectTags(){
     document.querySelectorAll('#projects .github-project-card .project-tags').forEach(function(holder){
@@ -4708,16 +4564,6 @@
 })();
 
 
-
-// === V53O: traducción real de chips .mini-tags y filtros desde una única fuente ===
-/*
-  Los chips visibles reales de cada card son .mini-tags span.
-  Versiones anteriores intentaron usar .project-tags, que no existe en el HTML/CSS base.
-  Este bloque sincroniza:
-  - filtros .repo-filter-btn[data-repo-filter]
-  - chips visibles .mini-tags span
-  usando exactamente FINAL_PROJECT_LABELS.
-*/
 (function(){
   const FINAL_PROJECT_LABELS = {
     "all": {
@@ -5038,7 +4884,6 @@
       window.plApplyRepoFilter(window.plGetActiveRepoFilter());
     }
 
-    // Reaplicar después del filtro porque otros handlers pueden tocar clases/estado.
     renderFilters(language);
     renderMiniTags(language);
     removeInjectedProjectTags();
@@ -5088,8 +4933,6 @@
 })();
 
 
-
-// === V53P: normalización final de capitalización en filtros y chips ===
 (function(){
   function currentLang(){
     if(window.plGetLanguage){
@@ -5129,8 +4972,6 @@
 })();
 
 
-
-// === V54C: footer centrado y traducido ES/EN/IT ===
 (function(){
   const footerTexts = {
     es: "Patrones Lab® · Generando conocimiento a partir de los datos · por Malcolm Di Pietro Cagliari",
@@ -5185,8 +5026,6 @@
 })();
 
 
-
-// === V54H: correzione traduzioni Metodologia ES/EN/IT ===
 (function(){
   const methodologyTexts = {
   "es": {
@@ -5330,5 +5169,3 @@
 
   window.plApplyMethodologyTranslations = applyMethodologyTexts;
 })();
-
-
