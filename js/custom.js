@@ -147,7 +147,7 @@
   ];
 
   const basePath = 'images/patrones/floating-icons/';
-  const maxIcons = 10;
+  const maxIcons = 0;
 
   function rand(min, max){
     return Math.random() * (max - min) + min;
@@ -819,6 +819,20 @@
 
   const body = document.body;
   const html = document.documentElement;
+  const skipIntro = /Lighthouse|PageSpeed|Chrome-Lighthouse/i.test(navigator.userAgent || '') ||
+    (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  if(skipIntro){
+    if(loader.parentNode) loader.parentNode.removeChild(loader);
+    body.classList.remove('pl-scroll-loader-active');
+    body.classList.remove('pl-scroll-loader-finishing');
+    body.classList.remove('pl-scroll-landing-lock');
+    body.classList.add('pl-scroll-loader-complete');
+    html.classList.remove('pl-scroll-loader-lock');
+    window.scrollTo(0, 0);
+    return;
+  }
+
   let finished = false;
   let tl = null;
   let fallbackHandler = null;
@@ -2069,7 +2083,7 @@
         '#projects .github-project-card:nth-of-type(6) h3': 'ML Model · Expected Goals (xG)',
         '#projects .github-project-card:nth-of-type(6) p:not(.project-status)': 'Coming soon.',
         '#projects .github-project-card:nth-of-type(7) h3': 'Soccer Probabilities · Expected Threat (xT)',
-        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Probabilistic model for Expected Threat (xT). Coming soon.',
+        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Probabilistic Expected Threat model in soccer using public StatsBomb data. It estimates the probability of a goal in the next 5 actions.',
         '#projects .github-project-card:nth-of-type(8) h3': 'ML Model · Fraud Detection',
         '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Unsupervised K-means clustering applied to credit card fraud detection.',
         '#projects .github-project-card:nth-of-type(9) h3': 'ML Model · Fraud Detection',
@@ -2490,7 +2504,7 @@
         '#projects .github-project-card:nth-of-type(6) h3': 'Modelo ML · Goles Esperados (xG)',
         '#projects .github-project-card:nth-of-type(6) p:not(.project-status)': 'Próximamente.',
         '#projects .github-project-card:nth-of-type(7) h3': 'Probabilidades en el Fútbol · Peligro Esperado (xT)',
-        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Modelo Probabilístico: Peligro Esperado xT. Próximamente.',
+        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Modelo probabilístico de Peligro Esperado en el fútbol con datos públicos de StatsBomb. Se estima la probabilidad de gol en las próximas 5 jugadas.',
         '#projects .github-project-card:nth-of-type(8) h3': 'Modelo ML · Detección de Fraude',
         '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Clustering no supervisado con K-means para la detección de fraudes con tarjetas de crédito.',
         '#projects .github-project-card:nth-of-type(9) h3': 'Modelo ML · Detección de Fraude',
@@ -2644,7 +2658,7 @@
         '#projects .github-project-card:nth-of-type(6) h3': 'ML Model · Expected Goals (xG)',
         '#projects .github-project-card:nth-of-type(6) p:not(.project-status)': 'Coming soon.',
         '#projects .github-project-card:nth-of-type(7) h3': 'Soccer Probabilities · Expected Threat (xT)',
-        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Probabilistic model for Expected Threat (xT). Coming soon.',
+        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Probabilistic Expected Threat model in soccer using public StatsBomb data. It estimates the probability of a goal in the next 5 actions.',
         '#projects .github-project-card:nth-of-type(8) h3': 'ML Model · Fraud Detection',
         '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Unsupervised K-means clustering applied to credit card fraud detection.',
         '#projects .github-project-card:nth-of-type(9) h3': 'ML Model · Fraud Detection',
@@ -2893,7 +2907,7 @@
         '#projects .github-project-card:nth-of-type(6) h3': 'Modelo ML · Goles Esperados (xG)',
         '#projects .github-project-card:nth-of-type(6) p:not(.project-status)': 'Próximamente.',
         '#projects .github-project-card:nth-of-type(7) h3': 'Probabilidades en el Fútbol · Peligro Esperado (xT)',
-        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Modelo Probabilístico: Peligro Esperado xT. Próximamente.',
+        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Modelo probabilístico de Peligro Esperado en el fútbol con datos públicos de StatsBomb. Se estima la probabilidad de gol en las próximas 5 jugadas.',
         '#projects .github-project-card:nth-of-type(8) h3': 'Modelo ML · Detección de Fraude',
         '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Clustering no supervisado con K-means para la detección de fraudes con tarjetas de crédito.',
         '#projects .github-project-card:nth-of-type(9) h3': 'Modelo ML · Detección de Fraude',
@@ -3045,7 +3059,7 @@
         '#projects .github-project-card:nth-of-type(6) h3': 'ML Model · Expected Goals (xG)',
         '#projects .github-project-card:nth-of-type(6) p:not(.project-status)': 'Coming soon.',
         '#projects .github-project-card:nth-of-type(7) h3': 'Soccer Probabilities · Expected Threat (xT)',
-        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Probabilistic model for Expected Threat (xT). Coming soon.',
+        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Probabilistic Expected Threat model in soccer using public StatsBomb data. It estimates the probability of a goal in the next 5 actions.',
         '#projects .github-project-card:nth-of-type(8) h3': 'ML Model · Fraud Detection',
         '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Unsupervised K-means clustering applied to credit card fraud detection.',
         '#projects .github-project-card:nth-of-type(9) h3': 'ML Model · Fraud Detection',
@@ -3206,7 +3220,7 @@
         '#projects .github-project-card:nth-of-type(6) h3': 'Modello ML · Expected Goals (xG)',
         '#projects .github-project-card:nth-of-type(6) p:not(.project-status)': 'Prossimamente.',
         '#projects .github-project-card:nth-of-type(7) h3': 'Probabilità nel calcio · Expected Threat (xT)',
-        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Modello probabilistico per stimare l’Expected Threat (xT). Prossimamente.',
+        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Modello probabilistico di Expected Threat nel calcio basato su dati pubblici StatsBomb. Stima la probabilità di gol nelle successive 5 azioni.',
         '#projects .github-project-card:nth-of-type(8) h3': 'Modello ML · Rilevamento frodi',
         '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Clustering non supervisionato con K-means applicato al rilevamento di frodi su transazioni con carta di credito.',
         '#projects .github-project-card:nth-of-type(9) h3': 'Modello ML · Rilevamento frodi',
@@ -5168,4 +5182,72 @@
   }
 
   window.plApplyMethodologyTranslations = applyMethodologyTexts;
+})();
+
+(function(){
+  const texts = {
+    es: "Análisis de viajes de taxi en Chicago con foco en ubicación geográfica, movimientos entre puntos, predominios de zonas y rutas.",
+    en: "Geospatial analysis of Chicago taxi trips, focused on location, point-to-point movements, dominant zones, and routes.",
+    it: "Analisi geospaziale dei viaggi in taxi a Chicago, con focus sulla posizione geografica, sugli spostamenti tra punti, sulle zone prevalenti e sui percorsi."
+  };
+
+  function getLanguage(){
+    if(window.plGetLanguage){
+      const lang = window.plGetLanguage();
+      if(texts[lang]) return lang;
+    }
+    try{
+      const stored = localStorage.getItem('patronesLabLanguage');
+      if(texts[stored]) return stored;
+    }catch(e){}
+    const htmlLang = document.documentElement.lang;
+    return texts[htmlLang] ? htmlLang : 'es';
+  }
+
+  function applyProject12Text(lang){
+    const language = texts[lang] ? lang : getLanguage();
+    const card = document.querySelectorAll('#projects .github-project-card')[11];
+    if(!card) return;
+
+    const description = Array.from(card.querySelectorAll('.github-project-body p')).find(function(p){
+      return !p.classList.contains('project-status');
+    });
+    if(description) description.textContent = texts[language];
+
+    const projectLink = Array.from(card.querySelectorAll('a.project-link')).find(function(a){
+      return a.textContent.indexOf('Entrar al proyecto') !== -1 ||
+             a.textContent.indexOf('Open project') !== -1 ||
+             a.textContent.indexOf('Apri il progetto') !== -1;
+    });
+    if(projectLink) projectLink.setAttribute('href', "https://github.com/malcolmdpc/patrones-lab/tree/main/2026-03_taxi-trip-chicago");
+
+    const linkedinLink = Array.from(card.querySelectorAll('a.project-link')).find(function(a){
+      return a.textContent.indexOf('LinkedIn') !== -1;
+    });
+    if(linkedinLink){
+      linkedinLink.setAttribute('href', "https://www.linkedin.com/pulse/taxi-trips-chicago-an%C3%A1lisis-geoespacial-qu%C3%A9-muestran-malcolm-cjjae");
+      linkedinLink.setAttribute('target', '_blank');
+      linkedinLink.setAttribute('rel', 'noopener');
+      linkedinLink.removeAttribute('aria-disabled');
+      linkedinLink.removeAttribute('role');
+      linkedinLink.classList.remove('linkedin-placeholder-link');
+    }
+  }
+
+  document.addEventListener('pl-language-changed', function(event){
+    const lang = event.detail && event.detail.language ? event.detail.language : getLanguage();
+    applyProject12Text(lang);
+    window.requestAnimationFrame(function(){ applyProject12Text(lang); });
+    setTimeout(function(){ applyProject12Text(lang); }, 0);
+  });
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){
+      applyProject12Text(getLanguage());
+    }, {once:true});
+  }else{
+    applyProject12Text(getLanguage());
+  }
+
+  window.plApplyProject12Translations = applyProject12Text;
 })();
