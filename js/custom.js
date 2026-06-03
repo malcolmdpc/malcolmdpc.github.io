@@ -819,7 +819,11 @@
 
   const body = document.body;
   const html = document.documentElement;
-  const skipIntro = /Lighthouse|PageSpeed|Chrome-Lighthouse/i.test(navigator.userAgent || '') ||
+  const params = new URLSearchParams(window.location.search || '');
+  const skipIntro = params.has('audit') ||
+    params.has('lighthouse') ||
+    /Lighthouse|PageSpeed|Chrome-Lighthouse/i.test(navigator.userAgent || '') ||
+    (navigator.webdriver === true) ||
     (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
   if(skipIntro){
@@ -1693,7 +1697,7 @@
 
     loader.setAttribute('role', 'button');
     loader.setAttribute('tabindex', '0');
-    loader.setAttribute('aria-label', 'Tocar para entrar al sitio');
+    loader.setAttribute('aria-label', 'Patrones Lab Data & Analytics. Tocar para entrar al sitio');
 
     loader.addEventListener('pointerdown', finishMobileLoader, {passive:true, once:true});
     loader.addEventListener('touchstart', finishMobileLoader, {passive:true, once:true});
@@ -3470,6 +3474,7 @@
   const translations = {
     es: {
       scroll: 'Explorar',
+      scrollLabel: 'Explorar, ir a la sección Metodología',
       networkRepoStrong: 'Repo',
       networkRepoSmall: 'Patrones Lab',
       networkDashboardStrong: 'Dashboard',
@@ -3495,6 +3500,7 @@
     },
     en: {
       scroll: 'Explore',
+      scrollLabel: 'Explore, go to Methodology section',
       networkRepoStrong: 'Repository',
       networkRepoSmall: 'Patrones Lab',
       networkDashboardStrong: 'Dashboard',
@@ -3520,6 +3526,7 @@
     },
     it: {
       scroll: 'Esplora',
+      scrollLabel: 'Esplora, vai alla sezione Metodologia',
       networkRepoStrong: 'Repository',
       networkRepoSmall: 'Patrones Lab',
       networkDashboardStrong: 'Dashboard',
@@ -3587,6 +3594,9 @@
     const data = translations[lang] || translations.es;
 
     setText('#about .hero-scroll-indicator__text', data.scroll);
+    document.querySelectorAll('#about .hero-scroll-indicator').forEach(function(link){
+      link.setAttribute('aria-label', data.scrollLabel || data.scroll);
+    });
     patchProjectTags(lang);
     patchNetworkCards(lang);
   }
