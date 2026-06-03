@@ -36,6 +36,12 @@
     $('.color-mode-icon').toggleClass('active', nextIsDark);
     localStorage.setItem('patrones-lab-color-mode', nextIsDark ? 'dark' : 'light');
   });
+  $('.color-mode').on('keydown', function(event){
+    if(event.key === 'Enter' || event.key === ' '){
+      event.preventDefault();
+      $(this).trigger('click');
+    }
+  });
   $('.nav-link, .custom-btn-link, .custom-btn[href^="#"]').on('click', function(event) {
     const href = $(this).attr('href');
     if(href && href.startsWith('#') && $(href).length){
