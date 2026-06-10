@@ -30,7 +30,20 @@
   $('body').toggleClass('dark-mode', shouldUseDark);
   $('.color-mode-icon').toggleClass('active', shouldUseDark);
 
-  $('.color-mode').on('click', function(){
+  
+// Sincroniza el icono de modo visual con el estado real del tema.
+// En modo oscuro muestra sol; en modo claro muestra luna.
+function syncColorModeIconWithTheme() {
+  var isDarkMode = document.body.classList.contains('dark-mode');
+  $('.color-mode-icon').toggleClass('active', isDarkMode);
+}
+syncColorModeIconWithTheme();
+
+$(document).on('click', '.color-mode', function () {
+  setTimeout(syncColorModeIconWithTheme, 0);
+});
+
+$('.color-mode').on('click', function(){
     const nextIsDark = !$('body').hasClass('dark-mode');
     $('body').toggleClass('dark-mode', nextIsDark);
     $('.color-mode-icon').toggleClass('active', nextIsDark);
