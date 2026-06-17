@@ -2902,6 +2902,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="spss"]': '<span class="filter-icon">◧</span> SPSS',
         '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
         '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
+        '#projects .repo-filter-btn[data-repo-filter="power-bi"]': '<span class="filter-icon">▥</span> Power BI',
         '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Modelo supervisado',
         '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Modelo no supervisado',
         '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Clasificación',
@@ -2916,6 +2917,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="futbol"]': '<span class="filter-icon">●</span> Fútbol',
         '#projects .repo-filter-btn[data-repo-filter="aviacion"]': '<span class="filter-icon">✈</span> Aviación',
         '#projects .repo-filter-btn[data-repo-filter="fraude"]': '<span class="filter-icon">!</span> Fraude',
+        '#projects .repo-filter-btn[data-repo-filter="spotify"]': '<span class="filter-icon">♪</span> Spotify',
 
         '#projects .github-project-card:nth-of-type(1) h3': 'Análisis de Vuelos en las Islas Baleares',
         '#projects .github-project-card:nth-of-type(1) p:not(.project-status)': 'Análisis de tráfico aéreo en España con datos públicos de AENA, con foco en volúmenes, patrones por aeropuerto y diferencias entre categorías.',
@@ -2941,6 +2943,8 @@ $('.color-mode').on('click', function(){
         '#projects .github-project-card:nth-of-type(11) p:not(.project-status)': 'Próximamente.',
         '#projects .github-project-card:nth-of-type(12) h3': 'Análisis Geoespacial de los Viajes en Taxi',
         '#projects .github-project-card:nth-of-type(12) p:not(.project-status)': 'Próximamente.',
+        '#projects .github-project-card:nth-of-type(13) h3': 'Dashboard en Power BI · Spotify Charts',
+        '#projects .github-project-card:nth-of-type(13) p:not(.project-status)': 'Dashboard interactivo en Power BI para explorar reproducciones en Spotify y analizar canciones, artistas y álbumes que se encuentran en el Top 250 en cada país.',
         '#projects .repo-empty-message': 'No hay proyectos para esa categoría todavía.',
 
         '#networks .section-kicker': 'Canales de Patrones Lab',
@@ -3054,6 +3058,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="spss"]': '<span class="filter-icon">◧</span> SPSS',
         '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
         '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
+        '#projects .repo-filter-btn[data-repo-filter="power-bi"]': '<span class="filter-icon">▥</span> Power BI',
         '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Supervised model',
         '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Unsupervised model',
         '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Classification',
@@ -3068,6 +3073,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="futbol"]': '<span class="filter-icon">●</span> Soccer',
         '#projects .repo-filter-btn[data-repo-filter="aviacion"]': '<span class="filter-icon">✈</span> Aviation',
         '#projects .repo-filter-btn[data-repo-filter="fraude"]': '<span class="filter-icon">!</span> Fraud',
+        '#projects .repo-filter-btn[data-repo-filter="spotify"]': '<span class="filter-icon">♪</span> Spotify',
 
         '#projects .github-project-card:nth-of-type(1) h3': 'Balearic Islands Flight Analysis',
         '#projects .github-project-card:nth-of-type(1) p:not(.project-status)': 'Analysis of air traffic in Spain using public AENA data, focused on volume, airport-level patterns and differences across traffic categories.',
@@ -3093,6 +3099,8 @@ $('.color-mode').on('click', function(){
         '#projects .github-project-card:nth-of-type(11) p:not(.project-status)': 'Coming soon.',
         '#projects .github-project-card:nth-of-type(12) h3': 'Geospatial Taxi Trip Analysis',
         '#projects .github-project-card:nth-of-type(12) p:not(.project-status)': 'Coming soon.',
+        '#projects .github-project-card:nth-of-type(13) h3': 'Power BI Dashboard · Spotify Charts',
+        '#projects .github-project-card:nth-of-type(13) p:not(.project-status)': 'Interactive Power BI dashboard to explore Spotify streams and analyze songs, artists and albums ranked in the Top 250 in each country.',
         '#projects .repo-empty-message': 'There are no projects in this category yet.',
 
         '#networks .section-kicker': 'Patrones Lab Online Presence',
@@ -3215,6 +3223,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="spss"]': '<span class="filter-icon">◧</span> SPSS',
         '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
         '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
+        '#projects .repo-filter-btn[data-repo-filter="power-bi"]': '<span class="filter-icon">▥</span> Power BI',
         '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Modello supervisionato',
         '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Modello non supervisionato',
         '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Classificazione',
@@ -3229,6 +3238,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="futbol"]': '<span class="filter-icon">●</span> Calcio',
         '#projects .repo-filter-btn[data-repo-filter="aviacion"]': '<span class="filter-icon">✈</span> Aviazione',
         '#projects .repo-filter-btn[data-repo-filter="fraude"]': '<span class="filter-icon">!</span> Frode',
+        '#projects .repo-filter-btn[data-repo-filter="spotify"]': '<span class="filter-icon">♪</span> Spotify',
 
         '#projects .github-project-card:nth-of-type(1) h3': 'Analisi del traffico aereo nelle Isole Baleari',
         '#projects .github-project-card:nth-of-type(1) p:not(.project-status)': 'Analisi del traffico aereo in Spagna con dati pubblici AENA, con focus su volumi, pattern per aeroporto e differenze tra categorie di traffico.',
@@ -3254,6 +3264,8 @@ $('.color-mode').on('click', function(){
         '#projects .github-project-card:nth-of-type(11) p:not(.project-status)': 'Prossimamente.',
         '#projects .github-project-card:nth-of-type(12) h3': 'Analisi geospaziale delle corse taxi',
         '#projects .github-project-card:nth-of-type(12) p:not(.project-status)': 'Prossimamente.',
+        '#projects .github-project-card:nth-of-type(13) h3': 'Dashboard Power BI · Spotify Charts',
+        '#projects .github-project-card:nth-of-type(13) p:not(.project-status)': 'Dashboard interattiva in Power BI per esplorare gli stream su Spotify e analizzare brani, artisti e album presenti nella Top 250 di ogni Paese.',
         '#projects .repo-empty-message': 'Non ci sono ancora progetti per questa categoria.',
 
         '#networks .section-kicker': 'Presenza digitale di Patrones Lab',
@@ -3754,6 +3766,8 @@ $('.color-mode').on('click', function(){
       'spss': 'SPSS',
       'looker-studio': 'Looker Studio',
       'dashboard': 'Dashboard',
+      'power-bi': 'Power BI',
+      'spotify': 'Spotify',
       'modelo-supervisado': 'Modelo Supervisado',
       'modelo-no-supervisado': 'Modelo No Supervisado',
       'clasificacion': 'Clasificación',
@@ -3779,6 +3793,8 @@ $('.color-mode').on('click', function(){
       'spss': 'SPSS',
       'looker-studio': 'Looker Studio',
       'dashboard': 'Dashboard',
+      'power-bi': 'Power BI',
+      'spotify': 'Spotify',
       'modelo-supervisado': 'Supervised Model',
       'modelo-no-supervisado': 'Unsupervised Model',
       'clasificacion': 'Classification',
@@ -3804,6 +3820,8 @@ $('.color-mode').on('click', function(){
       'spss': 'SPSS',
       'looker-studio': 'Looker Studio',
       'dashboard': 'Dashboard',
+      'power-bi': 'Power BI',
+      'spotify': 'Spotify',
       'modelo-supervisado': 'Modello supervisionato',
       'modelo-no-supervisado': 'Modello non supervisionato',
       'clasificacion': 'Classificazione',
@@ -3987,6 +4005,18 @@ $('.color-mode').on('click', function(){
         "es": "Dashboard",
         "en": "Dashboard",
         "it": "Dashboard"
+    },
+    "power-bi": {
+        "icon": "▥",
+        "es": "Power BI",
+        "en": "Power BI",
+        "it": "Power BI"
+    },
+    "spotify": {
+        "icon": "♪",
+        "es": "Spotify",
+        "en": "Spotify",
+        "it": "Spotify"
     },
     "modelo-supervisado": {
         "icon": "✓",
@@ -4328,6 +4358,18 @@ $('.color-mode').on('click', function(){
         "en": "Dashboard",
         "it": "Dashboard"
     },
+    "power-bi": {
+        "icon": "▥",
+        "es": "Power BI",
+        "en": "Power BI",
+        "it": "Power BI"
+    },
+    "spotify": {
+        "icon": "♪",
+        "es": "Spotify",
+        "en": "Spotify",
+        "it": "Spotify"
+    },
     "modelo-supervisado": {
         "icon": "✓",
         "es": "Modelo supervisado",
@@ -4668,6 +4710,18 @@ $('.color-mode').on('click', function(){
         "es": "Dashboard",
         "en": "Dashboard",
         "it": "Dashboard"
+    },
+    "power-bi": {
+        "icon": "▥",
+        "es": "Power BI",
+        "en": "Power BI",
+        "it": "Power BI"
+    },
+    "spotify": {
+        "icon": "♪",
+        "es": "Spotify",
+        "en": "Spotify",
+        "it": "Spotify"
     },
     "modelo-supervisado": {
         "icon": "✓",
