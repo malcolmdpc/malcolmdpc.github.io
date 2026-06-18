@@ -2093,30 +2093,30 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="aviacion"]': '✈ Aviation',
         '#projects .repo-filter-btn[data-repo-filter="fraude"]': '! Fraud',
 
-        '#projects .github-project-card:nth-of-type(1) h3': 'Balearic Islands Flight Analysis',
-        '#projects .github-project-card:nth-of-type(1) p:not(.project-status)': 'Analysis of air traffic in Spain using public AENA data, focused on volume, airport-level patterns and differences across traffic categories.',
-        '#projects .github-project-card:nth-of-type(2) h3': 'Airbnb Lodging Analysis in London',
-        '#projects .github-project-card:nth-of-type(2) p:not(.project-status)': 'Exploratory analysis of Airbnb listings in London, focused on pricing, property categories, reviews and spatial patterns.',
-        '#projects .github-project-card:nth-of-type(3) h3': 'Chicago Taxi Trip Analysis',
-        '#projects .github-project-card:nth-of-type(3) p:not(.project-status)': 'Analysis of reported Chicago taxi trips to study duration, demand, geospatial distribution and operational patterns.',
-        '#projects .github-project-card:nth-of-type(4) h3': 'ML Model · Airbnb London',
-        '#projects .github-project-card:nth-of-type(4) p:not(.project-status)': 'Supervised classification of listings as relatively expensive or inexpensive within each accommodation type.',
-        '#projects .github-project-card:nth-of-type(5) h3': 'Looker Dashboard · Chicago Taxi Trips',
-        '#projects .github-project-card:nth-of-type(5) p:not(.project-status)': 'Interactive Looker Studio dashboard for exploring Chicago taxi trips, operational indicators, hourly patterns and pickup-dropoff routes.',
-        '#projects .github-project-card:nth-of-type(6) h3': 'ML Model · Expected Goals (xG)',
-        '#projects .github-project-card:nth-of-type(6) p:not(.project-status)': 'Coming soon.',
-        '#projects .github-project-card:nth-of-type(7) h3': 'Soccer Probabilities · Expected Threat (xT)',
-        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Probabilistic Expected Threat model in soccer using public StatsBomb data. It estimates the probability of a goal in the next 5 actions.',
-        '#projects .github-project-card:nth-of-type(8) h3': 'ML Model · Fraud Detection',
-        '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Unsupervised K-means clustering applied to credit card fraud detection.',
-        '#projects .github-project-card:nth-of-type(9) h3': 'ML Model · Fraud Detection',
-        '#projects .github-project-card:nth-of-type(9) p:not(.project-status)': 'Supervised logistic regression model for credit card fraud detection.',
-        '#projects .github-project-card:nth-of-type(10) h3': 'ML Model · Fraud Detection',
-        '#projects .github-project-card:nth-of-type(10) p:not(.project-status)': 'Unsupervised DBSCAN clustering to detect potential credit card fraud patterns.',
-        '#projects .github-project-card:nth-of-type(11) h3': 'Qatar 2022 World Cup Statistics',
-        '#projects .github-project-card:nth-of-type(11) p:not(.project-status)': 'Coming soon.',
-        '#projects .github-project-card:nth-of-type(12) h3': 'Geospatial Taxi Trip Analysis',
-        '#projects .github-project-card:nth-of-type(12) p:not(.project-status)': 'Coming soon.',
+        '#projects .github-project-card[data-project-id="aena-balearic-flights"] h3': 'Balearic Islands Flight Analysis',
+        '#projects .github-project-card[data-project-id="aena-balearic-flights"] p:not(.project-status)': 'Analysis of air traffic in Spain using public AENA data, focused on volume, airport-level patterns and differences across traffic categories.',
+        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] h3': 'Airbnb Lodging Analysis in London',
+        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] p:not(.project-status)': 'Exploratory analysis of Airbnb listings in London, focused on pricing, property categories, reviews and spatial patterns.',
+        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] h3': 'Chicago Taxi Trip Analysis',
+        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] p:not(.project-status)': 'Analysis of reported Chicago taxi trips to study duration, demand, geospatial distribution and operational patterns.',
+        '#projects .github-project-card[data-project-id="airbnb-london-ml"] h3': 'ML Model · Airbnb London',
+        '#projects .github-project-card[data-project-id="airbnb-london-ml"] p:not(.project-status)': 'Supervised classification of listings as relatively expensive or inexpensive within each accommodation type.',
+        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] h3': 'Looker Dashboard · Chicago Taxi Trips',
+        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] p:not(.project-status)': 'Interactive Looker Studio dashboard for exploring Chicago taxi trips, operational indicators, hourly patterns and pickup-dropoff routes.',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'ML Model · Expected Goals (xG)',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] p:not(.project-status)': 'Coming soon.',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] h3': 'Soccer Probabilities · Expected Threat (xT)',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] p:not(.project-status)': 'Probabilistic Expected Threat model in soccer using public StatsBomb data. It estimates the probability of a goal in the next 5 actions.',
+        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] h3': 'ML Model · Fraud Detection',
+        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] p:not(.project-status)': 'Unsupervised K-means clustering applied to credit card fraud detection.',
+        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] h3': 'ML Model · Fraud Detection',
+        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] p:not(.project-status)': 'Supervised logistic regression model for credit card fraud detection.',
+        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] h3': 'ML Model · Fraud Detection',
+        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] p:not(.project-status)': 'Unsupervised DBSCAN clustering to detect potential credit card fraud patterns.',
+        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] h3': 'Qatar 2022 World Cup Statistics',
+        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] p:not(.project-status)': 'Coming soon.',
+        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Geospatial Taxi Trip Analysis',
+        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Coming soon.',
 
         '#projects .repo-empty-message': 'There are no projects in this category yet.',
 
@@ -2156,6 +2156,10 @@ $('.color-mode').on('click', function(){
         '#name': {placeholder: 'Name'},
         '#message': {placeholder: 'Message'},
         '#contactForm .submit-btn': {value: 'Prepare email'},
+        '.pl-scroll-loader': {'aria-label': 'Patrones Lab Data & Analytics. Tap to enter the site'},
+        '.pl-scroll-loader__first': {'aria-label': 'Scroll to enter the site'},
+        '.language-menu': {'aria-label': 'Available languages'},
+        '.color-mode': {'aria-label': 'Change visual mode', title: 'Change visual mode'},
         '.floating-cta': {'aria-label': 'View Patrones Lab repository'},
         '.navbar-toggler': {'aria-label': 'Open navigation'},
         '#about .hero-rotator': {'aria-label': 'evidence, models, dashboards, decisions and patterns'},
@@ -2514,30 +2518,30 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="aviacion"]': '<span class="filter-icon">✈</span> Aviación',
         '#projects .repo-filter-btn[data-repo-filter="fraude"]': '<span class="filter-icon">!</span> Fraude',
 
-        '#projects .github-project-card:nth-of-type(1) h3': 'Análisis de Vuelos en las Islas Baleares',
-        '#projects .github-project-card:nth-of-type(1) p:not(.project-status)': 'Análisis de tráfico aéreo en España con datos públicos de AENA, con foco en volúmenes, patrones por aeropuerto y diferencias entre categorías.',
-        '#projects .github-project-card:nth-of-type(2) h3': 'Análisis del Alojamiento Airbnb en Londres',
-        '#projects .github-project-card:nth-of-type(2) p:not(.project-status)': 'Análisis exploratorio del alojamiento Airbnb en Londres con foco en precio, categorías, reseñas y patrones territoriales.',
-        '#projects .github-project-card:nth-of-type(3) h3': 'Análisis de Viajes en Taxi en Chicago',
-        '#projects .github-project-card:nth-of-type(3) p:not(.project-status)': 'Análisis de viajes de taxi en Chicago para estudiar duración, demanda, distribución geoespacial y patrones operativos.',
-        '#projects .github-project-card:nth-of-type(4) h3': 'Modelo ML · Airbnb London',
-        '#projects .github-project-card:nth-of-type(4) p:not(.project-status)': 'Clasificación supervisada de anuncios relativamente caros o baratos dentro de cada tipo de alojamiento.',
-        '#projects .github-project-card:nth-of-type(5) h3': 'Dashboard Looker · Taxi Trips Chicago',
-        '#projects .github-project-card:nth-of-type(5) p:not(.project-status)': 'Dashboard interactivo en Looker Studio para explorar viajes de taxi en Chicago, indicadores operativos, patrones horarios y recorridos pickup-dropoff.',
-        '#projects .github-project-card:nth-of-type(6) h3': 'Modelo ML · Goles Esperados (xG)',
-        '#projects .github-project-card:nth-of-type(6) p:not(.project-status)': 'Próximamente.',
-        '#projects .github-project-card:nth-of-type(7) h3': 'Probabilidades en el Fútbol · Peligro Esperado (xT)',
-        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Modelo probabilístico de Peligro Esperado en el fútbol con datos públicos de StatsBomb. Se estima la probabilidad de gol en las próximas 5 jugadas.',
-        '#projects .github-project-card:nth-of-type(8) h3': 'Modelo ML · Detección de Fraude',
-        '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Clustering no supervisado con K-means para la detección de fraudes con tarjetas de crédito.',
-        '#projects .github-project-card:nth-of-type(9) h3': 'Modelo ML · Detección de Fraude',
-        '#projects .github-project-card:nth-of-type(9) p:not(.project-status)': 'Clasificación supervisada mediante regresión logística para la detección de fraude con tarjeta de crédito.',
-        '#projects .github-project-card:nth-of-type(10) h3': 'Modelo ML · Detección de Fraude',
-        '#projects .github-project-card:nth-of-type(10) p:not(.project-status)': 'Clustering no supervisado con DBSCAN para identificar posibles fraudes con tarjeta de crédito.',
-        '#projects .github-project-card:nth-of-type(11) h3': 'Estadísticas del Mundial de Fútbol Qatar 2022',
-        '#projects .github-project-card:nth-of-type(11) p:not(.project-status)': 'Próximamente.',
-        '#projects .github-project-card:nth-of-type(12) h3': 'Análisis Geoespacial de los Viajes en Taxi',
-        '#projects .github-project-card:nth-of-type(12) p:not(.project-status)': 'Próximamente.',
+        '#projects .github-project-card[data-project-id="aena-balearic-flights"] h3': 'Análisis de Vuelos en las Islas Baleares',
+        '#projects .github-project-card[data-project-id="aena-balearic-flights"] p:not(.project-status)': 'Análisis de tráfico aéreo en España con datos públicos de AENA, con foco en volúmenes, patrones por aeropuerto y diferencias entre categorías.',
+        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] h3': 'Análisis del Alojamiento Airbnb en Londres',
+        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] p:not(.project-status)': 'Análisis exploratorio del alojamiento Airbnb en Londres con foco en precio, categorías, reseñas y patrones territoriales.',
+        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] h3': 'Análisis de Viajes en Taxi en Chicago',
+        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] p:not(.project-status)': 'Análisis de viajes de taxi en Chicago para estudiar duración, demanda, distribución geoespacial y patrones operativos.',
+        '#projects .github-project-card[data-project-id="airbnb-london-ml"] h3': 'Modelo ML · Airbnb London',
+        '#projects .github-project-card[data-project-id="airbnb-london-ml"] p:not(.project-status)': 'Clasificación supervisada de anuncios relativamente caros o baratos dentro de cada tipo de alojamiento.',
+        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] h3': 'Dashboard Looker · Taxi Trips Chicago',
+        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] p:not(.project-status)': 'Dashboard interactivo en Looker Studio para explorar viajes de taxi en Chicago, indicadores operativos, patrones horarios y recorridos pickup-dropoff.',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'Modelo ML · Goles Esperados (xG)',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] p:not(.project-status)': 'Próximamente.',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] h3': 'Probabilidades en el Fútbol · Peligro Esperado (xT)',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] p:not(.project-status)': 'Modelo probabilístico de Peligro Esperado en el fútbol con datos públicos de StatsBomb. Se estima la probabilidad de gol en las próximas 5 jugadas.',
+        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] h3': 'Modelo ML · Detección de Fraude',
+        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] p:not(.project-status)': 'Clustering no supervisado con K-means para la detección de fraudes con tarjetas de crédito.',
+        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] h3': 'Modelo ML · Detección de Fraude',
+        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] p:not(.project-status)': 'Clasificación supervisada mediante regresión logística para la detección de fraude con tarjeta de crédito.',
+        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] h3': 'Modelo ML · Detección de Fraude',
+        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] p:not(.project-status)': 'Clustering no supervisado con DBSCAN para identificar posibles fraudes con tarjeta de crédito.',
+        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] h3': 'Estadísticas del Mundial de Fútbol Qatar 2022',
+        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] p:not(.project-status)': 'Próximamente.',
+        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Análisis Geoespacial de los Viajes en Taxi',
+        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Próximamente.',
 
         '#projects .repo-empty-message': 'No hay proyectos para esa categoría todavía.',
 
@@ -2575,6 +2579,10 @@ $('.color-mode').on('click', function(){
         '#name': {placeholder: 'Nombre'},
         '#message': {placeholder: 'Mensaje'},
         '#contactForm .submit-btn': {value: 'Preparar email'},
+        '.pl-scroll-loader': {'aria-label': 'Patrones Lab Data & Analytics. Tocar para entrar al sitio'},
+        '.pl-scroll-loader__first': {'aria-label': 'Scroll para entrar al sitio'},
+        '.language-menu': {'aria-label': 'Idiomas disponibles'},
+        '.color-mode': {'aria-label': 'Cambiar modo visual', title: 'Cambiar modo visual'},
         '.floating-cta': {'aria-label': 'Ver repositorio de Patrones Lab'},
         '.navbar-toggler': {'aria-label': 'Abrir navegación'},
         '#about .hero-rotator': {'aria-label': 'evidencia, modelos, dashboards, decisiones y patrones'},
@@ -2668,30 +2676,30 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="aviacion"]': '<span class="filter-icon">✈</span> Aviation',
         '#projects .repo-filter-btn[data-repo-filter="fraude"]': '<span class="filter-icon">!</span> Fraud',
 
-        '#projects .github-project-card:nth-of-type(1) h3': 'Balearic Islands Flight Analysis',
-        '#projects .github-project-card:nth-of-type(1) p:not(.project-status)': 'Analysis of air traffic in Spain using public AENA data, focused on volume, airport-level patterns and differences across traffic categories.',
-        '#projects .github-project-card:nth-of-type(2) h3': 'Airbnb Lodging Analysis in London',
-        '#projects .github-project-card:nth-of-type(2) p:not(.project-status)': 'Exploratory analysis of Airbnb listings in London, focused on pricing, property categories, reviews and spatial patterns.',
-        '#projects .github-project-card:nth-of-type(3) h3': 'Chicago Taxi Trip Analysis',
-        '#projects .github-project-card:nth-of-type(3) p:not(.project-status)': 'Analysis of reported Chicago taxi trips to study duration, demand, geospatial distribution and operational patterns.',
-        '#projects .github-project-card:nth-of-type(4) h3': 'ML Model · Airbnb London',
-        '#projects .github-project-card:nth-of-type(4) p:not(.project-status)': 'Supervised classification of listings as relatively expensive or inexpensive within each accommodation type.',
-        '#projects .github-project-card:nth-of-type(5) h3': 'Looker Dashboard · Chicago Taxi Trips',
-        '#projects .github-project-card:nth-of-type(5) p:not(.project-status)': 'Interactive Looker Studio dashboard for exploring Chicago taxi trips, operational indicators, hourly patterns and pickup-dropoff routes.',
-        '#projects .github-project-card:nth-of-type(6) h3': 'ML Model · Expected Goals (xG)',
-        '#projects .github-project-card:nth-of-type(6) p:not(.project-status)': 'Coming soon.',
-        '#projects .github-project-card:nth-of-type(7) h3': 'Soccer Probabilities · Expected Threat (xT)',
-        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Probabilistic Expected Threat model in soccer using public StatsBomb data. It estimates the probability of a goal in the next 5 actions.',
-        '#projects .github-project-card:nth-of-type(8) h3': 'ML Model · Fraud Detection',
-        '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Unsupervised K-means clustering applied to credit card fraud detection.',
-        '#projects .github-project-card:nth-of-type(9) h3': 'ML Model · Fraud Detection',
-        '#projects .github-project-card:nth-of-type(9) p:not(.project-status)': 'Supervised logistic regression model for credit card fraud detection.',
-        '#projects .github-project-card:nth-of-type(10) h3': 'ML Model · Fraud Detection',
-        '#projects .github-project-card:nth-of-type(10) p:not(.project-status)': 'Unsupervised DBSCAN clustering to detect potential credit card fraud patterns.',
-        '#projects .github-project-card:nth-of-type(11) h3': 'Qatar 2022 World Cup Statistics',
-        '#projects .github-project-card:nth-of-type(11) p:not(.project-status)': 'Coming soon.',
-        '#projects .github-project-card:nth-of-type(12) h3': 'Geospatial Taxi Trip Analysis',
-        '#projects .github-project-card:nth-of-type(12) p:not(.project-status)': 'Coming soon.',
+        '#projects .github-project-card[data-project-id="aena-balearic-flights"] h3': 'Balearic Islands Flight Analysis',
+        '#projects .github-project-card[data-project-id="aena-balearic-flights"] p:not(.project-status)': 'Analysis of air traffic in Spain using public AENA data, focused on volume, airport-level patterns and differences across traffic categories.',
+        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] h3': 'Airbnb Lodging Analysis in London',
+        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] p:not(.project-status)': 'Exploratory analysis of Airbnb listings in London, focused on pricing, property categories, reviews and spatial patterns.',
+        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] h3': 'Chicago Taxi Trip Analysis',
+        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] p:not(.project-status)': 'Analysis of reported Chicago taxi trips to study duration, demand, geospatial distribution and operational patterns.',
+        '#projects .github-project-card[data-project-id="airbnb-london-ml"] h3': 'ML Model · Airbnb London',
+        '#projects .github-project-card[data-project-id="airbnb-london-ml"] p:not(.project-status)': 'Supervised classification of listings as relatively expensive or inexpensive within each accommodation type.',
+        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] h3': 'Looker Dashboard · Chicago Taxi Trips',
+        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] p:not(.project-status)': 'Interactive Looker Studio dashboard for exploring Chicago taxi trips, operational indicators, hourly patterns and pickup-dropoff routes.',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'ML Model · Expected Goals (xG)',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] p:not(.project-status)': 'Coming soon.',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] h3': 'Soccer Probabilities · Expected Threat (xT)',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] p:not(.project-status)': 'Probabilistic Expected Threat model in soccer using public StatsBomb data. It estimates the probability of a goal in the next 5 actions.',
+        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] h3': 'ML Model · Fraud Detection',
+        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] p:not(.project-status)': 'Unsupervised K-means clustering applied to credit card fraud detection.',
+        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] h3': 'ML Model · Fraud Detection',
+        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] p:not(.project-status)': 'Supervised logistic regression model for credit card fraud detection.',
+        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] h3': 'ML Model · Fraud Detection',
+        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] p:not(.project-status)': 'Unsupervised DBSCAN clustering to detect potential credit card fraud patterns.',
+        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] h3': 'Qatar 2022 World Cup Statistics',
+        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] p:not(.project-status)': 'Coming soon.',
+        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Geospatial Taxi Trip Analysis',
+        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Coming soon.',
 
         '#projects .repo-empty-message': 'There are no projects in this category yet.',
 
@@ -2728,6 +2736,10 @@ $('.color-mode').on('click', function(){
         '#name': {placeholder: 'Name'},
         '#message': {placeholder: 'Message'},
         '#contactForm .submit-btn': {value: 'Prepare email'},
+        '.pl-scroll-loader': {'aria-label': 'Patrones Lab Data & Analytics. Tap to enter the site'},
+        '.pl-scroll-loader__first': {'aria-label': 'Scroll to enter the site'},
+        '.language-menu': {'aria-label': 'Available languages'},
+        '.color-mode': {'aria-label': 'Change visual mode', title: 'Change visual mode'},
         '.floating-cta': {'aria-label': 'View Patrones Lab repository'},
         '.navbar-toggler': {'aria-label': 'Open navigation'},
         '#about .hero-rotator': {'aria-label': 'evidence, models, dashboards, decisions and patterns'},
@@ -2840,6 +2852,7 @@ $('.color-mode').on('click', function(){
       metaDescription: 'Patrones Lab reúne proyectos de analítica de datos, Business Intelligence y Machine Learning para explorar datos, detectar patrones, generar conocimiento y representar visualmente los descubrimientos.',
       htmlLang: 'es',
       currentLabel: 'Español',
+      languageSelectorAriaLabel: 'Idioma',
       text: {
         '.floating-cta__text': 'Ver repo',
         '.navbar-nav .nav-link[href="#about"]': 'Inicio',
@@ -2919,32 +2932,32 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="fraude"]': '<span class="filter-icon">!</span> Fraude',
         '#projects .repo-filter-btn[data-repo-filter="spotify"]': '<span class="filter-icon">♪</span> Spotify',
 
-        '#projects .github-project-card:nth-of-type(1) h3': 'Análisis de Vuelos en las Islas Baleares',
-        '#projects .github-project-card:nth-of-type(1) p:not(.project-status)': 'Análisis de tráfico aéreo en España con datos públicos de AENA, con foco en volúmenes, patrones por aeropuerto y diferencias entre categorías.',
-        '#projects .github-project-card:nth-of-type(2) h3': 'Análisis del Alojamiento Airbnb en Londres',
-        '#projects .github-project-card:nth-of-type(2) p:not(.project-status)': 'Análisis exploratorio del alojamiento Airbnb en Londres con foco en precio, categorías, reseñas y patrones territoriales.',
-        '#projects .github-project-card:nth-of-type(3) h3': 'Análisis de Viajes en Taxi en Chicago',
-        '#projects .github-project-card:nth-of-type(3) p:not(.project-status)': 'Análisis de viajes de taxi en Chicago para estudiar duración, demanda, distribución geoespacial y patrones operativos.',
-        '#projects .github-project-card:nth-of-type(4) h3': 'Modelo ML · Airbnb London',
-        '#projects .github-project-card:nth-of-type(4) p:not(.project-status)': 'Clasificación supervisada de anuncios relativamente caros o baratos dentro de cada tipo de alojamiento.',
-        '#projects .github-project-card:nth-of-type(5) h3': 'Dashboard Looker · Taxi Trips Chicago',
-        '#projects .github-project-card:nth-of-type(5) p:not(.project-status)': 'Dashboard interactivo en Looker Studio para explorar viajes de taxi en Chicago, indicadores operativos, patrones horarios y recorridos pickup-dropoff.',
-        '#projects .github-project-card:nth-of-type(6) h3': 'Modelo ML · Goles Esperados (xG)',
-        '#projects .github-project-card:nth-of-type(6) p:not(.project-status)': 'Próximamente.',
-        '#projects .github-project-card:nth-of-type(7) h3': 'Probabilidades en el Fútbol · Peligro Esperado (xT)',
-        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Modelo probabilístico de Peligro Esperado en el fútbol con datos públicos de StatsBomb. Se estima la probabilidad de gol en las próximas 5 jugadas.',
-        '#projects .github-project-card:nth-of-type(8) h3': 'Modelo ML · Detección de Fraude',
-        '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Clustering no supervisado con K-means para la detección de fraudes con tarjetas de crédito.',
-        '#projects .github-project-card:nth-of-type(9) h3': 'Modelo ML · Detección de Fraude',
-        '#projects .github-project-card:nth-of-type(9) p:not(.project-status)': 'Clasificación supervisada mediante regresión logística para la detección de fraude con tarjeta de crédito.',
-        '#projects .github-project-card:nth-of-type(10) h3': 'Modelo ML · Detección de Fraude',
-        '#projects .github-project-card:nth-of-type(10) p:not(.project-status)': 'Clustering no supervisado con DBSCAN para identificar posibles fraudes con tarjeta de crédito.',
-        '#projects .github-project-card:nth-of-type(11) h3': 'Estadísticas del Mundial de Fútbol Qatar 2022',
-        '#projects .github-project-card:nth-of-type(11) p:not(.project-status)': 'Próximamente.',
-        '#projects .github-project-card:nth-of-type(12) h3': 'Análisis Geoespacial de los Viajes en Taxi',
-        '#projects .github-project-card:nth-of-type(12) p:not(.project-status)': 'Próximamente.',
-        '#projects .github-project-card:nth-of-type(13) h3': 'Dashboard en Power BI · Spotify Charts',
-        '#projects .github-project-card:nth-of-type(13) p:not(.project-status)': 'Dashboard interactivo en Power BI para explorar reproducciones en Spotify y analizar canciones, artistas y álbumes que se encuentran en el Top 250 en cada país.',
+        '#projects .github-project-card[data-project-id="aena-balearic-flights"] h3': 'Análisis de Vuelos en las Islas Baleares',
+        '#projects .github-project-card[data-project-id="aena-balearic-flights"] p:not(.project-status)': 'Análisis de tráfico aéreo en España con datos públicos de AENA, con foco en volúmenes, patrones por aeropuerto y diferencias entre categorías.',
+        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] h3': 'Análisis del Alojamiento Airbnb en Londres',
+        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] p:not(.project-status)': 'Análisis exploratorio del alojamiento Airbnb en Londres con foco en precio, categorías, reseñas y patrones territoriales.',
+        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] h3': 'Análisis de Viajes en Taxi en Chicago',
+        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] p:not(.project-status)': 'Análisis de viajes de taxi en Chicago para estudiar duración, demanda, distribución geoespacial y patrones operativos.',
+        '#projects .github-project-card[data-project-id="airbnb-london-ml"] h3': 'Modelo ML · Airbnb London',
+        '#projects .github-project-card[data-project-id="airbnb-london-ml"] p:not(.project-status)': 'Clasificación supervisada de anuncios relativamente caros o baratos dentro de cada tipo de alojamiento.',
+        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] h3': 'Dashboard Looker · Taxi Trips Chicago',
+        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] p:not(.project-status)': 'Dashboard interactivo en Looker Studio para explorar viajes de taxi en Chicago, indicadores operativos, patrones horarios y recorridos pickup-dropoff.',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'Modelo ML · Goles Esperados (xG)',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] p:not(.project-status)': 'Próximamente.',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] h3': 'Probabilidades en el Fútbol · Peligro Esperado (xT)',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] p:not(.project-status)': 'Modelo probabilístico de Peligro Esperado en el fútbol con datos públicos de StatsBomb. Se estima la probabilidad de gol en las próximas 5 jugadas.',
+        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] h3': 'Modelo ML · Detección de Fraude',
+        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] p:not(.project-status)': 'Clustering no supervisado con K-means para la detección de fraudes con tarjetas de crédito.',
+        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] h3': 'Modelo ML · Detección de Fraude',
+        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] p:not(.project-status)': 'Clasificación supervisada mediante regresión logística para la detección de fraude con tarjeta de crédito.',
+        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] h3': 'Modelo ML · Detección de Fraude',
+        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] p:not(.project-status)': 'Clustering no supervisado con DBSCAN para identificar posibles fraudes con tarjeta de crédito.',
+        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] h3': 'Estadísticas del Mundial de Fútbol Qatar 2022',
+        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] p:not(.project-status)': 'Próximamente.',
+        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Análisis Geoespacial de los Viajes en Taxi',
+        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Próximamente.',
+        '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] h3': 'Dashboard en Power BI · Spotify Charts',
+        '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] p:not(.project-status)': 'Dashboard interactivo en Power BI para explorar reproducciones en Spotify y analizar canciones, artistas y álbumes que se encuentran en el Top 250 en cada país.',
         '#projects .repo-empty-message': 'No hay proyectos para esa categoría todavía.',
 
         '#networks .section-kicker': 'Canales de Patrones Lab',
@@ -2983,6 +2996,10 @@ $('.color-mode').on('click', function(){
         '#name': {placeholder: 'Nombre'},
         '#message': {placeholder: 'Mensaje'},
         '#contactForm .submit-btn': {value: 'Preparar email'},
+        '.pl-scroll-loader': {'aria-label': 'Patrones Lab Data & Analytics. Tocar para entrar al sitio'},
+        '.pl-scroll-loader__first': {'aria-label': 'Scroll para entrar al sitio'},
+        '.language-menu': {'aria-label': 'Idiomas disponibles'},
+        '.color-mode': {'aria-label': 'Cambiar modo visual', title: 'Cambiar modo visual'},
         '.floating-cta': {'aria-label': 'Ver repositorio de Patrones Lab'},
         '.navbar-toggler': {'aria-label': 'Abrir navegación'},
         '#about .hero-rotator': {'aria-label': 'evidencia, modelos, dashboards, decisiones y patrones'},
@@ -2996,6 +3013,7 @@ $('.color-mode').on('click', function(){
       metaDescription: 'Patrones Lab: a portfolio of reproducible data projects across BI, machine learning, Python, SQL, Power BI, Qlik and Looker Studio.',
       htmlLang: 'en',
       currentLabel: 'English',
+      languageSelectorAriaLabel: 'Language',
       text: {
         '.floating-cta__text': 'View repository',
         '.navbar-nav .nav-link[href="#about"]': 'Home',
@@ -3075,32 +3093,32 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="fraude"]': '<span class="filter-icon">!</span> Fraud',
         '#projects .repo-filter-btn[data-repo-filter="spotify"]': '<span class="filter-icon">♪</span> Spotify',
 
-        '#projects .github-project-card:nth-of-type(1) h3': 'Balearic Islands Flight Analysis',
-        '#projects .github-project-card:nth-of-type(1) p:not(.project-status)': 'Analysis of air traffic in Spain using public AENA data, focused on volume, airport-level patterns and differences across traffic categories.',
-        '#projects .github-project-card:nth-of-type(2) h3': 'Airbnb Lodging Analysis in London',
-        '#projects .github-project-card:nth-of-type(2) p:not(.project-status)': 'Exploratory analysis of Airbnb listings in London, focused on pricing, property categories, reviews and spatial patterns.',
-        '#projects .github-project-card:nth-of-type(3) h3': 'Chicago Taxi Trip Analysis',
-        '#projects .github-project-card:nth-of-type(3) p:not(.project-status)': 'Analysis of reported Chicago taxi trips to study duration, demand, geospatial distribution and operational patterns.',
-        '#projects .github-project-card:nth-of-type(4) h3': 'ML Model · Airbnb London',
-        '#projects .github-project-card:nth-of-type(4) p:not(.project-status)': 'Supervised classification of listings as relatively expensive or inexpensive within each accommodation type.',
-        '#projects .github-project-card:nth-of-type(5) h3': 'Looker Dashboard · Chicago Taxi Trips',
-        '#projects .github-project-card:nth-of-type(5) p:not(.project-status)': 'Interactive Looker Studio dashboard for exploring Chicago taxi trips, operational indicators, hourly patterns and pickup-dropoff routes.',
-        '#projects .github-project-card:nth-of-type(6) h3': 'ML Model · Expected Goals (xG)',
-        '#projects .github-project-card:nth-of-type(6) p:not(.project-status)': 'Coming soon.',
-        '#projects .github-project-card:nth-of-type(7) h3': 'Soccer Probabilities · Expected Threat (xT)',
-        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Probabilistic Expected Threat model in soccer using public StatsBomb data. It estimates the probability of a goal in the next 5 actions.',
-        '#projects .github-project-card:nth-of-type(8) h3': 'ML Model · Fraud Detection',
-        '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Unsupervised K-means clustering applied to credit card fraud detection.',
-        '#projects .github-project-card:nth-of-type(9) h3': 'ML Model · Fraud Detection',
-        '#projects .github-project-card:nth-of-type(9) p:not(.project-status)': 'Supervised logistic regression model for credit card fraud detection.',
-        '#projects .github-project-card:nth-of-type(10) h3': 'ML Model · Fraud Detection',
-        '#projects .github-project-card:nth-of-type(10) p:not(.project-status)': 'Unsupervised DBSCAN clustering to detect potential credit card fraud patterns.',
-        '#projects .github-project-card:nth-of-type(11) h3': 'Qatar 2022 World Cup Statistics',
-        '#projects .github-project-card:nth-of-type(11) p:not(.project-status)': 'Coming soon.',
-        '#projects .github-project-card:nth-of-type(12) h3': 'Geospatial Taxi Trip Analysis',
-        '#projects .github-project-card:nth-of-type(12) p:not(.project-status)': 'Coming soon.',
-        '#projects .github-project-card:nth-of-type(13) h3': 'Power BI Dashboard · Spotify Charts',
-        '#projects .github-project-card:nth-of-type(13) p:not(.project-status)': 'Interactive Power BI dashboard to explore Spotify streams and analyze songs, artists and albums ranked in the Top 250 in each country.',
+        '#projects .github-project-card[data-project-id="aena-balearic-flights"] h3': 'Balearic Islands Flight Analysis',
+        '#projects .github-project-card[data-project-id="aena-balearic-flights"] p:not(.project-status)': 'Analysis of air traffic in Spain using public AENA data, focused on volume, airport-level patterns and differences across traffic categories.',
+        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] h3': 'Airbnb Lodging Analysis in London',
+        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] p:not(.project-status)': 'Exploratory analysis of Airbnb listings in London, focused on pricing, property categories, reviews and spatial patterns.',
+        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] h3': 'Chicago Taxi Trip Analysis',
+        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] p:not(.project-status)': 'Analysis of reported Chicago taxi trips to study duration, demand, geospatial distribution and operational patterns.',
+        '#projects .github-project-card[data-project-id="airbnb-london-ml"] h3': 'ML Model · Airbnb London',
+        '#projects .github-project-card[data-project-id="airbnb-london-ml"] p:not(.project-status)': 'Supervised classification of listings as relatively expensive or inexpensive within each accommodation type.',
+        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] h3': 'Looker Dashboard · Chicago Taxi Trips',
+        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] p:not(.project-status)': 'Interactive Looker Studio dashboard for exploring Chicago taxi trips, operational indicators, hourly patterns and pickup-dropoff routes.',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'ML Model · Expected Goals (xG)',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] p:not(.project-status)': 'Coming soon.',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] h3': 'Soccer Probabilities · Expected Threat (xT)',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] p:not(.project-status)': 'Probabilistic Expected Threat model in soccer using public StatsBomb data. It estimates the probability of a goal in the next 5 actions.',
+        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] h3': 'ML Model · Fraud Detection',
+        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] p:not(.project-status)': 'Unsupervised K-means clustering applied to credit card fraud detection.',
+        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] h3': 'ML Model · Fraud Detection',
+        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] p:not(.project-status)': 'Supervised logistic regression model for credit card fraud detection.',
+        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] h3': 'ML Model · Fraud Detection',
+        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] p:not(.project-status)': 'Unsupervised DBSCAN clustering to detect potential credit card fraud patterns.',
+        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] h3': 'Qatar 2022 World Cup Statistics',
+        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] p:not(.project-status)': 'Coming soon.',
+        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Geospatial Taxi Trip Analysis',
+        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Coming soon.',
+        '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] h3': 'Power BI Dashboard · Spotify Charts',
+        '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] p:not(.project-status)': 'Interactive Power BI dashboard to explore Spotify streams and analyze songs, artists and albums ranked in the Top 250 in each country.',
         '#projects .repo-empty-message': 'There are no projects in this category yet.',
 
         '#networks .section-kicker': 'Patrones Lab Online Presence',
@@ -3138,6 +3156,10 @@ $('.color-mode').on('click', function(){
         '#name': {placeholder: 'Name'},
         '#message': {placeholder: 'Message'},
         '#contactForm .submit-btn': {value: 'Prepare email'},
+        '.pl-scroll-loader': {'aria-label': 'Patrones Lab Data & Analytics. Tap to enter the site'},
+        '.pl-scroll-loader__first': {'aria-label': 'Scroll to enter the site'},
+        '.language-menu': {'aria-label': 'Available languages'},
+        '.color-mode': {'aria-label': 'Change visual mode', title: 'Change visual mode'},
         '.floating-cta': {'aria-label': 'View Patrones Lab repository'},
         '.navbar-toggler': {'aria-label': 'Open navigation'},
         '#about .hero-rotator': {'aria-label': 'evidence, models, dashboards, decisions and patterns'},
@@ -3151,6 +3173,7 @@ $('.color-mode').on('click', function(){
       metaDescription: 'Patrones Lab: portfolio di progetti basati sui dati e riproducibili in BI, machine learning, Python, SQL, Power BI, Qlik e Looker Studio.',
       htmlLang: 'it',
       currentLabel: 'Italiano',
+      languageSelectorAriaLabel: 'Lingua',
       text: {
         '.tech-logo-card-power-bi small': 'Business Intelligence',
         '.tech-logo-card-qlik small': 'Analisi visuale',
@@ -3240,32 +3263,32 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="fraude"]': '<span class="filter-icon">!</span> Frode',
         '#projects .repo-filter-btn[data-repo-filter="spotify"]': '<span class="filter-icon">♪</span> Spotify',
 
-        '#projects .github-project-card:nth-of-type(1) h3': 'Analisi del traffico aereo nelle Isole Baleari',
-        '#projects .github-project-card:nth-of-type(1) p:not(.project-status)': 'Analisi del traffico aereo in Spagna con dati pubblici AENA, con focus su volumi, pattern per aeroporto e differenze tra categorie di traffico.',
-        '#projects .github-project-card:nth-of-type(2) h3': 'Analisi degli annunci Airbnb a Londra',
-        '#projects .github-project-card:nth-of-type(2) p:not(.project-status)': 'Analisi esplorativa degli annunci Airbnb a Londra, con focus su pricing, categorie di alloggio, recensioni e pattern territoriali.',
-        '#projects .github-project-card:nth-of-type(3) h3': 'Analisi delle corse taxi a Chicago',
-        '#projects .github-project-card:nth-of-type(3) p:not(.project-status)': 'Analisi delle corse taxi registrate a Chicago per studiare durata, domanda, distribuzione geospaziale e pattern operativi.',
-        '#projects .github-project-card:nth-of-type(4) h3': 'Modello ML · Airbnb London',
-        '#projects .github-project-card:nth-of-type(4) p:not(.project-status)': 'Classificazione supervisionata degli annunci relativamente costosi o economici all’interno di ciascuna tipologia di alloggio.',
-        '#projects .github-project-card:nth-of-type(5) h3': 'Dashboard Looker · Taxi Trips Chicago',
-        '#projects .github-project-card:nth-of-type(5) p:not(.project-status)': 'Dashboard interattiva in Looker Studio per esplorare corse taxi a Chicago, indicatori operativi, pattern orari e percorsi pickup-dropoff.',
-        '#projects .github-project-card:nth-of-type(6) h3': 'Modello ML · Expected Goals (xG)',
-        '#projects .github-project-card:nth-of-type(6) p:not(.project-status)': 'Prossimamente.',
-        '#projects .github-project-card:nth-of-type(7) h3': 'Probabilità nel calcio · Expected Threat (xT)',
-        '#projects .github-project-card:nth-of-type(7) p:not(.project-status)': 'Modello probabilistico di Expected Threat nel calcio basato su dati pubblici StatsBomb. Stima la probabilità di gol nelle successive 5 azioni.',
-        '#projects .github-project-card:nth-of-type(8) h3': 'Modello ML · Rilevamento frodi',
-        '#projects .github-project-card:nth-of-type(8) p:not(.project-status)': 'Clustering non supervisionato con K-means applicato al rilevamento di frodi su transazioni con carta di credito.',
-        '#projects .github-project-card:nth-of-type(9) h3': 'Modello ML · Rilevamento frodi',
-        '#projects .github-project-card:nth-of-type(9) p:not(.project-status)': 'Modello supervisionato di regressione logistica per il rilevamento di frodi su transazioni con carta di credito.',
-        '#projects .github-project-card:nth-of-type(10) h3': 'Modello ML · Rilevamento frodi',
-        '#projects .github-project-card:nth-of-type(10) p:not(.project-status)': 'Clustering non supervisionato con DBSCAN per individuare possibili pattern anomali nelle transazioni con carta di credito.',
-        '#projects .github-project-card:nth-of-type(11) h3': 'Statistiche Mondiali Qatar 2022',
-        '#projects .github-project-card:nth-of-type(11) p:not(.project-status)': 'Prossimamente.',
-        '#projects .github-project-card:nth-of-type(12) h3': 'Analisi geospaziale delle corse taxi',
-        '#projects .github-project-card:nth-of-type(12) p:not(.project-status)': 'Prossimamente.',
-        '#projects .github-project-card:nth-of-type(13) h3': 'Dashboard Power BI · Spotify Charts',
-        '#projects .github-project-card:nth-of-type(13) p:not(.project-status)': 'Dashboard interattiva in Power BI per esplorare gli stream su Spotify e analizzare brani, artisti e album presenti nella Top 250 di ogni Paese.',
+        '#projects .github-project-card[data-project-id="aena-balearic-flights"] h3': 'Analisi del traffico aereo nelle Isole Baleari',
+        '#projects .github-project-card[data-project-id="aena-balearic-flights"] p:not(.project-status)': 'Analisi del traffico aereo in Spagna con dati pubblici AENA, con focus su volumi, pattern per aeroporto e differenze tra categorie di traffico.',
+        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] h3': 'Analisi degli annunci Airbnb a Londra',
+        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] p:not(.project-status)': 'Analisi esplorativa degli annunci Airbnb a Londra, con focus su pricing, categorie di alloggio, recensioni e pattern territoriali.',
+        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] h3': 'Analisi delle corse taxi a Chicago',
+        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] p:not(.project-status)': 'Analisi delle corse taxi registrate a Chicago per studiare durata, domanda, distribuzione geospaziale e pattern operativi.',
+        '#projects .github-project-card[data-project-id="airbnb-london-ml"] h3': 'Modello ML · Airbnb London',
+        '#projects .github-project-card[data-project-id="airbnb-london-ml"] p:not(.project-status)': 'Classificazione supervisionata degli annunci relativamente costosi o economici all’interno di ciascuna tipologia di alloggio.',
+        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] h3': 'Dashboard Looker · Taxi Trips Chicago',
+        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] p:not(.project-status)': 'Dashboard interattiva in Looker Studio per esplorare corse taxi a Chicago, indicatori operativi, pattern orari e percorsi pickup-dropoff.',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'Modello ML · Expected Goals (xG)',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] p:not(.project-status)': 'Prossimamente.',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] h3': 'Probabilità nel calcio · Expected Threat (xT)',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] p:not(.project-status)': 'Modello probabilistico di Expected Threat nel calcio basato su dati pubblici StatsBomb. Stima la probabilità di gol nelle successive 5 azioni.',
+        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] h3': 'Modello ML · Rilevamento frodi',
+        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] p:not(.project-status)': 'Clustering non supervisionato con K-means applicato al rilevamento di frodi su transazioni con carta di credito.',
+        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] h3': 'Modello ML · Rilevamento frodi',
+        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] p:not(.project-status)': 'Modello supervisionato di regressione logistica per il rilevamento di frodi su transazioni con carta di credito.',
+        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] h3': 'Modello ML · Rilevamento frodi',
+        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] p:not(.project-status)': 'Clustering non supervisionato con DBSCAN per individuare possibili pattern anomali nelle transazioni con carta di credito.',
+        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] h3': 'Statistiche Mondiali Qatar 2022',
+        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] p:not(.project-status)': 'Prossimamente.',
+        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Analisi geospaziale delle corse taxi',
+        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Prossimamente.',
+        '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] h3': 'Dashboard Power BI · Spotify Charts',
+        '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] p:not(.project-status)': 'Dashboard interattiva in Power BI per esplorare gli stream su Spotify e analizzare brani, artisti e album presenti nella Top 250 di ogni Paese.',
         '#projects .repo-empty-message': 'Non ci sono ancora progetti per questa categoria.',
 
         '#networks .section-kicker': 'Presenza digitale di Patrones Lab',
@@ -3304,6 +3327,10 @@ $('.color-mode').on('click', function(){
         '#name': {placeholder: 'Nome'},
         '#message': {placeholder: 'Messaggio'},
         '#contactForm .submit-btn': {value: 'Prepara email'},
+        '.pl-scroll-loader': {'aria-label': 'Patrones Lab Data & Analytics. Tocca per entrare nel sito'},
+        '.pl-scroll-loader__first': {'aria-label': 'Scorri per entrare nel sito'},
+        '.language-menu': {'aria-label': 'Lingue disponibili'},
+        '.color-mode': {'aria-label': 'Cambia modalità visiva', title: 'Cambia modalità visiva'},
         '.floating-cta': {'aria-label': 'Vedi repository Patrones Lab'},
         '.navbar-toggler': {'aria-label': 'Apri navigazione'},
         '#about .hero-rotator': {'aria-label': 'evidenze, modelli, dashboard, decisioni e pattern'},
@@ -3325,10 +3352,10 @@ $('.color-mode').on('click', function(){
   }
 
   function setAttr(selector, attrs){
-    const el = document.querySelector(selector);
-    if(!el) return;
-    Object.keys(attrs).forEach(function(name){
-      el.setAttribute(name, attrs[name]);
+    document.querySelectorAll(selector).forEach(function(el){
+      Object.keys(attrs).forEach(function(name){
+        el.setAttribute(name, attrs[name]);
+      });
     });
   }
 
@@ -3358,7 +3385,7 @@ $('.color-mode').on('click', function(){
       const toggle = selector.querySelector('.language-select-toggle');
       const current = selector.querySelector('.language-select-current-img');
       if(toggle){
-        toggle.setAttribute('aria-label', 'Idioma: ' + langData[lang].currentLabel);
+        toggle.setAttribute('aria-label', (langData[lang].languageSelectorAriaLabel || 'Idioma') + ': ' + langData[lang].currentLabel);
         toggle.setAttribute('title', langData[lang].currentLabel);
         toggle.setAttribute('aria-expanded', selector.classList.contains('is-open') ? 'true' : 'false');
       }
@@ -5333,4 +5360,56 @@ $('.color-mode').on('click', function(){
   }
 
   window.plApplyProject12Translations = applyProject12Text;
+})();
+
+(function(){
+  const labels = {
+    es: 'datos:',
+    en: 'data:',
+    it: 'dati:'
+  };
+
+  const ariaLabels = {
+    es: 'Año de los datos',
+    en: 'Data year',
+    it: 'Anno dei dati'
+  };
+
+  function getLang(){
+    if(window.plGetLanguage){
+      return window.plGetLanguage();
+    }
+
+    try{
+      return localStorage.getItem('patrones_lab_language') || 'es';
+    }catch(e){
+      return 'es';
+    }
+  }
+
+  function syncProjectDataYearLabels(lang){
+    const language = labels[lang] ? lang : getLang();
+
+    document.querySelectorAll('.project-data-label[data-data-year-label]').forEach(function(label){
+      label.textContent = labels[language] || labels.es;
+
+      const wrapper = label.closest('.project-data-year');
+      if(!wrapper) return;
+
+      const valueEl = wrapper.querySelector('.project-data-value');
+      const value = valueEl ? valueEl.textContent.trim() : '';
+      if(value){
+        wrapper.setAttribute('aria-label', (ariaLabels[language] || ariaLabels.es) + ': ' + value);
+      }
+    });
+  }
+
+  document.addEventListener('pl-language-changed', function(event){
+    const lang = event.detail && event.detail.language ? event.detail.language : getLang();
+    syncProjectDataYearLabels(lang);
+  });
+
+  syncProjectDataYearLabels(getLang());
+
+  window.plSyncProjectDataYearLabels = syncProjectDataYearLabels;
 })();

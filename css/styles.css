@@ -13462,3 +13462,206 @@ html body footer.footer .pl-footer-author-note{
     transform-origin:center center !important;
   }
 }
+
+.project-meta-row{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0 0 18px;
+}
+
+.project-meta-row .project-status{
+  margin:0;
+}
+
+.project-data-year{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+  line-height:1;
+  color:#9b1c68;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 92, 180, .20) 0,
+      rgba(255, 92, 180, .20) 6px,
+      rgba(255, 255, 255, .18) 6px,
+      rgba(255, 255, 255, .18) 12px
+    ),
+    rgba(255, 92, 180, .12);
+  border:1px solid rgba(255, 92, 180, .32);
+}
+
+.project-data-label{
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+  opacity:.72;
+}
+
+.project-data-value{
+  font-weight:900;
+  font-size:13px;
+  letter-spacing:.02em;
+}
+
+.dark-mode .project-data-year{
+  color:#ffd6ec;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 92, 180, .22) 0,
+      rgba(255, 92, 180, .22) 6px,
+      rgba(255, 255, 255, .07) 6px,
+      rgba(255, 255, 255, .07) 12px
+    ),
+    rgba(255, 92, 180, .13);
+  border-color:rgba(255, 92, 180, .38);
+}
+
+@media (max-width: 767px){
+  .project-meta-row{
+    gap:7px;
+    margin-bottom:16px;
+  }
+
+  .project-data-year{
+    padding:6px 9px;
+    font-size:12px;
+  }
+
+  .project-data-value{
+    font-size:12px;
+  }
+}
+
+.project-meta-row{
+  align-items:center !important;
+}
+
+.project-meta-row .project-status,
+.project-meta-row .project-data-year{
+  min-height:28px !important;
+  height:28px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  line-height:1 !important;
+  vertical-align:middle !important;
+}
+
+.project-meta-row .project-data-year{
+  padding:0 11px !important;
+  gap:6px !important;
+}
+
+.project-meta-row .project-data-label{
+  text-transform:none !important;
+  font-size:12px !important;
+  line-height:1 !important;
+  letter-spacing:.01em !important;
+}
+
+.project-meta-row .project-data-value{
+  font-size:13px !important;
+  line-height:1 !important;
+}
+
+@media (max-width: 767px){
+  .project-meta-row .project-status,
+  .project-meta-row .project-data-year{
+    min-height:27px !important;
+    height:27px !important;
+  }
+
+  .project-meta-row .project-data-year{
+    padding:0 10px !important;
+  }
+
+  .project-meta-row .project-data-label{
+    font-size:11px !important;
+  }
+
+  .project-meta-row .project-data-value{
+    font-size:12px !important;
+  }
+}
+
+#projects .project-meta-row{
+  display:flex !important;
+  align-items:center !important;
+  flex-wrap:nowrap !important;
+  gap:9px !important;
+  margin:0 0 18px !important;
+  line-height:1 !important;
+}
+
+#projects .project-meta-row .project-status,
+#projects .project-meta-row .project-data-year{
+  box-sizing:border-box !important;
+  height:26px !important;
+  min-height:26px !important;
+  max-height:26px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  align-self:center !important;
+  margin:0 !important;
+  padding:0 10px !important;
+  line-height:1 !important;
+  vertical-align:top !important;
+  transform:none !important;
+}
+
+#projects .project-meta-row .project-data-year{
+  gap:6px !important;
+}
+
+#projects .project-meta-row .project-data-label,
+#projects .project-meta-row .project-data-value{
+  display:inline-flex !important;
+  align-items:center !important;
+  height:100% !important;
+  line-height:1 !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+
+#projects .project-meta-row .project-data-label{
+  text-transform:none !important;
+  font-size:12px !important;
+  letter-spacing:0 !important;
+}
+
+#projects .project-meta-row .project-data-value{
+  font-size:13px !important;
+}
+
+@media (max-width: 767px){
+  #projects .project-meta-row{
+    gap:8px !important;
+    margin-bottom:16px !important;
+  }
+
+  #projects .project-meta-row .project-status,
+  #projects .project-meta-row .project-data-year{
+    height:25px !important;
+    min-height:25px !important;
+    max-height:25px !important;
+    padding:0 9px !important;
+  }
+
+  #projects .project-meta-row .project-data-label{
+    font-size:11px !important;
+  }
+
+  #projects .project-meta-row .project-data-value{
+    font-size:12px !important;
+  }
+}
