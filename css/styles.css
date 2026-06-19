@@ -13747,8 +13747,37 @@ html body footer.footer .pl-footer-author-note{
   filter:grayscale(.78) contrast(1.04) brightness(.74);
 }
 
-@media (hover:none){
+@media (hover:none), (pointer:coarse){
   .github-project-card.project-card-detail-ready .project-detail-hover-cue{
-    display:none;
+    inset:auto 12px 12px 12px;
+    min-height:58px;
+    flex-direction:row;
+    gap:10px;
+    border-radius:999px;
+    background:rgba(8,9,10,.72);
+    backdrop-filter:grayscale(1) saturate(.75) blur(2px);
+    -webkit-backdrop-filter:grayscale(1) saturate(.75) blur(2px);
+  }
+
+  .github-project-card.project-card-detail-ready:active .project-detail-hover-cue,
+  .github-project-card.project-card-detail-ready:focus-within .project-detail-hover-cue{
+    opacity:1;
+    transform:none;
+  }
+
+  .github-project-card.project-card-detail-ready .project-detail-hover-plus{
+    width:40px;
+    height:40px;
+    font-size:28px;
+    box-shadow:0 10px 24px rgba(0,0,0,.3);
+  }
+
+  .github-project-card.project-card-detail-ready .project-detail-hover-text{
+    min-height:28px;
+    padding:0 4px 0 0;
+    background:transparent;
+    border:0;
+    font-size:12px;
+    letter-spacing:.03em;
   }
 }
