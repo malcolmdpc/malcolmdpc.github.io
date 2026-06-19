@@ -18,6 +18,102 @@
       document.body.classList.add('dark-mode');
     }, {once:true});
   }
+
+})();
+
+(function(){
+  const allowedSections = {
+    about:true,
+    methodology:true,
+    projects:true,
+    networks:true,
+    contact:true
+  };
+
+  function normalizeSection(value){
+    const clean = (value || '').replace(/^#/, '').trim();
+    return allowedSections[clean] ? clean : null;
+  }
+
+  function readInitialSectionTarget(){
+    let params = null;
+    try{
+      params = new URLSearchParams(window.location.search || '');
+    }catch(e){
+      params = null;
+    }
+
+    const fromParam = params ? normalizeSection(params.get('section') || params.get('plSection')) : null;
+    if(fromParam) return fromParam;
+
+    return normalizeSection(window.location.hash || '');
+  }
+
+  function clearIntroLocks(){
+    const body = document.body;
+    const html = document.documentElement;
+    if(!body || !html) return;
+
+    const loader = document.querySelector('.pl-scroll-loader');
+    if(loader && loader.parentNode) loader.parentNode.removeChild(loader);
+
+    body.classList.remove('pl-scroll-loader-active');
+    body.classList.remove('pl-scroll-loader-finishing');
+    body.classList.remove('pl-scroll-landing-lock');
+    body.classList.add('pl-scroll-loader-complete');
+    html.classList.remove('pl-scroll-loader-lock');
+  }
+
+  function scrollToInitialSection(options){
+    const targetId = window.plInitialSectionTarget;
+    if(!targetId) return false;
+
+    const section = document.getElementById(targetId);
+    if(!section) return false;
+
+    clearIntroLocks();
+
+    const top = Math.max(0, window.pageYOffset + section.getBoundingClientRect().top);
+    window.scrollTo({top:top, left:0, behavior:'auto'});
+
+    if(typeof window.plSmoothScrollSync === 'function'){
+      window.plSmoothScrollSync();
+    }
+
+    if(window.ScrollTrigger && typeof window.ScrollTrigger.refresh === 'function'){
+      try{ window.ScrollTrigger.refresh(true); }catch(e){}
+    }
+
+    if(options && options.replaceUrl && window.history && window.history.replaceState){
+      try{
+        const url = new URL(window.location.href);
+        url.searchParams.delete('section');
+        url.searchParams.delete('plSection');
+        url.hash = targetId;
+        window.history.replaceState(null, '', url.pathname + url.search + url.hash);
+      }catch(e){}
+    }
+
+    return true;
+  }
+
+  window.plInitialSectionTarget = readInitialSectionTarget();
+  window.plScrollToInitialSection = scrollToInitialSection;
+
+  function scheduleInitialSectionScroll(){
+    if(!window.plInitialSectionTarget) return;
+    scrollToInitialSection({replaceUrl:true});
+    window.requestAnimationFrame(function(){ scrollToInitialSection({replaceUrl:true}); });
+    window.setTimeout(function(){ scrollToInitialSection({replaceUrl:true}); }, 120);
+    window.setTimeout(function(){ scrollToInitialSection({replaceUrl:true}); }, 520);
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', scheduleInitialSectionScroll, {once:true});
+  }else{
+    scheduleInitialSectionScroll();
+  }
+  window.addEventListener('load', scheduleInitialSectionScroll, {once:true});
 })();
 
 (function ($) {
@@ -839,7 +935,9 @@ $('.color-mode').on('click', function(){
   const body = document.body;
   const html = document.documentElement;
   const params = new URLSearchParams(window.location.search || '');
-  const skipIntro = params.has('audit') ||
+  const directSectionTarget = window.plInitialSectionTarget || null;
+  const skipIntro = directSectionTarget ||
+    params.has('audit') ||
     params.has('lighthouse') ||
     /Lighthouse|PageSpeed|Chrome-Lighthouse/i.test(navigator.userAgent || '') ||
     (navigator.webdriver === true) ||
@@ -852,7 +950,15 @@ $('.color-mode').on('click', function(){
     body.classList.remove('pl-scroll-landing-lock');
     body.classList.add('pl-scroll-loader-complete');
     html.classList.remove('pl-scroll-loader-lock');
-    window.scrollTo(0, 0);
+
+    if(directSectionTarget && typeof window.plScrollToInitialSection === 'function'){
+      window.setTimeout(function(){
+        window.plScrollToInitialSection({replaceUrl:true});
+      }, 0);
+    }else{
+      window.scrollTo(0, 0);
+    }
+
     return;
   }
 
@@ -5412,4 +5518,63 @@ $('.color-mode').on('click', function(){
   syncProjectDataYearLabels(getLang());
 
   window.plSyncProjectDataYearLabels = syncProjectDataYearLabels;
+})();
+
+
+(function(){
+  const detailCopy = {
+    es: {
+      cta: 'Ver detalle',
+      aria: 'Abrir página de detalle del proyecto Análisis de Vuelos en las Islas Baleares'
+    },
+    en: {
+      cta: 'View details',
+      aria: 'Open detail page for the Balearic Islands Flight Analysis project'
+    },
+    it: {
+      cta: 'Vedi dettaglio',
+      aria: 'Aprire la pagina di dettaglio del progetto Analisi del traffico aereo nelle Isole Baleari'
+    }
+  };
+
+  function getLang(){
+    if(window.plGetLanguage){
+      const lang = window.plGetLanguage();
+      if(detailCopy[lang]) return lang;
+    }
+
+    try{
+      const stored = localStorage.getItem('patronesLabLanguage');
+      if(detailCopy[stored]) return stored;
+    }catch(e){}
+
+    const htmlLang = document.documentElement.lang;
+    return detailCopy[htmlLang] ? htmlLang : 'es';
+  }
+
+  function applyProjectDetailCue(lang){
+    const language = detailCopy[lang] ? lang : getLang();
+    const pack = detailCopy[language];
+
+    document.querySelectorAll('[data-project-detail-cta="true"]').forEach(function(el){
+      el.textContent = pack.cta;
+    });
+
+    document.querySelectorAll('#projects .github-project-card[data-project-id="aena-balearic-flights"] .project-image-link, #projects .github-project-card[data-project-id="aena-balearic-flights"] .project-link[href="proyectos/analisis-vuelos-islas-baleares.html"]').forEach(function(el){
+      el.setAttribute('aria-label', pack.aria);
+    });
+  }
+
+  document.addEventListener('pl-language-changed', function(event){
+    const lang = event.detail && event.detail.language ? event.detail.language : getLang();
+    applyProjectDetailCue(lang);
+  });
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){
+      applyProjectDetailCue(getLang());
+    }, {once:true});
+  }else{
+    applyProjectDetailCue(getLang());
+  }
 })();
