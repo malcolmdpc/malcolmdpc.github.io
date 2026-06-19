@@ -5435,7 +5435,7 @@ $('.color-mode').on('click', function(){
              a.textContent.indexOf('Open project') !== -1 ||
              a.textContent.indexOf('Apri il progetto') !== -1;
     });
-    if(projectLink) projectLink.setAttribute('href', "https://github.com/malcolmdpc/patrones-lab/tree/main/2026-03_taxi-trip-chicago");
+    if(projectLink) projectLink.setAttribute('href', "proyectos/analisis-geoespacial-viajes-taxi.html");
 
     const linkedinLink = Array.from(card.querySelectorAll('a.project-link')).find(function(a){
       return a.textContent.indexOf('LinkedIn') !== -1;

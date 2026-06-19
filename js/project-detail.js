@@ -14,14 +14,18 @@
       status: "✅ publicado",
       dataLabel: "datos:",
       lead: "Análisis de tráfico aéreo en España con datos públicos de AENA, con foco en volúmenes, patrones por aeropuerto y diferencias entre categorías.",
+      tagPython: "Python",
+      tagDataStorytelling: "Narrativa de datos",
       tagAviation: "Aviación",
-      questionTitle: "Pregunta de trabajo",
+      tagDataAnalysis: "Análisis de datos",
+      tagBI: "BI",
+      questionTitle: "CONTEXTO Y OBJETIVO",
       questionText: "¿Qué patrones aparecen en el tráfico aéreo de las Islas Baleares cuando se miran los datos por aeropuerto, volumen y tipo de tráfico?",
-      approachTitle: "Enfoque",
+      approachTitle: "DATOS Y DIAGNÓSTICO",
       approachOne: "Uso de datos públicos de AENA como fuente principal.",
       approachTwo: "Comparación de aeropuertos, categorías y variaciones de tráfico.",
       approachThree: "Construcción de visuales para convertir datos operativos en lectura territorial.",
-      outputTitle: "Salida del proyecto",
+      outputTitle: "ENTREGA Y APRENDIZAJE",
       outputText: "El proyecto queda presentado como análisis reproducible en GitHub y como pieza editorial en LinkedIn, manteniendo una narrativa visual orientada a patrones y contexto.",
       repoButton: "Ver repo",
       linkedinButton: "Leer en LinkedIn",
@@ -63,14 +67,18 @@
       status: "✅ published",
       dataLabel: "data:",
       lead: "Analysis of air traffic in Spain using public AENA data, focused on volume, airport-level patterns and differences across traffic categories.",
+      tagPython: "Python",
+      tagDataStorytelling: "Data storytelling",
       tagAviation: "Aviation",
-      questionTitle: "Working question",
+      tagDataAnalysis: "Data analysis",
+      tagBI: "BI",
+      questionTitle: "CONTEXT AND OBJECTIVE",
       questionText: "What patterns appear in Balearic Islands air traffic when the data is read by airport, volume and traffic type?",
-      approachTitle: "Approach",
+      approachTitle: "DATA AND DIAGNOSIS",
       approachOne: "Public AENA data is used as the main source.",
       approachTwo: "Airports, categories and traffic variations are compared.",
       approachThree: "Visuals are built to turn operational data into a territorial reading.",
-      outputTitle: "Project output",
+      outputTitle: "DELIVERY AND LEARNING",
       outputText: "The project is presented as a reproducible analysis on GitHub and as an editorial piece on LinkedIn, with a visual narrative focused on patterns and context.",
       repoButton: "View repo",
       linkedinButton: "Read on LinkedIn",
@@ -112,14 +120,18 @@
       status: "✅ pubblicato",
       dataLabel: "dati:",
       lead: "Analisi del traffico aereo in Spagna con dati pubblici AENA, con focus su volumi, pattern per aeroporto e differenze tra categorie di traffico.",
+      tagPython: "Python",
+      tagDataStorytelling: "Storytelling dei dati",
       tagAviation: "Aviazione",
-      questionTitle: "Domanda di lavoro",
+      tagDataAnalysis: "Analisi dei dati",
+      tagBI: "BI",
+      questionTitle: "CONTESTO E OBIETTIVO",
       questionText: "Quali pattern emergono nel traffico aereo delle Isole Baleari quando i dati vengono letti per aeroporto, volume e tipo di traffico?",
-      approachTitle: "Approccio",
+      approachTitle: "DATI E DIAGNOSI",
       approachOne: "I dati pubblici AENA sono usati come fonte principale.",
       approachTwo: "Si confrontano aeroporti, categorie e variazioni di traffico.",
       approachThree: "Si costruiscono visual per trasformare dati operativi in una lettura territoriale.",
-      outputTitle: "Output del progetto",
+      outputTitle: "CONSEGNA E APPRENDIMENTO",
       outputText: "Il progetto è presentato come analisi riproducibile su GitHub e come contenuto editoriale su LinkedIn, con una narrazione visuale orientata a pattern e contesto.",
       repoButton: "Vedi repo",
       linkedinButton: "Leggi su LinkedIn",
@@ -254,7 +266,6 @@
 
     var orders = buildGalleryOrders(sourceImages.length);
     var eagerBudget = Math.min(6, sourceImages.length);
-
     function createImageFromSource(index, isFirstVisibleSet){
       var img = sourceImages[index].cloneNode(true);
       img.removeAttribute("data-gallery-fill");
@@ -299,16 +310,35 @@
       return mainSegment.offsetHeight || beforeSegment.offsetHeight || 0;
     }
 
+    var userInteracted = false;
+    var programmaticScroll = false;
+    var resizeTimer = 0;
+
     function setMiddle(){
+      if(userInteracted) return;
       var h = segmentHeight();
-      if(h > 0) scroller.scrollTop = h;
+      if(h <= 0) return;
+      programmaticScroll = true;
+      scroller.scrollTop = h;
+      window.setTimeout(function(){ programmaticScroll = false; }, 40);
     }
 
     function loop(){
       var h = segmentHeight();
       if(h <= 0) return;
-      if(scroller.scrollTop < h * 0.5) scroller.scrollTop += h;
-      if(scroller.scrollTop > h * 1.5) scroller.scrollTop -= h;
+      if(scroller.scrollTop < h * 0.5){
+        programmaticScroll = true;
+        scroller.scrollTop += h;
+        window.setTimeout(function(){ programmaticScroll = false; }, 40);
+      }else if(scroller.scrollTop > h * 1.5){
+        programmaticScroll = true;
+        scroller.scrollTop -= h;
+        window.setTimeout(function(){ programmaticScroll = false; }, 40);
+      }
+    }
+
+    function markUserScroll(){
+      if(!programmaticScroll) userInteracted = true;
     }
 
     var isDragging = false;
@@ -318,6 +348,7 @@
     scroller.addEventListener("pointerdown", function(event){
       if(event.pointerType && event.pointerType !== "mouse") return;
       if(typeof event.button === "number" && event.button !== 0) return;
+      userInteracted = true;
       isDragging = true;
       dragStartY = event.clientY;
       dragStartScroll = scroller.scrollTop;
@@ -342,24 +373,32 @@
       }
     }
 
+    scroller.addEventListener("wheel", markUserScroll, {passive:true});
+    scroller.addEventListener("touchstart", markUserScroll, {passive:true});
     scroller.addEventListener("pointerup", stopDrag);
     scroller.addEventListener("pointercancel", stopDrag);
     scroller.addEventListener("pointerleave", stopDrag);
-    scroller.addEventListener("scroll", loop, {passive:true});
+    scroller.addEventListener("scroll", function(){
+      if(!programmaticScroll) userInteracted = true;
+      loop();
+    }, {passive:true});
 
-    var pendingMiddle = 0;
-    function scheduleMiddle(){
-      window.clearTimeout(pendingMiddle);
-      pendingMiddle = window.setTimeout(setMiddle, 80);
+    function scheduleInitialMiddle(){
+      window.requestAnimationFrame(function(){
+        setMiddle();
+        window.setTimeout(setMiddle, 120);
+      });
     }
 
-    Array.prototype.slice.call(inner.querySelectorAll("img")).forEach(function(img){
-      if(!img.complete) img.addEventListener("load", scheduleMiddle, {once:true});
-    });
+    function handleResize(){
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(function(){
+        if(!userInteracted) setMiddle();
+      }, 120);
+    }
 
-    window.setTimeout(setMiddle, 80);
-    window.setTimeout(setMiddle, 350);
-    window.addEventListener("resize", scheduleMiddle);
+    scheduleInitialMiddle();
+    window.addEventListener("resize", handleResize);
   }
 
   document.addEventListener("DOMContentLoaded", function(){
