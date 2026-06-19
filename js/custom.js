@@ -5523,18 +5523,9 @@ $('.color-mode').on('click', function(){
 
 (function(){
   const detailCopy = {
-    es: {
-      cta: 'Ver detalle',
-      aria: 'Abrir página de detalle del proyecto Análisis de Vuelos en las Islas Baleares'
-    },
-    en: {
-      cta: 'View details',
-      aria: 'Open detail page for the Balearic Islands Flight Analysis project'
-    },
-    it: {
-      cta: 'Vedi dettaglio',
-      aria: 'Aprire la pagina di dettaglio del progetto Analisi del traffico aereo nelle Isole Baleari'
-    }
+    es: { cta: 'Ver detalle', ariaKey: 'detailAriaEs' },
+    en: { cta: 'View details', ariaKey: 'detailAriaEn' },
+    it: { cta: 'Vedi dettaglio', ariaKey: 'detailAriaIt' }
   };
 
   function getLang(){
@@ -5560,8 +5551,12 @@ $('.color-mode').on('click', function(){
       el.textContent = pack.cta;
     });
 
-    document.querySelectorAll('#projects .github-project-card[data-project-id="aena-balearic-flights"] .project-image-link, #projects .github-project-card[data-project-id="aena-balearic-flights"] .project-link[href="proyectos/analisis-vuelos-islas-baleares.html"]').forEach(function(el){
-      el.setAttribute('aria-label', pack.aria);
+    document.querySelectorAll('#projects .github-project-card.project-card-detail-ready').forEach(function(card){
+      const aria = card.dataset[pack.ariaKey];
+      if(!aria) return;
+      card.querySelectorAll('.project-image-link, .project-link[href$=".html"]').forEach(function(el){
+        el.setAttribute('aria-label', aria);
+      });
     });
   }
 

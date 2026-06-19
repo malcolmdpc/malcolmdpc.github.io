@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Análisis de Vuelos en las Islas Baleares · Patrones Lab</title>
+<title>Patrones Lab · Análisis de Vuelos en las Islas Baleares</title>
 <meta content="Página de proyecto de Patrones Lab sobre tráfico aéreo en las Islas Baleares, usando datos públicos de AENA para analizar volúmenes, patrones por aeropuerto y diferencias entre categorías." name="description"/>
 <meta content="index, follow, max-image-preview:large" name="robots"/>
 <link href="../favicon.ico" rel="icon" type="image/x-icon"/>
@@ -13,7 +14,7 @@
 <link href="https://malcolmdpc.github.io/proyectos/analisis-vuelos-islas-baleares.html" rel="canonical"/>
 <meta content="#0c0c0d" name="theme-color"/>
 <meta content="article" property="og:type"/>
-<meta content="Análisis de Vuelos en las Islas Baleares · Patrones Lab" property="og:title"/>
+<meta content="Patrones Lab · Análisis de Vuelos en las Islas Baleares" property="og:title"/>
 <meta content="Proyecto de analítica de datos sobre tráfico aéreo en las Islas Baleares con datos públicos de AENA." property="og:description"/>
 <meta content="https://malcolmdpc.github.io/proyectos/analisis-vuelos-islas-baleares.html" property="og:url"/>
 <meta content="https://malcolmdpc.github.io/images/patrones/social/patrones-lab-og.jpg" property="og:image"/>
@@ -22,65 +23,65 @@
 <meta content="en_US" property="og:locale:alternate"/>
 <meta content="it_IT" property="og:locale:alternate"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="Análisis de Vuelos en las Islas Baleares · Patrones Lab" name="twitter:title"/>
+<meta content="Patrones Lab · Análisis de Vuelos en las Islas Baleares" name="twitter:title"/>
 <meta content="Proyecto de analítica de datos sobre tráfico aéreo en las Islas Baleares con datos públicos de AENA." name="twitter:description"/>
 <meta content="https://malcolmdpc.github.io/images/patrones/social/patrones-lab-og.jpg" name="twitter:image"/>
 <link href="../site.webmanifest" rel="manifest"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
-<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&amp;display=swap" rel="stylesheet"/></noscript>
-<link as="style" href="https://fonts.googleapis.com/css?family=Maven+Pro:400,700&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
-<noscript><link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,700&amp;display=swap" rel="stylesheet"/></noscript>
+<link as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet"/></noscript>
+<link as="style" href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
+<noscript><link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&amp;display=swap" rel="stylesheet"/></noscript>
 <link href="../css/unicons.css" rel="stylesheet"/>
 <link href="../css/project-detail.css" rel="stylesheet"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Análisis de Vuelos en las Islas Baleares","description":"Proyecto de analítica de datos sobre tráfico aéreo en las Islas Baleares con datos públicos de AENA.","url":"https://malcolmdpc.github.io/proyectos/analisis-vuelos-islas-baleares.html","image":"https://malcolmdpc.github.io/images/patrones/social/patrones-lab-og.jpg","author":{"@type":"Person","name":"Malcolm Di Pietro Cagliari","url":"https://malcolmdpc.github.io/"},"inLanguage":["es","en","it"],"dateModified":"2026-06-18","keywords":["AENA","tráfico aéreo","Islas Baleares","analítica de datos","Business Intelligence","Python"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CreativeWork","name":"Patrones Lab · Análisis de Vuelos en las Islas Baleares","description":"Proyecto de analítica de datos sobre tráfico aéreo en las Islas Baleares con datos públicos de AENA.","url":"https://malcolmdpc.github.io/proyectos/analisis-vuelos-islas-baleares.html","image":"https://malcolmdpc.github.io/images/patrones/social/patrones-lab-og.jpg","author":{"@type":"Person","name":"Malcolm Di Pietro Cagliari","url":"https://malcolmdpc.github.io/"},"inLanguage":["es","en","it"],"dateModified":"2026-06-19","keywords":["AENA","tráfico aéreo","Islas Baleares","analítica de datos","Business Intelligence","Python"]}</script>
 </head>
-<body class="project-detail-page">
-<main class="project-detail-layout" aria-label="Página de proyecto">
-<section class="project-gallery-panel" aria-label="Galería visual del proyecto">
-<div class="project-gallery-scroll" data-infinite-gallery="true" tabindex="0" aria-label="Galería de imágenes con desplazamiento interno">
+<body class="project-detail-page" data-project-detail="aena-baleares">
+<main aria-label="Página de proyecto" class="project-detail-layout" data-i18n-aria="pageAria">
+<section aria-label="Galería visual del proyecto" class="project-gallery-panel" data-i18n-aria="galleryPanelAria">
+<div aria-label="Galería de imágenes con desplazamiento interno" class="project-gallery-scroll" data-i18n-aria="galleryScrollAria" data-infinite-gallery="true" tabindex="0">
 <div class="project-gallery-inner">
 <div class="project-gallery-sequence" data-gallery-sequence="source">
 <div class="project-masonry-gallery" data-gallery-set="true">
-<img src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-01-portada-turismo.webp" alt="Portada del análisis de tráfico aéreo en las Islas Baleares" data-i18n-alt="galleryAltCover" width="270" height="338" loading="eager" decoding="async"/>
-<img src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-09-kpi-pasajeros-totales.webp" alt="Indicador de pasajeros totales llegados a Baleares" data-i18n-alt="galleryAltTotalPassengersKpi" width="471" height="180" loading="lazy" decoding="async"/>
-<img src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-11-mapa-paises-escala.webp" alt="Mapa de países de escala con llegadas a Baleares" data-i18n-alt="galleryAltCountryMap" width="316" height="166" loading="lazy" decoding="async"/>
-<img src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-03-variacion-temporada.webp" alt="Variación de pasajeros entre temporada alta y baja en Baleares" data-i18n-alt="galleryAltSeasonVariation" width="270" height="338" loading="lazy" decoding="async"/>
-<img src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-07-distribucion-islas-tiempo.webp" alt="Distribución temporal de pasajeros entre Mallorca, Menorca e Ibiza" data-i18n-alt="galleryAltIslandTime" width="270" height="338" loading="lazy" decoding="async"/>
-<img src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-12-companias-espana.webp" alt="Comparación de llegadas a Baleares por compañía desde España" data-i18n-alt="galleryAltSpainCompanies" width="340" height="284" loading="lazy" decoding="async"/>
-<img src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-05-top-paises.webp" alt="Top 10 países por pasajeros hacia Baleares" data-i18n-alt="galleryAltTopCountries" width="270" height="338" loading="lazy" decoding="async"/>
-<img src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-04-top-ciudades.webp" alt="Top 10 ciudades por pasajeros hacia Baleares" data-i18n-alt="galleryAltTopCities" width="270" height="338" loading="lazy" decoding="async"/>
-<img src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-15-serie-top-companias.webp" alt="Serie temporal mensual de pasajeros por principales compañías" data-i18n-alt="galleryAltCompanyTimeSeries" width="454" height="252" loading="lazy" decoding="async"/>
-<img src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-16-decremento-paises.webp" alt="Países con mayor caída de llegadas a Baleares" data-i18n-alt="galleryAltCountryDecrease" width="419" height="256" loading="lazy" decoding="async"/>
-<img src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-06-top-aerolineas.webp" alt="Top aerolíneas por pasajeros hacia Baleares" data-i18n-alt="galleryAltTopAirlines" width="270" height="338" loading="lazy" decoding="async"/>
-<img src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-14-incremento-paises.webp" alt="Países con mayor incremento de llegadas a Baleares" data-i18n-alt="galleryAltCountryIncrease" width="418" height="254" loading="lazy" decoding="async"/>
-<img src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-13-reparto-aeropuertos.webp" alt="Distribución de pasajeros por aeropuerto base en Baleares" data-i18n-alt="galleryAltAirportDonut" width="340" height="232" loading="lazy" decoding="async"/>
-<img src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-10-kpi-temporada-baja.webp" alt="Indicador de variación de temporada baja 2025 frente a 2024" data-i18n-alt="galleryAltLowSeasonKpi" width="168" height="100" loading="lazy" decoding="async"/>
-<img src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-17-mapa-calor-estacionalidad.webp" alt="Mapa de calor de estacionalidad mensual por aeropuerto base" data-i18n-alt="galleryAltSeasonHeatmap" width="401" height="320" loading="lazy" decoding="async"/>
-<img src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-18-mapa-burbujas-aeropuertos.webp" alt="Mapa de burbujas de aeropuertos de escala hacia Baleares" data-i18n-alt="galleryAltAirportBubbleMap" width="396" height="246" loading="lazy" decoding="async"/>
-<img src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-02-destino-islas-donut.webp" alt="Distribución de pasajeros por isla en Baleares en 2025" data-i18n-alt="galleryAltIslandShare" width="270" height="338" loading="lazy" decoding="async"/>
-<img src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-08-kpi-temporada-alta.webp" alt="Indicador de variación de temporada alta 2025 frente a 2024" data-i18n-alt="galleryAltHighSeasonKpi" width="174" height="104" loading="lazy" decoding="async"/>
+<img alt="Portada del análisis de tráfico aéreo en las Islas Baleares" data-i18n-alt="galleryAltCover" decoding="async" height="338" loading="eager" src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-01-portada-turismo.webp" width="270"/>
+<img alt="Indicador de pasajeros totales llegados a Baleares" data-i18n-alt="galleryAltTotalPassengersKpi" decoding="async" height="180" loading="lazy" src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-09-kpi-pasajeros-totales.webp" width="471"/>
+<img alt="Mapa de países de escala con llegadas a Baleares" data-i18n-alt="galleryAltCountryMap" decoding="async" height="166" loading="lazy" src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-11-mapa-paises-escala.webp" width="316"/>
+<img alt="Variación de pasajeros entre temporada alta y baja en Baleares" data-i18n-alt="galleryAltSeasonVariation" decoding="async" height="338" loading="lazy" src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-03-variacion-temporada.webp" width="270"/>
+<img alt="Distribución temporal de pasajeros entre Mallorca, Menorca e Ibiza" data-i18n-alt="galleryAltIslandTime" decoding="async" height="338" loading="lazy" src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-07-distribucion-islas-tiempo.webp" width="270"/>
+<img alt="Comparación de llegadas a Baleares por compañía desde España" data-i18n-alt="galleryAltSpainCompanies" decoding="async" height="284" loading="lazy" src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-12-companias-espana.webp" width="340"/>
+<img alt="Top 10 países por pasajeros hacia Baleares" data-i18n-alt="galleryAltTopCountries" decoding="async" height="338" loading="lazy" src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-05-top-paises.webp" width="270"/>
+<img alt="Top 10 ciudades por pasajeros hacia Baleares" data-i18n-alt="galleryAltTopCities" decoding="async" height="338" loading="lazy" src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-04-top-ciudades.webp" width="270"/>
+<img alt="Serie temporal mensual de pasajeros por principales compañías" data-i18n-alt="galleryAltCompanyTimeSeries" decoding="async" height="252" loading="lazy" src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-15-serie-top-companias.webp" width="454"/>
+<img alt="Países con mayor caída de llegadas a Baleares" data-i18n-alt="galleryAltCountryDecrease" decoding="async" height="256" loading="lazy" src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-16-decremento-paises.webp" width="419"/>
+<img alt="Top aerolíneas por pasajeros hacia Baleares" data-i18n-alt="galleryAltTopAirlines" decoding="async" height="338" loading="lazy" src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-06-top-aerolineas.webp" width="270"/>
+<img alt="Países con mayor incremento de llegadas a Baleares" data-i18n-alt="galleryAltCountryIncrease" decoding="async" height="254" loading="lazy" src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-14-incremento-paises.webp" width="418"/>
+<img alt="Distribución de pasajeros por aeropuerto base en Baleares" data-i18n-alt="galleryAltAirportDonut" decoding="async" height="232" loading="lazy" src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-13-reparto-aeropuertos.webp" width="340"/>
+<img alt="Indicador de variación de temporada baja 2025 frente a 2024" data-i18n-alt="galleryAltLowSeasonKpi" decoding="async" height="100" loading="lazy" src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-10-kpi-temporada-baja.webp" width="168"/>
+<img alt="Mapa de calor de estacionalidad mensual por aeropuerto base" data-i18n-alt="galleryAltSeasonHeatmap" decoding="async" height="320" loading="lazy" src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-17-mapa-calor-estacionalidad.webp" width="401"/>
+<img alt="Mapa de burbujas de aeropuertos de escala hacia Baleares" data-i18n-alt="galleryAltAirportBubbleMap" decoding="async" height="246" loading="lazy" src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-18-mapa-burbujas-aeropuertos.webp" width="396"/>
+<img alt="Distribución de pasajeros por isla en Baleares en 2025" data-i18n-alt="galleryAltIslandShare" decoding="async" height="338" loading="lazy" src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-02-destino-islas-donut.webp" width="270"/>
+<img alt="Indicador de variación de temporada alta 2025 frente a 2024" data-i18n-alt="galleryAltHighSeasonKpi" decoding="async" height="104" loading="lazy" src="../images/patrones/projects/analisis-vuelos-islas-baleares/patrones-lab-aena-baleares-08-kpi-temporada-alta.webp" width="174"/>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section class="project-info-panel" aria-label="Información del proyecto">
+<section aria-label="Información del proyecto" class="project-info-panel" data-i18n-aria="infoPanelAria">
 <header class="project-detail-topbar">
-<a class="back-to-projects" href="../index.html?section=projects#projects" data-i18n="back">← Volver a proyectos</a>
+<a class="back-to-projects" data-i18n="back" href="../index.html?section=projects#projects">← Volver a proyectos</a>
 <div class="project-detail-controls">
-<div class="project-language-selector" aria-label="Cambiar idioma">
-<button class="project-language-toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-label="Cambiar idioma" data-i18n-aria="languageLabel">
-<img class="project-language-current-img" src="../images/patrones/language-flags/flag-es.svg" alt="" width="32" height="32"/>
+<div aria-label="Cambiar idioma" class="project-language-selector">
+<button aria-expanded="false" aria-haspopup="true" aria-label="Cambiar idioma" class="project-language-toggle" data-i18n-aria="languageLabel" type="button">
+<img alt="" class="project-language-current-img" height="32" src="../images/patrones/language-flags/flag-es.svg" width="32"/>
 </button>
-<div class="project-language-menu" aria-label="Idiomas disponibles" role="menu">
-<button class="project-language-option active" type="button" data-lang="es" role="menuitem" aria-label="Español" title="Español"><img class="project-language-option-img" src="../images/patrones/language-flags/flag-es.svg" alt="" width="32" height="32"/></button>
-<button class="project-language-option" type="button" data-lang="en" role="menuitem" aria-label="English" title="English"><img class="project-language-option-img" src="../images/patrones/language-flags/flag-us.svg" alt="" width="32" height="32"/></button>
-<button class="project-language-option" type="button" data-lang="it" role="menuitem" aria-label="Italiano" title="Italiano"><img class="project-language-option-img" src="../images/patrones/language-flags/flag-it.svg" alt="" width="32" height="32"/></button>
+<div aria-label="Idiomas disponibles" class="project-language-menu" data-i18n-aria="languageMenuAria" role="menu">
+<button aria-label="Español" class="project-language-option active" data-lang="es" role="menuitem" title="Español" type="button"><img alt="" class="project-language-option-img" height="32" src="../images/patrones/language-flags/flag-es.svg" width="32"/></button>
+<button aria-label="English" class="project-language-option" data-lang="en" role="menuitem" title="English" type="button"><img alt="" class="project-language-option-img" height="32" src="../images/patrones/language-flags/flag-us.svg" width="32"/></button>
+<button aria-label="Italiano" class="project-language-option" data-lang="it" role="menuitem" title="Italiano" type="button"><img alt="" class="project-language-option-img" height="32" src="../images/patrones/language-flags/flag-it.svg" width="32"/></button>
 </div>
 </div>
-<button class="project-theme-toggle" type="button" aria-label="Cambiar modo visual" data-i18n-aria="themeLabel"><i class="color-mode-icon" aria-hidden="true"></i></button>
+<button aria-label="Cambiar modo visual" class="project-theme-toggle" data-i18n-aria="themeLabel" type="button"><i aria-hidden="true" class="color-mode-icon"></i></button>
 </div>
 </header>
 <div class="project-detail-copy">
@@ -91,7 +92,7 @@
 <span class="project-data-badge"><span data-i18n="dataLabel">datos:</span> 2025</span>
 </div>
 <p class="project-lead" data-i18n="lead">Análisis de tráfico aéreo en España con datos públicos de AENA, con foco en volúmenes, patrones por aeropuerto y diferencias entre categorías.</p>
-<div class="project-tags" aria-label="Tecnologías y temas">
+<div aria-label="Tecnologías y temas" class="project-tags" data-i18n-aria="tagsAria">
 <span>Python</span><span>Data Storytelling</span><span data-i18n="tagAviation">Aviación</span><span>Data Analysis</span><span>BI</span>
 </div>
 <section class="project-text-block">
@@ -113,17 +114,17 @@
 </div>
 <footer class="project-detail-footer">
 <p class="project-detail-signature" data-i18n="signature">Patrones Lab® · Generando conocimiento a partir de los datos · por Malcolm Di Pietro Cagliari</p>
-<div class="project-detail-actions" aria-label="Enlaces del proyecto">
-<a class="project-action project-action-primary" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-01_trafico-aereo-aena" target="_blank" rel="noopener" data-i18n-aria="repoAria">
-<span data-i18n="repoButton">Ver repo</span><span class="project-action-icon project-action-icon-github"><img src="../images/patrones/github-button-icon.png" alt="" width="64" height="63" loading="lazy"/></span>
+<div aria-label="Enlaces del proyecto" class="project-detail-actions" data-i18n-aria="linksAria">
+<a class="project-action project-action-primary" data-i18n-aria="repoAria" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-01_trafico-aereo-aena" rel="noopener" target="_blank">
+<span data-i18n="repoButton">Ver repo</span><span class="project-action-icon project-action-icon-github"><img alt="" height="63" loading="lazy" src="../images/patrones/github-button-icon.png" width="64"/></span>
 </a>
-<a class="project-action project-action-secondary" href="https://www.linkedin.com/pulse/turismo-en-las-islas-baleares-visto-desde-el-aire-qu%C3%A9-malcolm-dl9be" target="_blank" rel="noopener" data-i18n-aria="linkedinAria">
+<a class="project-action project-action-secondary" data-i18n-aria="linkedinAria" href="https://www.linkedin.com/pulse/turismo-en-las-islas-baleares-visto-desde-el-aire-qu%C3%A9-malcolm-dl9be" rel="noopener" target="_blank">
 <span data-i18n="linkedinButton">Leer en LinkedIn</span><span class="project-action-icon project-action-icon-linkedin">in</span>
 </a>
 </div>
 </footer>
 </section>
 </main>
-<script src="../js/project-detail.js" defer></script>
+<script defer="" src="../js/project-detail.js"></script>
 </body>
 </html>

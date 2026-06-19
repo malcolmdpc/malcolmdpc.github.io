@@ -28,6 +28,13 @@
       signature: "Patrones Lab® · Generando conocimiento a partir de los datos · por Malcolm Di Pietro Cagliari",
       languageLabel: "Cambiar idioma",
       themeLabel: "Cambiar modo visual",
+      pageAria: "Página de proyecto",
+      galleryPanelAria: "Galería visual del proyecto",
+      galleryScrollAria: "Galería de imágenes con desplazamiento interno",
+      infoPanelAria: "Información del proyecto",
+      tagsAria: "Tecnologías y temas",
+      linksAria: "Enlaces del proyecto",
+      languageMenuAria: "Idiomas disponibles",
       repoAria: "Abrir repositorio del proyecto en GitHub",
       linkedinAria: "Abrir publicación del proyecto en LinkedIn",
       galleryAltCover: "Portada del análisis de tráfico aéreo en las Islas Baleares",
@@ -70,6 +77,13 @@
       signature: "Patrones Lab® · Generating knowledge from data · by Malcolm Di Pietro Cagliari",
       languageLabel: "Change language",
       themeLabel: "Change visual mode",
+      pageAria: "Project page",
+      galleryPanelAria: "Project visual gallery",
+      galleryScrollAria: "Image gallery with internal scrolling",
+      infoPanelAria: "Project information",
+      tagsAria: "Technologies and topics",
+      linksAria: "Project links",
+      languageMenuAria: "Available languages",
       repoAria: "Open project repository on GitHub",
       linkedinAria: "Open project post on LinkedIn",
       galleryAltCover: "Cover image for the Balearic Islands air traffic analysis",
@@ -112,6 +126,13 @@
       signature: "Patrones Lab® · Generare conoscenza a partire dai dati · di Malcolm Di Pietro Cagliari",
       languageLabel: "Cambia lingua",
       themeLabel: "Cambia modalità visiva",
+      pageAria: "Pagina del progetto",
+      galleryPanelAria: "Galleria visuale del progetto",
+      galleryScrollAria: "Galleria di immagini con scorrimento interno",
+      infoPanelAria: "Informazioni sul progetto",
+      tagsAria: "Tecnologie e temi",
+      linksAria: "Link del progetto",
+      languageMenuAria: "Lingue disponibili",
       repoAria: "Aprire il repository del progetto su GitHub",
       linkedinAria: "Aprire il post del progetto su LinkedIn",
       galleryAltCover: "Copertina dell’analisi del traffico aereo nelle Isole Baleari",
@@ -134,6 +155,10 @@
       galleryAltAirportBubbleMap: "Mappa a bolle degli aeroporti di scalo verso le Baleari"
     }
   };
+
+  if(window.PATRONES_PROJECT_DETAIL_TEXT && window.PATRONES_PROJECT_DETAIL_TEXT.es && window.PATRONES_PROJECT_DETAIL_TEXT.en && window.PATRONES_PROJECT_DETAIL_TEXT.it){
+    text = window.PATRONES_PROJECT_DETAIL_TEXT;
+  }
 
   function validLanguage(lang){
     return text[lang] ? lang : "es";
@@ -193,18 +218,53 @@
     var sourceImages = Array.prototype.slice.call(sourceSet.querySelectorAll("img"));
     if(!sourceImages.length) return;
 
-    var orders = [
-      [0, 6, 1, 12, 4, 8, 14, 2, 10, 16, 5, 9, 13, 3, 11, 17, 7, 15],
-      [11, 3, 15, 0, 13, 5, 9, 2, 17, 7, 12, 4, 16, 1, 8, 14, 6, 10],
-      [4, 10, 0, 16, 6, 13, 2, 9, 15, 5, 11, 7, 14, 3, 12, 8, 1, 17],
-      [13, 1, 7, 11, 5, 15, 3, 8, 0, 12, 16, 4, 10, 6, 14, 2, 17, 9]
-    ];
+    function gcd(a, b){
+      while(b){
+        var t = b;
+        b = a % b;
+        a = t;
+      }
+      return Math.abs(a);
+    }
+
+    function buildGalleryOrders(total){
+      if(total <= 1) return [[0]];
+      var candidates = [7, 11, 5, 13, 17, 19, 23, 3];
+      var orders = [];
+
+      for(var seed = 0; seed < 4; seed++){
+        var step = candidates[seed % candidates.length];
+        var guard = 0;
+        while(gcd(step, total) !== 1 && guard < candidates.length){
+          step = candidates[(seed + guard + 1) % candidates.length];
+          guard++;
+        }
+        if(gcd(step, total) !== 1) step = 1;
+
+        var start = (seed * Math.max(1, Math.floor(total / 4) + 1)) % total;
+        var order = [];
+        for(var i = 0; i < total; i++){
+          order.push((start + i * step) % total);
+        }
+        orders.push(order);
+      }
+
+      return orders;
+    }
+
+    var orders = buildGalleryOrders(sourceImages.length);
+    var eagerBudget = Math.min(6, sourceImages.length);
 
     function createImageFromSource(index, isFirstVisibleSet){
       var img = sourceImages[index].cloneNode(true);
       img.removeAttribute("data-gallery-fill");
       img.setAttribute("draggable", "false");
-      img.setAttribute("loading", isFirstVisibleSet ? "eager" : "lazy");
+      if(isFirstVisibleSet && eagerBudget > 0){
+        img.setAttribute("loading", "eager");
+        eagerBudget--;
+      }else{
+        img.setAttribute("loading", "lazy");
+      }
       return img;
     }
 
