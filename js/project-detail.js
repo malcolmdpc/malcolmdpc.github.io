@@ -9,6 +9,8 @@
   var text = {
     es: {
       back: "← Volver a proyectos",
+      nextProject: "Siguiente Proyecto →",
+      nextProjectAria: "Ir al siguiente proyecto",
       kicker: "Proyecto 01 · Analítica de datos",
       title: "Análisis de Vuelos en las Islas Baleares",
       status: "✅ publicado",
@@ -84,6 +86,8 @@
     },
     en: {
       back: "← Back to projects",
+      nextProject: "Next Project →",
+      nextProjectAria: "Go to next project",
       kicker: "Project 01 · Data analytics",
       title: "Balearic Islands Flight Analysis",
       status: "✅ published",
@@ -159,6 +163,8 @@
     },
     it: {
       back: "← Torna ai progetti",
+      nextProject: "Progetto successivo →",
+      nextProjectAria: "Vai al progetto successivo",
       kicker: "Progetto 01 · Analisi dei dati",
       title: "Analisi del traffico aereo nelle Isole Baleari",
       status: "✅ pubblicato",
