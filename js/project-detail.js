@@ -19,6 +19,28 @@
       tagAviation: "Aviación",
       tagDataAnalysis: "Análisis de datos",
       tagBI: "BI",
+      techSheetTitle: "FICHA TÉCNICA",
+      techSheetAria: "Ficha técnica del proyecto",
+      techSheetButton: "Ver ficha técnica",
+      techSheetButtonAria: "Ver ficha técnica del proyecto",
+      techTypeLabel: "Tipo de análisis",
+      techTypeValue: "Analítica de datos · Visualización · Data storytelling",
+      techSourceLabel: "Fuente de datos",
+      techSourceValue: "Datos públicos de AENA",
+      techPeriodLabel: "Período analizado",
+      techPeriodValue: "2024 y 2025",
+      techUnitLabel: "Unidad de análisis",
+      techUnitValue: "Pasajeros aéreos vinculados a aeropuertos de Baleares",
+      techTerritoryLabel: "Territorio",
+      techTerritoryValue: "Palma de Mallorca · Ibiza · Menorca",
+      techVariablesLabel: "Variables principales",
+      techVariablesValue: "Pasajeros, aeropuertos, países, ciudades, aerolíneas, meses y temporada",
+      techToolsLabel: "Herramientas",
+      techToolsValue: "Python · Pandas · Plotly · GitHub",
+      techOutputLabel: "Salida del proyecto",
+      techOutputValue: "Notebook analítico, visuales editoriales y publicación en LinkedIn",
+      techStatusLabel: "Estado",
+      techStatusValue: "Publicado",
       questionTitle: "CONTEXTO Y OBJETIVO",
       questionText: "¿Qué patrones aparecen en el tráfico aéreo de las Islas Baleares cuando se miran los datos por aeropuerto, volumen y tipo de tráfico?",
       approachTitle: "DATOS Y DIAGNÓSTICO",
@@ -33,7 +55,7 @@
       languageLabel: "Cambiar idioma",
       themeLabel: "Cambiar modo visual",
       pageAria: "Página de proyecto",
-      galleryPanelAria: "Galería visual del proyecto",
+      galleryPanelAria: "Imagen principal del proyecto",
       galleryScrollAria: "Galería de imágenes con desplazamiento interno",
       infoPanelAria: "Información del proyecto",
       tagsAria: "Tecnologías y temas",
@@ -72,6 +94,28 @@
       tagAviation: "Aviation",
       tagDataAnalysis: "Data analysis",
       tagBI: "BI",
+      techSheetTitle: "TECHNICAL SHEET",
+      techSheetAria: "Project technical sheet",
+      techSheetButton: "View technical sheet",
+      techSheetButtonAria: "View project technical sheet",
+      techTypeLabel: "Analysis type",
+      techTypeValue: "Data analytics · Visualization · Data storytelling",
+      techSourceLabel: "Data source",
+      techSourceValue: "Public AENA data",
+      techPeriodLabel: "Period analyzed",
+      techPeriodValue: "2024 and 2025",
+      techUnitLabel: "Unit of analysis",
+      techUnitValue: "Air passengers linked to Balearic Islands airports",
+      techTerritoryLabel: "Territory",
+      techTerritoryValue: "Palma de Mallorca · Ibiza · Menorca",
+      techVariablesLabel: "Main variables",
+      techVariablesValue: "Passengers, airports, countries, cities, airlines, months and season",
+      techToolsLabel: "Tools",
+      techToolsValue: "Python · Pandas · Plotly · GitHub",
+      techOutputLabel: "Project output",
+      techOutputValue: "Analytical notebook, editorial visuals and LinkedIn post",
+      techStatusLabel: "Status",
+      techStatusValue: "Published",
       questionTitle: "CONTEXT AND OBJECTIVE",
       questionText: "What patterns appear in Balearic Islands air traffic when the data is read by airport, volume and traffic type?",
       approachTitle: "DATA AND DIAGNOSIS",
@@ -86,7 +130,7 @@
       languageLabel: "Change language",
       themeLabel: "Change visual mode",
       pageAria: "Project page",
-      galleryPanelAria: "Project visual gallery",
+      galleryPanelAria: "Project main image",
       galleryScrollAria: "Image gallery with internal scrolling",
       infoPanelAria: "Project information",
       tagsAria: "Technologies and topics",
@@ -125,6 +169,28 @@
       tagAviation: "Aviazione",
       tagDataAnalysis: "Analisi dei dati",
       tagBI: "BI",
+      techSheetTitle: "SCHEDA TECNICA",
+      techSheetAria: "Scheda tecnica del progetto",
+      techSheetButton: "Vedi scheda tecnica",
+      techSheetButtonAria: "Vedi la scheda tecnica del progetto",
+      techTypeLabel: "Tipo di analisi",
+      techTypeValue: "Analisi dei dati · Visualizzazione · Storytelling dei dati",
+      techSourceLabel: "Fonte dei dati",
+      techSourceValue: "Dati pubblici AENA",
+      techPeriodLabel: "Periodo analizzato",
+      techPeriodValue: "2024 e 2025",
+      techUnitLabel: "Unità di analisi",
+      techUnitValue: "Passeggeri aerei collegati agli aeroporti delle Baleari",
+      techTerritoryLabel: "Territorio",
+      techTerritoryValue: "Palma di Maiorca · Ibiza · Minorca",
+      techVariablesLabel: "Variabili principali",
+      techVariablesValue: "Passeggeri, aeroporti, Paesi, città, compagnie aeree, mesi e stagione",
+      techToolsLabel: "Strumenti",
+      techToolsValue: "Python · Pandas · Plotly · GitHub",
+      techOutputLabel: "Output del progetto",
+      techOutputValue: "Notebook analitico, visual editoriali e pubblicazione su LinkedIn",
+      techStatusLabel: "Stato",
+      techStatusValue: "Pubblicato",
       questionTitle: "CONTESTO E OBIETTIVO",
       questionText: "Quali pattern emergono nel traffico aereo delle Isole Baleari quando i dati vengono letti per aeroporto, volume e tipo di traffico?",
       approachTitle: "DATI E DIAGNOSI",
@@ -139,7 +205,7 @@
       languageLabel: "Cambia lingua",
       themeLabel: "Cambia modalità visiva",
       pageAria: "Pagina del progetto",
-      galleryPanelAria: "Galleria visuale del progetto",
+      galleryPanelAria: "Immagine principale del progetto",
       galleryScrollAria: "Galleria di immagini con scorrimento interno",
       infoPanelAria: "Informazioni sul progetto",
       tagsAria: "Tecnologie e temi",
@@ -401,6 +467,58 @@
     window.addEventListener("resize", handleResize);
   }
 
+  function setupTechPopover(){
+    document.querySelectorAll("[data-tech-popover]").forEach(function(popover){
+      var trigger = popover.querySelector(".project-tech-trigger");
+      var panel = popover.querySelector(".project-tech-sheet");
+      if(!trigger || !panel) return;
+
+      function openPopover(){
+        popover.classList.add("is-open");
+        trigger.setAttribute("aria-expanded", "true");
+        panel.setAttribute("aria-hidden", "false");
+      }
+
+      function closePopover(){
+        popover.classList.remove("is-open");
+        trigger.setAttribute("aria-expanded", "false");
+        panel.setAttribute("aria-hidden", "true");
+      }
+
+      trigger.addEventListener("click", function(event){
+        event.preventDefault();
+        event.stopPropagation();
+        if(popover.classList.contains("is-open")){
+          closePopover();
+        }else{
+          openPopover();
+        }
+      });
+
+      popover.addEventListener("pointerenter", function(event){
+        if(event.pointerType === "touch") return;
+        openPopover();
+      });
+
+      popover.addEventListener("pointerleave", function(event){
+        if(event.pointerType === "touch") return;
+        closePopover();
+      });
+
+      panel.addEventListener("click", function(event){
+        event.stopPropagation();
+      });
+
+      document.addEventListener("click", function(event){
+        if(!popover.contains(event.target)) closePopover();
+      });
+
+      document.addEventListener("keydown", function(event){
+        if(event.key === "Escape") closePopover();
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function(){
     applyLanguage(localStorage.getItem(languageKey) || "es");
     applyMode(localStorage.getItem(modeKey) || "dark");
@@ -433,5 +551,6 @@
     }
 
     setupGallery();
+    setupTechPopover();
   });
 })();
