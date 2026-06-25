@@ -167,9 +167,13 @@ body.project-static-detail-page .project-detail-layout{grid-template-columns:min
 body.project-static-detail-page .project-gallery-panel.project-static-hero-panel{position:relative;height:100vh;height:100dvh;padding:0;margin:0;border:0;overflow:hidden;background:#050505}
 body.project-static-detail-page .project-static-hero-picture{display:block;width:100%;height:100%;overflow:hidden}
 body.project-static-detail-page .project-static-hero-image{display:block;width:auto;height:100%;max-width:none;object-fit:contain;object-position:left top;border:0;margin:0;padding:0;box-shadow:none;border-radius:0;user-select:none;-webkit-user-drag:none;pointer-events:none;background:#050505}
-@media (max-width:1100px){body.project-static-detail-page .project-detail-layout{grid-template-columns:minmax(340px,66.667dvh) minmax(0,1fr)}}
+@media (min-width:901px) and (max-width:1100px){body.project-static-detail-page .project-detail-layout{grid-template-columns:clamp(250px,33.372dvh,340px) minmax(0,1fr)}body.project-static-detail-page .project-gallery-panel.project-static-hero-panel{width:100%;height:100vh;height:100dvh;border-right:1px solid var(--pd-gallery-border)}body.project-static-detail-page .project-static-hero-image{width:100%;height:100%;object-fit:cover;object-position:left top}}
 @media (max-width:900px){body.project-static-detail-page .project-detail-layout{grid-template-columns:32vw minmax(0,68vw)}body.project-static-detail-page .project-gallery-panel.project-static-hero-panel{border-right:0}body.project-static-detail-page .project-static-hero-image{width:100%;height:100%;object-fit:cover;object-position:left top}}
 @media (max-width:520px){body.project-static-detail-page .project-detail-layout{grid-template-columns:30vw minmax(0,70vw)}}
+@media (max-width:900px){body.project-static-detail-page .project-detail-layout{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);height:100vh;height:100dvh}body.project-static-detail-page .project-gallery-panel.project-static-hero-panel{width:100%;height:auto;aspect-ratio:760/253;border:0;background:#050505}body.project-static-detail-page .project-static-hero-picture{display:block;width:100%;height:100%;overflow:hidden}body.project-static-detail-page .project-static-hero-image{display:block;width:100%;height:100%;object-fit:contain;object-position:center top;background:#050505}body.project-static-detail-page .project-info-panel{height:100%;min-height:0}}
+.project-cover-shine:active img{transform:scale(1.022);filter:contrast(1.04) saturate(1.05)}
+.project-cover-shine:active::before{opacity:1;animation:projectCoverShineSweep 950ms ease forwards}
+
 
 .project-cover-shine{position:relative;overflow:hidden;isolation:isolate}
 .project-cover-shine img{display:block;width:100%;height:100%;transform:scale(1);transition:transform 700ms cubic-bezier(.2,.8,.2,1),filter 700ms cubic-bezier(.2,.8,.2,1);will-change:transform,filter}
@@ -177,7 +181,7 @@ body.project-static-detail-page .project-static-hero-image{display:block;width:a
 .project-cover-shine:hover img{transform:scale(1.022);filter:contrast(1.04) saturate(1.05)}
 .project-cover-shine:hover::before{opacity:1;animation:projectCoverShineSweep 950ms ease forwards}
 @keyframes projectCoverShineSweep{0%{left:-85%}100%{left:135%}}
-@media (prefers-reduced-motion:reduce){.project-cover-shine img{transition:none}.project-cover-shine:hover img{transform:none;filter:none}.project-cover-shine:hover::before{animation:none;opacity:0}}
+@media (prefers-reduced-motion:reduce){.project-cover-shine img{transition:none}.project-cover-shine:hover img,.project-cover-shine:active img{transform:none;filter:none}.project-cover-shine:hover::before,.project-cover-shine:active::before{animation:none;opacity:0}}
 
 .project-tech-logo-item .project-tech-logo-media img{transform:translateZ(0) scale(1);transform-origin:center center;transition:transform .28s ease,filter .28s ease;will-change:transform,filter}
 .project-tech-logo-item:hover .project-tech-logo-media img,.project-tech-logo-item:focus-within .project-tech-logo-media img{animation:patrones-logo-pulse-premium-hover 1.45s ease-in-out infinite}
@@ -186,3 +190,6 @@ body.project-static-detail-page .project-static-hero-image{display:block;width:a
 .project-light-mode .project-tech-logo-item:hover .project-tech-logo-media img,.project-light-mode .project-tech-logo-item:focus-within .project-tech-logo-media img{animation:patrones-logo-pulse-premium-hover-light 1.45s ease-in-out infinite}
 @keyframes patrones-logo-pulse-premium-hover-light{0%,100%{transform:translateZ(0) scale(1);filter:drop-shadow(0 2px 5px rgba(0,0,0,.18)) brightness(1)}50%{transform:translateZ(0) scale(1.055);filter:drop-shadow(0 10px 18px rgba(178,106,36,.16)) brightness(1.045)}}
 @media (prefers-reduced-motion:reduce){.project-tech-logo-item .project-tech-logo-media img,.project-tech-logo-item:hover .project-tech-logo-media img,.project-tech-logo-item:focus-within .project-tech-logo-media img{animation:none!important;transition:none!important;transform:none!important;filter:none!important}}
+
+@media (max-width:900px){.project-tech-logo-list{display:flex;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;gap:.42rem;max-width:100%;padding-bottom:.18rem;scrollbar-width:none;-webkit-overflow-scrolling:touch}.project-tech-logo-list::-webkit-scrollbar{display:none}.project-tech-logo-list .project-tech-logo-item{flex:0 0 auto}.back-to-projects,.next-project-link{font-size:.84rem}}
+@media (max-width:520px){.project-tech-logo-list{gap:.34rem}.project-tech-logo-list .project-tech-logo-item{grid-template-rows:42px auto;width:50px;min-width:50px}.project-tech-logo-list .project-tech-logo-media{width:42px;height:42px}.project-tech-logo-list .project-tech-logo-media img{max-width:42px;max-height:42px}.project-tech-logo-list .project-tech-logo-label{max-width:54px;font-size:.5rem;line-height:1.02;min-height:1.02rem}.back-to-projects,.next-project-link{font-size:.8rem}}
