@@ -21,6 +21,33 @@
       tagAviation: "Aviación",
       tagDataAnalysis: "Análisis de datos",
       tagBI: "BI",
+      techPython: "Python",
+      techPandas: "Pandas",
+      techPlotly: "Plotly",
+      techSPSS: "SPSS",
+      techScikitLearn: "Scikit-learn",
+      techLookerStudio: "Looker Studio",
+      techPowerBI: "Power BI",
+      techAirbnb: "Airbnb",
+      techDataAnalysis: "Análisis de datos",
+      techAviation: "Aviación",
+      techBI: "BI",
+      techDataScience: "Ciencia de datos",
+      techClassification: "Clasificación",
+      techClustering: "Clustering",
+      techDashboard: "Dashboard",
+      techDataStorytelling: "Narrativa de datos",
+      techDBSCAN: "DBSCAN",
+      techFraud: "Fraude",
+      techFootball: "Fútbol",
+      techGeospatial: "Geoespacial",
+      techKMeans: "K-means",
+      techKNN: "KNN",
+      techMachineLearning: "Machine Learning",
+      techUnsupervisedModel: "Modelo no supervisado",
+      techSupervisedModel: "Modelo supervisado",
+      techLogisticRegression: "Regresión logística",
+      techTaxi: "Taxi",
       techSheetTitle: "FICHA TÉCNICA",
       techSheetAria: "Ficha técnica del proyecto",
       techSheetButton: "Ver ficha técnica",
@@ -98,6 +125,33 @@
       tagAviation: "Aviation",
       tagDataAnalysis: "Data analysis",
       tagBI: "BI",
+      techPython: "Python",
+      techPandas: "Pandas",
+      techPlotly: "Plotly",
+      techSPSS: "SPSS",
+      techScikitLearn: "Scikit-learn",
+      techLookerStudio: "Looker Studio",
+      techPowerBI: "Power BI",
+      techAirbnb: "Airbnb",
+      techDataAnalysis: "Data analysis",
+      techAviation: "Aviation",
+      techBI: "BI",
+      techDataScience: "Data science",
+      techClassification: "Classification",
+      techClustering: "Clustering",
+      techDashboard: "Dashboard",
+      techDataStorytelling: "Data storytelling",
+      techDBSCAN: "DBSCAN",
+      techFraud: "Fraud",
+      techFootball: "Football",
+      techGeospatial: "Geospatial",
+      techKMeans: "K-means",
+      techKNN: "KNN",
+      techMachineLearning: "Machine Learning",
+      techUnsupervisedModel: "Unsupervised model",
+      techSupervisedModel: "Supervised model",
+      techLogisticRegression: "Logistic regression",
+      techTaxi: "Taxi",
       techSheetTitle: "TECHNICAL SHEET",
       techSheetAria: "Project technical sheet",
       techSheetButton: "View technical sheet",
@@ -175,6 +229,33 @@
       tagAviation: "Aviazione",
       tagDataAnalysis: "Analisi dei dati",
       tagBI: "BI",
+      techPython: "Python",
+      techPandas: "Pandas",
+      techPlotly: "Plotly",
+      techSPSS: "SPSS",
+      techScikitLearn: "Scikit-learn",
+      techLookerStudio: "Looker Studio",
+      techPowerBI: "Power BI",
+      techAirbnb: "Airbnb",
+      techDataAnalysis: "Analisi dei dati",
+      techAviation: "Aviazione",
+      techBI: "BI",
+      techDataScience: "Scienza dei dati",
+      techClassification: "Classificazione",
+      techClustering: "Clustering",
+      techDashboard: "Dashboard",
+      techDataStorytelling: "Storytelling dei dati",
+      techDBSCAN: "DBSCAN",
+      techFraud: "Frode",
+      techFootball: "Calcio",
+      techGeospatial: "Geospaziale",
+      techKMeans: "K-means",
+      techKNN: "KNN",
+      techMachineLearning: "Machine Learning",
+      techUnsupervisedModel: "Modello non supervisionato",
+      techSupervisedModel: "Modello supervisionato",
+      techLogisticRegression: "Regressione logistica",
+      techTaxi: "Taxi",
       techSheetTitle: "SCHEDA TECNICA",
       techSheetAria: "Scheda tecnica del progetto",
       techSheetButton: "Vedi scheda tecnica",
@@ -478,15 +559,19 @@
       var trigger = popover.querySelector(".project-tech-trigger");
       var panel = popover.querySelector(".project-tech-sheet");
       if(!trigger || !panel) return;
+      var pinned = false;
 
-      function openPopover(){
+      function openPopover(lockOpen){
+        if(lockOpen) pinned = true;
         popover.classList.add("is-open");
+        popover.classList.toggle("is-pinned", pinned);
         trigger.setAttribute("aria-expanded", "true");
         panel.setAttribute("aria-hidden", "false");
       }
 
       function closePopover(){
-        popover.classList.remove("is-open");
+        pinned = false;
+        popover.classList.remove("is-open", "is-pinned");
         trigger.setAttribute("aria-expanded", "false");
         panel.setAttribute("aria-hidden", "true");
       }
@@ -494,21 +579,19 @@
       trigger.addEventListener("click", function(event){
         event.preventDefault();
         event.stopPropagation();
-        if(popover.classList.contains("is-open")){
+        if(pinned){
           closePopover();
         }else{
-          openPopover();
+          openPopover(true);
         }
       });
 
       popover.addEventListener("pointerenter", function(event){
-        if(event.pointerType === "touch") return;
-        openPopover();
+        if(event.pointerType !== "touch" && !pinned) openPopover(false);
       });
 
       popover.addEventListener("pointerleave", function(event){
-        if(event.pointerType === "touch") return;
-        closePopover();
+        if(event.pointerType !== "touch" && !pinned) closePopover();
       });
 
       panel.addEventListener("click", function(event){
