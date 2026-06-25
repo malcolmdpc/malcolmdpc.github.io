@@ -12,7 +12,12 @@
       <image:title>Proyecto 1 · Análisis de Vuelos en las Islas Baleares</image:title>
       <image:caption>Imagen móvil del Proyecto 1 de Patrones Lab: Análisis de Vuelos en las Islas Baleares, por Malcolm Di Pietro Cagliari.</image:caption>
     </image:image>
-  <image:image><image:loc>https://malcolmdpc.github.io/images/patrones/projects/analisis-vuelos-islas-baleares/p01-vuelos-baleares-mobile-banner.webp</image:loc><image:title>Proyecto 1 · Análisis de Vuelos en las Islas Baleares</image:title><image:caption>Banner móvil del Proyecto 1 de Patrones Lab: Análisis de Vuelos en las Islas Baleares, por Malcolm Di Pietro Cagliari.</image:caption></image:image></url>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/analisis-vuelos-islas-baleares/p01-vuelos-baleares-mobile-banner.webp</image:loc>
+      <image:title>Proyecto 1 · Análisis de Vuelos en las Islas Baleares</image:title>
+      <image:caption>Banner móvil del Proyecto 1 de Patrones Lab: Análisis de Vuelos en las Islas Baleares, por Malcolm Di Pietro Cagliari.</image:caption>
+    </image:image>
+  </url>
   <url>
     <loc>https://malcolmdpc.github.io/proyectos/analisis-alojamiento-airbnb-londres.html</loc>
     <lastmod>2026-06-25</lastmod>
@@ -21,7 +26,12 @@
       <image:title>Proyecto 2 · Análisis de Airbnb en Londres</image:title>
       <image:caption>Imagen móvil del Proyecto 2 de Patrones Lab: Análisis de Airbnb en Londres, por Malcolm Di Pietro Cagliari.</image:caption>
     </image:image>
-  <image:image><image:loc>https://malcolmdpc.github.io/images/patrones/projects/airbnb-london-analysis/p02-airbnb-londres-mobile-banner.webp</image:loc><image:title>Proyecto 2 · Análisis de Airbnb en Londres</image:title><image:caption>Banner móvil del Proyecto 2 de Patrones Lab: Análisis de Airbnb en Londres, por Malcolm Di Pietro Cagliari.</image:caption></image:image></url>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/airbnb-london-analysis/p02-airbnb-londres-mobile-banner.webp</image:loc>
+      <image:title>Proyecto 2 · Análisis de Airbnb en Londres</image:title>
+      <image:caption>Banner móvil del Proyecto 2 de Patrones Lab: Análisis de Airbnb en Londres, por Malcolm Di Pietro Cagliari.</image:caption>
+    </image:image>
+  </url>
   <url>
     <loc>https://malcolmdpc.github.io/proyectos/analisis-viajes-taxi-chicago.html</loc>
     <lastmod>2026-06-25</lastmod>
@@ -30,7 +40,12 @@
       <image:title>Proyecto 3 · Análisis de Viajes en Taxi en Chicago</image:title>
       <image:caption>Imagen móvil del Proyecto 3 de Patrones Lab: Análisis de Viajes en Taxi en Chicago, por Malcolm Di Pietro Cagliari.</image:caption>
     </image:image>
-  <image:image><image:loc>https://malcolmdpc.github.io/images/patrones/projects/analisis-viajes-taxi-chicago/p03-taxi-chicago-mobile-banner.webp</image:loc><image:title>Proyecto 3 · Análisis de Viajes en Taxi en Chicago</image:title><image:caption>Banner móvil del Proyecto 3 de Patrones Lab: Análisis de Viajes en Taxi en Chicago, por Malcolm Di Pietro Cagliari.</image:caption></image:image></url>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/analisis-viajes-taxi-chicago/p03-taxi-chicago-mobile-banner.webp</image:loc>
+      <image:title>Proyecto 3 · Análisis de Viajes en Taxi en Chicago</image:title>
+      <image:caption>Banner móvil del Proyecto 3 de Patrones Lab: Análisis de Viajes en Taxi en Chicago, por Malcolm Di Pietro Cagliari.</image:caption>
+    </image:image>
+  </url>
   <url>
     <loc>https://malcolmdpc.github.io/proyectos/modelo-ml-airbnb-london.html</loc>
     <lastmod>2026-06-25</lastmod>
@@ -39,7 +54,12 @@
       <image:title>Proyecto 4 · Modelo Machine Learning · Airbnb en London</image:title>
       <image:caption>Imagen móvil del Proyecto 4 de Patrones Lab: Modelo Machine Learning sobre Airbnb en London, por Malcolm Di Pietro Cagliari.</image:caption>
     </image:image>
-  <image:image><image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-airbnb-london/p04-ml-airbnb-mobile-banner.webp</image:loc><image:title>Proyecto 4 · Modelo Machine Learning · Airbnb en London</image:title><image:caption>Banner móvil del Proyecto 4 de Patrones Lab: Modelo Machine Learning sobre Airbnb en London, por Malcolm Di Pietro Cagliari.</image:caption></image:image></url>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-airbnb-london/p04-ml-airbnb-mobile-banner.webp</image:loc>
+      <image:title>Proyecto 4 · Modelo Machine Learning · Airbnb en London</image:title>
+      <image:caption>Banner móvil del Proyecto 4 de Patrones Lab: Modelo Machine Learning sobre Airbnb en London, por Malcolm Di Pietro Cagliari.</image:caption>
+    </image:image>
+  </url>
   <url>
     <loc>https://malcolmdpc.github.io/proyectos/dashboard-looker-taxi-trips-chicago.html</loc>
     <lastmod>2026-06-25</lastmod>
@@ -48,7 +68,12 @@
       <image:title>Proyecto 5 · Dashboard con Looker Studio · Taxi Trips Chicago</image:title>
       <image:caption>Imagen móvil del Proyecto 5 de Patrones Lab: Dashboard con Looker Studio sobre Taxi Trips Chicago, por Malcolm Di Pietro Cagliari.</image:caption>
     </image:image>
-  <image:image><image:loc>https://malcolmdpc.github.io/images/patrones/projects/dashboard-looker-taxi-trips-chicago/p05-looker-taxi-mobile-banner.webp</image:loc><image:title>Proyecto 5 · Dashboard con Looker Studio · Taxi Trips Chicago</image:title><image:caption>Banner móvil del Proyecto 5 de Patrones Lab: Dashboard con Looker Studio sobre Taxi Trips Chicago, por Malcolm Di Pietro Cagliari.</image:caption></image:image></url>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/dashboard-looker-taxi-trips-chicago/p05-looker-taxi-mobile-banner.webp</image:loc>
+      <image:title>Proyecto 5 · Dashboard con Looker Studio · Taxi Trips Chicago</image:title>
+      <image:caption>Banner móvil del Proyecto 5 de Patrones Lab: Dashboard con Looker Studio sobre Taxi Trips Chicago, por Malcolm Di Pietro Cagliari.</image:caption>
+    </image:image>
+  </url>
   <url>
     <loc>https://malcolmdpc.github.io/proyectos/probabilidades-futbol-peligro-esperado-xt.html</loc>
     <lastmod>2026-06-25</lastmod>
@@ -57,7 +82,12 @@
       <image:title>Proyecto 7 · Probabilidades en el Fútbol · Peligro Esperado (xT)</image:title>
       <image:caption>Imagen móvil del Proyecto 7 de Patrones Lab: Probabilidades en el Fútbol y Peligro Esperado xT, por Malcolm Di Pietro Cagliari.</image:caption>
     </image:image>
-  <image:image><image:loc>https://malcolmdpc.github.io/images/patrones/projects/probabilidades-futbol-peligro-esperado-xt/p07-futbol-xt-mobile-banner.webp</image:loc><image:title>Proyecto 7 · Probabilidades en el Fútbol · Peligro Esperado (xT)</image:title><image:caption>Banner móvil del Proyecto 7 de Patrones Lab: Probabilidades en el Fútbol y Peligro Esperado (xT), por Malcolm Di Pietro Cagliari.</image:caption></image:image></url>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/probabilidades-futbol-peligro-esperado-xt/p07-futbol-xt-mobile-banner.webp</image:loc>
+      <image:title>Proyecto 7 · Probabilidades en el Fútbol · Peligro Esperado (xT)</image:title>
+      <image:caption>Banner móvil del Proyecto 7 de Patrones Lab: Probabilidades en el Fútbol y Peligro Esperado (xT), por Malcolm Di Pietro Cagliari.</image:caption>
+    </image:image>
+  </url>
   <url>
     <loc>https://malcolmdpc.github.io/proyectos/modelo-ml-fraude-kmeans.html</loc>
     <lastmod>2026-06-25</lastmod>
@@ -66,7 +96,12 @@
       <image:title>Proyecto 8 · Modelo Machine Learning · Fraude con K-means</image:title>
       <image:caption>Imagen móvil del Proyecto 8 de Patrones Lab: Machine Learning aplicado a fraude con K-means, por Malcolm Di Pietro Cagliari.</image:caption>
     </image:image>
-  <image:image><image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-fraude-kmeans/p08-fraude-kmeans-mobile-banner.webp</image:loc><image:title>Proyecto 8 · Modelo Machine Learning · Fraude con K-means</image:title><image:caption>Banner móvil del Proyecto 8 de Patrones Lab: Modelo Machine Learning aplicado a Fraude con K-means, por Malcolm Di Pietro Cagliari.</image:caption></image:image></url>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-fraude-kmeans/p08-fraude-kmeans-mobile-banner.webp</image:loc>
+      <image:title>Proyecto 8 · Modelo Machine Learning · Fraude con K-means</image:title>
+      <image:caption>Banner móvil del Proyecto 8 de Patrones Lab: Modelo Machine Learning aplicado a Fraude con K-means, por Malcolm Di Pietro Cagliari.</image:caption>
+    </image:image>
+  </url>
   <url>
     <loc>https://malcolmdpc.github.io/proyectos/modelo-ml-fraude-regresion-logistica.html</loc>
     <lastmod>2026-06-25</lastmod>
@@ -75,7 +110,12 @@
       <image:title>Proyecto 9 · Modelo Machine Learning · Fraude con Regresión Logística</image:title>
       <image:caption>Imagen móvil del Proyecto 9 de Patrones Lab: Machine Learning aplicado a fraude con regresión logística, por Malcolm Di Pietro Cagliari.</image:caption>
     </image:image>
-  <image:image><image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-fraude-regresion-logistica/p09-fraude-logit-mobile-banner.webp</image:loc><image:title>Proyecto 9 · Modelo Machine Learning · Fraude con Regresión Logística</image:title><image:caption>Banner móvil del Proyecto 9 de Patrones Lab: Modelo Machine Learning aplicado a Fraude con Regresión Logística, por Malcolm Di Pietro Cagliari.</image:caption></image:image></url>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-fraude-regresion-logistica/p09-fraude-logit-mobile-banner.webp</image:loc>
+      <image:title>Proyecto 9 · Modelo Machine Learning · Fraude con Regresión Logística</image:title>
+      <image:caption>Banner móvil del Proyecto 9 de Patrones Lab: Modelo Machine Learning aplicado a Fraude con Regresión Logística, por Malcolm Di Pietro Cagliari.</image:caption>
+    </image:image>
+  </url>
   <url>
     <loc>https://malcolmdpc.github.io/proyectos/modelo-ml-fraude-dbscan.html</loc>
     <lastmod>2026-06-25</lastmod>
@@ -84,7 +124,16 @@
       <image:title>Proyecto 10 · Modelo Machine Learning · Fraude con DBSCAN</image:title>
       <image:caption>Imagen móvil del Proyecto 10 de Patrones Lab: Machine Learning aplicado a fraude con DBSCAN, por Malcolm Di Pietro Cagliari.</image:caption>
     </image:image>
-  <image:image><image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-fraude-dbscan/p10-fraude-dbscan-mobile-banner.webp</image:loc><image:title>Proyecto 10 · Modelo Machine Learning · Fraude con DBSCAN</image:title><image:caption>Banner móvil del Proyecto 10 de Patrones Lab: Modelo Machine Learning aplicado a Fraude con DBSCAN, por Malcolm Di Pietro Cagliari.</image:caption></image:image></url>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-fraude-dbscan/p10-fraude-dbscan-mobile-banner.webp</image:loc>
+      <image:title>Proyecto 10 · Modelo Machine Learning · Fraude con DBSCAN</image:title>
+      <image:caption>Banner móvil del Proyecto 10 de Patrones Lab: Modelo Machine Learning aplicado a Fraude con DBSCAN, por Malcolm Di Pietro Cagliari.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/proyectos/estadisticas-mundial-futbol-qatar-2022.html</loc>
+    <lastmod>2026-06-25</lastmod>
+  </url>
   <url>
     <loc>https://malcolmdpc.github.io/proyectos/analisis-geoespacial-viajes-taxi.html</loc>
     <lastmod>2026-06-25</lastmod>
@@ -93,5 +142,10 @@
       <image:title>Proyecto 12 · Análisis Geoespacial de los Viajes en Taxi</image:title>
       <image:caption>Imagen móvil del Proyecto 12 de Patrones Lab: Análisis Geoespacial de los Viajes en Taxi en Chicago, por Malcolm Di Pietro Cagliari.</image:caption>
     </image:image>
-  <image:image><image:loc>https://malcolmdpc.github.io/images/patrones/projects/analisis-geoespacial-viajes-taxi/p12-taxi-geo-mobile-banner.webp</image:loc><image:title>Proyecto 12 · Análisis Geoespacial de los Viajes en Taxi</image:title><image:caption>Banner móvil del Proyecto 12 de Patrones Lab: Análisis Geoespacial de los Viajes en Taxi en Chicago, por Malcolm Di Pietro Cagliari.</image:caption></image:image></url>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/analisis-geoespacial-viajes-taxi/p12-taxi-geo-mobile-banner.webp</image:loc>
+      <image:title>Proyecto 12 · Análisis Geoespacial de los Viajes en Taxi</image:title>
+      <image:caption>Banner móvil del Proyecto 12 de Patrones Lab: Análisis Geoespacial de los Viajes en Taxi en Chicago, por Malcolm Di Pietro Cagliari.</image:caption>
+    </image:image>
+  </url>
 </urlset>

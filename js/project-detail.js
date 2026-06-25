@@ -349,13 +349,27 @@
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
   }
 
+  function setBackLinkLabel(el, value){
+    var label = value.replace(/^[^\s]+\s*/, "");
+    el.innerHTML = '<span class="back-arrow-desktop" aria-hidden="true">⮌</span><span class="back-arrow-mobile" aria-hidden="true">➜</span><span class="back-label"></span>';
+    var labelNode = el.querySelector(".back-label");
+    if(labelNode) labelNode.textContent = label;
+    el.setAttribute("aria-label", label);
+  }
+
   function applyLanguage(lang){
     lang = validLanguage(lang);
     document.documentElement.lang = lang;
 
     document.querySelectorAll("[data-i18n]").forEach(function(el){
       var key = el.getAttribute("data-i18n");
-      if(text[lang][key]) el.textContent = text[lang][key];
+      if(text[lang][key]){
+        if(key === "back" && el.classList.contains("back-to-projects")){
+          setBackLinkLabel(el, text[lang][key]);
+        }else{
+          el.textContent = text[lang][key];
+        }
+      }
     });
 
     document.querySelectorAll("[data-i18n-aria]").forEach(function(el){
