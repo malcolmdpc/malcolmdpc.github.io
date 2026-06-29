@@ -214,3 +214,33 @@ body.project-static-detail-page .project-static-hero-image{display:block;width:a
 
 @media (max-width:900px){.project-tech-logo-list{display:flex;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;gap:.42rem;max-width:100%;padding-bottom:.18rem;scrollbar-width:none;-webkit-overflow-scrolling:touch}.project-tech-logo-list::-webkit-scrollbar{display:none}.project-tech-logo-list .project-tech-logo-item{flex:0 0 auto}.back-to-projects,.next-project-link{font-size:.84rem}}
 @media (max-width:520px){.project-tech-logo-list{gap:.34rem}.project-tech-logo-list .project-tech-logo-item{grid-template-rows:42px auto;width:50px;min-width:50px}.project-tech-logo-list .project-tech-logo-media{width:42px;height:42px}.project-tech-logo-list .project-tech-logo-media img{max-width:42px;max-height:42px}.project-tech-logo-list .project-tech-logo-label{max-width:54px;font-size:.5rem;line-height:1.02;min-height:1.02rem}.back-to-projects,.next-project-link{font-size:.8rem}}
+body.project-detail-page .project-kicker{font-family:"Maven Pro",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body.project-detail-page .project-detail-copy h1{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body.project-detail-page .project-lead{font-family:"Maven Pro",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body.project-detail-page .project-text-block{max-width:720px;margin:0 0 1.08rem;padding-top:.05rem}
+body.project-detail-page .project-text-block + .project-text-block{margin-top:.1rem}
+body.project-detail-page .project-text-block h2{font-family:"IBM Plex Sans",Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:18px;line-height:1.4;font-weight:620;margin:0 0 .46rem;color:var(--pd-accent);text-transform:uppercase;letter-spacing:.08em}
+body.project-detail-page .project-text-block p,body.project-detail-page .project-text-block li{font-family:"IBM Plex Sans",Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:18px;line-height:1.4;font-weight:620;color:var(--pd-copy);letter-spacing:-.004em;text-align:justify;text-justify:inter-word;hyphens:auto}
+body.project-detail-page .project-text-block p{margin:0}
+body.project-detail-page .project-text-block p + p{margin-top:.72rem}
+body.project-detail-page .project-tech-sheet h2{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body.project-detail-page .project-action{font-family:"Maven Pro",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-weight:950}
+@media (max-width:1100px){body.project-detail-page .project-text-block p,body.project-detail-page .project-text-block li{font-size:.94rem;line-height:1.48}}
+@media (max-width:900px){body.project-detail-page .project-text-block p,body.project-detail-page .project-text-block li{font-size:.86rem;line-height:1.44;text-align:left;hyphens:none}body.project-detail-page .project-text-block p + p{margin-top:.58rem}}
+@media (max-width:520px){body.project-detail-page .project-text-block{margin-bottom:.78rem}body.project-detail-page .project-text-block h2{font-size:.76rem;letter-spacing:.12em}}
+
+
+body.project-detail-page .project-kicker{
+  margin: 0 0 18px;
+  font-family: Inter, sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ffd21d, #fff1a8 48%, #ffb400);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
