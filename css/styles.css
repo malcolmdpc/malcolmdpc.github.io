@@ -13781,3 +13781,136 @@ html body footer.footer .pl-footer-author-note{
     letter-spacing:.03em;
   }
 }
+
+/* Home projects · magnetic hover bar */
+#projects .github-project-card.project-hover-magnetic .project-image-link{
+  position:relative;
+  overflow:hidden;
+}
+
+#projects .github-project-card.project-hover-magnetic .project-detail-hover-cue{
+  display:none;
+}
+
+#projects .github-project-card.project-hover-magnetic .project-hover-layer{
+  position:absolute;
+  inset:0;
+  z-index:20;
+  pointer-events:none;
+}
+
+#projects .github-project-card.project-hover-magnetic .project-hover-layer::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background:rgba(4,5,7,.28);
+  opacity:0;
+  transition:opacity .35s ease;
+}
+
+#projects .github-project-card.project-hover-magnetic:hover .project-hover-layer::before,
+#projects .github-project-card.project-hover-magnetic:focus-within .project-hover-layer::before{
+  opacity:1;
+}
+
+#projects .github-project-card.project-hover-magnetic .project-magnetic-bar{
+  position:absolute;
+  left:14px;
+  right:14px;
+  bottom:14px;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:14px 16px;
+  border-radius:16px;
+  background:linear-gradient(90deg,#ffd21d,#ffb400);
+  color:#111;
+  font-weight:900;
+  overflow:hidden;
+  transform:translateY(140%);
+  transition:transform .38s cubic-bezier(.2,.8,.2,1),box-shadow .32s ease;
+  box-shadow:0 16px 30px rgba(0,0,0,.3);
+}
+
+#projects .github-project-card.project-hover-magnetic:hover .project-magnetic-bar,
+#projects .github-project-card.project-hover-magnetic:focus-within .project-magnetic-bar{
+  transform:translateY(0);
+}
+
+#projects .github-project-card.project-hover-magnetic .project-magnetic-bar span{
+  position:relative;
+  z-index:2;
+}
+
+#projects .github-project-card.project-hover-magnetic .project-magnetic-bar b{
+  position:relative;
+  z-index:2;
+  display:grid;
+  place-items:center;
+  width:32px;
+  height:32px;
+  min-width:32px;
+  border-radius:50%;
+  background:#111;
+  color:#ffd21d;
+  font-size:1.45rem;
+  font-weight:900;
+  line-height:1;
+  transition:transform .32s cubic-bezier(.2,.8,.2,1),background .32s ease,color .32s ease;
+}
+
+#projects .github-project-card.project-hover-magnetic:hover .project-magnetic-bar b,
+#projects .github-project-card.project-hover-magnetic:focus-within .project-magnetic-bar b{
+  transform:rotate(90deg) scale(1.04);
+  background:#080907;
+  color:#ffd21d;
+}
+
+#projects .github-project-card.project-hover-magnetic .project-magnetic-bar::before{
+  content:"";
+  position:absolute;
+  top:-40%;
+  bottom:-40%;
+  left:-40%;
+  z-index:1;
+  width:34%;
+  background:linear-gradient(to right,transparent,rgba(255,255,255,.65),transparent);
+  transform:skewX(-22deg);
+  pointer-events:none;
+}
+
+#projects .github-project-card.project-hover-magnetic:hover .project-magnetic-bar::before,
+#projects .github-project-card.project-hover-magnetic:focus-within .project-magnetic-bar::before{
+  animation:projectMagneticBarShine 950ms ease;
+}
+
+@keyframes projectMagneticBarShine{
+  100%{left:130%;}
+}
+
+@media (hover:none), (pointer:coarse){
+  #projects .github-project-card.project-hover-magnetic:active .project-hover-layer::before,
+  #projects .github-project-card.project-hover-magnetic:focus-within .project-hover-layer::before{
+    opacity:1;
+  }
+
+  #projects .github-project-card.project-hover-magnetic:active .project-magnetic-bar,
+  #projects .github-project-card.project-hover-magnetic:focus-within .project-magnetic-bar{
+    transform:translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  #projects .github-project-card.project-hover-magnetic .project-magnetic-bar,
+  #projects .github-project-card.project-hover-magnetic .project-magnetic-bar b{
+    transition:none;
+  }
+
+  #projects .github-project-card.project-hover-magnetic:hover .project-magnetic-bar::before,
+  #projects .github-project-card.project-hover-magnetic:focus-within .project-magnetic-bar::before{
+    animation:none;
+  }
+}

@@ -148,4 +148,10 @@
       <image:caption>Banner móvil del Proyecto 12 de Patrones Lab: Análisis Geoespacial de los Viajes en Taxi en Chicago, por Malcolm Di Pietro Cagliari.</image:caption>
     </image:image>
   </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/proyectos/dashboard-power-bi-spotify-charts.html</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
 </urlset>

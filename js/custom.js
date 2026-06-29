@@ -3063,7 +3063,7 @@ $('.color-mode').on('click', function(){
         '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Análisis Geoespacial de los Viajes en Taxi',
         '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Próximamente.',
         '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] h3': 'Dashboard en Power BI · Spotify Charts',
-        '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] p:not(.project-status)': 'Dashboard interactivo en Power BI para explorar reproducciones en Spotify y analizar canciones, artistas y álbumes que se encuentran en el Top 250 en cada país.',
+        '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] p:not(.project-status)': 'Análisis de rankings musicales de Spotify Charts con datos públicos de canciones, artistas, álbumes y mercados, orientado a explorar streams, presencia en charts, liderazgo temporal y distribución territorial mediante un dashboard interactivo en Power BI.',
         '#projects .repo-empty-message': 'No hay proyectos para esa categoría todavía.',
 
         '#networks .section-kicker': 'Canales de Patrones Lab',
@@ -3224,7 +3224,7 @@ $('.color-mode').on('click', function(){
         '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Geospatial Taxi Trip Analysis',
         '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Coming soon.',
         '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] h3': 'Power BI Dashboard · Spotify Charts',
-        '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] p:not(.project-status)': 'Interactive Power BI dashboard to explore Spotify streams and analyze songs, artists and albums ranked in the Top 250 in each country.',
+        '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] p:not(.project-status)': 'Analysis of Spotify Charts music rankings using public data on songs, artists, albums and markets, focused on exploring streams, chart presence, temporal leadership and territorial distribution through an interactive Power BI dashboard.',
         '#projects .repo-empty-message': 'There are no projects in this category yet.',
 
         '#networks .section-kicker': 'Patrones Lab Online Presence',
@@ -3394,7 +3394,7 @@ $('.color-mode').on('click', function(){
         '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Analisi geospaziale delle corse taxi',
         '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Prossimamente.',
         '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] h3': 'Dashboard Power BI · Spotify Charts',
-        '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] p:not(.project-status)': 'Dashboard interattiva in Power BI per esplorare gli stream su Spotify e analizzare brani, artisti e album presenti nella Top 250 di ogni Paese.',
+        '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] p:not(.project-status)': 'Analisi dei ranking musicali di Spotify Charts con dati pubblici su brani, artisti, album e mercati, orientata a esplorare stream, presenza nelle classifiche, leadership temporale e distribuzione territoriale tramite una dashboard interattiva in Power BI.',
         '#projects .repo-empty-message': 'Non ci sono ancora progetti per questa categoria.',
 
         '#networks .section-kicker': 'Presenza digitale di Patrones Lab',
