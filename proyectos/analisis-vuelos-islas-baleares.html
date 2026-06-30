@@ -42,7 +42,7 @@
 <section aria-label="Información del proyecto" class="project-info-panel" data-i18n-aria="infoPanelAria">
 <header class="project-detail-topbar">
 <div class="project-nav-actions">
-<a class="back-to-projects" data-i18n="back" href="../index.html?section=projects#projects"><span class="back-arrow-desktop" aria-hidden="true">⮌</span><span class="back-arrow-mobile" aria-hidden="true">➜</span><span class="back-label">Volver</span></a>
+<a class="back-to-projects" data-i18n="back" href="../index.html?section=projects#projects"><span aria-hidden="true" class="back-arrow-desktop">⮌</span><span aria-hidden="true" class="back-arrow-mobile">➜</span><span class="back-label">Volver</span></a>
 <a aria-label="Ir al siguiente proyecto" class="next-project-link" data-i18n="nextProject" data-i18n-aria="nextProjectAria" href="analisis-alojamiento-airbnb-londres.html">Siguiente ➜</a>
 </div>
 <div class="project-detail-controls">
@@ -85,10 +85,15 @@
 <p data-i18n="outputText">El proyecto queda presentado como análisis reproducible en GitHub y como pieza editorial en LinkedIn, manteniendo una narrativa visual orientada a patrones y contexto.</p>
 </section>
 <div class="project-tech-popover project-tech-popover-lower" data-tech-popover="">
+<div class="project-tech-action-row">
 <button aria-controls="project1-tech-sheet" aria-expanded="false" aria-label="Ver ficha técnica del proyecto" class="project-tech-trigger btn-ft btn-style-28" data-i18n-aria="techSheetButtonAria" type="button">
 <span class="label" data-i18n="techSheetButton">Ver ficha técnica</span>
 <span aria-hidden="true" class="plus project-tech-trigger-icon">+</span>
 </button>
+<span aria-label="Compartir proyecto" class="project-share-tech-slot">
+<pl-share-button direction="right" share-text-en="Data analytics project on flights in the Balearic Islands, using 2024 and 2025 data to analyze demand patterns, seasonality and air connectivity. By Malcolm Di Pietro Cagliari." share-text-es="Proyecto de analítica de datos sobre vuelos en las Islas Baleares, con datos 2024 y 2025, orientado a detectar patrones de demanda, estacionalidad y conectividad aérea. Por Malcolm Di Pietro Cagliari." share-text-it="Progetto di analisi dei dati sui voli nelle Isole Baleari, con dati 2024 e 2025, orientato ad analizzare pattern di domanda, stagionalità e connettività aerea. Di Malcolm Di Pietro Cagliari." share-title-en="Patrones Lab · Balearic Islands Flight Analysis" share-title-es="Patrones Lab · Análisis de Vuelos en las Islas Baleares" share-title-it="Patrones Lab · Analisi del traffico aereo nelle Isole Baleari" share-url="https://malcolmdpc.github.io/proyectos/analisis-vuelos-islas-baleares.html" size="md"></pl-share-button>
+</span>
+</div>
 <section aria-hidden="true" aria-label="Ficha técnica del proyecto" class="project-tech-sheet" data-i18n-aria="techSheetAria" id="project1-tech-sheet">
 <h2 data-i18n="techSheetTitle">FICHA TÉCNICA</h2>
 <dl class="project-tech-grid">
@@ -121,5 +126,6 @@
 </section>
 </main>
 <script defer="" src="../js/project-detail.js"></script>
+<script defer="" src="../js/pl-share-button.js"></script>
 </body>
 </html>

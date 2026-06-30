@@ -612,7 +612,7 @@
         }
       });
 
-      popover.addEventListener("pointerenter", function(event){
+      trigger.addEventListener("pointerenter", function(event){
         if(event.pointerType !== "touch" && !pinned) openPopover(false);
       });
 
