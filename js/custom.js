@@ -963,8 +963,10 @@ $('.color-mode').on('click', function(){
   }
 
   let finished = false;
+  let clickAnimating = false;
   let tl = null;
   let fallbackHandler = null;
+  const desktopClickQuery = window.matchMedia ? window.matchMedia('(min-width: 768px) and (pointer: fine)') : null;
 
   html.classList.add('pl-scroll-loader-lock');
 
@@ -1031,6 +1033,7 @@ $('.color-mode').on('click', function(){
   function finishScrollLoader(){
     if(finished) return;
     finished = true;
+    clickAnimating = false;
 
     body.classList.add('pl-scroll-loader-finishing');
 
@@ -1063,6 +1066,61 @@ $('.color-mode').on('click', function(){
       }
     }, 220);
   }
+
+  function isDesktopClickLoaderEnabled(){
+    if(desktopClickQuery) return desktopClickQuery.matches;
+    return window.innerWidth >= 768;
+  }
+
+  function revealNextLayer(){
+    const next = loader.querySelector('.pl-scroll-loader__next');
+    if(next){
+      next.style.visibility = 'visible';
+      next.style.opacity = '1';
+    }
+  }
+
+  function runDesktopClickLoader(event){
+    if(finished || clickAnimating || !isDesktopClickLoaderEnabled()) return;
+    if(event && typeof event.button === 'number' && event.button !== 0) return;
+
+    if(event){
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    clickAnimating = true;
+    cleanupScrollTrigger();
+    window.scrollTo(0, 0);
+
+    const dot = loader.querySelector('.dot');
+
+    if(window.gsap && dot){
+      window.gsap.killTweensOf(dot);
+      window.gsap.to(dot, {
+        scale:1200,
+        duration:.82,
+        ease:'power2.in',
+        onUpdate:function(){
+          if(this.progress && this.progress() > .72) revealNextLayer();
+        },
+        onComplete:finishScrollLoader
+      });
+      return;
+    }
+
+    if(dot){
+      dot.style.transition = 'transform .82s cubic-bezier(.7, 0, .2, 1), box-shadow .82s ease';
+      window.requestAnimationFrame(function(){
+        dot.style.transform = 'scale(1200)';
+      });
+    }
+
+    window.setTimeout(revealNextLayer, 590);
+    window.setTimeout(finishScrollLoader, 850);
+  }
+
+  loader.addEventListener('click', runDesktopClickLoader, { passive:false });
 
   if(window.gsap && window.ScrollTrigger){
     window.gsap.registerPlugin(window.ScrollTrigger);
