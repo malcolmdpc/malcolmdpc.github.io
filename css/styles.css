@@ -13914,3 +13914,99 @@ html body footer.footer .pl-footer-author-note{
     animation:none;
   }
 }
+
+
+#projects .project-image-placeholder{
+  position:relative;
+  display:flex;
+  width:100%;
+  aspect-ratio:1 / 1.18;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:.72rem;
+  overflow:hidden;
+  padding:2rem;
+  color:#f7f7f7;
+  text-align:center;
+  background:
+    radial-gradient(circle at 78% 18%,rgba(255,210,29,.23),transparent 26%),
+    radial-gradient(circle at 22% 78%,rgba(52,198,187,.16),transparent 30%),
+    linear-gradient(145deg,#111318 0%,#070809 58%,#15100a 100%);
+  transform:scale(1);
+  transition:transform .42s ease,filter .42s ease;
+}
+#projects .project-image-placeholder::before{
+  content:"";
+  position:absolute;
+  inset:9%;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:18px;
+  box-shadow:inset 0 0 0 1px rgba(255,210,29,.04);
+}
+#projects .project-image-placeholder::after{
+  content:"";
+  position:absolute;
+  width:72%;
+  height:1px;
+  bottom:20%;
+  background:linear-gradient(90deg,transparent,rgba(255,210,29,.7),transparent);
+}
+#projects .project-placeholder-mark,
+#projects .project-placeholder-title,
+#projects .project-placeholder-note{position:relative;z-index:1}
+#projects .project-placeholder-mark{
+  display:grid;
+  width:4.25rem;
+  height:4.25rem;
+  place-items:center;
+  border-radius:50%;
+  color:#111;
+  background:linear-gradient(135deg,#ffe467,#ffb400);
+  box-shadow:0 16px 36px rgba(0,0,0,.34),0 0 26px rgba(255,196,0,.18);
+  font-family:Inter,ui-sans-serif,system-ui,sans-serif;
+  font-size:1.08rem;
+  font-weight:900;
+  letter-spacing:.04em;
+}
+#projects .project-placeholder-title{
+  max-width:14rem;
+  color:#fff;
+  font-family:Inter,ui-sans-serif,system-ui,sans-serif;
+  font-size:1.18rem;
+  font-weight:850;
+  line-height:1.14;
+}
+#projects .project-placeholder-note{
+  max-width:15rem;
+  color:rgba(255,255,255,.67);
+  font-size:.75rem;
+  font-weight:700;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+#projects .github-project-card:hover .project-image-placeholder,
+#projects .github-project-card:focus-within .project-image-placeholder{
+  transform:scale(1.035);
+  filter:saturate(1.08) contrast(1.04);
+}
+body:not(.dark-mode) #projects .project-image-placeholder,
+body.light-mode #projects .project-image-placeholder{
+  color:#171717;
+  background:
+    radial-gradient(circle at 78% 18%,rgba(255,190,0,.26),transparent 26%),
+    radial-gradient(circle at 22% 78%,rgba(52,198,187,.15),transparent 30%),
+    linear-gradient(145deg,#f8f6ef 0%,#ece8dc 58%,#fff7dd 100%);
+}
+body:not(.dark-mode) #projects .project-image-placeholder::before,
+body.light-mode #projects .project-image-placeholder::before{border-color:rgba(20,20,20,.13)}
+body:not(.dark-mode) #projects .project-placeholder-title,
+body.light-mode #projects .project-placeholder-title{color:#171717}
+body:not(.dark-mode) #projects .project-placeholder-note,
+body.light-mode #projects .project-placeholder-note{color:rgba(18,18,18,.62)}
+@media (max-width:767px){
+  #projects .project-image-placeholder{gap:.58rem;padding:1.4rem}
+  #projects .project-placeholder-mark{width:3.7rem;height:3.7rem;font-size:.98rem}
+  #projects .project-placeholder-title{font-size:1.03rem}
+  #projects .project-placeholder-note{font-size:.68rem}
+}
