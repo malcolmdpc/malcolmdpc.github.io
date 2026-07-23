@@ -115,6 +115,11 @@ body.project-light-mode{
 .project-tech-logo-item{margin:0;display:inline-grid;grid-template-rows:56px auto;justify-items:center;align-items:start;gap:.28rem;width:72px;min-width:72px}
 .project-tech-logo-media{width:56px;height:56px;display:grid;place-items:center}
 .project-tech-logo-media img{display:block;max-width:56px;max-height:56px;width:auto;height:auto;object-fit:contain;filter:drop-shadow(0 3px 7px rgba(0,0,0,.28))}
+.project-tech-logo-glyph{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:2rem;font-weight:900;line-height:1;color:#ffd21f;background:rgba(255,210,31,.08);border:1px solid rgba(255,210,31,.34);filter:drop-shadow(0 3px 7px rgba(0,0,0,.28));transition:transform .28s ease,filter .28s ease,background .28s ease}
+.project-tech-logo-item:hover .project-tech-logo-glyph,.project-tech-logo-item:focus-within .project-tech-logo-glyph{transform:scale(1.085);filter:drop-shadow(0 13px 22px rgba(255,159,28,.28));background:rgba(255,210,31,.15)}
+.project-light-mode .project-tech-logo-glyph{color:#7a5900;background:rgba(255,210,31,.16);border-color:rgba(122,89,0,.28)}
+@media (max-width:520px){.project-tech-logo-glyph{width:38px;height:38px;font-size:1.55rem}}
+@media (prefers-reduced-motion:reduce){.project-tech-logo-glyph{transition:none!important}.project-tech-logo-item:hover .project-tech-logo-glyph,.project-tech-logo-item:focus-within .project-tech-logo-glyph{transform:none!important}}
 .project-tech-logo-label{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;width:100%;max-width:78px;min-height:1.28rem;color:var(--pd-copy-strong);font-size:.62rem;line-height:1.04;font-weight:900;text-align:center;letter-spacing:-.01em;text-wrap:balance}
 .project-light-mode .project-tech-logo-label{color:#25231e}
 .project-light-mode .project-tech-logo-media img{filter:drop-shadow(0 2px 5px rgba(0,0,0,.18))}

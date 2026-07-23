@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://malcolmdpc.github.io/</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-07-23</lastmod>
   </url>
   <url>
     <loc>https://malcolmdpc.github.io/proyectos/analisis-vuelos-islas-baleares.html</loc>
@@ -159,5 +159,21 @@
     <lastmod>2026-07-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/proyectos/simulacion-montecarlo-mundial-2026.html</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/simulacion-montecarlo-mundial-2026/p15-montecarlo-mundial-2026-mobile.webp</image:loc>
+      <image:title>Proyecto 15 · Simulación de Montecarlo · Predicciones para el Mundial 2026</image:title>
+      <image:caption>Imagen móvil del Proyecto 15 de Patrones Lab: simulación de Montecarlo para predecir el Mundial de Fútbol 2026, por Malcolm Di Pietro Cagliari.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/simulacion-montecarlo-mundial-2026/p15-montecarlo-mundial-2026-mobile-banner.webp</image:loc>
+      <image:title>Proyecto 15 · Simulación de Montecarlo · Predicciones para el Mundial 2026</image:title>
+      <image:caption>Banner móvil del Proyecto 15 de Patrones Lab: predicciones probabilísticas para el Mundial de Fútbol 2026 mediante simulación de Montecarlo.</image:caption>
+    </image:image>
   </url>
 </urlset>

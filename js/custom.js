@@ -2675,6 +2675,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="k-means"]': '<span class="filter-icon">⌖</span> K-means',
         '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Regresión logística',
         '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
+        '#projects .repo-filter-btn[data-repo-filter="simulacion"]': '<span class="filter-icon">∿</span> Simulación',
         '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geoespacial',
         '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
         '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
@@ -2833,6 +2834,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="k-means"]': '<span class="filter-icon">⌖</span> K-means',
         '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Logistic regression',
         '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
+        '#projects .repo-filter-btn[data-repo-filter="simulacion"]': '<span class="filter-icon">∿</span> Simulation',
         '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geospatial',
         '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
         '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
@@ -3080,6 +3082,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
         '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
         '#projects .repo-filter-btn[data-repo-filter="power-bi"]': '<span class="filter-icon">▥</span> Power BI',
+        '#projects .repo-filter-btn[data-repo-filter="dax"]': '<span class="filter-icon">ƒx</span> DAX',
         '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Modelo supervisado',
         '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Modelo no supervisado',
         '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Clasificación',
@@ -3088,6 +3091,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="k-means"]': '<span class="filter-icon">⌖</span> K-means',
         '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Regresión logística',
         '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
+        '#projects .repo-filter-btn[data-repo-filter="simulacion"]': '<span class="filter-icon">∿</span> Simulación',
         '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geoespacial',
         '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
         '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
@@ -3122,11 +3126,10 @@ $('.color-mode').on('click', function(){
         '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Próximamente.',
         '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] h3': 'Dashboard en Power BI · Spotify Charts',
         '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] p:not(.project-status)': 'Análisis de rankings musicales de Spotify Charts con datos públicos de canciones, artistas, álbumes y mercados, orientado a explorar streams, presencia en charts, liderazgo temporal y distribución territorial mediante un dashboard interactivo en Power BI.',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] h3': 'Dashboard en Power BI · Proveedores, gastos y descuentos',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] p:not(.project-status)': 'Informe ejecutivo en Power BI para analizar gasto con proveedores, evolución mensual, distribución por categorías y aprovechamiento de descuentos.',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] .project-placeholder-title': 'Dashboard Power BI',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] .project-placeholder-note': 'Imagen del proyecto en preparación',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] .project-build-label': 'proyecto:',
+        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] h3': 'Dashboard en Power BI · Análisis de Gastos',
+        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] p:not(.project-status)': 'Informe interactivo en Power BI para analizar gasto con proveedores, evolución mensual, distribución por categorías, ahorro y distribución geográfica.',
+        '#projects .github-project-card[data-project-id="world-cup-2026-montecarlo-simulation"] h3': 'Simulación de Montecarlo · Predicciones para el Mundial 2026',
+        '#projects .github-project-card[data-project-id="world-cup-2026-montecarlo-simulation"] p:not(.project-status)': 'Simulación de un millón de escenarios del Mundial 2026 con ratings Elo para estimar probabilidades de alcanzar semifinales, disputar la final y consagrarse campeón.',
         '#projects .repo-empty-message': 'No hay proyectos para esa categoría todavía.',
 
         '#networks .section-kicker': 'Canales de Patrones Lab',
@@ -3246,6 +3249,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
         '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
         '#projects .repo-filter-btn[data-repo-filter="power-bi"]': '<span class="filter-icon">▥</span> Power BI',
+        '#projects .repo-filter-btn[data-repo-filter="dax"]': '<span class="filter-icon">ƒx</span> DAX',
         '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Supervised model',
         '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Unsupervised model',
         '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Classification',
@@ -3254,6 +3258,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="k-means"]': '<span class="filter-icon">⌖</span> K-means',
         '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Logistic regression',
         '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
+        '#projects .repo-filter-btn[data-repo-filter="simulacion"]': '<span class="filter-icon">∿</span> Simulation',
         '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geospatial',
         '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
         '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
@@ -3288,11 +3293,10 @@ $('.color-mode').on('click', function(){
         '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Coming soon.',
         '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] h3': 'Power BI Dashboard · Spotify Charts',
         '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] p:not(.project-status)': 'Analysis of Spotify Charts music rankings using public data on songs, artists, albums and markets, focused on exploring streams, chart presence, temporal leadership and territorial distribution through an interactive Power BI dashboard.',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] h3': 'Power BI Dashboard · Suppliers, Spend and Discounts',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] p:not(.project-status)': 'Executive Power BI report for analyzing supplier spend, monthly trends, category distribution and discount utilization.',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] .project-placeholder-title': 'Power BI Dashboard',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] .project-placeholder-note': 'Project image in preparation',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] .project-build-label': 'project:',
+        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] h3': 'Power BI Dashboard · Spend Analysis',
+        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] p:not(.project-status)': 'Interactive Power BI report for analyzing supplier spend, monthly trends, category distribution, savings and geographic distribution.',
+        '#projects .github-project-card[data-project-id="world-cup-2026-montecarlo-simulation"] h3': 'Monte Carlo Simulation · 2026 World Cup Predictions',
+        '#projects .github-project-card[data-project-id="world-cup-2026-montecarlo-simulation"] p:not(.project-status)': 'Simulation of one million 2026 World Cup scenarios using Elo ratings to estimate the probability of reaching the semifinals, playing the final and becoming champion.',
         '#projects .repo-empty-message': 'There are no projects in this category yet.',
 
         '#networks .section-kicker': 'Patrones Lab Online Presence',
@@ -3421,6 +3425,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
         '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
         '#projects .repo-filter-btn[data-repo-filter="power-bi"]': '<span class="filter-icon">▥</span> Power BI',
+        '#projects .repo-filter-btn[data-repo-filter="dax"]': '<span class="filter-icon">ƒx</span> DAX',
         '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Modello supervisionato',
         '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Modello non supervisionato',
         '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Classificazione',
@@ -3429,6 +3434,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="k-means"]': '<span class="filter-icon">⌖</span> K-means',
         '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Regressione logistica',
         '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
+        '#projects .repo-filter-btn[data-repo-filter="simulacion"]': '<span class="filter-icon">∿</span> Simulazione',
         '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geospaziale',
         '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
         '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
@@ -3463,11 +3469,10 @@ $('.color-mode').on('click', function(){
         '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Prossimamente.',
         '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] h3': 'Dashboard Power BI · Spotify Charts',
         '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] p:not(.project-status)': 'Analisi dei ranking musicali di Spotify Charts con dati pubblici su brani, artisti, album e mercati, orientata a esplorare stream, presenza nelle classifiche, leadership temporale e distribuzione territoriale tramite una dashboard interattiva in Power BI.',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] h3': 'Dashboard in Power BI · Fornitori, spesa e sconti',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] p:not(.project-status)': 'Report esecutivo in Power BI per analizzare la spesa verso i fornitori, l’andamento mensile, la distribuzione per categoria e l’utilizzo degli sconti.',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] .project-placeholder-title': 'Dashboard Power BI',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] .project-placeholder-note': 'Immagine del progetto in preparazione',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] .project-build-label': 'progetto:',
+        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] h3': 'Dashboard in Power BI · Analisi della spesa',
+        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] p:not(.project-status)': 'Report interattivo in Power BI per analizzare la spesa verso i fornitori, l’andamento mensile, la distribuzione per categoria, il risparmio e la distribuzione geografica.',
+        '#projects .github-project-card[data-project-id="world-cup-2026-montecarlo-simulation"] h3': 'Simulazione Monte Carlo · Previsioni per il Mondiale 2026',
+        '#projects .github-project-card[data-project-id="world-cup-2026-montecarlo-simulation"] p:not(.project-status)': 'Simulazione di un milione di scenari del Mondiale 2026 basata sui rating Elo per stimare le probabilità di raggiungere le semifinali, disputare la finale e diventare campione.',
         '#projects .repo-empty-message': 'Non ci sono ancora progetti per questa categoria.',
 
         '#networks .section-kicker': 'Presenza digitale di Patrones Lab',
@@ -3973,6 +3978,7 @@ $('.color-mode').on('click', function(){
       'looker-studio': 'Looker Studio',
       'dashboard': 'Dashboard',
       'power-bi': 'Power BI',
+      'dax': 'DAX',
       'spotify': 'Spotify',
       'modelo-supervisado': 'Modelo Supervisado',
       'modelo-no-supervisado': 'Modelo No Supervisado',
@@ -4000,6 +4006,7 @@ $('.color-mode').on('click', function(){
       'looker-studio': 'Looker Studio',
       'dashboard': 'Dashboard',
       'power-bi': 'Power BI',
+      'dax': 'DAX',
       'spotify': 'Spotify',
       'modelo-supervisado': 'Supervised Model',
       'modelo-no-supervisado': 'Unsupervised Model',
@@ -4027,6 +4034,7 @@ $('.color-mode').on('click', function(){
       'looker-studio': 'Looker Studio',
       'dashboard': 'Dashboard',
       'power-bi': 'Power BI',
+      'dax': 'DAX',
       'spotify': 'Spotify',
       'modelo-supervisado': 'Modello supervisionato',
       'modelo-no-supervisado': 'Modello non supervisionato',
@@ -4218,6 +4226,12 @@ $('.color-mode').on('click', function(){
         "en": "Power BI",
         "it": "Power BI"
     },
+    "dax": {
+        "icon": "ƒx",
+        "es": "DAX",
+        "en": "DAX",
+        "it": "DAX"
+    },
     "spotify": {
         "icon": "♪",
         "es": "Spotify",
@@ -4271,6 +4285,12 @@ $('.color-mode').on('click', function(){
         "es": "DBSCAN",
         "en": "DBSCAN",
         "it": "DBSCAN"
+    },
+    "simulacion": {
+        "icon": "∿",
+        "es": "Simulación",
+        "en": "Simulation",
+        "it": "Simulazione"
     },
     "geoespacial": {
         "icon": "⌖",
@@ -4382,7 +4402,7 @@ $('.color-mode').on('click', function(){
 
     document.querySelectorAll('#projects .repo-filter-btn[data-repo-filter]').forEach(function(button){
       const token = button.dataset.repoFilter;
-      const text = button.textContent.replace(/^\s*[◎▦▥⚗✦✎◇◧◉▣✓≡✣↗⌖⌁⊙●✈!]+\s*/, '').trim();
+      const text = button.textContent.replace(/^\s*(?:ƒx|[◎▦▥⚗✦✎◇◧◉▣✓≡✣↗⌖⌁⊙●✈!∿])+\s*/, '').trim();
       const expected = labelFor(token, lang);
 
       filterLabels[token] = text;
@@ -4570,6 +4590,12 @@ $('.color-mode').on('click', function(){
         "en": "Power BI",
         "it": "Power BI"
     },
+    "dax": {
+        "icon": "ƒx",
+        "es": "DAX",
+        "en": "DAX",
+        "it": "DAX"
+    },
     "spotify": {
         "icon": "♪",
         "es": "Spotify",
@@ -4623,6 +4649,12 @@ $('.color-mode').on('click', function(){
         "es": "DBSCAN",
         "en": "DBSCAN",
         "it": "DBSCAN"
+    },
+    "simulacion": {
+        "icon": "∿",
+        "es": "Simulación",
+        "en": "Simulation",
+        "it": "Simulazione"
     },
     "geoespacial": {
         "icon": "⌖",
@@ -4689,7 +4721,7 @@ $('.color-mode').on('click', function(){
   }
 
   function cleanFilterText(text){
-    return (text || '').replace(/^\s*[◎▦▥⚗✦✎◇◧◉▣✓≡✣↗⌖⌁⊙●✈!]+\s*/, '').trim();
+    return (text || '').replace(/^\s*(?:ƒx|[◎▦▥⚗✦✎◇◧◉▣✓≡✣↗⌖⌁⊙●✈!∿])+\s*/, '').trim();
   }
 
   function renderOneFilter(button, lang){
@@ -4923,6 +4955,12 @@ $('.color-mode').on('click', function(){
         "en": "Power BI",
         "it": "Power BI"
     },
+    "dax": {
+        "icon": "ƒx",
+        "es": "DAX",
+        "en": "DAX",
+        "it": "DAX"
+    },
     "spotify": {
         "icon": "♪",
         "es": "Spotify",
@@ -4976,6 +5014,12 @@ $('.color-mode').on('click', function(){
         "es": "DBSCAN",
         "en": "DBSCAN",
         "it": "DBSCAN"
+    },
+    "simulacion": {
+        "icon": "∿",
+        "es": "Simulación",
+        "en": "Simulation",
+        "it": "Simulazione"
     },
     "geoespacial": {
         "icon": "⌖",
@@ -5042,7 +5086,7 @@ $('.color-mode').on('click', function(){
   }
 
   function stripIcon(text){
-    return (text || '').replace(/^\s*[◎▦▥⚗✦✎◇◧◉▣✓≡✣↗⌖⌁⊙●✈!]+\s*/, '').trim();
+    return (text || '').replace(/^\s*(?:ƒx|[◎▦▥⚗✦✎◇◧◉▣✓≡✣↗⌖⌁⊙●✈!∿])+\s*/, '').trim();
   }
 
   function renderFilters(lang){
