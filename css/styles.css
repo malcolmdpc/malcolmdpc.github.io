@@ -9672,6 +9672,17 @@ html.pl-section-snap-enabled{
   color:#ffffff !important;
 }
 
+#projects .github-project-card .project-link .btn-destination-icon-enter,
+#projects-showcase .pl-codepen-text-cell .project-link .btn-destination-icon-enter{
+  background:#000000 !important;
+  color:#ffffff !important;
+}
+
+#projects .github-project-card .project-link .btn-destination-icon-enter img,
+#projects-showcase .pl-codepen-text-cell .project-link .btn-destination-icon-enter img{
+  filter:none !important;
+}
+
 #projects .github-project-card .project-link .btn-destination-icon-dashboard,
 #projects-showcase .pl-codepen-text-cell .project-link .btn-destination-icon-dashboard{
   background:#ffffff !important;
@@ -14015,3 +14026,30 @@ body.light-mode #projects .project-placeholder-note{color:rgba(18,18,18,.62)}
   #projects .project-placeholder-title{font-size:1.03rem}
   #projects .project-placeholder-note{font-size:.68rem}
 }
+
+/* Project cards 08–09: actions stacked vertically */
+#projects .github-project-card[data-project-id="fraud-detection-kmeans"] .project-links-dual,
+#projects .github-project-card[data-project-id="fraud-detection-kmeans"] .project-links-editorial,
+#projects .github-project-card[data-project-id="fraud-detection-kmeans"] .project-link-row,
+#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] .project-links-dual,
+#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] .project-links-editorial,
+#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] .project-link-row{
+  display:flex !important;
+  flex-direction:column !important;
+  flex-wrap:nowrap !important;
+  align-items:stretch !important;
+  justify-content:flex-start !important;
+  gap:8px !important;
+  row-gap:8px !important;
+  width:100% !important;
+}
+
+#projects .github-project-card[data-project-id="fraud-detection-kmeans"] .project-link,
+#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] .project-link{
+  flex:0 0 auto !important;
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+}
+

@@ -543,3 +543,14 @@ body.project-static-detail-page .project-static-hero-placeholder::after{
   .project-static-placeholder-title{font-size:1rem;line-height:1.05}
   .project-static-placeholder-note{font-size:.52rem;letter-spacing:.08em}
 }
+
+/* Project action alignment: label left, icon right */
+.project-detail-actions .project-action > span:first-child{
+  flex:1 1 auto;
+  min-width:0;
+  text-align:left;
+}
+.project-detail-actions .project-action .project-action-icon{
+  flex:0 0 auto;
+  margin-left:auto;
+}

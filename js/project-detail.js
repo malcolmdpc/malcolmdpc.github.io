@@ -6,6 +6,12 @@
     en: "../images/patrones/language-flags/flag-us.svg",
     it: "../images/patrones/language-flags/flag-it.svg"
   };
+  var mobileRepoLabels = {
+    es: "Entrar al Repo",
+    en: "Open Repo",
+    it: "Apri il repo"
+  };
+  var mobileRepoMedia = window.matchMedia("(max-width: 767px)");
   var text = {
     es: {
       back: "⮌ Volver",
@@ -341,6 +347,21 @@
     return text[lang] ? lang : "es";
   }
 
+  function applyResponsiveRepoLabels(lang){
+    lang = validLanguage(lang);
+    var compact = mobileRepoMedia.matches;
+
+    document.querySelectorAll('[data-mobile-repo-label="true"]').forEach(function(el){
+      if(compact){
+        el.textContent = mobileRepoLabels[lang];
+        return;
+      }
+
+      var key = el.getAttribute("data-i18n");
+      if(key && text[lang][key]) el.textContent = text[lang][key];
+    });
+  }
+
   function setLanguageMenu(open){
     var selector = document.querySelector(".project-language-selector");
     var toggle = document.querySelector(".project-language-toggle");
@@ -389,6 +410,7 @@
     var currentFlag = document.querySelector(".project-language-current-img");
     if(currentFlag) currentFlag.setAttribute("src", flagPaths[lang]);
 
+    applyResponsiveRepoLabels(lang);
     localStorage.setItem(languageKey, lang);
   }
 
@@ -662,6 +684,16 @@
     if(toggle){
       toggle.addEventListener("click", function(){
         applyMode(document.body.classList.contains("project-light-mode") ? "dark" : "light");
+      });
+    }
+
+    if(mobileRepoMedia.addEventListener){
+      mobileRepoMedia.addEventListener("change", function(){
+        applyResponsiveRepoLabels(document.documentElement.lang || "es");
+      });
+    }else if(mobileRepoMedia.addListener){
+      mobileRepoMedia.addListener(function(){
+        applyResponsiveRepoLabels(document.documentElement.lang || "es");
       });
     }
 
