@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://malcolmdpc.github.io/</loc>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://malcolmdpc.github.io/proyectos/analisis-vuelos-islas-baleares.html</loc>
@@ -73,6 +73,12 @@
       <image:title>Proyecto 5 · Dashboard con Looker Studio · Taxi Trips Chicago</image:title>
       <image:caption>Banner móvil del Proyecto 5 de Patrones Lab: Dashboard con Looker Studio sobre Taxi Trips Chicago, por Malcolm Di Pietro Cagliari.</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/proyectos/modelo-ml-goles-esperados-xg.html</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
   </url>
   <url>
     <loc>https://malcolmdpc.github.io/proyectos/probabilidades-futbol-peligro-esperado-xt.html</loc>
