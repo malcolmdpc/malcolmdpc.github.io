@@ -14053,3 +14053,161 @@ body.light-mode #projects .project-placeholder-note{color:rgba(18,18,18,.62)}
   margin:0 !important;
 }
 
+/* Home project action buttons · canonical desktop/mobile */
+/* Desktop baseline: matches Project 1 "Entrar al proyecto" without altering button colors or icon identities. */
+#projects .github-project-card .project-link-row,
+#projects .github-project-card .project-links-dual,
+#projects .github-project-card .project-links-dashboard,
+#projects .github-project-card .project-links-editorial{
+  display:flex !important;
+  flex-direction:column !important;
+  flex-wrap:nowrap !important;
+  align-items:stretch !important;
+  justify-content:flex-start !important;
+  gap:8px !important;
+  row-gap:8px !important;
+  width:100% !important;
+  margin-top:auto !important;
+}
+
+#projects .github-project-card .github-project-body > .project-link,
+#projects .github-project-card .project-link-row > .project-link,
+#projects .github-project-card .project-links-dual > .project-link,
+#projects .github-project-card .project-links-dashboard > .project-link,
+#projects .github-project-card .project-links-editorial > .project-link{
+  position:relative !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  min-height:36px !important;
+  margin:0 !important;
+  padding:8px 14px !important;
+  border-radius:999px !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+  font-family:"Maven Pro", sans-serif !important;
+  font-size:12px !important;
+  font-weight:950 !important;
+  line-height:1 !important;
+  letter-spacing:-.01em !important;
+  text-decoration:none !important;
+  box-shadow:none !important;
+  transition:background .22s ease, color .22s ease, transform .22s ease, border-color .22s ease !important;
+}
+
+#projects .github-project-card .project-link.has-destination-icon{
+  padding-left:42px !important;
+  padding-right:42px !important;
+  overflow:hidden !important;
+}
+
+/* Buttons without an icon retain the same geometry and typography, without reserving an empty icon slot. */
+body #projects .github-project-card[data-project-id] .project-link-row > .project-link:not(.has-destination-icon),
+body #projects .github-project-card[data-project-id] .project-links-dual > .project-link:not(.has-destination-icon),
+body #projects .github-project-card[data-project-id] .project-links-dashboard > .project-link:not(.has-destination-icon),
+body #projects .github-project-card[data-project-id] .project-links-editorial > .project-link:not(.has-destination-icon){
+  flex:0 0 auto !important;
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  padding:8px 42px !important;
+}
+
+/* Only icon dimensions are normalized; each existing icon, asset and color remains unchanged. */
+#projects .github-project-card .project-link .btn-destination-icon{
+  position:absolute !important;
+  right:5px !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  width:30px !important;
+  height:30px !important;
+  min-width:30px !important;
+  max-width:30px !important;
+  min-height:30px !important;
+  max-height:30px !important;
+  margin:0 !important;
+  padding:0 !important;
+  border-radius:999px !important;
+}
+
+#projects .github-project-card .project-link .btn-destination-icon img,
+#projects .github-project-card .project-link .btn-destination-icon svg{
+  width:18px !important;
+  height:18px !important;
+  min-width:18px !important;
+  max-width:18px !important;
+  min-height:18px !important;
+  max-height:18px !important;
+  object-fit:contain !important;
+}
+
+/* Mobile baseline is independent from desktop: left-aligned text and fixed icon at the right. */
+@media (max-width:767px){
+  #projects .github-project-card .github-project-body > .project-link,
+  #projects .github-project-card .project-link-row > .project-link,
+  #projects .github-project-card .project-links-dual > .project-link,
+  #projects .github-project-card .project-links-dashboard > .project-link,
+  #projects .github-project-card .project-links-editorial > .project-link{
+    min-height:38px !important;
+    padding:8px 10px !important;
+    justify-content:flex-start !important;
+    text-align:left !important;
+    white-space:normal !important;
+    font-size:clamp(12px, 3.15vw, 13.2px) !important;
+    line-height:1.08 !important;
+    letter-spacing:-.01em !important;
+  }
+
+  #projects .github-project-card .project-link.has-destination-icon{
+    padding-left:10px !important;
+    padding-right:34px !important;
+  }
+
+  body #projects .github-project-card[data-project-id] .project-link-row > .project-link:not(.has-destination-icon),
+  body #projects .github-project-card[data-project-id] .project-links-dual > .project-link:not(.has-destination-icon),
+  body #projects .github-project-card[data-project-id] .project-links-dashboard > .project-link:not(.has-destination-icon),
+  body #projects .github-project-card[data-project-id] .project-links-editorial > .project-link:not(.has-destination-icon){
+    padding:8px 34px 8px 10px !important;
+  }
+
+  #projects .github-project-card .project-link .btn-destination-icon{
+    right:4px !important;
+    width:25px !important;
+    height:25px !important;
+    min-width:25px !important;
+    max-width:25px !important;
+    min-height:25px !important;
+    max-height:25px !important;
+  }
+
+  #projects .github-project-card .project-link .btn-destination-icon img,
+  #projects .github-project-card .project-link .btn-destination-icon svg{
+    width:15px !important;
+    height:15px !important;
+    min-width:15px !important;
+    max-width:15px !important;
+    min-height:15px !important;
+    max-height:15px !important;
+  }
+}
+
+@media (max-width:380px){
+  #projects .github-project-card .github-project-body > .project-link,
+  #projects .github-project-card .project-link-row > .project-link,
+  #projects .github-project-card .project-links-dual > .project-link,
+  #projects .github-project-card .project-links-dashboard > .project-link,
+  #projects .github-project-card .project-links-editorial > .project-link{
+    font-size:10.8px !important;
+  }
+}
+
+
+/* Keep single direct project actions aligned with the card footer on desktop. */
+@media (min-width:768px){
+  #projects .github-project-card .github-project-body > .project-link{
+    margin-top:auto !important;
+  }
+}
