@@ -79,6 +79,16 @@
     <lastmod>2026-07-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-goles-esperados-xg/p06-xg-futbol-mobile.webp</image:loc>
+      <image:title>Proyecto 6 · Modelo Machine Learning · Goles Esperados (xG)</image:title>
+      <image:caption>Imagen móvil del Proyecto 6 de Patrones Lab: modelo de goles esperados con regresión logística y datos públicos de StatsBomb.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-goles-esperados-xg/p06-xg-futbol-mobile-banner.webp</image:loc>
+      <image:title>Proyecto 6 · Modelo Machine Learning · Goles Esperados (xG)</image:title>
+      <image:caption>Banner móvil del Proyecto 6 de Patrones Lab sobre la estimación de la probabilidad de gol de cada tiro.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://malcolmdpc.github.io/proyectos/probabilidades-futbol-peligro-esperado-xt.html</loc>
