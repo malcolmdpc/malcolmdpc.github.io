@@ -4,12 +4,12 @@
 
   try{
     if(localStorage.getItem(VERSION_KEY) !== DEFAULT_VERSION){
-      localStorage.setItem('patronesLabLanguage', 'es');
+      localStorage.setItem('patronesLabLanguage', (document.documentElement.lang || 'es').split('-')[0]);
       localStorage.setItem(VERSION_KEY, DEFAULT_VERSION);
     }
   }catch(e){}
 
-  document.documentElement.lang = 'es';
+  document.documentElement.lang = ((document.documentElement.lang || 'es').split('-')[0] || 'es');
 
   if(document.body){
     document.body.classList.add('dark-mode');
@@ -166,12 +166,18 @@ $('.color-mode').on('click', function(){
     const name = $('#name').val() || '';
     const email = $('#email').val() || '';
     const message = $('#message').val() || '';
-    const isEnglish = (window.plCurrentLanguageForContact && window.plCurrentLanguageForContact() === 'en');
-    const subject = encodeURIComponent(isEnglish ? 'Contact from Patrones Lab' : 'Contacto desde Patrones Lab');
+    const language = (window.plCurrentLanguageForContact && window.plCurrentLanguageForContact()) || document.documentElement.lang || 'es';
+    const mailText = {
+      es: {subject:'Contacto desde Patrones Lab', name:'Nombre: ', message:'Mensaje:\n'},
+      en: {subject:'Contact from Patrones Lab', name:'Name: ', message:'Message:\n'},
+      it: {subject:'Contatto da Patrones Lab', name:'Nome: ', message:'Messaggio:\n'}
+    };
+    const pack = mailText[language] || mailText.es;
+    const subject = encodeURIComponent(pack.subject);
     const body = encodeURIComponent(
-      (isEnglish ? 'Name: ' : 'Nombre: ') + name + '\n' +
+      pack.name + name + '\n' +
       'Email: ' + email + '\n\n' +
-      (isEnglish ? 'Message:\n' : 'Mensaje:\n') + message
+      pack.message + message
     );
     window.location.href = 'mailto:encontrandopatrones@gmail.com?subject=' + subject + '&body=' + body;
   });
@@ -261,7 +267,7 @@ $('.color-mode').on('click', function(){
     'bulb-16.png','bulb-17.png','bulb-18.png','bulb-19.png','bulb-20.png'
   ];
 
-  const basePath = 'images/patrones/floating-icons/';
+  const basePath = '/images/patrones/floating-icons/';
   const maxIcons = 0;
 
   function rand(min, max){
@@ -2174,8 +2180,8 @@ $('.color-mode').on('click', function(){
 (function(){
   const STORAGE_KEY = 'patronesLabLanguage';
   const DEFAULT_LANG = 'es';
-  const FLAG_US = 'images/patrones/language-flags/flag-us.svg';
-  const FLAG_ES = 'images/patrones/language-flags/flag-es.svg';
+  const FLAG_US = '/images/patrones/language-flags/flag-us.svg';
+  const FLAG_ES = '/images/patrones/language-flags/flag-es.svg';
 
   const dictionary = {
     en: {
@@ -2267,7 +2273,7 @@ $('.color-mode').on('click', function(){
         '#projects .github-project-card[data-project-id="airbnb-london-ml"] p:not(.project-status)': 'Supervised classification of listings as relatively expensive or inexpensive within each accommodation type.',
         '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] h3': 'Looker Dashboard · Chicago Taxi Trips',
         '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] p:not(.project-status)': 'Interactive Looker Studio dashboard for exploring Chicago taxi trips, operational indicators, hourly patterns and pickup-dropoff routes.',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'ML Model · Expected Goals (xG)',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'Machine Learning Model · Expected Goals (xG)',
         '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] p:not(.project-status)': 'Logistic regression model that estimates the probability of each shot becoming a goal using public StatsBomb data, match-level validation and application to the Qatar 2022 World Cup.',
         '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] h3': 'Soccer Probabilities · Expected Threat (xT)',
         '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] p:not(.project-status)': 'Probabilistic Expected Threat model in soccer using public StatsBomb data. It estimates the probability of a goal in the next 5 actions.',
@@ -2279,7 +2285,7 @@ $('.color-mode').on('click', function(){
         '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] p:not(.project-status)': 'Unsupervised DBSCAN clustering to detect potential credit card fraud patterns.',
         '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] h3': '2022 World Cup Statistics: Percentile Radar',
         '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] p:not(.project-status)': 'Analysis of 2022 World Cup statistics using public StatsBomb data, focused on summarizing individual performances and comparing players through percentile radar charts.',
-        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Geospatial Taxi Trip Analysis',
+        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Geospatial Analysis of Chicago Taxi Trips',
         '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Coming soon.',
 
         '#projects .repo-empty-message': 'There are no projects in this category yet.',
@@ -2583,8 +2589,8 @@ $('.color-mode').on('click', function(){
 
 (function(){
   const STORAGE_KEY = 'patronesLabLanguage';
-  const FLAG_US = 'images/patrones/language-flags/flag-us.svg';
-  const FLAG_ES = 'images/patrones/language-flags/flag-es.svg';
+  const FLAG_US = '/images/patrones/language-flags/flag-us.svg';
+  const FLAG_ES = '/images/patrones/language-flags/flag-es.svg';
 
   const dict = {
     es: {
@@ -2852,7 +2858,7 @@ $('.color-mode').on('click', function(){
         '#projects .github-project-card[data-project-id="airbnb-london-ml"] p:not(.project-status)': 'Supervised classification of listings as relatively expensive or inexpensive within each accommodation type.',
         '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] h3': 'Looker Dashboard · Chicago Taxi Trips',
         '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] p:not(.project-status)': 'Interactive Looker Studio dashboard for exploring Chicago taxi trips, operational indicators, hourly patterns and pickup-dropoff routes.',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'ML Model · Expected Goals (xG)',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'Machine Learning Model · Expected Goals (xG)',
         '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] p:not(.project-status)': 'Logistic regression model that estimates the probability of each shot becoming a goal using public StatsBomb data, match-level validation and application to the Qatar 2022 World Cup.',
         '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] h3': 'Soccer Probabilities · Expected Threat (xT)',
         '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] p:not(.project-status)': 'Probabilistic Expected Threat model in soccer using public StatsBomb data. It estimates the probability of a goal in the next 5 actions.',
@@ -2864,7 +2870,7 @@ $('.color-mode').on('click', function(){
         '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] p:not(.project-status)': 'Unsupervised DBSCAN clustering to detect potential credit card fraud patterns.',
         '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] h3': '2022 World Cup Statistics: Percentile Radar',
         '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] p:not(.project-status)': 'Analysis of 2022 World Cup statistics using public StatsBomb data, focused on summarizing individual performances and comparing players through percentile radar charts.',
-        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Geospatial Taxi Trip Analysis',
+        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Geospatial Analysis of Chicago Taxi Trips',
         '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Coming soon.',
 
         '#projects .repo-empty-message': 'There are no projects in this category yet.',
@@ -3007,9 +3013,9 @@ $('.color-mode').on('click', function(){
 (function(){
   const STORAGE_KEY = 'patronesLabLanguage';
   const FLAGS = {
-    es: 'images/patrones/language-flags/flag-es.svg',
-    en: 'images/patrones/language-flags/flag-us.svg',
-    it: 'images/patrones/language-flags/flag-it.svg'
+    es: '/images/patrones/language-flags/flag-es.svg',
+    en: '/images/patrones/language-flags/flag-us.svg',
+    it: '/images/patrones/language-flags/flag-it.svg'
   };
 
   const langData = {
@@ -3277,7 +3283,7 @@ $('.color-mode').on('click', function(){
         '#projects .github-project-card[data-project-id="airbnb-london-ml"] p:not(.project-status)': 'Supervised classification of listings as relatively expensive or inexpensive within each accommodation type.',
         '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] h3': 'Looker Dashboard · Chicago Taxi Trips',
         '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] p:not(.project-status)': 'Interactive Looker Studio dashboard for exploring Chicago taxi trips, operational indicators, hourly patterns and pickup-dropoff routes.',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'ML Model · Expected Goals (xG)',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'Machine Learning Model · Expected Goals (xG)',
         '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] p:not(.project-status)': 'Logistic regression model that estimates the probability of each shot becoming a goal using public StatsBomb data, match-level validation and application to the Qatar 2022 World Cup.',
         '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] h3': 'Soccer Probabilities · Expected Threat (xT)',
         '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] p:not(.project-status)': 'Probabilistic Expected Threat model in soccer using public StatsBomb data. It estimates the probability of a goal in the next 5 actions.',
@@ -3289,7 +3295,7 @@ $('.color-mode').on('click', function(){
         '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] p:not(.project-status)': 'Unsupervised DBSCAN clustering to detect potential credit card fraud patterns.',
         '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] h3': '2022 World Cup Statistics: Percentile Radar',
         '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] p:not(.project-status)': 'Analysis of 2022 World Cup statistics using public StatsBomb data, focused on summarizing individual performances and comparing players through percentile radar charts.',
-        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Geospatial Taxi Trip Analysis',
+        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Geospatial Analysis of Chicago Taxi Trips',
         '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Coming soon.',
         '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] h3': 'Power BI Dashboard · Spotify Charts',
         '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] p:not(.project-status)': 'Analysis of Spotify Charts music rankings using public data on songs, artists, albums and markets, focused on exploring streams, chart presence, temporal leadership and territorial distribution through an interactive Power BI dashboard.',
@@ -3453,7 +3459,7 @@ $('.color-mode').on('click', function(){
         '#projects .github-project-card[data-project-id="airbnb-london-ml"] p:not(.project-status)': 'Classificazione supervisionata degli annunci relativamente costosi o economici all’interno di ciascuna tipologia di alloggio.',
         '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] h3': 'Dashboard Looker · Taxi Trips Chicago',
         '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] p:not(.project-status)': 'Dashboard interattiva in Looker Studio per esplorare corse taxi a Chicago, indicatori operativi, pattern orari e percorsi pickup-dropoff.',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'Modello ML · Expected Goals (xG)',
+        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'Modello Machine Learning · Gol attesi (xG)',
         '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] p:not(.project-status)': 'Modello di regressione logistica che stima la probabilità che ogni tiro diventi gol con dati pubblici StatsBomb, validazione per partita e applicazione al Mondiale Qatar 2022.',
         '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] h3': 'Probabilità nel calcio · Expected Threat (xT)',
         '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] p:not(.project-status)': 'Modello probabilistico di Expected Threat nel calcio basato su dati pubblici StatsBomb. Stima la probabilità di gol nelle successive 5 azioni.',
@@ -3465,7 +3471,7 @@ $('.color-mode').on('click', function(){
         '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] p:not(.project-status)': 'Clustering non supervisionato con DBSCAN per individuare possibili pattern anomali nelle transazioni con carta di credito.',
         '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] h3': 'Statistiche Mondiali 2022: Radar dei percentili',
         '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] p:not(.project-status)': 'Analisi delle statistiche del Mondiale 2022 con dati pubblici StatsBomb, orientata a sintetizzare le prestazioni individuali e confrontare i giocatori con radar dei percentili.',
-        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Analisi geospaziale delle corse taxi',
+        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Analisi geospaziale delle corse taxi a Chicago',
         '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Prossimamente.',
         '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] h3': 'Dashboard Power BI · Spotify Charts',
         '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] p:not(.project-status)': 'Analisi dei ranking musicali di Spotify Charts con dati pubblici su brani, artisti, album e mercati, orientata a esplorare stream, presenza nelle classifiche, leadership temporale e distribuzione territoriale tramite una dashboard interattiva in Power BI.',
@@ -5520,8 +5526,8 @@ $('.color-mode').on('click', function(){
 (function(){
   const texts = {
     es: "Análisis de viajes de taxi en Chicago con foco en ubicación geográfica, movimientos entre puntos, predominios de zonas y rutas.",
-    en: "Geospatial analysis of Chicago taxi trips, focused on location, point-to-point movements, dominant zones, and routes.",
-    it: "Analisi geospaziale dei viaggi in taxi a Chicago, con focus sulla posizione geografica, sugli spostamenti tra punti, sulle zone prevalenti e sui percorsi."
+    en: "Geospatial analysis of Chicago taxi trips, focused on identifying activity hotspots, urban routes and the territorial concentration of demand.",
+    it: "Analisi geospaziale delle corse taxi a Chicago, orientata a individuare le zone di maggiore attività, i percorsi urbani e la concentrazione territoriale della domanda."
   };
 
   function getLanguage(){
@@ -5552,7 +5558,7 @@ $('.color-mode').on('click', function(){
              a.textContent.indexOf('Open project') !== -1 ||
              a.textContent.indexOf('Apri il progetto') !== -1;
     });
-    if(projectLink) projectLink.setAttribute('href', "proyectos/analisis-geoespacial-viajes-taxi.html");
+    /* Localized project URLs are defined directly in each static page. */
 
     const linkedinLink = Array.from(card.querySelectorAll('a.project-link')).find(function(a){
       return a.textContent.indexOf('LinkedIn') !== -1;

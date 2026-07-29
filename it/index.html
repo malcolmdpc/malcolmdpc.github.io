@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="it">
+<head><script>(function(){try{var p=new URLSearchParams(location.search||'');if(p.has('audit')||p.has('lighthouse'))document.documentElement.classList.add('pl-audit-mode')}catch(e){}})();</script><style>html.pl-audit-mode .pl-scroll-loader{display:none!important}html.pl-audit-mode body{overflow:auto!important;height:auto!important}html.pl-audit-mode body.pl-scroll-loader-active,html.pl-audit-mode body.pl-scroll-landing-lock{overflow:auto!important;height:auto!important}</style>
+<meta charset="utf-8"/><link href="../favicon.ico" rel="icon" type="image/x-icon"/><link href="../images/patrones/favicon/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/><link href="../images/patrones/favicon/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/><link href="../images/patrones/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<title>Patrones Lab · Portfolio di dati, BI e Machine Learning</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/><noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&amp;display=swap" rel="stylesheet"/></noscript><link as="style" href="https://fonts.googleapis.com/css?family=Maven+Pro:400,700&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/><noscript><link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,700&amp;display=swap" rel="stylesheet"/></noscript><link crossorigin="" href="https://cdnjs.cloudflare.com" rel="preconnect"/><link href="//cdnjs.cloudflare.com" rel="dns-prefetch"/><link as="image" fetchpriority="high" href="../images/patrones/malcolm-profile-420.webp" media="(max-width: 767px)" rel="preload" type="image/webp"/><link href="../css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../css/styles.css" rel="stylesheet"/>
+<meta content="Patrones Lab è un portfolio di progetti di analisi dei dati, Business Intelligence e Machine Learning orientati a esplorare i dati, individuare pattern e trasformare i risultati in output visivi chiari." name="description"/><meta content="Patrones Lab" name="apple-mobile-web-app-title"/><meta content="Patrones Lab" name="application-name"/><meta content="index, follow, max-image-preview:large" name="robots"/><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="it" http-equiv="content-language"/><link href="https://malcolmdpc.github.io/it/" rel="canonical"/><link href="https://malcolmdpc.github.io/" hreflang="es" rel="alternate"/><link href="https://malcolmdpc.github.io/en/" hreflang="en" rel="alternate"/><link href="https://malcolmdpc.github.io/it/" hreflang="it" rel="alternate"/><link href="https://malcolmdpc.github.io/" hreflang="x-default" rel="alternate"/><meta content="#0c0c0d" name="theme-color"/><meta content="website" property="og:type"/><meta content="Patrones Lab · Portfolio di dati, BI e Machine Learning" property="og:title"/><meta content="Patrones Lab è un portfolio di progetti di analisi dei dati, Business Intelligence e Machine Learning orientati a esplorare i dati, individuare pattern e trasformare i risultati in output visivi chiari." property="og:description"/><meta content="https://malcolmdpc.github.io/it/" property="og:url"/><meta content="Patrones Lab" property="og:site_name"/><meta content="it_IT" property="og:locale"/><meta content="es_ES" property="og:locale:alternate"/><meta content="en_US" property="og:locale:alternate"/><meta content="Patrones Lab · Portfolio di dati, BI e Machine Learning" name="twitter:title"/><meta content="Patrones Lab è un portfolio di progetti di analisi dei dati, Business Intelligence e Machine Learning orientati a esplorare i dati, individuare pattern e trasformare i risultati in output visivi chiari." name="twitter:description"/><link href="../site-it.webmanifest" rel="manifest"/><meta content="Malcolm Di Pietro Cagliari" name="author"/><meta content="Malcolm Di Pietro Cagliari" name="creator"/><meta content="Patrones Lab" name="publisher"/><meta content="https://malcolmdpc.github.io/images/patrones/social/patrones-lab-og.jpg" property="og:image"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="image/jpeg" property="og:image:type"/><meta content="Immagine di anteprima di Patrones Lab · Portfolio di dati, BI e Machine Learning" property="og:image:alt"/><meta content="summary_large_image" name="twitter:card"/><meta content="https://malcolmdpc.github.io/images/patrones/social/patrones-lab-og.jpg" name="twitter:image"/><meta content="Immagine di anteprima di Patrones Lab · Portfolio di dati, BI e Machine Learning" name="twitter:image:alt"/><meta content="https://malcolmdpc.github.io/images/patrones/search/patrones-lab-google-thumbnail.jpg" name="image"/>
+<meta content="https://malcolmdpc.github.io/images/patrones/search/patrones-lab-google-thumbnail.jpg" name="thumbnail"/>
+<link href="https://malcolmdpc.github.io/images/patrones/search/patrones-lab-google-thumbnail.jpg" rel="image_src"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://malcolmdpc.github.io/#website","name":"Patrones Lab","alternateName":["Patrones Lab · Analítica de Datos","Patrones Lab · Data & Analytics"],"url":"https://malcolmdpc.github.io/","inLanguage":["es","en","it"],"description":"Patrones Lab reúne proyectos de analítica de datos, Business Intelligence y Machine Learning para explorar datos, detectar patrones, generar conocimiento y representar visualmente los descubrimientos.","creator":{"@id":"https://malcolmdpc.github.io/#person"},"publisher":{"@id":"https://malcolmdpc.github.io/#organization"},"image":{"@type":"ImageObject","url":"https://malcolmdpc.github.io/images/patrones/search/patrones-lab-google-thumbnail.jpg","width":600,"height":600}},{"@type":"Organization","@id":"https://malcolmdpc.github.io/#organization","name":"Patrones Lab","url":"https://malcolmdpc.github.io/","logo":{"@type":"ImageObject","url":"https://malcolmdpc.github.io/images/patrones/favicon/favicon-512.png","width":512,"height":512},"image":{"@type":"ImageObject","url":"https://malcolmdpc.github.io/images/patrones/search/patrones-lab-google-thumbnail.jpg","width":600,"height":600},"sameAs":["https://github.com/malcolmdpc/patrones-lab","https://www.instagram.com/patroneslab/","https://linktr.ee/PatronesLab"]},{"@type":"Person","@id":"https://malcolmdpc.github.io/#person","name":"Malcolm Di Pietro Cagliari","url":"https://malcolmdpc.github.io/","sameAs":["https://github.com/malcolmdpc","https://www.linkedin.com/in/malcolmdpc/","https://medium.com/@malcolmdpc"]},{"@type":"WebPage","@id":"https://malcolmdpc.github.io/it/#webpage","url":"https://malcolmdpc.github.io/it/","name":"Patrones Lab · Portfolio di dati, BI e Machine Learning","description":"Patrones Lab è un portfolio di progetti di analisi dei dati, Business Intelligence e Machine Learning orientati a esplorare i dati, individuare pattern e trasformare i risultati in output visivi chiari.","inLanguage":"it","isPartOf":{"@id":"https://malcolmdpc.github.io/#website"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://malcolmdpc.github.io/images/patrones/search/patrones-lab-google-thumbnail.jpg","width":600,"height":600},"thumbnailUrl":"https://malcolmdpc.github.io/images/patrones/search/patrones-lab-google-thumbnail.jpg","headline":"Patrones Lab · Portfolio di dati, BI e Machine Learning","about":{"@id":"https://malcolmdpc.github.io/#person"},"dateModified":"2026-06-22"},{"@type":"ProfilePage","@id":"https://malcolmdpc.github.io/it/#profile","name":"Patrones Lab","url":"https://malcolmdpc.github.io/it/","inLanguage":"it","description":"Patrones Lab è un portfolio di progetti di analisi dei dati, Business Intelligence e Machine Learning orientati a esplorare i dati, individuare pattern e trasformare i risultati in output visivi chiari.","about":{"@id":"https://malcolmdpc.github.io/#person"},"mainEntity":{"@id":"https://malcolmdpc.github.io/#person"},"isPartOf":{"@id":"https://malcolmdpc.github.io/#website"}}]}</script><meta content="Patrones Lab · Portfolio di dati, BI e Machine Learning" name="title"/></head>
+<body class="dark-mode fullscreen-sections-experiment pl-scroll-loader-active">
+<div aria-label="Patrones Lab Data &amp; Analytics. Tocca per entrare nel sito" class="pl-scroll-loader">
+<section aria-label="Scorri per entrare nel sito" class="pl-scroll-loader__first first-page">
+<div class="pl-scroll-loader__copy">
+<div class="pl-scroll-loader__hero-text">Patrones Lab<span aria-hidden="true" class="dot"></span></div>
+<p class="pl-scroll-loader__subtitle">Data &amp; Analytics</p>
+<div aria-hidden="true" class="pl-scroll-loader__arrow"></div>
+</div>
+</section>
+<section aria-hidden="true" class="pl-scroll-loader__next next-page">
+<div class="pl-scroll-loader__next-content"></div>
+</section>
+<div aria-hidden="true" class="pl-scroll-loader__spacer spacer"></div>
+</div>
+<a aria-label="Vedi repository Patrones Lab" class="floating-cta" href="https://github.com/malcolmdpc/patrones-lab" rel="noopener" target="_blank">
+<span aria-hidden="true" class="floating-cta__dot"></span>
+<span class="floating-cta__text">Vedi repo</span>
+<span aria-hidden="true" class="floating-cta__arrow">↗</span>
+</a>
+<div aria-hidden="true" class="floating-icon-layer"></div>
+<nav class="navbar navbar-expand-sm navbar-light pl-smart-navbar pl-active-navbar">
+<div class="container">
+<a class="navbar-brand" href="index.html"><span class="brand-badge brand-image-badge"><img alt="" decoding="async" fetchpriority="high" height="180" src="../images/patrones/navbar-bulb-animated.gif" width="180"/></span> Patrones Lab</a>
+<div class="navbar-mobile-actions"><div class="language-selector language-selector-mobile"><button aria-expanded="false" aria-haspopup="true" aria-label="Cambia lingua: Italiano" class="language-select-toggle language-select-toggle-mobile" title="Italiano" type="button"><img alt="" aria-hidden="true" class="language-select-current-img" decoding="async" height="500" src="../images/patrones/language-flags/flag-it.svg" width="750"/></button><div aria-label="Lingue disponibili" class="language-menu" role="menu"><button aria-current="false" aria-label="Español" class="language-option" data-lang="es" data-language-url="https://malcolmdpc.github.io/" role="menuitem" title="Español" type="button"><img alt="" aria-hidden="true" class="language-option-img" decoding="async" fetchpriority="low" height="500" loading="lazy" src="../images/patrones/language-flags/flag-es.svg" width="750"/></button><button aria-current="false" aria-label="English" class="language-option" data-lang="en" data-language-url="https://malcolmdpc.github.io/en/" role="menuitem" title="English" type="button"><img alt="" aria-hidden="true" class="language-option-img" decoding="async" fetchpriority="low" height="3900" loading="lazy" src="../images/patrones/language-flags/flag-us.svg" width="7410"/></button><button aria-current="page" aria-label="Italiano" class="language-option is-active" data-lang="it" data-language-url="https://malcolmdpc.github.io/it/" role="menuitem" title="Italiano" type="button"><img alt="" aria-hidden="true" class="language-option-img" decoding="async" fetchpriority="low" height="2" loading="lazy" src="../images/patrones/language-flags/flag-it.svg" width="3"/></button></div></div><div aria-label="Cambia modalità visiva" class="color-mode color-mode-mobile d-flex justify-content-center align-items-center" role="button" tabindex="0" title="Cambia modalità visiva"><i class="color-mode-icon"></i></div></div><button aria-controls="navbarNav" aria-expanded="false" aria-label="Apri navigazione" class="navbar-toggler" data-target="#navbarNav" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+<span class="navbar-toggler-icon"></span>
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav mx-auto">
+<li class="nav-item"><a class="nav-link" data-section="inicio" href="#about">Home</a></li>
+<li class="nav-item"><a class="nav-link" data-section="metodologia" href="#methodology">Metodologia</a></li>
+<li class="nav-item"><a class="nav-link" data-section="proyectos" href="#projects">Progetti</a></li>
+<li class="nav-item"><a class="nav-link" data-section="redes" href="#networks">Canali</a></li>
+<li class="nav-item"><a class="nav-link" data-section="contacto" href="#contact">Contatti</a></li>
+</ul>
+<div class="navbar-nav ml-lg-auto">
+<div class="ml-lg-4">
+<div class="language-selector language-selector-desktop"><button aria-expanded="false" aria-haspopup="true" aria-label="Cambia lingua: Italiano" class="language-select-toggle language-select-toggle-desktop" title="Italiano" type="button"><img alt="" aria-hidden="true" class="language-select-current-img" decoding="async" height="500" src="../images/patrones/language-flags/flag-it.svg" width="750"/></button><div aria-label="Lingue disponibili" class="language-menu" role="menu"><button aria-current="false" aria-label="Español" class="language-option" data-lang="es" data-language-url="https://malcolmdpc.github.io/" role="menuitem" title="Español" type="button"><img alt="" aria-hidden="true" class="language-option-img" decoding="async" fetchpriority="low" height="500" loading="lazy" src="../images/patrones/language-flags/flag-es.svg" width="750"/></button><button aria-current="false" aria-label="English" class="language-option" data-lang="en" data-language-url="https://malcolmdpc.github.io/en/" role="menuitem" title="English" type="button"><img alt="" aria-hidden="true" class="language-option-img" decoding="async" fetchpriority="low" height="3900" loading="lazy" src="../images/patrones/language-flags/flag-us.svg" width="7410"/></button><button aria-current="page" aria-label="Italiano" class="language-option is-active" data-lang="it" data-language-url="https://malcolmdpc.github.io/it/" role="menuitem" title="Italiano" type="button"><img alt="" aria-hidden="true" class="language-option-img" decoding="async" fetchpriority="low" height="2" loading="lazy" src="../images/patrones/language-flags/flag-it.svg" width="3"/></button></div></div><div aria-label="Cambia modalità visiva" class="color-mode d-lg-flex justify-content-center align-items-center" role="button" tabindex="0" title="Cambia modalità visiva"><i class="color-mode-icon"></i></div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<section aria-label="Contenido principal" class="about section-glow glow-hero full-screen d-lg-flex justify-content-center align-items-center" id="about" role="main">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-lg-7 col-md-12 col-12 d-flex align-items-center">
+<div class="about-text">
+<small class="small-text hero-entry hero-entry-kicker">Portfolio progetti Dati · BI · ML · Python</small>
+<h1 class="pl-hero-title hero-entry hero-entry-title">
+<span class="hero-line">Trasformo<br class="pl-it-mobile-break"/><span class="pl-it-desktop-space"> </span>i dati in</span>
+<span aria-label="evidenze, modelli, dashboard, decisioni e pattern" class="hero-rotator">
+<span>evidenze</span>
+<span>modelli</span>
+<span>dashboard</span>
+<span>decisioni</span>
+<span class="hero-rotator-word-patterns">pattern</span>
+</span>
+</h1>
+<p class="hero-entry hero-entry-copy">Patrones Lab è un laboratorio di analisi dei dati applicata a fenomeni reali e quotidiani.<br/><br/>Raccoglie progetti indipendenti basati su dati pubblici, con attenzione all’individuazione di pattern, alla spiegazione dei comportamenti e alla comunicazione di evidenze contestualizzate.<br/><br/>L’obiettivo è formulare domande migliori, costruire dataset affidabili, sviluppare analisi riproducibili e trasformare i risultati in output visuali chiari.</p>
+<div aria-label="Tecnologie utilizzate" class="hero-tech-marquee hero-entry hero-entry-buttons">
+<div class="hero-tech-marquee-mask">
+<div class="hero-tech-track">
+<span class="tech-logo-card tech-logo-card-airflow">
+<span class="tech-logo-icon-wrap">
+<img alt="Airflow" class="tech-logo-img tech-logo-img-airflow" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/airflow.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Airflow</strong>
+<small>Orchestrazione</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-sql-server">
+<span class="tech-logo-icon-wrap">
+<img alt="SQL Server" class="tech-logo-img tech-logo-img-sql-server" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/sql-server.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>SQL Server</strong>
+<small>Database</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-qlik">
+<span class="tech-logo-icon-wrap">
+<img alt="Qlik Cloud" class="tech-logo-img tech-logo-img-qlik" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/qlik-cloud.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Qlik Cloud</strong>
+<small>Analisi visuale</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-power-bi">
+<span class="tech-logo-icon-wrap">
+<img alt="Power BI" class="tech-logo-img tech-logo-img-power-bi" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/power-bi.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Power BI</strong>
+<small>Business Intelligence</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-spss">
+<span class="tech-logo-icon-wrap">
+<img alt="SPSS Modeler" class="tech-logo-img tech-logo-img-spss" decoding="async" fetchpriority="low" height="128" loading="lazy" src="../images/patrones/tech-icons/spss-modeler.svg" width="128"/>
+</span>
+<span class="tech-logo-text">
+<strong>SPSS Modeler</strong>
+<small>Modellazione visuale</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-looker">
+<span class="tech-logo-icon-wrap">
+<img alt="Looker Studio" class="tech-logo-img tech-logo-img-looker" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/looker-studio.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Looker Studio</strong>
+<small>Dashboard</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-python">
+<span class="tech-logo-icon-wrap">
+<img alt="Python" class="tech-logo-img tech-logo-img-python" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/python.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Python</strong>
+<small>Analisi e modellazione</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-numpy">
+<span class="tech-logo-icon-wrap">
+<img alt="NumPy" class="tech-logo-img tech-logo-img-numpy" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/numpy.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>NumPy</strong>
+<small>Calcolo numerico</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-scikit">
+<span class="tech-logo-icon-wrap">
+<img alt="Scikit-learn" class="tech-logo-img tech-logo-img-scikit" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/scikit-learn.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Scikit-learn</strong>
+<small>Machine Learning</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-matplotlib">
+<span class="tech-logo-icon-wrap">
+<img alt="Matplotlib" class="tech-logo-img tech-logo-img-matplotlib" decoding="async" fetchpriority="low" height="128" loading="lazy" src="../images/patrones/tech-icons/matplotlib.svg" width="128"/>
+</span>
+<span class="tech-logo-text">
+<strong>Matplotlib</strong>
+<small>Visualizzazione dati</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-pandas">
+<span class="tech-logo-icon-wrap">
+<img alt="Pandas" class="tech-logo-img tech-logo-img-pandas" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/pandas.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Pandas</strong>
+<small>Manipolazione dati</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-plotly">
+<span class="tech-logo-icon-wrap">
+<img alt="Plotly" class="tech-logo-img tech-logo-img-plotly" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/plotly.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Plotly</strong>
+<small>Visualizzazione interattiva</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-snowflake">
+<span class="tech-logo-icon-wrap">
+<img alt="Snowflake" class="tech-logo-img tech-logo-img-snowflake" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/snowflake.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Snowflake</strong>
+<small>Data warehouse</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-databricks">
+<span class="tech-logo-icon-wrap">
+<img alt="Databricks" class="tech-logo-img tech-logo-img-databricks" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/databricks.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Databricks</strong>
+<small>Lakehouse</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-dbt">
+<span class="tech-logo-icon-wrap">
+<img alt="dbt" class="tech-logo-img tech-logo-img-dbt" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/dbt.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>dbt</strong>
+<small>Trasformazione dati</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-airflow">
+<span class="tech-logo-icon-wrap">
+<img alt="Airflow" class="tech-logo-img tech-logo-img-airflow" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/airflow.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Airflow</strong>
+<small>Orchestrazione</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-sql-server">
+<span class="tech-logo-icon-wrap">
+<img alt="SQL Server" class="tech-logo-img tech-logo-img-sql-server" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/sql-server.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>SQL Server</strong>
+<small>Database</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-qlik">
+<span class="tech-logo-icon-wrap">
+<img alt="Qlik Cloud" class="tech-logo-img tech-logo-img-qlik" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/qlik-cloud.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Qlik Cloud</strong>
+<small>Analisi visuale</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-power-bi">
+<span class="tech-logo-icon-wrap">
+<img alt="Power BI" class="tech-logo-img tech-logo-img-power-bi" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/power-bi.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Power BI</strong>
+<small>Business Intelligence</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-spss">
+<span class="tech-logo-icon-wrap">
+<img alt="SPSS Modeler" class="tech-logo-img tech-logo-img-spss" decoding="async" fetchpriority="low" height="128" loading="lazy" src="../images/patrones/tech-icons/spss-modeler.svg" width="128"/>
+</span>
+<span class="tech-logo-text">
+<strong>SPSS Modeler</strong>
+<small>Modellazione visuale</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-looker">
+<span class="tech-logo-icon-wrap">
+<img alt="Looker Studio" class="tech-logo-img tech-logo-img-looker" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/looker-studio.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Looker Studio</strong>
+<small>Dashboard</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-python">
+<span class="tech-logo-icon-wrap">
+<img alt="Python" class="tech-logo-img tech-logo-img-python" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/python.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Python</strong>
+<small>Analisi e modellazione</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-numpy">
+<span class="tech-logo-icon-wrap">
+<img alt="NumPy" class="tech-logo-img tech-logo-img-numpy" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/numpy.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>NumPy</strong>
+<small>Calcolo numerico</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-scikit">
+<span class="tech-logo-icon-wrap">
+<img alt="Scikit-learn" class="tech-logo-img tech-logo-img-scikit" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/scikit-learn.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Scikit-learn</strong>
+<small>Machine Learning</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-matplotlib">
+<span class="tech-logo-icon-wrap">
+<img alt="Matplotlib" class="tech-logo-img tech-logo-img-matplotlib" decoding="async" fetchpriority="low" height="128" loading="lazy" src="../images/patrones/tech-icons/matplotlib.svg" width="128"/>
+</span>
+<span class="tech-logo-text">
+<strong>Matplotlib</strong>
+<small>Visualizzazione dati</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-pandas">
+<span class="tech-logo-icon-wrap">
+<img alt="Pandas" class="tech-logo-img tech-logo-img-pandas" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/pandas.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Pandas</strong>
+<small>Manipolazione dati</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-plotly">
+<span class="tech-logo-icon-wrap">
+<img alt="Plotly" class="tech-logo-img tech-logo-img-plotly" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/plotly.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Plotly</strong>
+<small>Visualizzazione interattiva</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-snowflake">
+<span class="tech-logo-icon-wrap">
+<img alt="Snowflake" class="tech-logo-img tech-logo-img-snowflake" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/snowflake.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Snowflake</strong>
+<small>Data warehouse</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-databricks">
+<span class="tech-logo-icon-wrap">
+<img alt="Databricks" class="tech-logo-img tech-logo-img-databricks" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/databricks.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>Databricks</strong>
+<small>Lakehouse</small>
+</span>
+</span>
+<span class="tech-logo-card tech-logo-card-dbt">
+<span class="tech-logo-icon-wrap">
+<img alt="dbt" class="tech-logo-img tech-logo-img-dbt" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/dbt.svg" width="24"/>
+</span>
+<span class="tech-logo-text">
+<strong>dbt</strong>
+<small>Trasformazione dati</small>
+</span>
+</span>
+</div>
+</div>
+</div>
+<a aria-label="Explorar, ir a la sección Metodología" class="hero-scroll-indicator hero-entry hero-entry-scroll" href="#methodology">
+<span class="hero-scroll-indicator__text">Explorar</span>
+<span aria-hidden="true" class="hero-scroll-indicator__line"></span>
+</a>
+</div>
+</div>
+<div class="col-lg-5 col-md-12 col-12">
+<div class="about-image svg hero-lab-card profile-hero-card hero-entry hero-entry-image">
+<img alt="Foto de Malcolm, creador de Patrones Lab" class="img-fluid" decoding="async" fetchpriority="high" height="800" loading="eager" sizes="(max-width: 767px) 352px, 360px" src="../images/patrones/malcolm-profile.webp" srcset="../images/patrones/malcolm-profile-420.webp 420w, ../images/patrones/malcolm-profile.webp 800w" type="image/webp" width="800"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="process-horizontal-edge-section" data-horizontal-process-section="" id="methodology">
+<div class="process-horizontal-static-head"><h2>Ciclo di vita dei dati</h2></div>
+<div aria-label="Progreso de etapas" class="process-horizontal-guide">
+<span class="process-horizontal-guide__line"></span>
+<span class="process-horizontal-guide__progress"></span>
+<button aria-label="Ir a etapa 1" class="process-horizontal-guide__bullet is-active" data-process-guide="0" type="button"></button>
+<button aria-label="Ir a etapa 2" class="process-horizontal-guide__bullet" data-process-guide="1" type="button"></button>
+<button aria-label="Ir a etapa 3" class="process-horizontal-guide__bullet" data-process-guide="2" type="button"></button>
+<button aria-label="Ir a etapa 4" class="process-horizontal-guide__bullet" data-process-guide="3" type="button"></button>
+<button aria-label="Ir a etapa 5" class="process-horizontal-guide__bullet" data-process-guide="4" type="button"></button>
+<button aria-label="Ir a etapa 6" class="process-horizontal-guide__bullet" data-process-guide="5" type="button"></button>
+</div>
+<div class="process-horizontal-track wrapper">
+<article class="process-horizontal-panel item is-dark-text" data-process-horizontal-item="" style="--panel-color:#ffc200">
+<div class="process-horizontal-panel__inner">
+<div class="process-horizontal-panel__copy">
+<span class="process-horizontal-panel__number">1</span>
+<h3>Esplorazione</h3>
+<small>Contesto e obiettivo</small>
+<p>Definizione del problema, della decisione da supportare, degli utenti coinvolti e dell’output atteso.</p>
+<div aria-label="Tecnologías de la etapa" class="process-horizontal-tech"><span class="process-horizontal-tech-chip"><img alt="Power BI" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/power-bi.svg" width="24"/><span>Power BI</span></span><span class="process-horizontal-tech-chip"><img alt="Qlik Cloud" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/qlik-cloud.svg" width="24"/><span>Qlik Cloud</span></span><span class="process-horizontal-tech-chip"><img alt="Looker Studio" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/looker-studio.svg" width="24"/><span>Looker Studio</span></span><span class="process-horizontal-tech-chip"><img alt="SQL Server" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/sql-server.svg" width="24"/><span>SQL Server</span></span></div>
+</div>
+<figure aria-label="Visuales animados de la etapa 1: Descubrimiento" class="process-horizontal-panel__media process-card-swiper">
+<div class="card-groups">
+<div class="card-group" data-index="0" data-status="active">
+<div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-01-card-01.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-01-card-02.webp" width="543"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-01-card-03.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-01-card-04.webp" width="543"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-01-card-05.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-01-card-06.webp" width="543"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-01-card-07.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-01-card-08.webp" width="543"/></div>
+</div>
+</div>
+</figure>
+</div>
+</article>
+<article class="process-horizontal-panel item is-light-text" data-process-horizontal-item="" style="--panel-color:#0d0f0d">
+<div class="process-horizontal-panel__inner">
+<div class="process-horizontal-panel__copy">
+<span class="process-horizontal-panel__number">2</span>
+<h3>Sorgenti dati</h3>
+<small>Sorgenti e qualità dei dati</small>
+<p>Mappatura delle sorgenti disponibili, della loro origine, frequenza di aggiornamento, affidabilità e principali limiti di qualità.</p>
+<div aria-label="Tecnologías de la etapa" class="process-horizontal-tech"><span class="process-horizontal-tech-chip"><img alt="SQL Server" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons-light/sql-server.svg" width="24"/><span>SQL Server</span></span><span class="process-horizontal-tech-chip"><img alt="Python" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons-light/python.svg" width="24"/><span>Python</span></span><span class="process-horizontal-tech-chip"><img alt="Pandas" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons-light/pandas.svg" width="24"/><span>Pandas</span></span><span class="process-horizontal-tech-chip"><img alt="NumPy" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons-light/numpy.svg" width="24"/><span>NumPy</span></span><span class="process-horizontal-tech-chip"><img alt="dbt" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons-light/dbt.svg" width="24"/><span>dbt</span></span></div>
+</div>
+<figure aria-label="Visuales animados de la etapa 2: Fuentes" class="process-horizontal-panel__media process-card-swiper">
+<div class="card-groups">
+<div class="card-group" data-index="0" data-status="active">
+<div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-02-card-01.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-02-card-02.webp" width="543"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-02-card-03.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-02-card-04.webp" width="543"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-02-card-05.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-02-card-06.webp" width="543"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-02-card-07.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-02-card-08.webp" width="543"/></div>
+</div>
+</div>
+</figure>
+</div>
+</article>
+<article class="process-horizontal-panel item is-dark-text" data-process-horizontal-item="" style="--panel-color:#f5f0e8">
+<div class="process-horizontal-panel__inner">
+<div class="process-horizontal-panel__copy">
+<span class="process-horizontal-panel__number">3</span>
+<h3>Preparazione</h3>
+<small>Dataset analitico</small>
+<p>Pulizia, normalizzazione e integrazione dei dati per costruire un dataset coerente, tracciabile e pronto per l’analisi.</p>
+<div aria-label="Tecnologías de la etapa" class="process-horizontal-tech"><span class="process-horizontal-tech-chip"><img alt="Python" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/python.svg" width="24"/><span>Python</span></span><span class="process-horizontal-tech-chip"><img alt="Pandas" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/pandas.svg" width="24"/><span>Pandas</span></span><span class="process-horizontal-tech-chip"><img alt="NumPy" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/numpy.svg" width="24"/><span>NumPy</span></span><span class="process-horizontal-tech-chip"><img alt="dbt" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/dbt.svg" width="24"/><span>dbt</span></span><span class="process-horizontal-tech-chip"><img alt="SQL Server" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/sql-server.svg" width="24"/><span>SQL Server</span></span></div>
+</div>
+<figure aria-label="Visuales animados de la etapa 3: Preparación" class="process-horizontal-panel__media process-card-swiper">
+<div class="card-groups">
+<div class="card-group" data-index="0" data-status="active">
+<div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-03-card-01.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-03-card-02.webp" width="543"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-03-card-03.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-03-card-04.webp" width="543"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-03-card-05.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-03-card-06.webp" width="543"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-03-card-07.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-03-card-08.webp" width="543"/></div>
+</div>
+</div>
+</figure>
+</div>
+</article>
+<article class="process-horizontal-panel item is-light-text" data-process-horizontal-item="" style="--panel-color:#1f2937">
+<div class="process-horizontal-panel__inner">
+<div class="process-horizontal-panel__copy">
+<span class="process-horizontal-panel__number">4</span>
+<h3>Sviluppo</h3>
+<small>Soluzione</small>
+<p>Sviluppo dell’analisi, del modello o della dashboard più adatta all’obiettivo definito.</p>
+<div aria-label="Tecnologías de la etapa" class="process-horizontal-tech"><span class="process-horizontal-tech-chip"><img alt="Scikit-learn" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons-light/scikit-learn.svg" width="24"/><span>Scikit-learn</span></span><span class="process-horizontal-tech-chip process-horizontal-tech-chip--matplotlib"><span aria-hidden="true" class="process-horizontal-tech-icon process-horizontal-tech-icon--matplotlib"></span><span>Matplotlib</span></span><span class="process-horizontal-tech-chip"><img alt="Plotly" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons-light/plotly.svg" width="24"/><span>Plotly</span></span><span class="process-horizontal-tech-chip"><img alt="Power BI" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons-light/power-bi.svg" width="24"/><span>Power BI</span></span><span class="process-horizontal-tech-chip"><img alt="Qlik Cloud" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons-light/qlik-cloud.svg" width="24"/><span>Qlik Cloud</span></span></div>
+</div>
+<figure aria-label="Visuales animados de la etapa 4: Construcción" class="process-horizontal-panel__media process-card-swiper">
+<div class="card-groups">
+<div class="card-group" data-index="0" data-status="active">
+<div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-04-card-01.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-04-card-02.webp" width="543"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-04-card-03.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-04-card-04.webp" width="543"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-04-card-05.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-04-card-06.webp" width="543"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-04-card-07.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-04-card-08.webp" width="543"/></div>
+</div>
+</div>
+</figure>
+</div>
+</article>
+<article class="process-horizontal-panel item is-light-text" data-process-horizontal-item="" style="--panel-color:#202126">
+<div class="process-horizontal-panel__inner">
+<div class="process-horizontal-panel__copy">
+<span class="process-horizontal-panel__number">5</span>
+<h3>Validazione</h3>
+<small>Qualità e affidabilità</small>
+<p>Controllo della coerenza, stabilità e rilevanza operativa dei risultati prima della pubblicazione.</p>
+<div aria-label="Tecnologías de la etapa" class="process-horizontal-tech"><span class="process-horizontal-tech-chip"><img alt="Python" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons-light/python.svg" width="24"/><span>Python</span></span><span class="process-horizontal-tech-chip"><img alt="Scikit-learn" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons-light/scikit-learn.svg" width="24"/><span>Scikit-learn</span></span><span class="process-horizontal-tech-chip process-horizontal-tech-chip--matplotlib"><span aria-hidden="true" class="process-horizontal-tech-icon process-horizontal-tech-icon--matplotlib"></span><span>Matplotlib</span></span><span class="process-horizontal-tech-chip"><img alt="Plotly" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons-light/plotly.svg" width="24"/><span>Plotly</span></span><span class="process-horizontal-tech-chip"><img alt="SPSS Modeler" decoding="async" fetchpriority="low" height="128" loading="lazy" src="../images/patrones/tech-icons-light/spss-modeler.svg" width="128"/><span>SPSS Modeler</span></span></div>
+</div>
+<figure aria-label="Visuales animados de la etapa 5: Validación" class="process-horizontal-panel__media process-card-swiper">
+<div class="card-groups">
+<div class="card-group" data-index="0" data-status="active">
+<div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-05-card-01.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-05-card-02.webp" width="543"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-05-card-03.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-05-card-04.webp" width="543"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-05-card-05.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-05-card-06.webp" width="543"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-05-card-07.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-05-card-08.webp" width="543"/></div>
+</div>
+</div>
+</figure>
+</div>
+</article>
+<article class="process-horizontal-panel item is-dark-text" data-process-horizontal-item="" style="--panel-color:#facc15">
+<div class="process-horizontal-panel__inner">
+<div class="process-horizontal-panel__copy">
+<span class="process-horizontal-panel__number">6</span>
+<h3>Pubblicazione</h3>
+<small>Pubblicazione, automazione e miglioramento</small>
+<p>Documentazione dell’output finale, automazione dei flussi di lavoro ricorrenti e uso del feedback per miglioramenti successivi.</p>
+<div aria-label="Tecnologías de la etapa" class="process-horizontal-tech"><span class="process-horizontal-tech-chip"><img alt="GitHub" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/canales-icons-dark/github.svg" width="24"/><span>GitHub</span></span><span class="process-horizontal-tech-chip"><img alt="Power BI" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/power-bi.svg" width="24"/><span>Power BI</span></span><span class="process-horizontal-tech-chip"><img alt="Qlik Cloud" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/qlik-cloud.svg" width="24"/><span>Qlik Cloud</span></span><span class="process-horizontal-tech-chip"><img alt="Looker Studio" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/looker-studio.svg" width="24"/><span>Looker Studio</span></span><span class="process-horizontal-tech-chip"><img alt="Plotly" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/tech-icons/plotly.svg" width="24"/><span>Plotly</span></span></div>
+</div>
+<figure aria-label="Visuales animados de la etapa 6: Entrega" class="process-horizontal-panel__media process-card-swiper">
+<div class="card-groups">
+<div class="card-group" data-index="0" data-status="active">
+<div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-06-card-01.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-06-card-02.webp" width="543"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-06-card-03.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-06-card-04.webp" width="543"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-06-card-05.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-06-card-06.webp" width="543"/></div><div aria-hidden="true" class="little-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-06-card-07.webp" width="543"/></div><div aria-hidden="true" class="big-card card"><img alt="" decoding="async" fetchpriority="low" height="724" loading="lazy" src="../images/patrones/process-horizontal/card-stack/stage-06-card-08.webp" width="543"/></div>
+</div>
+</div>
+</figure>
+</div>
+</article>
+</div>
+</section>
+<section class="contact py-5 github-projects-section section-glow glow-repo" id="projects">
+<div class="container">
+<div class="row">
+<div class="col-lg-10 text-center mx-auto col-12">
+<small class="section-kicker">Repository Patrones Lab</small>
+<h2 class="mb-3 projects-title-display">Progetti</h2>
+<p class="projects-intro">Selezione di progetti basati sui dati pubblici, con metodologia documentata e output visuali. Usa i filtri per esplorare per disciplina, strumento o tipo di risultato.</p>
+<div aria-label="Filtra progetti" class="repo-filter-toolbar repo-filter-toolbar-categories repo-filter-toolbar-hover-groups">
+<button class="repo-filter-btn active" data-repo-filter="all" type="button"><span class="filter-icon">◎</span> Tutti</button>
+<div class="repo-filter-group">
+<button aria-expanded="false" aria-haspopup="true" class="repo-filter-group-trigger" type="button">Disciplina</button>
+<div aria-label="Disciplina" class="repo-filter-category-panel" role="group">
+<button class="repo-filter-btn" data-repo-filter="bi" type="button"><span class="filter-icon">▦</span> BI</button>
+<button class="repo-filter-btn" data-repo-filter="data-analysis" type="button"><span class="filter-icon">▥</span> Analisi dati</button>
+<button class="repo-filter-btn" data-repo-filter="data-science" type="button"><span class="filter-icon">⚗</span> Scienza dei dati</button>
+<button class="repo-filter-btn" data-repo-filter="machine-learning" type="button"><span class="filter-icon">✦</span> Machine Learning</button>
+<button class="repo-filter-btn" data-repo-filter="data-storytelling" type="button"><span class="filter-icon">✎</span> Data storytelling</button>
+</div>
+</div>
+<div class="repo-filter-group">
+<button aria-expanded="false" aria-haspopup="true" class="repo-filter-group-trigger" type="button">Strumenti</button>
+<div aria-label="Herramientas" class="repo-filter-category-panel" role="group">
+<button class="repo-filter-btn" data-repo-filter="python" type="button"><span class="filter-icon">◇</span> Python</button><button class="repo-filter-btn" data-repo-filter="power-bi" type="button"><span class="filter-icon">▥</span> Power BI</button>
+<button class="repo-filter-btn" data-repo-filter="dax" type="button"><span class="filter-icon">ƒx</span> DAX</button>
+<button class="repo-filter-btn" data-repo-filter="spss" type="button"><span class="filter-icon">◧</span> SPSS</button>
+<button class="repo-filter-btn" data-repo-filter="looker-studio" type="button"><span class="filter-icon">◉</span> Looker Studio</button>
+<button class="repo-filter-btn" data-repo-filter="dashboard" type="button"><span class="filter-icon">▣</span> Dashboard</button>
+</div>
+</div>
+<div class="repo-filter-group">
+<button aria-expanded="false" aria-haspopup="true" class="repo-filter-group-trigger" type="button">Modello</button>
+<div aria-label="Modelo" class="repo-filter-category-panel" role="group">
+<button class="repo-filter-btn" data-repo-filter="modelo-supervisado" type="button"><span class="filter-icon">✓</span> Modello supervisionato</button>
+<button class="repo-filter-btn" data-repo-filter="modelo-no-supervisado" type="button"><span class="filter-icon">◎</span> Modello non supervisionato</button>
+<button class="repo-filter-btn" data-repo-filter="clasificacion" type="button"><span class="filter-icon">≡</span> Classificazione</button>
+<button class="repo-filter-btn" data-repo-filter="clustering" type="button"><span class="filter-icon">✣</span> Clustering</button>
+<button class="repo-filter-btn" data-repo-filter="knn" type="button"><span class="filter-icon">↗</span> KNN</button>
+<button class="repo-filter-btn" data-repo-filter="k-means" type="button"><span class="filter-icon">⌖</span> K-means</button>
+<button class="repo-filter-btn" data-repo-filter="regresion-logistica" type="button"><span class="filter-icon">⌁</span> Regressione logistica</button>
+<button class="repo-filter-btn" data-repo-filter="dbscan" type="button"><span class="filter-icon">⊙</span> DBSCAN</button>
+<button class="repo-filter-btn" data-repo-filter="simulacion" type="button"><span class="filter-icon">∿</span> Simulazione</button></div>
+</div>
+<div class="repo-filter-group">
+<button aria-expanded="false" aria-haspopup="true" class="repo-filter-group-trigger" type="button">Dominio</button>
+<div aria-label="Tema" class="repo-filter-category-panel" role="group">
+<button class="repo-filter-btn" data-repo-filter="geoespacial" type="button"><span class="filter-icon">⌖</span> Geospaziale</button>
+<button class="repo-filter-btn" data-repo-filter="airbnb" type="button"><span class="filter-icon">⌂</span> Airbnb</button>
+<button class="repo-filter-btn" data-repo-filter="taxi" type="button"><span class="filter-icon">◆</span> Taxi</button>
+<button class="repo-filter-btn" data-repo-filter="futbol" type="button"><span class="filter-icon">●</span> Calcio</button>
+<button class="repo-filter-btn" data-repo-filter="aviacion" type="button"><span class="filter-icon">✈</span> Aviazione</button>
+<button class="repo-filter-btn" data-repo-filter="spotify" type="button"><span class="filter-icon">♪</span> Spotify</button><button class="repo-filter-btn" data-repo-filter="fraude" type="button"><span class="filter-icon">!</span> Frode</button>
+</div>
+</div>
+</div>
+<div class="github-project-grid">
+<article class="github-project-card project-card-detail-ready project-hover-magnetic" data-detail-aria-en="Open detail page for the Balearic Islands Flight Analysis project" data-detail-aria-es="Abrir detalle del proyecto Análisis de Vuelos en las Islas Baleares" data-detail-aria-it="Aprire la pagina di dettaglio del progetto Analisi del traffico aereo nelle Isole Baleari" data-project-id="aena-balearic-flights" data-tags="python data-storytelling aviacion data-analysis bi">
+<a aria-label="Aprire la pagina di dettaglio del progetto Analisi del traffico aereo nelle Isole Baleari" class="project-image-link" href="https://malcolmdpc.github.io/it/progetti/analisi-voli-isole-baleari.html">
+<img alt="Copertina del progetto: Analisi del traffico aereo nelle Isole Baleari" decoding="async" fetchpriority="low" height="750" loading="lazy" src="../images/patrones/projects/home-covers/p01-vuelos-baleares-cover.webp" width="600"/>
+<span aria-hidden="true" class="project-detail-hover-cue"><span class="project-detail-hover-plus">+</span><span class="project-detail-hover-text" data-project-detail-cta="true">Vedi dettagli</span></span>
+<div class="project-hover-layer"><div class="project-magnetic-bar"><span data-project-detail-cta="true">Vedi dettagli</span><b aria-hidden="true">+</b></div></div></a>
+<div class="github-project-body">
+<h3>Analisi del traffico aereo nelle Isole Baleari</h3>
+<div class="project-meta-row"><p class="project-status published">✅ pubblicato</p><span aria-label="Anno dei dati: 2025" class="project-data-year"><span class="project-data-label" data-data-year-label="true">dati:</span><span class="project-data-value">2025</span></span></div>
+<p>Analisi del traffico aereo in Spagna con dati pubblici AENA, con focus su volumi, pattern per aeroporto e differenze tra categorie di traffico.</p>
+<div class="mini-tags"><span>Python</span><span>Data storytelling</span><span>Aviazione</span><span>Analisi dei dati</span><span>BI</span></div>
+<div class="project-links-dual project-links-editorial">
+<a aria-label="Aprire la pagina di dettaglio del progetto Analisi del traffico aereo nelle Isole Baleari" class="project-link has-destination-icon" href="https://malcolmdpc.github.io/it/progetti/analisi-voli-isole-baleari.html">Apri progetto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-enter"><img alt="" decoding="async" fetchpriority="low" height="512" loading="lazy" src="../images/patrones/enter-project-button-icon.png" width="512"/></span></a>
+<a class="project-link secondary-project-link has-destination-icon" href="https://www.linkedin.com/pulse/turismo-en-las-islas-baleares-visto-desde-el-aire-qu%C3%A9-malcolm-dl9be" rel="noopener" target="_blank">Leggi su LinkedIn<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-linkedin">in</span></a>
+</div>
+</div>
+</article>
+<article class="github-project-card featured project-card-detail-ready project-hover-magnetic" data-detail-aria-en="Open detail page for the Airbnb Lodging Analysis in London project" data-detail-aria-es="Abrir detalle del proyecto Análisis del Alojamiento Airbnb en Londres" data-detail-aria-it="Aprire la pagina di dettaglio del progetto Analisi degli alloggi Airbnb a Londra" data-project-id="airbnb-london-analysis" data-tags="python data-storytelling airbnb data-analysis bi geoespacial">
+<a aria-label="Aprire la pagina di dettaglio del progetto Analisi degli alloggi Airbnb a Londra" class="project-image-link" href="https://malcolmdpc.github.io/it/progetti/analisi-alloggi-airbnb-londra.html">
+<img alt="Copertina del progetto: Analisi degli annunci Airbnb a Londra" decoding="async" fetchpriority="low" height="750" loading="lazy" src="../images/patrones/projects/home-covers/p02-airbnb-londres-cover.webp" width="600"/>
+<span aria-hidden="true" class="project-detail-hover-cue"><span class="project-detail-hover-plus">+</span><span class="project-detail-hover-text" data-project-detail-cta="true">Vedi dettagli</span></span><div class="project-hover-layer"><div class="project-magnetic-bar"><span data-project-detail-cta="true">Vedi dettagli</span><b aria-hidden="true">+</b></div></div></a>
+<div class="github-project-body">
+<h3>Analisi degli annunci Airbnb a Londra</h3>
+<div class="project-meta-row"><p class="project-status published">✅ pubblicato</p><span aria-label="Anno dei dati: 2025" class="project-data-year"><span class="project-data-label" data-data-year-label="true">dati:</span><span class="project-data-value">2025</span></span></div>
+<p>Analisi esplorativa degli annunci Airbnb a Londra, con focus su pricing, categorie di alloggio, recensioni e pattern territoriali.</p>
+<div class="mini-tags"><span>Python</span><span>Data storytelling</span><span>Airbnb</span><span>Analisi dei dati</span><span>BI</span><span>Geospaziale</span></div>
+<div class="project-links-dual project-links-editorial">
+<a aria-label="Aprire la pagina di dettaglio del progetto Analisi degli alloggi Airbnb a Londra" class="project-link has-destination-icon" href="https://malcolmdpc.github.io/it/progetti/analisi-alloggi-airbnb-londra.html">Apri progetto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-enter"><img alt="" decoding="async" fetchpriority="low" height="512" loading="lazy" src="../images/patrones/enter-project-button-icon.png" width="512"/></span></a>
+<a class="project-link secondary-project-link has-destination-icon" href="https://www.linkedin.com/pulse/airbnb-en-londres-an%C3%A1lisis-del-alojamiento-precios-y-malcolm-ycoae" rel="noopener" target="_blank">Leggi su LinkedIn<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-linkedin">in</span></a>
+</div>
+</div>
+</article>
+<article class="github-project-card project-card-detail-ready project-hover-magnetic" data-detail-aria-en="Open detail page for the Chicago Taxi Trip Analysis project" data-detail-aria-es="Abrir detalle del proyecto Análisis de Viajes en Taxi en Chicago" data-detail-aria-it="Aprire la pagina di dettaglio del progetto Analisi dei viaggi in taxi a Chicago" data-project-id="chicago-taxi-analysis" data-tags="python data-storytelling taxi data-analysis bi geoespacial">
+<a aria-label="Aprire la pagina di dettaglio del progetto Analisi dei viaggi in taxi a Chicago" class="project-image-link" href="https://malcolmdpc.github.io/it/progetti/analisi-corse-taxi-chicago.html">
+<img alt="Copertina del progetto: Analisi delle corse taxi a Chicago" decoding="async" fetchpriority="low" height="750" loading="lazy" src="../images/patrones/projects/home-covers/p03-taxi-chicago-cover.webp" width="600"/>
+<span aria-hidden="true" class="project-detail-hover-cue"><span class="project-detail-hover-plus">+</span><span class="project-detail-hover-text" data-project-detail-cta="true">Vedi dettagli</span></span><div class="project-hover-layer"><div class="project-magnetic-bar"><span data-project-detail-cta="true">Vedi dettagli</span><b aria-hidden="true">+</b></div></div></a>
+<div class="github-project-body">
+<h3>Analisi delle corse taxi a Chicago</h3>
+<div class="project-meta-row"><p class="project-status published">✅ pubblicato</p><span aria-label="Anno dei dati: 2026" class="project-data-year"><span class="project-data-label" data-data-year-label="true">dati:</span><span class="project-data-value">2026</span></span></div>
+<p>Analisi delle corse taxi registrate a Chicago per studiare durata, domanda, distribuzione geospaziale e pattern operativi.</p>
+<div class="mini-tags"><span>Python</span><span>Data storytelling</span><span>Taxi</span><span>Analisi dei dati</span><span>BI</span><span>Geospaziale</span></div>
+<div class="project-links-dual project-links-editorial">
+<a aria-label="Aprire la pagina di dettaglio del progetto Analisi dei viaggi in taxi a Chicago" class="project-link has-destination-icon" href="https://malcolmdpc.github.io/it/progetti/analisi-corse-taxi-chicago.html">Apri progetto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-enter"><img alt="" decoding="async" fetchpriority="low" height="512" loading="lazy" src="../images/patrones/enter-project-button-icon.png" width="512"/></span></a>
+<a class="project-link secondary-project-link has-destination-icon" href="https://www.linkedin.com/pulse/taxi-trips-chicago-an%C3%A1lisis-sobre-la-red-urbana-de-malcolm-zo6we" rel="noopener" target="_blank">Leggi su LinkedIn<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-linkedin">in</span></a>
+</div>
+</div>
+</article>
+<article class="github-project-card project-card-detail-ready project-hover-magnetic" data-detail-aria-en="Open detail page for the ML Model · Airbnb London project" data-detail-aria-es="Abrir detalle del proyecto Modelo ML · Airbnb London" data-detail-aria-it="Aprire la pagina di dettaglio del progetto Modello ML · Airbnb London" data-project-id="airbnb-london-ml" data-tags="python data-storytelling airbnb data-analysis bi geoespacial data-science machine-learning knn modelo-supervisado">
+<a aria-label="Aprire la pagina di dettaglio del progetto Modello ML · Airbnb London" class="project-image-link" href="https://malcolmdpc.github.io/it/progetti/modello-machine-learning-airbnb-londra.html">
+<img alt="Copertina del progetto: Modello ML · Airbnb London" decoding="async" fetchpriority="low" height="750" loading="lazy" src="../images/patrones/projects/home-covers/p04-ml-airbnb-london-cover.webp" width="600"/>
+<span aria-hidden="true" class="project-detail-hover-cue"><span class="project-detail-hover-plus">+</span><span class="project-detail-hover-text" data-project-detail-cta="true">Vedi dettagli</span></span><div class="project-hover-layer"><div class="project-magnetic-bar"><span data-project-detail-cta="true">Vedi dettagli</span><b aria-hidden="true">+</b></div></div></a>
+<div class="github-project-body">
+<h3>Modello ML · Airbnb London</h3>
+<div class="project-meta-row"><p class="project-status published">✅ pubblicato</p><span aria-label="Anno dei dati: 2025" class="project-data-year"><span class="project-data-label" data-data-year-label="true">dati:</span><span class="project-data-value">2025</span></span></div>
+<p>Classificazione supervisionata degli annunci relativamente costosi o economici all’interno di ciascuna tipologia di alloggio.</p>
+<div class="mini-tags"><span>Python</span><span>Data storytelling</span><span>Airbnb</span><span>Analisi dei dati</span><span>BI</span><span>Geospaziale</span><span>Scienza dei dati</span><span>Machine Learning</span><span>KNN</span><span>Modello supervisionato</span></div>
+<div class="project-links-dual project-links-editorial">
+<a aria-label="Aprire la pagina di dettaglio del progetto Modello ML · Airbnb London" class="project-link has-destination-icon" href="https://malcolmdpc.github.io/it/progetti/modello-machine-learning-airbnb-londra.html">Apri progetto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-enter"><img alt="" decoding="async" fetchpriority="low" height="512" loading="lazy" src="../images/patrones/enter-project-button-icon.png" width="512"/></span></a>
+<a class="project-link secondary-project-link has-destination-icon" href="https://www.linkedin.com/pulse/airbnb-en-londres-an%C3%A1lisis-del-alojamiento-precios-y-malcolm-ycoae" rel="noopener" target="_blank">Leggi su LinkedIn<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-linkedin">in</span></a>
+</div>
+</div>
+</article>
+<article class="github-project-card featured project-card-detail-ready project-hover-magnetic" data-detail-aria-en="Open detail page for the Looker Dashboard · Chicago Taxi Trips project" data-detail-aria-es="Abrir detalle del proyecto Dashboard Looker · Taxi Trips Chicago" data-detail-aria-it="Aprire la pagina di dettaglio del progetto Dashboard Looker · Taxi Trips Chicago" data-project-id="looker-chicago-taxi-dashboard" data-tags="looker-studio taxi data-analysis bi dashboard">
+<a aria-label="Aprire la pagina di dettaglio del progetto Dashboard Looker · Taxi Trips Chicago" class="project-image-link" href="https://malcolmdpc.github.io/it/progetti/dashboard-looker-studio-corse-taxi-chicago.html">
+<img alt="Copertina del progetto: Dashboard Looker · Taxi Trips Chicago" decoding="async" fetchpriority="low" height="750" loading="lazy" src="../images/patrones/projects/home-covers/p05-looker-taxi-chicago-cover.webp" width="600"/>
+<span aria-hidden="true" class="project-detail-hover-cue"><span class="project-detail-hover-plus">+</span><span class="project-detail-hover-text" data-project-detail-cta="true">Vedi dettagli</span></span><div class="project-hover-layer"><div class="project-magnetic-bar"><span data-project-detail-cta="true">Vedi dettagli</span><b aria-hidden="true">+</b></div></div></a>
+<div class="github-project-body">
+<h3>Dashboard Looker · Taxi Trips Chicago</h3>
+<div class="project-meta-row"><p class="project-status published">✅ pubblicato</p><span aria-label="Anno dei dati: 2026" class="project-data-year"><span class="project-data-label" data-data-year-label="true">dati:</span><span class="project-data-value">2026</span></span></div>
+<p>Dashboard interattiva in Looker Studio per esplorare corse taxi a Chicago, indicatori operativi, pattern orari e percorsi pickup-dropoff.</p>
+<div class="mini-tags"><span>Looker Studio</span><span>Taxi</span><span>Analisi dei dati</span><span>BI</span><span>Dashboard</span></div>
+<div class="project-links-dual project-links-dashboard">
+<a aria-label="Aprire la pagina di dettaglio del progetto Dashboard Looker · Taxi Trips Chicago" class="project-link has-destination-icon" href="https://malcolmdpc.github.io/it/progetti/dashboard-looker-studio-corse-taxi-chicago.html">Apri progetto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-enter"><img alt="" decoding="async" fetchpriority="low" height="512" loading="lazy" src="../images/patrones/enter-project-button-icon.png" width="512"/></span></a>
+<a class="project-link secondary-project-link has-destination-icon" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-03_taxi-trip-chicago" rel="noopener" target="_blank">Documentazione<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-github"><img alt="" decoding="async" fetchpriority="low" height="63" loading="lazy" src="../images/patrones/github-button-icon.png" width="64"/></span></a>
+</div>
+</div>
+</article>
+<article class="github-project-card project-card-detail-ready project-hover-magnetic" data-detail-aria-en="Open detail page for the ML Model · Expected Goals (xG) project" data-detail-aria-es="Abrir detalle del proyecto Modelo Machine Learning · Goles Esperados (xG)" data-detail-aria-it="Aprire la pagina di dettaglio del progetto Modello Machine Learning · Expected Goals (xG)" data-project-id="statsbomb-expected-goals-xg" data-tags="python data-storytelling futbol data-analysis bi data-science machine-learning regresion-logistica modelo-supervisado clasificacion">
+<a aria-label="Aprire la pagina di dettaglio del progetto Modello Machine Learning · Expected Goals (xG)" class="project-image-link" href="https://malcolmdpc.github.io/it/progetti/modello-machine-learning-gol-attesi-xg.html">
+<img alt="Copertina del progetto: Modello ML · Expected Goals (xG)" decoding="async" fetchpriority="low" height="750" loading="lazy" src="../images/patrones/projects/home-covers/p06-xg-futbol-statsbomb-cover.webp" width="600"/>
+<span aria-hidden="true" class="project-detail-hover-cue"><span class="project-detail-hover-plus">+</span><span class="project-detail-hover-text" data-project-detail-cta="true">Vedi dettagli</span></span><div class="project-hover-layer"><div class="project-magnetic-bar"><span data-project-detail-cta="true">Vedi dettagli</span><b aria-hidden="true">+</b></div></div></a>
+<div class="github-project-body">
+<h3>Modello Machine Learning · Gol attesi (xG)</h3>
+<div class="project-meta-row"><p class="project-status published">✅ pubblicato</p><span aria-label="Anno dei dati: 2022" class="project-data-year"><span class="project-data-label" data-data-year-label="true">dati:</span><span class="project-data-value">2022</span></span></div>
+<p>Modello di regressione logistica che stima la probabilità che ogni tiro diventi gol con dati pubblici StatsBomb, validazione per partita e applicazione al Mondiale Qatar 2022.</p>
+<div class="mini-tags"><span>Python</span><span>Data storytelling</span><span>Calcio</span><span>Analisi dei dati</span><span>BI</span><span>Scienza dei dati</span><span>Machine Learning</span><span>Regressione logistica</span><span>Modello supervisionato</span><span>Classificazione</span></div>
+<a aria-label="Aprire la pagina di dettaglio del progetto Modello Machine Learning · Expected Goals (xG)" class="project-link has-destination-icon" href="https://malcolmdpc.github.io/it/progetti/modello-machine-learning-gol-attesi-xg.html">Apri progetto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-enter"><img alt="" decoding="async" fetchpriority="low" height="512" loading="lazy" src="../images/patrones/enter-project-button-icon.png" width="512"/></span></a>
+</div>
+</article>
+<article class="github-project-card project-card-detail-ready project-hover-magnetic" data-detail-aria-en="Open detail page for the Football Probabilities · Expected Threat (xT) project" data-detail-aria-es="Abrir detalle del proyecto Probabilidades en el Fútbol · Peligro Esperado (xT)" data-detail-aria-it="Aprire la pagina di dettaglio del progetto Probabilità nel calcio · Peligro Esperado (xT)" data-project-id="statsbomb-expected-threat-xt" data-tags="python data-storytelling futbol data-analysis bi data-science">
+<a aria-label="Aprire la pagina di dettaglio del progetto Probabilità nel calcio · Peligro Esperado (xT)" class="project-image-link" href="https://malcolmdpc.github.io/it/progetti/probabilita-calcio-pericolo-atteso-xt.html">
+<img alt="Copertina del progetto: Probabilità nel calcio · Expected Threat (xT)" decoding="async" fetchpriority="low" height="750" loading="lazy" src="../images/patrones/projects/home-covers/p07-xt-futbol-statsbomb-cover.webp" width="600"/>
+<span aria-hidden="true" class="project-detail-hover-cue"><span class="project-detail-hover-plus">+</span><span class="project-detail-hover-text" data-project-detail-cta="true">Vedi dettagli</span></span><div class="project-hover-layer"><div class="project-magnetic-bar"><span data-project-detail-cta="true">Vedi dettagli</span><b aria-hidden="true">+</b></div></div></a>
+<div class="github-project-body">
+<h3>Probabilità nel calcio · Expected Threat (xT)</h3>
+<div class="project-meta-row"><p class="project-status published">✅ pubblicato</p><span aria-label="Anno dei dati: 2022" class="project-data-year"><span class="project-data-label" data-data-year-label="true">dati:</span><span class="project-data-value">2022</span></span></div>
+<p>Modello probabilistico di Expected Threat nel calcio basato su dati pubblici StatsBomb. Stima la probabilità di gol nelle successive 5 azioni.</p>
+<div class="mini-tags"><span>Python</span><span>Data storytelling</span><span>Calcio</span><span>Analisi dei dati</span><span>BI</span><span>Scienza dei dati</span></div>
+<div class="project-links-dual"><a aria-label="Aprire la pagina di dettaglio del progetto Probabilità nel calcio · Peligro Esperado (xT)" class="project-link has-destination-icon" href="https://malcolmdpc.github.io/it/progetti/probabilita-calcio-pericolo-atteso-xt.html">Apri progetto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-enter"><img alt="" decoding="async" fetchpriority="low" height="512" loading="lazy" src="../images/patrones/enter-project-button-icon.png" width="512"/></span></a><a class="project-link secondary-project-link has-destination-icon" href="https://www.linkedin.com/pulse/f%C3%BAtbol-y-probabilidades-c%C3%A1lculo-del-peligro-esperado-malcolm-acide" rel="noopener" target="_blank">Leggi su LinkedIn<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-linkedin">in</span></a></div></div>
+</article>
+<article class="github-project-card project-card-detail-ready project-hover-magnetic" data-detail-aria-en="Open detail page for the ML Model · Fraud with K-means project" data-detail-aria-es="Abrir detalle del proyecto Modelo ML · Fraude con K-means" data-detail-aria-it="Aprire la pagina di dettaglio del progetto Modello ML · Frode con K-means" data-project-id="fraud-detection-kmeans" data-tags="machine-learning python clustering spss fraude k-means modelo-no-supervisado data-science">
+<a aria-label="Aprire la pagina di dettaglio del progetto Modello ML · Frode con K-means" class="project-image-link" href="https://malcolmdpc.github.io/it/progetti/modello-machine-learning-frode-kmeans.html">
+<img alt="Copertina del progetto: Modello ML · Rilevamento frodi" decoding="async" fetchpriority="low" height="750" loading="lazy" src="../images/patrones/projects/home-covers/p08-fraude-kmeans-cover.webp" width="600"/>
+<span aria-hidden="true" class="project-detail-hover-cue"><span class="project-detail-hover-plus">+</span><span class="project-detail-hover-text" data-project-detail-cta="true">Vedi dettagli</span></span><div class="project-hover-layer"><div class="project-magnetic-bar"><span data-project-detail-cta="true">Vedi dettagli</span><b aria-hidden="true">+</b></div></div></a>
+<div class="github-project-body">
+<h3>Modello ML · Rilevamento frodi</h3>
+<p class="project-status published">✅ pubblicato</p>
+<p>Clustering non supervisionato con K-means applicato al rilevamento di frodi su transazioni con carta di credito.</p>
+<div class="mini-tags">
+<span>Machine Learning</span><span>Python</span><span>Clustering</span><span>SPSS</span><span>Frode</span><span>K-means</span><span>Modello non supervisionato</span>
+<span>Scienza dei dati</span></div>
+<div class="project-links-dual">
+<a aria-label="Aprire la pagina di dettaglio del progetto Modello ML · Frode con K-means" class="project-link has-destination-icon" href="https://malcolmdpc.github.io/it/progetti/modello-machine-learning-frode-kmeans.html">Apri progetto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-enter"><img alt="" decoding="async" fetchpriority="low" height="512" loading="lazy" src="../images/patrones/enter-project-button-icon.png" width="512"/></span></a>
+<a class="project-link secondary-project-link" href="https://github.com/malcolmdpc/MachineLearningConPython" rel="noopener" target="_blank">Visualizza in Python</a>
+</div>
+</div>
+</article>
+<article class="github-project-card project-card-detail-ready project-hover-magnetic" data-detail-aria-en="Open detail page for the ML Model · Fraud with Logistic Regression project" data-detail-aria-es="Abrir detalle del proyecto Modelo ML · Fraude con Regresión logística" data-detail-aria-it="Aprire la pagina di dettaglio del progetto Modello ML · Frode con regressione logistica" data-project-id="fraud-detection-logistic-regression" data-tags="machine-learning python clasificacion spss fraude regresion-logistica modelo-supervisado data-science">
+<a aria-label="Aprire la pagina di dettaglio del progetto Modello ML · Frode con regressione logistica" class="project-image-link" href="https://malcolmdpc.github.io/it/progetti/modello-machine-learning-frode-regressione-logistica.html">
+<img alt="Copertina del progetto: Modello ML · Rilevamento frodi" decoding="async" fetchpriority="low" height="750" loading="lazy" src="../images/patrones/projects/home-covers/p09-fraude-regresion-logistica-cover.webp" width="600"/>
+<span aria-hidden="true" class="project-detail-hover-cue"><span class="project-detail-hover-plus">+</span><span class="project-detail-hover-text" data-project-detail-cta="true">Vedi dettagli</span></span><div class="project-hover-layer"><div class="project-magnetic-bar"><span data-project-detail-cta="true">Vedi dettagli</span><b aria-hidden="true">+</b></div></div></a>
+<div class="github-project-body">
+<h3>Modello ML · Rilevamento frodi</h3>
+<p class="project-status published">✅ pubblicato</p>
+<p>Modello supervisionato di regressione logistica per il rilevamento di frodi su transazioni con carta di credito.</p>
+<div class="mini-tags">
+<span>Machine Learning</span><span>Python</span><span>Classificazione</span><span>SPSS</span><span>Frode</span><span>Regressione logistica</span><span>Modello supervisionato</span>
+<span>Scienza dei dati</span></div>
+<div class="project-links-dual">
+<a aria-label="Aprire la pagina di dettaglio del progetto Modello ML · Frode con regressione logistica" class="project-link has-destination-icon" href="https://malcolmdpc.github.io/it/progetti/modello-machine-learning-frode-regressione-logistica.html">Apri progetto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-enter"><img alt="" decoding="async" fetchpriority="low" height="512" loading="lazy" src="../images/patrones/enter-project-button-icon.png" width="512"/></span></a>
+<a class="project-link secondary-project-link" href="https://github.com/malcolmdpc/MachineLearningConPython" rel="noopener" target="_blank">Visualizza in Python</a>
+</div>
+</div>
+</article>
+<article class="github-project-card project-card-detail-ready project-hover-magnetic" data-detail-aria-en="Open detail page for the ML Model · Fraud with DBSCAN project" data-detail-aria-es="Abrir detalle del proyecto Modelo ML · Fraude con DBSCAN" data-detail-aria-it="Aprire la pagina di dettaglio del progetto Modello ML · Frode con DBSCAN" data-project-id="fraud-detection-dbscan" data-tags="machine-learning python clustering fraude dbscan modelo-no-supervisado data-science">
+<a aria-label="Aprire la pagina di dettaglio del progetto Modello ML · Frode con DBSCAN" class="project-image-link" href="https://malcolmdpc.github.io/it/progetti/modello-machine-learning-frode-dbscan.html">
+<img alt="Copertina del progetto: Modello ML · Rilevamento frodi" decoding="async" fetchpriority="low" height="750" loading="lazy" src="../images/patrones/projects/home-covers/p10-fraude-dbscan-cover.webp" width="600"/>
+<span aria-hidden="true" class="project-detail-hover-cue"><span class="project-detail-hover-plus">+</span><span class="project-detail-hover-text" data-project-detail-cta="true">Vedi dettagli</span></span><div class="project-hover-layer"><div class="project-magnetic-bar"><span data-project-detail-cta="true">Vedi dettagli</span><b aria-hidden="true">+</b></div></div></a>
+<div class="github-project-body">
+<h3>Modello ML · Rilevamento frodi</h3>
+<p class="project-status published">✅ pubblicato</p>
+<p>Clustering non supervisionato con DBSCAN per individuare possibili pattern anomali nelle transazioni con carta di credito.</p>
+<div class="mini-tags">
+<span>Machine Learning</span><span>Python</span><span>Clustering</span><span>Frode</span><span>DBSCAN</span><span>Modello non supervisionato</span>
+<span>Scienza dei dati</span></div>
+<a aria-label="Aprire la pagina di dettaglio del progetto Modello ML · Frode con DBSCAN" class="project-link has-destination-icon" href="https://malcolmdpc.github.io/it/progetti/modello-machine-learning-frode-dbscan.html">Apri progetto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-enter"><img alt="" decoding="async" fetchpriority="low" height="512" loading="lazy" src="../images/patrones/enter-project-button-icon.png" width="512"/></span></a>
+</div>
+</article>
+<article class="github-project-card project-card-detail-ready project-hover-magnetic" data-detail-aria-en="Open detail page for the 2022 World Cup Statistics: Percentile Radar project" data-detail-aria-es="Abrir detalle del proyecto Estadísticas del Mundial 2022: Radar de Percentiles" data-detail-aria-it="Aprire la pagina di dettaglio del progetto Statistiche Mondiali 2022: Radar dei percentili" data-project-id="qatar-2022-world-cup-stats" data-tags="python data-storytelling futbol data-analysis bi data-science">
+<a aria-label="Aprire la pagina di dettaglio del progetto Statistiche Mondiali 2022: Radar dei percentili" class="project-image-link" href="https://malcolmdpc.github.io/it/progetti/statistiche-mondiali-2022-radar-percentili.html">
+<img alt="Copertina del progetto: Statistiche Mondiali 2022: Radar dei percentili" decoding="async" fetchpriority="low" height="750" loading="lazy" src="../images/patrones/projects/home-covers/p11-mundial-2022-radar-percentiles-cover.webp" width="600"/>
+<span aria-hidden="true" class="project-detail-hover-cue"><span class="project-detail-hover-plus">+</span><span class="project-detail-hover-text" data-project-detail-cta="true">Vedi dettagli</span></span><div class="project-hover-layer"><div class="project-magnetic-bar"><span data-project-detail-cta="true">Vedi dettagli</span><b aria-hidden="true">+</b></div></div></a>
+<div class="github-project-body">
+<h3>Statistiche Mondiali 2022: Radar dei percentili</h3>
+<div class="project-meta-row"><p class="project-status published">✅ pubblicato</p><span aria-label="Anno dei dati: 2022" class="project-data-year"><span class="project-data-label" data-data-year-label="true">dati:</span><span class="project-data-value">2022</span></span></div>
+<p>Analisi delle statistiche del Mondiale 2022 con dati pubblici StatsBomb, orientata a sintetizzare le prestazioni individuali e confrontare i giocatori con radar dei percentili.</p>
+<div class="mini-tags"><span>Python</span><span>Data storytelling</span><span>Calcio</span><span>Analisi dei dati</span><span>BI</span><span>Scienza dei dati</span></div>
+<div class="project-links-dual project-links-editorial">
+<a aria-label="Aprire la pagina di dettaglio del progetto Statistiche Mondiali 2022: Radar dei percentili" class="project-link has-destination-icon" href="https://malcolmdpc.github.io/it/progetti/statistiche-mondiali-2022-radar-percentili.html">Apri progetto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-enter"><img alt="" decoding="async" fetchpriority="low" height="512" loading="lazy" src="../images/patrones/enter-project-button-icon.png" width="512"/></span></a>
+<a class="project-link secondary-project-link has-destination-icon" href="https://www.linkedin.com/posts/malcolmdpc_footballanalytics-dataanalytics-python-ugcPost-7468343510862200833-XPLV/" rel="noopener" target="_blank">Leggi su LinkedIn<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-linkedin">in</span></a>
+</div>
+</div>
+</article>
+<article class="github-project-card muted-card project-card-detail-ready project-hover-magnetic" data-detail-aria-en="Open detail page for the Geospatial Analysis of Taxi Trips project" data-detail-aria-es="Abrir detalle del proyecto Análisis Geoespacial de los Viajes en Taxi" data-detail-aria-it="Aprire la pagina di dettaglio del progetto Analisi geospaziale dei viaggi in taxi" data-project-id="chicago-taxi-geospatial-analysis" data-tags="python data-storytelling taxi data-analysis bi geoespacial">
+<a aria-label="Aprire la pagina di dettaglio del progetto Analisi geospaziale dei viaggi in taxi" class="project-image-link" href="https://malcolmdpc.github.io/it/progetti/analisi-geospaziale-corse-taxi-chicago.html">
+<img alt="Copertina del progetto: Analisi geospaziale delle corse taxi" decoding="async" fetchpriority="low" height="750" loading="lazy" src="../images/patrones/projects/home-covers/p12-taxi-geoespacial-cover.webp" width="600"/>
+<span aria-hidden="true" class="project-detail-hover-cue"><span class="project-detail-hover-plus">+</span><span class="project-detail-hover-text" data-project-detail-cta="true">Vedi dettagli</span></span><div class="project-hover-layer"><div class="project-magnetic-bar"><span data-project-detail-cta="true">Vedi dettagli</span><b aria-hidden="true">+</b></div></div></a>
+<div class="github-project-body">
+<h3>Analisi geospaziale delle corse taxi a Chicago</h3>
+<div class="project-meta-row"><p class="project-status published">✅ pubblicato</p><span aria-label="Anno dei dati: 2026" class="project-data-year"><span class="project-data-label" data-data-year-label="true">dati:</span><span class="project-data-value">2026</span></span></div>
+<p>Analisi geospaziale delle corse taxi a Chicago, orientata a individuare le zone di maggiore attività, i percorsi urbani e la concentrazione territoriale della domanda.</p>
+<div class="mini-tags"><span>Python</span><span>Data storytelling</span><span>Taxi</span><span>Analisi dei dati</span><span>BI</span><span>Geospaziale</span></div>
+<div class="project-links-dual project-links-editorial">
+<a aria-label="Aprire la pagina di dettaglio del progetto Analisi geospaziale dei viaggi in taxi" class="project-link has-destination-icon" href="https://malcolmdpc.github.io/it/progetti/analisi-geospaziale-corse-taxi-chicago.html">Apri progetto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-enter"><img alt="" decoding="async" fetchpriority="low" height="512" loading="lazy" src="../images/patrones/enter-project-button-icon.png" width="512"/></span></a>
+<a class="project-link secondary-project-link has-destination-icon" href="https://www.linkedin.com/pulse/taxi-trips-chicago-an%C3%A1lisis-geoespacial-qu%C3%A9-muestran-malcolm-cjjae" rel="noopener" target="_blank">Leggi su LinkedIn<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-linkedin">in</span></a>
+</div>
+</div>
+</article>
+<article class="github-project-card project-card-detail-ready project-hover-magnetic" data-detail-aria-en="Open detail page for the Power BI Spotify Charts dashboard project" data-detail-aria-es="Abrir detalle del proyecto Dashboard en Power BI · Spotify Charts" data-detail-aria-it="Aprire la pagina di dettaglio del progetto Dashboard in Power BI · Spotify Charts" data-project-id="spotify-charts-powerbi-dashboard" data-tags="power-bi spotify dashboard data-analysis bi data-storytelling"><a aria-label="Aprire la pagina di dettaglio del progetto Dashboard in Power BI · Spotify Charts" class="project-image-link" href="https://malcolmdpc.github.io/it/progetti/dashboard-power-bi-spotify-charts.html"><img alt="Copertina del progetto: Dashboard Power BI · Spotify Charts" decoding="async" fetchpriority="low" height="750" loading="lazy" src="../images/patrones/projects/home-covers/p13-spotify-powerbi-cover.webp" width="600"/><span aria-hidden="true" class="project-detail-hover-cue"><span class="project-detail-hover-plus">+</span><span class="project-detail-hover-text" data-project-detail-cta="true">Vedi dettagli</span></span><div class="project-hover-layer"><div class="project-magnetic-bar"><span data-project-detail-cta="true">Vedi dettagli</span><b aria-hidden="true">+</b></div></div></a><div class="github-project-body"><h3>Dashboard Power BI · Spotify Charts</h3><div class="project-meta-row"><p class="project-status development">⚠️ in sviluppo</p><span aria-label="Anno dei dati: 2026" class="project-data-year"><span class="project-data-label" data-data-year-label="true">dati:</span><span class="project-data-value">2026</span></span></div><p>Analisi dei ranking musicali di Spotify Charts con dati pubblici su brani, artisti, album e mercati, orientata a esplorare stream, presenza nelle classifiche, leadership temporale e distribuzione territoriale tramite una dashboard interattiva in Power BI.</p><div class="mini-tags"><span>Power BI</span><span>Spotify</span><span>Dashboard</span><span>Analisi dei dati</span><span>BI</span><span>Data storytelling</span></div><div class="project-links-dual project-links-editorial"><a aria-label="Aprire la pagina di dettaglio del progetto Dashboard in Power BI · Spotify Charts" class="project-link has-destination-icon" href="https://malcolmdpc.github.io/it/progetti/dashboard-power-bi-spotify-charts.html">Apri progetto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-enter"><img alt="" decoding="async" fetchpriority="low" height="512" loading="lazy" src="../images/patrones/enter-project-button-icon.png" width="512"/></span></a></div></div></article>
+<article class="github-project-card project-card-detail-ready project-hover-magnetic" data-detail-aria-en="Open detail page for the Power BI Dashboard · Spend Analysis project" data-detail-aria-es="Abrir detalle del proyecto Dashboard en Power BI · Análisis de Gastos" data-detail-aria-it="Aprire la pagina di dettaglio del progetto Dashboard in Power BI · Analisi della spesa" data-project-id="supplier-spend-discounts-powerbi-dashboard" data-tags="power-bi dax dashboard data-analysis bi data-storytelling">
+<a aria-label="Aprire la pagina di dettaglio del progetto Dashboard in Power BI · Analisi della spesa" class="project-image-link" href="https://malcolmdpc.github.io/it/progetti/dashboard-power-bi-fornitori-spese-sconti.html"><img alt="Copertina del progetto: Dashboard in Power BI · Analisi della spesa" decoding="async" fetchpriority="low" height="750" loading="lazy" src="../images/patrones/projects/home-covers/p14-proveedores-powerbi-cover.webp" width="600"/>
+<span aria-hidden="true" class="project-detail-hover-cue"><span class="project-detail-hover-plus">+</span><span class="project-detail-hover-text" data-project-detail-cta="true">Vedi dettagli</span></span>
+<div class="project-hover-layer"><div class="project-magnetic-bar"><span data-project-detail-cta="true">Vedi dettagli</span><b aria-hidden="true">+</b></div></div></a>
+<div class="github-project-body">
+<h3>Dashboard in Power BI · Analisi della spesa</h3>
+<p class="project-status published">✅ pubblicato</p>
+<p>Report interattivo in Power BI per analizzare la spesa verso i fornitori, l’andamento mensile, la distribuzione per categoria, il risparmio e la distribuzione geografica.</p>
+<div class="mini-tags"><span>Power BI</span><span>DAX</span><span>Dashboard</span><span>Analisi dei dati</span><span>BI</span><span>Data storytelling</span></div>
+<div class="project-links-dual project-links-editorial">
+<a aria-label="Aprire la pagina di dettaglio del progetto Dashboard in Power BI · Analisi della spesa" class="project-link has-destination-icon" href="https://malcolmdpc.github.io/it/progetti/dashboard-power-bi-fornitori-spese-sconti.html">Apri progetto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-enter"><img alt="" decoding="async" fetchpriority="low" height="512" loading="lazy" src="../images/patrones/enter-project-button-icon.png" width="512"/></span></a>
+</div>
+</div>
+</article><article class="github-project-card project-card-detail-ready project-hover-magnetic" data-detail-aria-en="Open detail page for the Monte Carlo Simulation · 2026 World Cup Predictions project" data-detail-aria-es="Abrir detalle del proyecto Simulación de Montecarlo · Predicciones para el Mundial 2026" data-detail-aria-it="Aprire la pagina di dettaglio del progetto Simulazione Monte Carlo · Previsioni per il Mondiale 2026" data-project-id="world-cup-2026-montecarlo-simulation" data-tags="python futbol data-science data-analysis data-storytelling simulacion">
+<a aria-label="Aprire la pagina di dettaglio del progetto Simulazione Monte Carlo · Previsioni per il Mondiale 2026" class="project-image-link" href="https://malcolmdpc.github.io/it/progetti/simulazione-monte-carlo-mondiali-2026.html">
+<img alt="Copertina del progetto: Simulazione Monte Carlo · Previsioni per il Mondiale 2026" decoding="async" fetchpriority="low" height="750" loading="lazy" src="../images/patrones/projects/home-covers/p15-montecarlo-mundial-2026-cover.webp" width="600"/>
+<span aria-hidden="true" class="project-detail-hover-cue"><span class="project-detail-hover-plus">+</span><span class="project-detail-hover-text" data-project-detail-cta="true">Vedi dettagli</span></span>
+<div class="project-hover-layer"><div class="project-magnetic-bar"><span data-project-detail-cta="true">Vedi dettagli</span><b aria-hidden="true">+</b></div></div>
+</a>
+<div class="github-project-body">
+<h3>Simulazione Monte Carlo · Previsioni per il Mondiale 2026</h3>
+<div class="project-meta-row"><p class="project-status published">✅ pubblicato</p><span aria-label="Anno dei dati: 2026" class="project-data-year"><span class="project-data-label" data-data-year-label="true">dati:</span><span class="project-data-value">2026</span></span></div>
+<p>Simulazione di un milione di scenari del Mondiale 2026 basata sui rating Elo per stimare le probabilità di raggiungere le semifinali, disputare la finale e diventare campione.</p>
+<div class="mini-tags"><span>Python</span><span>Calcio</span><span>Scienza dei dati</span><span>Analisi dei dati</span><span>Data storytelling</span><span>Simulación</span></div>
+<div class="project-links-dual project-links-editorial">
+<a aria-label="Aprire la pagina di dettaglio del progetto Simulazione Monte Carlo · Previsioni per il Mondiale 2026" class="project-link has-destination-icon" href="https://malcolmdpc.github.io/it/progetti/simulazione-monte-carlo-mondiali-2026.html">Apri progetto<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-enter"><img alt="" decoding="async" fetchpriority="low" height="512" loading="lazy" src="../images/patrones/enter-project-button-icon.png" width="512"/></span></a>
+<a class="project-link secondary-project-link has-destination-icon" href="https://www.linkedin.com/posts/malcolmdpc_worldcup2026-sportsanalytics-datavisualization-share-7480621307810852866-nIHg/" rel="noopener" target="_blank">Leggi su LinkedIn<span aria-hidden="true" class="btn-destination-icon btn-destination-icon-linkedin">in</span></a>
+</div>
+</div>
+</article></div>
+<p class="repo-empty-message" hidden="">Non ci sono ancora progetti per questa categoria.</p>
+</div>
+</div></div></section>
+<section class="project py-5 social-section section-glow glow-social" id="networks">
+<div class="container">
+<div class="row">
+<div class="col-lg-10 text-center mx-auto col-12">
+<small class="section-kicker">Presenza digitale di Patrones Lab</small>
+<h2 class="mb-3 projects-title-display">Canali</h2>
+<p class="social-intro">L’intero ecosistema del progetto in un unico punto: visual, note tecniche, articoli, dashboard, link utili e canali di contatto professionale.</p>
+<div class="social-grid social-grid-complete">
+<a aria-label="Instagram Patrones Lab" class="social-card instagram" href="https://www.instagram.com/patroneslab/" rel="noopener" target="_blank">
+<span class="social-icon">
+<img alt="" aria-hidden="true" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/canales-icons/instagram.svg" width="24"/>
+</span>
+<strong>Instagram</strong>
+<small>Visual e post</small>
+</a>
+<a aria-label="LinkedIn Malcolm" class="social-card linkedin" href="https://www.linkedin.com/in/malcolmdpc/" rel="noopener" target="_blank">
+<span class="social-icon">
+<img alt="" aria-hidden="true" decoding="async" fetchpriority="low" height="512" loading="lazy" src="../images/patrones/canales-icons/linkedin.svg" width="448"/>
+</span>
+<strong>LinkedIn</strong>
+<small>Profilo professionale</small>
+</a>
+<a aria-label="Medium Malcolm DPC" class="social-card medium" href="https://medium.com/@malcolmdpc" rel="noopener" target="_blank">
+<span class="social-icon">
+<img alt="" aria-hidden="true" decoding="async" fetchpriority="low" height="35" loading="lazy" src="../images/patrones/canales-icons/medium-2026.png" width="52"/>
+</span>
+<strong>Medium</strong>
+<small>Articoli e note</small>
+</a>
+<a aria-label="Linktree Patrones Lab" class="social-card linktree" href="https://linktr.ee/PatronesLab" rel="noopener" target="_blank">
+<span class="social-icon">
+<img alt="" aria-hidden="true" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/canales-icons/linktree.svg" width="24"/>
+</span>
+<strong>Linktree</strong>
+<small>Tutti i link</small>
+</a>
+<a aria-label="GitHub Malcolm" class="social-card github" href="https://github.com/malcolmdpc" rel="noopener" target="_blank">
+<span class="social-icon">
+<img alt="" aria-hidden="true" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/canales-icons/github.svg" width="24"/>
+</span>
+<strong>GitHub</strong>
+<small>Profilo tecnico</small>
+</a>
+<a aria-label="Repositorio Patrones Lab" class="social-card repo" href="https://github.com/malcolmdpc/patrones-lab" rel="noopener" target="_blank">
+<span class="social-icon">
+<img alt="" aria-hidden="true" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/canales-icons/github-repo.svg" width="24"/>
+</span>
+<strong>Repo</strong>
+<small>Patrones Lab</small>
+</a>
+<a aria-label="Dashboard Looker Studio" class="social-card dashboard" href="https://datastudio.google.com/reporting/b0b32df2-f110-4bac-8dfb-3be359d4888d" rel="noopener" target="_blank">
+<span class="social-icon">
+<img alt="" aria-hidden="true" decoding="async" fetchpriority="low" height="24" loading="lazy" src="../images/patrones/canales-icons/looker-studio.svg" width="24"/>
+</span>
+<strong>Dashboard</strong>
+<small>Looker Studio</small>
+</a>
+<a aria-label="Email de contacto" class="social-card mail" href="mailto:encontrandopatrones@gmail.com">
+<span class="social-icon">
+<img alt="" aria-hidden="true" decoding="async" fetchpriority="low" height="76" loading="lazy" src="../images/patrones/canales-icons/gmail-2026.png" width="96"/>
+</span>
+<strong>Email</strong>
+<small>Contatto diretto</small>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="contact py-5 contact-form-section section-glow glow-contact" id="contact">
+<div class="container">
+<div class="row align-items-stretch justify-content-center">
+<div class="col-lg-5 col-12 mb-4 mb-lg-0">
+<div class="contact-panel">
+<h3>Contatti</h3>
+<p>Per opportunità professionali, collaborazioni in ambito analitico o progetti di BI, machine learning e dashboard.</p>
+<p class="contact-email-line"><strong>email:</strong> <a href="mailto:encontrandopatrones@gmail.com">encontrandopatrones@gmail.com</a></p>
+</div>
+</div>
+<div class="col-lg-7 col-12">
+<div class="contact-form boxed-mail-form">
+<h2 class="mb-3">Lasciami un messaggio</h2>
+<p class="form-note">Scrivimi e ti risponderò appena possibile.</p>
+<form id="contactForm">
+<div class="row">
+<div class="col-lg-6 col-12">
+<input class="form-control" id="name" name="name" placeholder="Nome" type="text"/>
+</div>
+<div class="col-lg-6 col-12">
+<input class="form-control" id="email" name="email" placeholder="Email" type="email"/>
+</div>
+<div class="col-12">
+<textarea class="form-control" id="message" name="message" placeholder="Messaggio" rows="6"></textarea>
+</div>
+<div class="ml-lg-auto col-lg-5 col-12">
+<input class="form-control submit-btn" type="submit" value="Prepara email"/>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="footer py-5">Patrones Lab® · Generando conoscenza a partire dai dati · di Malcolm Di Pietro Cagliari</footer>
+<script defer="" src="../js/language-routing.js"></script><script defer="" src="../js/jquery-3.3.1.min.js"></script>
+<script defer="" src="../js/popper.min.js"></script>
+<script defer="" src="../js/bootstrap.min.js"></script>
+<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script defer="" src="../js/custom.js"></script>
+</body>
+</html>

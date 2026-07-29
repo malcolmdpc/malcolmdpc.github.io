@@ -2,9 +2,9 @@
   var languageKey = "patronesLabLanguage";
   var modeKey = "patrones-lab-color-mode";
   var flagPaths = {
-    es: "../images/patrones/language-flags/flag-es.svg",
-    en: "../images/patrones/language-flags/flag-us.svg",
-    it: "../images/patrones/language-flags/flag-it.svg"
+    es: "/images/patrones/language-flags/flag-es.svg",
+    en: "/images/patrones/language-flags/flag-us.svg",
+    it: "/images/patrones/language-flags/flag-it.svg"
   };
   var mobileRepoLabels = {
     es: "Entrar al Repo",
