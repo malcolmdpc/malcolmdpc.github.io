@@ -2178,6 +2178,7 @@ $('.color-mode').on('click', function(){
 
 
 (function(){
+  if(window.PL_STATIC_MULTILINGUAL) return;
   const STORAGE_KEY = 'patronesLabLanguage';
   const DEFAULT_LANG = 'es';
   const FLAG_US = '/images/patrones/language-flags/flag-us.svg';
@@ -2588,6 +2589,7 @@ $('.color-mode').on('click', function(){
 
 
 (function(){
+  if(window.PL_STATIC_MULTILINGUAL) return;
   const STORAGE_KEY = 'patronesLabLanguage';
   const FLAG_US = '/images/patrones/language-flags/flag-us.svg';
   const FLAG_ES = '/images/patrones/language-flags/flag-es.svg';
@@ -3681,7 +3683,7 @@ $('.color-mode').on('click', function(){
   };
   window.plCurrentLanguageForContact = window.plGetLanguage;
 
-  applyLanguage(window.plGetLanguage());
+  applyLanguage(window.plPageLanguage || document.documentElement.lang || window.plGetLanguage());
 })();
 
 
