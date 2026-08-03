@@ -1302,6 +1302,8 @@ body{
 .social-card.medium .social-icon{background:#111;color:white}
 .social-card.linktree .social-icon{background:#43e660;color:#111}
 .social-card.github .social-icon{background:#24292f;color:white}
+.social-card.x .social-icon{background:#000;color:#fff}
+.social-card.power-bi .social-icon{background:#111;color:#fff}
 .social-card.mail .social-icon{background:#ffffff;color:#111}
 .dark-mode .social-card{
   background:#141814;
@@ -1534,6 +1536,7 @@ body{
 }
 .social-card.repo .social-icon{background:#f5f0e8;color:#111}
 .social-card.dashboard .social-icon{background:#676cff;color:#fff}
+.social-grid-complete > .social-grid-last-row-start{grid-column:2}
 .social-card:hover .social-icon{
   transform:scale(1.05) rotate(-2deg);
 }
@@ -1578,6 +1581,9 @@ body{
   }
   .social-grid-complete{
     grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+  .social-grid-complete > .social-grid-last-row-start{
+    grid-column:auto;
   }
 }
 @media (max-width:520px){
@@ -14209,5 +14215,56 @@ body #projects .github-project-card[data-project-id] .project-links-editorial > 
 @media (min-width:768px){
   #projects .github-project-card .github-project-body > .project-link{
     margin-top:auto !important;
+  }
+}
+
+html[lang="es"] #networks .social-card.x .social-icon,
+html[lang="es"] #networks .social-card.medium .social-icon,
+html[lang="es"] #networks .social-card.power-bi .social-icon{
+  box-sizing:border-box;
+  box-shadow:inset 0 0 0 2px rgba(37,37,37,.72) !important;
+}
+
+html[lang="es"] .dark-mode #networks .social-card.x .social-icon,
+html[lang="es"] .dark-mode #networks .social-card.medium .social-icon,
+html[lang="es"] .dark-mode #networks .social-card.power-bi .social-icon{
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.44) !important;
+}
+
+html[lang="es"] #networks .social-card.power-bi .social-icon{
+  background:#24292f !important;
+}
+
+#networks .social-card.power-bi .social-icon img{
+  width:54px !important;
+  height:54px !important;
+  max-width:54px !important;
+  max-height:54px !important;
+}
+
+@media (max-width:767px){
+  #networks .social-card.power-bi .social-icon img{
+    width:48px !important;
+    height:48px !important;
+    max-width:48px !important;
+    max-height:48px !important;
+  }
+}
+
+html[lang="es"] #networks .social-grid,
+html[lang="es"] #networks .social-grid.social-grid-complete{
+  grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
+}
+
+html[lang="es"] #networks .social-grid-complete > .social-grid-last-row-start{
+  grid-column:2 !important;
+}
+
+@media (max-width:380px){
+  #networks .social-card.power-bi .social-icon img{
+    width:44px !important;
+    height:44px !important;
+    max-width:44px !important;
+    max-height:44px !important;
   }
 }

@@ -3727,8 +3727,8 @@ $('.color-mode').on('click', function(){
       scrollLabel: 'Explorar, ir a la sección Metodología',
       networkRepoStrong: 'Repo',
       networkRepoSmall: 'Patrones Lab',
-      networkDashboardStrong: 'Dashboard',
-      networkDashboardSmall: 'Looker Studio',
+      networkDashboardStrong: 'Looker Studio',
+      networkDashboardSmall: 'Dashboard',
       tags: {
         'Supervised Model': 'Modelo Supervisado',
         'Modello supervisionato': 'Modelo Supervisado',
