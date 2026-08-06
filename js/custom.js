@@ -158,6 +158,9 @@ $('.color-mode').on('click', function(){
           scrollTop: $(href).offset().top - 64
       }, 800);
       event.preventDefault();
+      if(window.innerWidth <= 767 && $('#navbarNav').hasClass('show')){
+        $('#navbarNav').collapse('hide');
+      }
     }
   });
 
@@ -539,7 +542,7 @@ $('.color-mode').on('click', function(){
 
 (function(){
   const cta = document.querySelector('.floating-cta');
-  const hero = document.querySelector('#about');
+  const hero = document.querySelector('#home');
 
   if(!cta || !hero) return;
 
@@ -687,6 +690,17 @@ $('.color-mode').on('click', function(){
 
   const sectionConfigs = [
     {
+      section: '#about',
+      items: [
+        '.section-kicker',
+        'h2',
+        '.about-profile-portrait',
+        '.about-profile-copy',
+        '.about-profile-axis',
+        '.about-profile-actions'
+      ]
+    },
+    {
       section: '#networks',
       items: [
         'h2',
@@ -818,6 +832,94 @@ $('.color-mode').on('click', function(){
       }
     });
   }, 180);
+})();
+
+
+(function(){
+  const section = document.querySelector('#about.about-profile-section');
+  if(!section) return;
+
+  const cards = Array.from(section.querySelectorAll('.about-profile-axis'));
+  if(!cards.length) return;
+
+  const motionQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  const touchQuery = window.matchMedia ? window.matchMedia('(hover: none), (pointer: coarse)') : null;
+
+  function setCardState(card, open){
+    const front = card.querySelector('.about-profile-axis-front');
+    const back = card.querySelector('.about-profile-axis-back');
+
+    card.classList.toggle('is-flipped', open);
+    card.setAttribute('aria-expanded', String(open));
+    card.setAttribute('aria-label', open ? card.dataset.labelClose : card.dataset.labelOpen);
+
+    if(front) front.setAttribute('aria-hidden', String(open));
+    if(back) back.setAttribute('aria-hidden', String(!open));
+  }
+
+  function closeCards(except){
+    cards.forEach(card => {
+      if(card !== except) setCardState(card, false);
+    });
+  }
+
+  function applyMotionPreference(){
+    const reduceMotion = Boolean(motionQuery && motionQuery.matches);
+
+    cards.forEach(card => {
+      const front = card.querySelector('.about-profile-axis-front');
+      const back = card.querySelector('.about-profile-axis-back');
+
+      card.classList.remove('is-flipped');
+      card.toggleAttribute('aria-disabled', reduceMotion);
+
+      if(reduceMotion){
+        const title = card.querySelector('.about-profile-axis-title');
+        const description = card.querySelector('.about-profile-axis-description');
+        card.setAttribute('aria-expanded', 'true');
+        card.setAttribute('aria-label', [title && title.textContent, description && description.textContent].filter(Boolean).join(': '));
+        if(front) front.setAttribute('aria-hidden', 'false');
+        if(back) back.setAttribute('aria-hidden', 'false');
+      }else{
+        setCardState(card, false);
+      }
+    });
+  }
+
+  cards.forEach(card => {
+    card.addEventListener('click', function(event){
+      if(motionQuery && motionQuery.matches) return;
+
+      const touchActivation = Boolean(touchQuery && touchQuery.matches);
+      const keyboardActivation = event.detail === 0;
+      if(!touchActivation && !keyboardActivation) return;
+
+      const willOpen = !card.classList.contains('is-flipped');
+      closeCards(card);
+      setCardState(card, willOpen);
+    });
+
+    card.addEventListener('keydown', function(event){
+      if(event.key !== 'Escape') return;
+      setCardState(card, false);
+    });
+  });
+
+  document.addEventListener('pointerdown', function(event){
+    if(!(touchQuery && touchQuery.matches)) return;
+    if(section.querySelector('.about-profile-axes').contains(event.target)) return;
+    closeCards();
+  }, {passive:true});
+
+  if(motionQuery){
+    if(typeof motionQuery.addEventListener === 'function'){
+      motionQuery.addEventListener('change', applyMotionPreference);
+    }else if(typeof motionQuery.addListener === 'function'){
+      motionQuery.addListener(applyMotionPreference);
+    }
+  }
+
+  applyMotionPreference();
 })();
 
 
@@ -1552,7 +1654,7 @@ $('.color-mode').on('click', function(){
   const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(reduceMotion) return;
 
-  const sectionSelectors = ['#about', '#methodology', '#projects', '#networks', '#contact'];
+  const sectionSelectors = ['#home', '#about', '#methodology', '#projects', '#networks', '#contact'];
   const sections = sectionSelectors
     .map(function(selector){ return document.querySelector(selector); })
     .filter(Boolean);
@@ -1729,7 +1831,7 @@ $('.color-mode').on('click', function(){
 
 (function(){
   document.addEventListener('click', function(event){
-    const link = event.target && event.target.closest ? event.target.closest('.navbar a[href="#methodology"]') : null;
+    const link = event.target && event.target.closest ? event.target.closest('.navbar a[href="#methodology"], #about a[data-methodology-cta][href="#methodology"]') : null;
     if(!link) return;
 
     event.preventDefault();
@@ -2205,21 +2307,21 @@ $('.color-mode').on('click', function(){
         '.tech-logo-card-databricks small': 'Lakehouse',
         '.floating-cta__text': 'View repository',
 
-        '.navbar-nav .nav-link[href="#about"]': 'Home',
+        '.navbar-nav .nav-link[href="#home"]': 'Home',
         '.navbar-nav .nav-link[href="#methodology"]': 'Methodology',
         '.navbar-nav .nav-link[href="#projects"]': 'Projects',
         '.navbar-nav .nav-link[href="#networks"]': 'Channels',
         '.navbar-nav .nav-link[href="#contact"]': 'Contact',
         '.color-mode': '<i class="color-mode-icon"></i>',
 
-        '#about .hero-entry-kicker': 'Project portfolio BI · ML · Python · Dashboards',
-        '#about .hero-line': 'I turn<br>data into',
-        '#about .hero-rotator span:nth-child(1)': 'evidence',
-        '#about .hero-rotator span:nth-child(2)': 'models',
-        '#about .hero-rotator span:nth-child(3)': 'dashboards',
-        '#about .hero-rotator span:nth-child(4)': 'decisions',
-        '#about .hero-rotator span:nth-child(5)': 'patterns',
-        '#about .hero-entry-copy': 'Patrones Lab is a data analytics lab focused on real-world, everyday phenomena.<br><br>It brings together independent projects built with public data, with an emphasis on finding patterns, explaining behavior and communicating insights with context.<br><br>The goal is to ask better questions, prepare reliable data, build reproducible analyses and turn results into clear visual outputs.',
+        '#home .hero-entry-kicker': 'Project portfolio BI · ML · Python · Dashboards',
+        '#home .hero-line': '<span class="hero-line-row">I turn</span><span class="hero-line-row">data into</span>',
+        '#home .hero-rotator span:nth-child(1)': 'evidence',
+        '#home .hero-rotator span:nth-child(2)': 'models',
+        '#home .hero-rotator span:nth-child(3)': 'dashboards',
+        '#home .hero-rotator span:nth-child(4)': 'decisions',
+        '#home .hero-rotator span:nth-child(5)': 'patterns',
+        '#home .hero-entry-copy': 'Patrones Lab is a data analytics lab focused on real-world, everyday phenomena.<br><br>It brings together independent projects built with public data, with an emphasis on finding patterns, explaining behavior and communicating insights with context.<br><br>The goal is to ask better questions, prepare reliable data, build reproducible analyses and turn results into clear visual outputs.',
 
         '.tech-logo-card-airflow small': 'Orchestration',
         '.tech-logo-card-sql-server small': 'Database',
@@ -2301,7 +2403,9 @@ $('.color-mode').on('click', function(){
         '#networks .social-card.github small': 'Technical profile',
         '#networks .social-card.mail small': 'Direct contact',
 
-        '#contact .contact-panel h3': 'Contact',
+        '#contact .contact-section-heading .section-kicker': 'Let’s talk data',
+        '#contact .contact-section-heading .projects-title-display': 'Contact',
+        '#contact .contact-panel h3': 'Write to me',
         '#contact .contact-panel p:not(.contact-email-line)': 'For professional opportunities, analytics collaboration or BI, machine learning and dashboard projects.',
         '#contact .contact-email-line strong': 'email:',
         '#contact .contact-form h2': 'Leave me a message',
@@ -2333,8 +2437,8 @@ $('.color-mode').on('click', function(){
         '.color-mode': {'aria-label': 'Change visual mode', title: 'Change visual mode'},
         '.floating-cta': {'aria-label': 'View Patrones Lab repository'},
         '.navbar-toggler': {'aria-label': 'Open navigation'},
-        '#about .hero-rotator': {'aria-label': 'evidence, models, dashboards, decisions and patterns'},
-        '#about .hero-tech-marquee': {'aria-label': 'Technologies used'},
+        '#home .hero-rotator': {'aria-label': 'evidence, models, dashboards, decisions and patterns'},
+        '#home .hero-tech-marquee': {'aria-label': 'Technologies used'},
         '#projects .repo-filter-toolbar': {'aria-label': 'Filter projects'}
       }
     }
@@ -2615,21 +2719,21 @@ $('.color-mode').on('click', function(){
         '.tech-logo-card-databricks small': 'Lakehouse',
         '.floating-cta__text': 'Ver repo',
 
-        '.navbar-nav .nav-link[href="#about"]': 'Inicio',
+        '.navbar-nav .nav-link[href="#home"]': 'Inicio',
         '.navbar-nav .nav-link[href="#methodology"]': 'Metodología',
         '.navbar-nav .nav-link[href="#projects"]': 'Proyectos',
         '.navbar-nav .nav-link[href="#networks"]': 'Redes',
         '.navbar-nav .nav-link[href="#contact"]': 'Contacto',
         '.color-mode': '<i class="color-mode-icon"></i>',
 
-        '#about .hero-entry-kicker': 'Portfolio de proyectos <span class="mobile-block">BI · ML · Python · Dashboards</span>',
-        '#about .hero-line': 'Transformo datos en',
-        '#about .hero-rotator span:nth-child(1)': 'evidencia',
-        '#about .hero-rotator span:nth-child(2)': 'modelos',
-        '#about .hero-rotator span:nth-child(3)': 'dashboards',
-        '#about .hero-rotator span:nth-child(4)': 'decisiones',
-        '#about .hero-rotator span:nth-child(5)': 'patrones',
-        '#about .hero-entry-copy': 'Patrones Lab es un laboratorio de análisis de datos aplicado a fenómenos cotidianos y reales.<br><br>Aquí se trabajan proyectos independientes construidos a partir de datos públicos, con foco en detectar patrones, describir comportamientos y comunicar los hallazgos con su contexto.<br><br>El objetivo es plantear preguntas, preparar datos, construir análisis claros y generar resultados visuales.',
+        '#home .hero-entry-kicker': 'Portfolio de proyectos <span class="mobile-block">BI · ML · Python · Dashboards</span>',
+        '#home .hero-line': '<span class="hero-line-row">Transformo</span><span class="hero-line-row">datos en</span>',
+        '#home .hero-rotator span:nth-child(1)': 'evidencia',
+        '#home .hero-rotator span:nth-child(2)': 'modelos',
+        '#home .hero-rotator span:nth-child(3)': 'dashboards',
+        '#home .hero-rotator span:nth-child(4)': 'decisiones',
+        '#home .hero-rotator span:nth-child(5)': 'patrones',
+        '#home .hero-entry-copy': 'Patrones Lab es un laboratorio de análisis de datos aplicado a fenómenos cotidianos y reales.<br><br>Aquí se trabajan proyectos independientes construidos a partir de datos públicos, con foco en detectar patrones, describir comportamientos y comunicar los hallazgos con su contexto.<br><br>El objetivo es plantear preguntas, preparar datos, construir análisis claros y generar resultados visuales.',
 
         '.tech-logo-card-airflow small': 'Orquestación',
         '.tech-logo-card-sql-server small': 'Base de datos',
@@ -2728,7 +2832,9 @@ $('.color-mode').on('click', function(){
         '#networks .social-card.github small': 'Perfil técnico',
         '#networks .social-card.mail small': 'Contacto directo',
 
-        '#contact .contact-panel h3': 'Contacto',
+        '#contact .contact-section-heading .section-kicker': 'Conversemos sobre datos',
+        '#contact .contact-section-heading .projects-title-display': 'Contacto',
+        '#contact .contact-panel h3': 'Escríbeme',
         '#contact .contact-panel p:not(.contact-email-line)': 'Para oportunidades profesionales, colaboración analítica o proyectos de BI · ML · Dashboards.',
         '#contact .contact-email-line strong': 'correo:',
         '#contact .contact-form h2': 'Dejame un mensaje',
@@ -2758,8 +2864,8 @@ $('.color-mode').on('click', function(){
         '.color-mode': {'aria-label': 'Cambiar modo visual', title: 'Cambiar modo visual'},
         '.floating-cta': {'aria-label': 'Ver repositorio de Patrones Lab'},
         '.navbar-toggler': {'aria-label': 'Abrir navegación'},
-        '#about .hero-rotator': {'aria-label': 'evidencia, modelos, dashboards, decisiones y patrones'},
-        '#about .hero-tech-marquee': {'aria-label': 'Tecnologías utilizadas'},
+        '#home .hero-rotator': {'aria-label': 'evidencia, modelos, dashboards, decisiones y patrones'},
+        '#home .hero-tech-marquee': {'aria-label': 'Tecnologías utilizadas'},
         '#projects .repo-filter-toolbar': {'aria-label': 'Filtrar proyectos'}
       }
     },
@@ -2774,21 +2880,21 @@ $('.color-mode').on('click', function(){
       text: {
         '.floating-cta__text': 'View repository',
 
-        '.navbar-nav .nav-link[href="#about"]': 'Home',
+        '.navbar-nav .nav-link[href="#home"]': 'Home',
         '.navbar-nav .nav-link[href="#methodology"]': 'Methodology',
         '.navbar-nav .nav-link[href="#projects"]': 'Projects',
         '.navbar-nav .nav-link[href="#networks"]': 'Channels',
         '.navbar-nav .nav-link[href="#contact"]': 'Contact',
         '.color-mode': '<i class="color-mode-icon"></i>',
 
-        '#about .hero-entry-kicker': 'Project portfolio BI · ML · Python · Dashboards',
-        '#about .hero-line': 'I turn<br>data into',
-        '#about .hero-rotator span:nth-child(1)': 'evidence',
-        '#about .hero-rotator span:nth-child(2)': 'models',
-        '#about .hero-rotator span:nth-child(3)': 'dashboards',
-        '#about .hero-rotator span:nth-child(4)': 'decisions',
-        '#about .hero-rotator span:nth-child(5)': 'patterns',
-        '#about .hero-entry-copy': 'Patrones Lab is a data analytics lab focused on real-world, everyday phenomena.<br><br>It brings together independent projects built with public data, with an emphasis on finding patterns, explaining behavior and communicating insights with context.<br><br>The goal is to ask better questions, prepare reliable data, build reproducible analyses and turn results into clear visual outputs.',
+        '#home .hero-entry-kicker': 'Project portfolio BI · ML · Python · Dashboards',
+        '#home .hero-line': '<span class="hero-line-row">I turn</span><span class="hero-line-row">data into</span>',
+        '#home .hero-rotator span:nth-child(1)': 'evidence',
+        '#home .hero-rotator span:nth-child(2)': 'models',
+        '#home .hero-rotator span:nth-child(3)': 'dashboards',
+        '#home .hero-rotator span:nth-child(4)': 'decisions',
+        '#home .hero-rotator span:nth-child(5)': 'patterns',
+        '#home .hero-entry-copy': 'Patrones Lab is a data analytics lab focused on real-world, everyday phenomena.<br><br>It brings together independent projects built with public data, with an emphasis on finding patterns, explaining behavior and communicating insights with context.<br><br>The goal is to ask better questions, prepare reliable data, build reproducible analyses and turn results into clear visual outputs.',
 
         '.tech-logo-card-airflow small': 'Orchestration',
         '.tech-logo-card-sql-server small': 'Database',
@@ -2887,7 +2993,9 @@ $('.color-mode').on('click', function(){
         '#networks .social-card.github small': 'Technical profile',
         '#networks .social-card.mail small': 'Direct contact',
 
-        '#contact .contact-panel h3': 'Contact',
+        '#contact .contact-section-heading .section-kicker': 'Let’s talk data',
+        '#contact .contact-section-heading .projects-title-display': 'Contact',
+        '#contact .contact-panel h3': 'Write to me',
         '#contact .contact-panel p:not(.contact-email-line)': 'For professional opportunities, analytics collaboration or BI, machine learning and dashboard projects.',
         '#contact .contact-email-line strong': 'email:',
         '#contact .contact-form h2': 'Leave me a message',
@@ -2916,8 +3024,8 @@ $('.color-mode').on('click', function(){
         '.color-mode': {'aria-label': 'Change visual mode', title: 'Change visual mode'},
         '.floating-cta': {'aria-label': 'View Patrones Lab repository'},
         '.navbar-toggler': {'aria-label': 'Open navigation'},
-        '#about .hero-rotator': {'aria-label': 'evidence, models, dashboards, decisions and patterns'},
-        '#about .hero-tech-marquee': {'aria-label': 'Technologies used'},
+        '#home .hero-rotator': {'aria-label': 'evidence, models, dashboards, decisions and patterns'},
+        '#home .hero-tech-marquee': {'aria-label': 'Technologies used'},
         '#projects .repo-filter-toolbar': {'aria-label': 'Filter projects'}
       }
     }
@@ -3029,21 +3137,21 @@ $('.color-mode').on('click', function(){
       languageSelectorAriaLabel: 'Idioma',
       text: {
         '.floating-cta__text': 'Ver repo',
-        '.navbar-nav .nav-link[href="#about"]': 'Inicio',
+        '.navbar-nav .nav-link[href="#home"]': 'Inicio',
         '.navbar-nav .nav-link[href="#methodology"]': 'Metodología',
         '.navbar-nav .nav-link[href="#projects"]': 'Proyectos',
         '.navbar-nav .nav-link[href="#networks"]': 'Redes',
         '.navbar-nav .nav-link[href="#contact"]': 'Contacto',
         '.color-mode': '<i class="color-mode-icon"></i>',
 
-        '#about .hero-entry-kicker': 'Portfolio de proyectos <span class="mobile-block">BI · ML · Python · Dashboards</span>',
-        '#about .hero-line': 'Transformo datos en',
-        '#about .hero-rotator span:nth-child(1)': 'evidencia',
-        '#about .hero-rotator span:nth-child(2)': 'modelos',
-        '#about .hero-rotator span:nth-child(3)': 'dashboards',
-        '#about .hero-rotator span:nth-child(4)': 'decisiones',
-        '#about .hero-rotator span:nth-child(5)': 'patrones',
-        '#about .hero-entry-copy': 'Patrones Lab es un laboratorio de análisis de datos aplicado a fenómenos cotidianos y reales.<br><br>Aquí se trabajan proyectos independientes construidos a partir de datos públicos, con foco en detectar patrones, describir comportamientos y comunicar los hallazgos con su contexto.<br><br>El objetivo es plantear preguntas, preparar datos, construir análisis claros y generar resultados visuales.',
+        '#home .hero-entry-kicker': 'Portfolio de proyectos <span class="mobile-block">BI · ML · Python · Dashboards</span>',
+        '#home .hero-line': '<span class="hero-line-row">Transformo</span><span class="hero-line-row">datos en</span>',
+        '#home .hero-rotator span:nth-child(1)': 'evidencia',
+        '#home .hero-rotator span:nth-child(2)': 'modelos',
+        '#home .hero-rotator span:nth-child(3)': 'dashboards',
+        '#home .hero-rotator span:nth-child(4)': 'decisiones',
+        '#home .hero-rotator span:nth-child(5)': 'patrones',
+        '#home .hero-entry-copy': 'Patrones Lab es un laboratorio de análisis de datos aplicado a fenómenos cotidianos y reales.<br><br>Aquí se trabajan proyectos independientes construidos a partir de datos públicos, con foco en detectar patrones, describir comportamientos y comunicar los hallazgos con su contexto.<br><br>El objetivo es plantear preguntas, preparar datos, construir análisis claros y generar resultados visuales.',
 
         '.tech-logo-card-airflow small': 'Orquestación',
         '.tech-logo-card-sql-server small': 'Base de datos',
@@ -3150,7 +3258,9 @@ $('.color-mode').on('click', function(){
         '#networks .social-card.github small': 'Perfil técnico',
         '#networks .social-card.mail small': 'Contacto directo',
 
-        '#contact .contact-panel h3': 'Contacto',
+        '#contact .contact-section-heading .section-kicker': 'Conversemos sobre datos',
+        '#contact .contact-section-heading .projects-title-display': 'Contacto',
+        '#contact .contact-panel h3': 'Escríbeme',
         '#contact .contact-panel p:not(.contact-email-line)': 'Para oportunidades profesionales, colaboración analítica o proyectos de BI · ML · Dashboards.',
         '#contact .contact-email-line strong': 'correo:',
         '#contact .contact-form h2': 'Dejame un mensaje',
@@ -3182,8 +3292,8 @@ $('.color-mode').on('click', function(){
         '.color-mode': {'aria-label': 'Cambiar modo visual', title: 'Cambiar modo visual'},
         '.floating-cta': {'aria-label': 'Ver repositorio de Patrones Lab'},
         '.navbar-toggler': {'aria-label': 'Abrir navegación'},
-        '#about .hero-rotator': {'aria-label': 'evidencia, modelos, dashboards, decisiones y patrones'},
-        '#about .hero-tech-marquee': {'aria-label': 'Tecnologías utilizadas'},
+        '#home .hero-rotator': {'aria-label': 'evidencia, modelos, dashboards, decisiones y patrones'},
+        '#home .hero-tech-marquee': {'aria-label': 'Tecnologías utilizadas'},
         '#projects .repo-filter-toolbar': {'aria-label': 'Filtrar proyectos'}
       }
     },
@@ -3196,21 +3306,21 @@ $('.color-mode').on('click', function(){
       languageSelectorAriaLabel: 'Language',
       text: {
         '.floating-cta__text': 'View repository',
-        '.navbar-nav .nav-link[href="#about"]': 'Home',
+        '.navbar-nav .nav-link[href="#home"]': 'Home',
         '.navbar-nav .nav-link[href="#methodology"]': 'Methodology',
         '.navbar-nav .nav-link[href="#projects"]': 'Projects',
         '.navbar-nav .nav-link[href="#networks"]': 'Channels',
         '.navbar-nav .nav-link[href="#contact"]': 'Contact',
         '.color-mode': '<i class="color-mode-icon"></i>',
 
-        '#about .hero-entry-kicker': 'Project portfolio BI · ML · Python · Dashboards',
-        '#about .hero-line': 'I turn<br>data into',
-        '#about .hero-rotator span:nth-child(1)': 'evidence',
-        '#about .hero-rotator span:nth-child(2)': 'models',
-        '#about .hero-rotator span:nth-child(3)': 'dashboards',
-        '#about .hero-rotator span:nth-child(4)': 'decisions',
-        '#about .hero-rotator span:nth-child(5)': 'patterns',
-        '#about .hero-entry-copy': 'Patrones Lab is a data analytics lab focused on real-world, everyday phenomena.<br><br>It brings together independent projects built with public data, with an emphasis on finding patterns, explaining behavior and communicating insights with context.<br><br>The goal is to ask better questions, prepare reliable data, build reproducible analyses and turn results into clear visual outputs.',
+        '#home .hero-entry-kicker': 'Project portfolio BI · ML · Python · Dashboards',
+        '#home .hero-line': '<span class="hero-line-row">I turn</span><span class="hero-line-row">data into</span>',
+        '#home .hero-rotator span:nth-child(1)': 'evidence',
+        '#home .hero-rotator span:nth-child(2)': 'models',
+        '#home .hero-rotator span:nth-child(3)': 'dashboards',
+        '#home .hero-rotator span:nth-child(4)': 'decisions',
+        '#home .hero-rotator span:nth-child(5)': 'patterns',
+        '#home .hero-entry-copy': 'Patrones Lab is a data analytics lab focused on real-world, everyday phenomena.<br><br>It brings together independent projects built with public data, with an emphasis on finding patterns, explaining behavior and communicating insights with context.<br><br>The goal is to ask better questions, prepare reliable data, build reproducible analyses and turn results into clear visual outputs.',
 
         '.tech-logo-card-airflow small': 'Orchestration',
         '.tech-logo-card-sql-server small': 'Database',
@@ -3317,7 +3427,9 @@ $('.color-mode').on('click', function(){
         '#networks .social-card.github small': 'Technical profile',
         '#networks .social-card.mail small': 'Direct contact',
 
-        '#contact .contact-panel h3': 'Contact',
+        '#contact .contact-section-heading .section-kicker': 'Let’s talk data',
+        '#contact .contact-section-heading .projects-title-display': 'Contact',
+        '#contact .contact-panel h3': 'Write to me',
         '#contact .contact-panel p:not(.contact-email-line)': 'For professional opportunities, analytics collaboration or BI, machine learning and dashboard projects.',
         '#contact .contact-email-line strong': 'email:',
         '#contact .contact-form h2': 'Leave me a message',
@@ -3348,8 +3460,8 @@ $('.color-mode').on('click', function(){
         '.color-mode': {'aria-label': 'Change visual mode', title: 'Change visual mode'},
         '.floating-cta': {'aria-label': 'View Patrones Lab repository'},
         '.navbar-toggler': {'aria-label': 'Open navigation'},
-        '#about .hero-rotator': {'aria-label': 'evidence, models, dashboards, decisions and patterns'},
-        '#about .hero-tech-marquee': {'aria-label': 'Technologies used'},
+        '#home .hero-rotator': {'aria-label': 'evidence, models, dashboards, decisions and patterns'},
+        '#home .hero-tech-marquee': {'aria-label': 'Technologies used'},
         '#projects .repo-filter-toolbar': {'aria-label': 'Filter projects'}
       }
     },
@@ -3372,21 +3484,21 @@ $('.color-mode').on('click', function(){
         '.tech-logo-card-snowflake small': 'Data warehouse',
         '.tech-logo-card-databricks small': 'Lakehouse',
         '.floating-cta__text': 'Vedi repo',
-        '.navbar-nav .nav-link[href="#about"]': 'Home',
+        '.navbar-nav .nav-link[href="#home"]': 'Home',
         '.navbar-nav .nav-link[href="#methodology"]': 'Metodologia',
         '.navbar-nav .nav-link[href="#projects"]': 'Progetti',
         '.navbar-nav .nav-link[href="#networks"]': 'Canali',
         '.navbar-nav .nav-link[href="#contact"]': 'Contatti',
         '.color-mode': '<i class="color-mode-icon"></i>',
 
-        '#about .hero-entry-kicker': 'Portfolio progetti Dati · BI · ML · Python',
-        '#about .hero-line': 'Trasformo<br class="pl-it-mobile-break"><span class="pl-it-desktop-space"> </span>i dati in',
-        '#about .hero-rotator span:nth-child(1)': 'evidenze',
-        '#about .hero-rotator span:nth-child(2)': 'modelli',
-        '#about .hero-rotator span:nth-child(3)': 'dashboard',
-        '#about .hero-rotator span:nth-child(4)': 'decisioni',
-        '#about .hero-rotator span:nth-child(5)': 'pattern',
-        '#about .hero-entry-copy': 'Patrones Lab è un laboratorio di analisi dei dati applicata a fenomeni reali e quotidiani.<br><br>Raccoglie progetti indipendenti basati su dati pubblici, con attenzione all’individuazione di pattern, alla spiegazione dei comportamenti e alla comunicazione di evidenze contestualizzate.<br><br>L’obiettivo è formulare domande migliori, costruire dataset affidabili, sviluppare analisi riproducibili e trasformare i risultati in output visuali chiari.',
+        '#home .hero-entry-kicker': 'Portfolio progetti Dati · BI · ML · Python',
+        '#home .hero-line': '<span class="hero-line-row">Trasformo</span><span class="hero-line-row">i dati in</span>',
+        '#home .hero-rotator span:nth-child(1)': 'evidenze',
+        '#home .hero-rotator span:nth-child(2)': 'modelli',
+        '#home .hero-rotator span:nth-child(3)': 'dashboard',
+        '#home .hero-rotator span:nth-child(4)': 'decisioni',
+        '#home .hero-rotator span:nth-child(5)': 'pattern',
+        '#home .hero-entry-copy': 'Patrones Lab è un laboratorio di analisi dei dati applicata a fenomeni reali e quotidiani.<br><br>Raccoglie progetti indipendenti basati su dati pubblici, con attenzione all’individuazione di pattern, alla spiegazione dei comportamenti e alla comunicazione di evidenze contestualizzate.<br><br>L’obiettivo è formulare domande migliori, costruire dataset affidabili, sviluppare analisi riproducibili e trasformare i risultati in output visuali chiari.',
 
         '.tech-logo-card-airflow small': 'Orchestrazione',
         '.tech-logo-card-sql-server small': 'Database',
@@ -3493,7 +3605,9 @@ $('.color-mode').on('click', function(){
         '#networks .social-card.github small': 'Profilo tecnico',
         '#networks .social-card.mail small': 'Contatto diretto',
 
-        '#contact .contact-panel h3': 'Contatti',
+        '#contact .contact-section-heading .section-kicker': 'Parliamo di dati',
+        '#contact .contact-section-heading .projects-title-display': 'Contatti',
+        '#contact .contact-panel h3': 'Scrivimi',
         '#contact .contact-panel p:not(.contact-email-line)': 'Per opportunità professionali, collaborazioni in ambito analitico o progetti di BI, machine learning e dashboard.',
         '#contact .contact-email-line strong': 'email:',
         '#contact .contact-form h2': 'Lasciami un messaggio',
@@ -3525,8 +3639,8 @@ $('.color-mode').on('click', function(){
         '.color-mode': {'aria-label': 'Cambia modalità visiva', title: 'Cambia modalità visiva'},
         '.floating-cta': {'aria-label': 'Vedi repository Patrones Lab'},
         '.navbar-toggler': {'aria-label': 'Apri navigazione'},
-        '#about .hero-rotator': {'aria-label': 'evidenze, modelli, dashboard, decisioni e pattern'},
-        '#about .hero-tech-marquee': {'aria-label': 'Tecnologie utilizzate'},
+        '#home .hero-rotator': {'aria-label': 'evidenze, modelli, dashboard, decisioni e pattern'},
+        '#home .hero-tech-marquee': {'aria-label': 'Tecnologie utilizzate'},
         '#projects .repo-filter-toolbar': {'aria-label': 'Filtra progetti'}
       }
     }
@@ -3729,6 +3843,8 @@ $('.color-mode').on('click', function(){
       networkRepoSmall: 'Patrones Lab',
       networkDashboardStrong: 'Looker Studio',
       networkDashboardSmall: 'Dashboard',
+      networkXSmall: 'Novedades',
+      networkPowerBISmall: 'Dashboard',
       tags: {
         'Supervised Model': 'Modelo Supervisado',
         'Modello supervisionato': 'Modelo Supervisado',
@@ -3753,8 +3869,10 @@ $('.color-mode').on('click', function(){
       scrollLabel: 'Explore, go to Methodology section',
       networkRepoStrong: 'Repository',
       networkRepoSmall: 'Patrones Lab',
-      networkDashboardStrong: 'Dashboard',
-      networkDashboardSmall: 'Looker Studio',
+      networkDashboardStrong: 'Looker Studio',
+      networkDashboardSmall: 'Dashboard',
+      networkXSmall: 'Updates',
+      networkPowerBISmall: 'Dashboard',
       tags: {
         'Modelo Supervisado': 'Supervised Model',
         'Modello supervisionato': 'Supervised Model',
@@ -3779,8 +3897,10 @@ $('.color-mode').on('click', function(){
       scrollLabel: 'Esplora, vai alla sezione Metodologia',
       networkRepoStrong: 'Repository',
       networkRepoSmall: 'Patrones Lab',
-      networkDashboardStrong: 'Dashboard',
-      networkDashboardSmall: 'Looker Studio',
+      networkDashboardStrong: 'Looker Studio',
+      networkDashboardSmall: 'Dashboard',
+      networkXSmall: 'Novità',
+      networkPowerBISmall: 'Dashboard',
       tags: {
         'Modelo Supervisado': 'Modello supervisionato',
         'Supervised Model': 'Modello supervisionato',
@@ -3838,13 +3958,15 @@ $('.color-mode').on('click', function(){
     setText('#networks .social-card.repo small', data.networkRepoSmall);
     setText('#networks .social-card.dashboard strong', data.networkDashboardStrong);
     setText('#networks .social-card.dashboard small', data.networkDashboardSmall);
+    setText('#networks .social-card.x small', data.networkXSmall);
+    setText('#networks .social-card.power-bi small', data.networkPowerBISmall);
   }
 
   function patchVisibleTexts(lang){
     const data = translations[lang] || translations.es;
 
-    setText('#about .hero-scroll-indicator__text', data.scroll);
-    document.querySelectorAll('#about .hero-scroll-indicator').forEach(function(link){
+    setText('#home .hero-scroll-indicator__text', data.scroll);
+    document.querySelectorAll('#home .hero-scroll-indicator').forEach(function(link){
       link.setAttribute('aria-label', data.scrollLabel || data.scroll);
     });
     patchProjectTags(lang);
