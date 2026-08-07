@@ -15200,3 +15200,93 @@ body:not(.dark-mode) #home{
     cursor:default;
   }
 }
+
+@media (max-width:767px){
+  #networks.social-section{
+    min-height:auto !important;
+    align-items:flex-start !important;
+    padding-top:calc(var(--pl-navbar-height, 62px) + 16px) !important;
+    padding-bottom:44px !important;
+  }
+
+  #networks.social-section > .container{
+    align-self:flex-start !important;
+  }
+
+  #networks .social-intro{
+    margin-bottom:22px !important;
+  }
+
+  body.fullscreen-sections-experiment #contact.contact-form-section{
+    min-height:auto !important;
+  }
+
+  body.fullscreen-sections-experiment #contact.contact-form-section > .container{
+    flex:0 0 auto !important;
+    justify-content:flex-start !important;
+    padding-top:calc(var(--pl-navbar-height, 62px) + 16px) !important;
+    padding-bottom:28px !important;
+  }
+
+  #contact .contact-section-heading{
+    margin-bottom:18px !important;
+    transform:none !important;
+  }
+
+  #contact .row > .col-12.mb-4{
+    margin-bottom:14px !important;
+  }
+
+  #contact .contact-panel{
+    height:auto !important;
+    min-height:0 !important;
+    justify-content:flex-start !important;
+    margin-bottom:0 !important;
+    padding:20px !important;
+  }
+
+  #contact .contact-panel h3{
+    margin-bottom:8px !important;
+    font-size:clamp(1.75rem, 7.5vw, 2rem) !important;
+  }
+
+  #contact .contact-panel p{
+    margin-bottom:0 !important;
+  }
+
+  #contact .contact-panel .contact-email-line{
+    margin-top:9px !important;
+    font-size:15px !important;
+  }
+
+  #contact .boxed-mail-form{
+    height:auto !important;
+    min-height:0 !important;
+    padding:20px !important;
+    border-radius:22px !important;
+  }
+
+  #contact .boxed-mail-form h2{
+    margin-bottom:8px !important;
+    font-size:clamp(1.75rem, 7.5vw, 2rem) !important;
+  }
+
+  #contact .boxed-mail-form .form-note{
+    margin-top:0 !important;
+    margin-bottom:10px !important;
+    font-size:14px !important;
+  }
+
+  #contact .contact-form .form-control{
+    margin:6px 0 !important;
+  }
+
+  #contact .contact-form .form-control:not(textarea){
+    height:44px !important;
+  }
+
+  #contact .contact-form textarea.form-control{
+    min-height:112px !important;
+    height:112px !important;
+  }
+}

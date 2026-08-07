@@ -17,6 +17,7 @@
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const hoverCapability = window.matchMedia('(hover: hover)');
   const finePointer = window.matchMedia('(pointer: fine)');
+  const mobileViewport = window.matchMedia('(max-width: 767px)');
 
   const state = {
     mode: null,
@@ -34,7 +35,14 @@
     dragging: false,
     dragTarget: null,
     dragStartX: 0,
-    dragStartProgress: 0
+    dragStartProgress: 0,
+    nativePointerId: null,
+    nativeGesture: null,
+    nativeStartX: 0,
+    nativeStartY: 0,
+    nativeStartScrollLeft: 0,
+    nativeStartIndex: 0,
+    nativeStartTime: 0
   };
 
   function clamp(value, min, max) {
@@ -395,6 +403,102 @@
     state.dragTarget = null;
   }
 
+  function resetNativeGesture(event) {
+    if (event && state.nativePointerId !== null) {
+      try { viewport.releasePointerCapture(state.nativePointerId); } catch (error) {}
+    }
+
+    section.classList.remove('is-native-dragging');
+    state.nativePointerId = null;
+    state.nativeGesture = null;
+  }
+
+  function beginNativeGesture(event) {
+    if (state.mode !== 'native' || !mobileViewport.matches || event.pointerType !== 'touch') return;
+    if (event.target.closest && event.target.closest('a, button, input, textarea, select, label')) return;
+
+    state.nativePointerId = event.pointerId;
+    state.nativeGesture = 'pending';
+    state.nativeStartX = event.clientX;
+    state.nativeStartY = event.clientY;
+    state.nativeStartScrollLeft = viewport.scrollLeft;
+    state.nativeStartIndex = indexForPosition(viewport.scrollLeft);
+    state.nativeStartTime = Date.now();
+  }
+
+  function moveNativeGesture(event) {
+    if (state.nativePointerId !== event.pointerId || state.nativeGesture === null) return;
+
+    const deltaX = event.clientX - state.nativeStartX;
+    const deltaY = event.clientY - state.nativeStartY;
+    const horizontalDistance = Math.abs(deltaX);
+    const verticalDistance = Math.abs(deltaY);
+
+    if (state.nativeGesture === 'pending') {
+      if (verticalDistance > 8 && verticalDistance > horizontalDistance + 4) {
+        state.nativeGesture = 'vertical';
+        return;
+      }
+
+      if (horizontalDistance > 8 && horizontalDistance > verticalDistance + 5) {
+        state.nativeGesture = 'horizontal';
+        section.classList.add('is-native-dragging');
+        try { viewport.setPointerCapture(event.pointerId); } catch (error) {}
+      }
+    }
+
+    if (state.nativeGesture !== 'horizontal') return;
+
+    viewport.scrollLeft = state.nativeStartScrollLeft - deltaX;
+    if (event.cancelable) event.preventDefault();
+  }
+
+  function endNativeGesture(event) {
+    if (state.nativePointerId !== event.pointerId || state.nativeGesture === null) return;
+
+    const gesture = state.nativeGesture;
+    const deltaX = event.clientX - state.nativeStartX;
+    const deltaY = event.clientY - state.nativeStartY;
+    const elapsed = Date.now() - state.nativeStartTime;
+    const horizontalDistance = Math.abs(deltaX);
+    const verticalDistance = Math.abs(deltaY);
+    const reducedBehavior = reducedMotion.matches ? 'auto' : 'smooth';
+
+    if (gesture === 'horizontal') {
+      let targetIndex = indexForPosition(viewport.scrollLeft);
+
+      if (horizontalDistance >= 42 && targetIndex === state.nativeStartIndex) {
+        targetIndex = state.nativeStartIndex + (deltaX < 0 ? 1 : -1);
+      }
+
+      resetNativeGesture(event);
+      goTo(targetIndex, reducedBehavior);
+      return;
+    }
+
+    if (gesture === 'pending' && elapsed <= 500 && horizontalDistance <= 10 && verticalDistance <= 10) {
+      const rect = viewport.getBoundingClientRect();
+      const relativeX = event.clientX - rect.left;
+      const currentIndex = indexForPosition(viewport.scrollLeft);
+
+      resetNativeGesture(event);
+
+      if (relativeX <= rect.width * 0.25) {
+        goTo(currentIndex - 1, reducedBehavior);
+      } else if (relativeX >= rect.width * 0.75) {
+        goTo(currentIndex + 1, reducedBehavior);
+      }
+      return;
+    }
+
+    resetNativeGesture(event);
+  }
+
+  function cancelNativeGesture(event) {
+    if (state.nativePointerId !== event.pointerId) return;
+    resetNativeGesture(event);
+  }
+
   bullets.forEach(function (bullet) {
     bullet.addEventListener('click', function (event) {
       event.stopPropagation();
@@ -409,6 +513,10 @@
   viewport.addEventListener('pointermove', moveDrag);
   viewport.addEventListener('pointerup', endDrag);
   viewport.addEventListener('pointercancel', endDrag);
+  viewport.addEventListener('pointerdown', beginNativeGesture);
+  viewport.addEventListener('pointermove', moveNativeGesture, { passive: false });
+  viewport.addEventListener('pointerup', endNativeGesture);
+  viewport.addEventListener('pointercancel', cancelNativeGesture);
   viewport.addEventListener('pointerleave', function (event) {
     if (state.dragging && event.buttons === 0) endDrag(event);
   });
@@ -424,6 +532,7 @@
   bindMediaQuery(reducedMotion);
   bindMediaQuery(hoverCapability);
   bindMediaQuery(finePointer);
+  bindMediaQuery(mobileViewport);
 
   window.addEventListener('resize', function () { scheduleRebuild(false); }, { passive: true });
   window.addEventListener('orientationchange', function () { scheduleRebuild(true); }, { passive: true });

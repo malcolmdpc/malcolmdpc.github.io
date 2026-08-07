@@ -691,3 +691,40 @@
     transition: none !important;
   }
 }
+
+@media (max-width: 767px) {
+  #methodology[data-methodology-controller="adaptive"] {
+    --methodology-header-top: calc(var(--methodology-navbar-height) + clamp(12px, 1.8svh, 18px));
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .methodology-viewport {
+    overscroll-behavior-x: contain !important;
+    overscroll-behavior-y: auto !important;
+    scroll-behavior: auto !important;
+    touch-action: pan-y pinch-zoom !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-track,
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel,
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__inner,
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__copy,
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__media {
+    touch-action: pan-y pinch-zoom !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__inner {
+    gap: clamp(8px, 2svh, 14px) !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__media,
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__media:hover {
+    margin-top: -14px !important;
+    transform: translateY(-8px) !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"].is-native-dragging .methodology-viewport {
+    scroll-snap-type: none !important;
+    cursor: grabbing;
+    user-select: none;
+  }
+}
