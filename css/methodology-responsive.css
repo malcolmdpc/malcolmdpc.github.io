@@ -1,0 +1,693 @@
+#methodology[data-methodology-controller="adaptive"] {
+  --methodology-navbar-height: 72px;
+  --methodology-stage-height: 100svh;
+  --methodology-header-top: calc(var(--methodology-navbar-height) + clamp(32px, 4svh, 44px));
+  --methodology-header-space: calc(var(--methodology-navbar-height) + clamp(92px, 12svh, 122px));
+  --methodology-footer-space: clamp(70px, 9svh, 96px);
+  --methodology-inline-space: clamp(24px, 5vw, 78px);
+  --methodology-active-color: #ffc200;
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  background: #0d0f0d !important;
+  isolation: isolate;
+  container-type: inline-size;
+  cursor: auto !important;
+}
+
+#methodology[data-methodology-controller="adaptive"] .methodology-stage {
+  position: relative;
+  width: 100%;
+  min-height: max(620px, var(--methodology-stage-height));
+  height: var(--methodology-stage-height);
+  overflow: hidden;
+  background: var(--methodology-active-color);
+  transition: background-color 240ms ease;
+}
+
+#methodology[data-methodology-controller="adaptive"] .methodology-viewport {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+  outline: none;
+  overscroll-behavior: contain;
+}
+
+#methodology[data-methodology-controller="adaptive"] .methodology-viewport:focus-visible {
+  outline: 3px solid #ffc200;
+  outline-offset: -5px;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-track {
+  position: relative !important;
+  inset: auto !important;
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  transform: translate3d(0, 0, 0);
+  transition: none !important;
+  box-sizing: border-box;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-panel {
+  position: relative !important;
+  inset: auto !important;
+  display: flex !important;
+  flex: 0 0 100% !important;
+  align-items: stretch !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: none !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background: var(--panel-color) !important;
+  transform: none;
+  transition: none !important;
+  box-sizing: border-box;
+  scroll-snap-align: start;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__inner {
+  display: grid !important;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(330px, 1.18fr) !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(24px, 4.4vw, 72px) !important;
+  width: min(1480px, 100%) !important;
+  max-width: 1480px !important;
+  min-width: 0 !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  margin: 0 auto !important;
+  padding: var(--methodology-header-space) var(--methodology-inline-space) var(--methodology-footer-space) !important;
+  overflow: visible !important;
+  box-sizing: border-box;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__copy {
+  position: relative !important;
+  inset: auto !important;
+  z-index: 2 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  width: min(100%, 560px) !important;
+  max-width: 560px !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  transform: none !important;
+  isolation: auto !important;
+  box-sizing: border-box;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__number {
+  position: relative !important;
+  inset: auto !important;
+  z-index: auto !important;
+  display: block !important;
+  width: auto !important;
+  margin: 0 0 clamp(18px, 2.6svh, 30px) !important;
+  font-size: clamp(5rem, 8.9vw, 9.35rem) !important;
+  font-weight: 900 !important;
+  font-variant-numeric: tabular-nums lining-nums;
+  line-height: 0.78 !important;
+  letter-spacing: -0.1em !important;
+  text-align: left !important;
+  opacity: 0.15 !important;
+  transform: none !important;
+  pointer-events: none;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-panel h3 {
+  position: relative;
+  z-index: 2;
+  width: 100% !important;
+  max-width: 560px !important;
+  margin: 0 !important;
+  min-height: 0.88em;
+  font-size: clamp(2.5rem, 5.25vw, 6.05rem) !important;
+  font-weight: 900 !important;
+  line-height: 0.88 !important;
+  letter-spacing: -0.075em !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-wrap: balance;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-panel small {
+  position: relative;
+  z-index: 2;
+  display: block !important;
+  width: 100% !important;
+  max-width: 620px !important;
+  min-height: 2.2em;
+  margin: clamp(14px, 2svh, 24px) 0 0 !important;
+  font-size: clamp(0.98rem, 1.35vw, 1.34rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0.035em !important;
+  white-space: normal !important;
+  overflow: visible !important;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-panel p {
+  position: relative;
+  z-index: 2;
+  width: 100% !important;
+  max-width: 560px !important;
+  min-height: 4.32em;
+  margin: clamp(12px, 1.8svh, 22px) 0 0 !important;
+  font-size: clamp(0.98rem, 1.08vw, 1.14rem) !important;
+  line-height: 1.44 !important;
+  overflow: visible !important;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-tech {
+  position: relative;
+  z-index: 2;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  gap: clamp(8px, 1.1vw, 16px) !important;
+  width: 100% !important;
+  max-width: 560px !important;
+  min-height: clamp(58px, 7svh, 76px);
+  margin: clamp(14px, 2svh, 24px) 0 0 !important;
+  overflow: visible !important;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-tech-chip {
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  flex: 0 1 66px !important;
+  min-width: 52px !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  gap: 6px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-tech-chip img,
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-tech-chip svg,
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-tech-chip .process-horizontal-tech-icon--matplotlib {
+  display: block;
+  width: clamp(34px, 3vw, 48px) !important;
+  height: clamp(34px, 3vw, 48px) !important;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-tech-chip span {
+  font-size: clamp(0.65rem, 0.68vw, 0.76rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.08 !important;
+  text-align: center !important;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__media {
+  position: relative !important;
+  inset: auto !important;
+  order: initial !important;
+  display: grid !important;
+  place-items: center !important;
+  justify-self: center !important;
+  align-self: center !important;
+  width: min(100%, 700px) !important;
+  max-width: 700px !important;
+  height: min(58svh, 560px) !important;
+  min-height: 330px !important;
+  max-height: 560px !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  filter: none !important;
+  aspect-ratio: auto !important;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__media:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-static-head {
+  position: absolute !important;
+  inset: var(--methodology-header-top) auto auto var(--methodology-inline-space) !important;
+  z-index: 80 !important;
+  display: block !important;
+  width: auto !important;
+  max-width: min(720px, calc(100% - (2 * var(--methodology-inline-space)))) !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  white-space: normal !important;
+  pointer-events: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  will-change: auto !important;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-static-head h2 {
+  margin: 0 !important;
+  font-family: "Maven Pro", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-size: clamp(1.88rem, 2.5vw, 2.85rem) !important;
+  font-weight: 900 !important;
+  line-height: 0.96 !important;
+  letter-spacing: -0.055em !important;
+  white-space: normal !important;
+  color: #111111 !important;
+  text-shadow: none !important;
+  transition: color 240ms ease, text-shadow 240ms ease;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-static-head h2.pl-section-reveal-pending,
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-static-head h2.pl-section-reveal-visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  transition: color 240ms ease, text-shadow 240ms ease !important;
+  will-change: auto !important;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-panel.is-dark-text small {
+  color: rgba(17, 17, 17, 0.82) !important;
+  text-shadow: none !important;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-panel.is-light-text small {
+  color: #ffd43b !important;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.18) !important;
+}
+
+#methodology[data-methodology-controller="adaptive"].is-light-stage .process-horizontal-static-head h2 {
+  color: #fff8de !important;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35) !important;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-horizontal-guide {
+  position: absolute !important;
+  inset: auto auto clamp(20px, 3.5svh, 34px) 50% !important;
+  z-index: 40 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: min(610px, calc(100% - 48px)) !important;
+  height: 42px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  transform: translateX(-50%) !important;
+  touch-action: none;
+}
+
+#methodology[data-methodology-controller="adaptive"][data-methodology-mode="pinned"] .process-horizontal-track {
+  will-change: transform;
+}
+
+#methodology[data-methodology-controller="adaptive"][data-methodology-mode="pinned"] .methodology-viewport {
+  cursor: grab;
+}
+
+#methodology[data-methodology-controller="adaptive"].is-dragging .methodology-viewport {
+  cursor: grabbing;
+}
+
+#methodology[data-methodology-controller="adaptive"][data-methodology-mode="native"] .methodology-stage {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+}
+
+#methodology[data-methodology-controller="adaptive"][data-methodology-mode="native"] .methodology-viewport {
+  height: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 194, 0, 0.72) rgba(17, 17, 17, 0.18);
+  touch-action: pan-x pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
+#methodology[data-methodology-controller="adaptive"][data-methodology-mode="native"] .methodology-viewport::-webkit-scrollbar {
+  height: 5px;
+}
+
+#methodology[data-methodology-controller="adaptive"][data-methodology-mode="native"] .methodology-viewport::-webkit-scrollbar-track {
+  background: rgba(17, 17, 17, 0.18);
+}
+
+#methodology[data-methodology-controller="adaptive"][data-methodology-mode="native"] .methodology-viewport::-webkit-scrollbar-thumb {
+  background: rgba(255, 194, 0, 0.72);
+  border-radius: 999px;
+}
+
+#methodology[data-methodology-controller="adaptive"][data-methodology-mode="native"] .process-horizontal-track {
+  height: auto !important;
+  min-height: 0 !important;
+  align-items: stretch !important;
+  transform: none !important;
+  will-change: auto !important;
+}
+
+#methodology[data-methodology-controller="adaptive"][data-methodology-mode="native"] .process-horizontal-panel {
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  scroll-snap-stop: always;
+}
+
+#methodology[data-methodology-controller="adaptive"][data-methodology-mode="native"] .process-horizontal-panel__inner {
+  height: auto !important;
+  min-height: max(620px, var(--methodology-stage-height)) !important;
+}
+
+@container (max-width: 930px) {
+  #methodology[data-methodology-controller="adaptive"] {
+    --methodology-header-space: calc(var(--methodology-navbar-height) + clamp(82px, 10svh, 104px));
+    --methodology-footer-space: clamp(54px, 7svh, 72px);
+    --methodology-inline-space: clamp(22px, 4.5vw, 42px);
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__inner {
+    grid-template-columns: minmax(240px, 0.9fr) minmax(290px, 1.1fr) !important;
+    gap: clamp(18px, 3vw, 34px) !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__number {
+    font-size: clamp(4.8rem, 9vw, 6.5rem) !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel h3 {
+    min-height: 1.76em;
+    font-size: clamp(2.35rem, 5.8vw, 4.5rem) !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel p {
+    min-height: 5.76em;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__media {
+    height: min(52svh, 470px) !important;
+    min-height: 300px !important;
+  }
+}
+
+@container (max-width: 760px) {
+  #methodology[data-methodology-controller="adaptive"] {
+    --methodology-header-space: calc(var(--methodology-navbar-height) + clamp(84px, 11svh, 102px));
+    --methodology-footer-space: 46px;
+    --methodology-inline-space: clamp(18px, 5vw, 34px);
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__inner {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto !important;
+    align-content: start !important;
+    gap: clamp(22px, 4svh, 34px) !important;
+    min-height: 0 !important;
+    padding-top: var(--methodology-header-space) !important;
+    padding-bottom: var(--methodology-footer-space) !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__copy {
+    order: 1 !important;
+    justify-self: center !important;
+    width: min(100%, 620px) !important;
+    max-width: 620px !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__media {
+    order: 2 !important;
+    width: min(100%, 620px) !important;
+    height: clamp(300px, 42svh, 440px) !important;
+    min-height: 300px !important;
+    max-height: 440px !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-guide {
+    display: none !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"][data-methodology-mode="native"] .process-horizontal-panel__inner {
+    min-height: 0 !important;
+  }
+}
+
+@media (max-width: 767px), (hover: none) and (pointer: coarse) {
+  html:has(#methodology[data-methodology-controller="adaptive"]),
+  body:has(#methodology[data-methodology-controller="adaptive"]) {
+    overflow-x: hidden !important;
+    touch-action: auto !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] {
+    --methodology-header-top: calc(var(--methodology-navbar-height) + clamp(22px, 3.2svh, 30px));
+    --methodology-header-space: calc(var(--methodology-navbar-height) + clamp(70px, 9svh, 86px));
+    --methodology-footer-space: 38px;
+    --methodology-inline-space: clamp(18px, 5vw, 24px);
+    position: relative !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+    touch-action: pan-x pan-y !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .methodology-stage {
+    min-height: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .methodology-viewport {
+    width: 100% !important;
+    height: auto !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    touch-action: pan-x pan-y !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-track {
+    display: flex !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
+    transform: none !important;
+    touch-action: pan-x pan-y !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    touch-action: pan-x pan-y !important;
+    scroll-snap-align: start !important;
+    scroll-snap-stop: always !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__inner {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto !important;
+    align-content: start !important;
+    gap: clamp(18px, 4svh, 30px) !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: var(--methodology-header-space) var(--methodology-inline-space) var(--methodology-footer-space) !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__copy {
+    order: 1 !important;
+    justify-self: center !important;
+    width: min(100%, 430px) !important;
+    max-width: 430px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+    transform: none !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__number {
+    position: relative !important;
+    inset: auto !important;
+    margin: 0 0 14px !important;
+    font-size: clamp(5rem, 20vw, 6.4rem) !important;
+    line-height: 0.78 !important;
+    transform: none !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel h3 {
+    min-height: 1.8em;
+    font-size: clamp(2.15rem, 9.8vw, 3.3rem) !important;
+    line-height: 0.9 !important;
+    white-space: normal !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel small {
+    min-height: 2.24em;
+    margin-top: 12px !important;
+    font-size: clamp(0.86rem, 3.5vw, 1.04rem) !important;
+    line-height: 1.12 !important;
+    white-space: normal !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel p {
+    min-height: 5.6em;
+    margin-top: 12px !important;
+    font-size: clamp(0.9rem, 3.55vw, 1rem) !important;
+    line-height: 1.4 !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-tech {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin-top: 14px !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-tech-chip {
+    flex: 0 1 52px !important;
+    min-width: 44px !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-tech-chip img,
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-tech-chip svg,
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-tech-chip .process-horizontal-tech-icon--matplotlib {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__media,
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__media:hover {
+    order: 2 !important;
+    justify-self: center !important;
+    width: min(100%, 430px) !important;
+    height: clamp(290px, 40svh, 380px) !important;
+    min-height: 290px !important;
+    max-height: 380px !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-static-head {
+    inset: var(--methodology-header-top) auto auto var(--methodology-inline-space) !important;
+    width: calc(100% - (2 * var(--methodology-inline-space))) !important;
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-static-head h2 {
+    font-size: clamp(1.8rem, 7.4vw, 2.34rem) !important;
+    line-height: 0.95 !important;
+    white-space: normal !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-guide {
+    display: none !important;
+  }
+}
+
+@media (max-height: 760px) and (min-width: 992px) {
+  #methodology[data-methodology-controller="adaptive"] {
+    --methodology-header-space: calc(var(--methodology-navbar-height) + clamp(88px, 12svh, 104px));
+    --methodology-footer-space: clamp(54px, 8svh, 70px);
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__inner {
+    gap: clamp(20px, 3.5vw, 52px) !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__number {
+    font-size: clamp(4.4rem, 7vw, 6.2rem) !important;
+    margin-bottom: 15px !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel h3 {
+    font-size: clamp(2.35rem, 4.8vw, 4.85rem) !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel small,
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel p,
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-tech {
+    margin-top: 10px !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__media {
+    height: min(50svh, 410px) !important;
+    min-height: 290px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #methodology[data-methodology-controller="adaptive"] .methodology-stage,
+  #methodology[data-methodology-controller="adaptive"] .process-horizontal-static-head h2 {
+    transition: none !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .methodology-viewport {
+    scroll-behavior: auto !important;
+  }
+
+  #methodology[data-methodology-controller="adaptive"] .process-card-swiper .card-group,
+  #methodology[data-methodology-controller="adaptive"] .process-card-swiper .card {
+    animation: none !important;
+    transition: none !important;
+  }
+}

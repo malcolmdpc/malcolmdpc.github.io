@@ -14714,16 +14714,21 @@ body:not(.dark-mode) .about-profile-button:focus-visible{
   min-width:25px;
   border:0;
   border-radius:0;
-  background-color:currentColor;
-  -webkit-mask-image:url("../images/patrones/about/icons/move-right.svg");
-  mask-image:url("../images/patrones/about/icons/move-right.svg");
-  mask-mode:luminance;
-  -webkit-mask-repeat:no-repeat;
-  mask-repeat:no-repeat;
-  -webkit-mask-position:center;
-  mask-position:center;
-  -webkit-mask-size:23px 23px;
-  mask-size:23px 23px;
+  background:transparent;
+  color:inherit;
+}
+
+.about-profile-button-icon-methodology svg{
+  display:block;
+  width:23px;
+  height:23px;
+  overflow:visible;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  pointer-events:none;
 }
 
 @media (min-width:992px){

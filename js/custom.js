@@ -708,7 +708,7 @@ $('.color-mode').on('click', function(){
       ]
     },
     {
-      section: '#methodology',
+      section: '#methodology:not([data-methodology-controller="adaptive"])',
       items: [
         'h2',
         '.timeline-scroll-note',
@@ -1281,6 +1281,7 @@ $('.color-mode').on('click', function(){
 
 (function(){
   const horizontalSection=document.querySelector('[data-horizontal-process-section]');
+  if(horizontalSection&&horizontalSection.getAttribute('data-methodology-controller')==='adaptive')return;
   if(!horizontalSection||!window.gsap||!window.ScrollTrigger)return;
   const wrapper=horizontalSection.querySelector('.wrapper');
   const items=wrapper?Array.from(wrapper.querySelectorAll('.item')):[];
@@ -2072,6 +2073,7 @@ $('.color-mode').on('click', function(){
 
   const section = document.querySelector('#methodology[data-horizontal-process-section]');
   if(!section) return;
+  if(section.getAttribute('data-methodology-controller') === 'adaptive') return;
 
   const track = section.querySelector('.process-horizontal-track');
   const panels = Array.from(section.querySelectorAll('.process-horizontal-panel'));
