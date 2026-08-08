@@ -386,7 +386,8 @@
     if (!state.dragging) return;
 
     const delta = (event.clientX - state.dragStartX) / Math.max(1, viewport.clientWidth);
-    scrollToPinnedProgress(state.dragStartProgress - delta, 'auto');
+    const sensitivity = event.pointerType === 'mouse' ? 0.5 : 1;
+    scrollToPinnedProgress(state.dragStartProgress - delta * sensitivity, 'auto');
     event.preventDefault();
   }
 

@@ -13883,6 +13883,9 @@ html body footer.footer .pl-footer-author-note{
   transform:scale(1);
   transition:transform .42s ease,filter .42s ease;
 }
+#projects .github-project-card[data-project-id="storm-events-neural-network"] .project-image-placeholder{
+  aspect-ratio:4 / 5;
+}
 #projects .project-image-placeholder::before{
   content:"";
   position:absolute;

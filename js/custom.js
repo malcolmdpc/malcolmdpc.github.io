@@ -2360,6 +2360,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-group:nth-of-type(3) .repo-filter-group-trigger': 'Model',
         '#projects .repo-filter-group:nth-of-type(4) .repo-filter-group-trigger': 'Domain',
         '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '✓ Supervised Model',
+        '#projects .repo-filter-btn[data-repo-filter="redes-neuronales"]': '⋈ Neural Networks',
         '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '◎ Unsupervised Model',
         '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '≡ Classification',
         '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '⌁ Logistic Regression',
@@ -2782,6 +2783,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
         '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
         '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Modelo supervisado',
+        '#projects .repo-filter-btn[data-repo-filter="redes-neuronales"]': '<span class="filter-icon">⋈</span> Redes Neuronales',
         '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Modelo no supervisado',
         '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Clasificación',
         '#projects .repo-filter-btn[data-repo-filter="clustering"]': '<span class="filter-icon">✣</span> Clustering',
@@ -2943,6 +2945,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
         '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
         '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Supervised model',
+        '#projects .repo-filter-btn[data-repo-filter="redes-neuronales"]': '<span class="filter-icon">⋈</span> Neural Networks',
         '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Unsupervised model',
         '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Classification',
         '#projects .repo-filter-btn[data-repo-filter="clustering"]': '<span class="filter-icon">✣</span> Clustering',
@@ -3202,6 +3205,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="power-bi"]': '<span class="filter-icon">▥</span> Power BI',
         '#projects .repo-filter-btn[data-repo-filter="dax"]': '<span class="filter-icon">ƒx</span> DAX',
         '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Modelo supervisado',
+        '#projects .repo-filter-btn[data-repo-filter="redes-neuronales"]': '<span class="filter-icon">⋈</span> Redes Neuronales',
         '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Modelo no supervisado',
         '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Clasificación',
         '#projects .repo-filter-btn[data-repo-filter="clustering"]': '<span class="filter-icon">✣</span> Clustering',
@@ -3371,6 +3375,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="power-bi"]': '<span class="filter-icon">▥</span> Power BI',
         '#projects .repo-filter-btn[data-repo-filter="dax"]': '<span class="filter-icon">ƒx</span> DAX',
         '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Supervised model',
+        '#projects .repo-filter-btn[data-repo-filter="redes-neuronales"]': '<span class="filter-icon">⋈</span> Neural Networks',
         '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Unsupervised model',
         '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Classification',
         '#projects .repo-filter-btn[data-repo-filter="clustering"]': '<span class="filter-icon">✣</span> Clustering',
@@ -3549,6 +3554,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="power-bi"]': '<span class="filter-icon">▥</span> Power BI',
         '#projects .repo-filter-btn[data-repo-filter="dax"]': '<span class="filter-icon">ƒx</span> DAX',
         '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Modello supervisionato',
+        '#projects .repo-filter-btn[data-repo-filter="redes-neuronales"]': '<span class="filter-icon">⋈</span> Reti neurali',
         '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Modello non supervisionato',
         '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Classificazione',
         '#projects .repo-filter-btn[data-repo-filter="clustering"]': '<span class="filter-icon">✣</span> Clustering',
@@ -4113,6 +4119,7 @@ $('.color-mode').on('click', function(){
       'dax': 'DAX',
       'spotify': 'Spotify',
       'modelo-supervisado': 'Modelo Supervisado',
+      'redes-neuronales': 'Redes Neuronales',
       'modelo-no-supervisado': 'Modelo No Supervisado',
       'clasificacion': 'Clasificación',
       'clustering': 'Clustering',
@@ -4141,6 +4148,7 @@ $('.color-mode').on('click', function(){
       'dax': 'DAX',
       'spotify': 'Spotify',
       'modelo-supervisado': 'Supervised Model',
+      'redes-neuronales': 'Neural Networks',
       'modelo-no-supervisado': 'Unsupervised Model',
       'clasificacion': 'Classification',
       'clustering': 'Clustering',
@@ -4169,6 +4177,7 @@ $('.color-mode').on('click', function(){
       'dax': 'DAX',
       'spotify': 'Spotify',
       'modelo-supervisado': 'Modello supervisionato',
+      'redes-neuronales': 'Reti neurali',
       'modelo-no-supervisado': 'Modello non supervisionato',
       'clasificacion': 'Classificazione',
       'clustering': 'Clustering',
@@ -4375,6 +4384,12 @@ $('.color-mode').on('click', function(){
         "es": "Modelo supervisado",
         "en": "Supervised model",
         "it": "Modello supervisionato"
+    },
+    "redes-neuronales": {
+        "icon": "⋈",
+        "es": "Redes Neuronales",
+        "en": "Neural Networks",
+        "it": "Reti neurali"
     },
     "modelo-no-supervisado": {
         "icon": "◎",
@@ -4740,6 +4755,12 @@ $('.color-mode').on('click', function(){
         "en": "Supervised model",
         "it": "Modello supervisionato"
     },
+    "redes-neuronales": {
+        "icon": "⋈",
+        "es": "Redes Neuronales",
+        "en": "Neural Networks",
+        "it": "Reti neurali"
+    },
     "modelo-no-supervisado": {
         "icon": "◎",
         "es": "Modelo no supervisado",
@@ -5104,6 +5125,12 @@ $('.color-mode').on('click', function(){
         "es": "Modelo supervisado",
         "en": "Supervised model",
         "it": "Modello supervisionato"
+    },
+    "redes-neuronales": {
+        "icon": "⋈",
+        "es": "Redes Neuronales",
+        "en": "Neural Networks",
+        "it": "Reti neurali"
     },
     "modelo-no-supervisado": {
         "icon": "◎",
