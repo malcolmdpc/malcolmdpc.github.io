@@ -15293,3 +15293,35 @@ body:not(.dark-mode) #home{
     height:112px !important;
   }
 }
+
+.about-profile-title{
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-size: clamp(2.7rem, 5.2vw, 5.25rem) !important;
+  line-height: .92 !important;
+  letter-spacing: -0.075em !important;
+  font-weight: 900 !important;
+  color: #f7f3ea !important;
+}
+
+body:not(.dark-mode) .about-profile-title{
+  color:#202126 !important;
+}
+
+@media (max-width:575px){
+  .about-profile-title{
+    font-size: clamp(2.35rem, 12vw, 3.6rem) !important;
+    letter-spacing: -0.06em !important;
+  }
+}
+
+@media (max-width:575px){
+  #projects .github-project-card .github-project-body > .project-link{
+    margin-top:auto !important;
+  }
+}
+
+@media (min-width:1100px){
+  .about-profile-portrait{
+    transform:translateX(clamp(-88px, -5.2vw, -62px));
+  }
+}
