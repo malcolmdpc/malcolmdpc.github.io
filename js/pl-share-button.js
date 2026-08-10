@@ -390,13 +390,13 @@
 
     updateLinks() {
       if (this.whatsapp) {
-        this.whatsapp.href = `https://wa.me/?text=${encodeURIComponent(`${this.shareText} ${this.shareUrl}`)}`;
+        this.whatsapp.href = `https://wa.me/?text=${encodeURIComponent(`${this.shareText}\n${this.shareUrl}`)}`;
       }
       if (this.linkedin) {
         this.linkedin.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(this.shareUrl)}`;
       }
       if (this.x) {
-        this.x.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(this.shareText)}&url=${encodeURIComponent(this.shareUrl)}`;
+        this.x.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${this.shareText}\n${this.shareUrl}`)}`;
       }
     }
 
