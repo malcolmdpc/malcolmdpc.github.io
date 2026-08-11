@@ -15325,3 +15325,16 @@ body:not(.dark-mode) .about-profile-title{
     transform:translateX(clamp(-88px, -5.2vw, -62px));
   }
 }
+
+/* Project cards · frame aligned with About section */
+#projects .github-project-card{
+  border-width:2px !important;
+  border-style:solid !important;
+  border-color:rgba(245,240,232,.58) !important;
+}
+
+@media (hover:hover) and (pointer:fine){
+  #projects .github-project-card:hover{
+    border-color:rgba(245,240,232,.88) !important;
+  }
+}
