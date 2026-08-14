@@ -554,3 +554,29 @@ body.project-static-detail-page .project-static-hero-placeholder::after{
   flex:0 0 auto;
   margin-left:auto;
 }
+
+.related-projects{max-width:760px;margin:1.9rem 0 .5rem;padding-top:1.15rem;border-top:1px solid var(--pd-rule)}
+.related-projects__heading{margin:0 0 1rem;font-family:"IBM Plex Sans",Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:.9rem;line-height:1.25;font-weight:620;letter-spacing:.1em;color:var(--pd-accent);text-transform:uppercase}
+.related-projects__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.85rem;align-items:stretch;padding:.3rem .25rem 1rem}
+.related-project-card{position:relative;min-width:0;overflow:hidden;border:1px solid rgba(255,255,255,.34);border-radius:14px;background:#fbf7ed;box-shadow:0 18px 26px -14px rgba(0,0,0,.52),0 0 0 1px rgba(255,210,31,.05);transition:transform .4s cubic-bezier(.175,.885,0,1),box-shadow .4s cubic-bezier(.175,.885,0,1),border-color .25s ease;isolation:isolate}
+.related-project-card__image{visibility:hidden;width:100%;height:192px;background-size:cover;background-position:center 35%;background-repeat:no-repeat}
+.related-project-card__link{position:absolute;inset:0;z-index:4;display:block;border-radius:14px;text-decoration:none}
+.related-project-card__image-hover{position:absolute;top:0;left:0;width:100%;height:192px;border-radius:14px 14px 0 0;background-size:cover;background-position:center 35%;background-repeat:no-repeat;transition:height .22s ease-out,opacity .22s ease-out}
+.related-project-card__info{position:relative;z-index:2;display:flex;flex-direction:column;min-height:186px;padding:18px 22px 22px;background:#fbf7ed;border-radius:0 0 14px 14px;transition:background-color .22s ease-out}
+.related-project-card__category{display:block;margin:0 0 7px;font-family:"Maven Pro",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:.69rem;line-height:1.25;font-weight:900;letter-spacing:.13em;color:#756656;text-transform:uppercase}
+.related-project-card__title{margin:0 0 9px;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:1.2rem;line-height:1.14;font-weight:900;letter-spacing:-.045em;color:#141518;text-wrap:balance}
+.related-project-card__teaser{margin:0;font-family:"IBM Plex Sans",Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:.88rem;line-height:1.42;font-weight:620;letter-spacing:-.004em;color:#4e493f;text-align:left;hyphens:none;text-wrap:pretty}
+.related-project-card__cta{display:inline-flex;align-items:center;gap:.35rem;margin-top:auto;padding-top:15px;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:.84rem;line-height:1.2;font-weight:800;letter-spacing:-.01em;color:#141518;text-transform:none}
+.related-project-card:hover,.related-project-card:focus-within{transform:scale(1.035);border-color:rgba(255,255,255,.7);box-shadow:0 29px 30px -16px rgba(0,0,0,.66),0 0 0 1px rgba(255,210,31,.12)}
+.related-project-card:hover .related-project-card__image-hover,.related-project-card:focus-within .related-project-card__image-hover{height:100%;opacity:.24}
+.related-project-card:hover .related-project-card__info,.related-project-card:focus-within .related-project-card__info{background-color:rgba(251,247,237,.92)}
+.related-project-card__link:focus-visible{outline:3px solid #ffd21f;outline-offset:-4px}
+.project-light-mode .related-project-card{border-color:rgba(42,38,30,.17);background:#fffdf7;box-shadow:0 16px 22px -13px rgba(0,0,0,.22)}
+.project-light-mode .related-project-card__info{background:#fffdf7}
+.project-light-mode .related-project-card:hover,.project-light-mode .related-project-card:focus-within{border-color:rgba(154,112,0,.38);box-shadow:0 26px 28px -15px rgba(0,0,0,.3)}
+.project-light-mode .related-project-card:hover .related-project-card__info,.project-light-mode .related-project-card:focus-within .related-project-card__info{background-color:rgba(255,253,247,.94)}
+.project-light-mode .related-project-card__cta{color:#121417}
+@media (max-width:900px){.related-projects{margin-top:1.3rem;padding-top:.9rem}.related-projects__grid{grid-template-columns:1fr;gap:1rem;padding-right:.15rem}.related-project-card__image,.related-project-card__image-hover{height:168px}.related-project-card__info{min-height:0;padding:15px 18px 18px}.related-project-card__title{font-size:1.08rem}.related-project-card__teaser{font-size:.8rem}.related-project-card__cta{padding-top:13px;font-size:.8rem}.related-project-card:hover,.related-project-card:focus-within{transform:scale(1.015)}}
+@media (max-width:520px){.related-projects__heading{font-size:.76rem}.related-project-card__image,.related-project-card__image-hover{height:145px}.related-project-card__category{font-size:.61rem}.related-project-card__title{font-size:1rem}.related-project-card__teaser{font-size:.76rem;line-height:1.38}.related-project-card__cta{font-size:.77rem}}
+@media (prefers-reduced-motion:reduce){.related-project-card,.related-project-card__image-hover,.related-project-card__info{transition:none!important}.related-project-card:hover,.related-project-card:focus-within{transform:none}}
+
