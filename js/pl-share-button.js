@@ -31,6 +31,15 @@
       copy: "Copia link",
       copied: "Link copiato",
       prompt: "Copia questo link:"
+    },
+    fr: {
+      main: "Partager le projet",
+      whatsapp: "Partager sur WhatsApp",
+      linkedin: "Partager sur LinkedIn",
+      x: "Partager sur X",
+      copy: "Copier le lien",
+      copied: "Lien copié",
+      prompt: "Copiez ce lien :"
     }
   };
 

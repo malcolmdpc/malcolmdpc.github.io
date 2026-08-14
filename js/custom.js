@@ -173,7 +173,8 @@ $('.color-mode').on('click', function(){
     const mailText = {
       es: {subject:'Contacto desde Patrones Lab', name:'Nombre: ', message:'Mensaje:\n'},
       en: {subject:'Contact from Patrones Lab', name:'Name: ', message:'Message:\n'},
-      it: {subject:'Contatto da Patrones Lab', name:'Nome: ', message:'Messaggio:\n'}
+      it: {subject:'Contatto da Patrones Lab', name:'Nome: ', message:'Messaggio:\n'},
+      fr: {subject:'Contact depuis Patrones Lab', name:'Nom : ', message:'Message :\n'}
     };
     const pack = mailText[language] || mailText.es;
     const subject = encodeURIComponent(pack.subject);
@@ -3126,6 +3127,7 @@ $('.color-mode').on('click', function(){
 
 
 (function(){
+  if(window.PL_STATIC_MULTILINGUAL && window.plPageLanguage === 'fr') return;
   const STORAGE_KEY = 'patronesLabLanguage';
   const FLAGS = {
     es: '/images/patrones/language-flags/flag-es.svg',
@@ -3826,7 +3828,8 @@ $('.color-mode').on('click', function(){
     const labels = {
       es: {subject:'Contacto desde Patrones Lab', name:'Nombre: ', message:'Mensaje:\n'},
       en: {subject:'Contact from Patrones Lab', name:'Name: ', message:'Message:\n'},
-      it: {subject:'Contatto da Patrones Lab', name:'Nome: ', message:'Messaggio:\n'}
+      it: {subject:'Contatto da Patrones Lab', name:'Nome: ', message:'Messaggio:\n'},
+      fr: {subject:'Contact depuis Patrones Lab', name:'Nom : ', message:'Message :\n'}
     };
 
     const data = labels[lang] || labels.es;
@@ -3926,6 +3929,44 @@ $('.color-mode').on('click', function(){
         'Aviation': 'Aviazione',
         'Fraude': 'Frode',
         'Fraud': 'Frode'
+      }
+    },
+    fr: {
+      scroll: 'Explorer',
+      scrollLabel: 'Explorer, aller à la section Méthodologie',
+      networkRepoStrong: 'Dépôt',
+      networkRepoSmall: 'Patrones Lab',
+      networkDashboardStrong: 'Looker Studio',
+      networkDashboardSmall: 'Tableau de bord',
+      networkXSmall: 'Actualités',
+      networkPowerBISmall: 'Tableau de bord',
+      tags: {
+        'Modelo Supervisado': 'Modèle supervisé',
+        'Supervised Model': 'Modèle supervisé',
+        'Modello supervisionato': 'Modèle supervisé',
+        'Modelo No Supervisado': 'Modèle non supervisé',
+        'Unsupervised Model': 'Modèle non supervisé',
+        'Modello non supervisionato': 'Modèle non supervisé',
+        'Clasificación': 'Classification',
+        'Classification': 'Classification',
+        'Classificazione': 'Classification',
+        'Regresión Logística': 'Régression logistique',
+        'Logistic Regression': 'Régression logistique',
+        'Regressione logistica': 'Régression logistique',
+        'Geoespacial': 'Géospatial',
+        'Geospatial': 'Géospatial',
+        'Geospaziale': 'Géospatial',
+        'Fútbol': 'Football',
+        'Soccer': 'Football',
+        'Calcio': 'Football',
+        'Aviación': 'Aviation',
+        'Aviation': 'Aviation',
+        'Aviazione': 'Aviation',
+        'Fraude': 'Fraude',
+        'Fraud': 'Fraude',
+        'Frode': 'Fraude',
+        'Data Analysis': 'Analyse de données',
+        'Simulación': 'Simulation'
       }
     }
   };
@@ -4050,6 +4091,23 @@ $('.color-mode').on('click', function(){
       'snowflake':'Data warehouse',
       'databricks':'Lakehouse',
       'dbt':'Trasformazione dati'
+    },
+    fr: {
+      'power-bi':'Business Intelligence',
+      'qlik':'Analyse visuelle',
+      'looker':'Tableaux de bord',
+      'sql-server':'Base de données',
+      'python':'Analyse et modélisation',
+      'pandas':'Manipulation de données',
+      'numpy':'Calcul numérique',
+      'scikit':'Machine Learning',
+      'matplotlib':'Visualisation de données',
+      'plotly':'Visualisation interactive',
+      'spss':'Modélisation visuelle',
+      'airflow':'Orchestration',
+      'snowflake':'Entrepôt de données',
+      'databricks':'Lakehouse',
+      'dbt':'Transformation de données'
     }
   };
 
@@ -4191,6 +4249,36 @@ $('.color-mode').on('click', function(){
       'futbol': 'Calcio',
       'aviacion': 'Aviazione',
       'fraude': 'Frode'
+    },
+    fr: {
+      'bi': 'BI',
+      'data-analysis': 'Analyse de données',
+      'data-science': 'Science des données',
+      'data-storytelling': 'Narration de données',
+      'machine-learning': 'Machine Learning',
+      'python': 'Python',
+      'spss': 'SPSS',
+      'looker-studio': 'Looker Studio',
+      'dashboard': 'Tableau de bord',
+      'power-bi': 'Power BI',
+      'dax': 'DAX',
+      'spotify': 'Spotify',
+      'modelo-supervisado': 'Modèle supervisé',
+      'redes-neuronales': 'Réseaux neuronaux',
+      'modelo-no-supervisado': 'Modèle non supervisé',
+      'clasificacion': 'Classification',
+      'clustering': 'Clustering',
+      'knn': 'KNN',
+      'k-means': 'K-means',
+      'regresion-logistica': 'Régression logistique',
+      'dbscan': 'DBSCAN',
+      'simulacion': 'Simulation',
+      'geoespacial': 'Géospatial',
+      'airbnb': 'Airbnb',
+      'taxi': 'Taxi',
+      'futbol': 'Football',
+      'aviacion': 'Aviation',
+      'fraude': 'Fraude'
     }
   };
 
@@ -4305,186 +4393,215 @@ $('.color-mode').on('click', function(){
         "icon": "◎",
         "es": "Todos",
         "en": "All",
-        "it": "Tutti"
+        "it": "Tutti",
+        "fr": "Tous"
     },
     "bi": {
         "icon": "▦",
         "es": "BI",
         "en": "BI",
-        "it": "BI"
+        "it": "BI",
+        "fr": "BI"
     },
     "data-analysis": {
         "icon": "▥",
         "es": "Data Analysis",
         "en": "Data analysis",
-        "it": "Analisi dati"
+        "it": "Analisi dati",
+        "fr": "Analyse de données"
     },
     "data-science": {
         "icon": "⚗",
         "es": "Data Science",
         "en": "Data science",
-        "it": "Scienza dei dati"
+        "it": "Scienza dei dati",
+        "fr": "Science des données"
     },
     "data-storytelling": {
         "icon": "✎",
         "es": "Data Storytelling",
         "en": "Data Storytelling",
-        "it": "Data storytelling"
+        "it": "Data storytelling",
+        "fr": "Narration de données"
     },
     "machine-learning": {
         "icon": "✦",
         "es": "Machine Learning",
         "en": "Machine Learning",
-        "it": "Machine Learning"
+        "it": "Machine Learning",
+        "fr": "Machine Learning"
     },
     "python": {
         "icon": "◇",
         "es": "Python",
         "en": "Python",
-        "it": "Python"
+        "it": "Python",
+        "fr": "Python"
     },
     "spss": {
         "icon": "◧",
         "es": "SPSS",
         "en": "SPSS",
-        "it": "SPSS"
+        "it": "SPSS",
+        "fr": "SPSS"
     },
     "looker-studio": {
         "icon": "◉",
         "es": "Looker Studio",
         "en": "Looker Studio",
-        "it": "Looker Studio"
+        "it": "Looker Studio",
+        "fr": "Looker Studio"
     },
     "dashboard": {
         "icon": "▣",
         "es": "Dashboard",
         "en": "Dashboard",
-        "it": "Dashboard"
+        "it": "Dashboard",
+        "fr": "Tableau de bord"
     },
     "power-bi": {
         "icon": "▥",
         "es": "Power BI",
         "en": "Power BI",
-        "it": "Power BI"
+        "it": "Power BI",
+        "fr": "Power BI"
     },
     "dax": {
         "icon": "ƒx",
         "es": "DAX",
         "en": "DAX",
-        "it": "DAX"
+        "it": "DAX",
+        "fr": "DAX"
     },
     "spotify": {
         "icon": "♪",
         "es": "Spotify",
         "en": "Spotify",
-        "it": "Spotify"
+        "it": "Spotify",
+        "fr": "Spotify"
     },
     "modelo-supervisado": {
         "icon": "✓",
         "es": "Modelo supervisado",
         "en": "Supervised model",
-        "it": "Modello supervisionato"
+        "it": "Modello supervisionato",
+        "fr": "Modèle supervisé"
     },
     "redes-neuronales": {
         "icon": "⋈",
         "es": "Redes Neuronales",
         "en": "Neural Networks",
-        "it": "Reti neurali"
+        "it": "Reti neurali",
+        "fr": "Réseaux neuronaux"
     },
     "modelo-no-supervisado": {
         "icon": "◎",
         "es": "Modelo no supervisado",
         "en": "Unsupervised model",
-        "it": "Modello non supervisionato"
+        "it": "Modello non supervisionato",
+        "fr": "Modèle non supervisé"
     },
     "clasificacion": {
         "icon": "≡",
         "es": "Clasificación",
         "en": "Classification",
-        "it": "Classificazione"
+        "it": "Classificazione",
+        "fr": "Classification"
     },
     "clustering": {
         "icon": "✣",
         "es": "Clustering",
         "en": "Clustering",
-        "it": "Clustering"
+        "it": "Clustering",
+        "fr": "Clustering"
     },
     "knn": {
         "icon": "↗",
         "es": "KNN",
         "en": "KNN",
-        "it": "KNN"
+        "it": "KNN",
+        "fr": "KNN"
     },
     "k-means": {
         "icon": "⌖",
         "es": "K-means",
         "en": "K-means",
-        "it": "K-means"
+        "it": "K-means",
+        "fr": "K-means"
     },
     "regresion-logistica": {
         "icon": "⌁",
         "es": "Regresión logística",
         "en": "Logistic regression",
-        "it": "Regressione logistica"
+        "it": "Regressione logistica",
+        "fr": "Régression logistique"
     },
     "dbscan": {
         "icon": "⊙",
         "es": "DBSCAN",
         "en": "DBSCAN",
-        "it": "DBSCAN"
+        "it": "DBSCAN",
+        "fr": "DBSCAN"
     },
     "simulacion": {
         "icon": "∿",
         "es": "Simulación",
         "en": "Simulation",
-        "it": "Simulazione"
+        "it": "Simulazione",
+        "fr": "Simulation"
     },
     "geoespacial": {
         "icon": "⌖",
         "es": "Geoespacial",
         "en": "Geospatial",
-        "it": "Geospaziale"
+        "it": "Geospaziale",
+        "fr": "Géospatial"
     },
     "airbnb": {
         "icon": "⌂",
         "es": "Airbnb",
         "en": "Airbnb",
-        "it": "Airbnb"
+        "it": "Airbnb",
+        "fr": "Airbnb"
     },
     "taxi": {
         "icon": "◆",
         "es": "Taxi",
         "en": "Taxi",
-        "it": "Taxi"
+        "it": "Taxi",
+        "fr": "Taxi"
     },
     "futbol": {
         "icon": "●",
         "es": "Fútbol",
         "en": "Soccer",
-        "it": "Calcio"
+        "it": "Calcio",
+        "fr": "Football"
     },
     "aviacion": {
         "icon": "✈",
         "es": "Aviación",
         "en": "Aviation",
-        "it": "Aviazione"
+        "it": "Aviazione",
+        "fr": "Aviation"
     },
     "fraude": {
         "icon": "!",
         "es": "Fraude",
         "en": "Fraud",
-        "it": "Frode"
+        "it": "Frode",
+        "fr": "Fraude"
     }
 };
 
   function currentLang(){
     if(window.plGetLanguage){
       const lang = window.plGetLanguage();
-      if(['es','en','it'].includes(lang)) return lang;
+      if(['es','en','it','fr'].includes(lang)) return lang;
     }
     try{
       const stored = localStorage.getItem('patronesLabLanguage');
-      if(['es','en','it'].includes(stored)) return stored;
+      if(['es','en','it','fr'].includes(stored)) return stored;
     }catch(e){}
     return 'es';
   }
@@ -4614,7 +4731,7 @@ $('.color-mode').on('click', function(){
   }
 
   function syncProjectFiltersAndTags(lang){
-    const language = ['es','en','it'].includes(lang) ? lang : currentLang();
+    const language = ['es','en','it','fr'].includes(lang) ? lang : currentLang();
 
     renderAllFilterButtons(language);
     renderAllCardTags(language);
@@ -4675,175 +4792,204 @@ $('.color-mode').on('click', function(){
         "icon": "◎",
         "es": "Todos",
         "en": "All",
-        "it": "Tutti"
+        "it": "Tutti",
+        "fr": "Tous"
     },
     "bi": {
         "icon": "▦",
         "es": "BI",
         "en": "BI",
-        "it": "BI"
+        "it": "BI",
+        "fr": "BI"
     },
     "data-analysis": {
         "icon": "▥",
         "es": "Análisis de datos",
         "en": "Data analysis",
-        "it": "Analisi dati"
+        "it": "Analisi dati",
+        "fr": "Analyse de données"
     },
     "data-science": {
         "icon": "⚗",
         "es": "Ciencia de datos",
         "en": "Data science",
-        "it": "Scienza dei dati"
+        "it": "Scienza dei dati",
+        "fr": "Science des données"
     },
     "data-storytelling": {
         "icon": "✎",
         "es": "Data Storytelling",
         "en": "Data Storytelling",
-        "it": "Data Storytelling"
+        "it": "Data Storytelling",
+        "fr": "Narration de données"
     },
     "machine-learning": {
         "icon": "✦",
         "es": "Machine Learning",
         "en": "Machine Learning",
-        "it": "Machine Learning"
+        "it": "Machine Learning",
+        "fr": "Machine Learning"
     },
     "python": {
         "icon": "◇",
         "es": "Python",
         "en": "Python",
-        "it": "Python"
+        "it": "Python",
+        "fr": "Python"
     },
     "spss": {
         "icon": "◧",
         "es": "SPSS",
         "en": "SPSS",
-        "it": "SPSS"
+        "it": "SPSS",
+        "fr": "SPSS"
     },
     "looker-studio": {
         "icon": "◉",
         "es": "Looker Studio",
         "en": "Looker Studio",
-        "it": "Looker Studio"
+        "it": "Looker Studio",
+        "fr": "Looker Studio"
     },
     "dashboard": {
         "icon": "▣",
         "es": "Dashboard",
         "en": "Dashboard",
-        "it": "Dashboard"
+        "it": "Dashboard",
+        "fr": "Tableau de bord"
     },
     "power-bi": {
         "icon": "▥",
         "es": "Power BI",
         "en": "Power BI",
-        "it": "Power BI"
+        "it": "Power BI",
+        "fr": "Power BI"
     },
     "dax": {
         "icon": "ƒx",
         "es": "DAX",
         "en": "DAX",
-        "it": "DAX"
+        "it": "DAX",
+        "fr": "DAX"
     },
     "spotify": {
         "icon": "♪",
         "es": "Spotify",
         "en": "Spotify",
-        "it": "Spotify"
+        "it": "Spotify",
+        "fr": "Spotify"
     },
     "modelo-supervisado": {
         "icon": "✓",
         "es": "Modelo supervisado",
         "en": "Supervised model",
-        "it": "Modello supervisionato"
+        "it": "Modello supervisionato",
+        "fr": "Modèle supervisé"
     },
     "redes-neuronales": {
         "icon": "⋈",
         "es": "Redes Neuronales",
         "en": "Neural Networks",
-        "it": "Reti neurali"
+        "it": "Reti neurali",
+        "fr": "Réseaux neuronaux"
     },
     "modelo-no-supervisado": {
         "icon": "◎",
         "es": "Modelo no supervisado",
         "en": "Unsupervised model",
-        "it": "Modello non supervisionato"
+        "it": "Modello non supervisionato",
+        "fr": "Modèle non supervisé"
     },
     "clasificacion": {
         "icon": "≡",
         "es": "Clasificación",
         "en": "Classification",
-        "it": "Classificazione"
+        "it": "Classificazione",
+        "fr": "Classification"
     },
     "clustering": {
         "icon": "✣",
         "es": "Clustering",
         "en": "Clustering",
-        "it": "Clustering"
+        "it": "Clustering",
+        "fr": "Clustering"
     },
     "knn": {
         "icon": "↗",
         "es": "KNN",
         "en": "KNN",
-        "it": "KNN"
+        "it": "KNN",
+        "fr": "KNN"
     },
     "k-means": {
         "icon": "⌖",
         "es": "K-means",
         "en": "K-means",
-        "it": "K-means"
+        "it": "K-means",
+        "fr": "K-means"
     },
     "regresion-logistica": {
         "icon": "⌁",
         "es": "Regresión logística",
         "en": "Logistic regression",
-        "it": "Regressione logistica"
+        "it": "Regressione logistica",
+        "fr": "Régression logistique"
     },
     "dbscan": {
         "icon": "⊙",
         "es": "DBSCAN",
         "en": "DBSCAN",
-        "it": "DBSCAN"
+        "it": "DBSCAN",
+        "fr": "DBSCAN"
     },
     "simulacion": {
         "icon": "∿",
         "es": "Simulación",
         "en": "Simulation",
-        "it": "Simulazione"
+        "it": "Simulazione",
+        "fr": "Simulation"
     },
     "geoespacial": {
         "icon": "⌖",
         "es": "Geoespacial",
         "en": "Geospatial",
-        "it": "Geospaziale"
+        "it": "Geospaziale",
+        "fr": "Géospatial"
     },
     "airbnb": {
         "icon": "⌂",
         "es": "Airbnb",
         "en": "Airbnb",
-        "it": "Airbnb"
+        "it": "Airbnb",
+        "fr": "Airbnb"
     },
     "taxi": {
         "icon": "◆",
         "es": "Taxi",
         "en": "Taxi",
-        "it": "Taxi"
+        "it": "Taxi",
+        "fr": "Taxi"
     },
     "futbol": {
         "icon": "●",
         "es": "Fútbol",
         "en": "Soccer",
-        "it": "Calcio"
+        "it": "Calcio",
+        "fr": "Football"
     },
     "aviacion": {
         "icon": "✈",
         "es": "Aviación",
         "en": "Aviation",
-        "it": "Aviazione"
+        "it": "Aviazione",
+        "fr": "Aviation"
     },
     "fraude": {
         "icon": "!",
         "es": "Fraude",
         "en": "Fraud",
-        "it": "Frode"
+        "it": "Frode",
+        "fr": "Fraude"
     }
 };
   let isSyncing = false;
@@ -4851,12 +4997,12 @@ $('.color-mode').on('click', function(){
   function getLang(){
     if(window.plGetLanguage){
       const lang = window.plGetLanguage();
-      if(['es','en','it'].includes(lang)) return lang;
+      if(['es','en','it','fr'].includes(lang)) return lang;
     }
 
     try{
       const stored = localStorage.getItem('patronesLabLanguage');
-      if(['es','en','it'].includes(stored)) return stored;
+      if(['es','en','it','fr'].includes(stored)) return stored;
     }catch(e){}
 
     return document.documentElement.lang || 'es';
@@ -4954,7 +5100,7 @@ $('.color-mode').on('click', function(){
 
     isSyncing = true;
 
-    const language = ['es','en','it'].includes(lang) ? lang : getLang();
+    const language = ['es','en','it','fr'].includes(lang) ? lang : getLang();
 
     renderFilters(language);
     renderCardTags(language);
@@ -4964,7 +5110,7 @@ $('.color-mode').on('click', function(){
   }
 
   function syncSoon(lang){
-    const language = ['es','en','it'].includes(lang) ? lang : getLang();
+    const language = ['es','en','it','fr'].includes(lang) ? lang : getLang();
 
     sync(language);
 
@@ -5046,191 +5192,220 @@ $('.color-mode').on('click', function(){
         "icon": "◎",
         "es": "Todos",
         "en": "All",
-        "it": "Tutti"
+        "it": "Tutti",
+        "fr": "Tous"
     },
     "bi": {
         "icon": "▦",
         "es": "BI",
         "en": "BI",
-        "it": "BI"
+        "it": "BI",
+        "fr": "BI"
     },
     "data-analysis": {
         "icon": "▥",
         "es": "Análisis de datos",
         "en": "Data analysis",
-        "it": "Analisi dati"
+        "it": "Analisi dati",
+        "fr": "Analyse de données"
     },
     "data-science": {
         "icon": "⚗",
         "es": "Ciencia de datos",
         "en": "Data science",
-        "it": "Scienza dei dati"
+        "it": "Scienza dei dati",
+        "fr": "Science des données"
     },
     "data-storytelling": {
         "icon": "✎",
         "es": "Data Storytelling",
         "en": "Data Storytelling",
-        "it": "Data Storytelling"
+        "it": "Data Storytelling",
+        "fr": "Narration de données"
     },
     "machine-learning": {
         "icon": "✦",
         "es": "Machine Learning",
         "en": "Machine Learning",
-        "it": "Machine Learning"
+        "it": "Machine Learning",
+        "fr": "Machine Learning"
     },
     "python": {
         "icon": "◇",
         "es": "Python",
         "en": "Python",
-        "it": "Python"
+        "it": "Python",
+        "fr": "Python"
     },
     "spss": {
         "icon": "◧",
         "es": "SPSS",
         "en": "SPSS",
-        "it": "SPSS"
+        "it": "SPSS",
+        "fr": "SPSS"
     },
     "looker-studio": {
         "icon": "◉",
         "es": "Looker Studio",
         "en": "Looker Studio",
-        "it": "Looker Studio"
+        "it": "Looker Studio",
+        "fr": "Looker Studio"
     },
     "dashboard": {
         "icon": "▣",
         "es": "Dashboard",
         "en": "Dashboard",
-        "it": "Dashboard"
+        "it": "Dashboard",
+        "fr": "Tableau de bord"
     },
     "power-bi": {
         "icon": "▥",
         "es": "Power BI",
         "en": "Power BI",
-        "it": "Power BI"
+        "it": "Power BI",
+        "fr": "Power BI"
     },
     "dax": {
         "icon": "ƒx",
         "es": "DAX",
         "en": "DAX",
-        "it": "DAX"
+        "it": "DAX",
+        "fr": "DAX"
     },
     "spotify": {
         "icon": "♪",
         "es": "Spotify",
         "en": "Spotify",
-        "it": "Spotify"
+        "it": "Spotify",
+        "fr": "Spotify"
     },
     "modelo-supervisado": {
         "icon": "✓",
         "es": "Modelo supervisado",
         "en": "Supervised model",
-        "it": "Modello supervisionato"
+        "it": "Modello supervisionato",
+        "fr": "Modèle supervisé"
     },
     "redes-neuronales": {
         "icon": "⋈",
         "es": "Redes Neuronales",
         "en": "Neural Networks",
-        "it": "Reti neurali"
+        "it": "Reti neurali",
+        "fr": "Réseaux neuronaux"
     },
     "modelo-no-supervisado": {
         "icon": "◎",
         "es": "Modelo no supervisado",
         "en": "Unsupervised model",
-        "it": "Modello non supervisionato"
+        "it": "Modello non supervisionato",
+        "fr": "Modèle non supervisé"
     },
     "clasificacion": {
         "icon": "≡",
         "es": "Clasificación",
         "en": "Classification",
-        "it": "Classificazione"
+        "it": "Classificazione",
+        "fr": "Classification"
     },
     "clustering": {
         "icon": "✣",
         "es": "Clustering",
         "en": "Clustering",
-        "it": "Clustering"
+        "it": "Clustering",
+        "fr": "Clustering"
     },
     "knn": {
         "icon": "↗",
         "es": "KNN",
         "en": "KNN",
-        "it": "KNN"
+        "it": "KNN",
+        "fr": "KNN"
     },
     "k-means": {
         "icon": "⌖",
         "es": "K-means",
         "en": "K-means",
-        "it": "K-means"
+        "it": "K-means",
+        "fr": "K-means"
     },
     "regresion-logistica": {
         "icon": "⌁",
         "es": "Regresión logística",
         "en": "Logistic regression",
-        "it": "Regressione logistica"
+        "it": "Regressione logistica",
+        "fr": "Régression logistique"
     },
     "dbscan": {
         "icon": "⊙",
         "es": "DBSCAN",
         "en": "DBSCAN",
-        "it": "DBSCAN"
+        "it": "DBSCAN",
+        "fr": "DBSCAN"
     },
     "simulacion": {
         "icon": "∿",
         "es": "Simulación",
         "en": "Simulation",
-        "it": "Simulazione"
+        "it": "Simulazione",
+        "fr": "Simulation"
     },
     "geoespacial": {
         "icon": "⌖",
         "es": "Geoespacial",
         "en": "Geospatial",
-        "it": "Geospaziale"
+        "it": "Geospaziale",
+        "fr": "Géospatial"
     },
     "airbnb": {
         "icon": "⌂",
         "es": "Airbnb",
         "en": "Airbnb",
-        "it": "Airbnb"
+        "it": "Airbnb",
+        "fr": "Airbnb"
     },
     "taxi": {
         "icon": "◆",
         "es": "Taxi",
         "en": "Taxi",
-        "it": "Taxi"
+        "it": "Taxi",
+        "fr": "Taxi"
     },
     "futbol": {
         "icon": "●",
         "es": "Fútbol",
         "en": "Soccer",
-        "it": "Calcio"
+        "it": "Calcio",
+        "fr": "Football"
     },
     "aviacion": {
         "icon": "✈",
         "es": "Aviación",
         "en": "Aviation",
-        "it": "Aviazione"
+        "it": "Aviazione",
+        "fr": "Aviation"
     },
     "fraude": {
         "icon": "!",
         "es": "Fraude",
         "en": "Fraud",
-        "it": "Frode"
+        "it": "Frode",
+        "fr": "Fraude"
     }
 };
 
   function getLang(){
     if(window.plGetLanguage){
       const lang = window.plGetLanguage();
-      if(['es','en','it'].includes(lang)) return lang;
+      if(['es','en','it','fr'].includes(lang)) return lang;
     }
 
     try{
       const stored = localStorage.getItem('patronesLabLanguage');
-      if(['es','en','it'].includes(stored)) return stored;
+      if(['es','en','it','fr'].includes(stored)) return stored;
     }catch(e){}
 
     const htmlLang = document.documentElement.lang;
-    return ['es','en','it'].includes(htmlLang) ? htmlLang : 'es';
+    return ['es','en','it','fr'].includes(htmlLang) ? htmlLang : 'es';
   }
 
   function labelFor(token, lang){
@@ -5380,7 +5555,7 @@ $('.color-mode').on('click', function(){
   }
 
   function sync(lang){
-    const language = ['es','en','it'].includes(lang) ? lang : getLang();
+    const language = ['es','en','it','fr'].includes(lang) ? lang : getLang();
 
     removeInjectedProjectTags();
     renderFilters(language);
@@ -5398,7 +5573,7 @@ $('.color-mode').on('click', function(){
   }
 
   function syncSoon(lang){
-    const language = ['es','en','it'].includes(lang) ? lang : getLang();
+    const language = ['es','en','it','fr'].includes(lang) ? lang : getLang();
 
     sync(language);
 
@@ -5482,7 +5657,8 @@ $('.color-mode').on('click', function(){
   const footerTexts = {
     es: "Patrones Lab® · Generando conocimiento a partir de los datos · por Malcolm Di Pietro Cagliari",
     en: "Patrones Lab® · Generating knowledge from data · by Malcolm Di Pietro Cagliari",
-    it: "Patrones Lab® · Generando conoscenza a partire dai dati · di Malcolm Di Pietro Cagliari"
+    it: "Patrones Lab® · Generando conoscenza a partire dai dati · di Malcolm Di Pietro Cagliari",
+    fr: "Patrones Lab® · Transformer les données en connaissances · par Malcolm Di Pietro Cagliari"
   };
 
   function currentLang(){
@@ -5620,6 +5796,17 @@ $('.color-mode').on('click', function(){
         "Consegna e apprendimento"
       ]
     ]
+  },
+  "fr": {
+    "title": "Cycle de vie des données",
+    "steps": [
+      ["Exploration", "Contexte et objectif"],
+      ["Sources", "Données et diagnostic"],
+      ["Préparation", "Base analytique"],
+      ["Modélisation", "Tendances et signaux"],
+      ["Validation", "Contrôle et confiance"],
+      ["Publication", "Livraison et apprentissage"]
+    ]
   }
 };
 
@@ -5680,7 +5867,8 @@ $('.color-mode').on('click', function(){
   const texts = {
     es: "Análisis de viajes de taxi en Chicago con foco en ubicación geográfica, movimientos entre puntos, predominios de zonas y rutas.",
     en: "Geospatial analysis of Chicago taxi trips, focused on identifying activity hotspots, urban routes and the territorial concentration of demand.",
-    it: "Analisi geospaziale delle corse taxi a Chicago, orientata a individuare le zone di maggiore attività, i percorsi urbani e la concentrazione territoriale della domanda."
+    it: "Analisi geospaziale delle corse taxi a Chicago, orientata a individuare le zone di maggiore attività, i percorsi urbani e la concentrazione territoriale della domanda.",
+    fr: "Analyse géospatiale des trajets en taxi à Chicago, centrée sur les zones de forte activité, les itinéraires urbains et la concentration territoriale de la demande."
   };
 
   function getLanguage(){
@@ -5748,13 +5936,15 @@ $('.color-mode').on('click', function(){
   const labels = {
     es: 'datos:',
     en: 'data:',
-    it: 'dati:'
+    it: 'dati:',
+    fr: 'données:'
   };
 
   const ariaLabels = {
     es: 'Año de los datos',
     en: 'Data year',
-    it: 'Anno dei dati'
+    it: 'Anno dei dati',
+    fr: 'Année des données'
   };
 
   function getLang(){
@@ -5801,7 +5991,8 @@ $('.color-mode').on('click', function(){
   const detailCopy = {
     es: { cta: 'Ver detalle', ariaKey: 'detailAriaEs' },
     en: { cta: 'View details', ariaKey: 'detailAriaEn' },
-    it: { cta: 'Vedi dettaglio', ariaKey: 'detailAriaIt' }
+    it: { cta: 'Vedi dettaglio', ariaKey: 'detailAriaIt' },
+    fr: { cta: 'Voir le détail', ariaKey: 'detailAriaFr' }
   };
 
   function getLang(){

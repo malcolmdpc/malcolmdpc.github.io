@@ -654,4 +654,222 @@
     <loc>https://malcolmdpc.github.io/it/progetti/rete-neurale-danni-eventi-meteorologici.html</loc>
     <lastmod>2026-08-14</lastmod>
   </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/fr/</loc>
+    <lastmod>2026-08-15</lastmod>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/fr/projets/analyse-vols-iles-baleares.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/analisis-vuelos-islas-baleares/p01-vuelos-baleares-mobile-banner.webp</image:loc>
+      <image:title>Analyse des vols aux Îles Baléares</image:title>
+      <image:caption>Image du projet 1 de Patrones Lab : Analyse des vols aux Îles Baléares.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/analisis-vuelos-islas-baleares/p01-vuelos-baleares-mobile.webp</image:loc>
+      <image:title>Analyse des vols aux Îles Baléares</image:title>
+      <image:caption>Image du projet 1 de Patrones Lab : Analyse des vols aux Îles Baléares.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/fr/projets/analyse-hebergements-airbnb-londres.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/airbnb-london-analysis/p02-airbnb-londres-mobile-banner.webp</image:loc>
+      <image:title>Analyse des hébergements Airbnb à Londres</image:title>
+      <image:caption>Image du projet 2 de Patrones Lab : Analyse des hébergements Airbnb à Londres.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/airbnb-london-analysis/p02-airbnb-londres-mobile.webp</image:loc>
+      <image:title>Analyse des hébergements Airbnb à Londres</image:title>
+      <image:caption>Image du projet 2 de Patrones Lab : Analyse des hébergements Airbnb à Londres.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/fr/projets/analyse-trajets-taxi-chicago.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/analisis-viajes-taxi-chicago/p03-taxi-chicago-mobile-banner.webp</image:loc>
+      <image:title>Analyse des trajets en taxi à Chicago</image:title>
+      <image:caption>Image du projet 3 de Patrones Lab : Analyse des trajets en taxi à Chicago.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/analisis-viajes-taxi-chicago/p03-taxi-chicago-mobile.webp</image:loc>
+      <image:title>Analyse des trajets en taxi à Chicago</image:title>
+      <image:caption>Image du projet 3 de Patrones Lab : Analyse des trajets en taxi à Chicago.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/fr/projets/machine-learning-airbnb-londres.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-airbnb-london/p04-ml-airbnb-mobile-banner.webp</image:loc>
+      <image:title>Modèle Machine Learning · Airbnb à Londres</image:title>
+      <image:caption>Image du projet 4 de Patrones Lab : Modèle Machine Learning · Airbnb à Londres.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-airbnb-london/p04-ml-airbnb-mobile.webp</image:loc>
+      <image:title>Modèle Machine Learning · Airbnb à Londres</image:title>
+      <image:caption>Image du projet 4 de Patrones Lab : Modèle Machine Learning · Airbnb à Londres.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/fr/projets/dashboard-looker-studio-taxis-chicago.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/dashboard-looker-taxi-trips-chicago/p05-looker-taxi-mobile-banner.webp</image:loc>
+      <image:title>Dashboard Looker Studio · Trajets en taxi à Chicago</image:title>
+      <image:caption>Image du projet 5 de Patrones Lab : Dashboard Looker Studio · Trajets en taxi à Chicago.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/dashboard-looker-taxi-trips-chicago/p05-looker-taxi-mobile.webp</image:loc>
+      <image:title>Dashboard Looker Studio · Trajets en taxi à Chicago</image:title>
+      <image:caption>Image du projet 5 de Patrones Lab : Dashboard Looker Studio · Trajets en taxi à Chicago.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/fr/projets/machine-learning-buts-attendus-xg.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-goles-esperados-xg/p06-xg-futbol-mobile-banner.webp</image:loc>
+      <image:title>Modèle Machine Learning · Buts attendus (xG)</image:title>
+      <image:caption>Image du projet 6 de Patrones Lab : Modèle Machine Learning · Buts attendus (xG).</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-goles-esperados-xg/p06-xg-futbol-mobile.webp</image:loc>
+      <image:title>Modèle Machine Learning · Buts attendus (xG)</image:title>
+      <image:caption>Image du projet 6 de Patrones Lab : Modèle Machine Learning · Buts attendus (xG).</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/probabilidades-futbol-peligro-esperado-xt/p07-futbol-xt-mobile-banner.webp</image:loc>
+      <image:title>Probabilités dans le football · Danger attendu (xT)</image:title>
+      <image:caption>Image du projet 7 de Patrones Lab : Probabilités dans le football · Danger attendu (xT).</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/probabilidades-futbol-peligro-esperado-xt/p07-futbol-xt-mobile.webp</image:loc>
+      <image:title>Probabilités dans le football · Danger attendu (xT)</image:title>
+      <image:caption>Image du projet 7 de Patrones Lab : Probabilités dans le football · Danger attendu (xT).</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/fr/projets/machine-learning-fraude-kmeans.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-fraude-kmeans/p08-fraude-kmeans-mobile-banner.webp</image:loc>
+      <image:title>Modèle Machine Learning · Fraude avec K-means</image:title>
+      <image:caption>Image du projet 8 de Patrones Lab : Modèle Machine Learning · Fraude avec K-means.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-fraude-kmeans/p08-fraude-kmeans-mobile.webp</image:loc>
+      <image:title>Modèle Machine Learning · Fraude avec K-means</image:title>
+      <image:caption>Image du projet 8 de Patrones Lab : Modèle Machine Learning · Fraude avec K-means.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/fr/projets/machine-learning-fraude-regression-logistique.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-fraude-regresion-logistica/p09-fraude-logit-mobile-banner.webp</image:loc>
+      <image:title>Modèle Machine Learning · Fraude avec régression logistique</image:title>
+      <image:caption>Image du projet 9 de Patrones Lab : Modèle Machine Learning · Fraude avec régression logistique.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-fraude-regresion-logistica/p09-fraude-logit-mobile.webp</image:loc>
+      <image:title>Modèle Machine Learning · Fraude avec régression logistique</image:title>
+      <image:caption>Image du projet 9 de Patrones Lab : Modèle Machine Learning · Fraude avec régression logistique.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/fr/projets/machine-learning-fraude-dbscan.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-fraude-dbscan/p10-fraude-dbscan-mobile-banner.webp</image:loc>
+      <image:title>Modèle Machine Learning · Fraude avec DBSCAN</image:title>
+      <image:caption>Image du projet 10 de Patrones Lab : Modèle Machine Learning · Fraude avec DBSCAN.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-fraude-dbscan/p10-fraude-dbscan-mobile.webp</image:loc>
+      <image:title>Modèle Machine Learning · Fraude avec DBSCAN</image:title>
+      <image:caption>Image du projet 10 de Patrones Lab : Modèle Machine Learning · Fraude avec DBSCAN.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/fr/projets/statistiques-mondial-2022-radar-percentiles.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/estadisticas-mundial-futbol-qatar-2022/p11-mundial-2022-radar-percentiles-mobile-banner.webp</image:loc>
+      <image:title>Statistiques de la Coupe du monde 2022 · Radar de percentiles</image:title>
+      <image:caption>Image du projet 11 de Patrones Lab : Statistiques de la Coupe du monde 2022 · Radar de percentiles.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/estadisticas-mundial-futbol-qatar-2022/p11-mundial-2022-radar-percentiles-mobile.webp</image:loc>
+      <image:title>Statistiques de la Coupe du monde 2022 · Radar de percentiles</image:title>
+      <image:caption>Image du projet 11 de Patrones Lab : Statistiques de la Coupe du monde 2022 · Radar de percentiles.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/fr/projets/analyse-geospatiale-taxis-chicago.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/analisis-geoespacial-viajes-taxi/p12-taxi-geo-mobile-banner.webp</image:loc>
+      <image:title>Analyse géospatiale des trajets en taxi</image:title>
+      <image:caption>Image du projet 12 de Patrones Lab : Analyse géospatiale des trajets en taxi.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/analisis-geoespacial-viajes-taxi/p12-taxi-geo-mobile.webp</image:loc>
+      <image:title>Analyse géospatiale des trajets en taxi</image:title>
+      <image:caption>Image du projet 12 de Patrones Lab : Analyse géospatiale des trajets en taxi.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/fr/projets/dashboard-power-bi-spotify-charts.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/dashboard-power-bi-spotify-charts/p13-spotify-powerbi-mobile-banner.webp</image:loc>
+      <image:title>Dashboard Power BI · Spotify Charts</image:title>
+      <image:caption>Image du projet 13 de Patrones Lab : Dashboard Power BI · Spotify Charts.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/dashboard-power-bi-spotify-charts/p13-spotify-powerbi-mobile.webp</image:loc>
+      <image:title>Dashboard Power BI · Spotify Charts</image:title>
+      <image:caption>Image du projet 13 de Patrones Lab : Dashboard Power BI · Spotify Charts.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/fr/projets/dashboard-power-bi-depenses-fournisseurs.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/dashboard-power-bi-prov-gastos-desc/p14-proveedores-powerbi-mobile-banner.webp</image:loc>
+      <image:title>Dashboard Power BI · Analyse des dépenses</image:title>
+      <image:caption>Image du projet 14 de Patrones Lab : Dashboard Power BI · Analyse des dépenses.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/dashboard-power-bi-prov-gastos-desc/p14-proveedores-powerbi-mobile.webp</image:loc>
+      <image:title>Dashboard Power BI · Analyse des dépenses</image:title>
+      <image:caption>Image du projet 14 de Patrones Lab : Dashboard Power BI · Analyse des dépenses.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/fr/projets/simulation-monte-carlo-mondial-2026.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/simulacion-montecarlo-mundial-2026/p15-montecarlo-mundial-2026-mobile-banner.webp</image:loc>
+      <image:title>Simulation de Monte-Carlo · Prédictions Coupe du monde 2026</image:title>
+      <image:caption>Image du projet 15 de Patrones Lab : Simulation de Monte-Carlo · Prédictions Coupe du monde 2026.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://malcolmdpc.github.io/images/patrones/projects/simulacion-montecarlo-mundial-2026/p15-montecarlo-mundial-2026-mobile.webp</image:loc>
+      <image:title>Simulation de Monte-Carlo · Prédictions Coupe du monde 2026</image:title>
+      <image:caption>Image du projet 15 de Patrones Lab : Simulation de Monte-Carlo · Prédictions Coupe du monde 2026.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/fr/projets/reseaux-neuronaux-dommages-evenements-meteo.html</loc>
+    <lastmod>2026-08-15</lastmod>
+  </url>
 </urlset>

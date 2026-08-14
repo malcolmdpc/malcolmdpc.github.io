@@ -1,6 +1,6 @@
 (function(){
   "use strict";
-  var supported = {es:true,en:true,it:true};
+  var supported = {es:true,en:true,it:true,fr:true};
   var pageLanguage = (document.documentElement.lang || "es").toLowerCase().split("-")[0];
   if(!supported[pageLanguage]) pageLanguage = "es";
   window.PL_STATIC_MULTILINGUAL = true;
