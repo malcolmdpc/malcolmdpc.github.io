@@ -1,12 +1,12 @@
 (function(){
+  "use strict";
+
   var languageKey = "patronesLabLanguage";
   var modeKey = "patrones-lab-color-mode";
-  var flagPaths = {
-    es: "/images/patrones/language-flags/flag-es.svg",
-    en: "/images/patrones/language-flags/flag-us.svg",
-    it: "/images/patrones/language-flags/flag-it.svg",
-    fr: "/images/patrones/language-flags/flag-fr.svg"
-  };
+  var pageLanguage = (document.documentElement.lang || "es").toLowerCase().split("-")[0];
+  var supportedLanguages = {es:true,en:true,it:true,fr:true};
+  if(!supportedLanguages[pageLanguage]) pageLanguage = "es";
+
   var mobileRepoLabels = {
     es: "Entrar al Repo",
     en: "Open Repo",
@@ -14,354 +14,17 @@
     fr: "Ouvrir le dépôt"
   };
   var mobileRepoMedia = window.matchMedia("(max-width: 767px)");
-  var text = {
-    es: {
-      back: "⮌ Volver",
-      nextProject: "Siguiente ➜",
-      nextProjectAria: "Ir al siguiente proyecto",
-      kicker: "Proyecto 01 · Analítica de datos",
-      title: "Análisis de Vuelos en las Islas Baleares",
-      status: "✅ publicado",
-      dataLabel: "datos:",
-      lead: "Análisis de tráfico aéreo en España con datos públicos de AENA, con foco en volúmenes, patrones por aeropuerto y diferencias entre categorías.",
-      tagPython: "Python",
-      tagDataStorytelling: "Narrativa de datos",
-      tagAviation: "Aviación",
-      tagDataAnalysis: "Análisis de datos",
-      tagBI: "BI",
-      techPython: "Python",
-      techPandas: "Pandas",
-      techPlotly: "Plotly",
-      techSPSS: "SPSS",
-      techScikitLearn: "Scikit-learn",
-      techLookerStudio: "Looker Studio",
-      techPowerBI: "Power BI",
-      techAirbnb: "Airbnb",
-      techDataAnalysis: "Análisis de datos",
-      techAviation: "Aviación",
-      techBI: "BI",
-      techDataScience: "Ciencia de datos",
-      techClassification: "Clasificación",
-      techClustering: "Clustering",
-      techDashboard: "Dashboard",
-      techDataStorytelling: "Narrativa de datos",
-      techDBSCAN: "DBSCAN",
-      techFraud: "Fraude",
-      techFootball: "Fútbol",
-      techGeospatial: "Geoespacial",
-      techKMeans: "K-means",
-      techKNN: "KNN",
-      techMachineLearning: "Machine Learning",
-      techUnsupervisedModel: "Modelo no supervisado",
-      techSupervisedModel: "Modelo supervisado",
-      techLogisticRegression: "Regresión logística",
-      techTaxi: "Taxi",
-      techSheetTitle: "FICHA TÉCNICA",
-      techSheetAria: "Ficha técnica del proyecto",
-      techSheetButton: "Ver ficha técnica",
-      techSheetButtonAria: "Ver ficha técnica del proyecto",
-      techTypeLabel: "Tipo de análisis",
-      techTypeValue: "Analítica de datos · Visualización · Data storytelling",
-      techSourceLabel: "Fuente de datos",
-      techSourceValue: "Datos públicos de AENA",
-      techPeriodLabel: "Período analizado",
-      techPeriodValue: "2024 y 2025",
-      techUnitLabel: "Unidad de análisis",
-      techUnitValue: "Pasajeros aéreos vinculados a aeropuertos de Baleares",
-      techTerritoryLabel: "Territorio",
-      techTerritoryValue: "Palma de Mallorca · Ibiza · Menorca",
-      techVariablesLabel: "Variables principales",
-      techVariablesValue: "Pasajeros, aeropuertos, países, ciudades, aerolíneas, meses y temporada",
-      techAxisLabel: "Eje de análisis",
-      techAxisValue: "Demanda aérea, estacionalidad, conectividad internacional y distribución territorial del tráfico en Baleares",
-      techTreatmentLabel: "Tratamiento aplicado",
-      techTreatmentValue: "Limpieza de datos, agregación temporal, comparación entre temporadas, análisis por aeropuertos, países, ciudades y aerolíneas",
-      techToolsLabel: "Herramientas",
-      techToolsValue: "Python · Pandas · Plotly · GitHub",
-      techOutputLabel: "Salida del proyecto",
-      techOutputValue: "Notebook analítico, gráficos y publicación en LinkedIn",
-      techStatusLabel: "Estado",
-      techStatusValue: "Publicado",
-      questionTitle: "CONTEXTO Y OBJETIVO",
-      questionText: "¿Qué patrones aparecen en el tráfico aéreo de las Islas Baleares cuando se miran los datos por aeropuerto, volumen y tipo de tráfico?",
-      approachTitle: "DATOS Y DIAGNÓSTICO",
-      approachOne: "Uso de datos públicos de AENA como fuente principal.",
-      approachTwo: "Comparación de aeropuertos, categorías y variaciones de tráfico.",
-      approachThree: "Construcción de visuales para convertir datos operativos en lectura territorial.",
-      outputTitle: "ENTREGA Y APRENDIZAJE",
-      outputText: "El proyecto queda presentado como análisis reproducible en GitHub y como pieza editorial en LinkedIn, manteniendo una narrativa visual orientada a patrones y contexto.",
-      repoButton: "Entrar al Repositorio",
-      linkedinButton: "Leer en LinkedIn",
-      signature: "Patrones Lab® · Generando conocimiento a partir de los datos · por Malcolm Di Pietro Cagliari",
-      languageLabel: "Cambiar idioma",
-      themeLabel: "Cambiar modo visual",
-      pageAria: "Página de proyecto",
-      galleryPanelAria: "Imagen principal del proyecto",
-      galleryScrollAria: "Galería de imágenes con desplazamiento interno",
-      infoPanelAria: "Información del proyecto",
-      tagsAria: "Tecnologías y temas",
-      linksAria: "Enlaces del proyecto",
-      languageMenuAria: "Idiomas disponibles",
-      repoAria: "Abrir repositorio del proyecto en GitHub",
-      linkedinAria: "Abrir publicación del proyecto en LinkedIn",
-      galleryAltCover: "Portada del análisis de tráfico aéreo en las Islas Baleares",
-      galleryAltIslandShare: "Distribución de pasajeros por isla en Baleares en 2025",
-      galleryAltSeasonVariation: "Variación de pasajeros entre temporada alta y baja en Baleares",
-      galleryAltTopCities: "Top 10 ciudades por pasajeros hacia Baleares",
-      galleryAltTopCountries: "Top 10 países por pasajeros hacia Baleares",
-      galleryAltTopAirlines: "Top aerolíneas por pasajeros hacia Baleares",
-      galleryAltIslandTime: "Distribución temporal de pasajeros entre Mallorca, Menorca e Ibiza",
-      galleryAltHighSeasonKpi: "Indicador de variación de temporada alta 2025 frente a 2024",
-      galleryAltTotalPassengersKpi: "Indicador de pasajeros totales llegados a Baleares",
-      galleryAltLowSeasonKpi: "Indicador de variación de temporada baja 2025 frente a 2024",
-      galleryAltCountryMap: "Mapa de países de escala con llegadas a Baleares",
-      galleryAltSpainCompanies: "Comparación de llegadas a Baleares por compañía desde España",
-      galleryAltAirportDonut: "Distribución de pasajeros por aeropuerto base en Baleares",
-      galleryAltCountryIncrease: "Países con mayor incremento de llegadas a Baleares",
-      galleryAltCompanyTimeSeries: "Serie temporal mensual de pasajeros por principales compañías",
-      galleryAltCountryDecrease: "Países con mayor caída de llegadas a Baleares",
-      galleryAltSeasonHeatmap: "Mapa de calor de estacionalidad mensual por aeropuerto base",
-      galleryAltAirportBubbleMap: "Mapa de burbujas de aeropuertos de escala hacia Baleares"
-    },
-    en: {
-      back: "⮌ Back",
-      nextProject: "Next ➜",
-      nextProjectAria: "Go to next project",
-      kicker: "Project 01 · Data analytics",
-      title: "Balearic Islands Flight Analysis",
-      status: "✅ published",
-      dataLabel: "data:",
-      lead: "Analysis of air traffic in Spain using public AENA data, focused on volume, airport-level patterns and differences across traffic categories.",
-      tagPython: "Python",
-      tagDataStorytelling: "Data storytelling",
-      tagAviation: "Aviation",
-      tagDataAnalysis: "Data analysis",
-      tagBI: "BI",
-      techPython: "Python",
-      techPandas: "Pandas",
-      techPlotly: "Plotly",
-      techSPSS: "SPSS",
-      techScikitLearn: "Scikit-learn",
-      techLookerStudio: "Looker Studio",
-      techPowerBI: "Power BI",
-      techAirbnb: "Airbnb",
-      techDataAnalysis: "Data analysis",
-      techAviation: "Aviation",
-      techBI: "BI",
-      techDataScience: "Data science",
-      techClassification: "Classification",
-      techClustering: "Clustering",
-      techDashboard: "Dashboard",
-      techDataStorytelling: "Data storytelling",
-      techDBSCAN: "DBSCAN",
-      techFraud: "Fraud",
-      techFootball: "Football",
-      techGeospatial: "Geospatial",
-      techKMeans: "K-means",
-      techKNN: "KNN",
-      techMachineLearning: "Machine Learning",
-      techUnsupervisedModel: "Unsupervised model",
-      techSupervisedModel: "Supervised model",
-      techLogisticRegression: "Logistic regression",
-      techTaxi: "Taxi",
-      techSheetTitle: "TECHNICAL SHEET",
-      techSheetAria: "Project technical sheet",
-      techSheetButton: "View technical sheet",
-      techSheetButtonAria: "View project technical sheet",
-      techTypeLabel: "Analysis type",
-      techTypeValue: "Data analytics · Visualization · Data storytelling",
-      techSourceLabel: "Data source",
-      techSourceValue: "Public AENA data",
-      techPeriodLabel: "Period analyzed",
-      techPeriodValue: "2024 and 2025",
-      techUnitLabel: "Unit of analysis",
-      techUnitValue: "Air passengers linked to Balearic Islands airports",
-      techTerritoryLabel: "Territory",
-      techTerritoryValue: "Palma de Mallorca · Ibiza · Menorca",
-      techVariablesLabel: "Main variables",
-      techVariablesValue: "Passengers, airports, countries, cities, airlines, months and season",
-      techAxisLabel: "Analysis axis",
-      techAxisValue: "Air demand, seasonality, international connectivity and territorial distribution of traffic in the Balearic Islands",
-      techTreatmentLabel: "Treatment applied",
-      techTreatmentValue: "Data cleaning, temporal aggregation, comparison between seasons, analysis by airports, countries, cities and airlines",
-      techToolsLabel: "Tools",
-      techToolsValue: "Python · Pandas · Plotly · GitHub",
-      techOutputLabel: "Project output",
-      techOutputValue: "Analytical notebook, charts and LinkedIn publication",
-      techStatusLabel: "Status",
-      techStatusValue: "Published",
-      questionTitle: "CONTEXT AND OBJECTIVE",
-      questionText: "What patterns appear in Balearic Islands air traffic when the data is read by airport, volume and traffic type?",
-      approachTitle: "DATA AND DIAGNOSIS",
-      approachOne: "Public AENA data is used as the main source.",
-      approachTwo: "Airports, categories and traffic variations are compared.",
-      approachThree: "Visuals are built to turn operational data into a territorial reading.",
-      outputTitle: "DELIVERY AND LEARNING",
-      outputText: "The project is presented as a reproducible analysis on GitHub and as an editorial piece on LinkedIn, with a visual narrative focused on patterns and context.",
-      repoButton: "Open Repository",
-      linkedinButton: "Read on LinkedIn",
-      signature: "Patrones Lab® · Generating knowledge from data · by Malcolm Di Pietro Cagliari",
-      languageLabel: "Change language",
-      themeLabel: "Change visual mode",
-      pageAria: "Project page",
-      galleryPanelAria: "Project main image",
-      galleryScrollAria: "Image gallery with internal scrolling",
-      infoPanelAria: "Project information",
-      tagsAria: "Technologies and topics",
-      linksAria: "Project links",
-      languageMenuAria: "Available languages",
-      repoAria: "Open project repository on GitHub",
-      linkedinAria: "Open project post on LinkedIn",
-      galleryAltCover: "Cover image for the Balearic Islands air traffic analysis",
-      galleryAltIslandShare: "Passenger distribution by island in the Balearic Islands in 2025",
-      galleryAltSeasonVariation: "Passenger variation between high and low season in the Balearic Islands",
-      galleryAltTopCities: "Top 10 cities by passengers to the Balearic Islands",
-      galleryAltTopCountries: "Top 10 countries by passengers to the Balearic Islands",
-      galleryAltTopAirlines: "Top airlines by passengers to the Balearic Islands",
-      galleryAltIslandTime: "Time distribution of passengers between Mallorca, Menorca and Ibiza",
-      galleryAltHighSeasonKpi: "High-season variation indicator for 2025 versus 2024",
-      galleryAltTotalPassengersKpi: "Total passenger arrivals indicator for the Balearic Islands",
-      galleryAltLowSeasonKpi: "Low-season variation indicator for 2025 versus 2024",
-      galleryAltCountryMap: "Map of stopover countries with arrivals to the Balearic Islands",
-      galleryAltSpainCompanies: "Comparison of arrivals to the Balearic Islands by company from Spain",
-      galleryAltAirportDonut: "Passenger distribution by base airport in the Balearic Islands",
-      galleryAltCountryIncrease: "Countries with the largest increase in arrivals to the Balearic Islands",
-      galleryAltCompanyTimeSeries: "Monthly passenger time series for the leading companies",
-      galleryAltCountryDecrease: "Countries with the largest drop in arrivals to the Balearic Islands",
-      galleryAltSeasonHeatmap: "Monthly seasonality heatmap by base airport",
-      galleryAltAirportBubbleMap: "Bubble map of stopover airports to the Balearic Islands"
-    },
-    it: {
-      back: "⮌ Indietro",
-      nextProject: "Avanti ➜",
-      nextProjectAria: "Vai al progetto successivo",
-      kicker: "Progetto 01 · Analisi dei dati",
-      title: "Analisi del traffico aereo nelle Isole Baleari",
-      status: "✅ pubblicato",
-      dataLabel: "dati:",
-      lead: "Analisi del traffico aereo in Spagna con dati pubblici AENA, con focus su volumi, pattern per aeroporto e differenze tra categorie di traffico.",
-      tagPython: "Python",
-      tagDataStorytelling: "Storytelling dei dati",
-      tagAviation: "Aviazione",
-      tagDataAnalysis: "Analisi dei dati",
-      tagBI: "BI",
-      techPython: "Python",
-      techPandas: "Pandas",
-      techPlotly: "Plotly",
-      techSPSS: "SPSS",
-      techScikitLearn: "Scikit-learn",
-      techLookerStudio: "Looker Studio",
-      techPowerBI: "Power BI",
-      techAirbnb: "Airbnb",
-      techDataAnalysis: "Analisi dei dati",
-      techAviation: "Aviazione",
-      techBI: "BI",
-      techDataScience: "Scienza dei dati",
-      techClassification: "Classificazione",
-      techClustering: "Clustering",
-      techDashboard: "Dashboard",
-      techDataStorytelling: "Storytelling dei dati",
-      techDBSCAN: "DBSCAN",
-      techFraud: "Frode",
-      techFootball: "Calcio",
-      techGeospatial: "Geospaziale",
-      techKMeans: "K-means",
-      techKNN: "KNN",
-      techMachineLearning: "Machine Learning",
-      techUnsupervisedModel: "Modello non supervisionato",
-      techSupervisedModel: "Modello supervisionato",
-      techLogisticRegression: "Regressione logistica",
-      techTaxi: "Taxi",
-      techSheetTitle: "SCHEDA TECNICA",
-      techSheetAria: "Scheda tecnica del progetto",
-      techSheetButton: "Vedi scheda tecnica",
-      techSheetButtonAria: "Vedi la scheda tecnica del progetto",
-      techTypeLabel: "Tipo di analisi",
-      techTypeValue: "Analisi dei dati · Visualizzazione · Storytelling dei dati",
-      techSourceLabel: "Fonte dei dati",
-      techSourceValue: "Dati pubblici AENA",
-      techPeriodLabel: "Periodo analizzato",
-      techPeriodValue: "2024 e 2025",
-      techUnitLabel: "Unità di analisi",
-      techUnitValue: "Passeggeri aerei collegati agli aeroporti delle Baleari",
-      techTerritoryLabel: "Territorio",
-      techTerritoryValue: "Palma di Maiorca · Ibiza · Minorca",
-      techVariablesLabel: "Variabili principali",
-      techVariablesValue: "Passeggeri, aeroporti, Paesi, città, compagnie aeree, mesi e stagione",
-      techAxisLabel: "Asse di analisi",
-      techAxisValue: "Domanda aerea, stagionalità, connettività internazionale e distribuzione territoriale del traffico nelle Baleari",
-      techTreatmentLabel: "Trattamento applicato",
-      techTreatmentValue: "Pulizia dei dati, aggregazione temporale, confronto tra stagioni, analisi per aeroporti, Paesi, città e compagnie aeree",
-      techToolsLabel: "Strumenti",
-      techToolsValue: "Python · Pandas · Plotly · GitHub",
-      techOutputLabel: "Output del progetto",
-      techOutputValue: "Notebook analitico, grafici e pubblicazione su LinkedIn",
-      techStatusLabel: "Stato",
-      techStatusValue: "Pubblicato",
-      questionTitle: "CONTESTO E OBIETTIVO",
-      questionText: "Quali pattern emergono nel traffico aereo delle Isole Baleari quando i dati vengono letti per aeroporto, volume e tipo di traffico?",
-      approachTitle: "DATI E DIAGNOSI",
-      approachOne: "I dati pubblici AENA sono usati come fonte principale.",
-      approachTwo: "Si confrontano aeroporti, categorie e variazioni di traffico.",
-      approachThree: "Si costruiscono visual per trasformare dati operativi in una lettura territoriale.",
-      outputTitle: "CONSEGNA E APPRENDIMENTO",
-      outputText: "Il progetto è presentato come analisi riproducibile su GitHub e come contenuto editoriale su LinkedIn, con una narrazione visuale orientata a pattern e contesto.",
-      repoButton: "Apri il repository",
-      linkedinButton: "Leggi su LinkedIn",
-      signature: "Patrones Lab® · Generare conoscenza a partire dai dati · di Malcolm Di Pietro Cagliari",
-      languageLabel: "Cambia lingua",
-      themeLabel: "Cambia modalità visiva",
-      pageAria: "Pagina del progetto",
-      galleryPanelAria: "Immagine principale del progetto",
-      galleryScrollAria: "Galleria di immagini con scorrimento interno",
-      infoPanelAria: "Informazioni sul progetto",
-      tagsAria: "Tecnologie e temi",
-      linksAria: "Link del progetto",
-      languageMenuAria: "Lingue disponibili",
-      repoAria: "Aprire il repository del progetto su GitHub",
-      linkedinAria: "Aprire il post del progetto su LinkedIn",
-      galleryAltCover: "Copertina dell’analisi del traffico aereo nelle Isole Baleari",
-      galleryAltIslandShare: "Distribuzione dei passeggeri per isola nelle Baleari nel 2025",
-      galleryAltSeasonVariation: "Variazione dei passeggeri tra alta e bassa stagione nelle Baleari",
-      galleryAltTopCities: "Top 10 città per passeggeri verso le Isole Baleari",
-      galleryAltTopCountries: "Top 10 Paesi per passeggeri verso le Isole Baleari",
-      galleryAltTopAirlines: "Principali compagnie aeree per passeggeri verso le Isole Baleari",
-      galleryAltIslandTime: "Distribuzione temporale dei passeggeri tra Maiorca, Minorca e Ibiza",
-      galleryAltHighSeasonKpi: "Indicatore di variazione dell’alta stagione 2025 rispetto al 2024",
-      galleryAltTotalPassengersKpi: "Indicatore dei passeggeri totali arrivati nelle Baleari",
-      galleryAltLowSeasonKpi: "Indicatore di variazione della bassa stagione 2025 rispetto al 2024",
-      galleryAltCountryMap: "Mappa dei Paesi di scalo con arrivi alle Baleari",
-      galleryAltSpainCompanies: "Confronto degli arrivi alle Baleari per compagnia dalla Spagna",
-      galleryAltAirportDonut: "Distribuzione dei passeggeri per aeroporto base nelle Baleari",
-      galleryAltCountryIncrease: "Paesi con il maggiore incremento di arrivi alle Baleari",
-      galleryAltCompanyTimeSeries: "Serie temporale mensile dei passeggeri per le principali compagnie",
-      galleryAltCountryDecrease: "Paesi con la maggiore diminuzione di arrivi alle Baleari",
-      galleryAltSeasonHeatmap: "Mappa di calore della stagionalità mensile per aeroporto base",
-      galleryAltAirportBubbleMap: "Mappa a bolle degli aeroporti di scalo verso le Baleari"
-    },
-    fr: {"back":"⮌ Retour","nextProject":"Suivant ➜","nextProjectAria":"Aller au projet suivant","dataLabel":"données:","questionTitle":"CONTEXTE ET OBJECTIF","approachTitle":"DONNÉES ET DIAGNOSTIC","outputTitle":"LIVRABLE ET ENSEIGNEMENTS","signature":"Patrones Lab® · Transformer les données en connaissances · par Malcolm Di Pietro Cagliari","languageLabel":"Changer de langue","themeLabel":"Changer le mode visuel","pageAria":"Page du projet","galleryPanelAria":"Image principale du projet","galleryScrollAria":"Galerie d’images avec défilement interne","infoPanelAria":"Informations sur le projet","tagsAria":"Technologies et thèmes","linksAria":"Liens du projet","languageMenuAria":"Langues disponibles","repoAria":"Ouvrir le dépôt du projet sur GitHub","linkedinAria":"Ouvrir la publication du projet sur LinkedIn","action1Button":"Ouvrir le dépôt","action1Aria":"Ouvrir le dépôt du projet sur GitHub","action2Button":"Lire sur LinkedIn","action2Aria":"Ouvrir la publication du projet sur LinkedIn","repoButton":"Ouvrir le dépôt","linkedinButton":"Lire sur LinkedIn","shareAria":"Partager le projet","techSheetTitle":"FICHE TECHNIQUE","techSheetAria":"Fiche technique du projet","techSheetButton":"Voir la fiche technique","techSheetButtonAria":"Voir la fiche technique du projet","techTypeLabel":"Type d’analyse","techSourceLabel":"Source des données","techPeriodLabel":"Période analysée","techUnitLabel":"Unité d’analyse","techTerritoryLabel":"Territoire","techVariablesLabel":"Variables principales","techAxisLabel":"Axe d’analyse","techTreatmentLabel":"Traitement appliqué","techToolsLabel":"Outils","techOutputLabel":"Livrable du projet","techStatusLabel":"Statut","techPython":"Python","techPandas":"Pandas","techPlotly":"Plotly","techSPSS":"SPSS","techScikitLearn":"Scikit-learn","techLookerStudio":"Looker Studio","techPowerBI":"Power BI","techAirbnb":"Airbnb","techDataAnalysis":"Analyse de données","techAviation":"Aviation","techBI":"BI","techDataScience":"Science des données","techClassification":"Classification","techClustering":"Clustering","techDashboard":"Tableau de bord","techDataStorytelling":"Narration de données","techDBSCAN":"DBSCAN","techFraud":"Fraude","techFootball":"Football","techGeospatial":"Géospatial","techKMeans":"K-means","techKNN":"KNN","techMachineLearning":"Machine Learning","techUnsupervisedModel":"Modèle non supervisé","techSupervisedModel":"Modèle supervisé","techLogisticRegression":"Régression logistique","techTaxi":"Taxi","techSpotify":"Spotify","techSimulation":"Simulation","techKeras":"Keras","techNeuralNetwork":"Réseau neuronal","tagPython":"Python","tagDataStorytelling":"Narration de données","tagAviation":"Aviation","tagDataAnalysis":"Analyse de données","tagBI":"BI","tagAirbnb":"Airbnb","tagSpatial":"Géospatial","tag1":"Python","placeholderProject":"Projet","placeholderTitle":"Projet","placeholderNote":"Visuels du projet en préparation","kicker":"Projet 01 · Analyse de données","title":"Analyse des vols aux Îles Baléares","status":"✅ publié","lead":"Analyse du trafic aérien en Espagne à partir de données publiques AENA, centrée sur les volumes, les tendances par aéroport et les différences entre catégories de trafic.","questionText":"Quels schémas apparaissent dans le trafic aérien des Îles Baléares lorsque les données sont analysées par aéroport, volume et type de trafic ?","approachOne":"Les données publiques d’AENA sont utilisées comme source principale.","approachTwo":"Les aéroports, les catégories et les variations de trafic sont comparés.","approachThree":"Des visualisations sont construites pour transformer les données opérationnelles en lecture territoriale.","outputText":"Le projet est présenté sous forme d’analyse reproductible sur GitHub et de contenu éditorial sur LinkedIn, avec une narration visuelle centrée sur les tendances et le contexte.","techTypeValue":"Analyse de données · Visualisation · Narration de données","techSourceValue":"Données publiques AENA","techPeriodValue":"2024 et 2025","techUnitValue":"Passagers aériens liés aux aéroports des Îles Baléares","techTerritoryValue":"Palma de Majorque · Ibiza · Minorque","techVariablesValue":"Passagers, aéroports, pays, villes, compagnies aériennes, mois et saison","techAxisValue":"Demande aérienne, saisonnalité, connectivité internationale et répartition territoriale du trafic aux Îles Baléares","techTreatmentValue":"Nettoyage des données, agrégation temporelle, comparaison entre saisons et analyse par aéroport, pays, ville et compagnie aérienne","techToolsValue":"Python · Pandas · Plotly · GitHub","techOutputValue":"Notebook analytique, graphiques et publication LinkedIn","techStatusValue":"Publié","galleryAlt01":"Visuel du projet Patrones Lab · Analyse des vols aux Îles Baléares","galleryAlt02":"Visuel du projet Patrones Lab · Analyse des vols aux Îles Baléares","galleryAlt03":"Visuel du projet Patrones Lab · Analyse des vols aux Îles Baléares","galleryAlt04":"Visuel du projet Patrones Lab · Analyse des vols aux Îles Baléares","galleryAlt05":"Visuel du projet Patrones Lab · Analyse des vols aux Îles Baléares","galleryAlt06":"Visuel du projet Patrones Lab · Analyse des vols aux Îles Baléares","galleryAlt07":"Visuel du projet Patrones Lab · Analyse des vols aux Îles Baléares","galleryAlt08":"Visuel du projet Patrones Lab · Analyse des vols aux Îles Baléares","galleryAlt09":"Visuel du projet Patrones Lab · Analyse des vols aux Îles Baléares","galleryAlt10":"Visuel du projet Patrones Lab · Analyse des vols aux Îles Baléares","galleryAlt11":"Visuel du projet Patrones Lab · Analyse des vols aux Îles Baléares","galleryAlt12":"Visuel du projet Patrones Lab · Analyse des vols aux Îles Baléares","galleryAlt13":"Visuel du projet Patrones Lab · Analyse des vols aux Îles Baléares","galleryAlt14":"Visuel du projet Patrones Lab · Analyse des vols aux Îles Baléares","galleryAlt15":"Visuel du projet Patrones Lab · Analyse des vols aux Îles Baléares","galleryAlt16":"Visuel du projet Patrones Lab · Analyse des vols aux Îles Baléares","galleryAlt17":"Visuel du projet Patrones Lab · Analyse des vols aux Îles Baléares","galleryAlt18":"Visuel du projet Patrones Lab · Analyse des vols aux Îles Baléares","galleryAltCover":"Image principale du projet Analyse des vols aux Îles Baléares"}
-  };
 
-  if(window.PATRONES_PROJECT_DETAIL_TEXT && window.PATRONES_PROJECT_DETAIL_TEXT.es && window.PATRONES_PROJECT_DETAIL_TEXT.en && window.PATRONES_PROJECT_DETAIL_TEXT.it && window.PATRONES_PROJECT_DETAIL_TEXT.fr){
-    text = window.PATRONES_PROJECT_DETAIL_TEXT;
-  }
+  window.plPageLanguage = pageLanguage;
+  window.plGetLanguage = function(){ return pageLanguage; };
+  window.plCurrentLanguageForContact = window.plGetLanguage;
+  try{ localStorage.setItem(languageKey, pageLanguage); }catch(error){}
 
-  function validLanguage(lang){
-    return text[lang] ? lang : "es";
-  }
-
-  function applyResponsiveRepoLabels(lang){
-    lang = validLanguage(lang);
+  function applyResponsiveRepoLabels(){
     var compact = mobileRepoMedia.matches;
-
     document.querySelectorAll('[data-mobile-repo-label="true"]').forEach(function(el){
-      if(compact){
-        el.textContent = mobileRepoLabels[lang];
-        return;
-      }
-
-      var key = el.getAttribute("data-i18n");
-      if(key && text[lang][key]) el.textContent = text[lang][key];
+      if(!el.dataset.desktopLabel) el.dataset.desktopLabel = el.textContent;
+      el.textContent = compact ? mobileRepoLabels[pageLanguage] : el.dataset.desktopLabel;
     });
   }
 
@@ -373,55 +36,11 @@
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
   }
 
-  function setBackLinkLabel(el, value){
-    var label = value.replace(/^[^\s]+\s*/, "");
-    el.innerHTML = '<span class="back-arrow-desktop" aria-hidden="true">⮌</span><span class="back-arrow-mobile" aria-hidden="true">➜</span><span class="back-label"></span>';
-    var labelNode = el.querySelector(".back-label");
-    if(labelNode) labelNode.textContent = label;
-    el.setAttribute("aria-label", label);
-  }
-
-  function applyLanguage(lang){
-    lang = validLanguage(lang);
-    document.documentElement.lang = lang;
-
-    document.querySelectorAll("[data-i18n]").forEach(function(el){
-      var key = el.getAttribute("data-i18n");
-      if(text[lang][key]){
-        if(key === "back" && el.classList.contains("back-to-projects")){
-          setBackLinkLabel(el, text[lang][key]);
-        }else{
-          el.textContent = text[lang][key];
-        }
-      }
-    });
-
-    document.querySelectorAll("[data-i18n-aria]").forEach(function(el){
-      var key = el.getAttribute("data-i18n-aria");
-      if(text[lang][key]) el.setAttribute("aria-label", text[lang][key]);
-    });
-
-    document.querySelectorAll("[data-i18n-alt]").forEach(function(el){
-      var key = el.getAttribute("data-i18n-alt");
-      if(text[lang][key]) el.setAttribute("alt", text[lang][key]);
-    });
-
-    document.querySelectorAll(".project-language-option").forEach(function(btn){
-      btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
-    });
-
-    var currentFlag = document.querySelector(".project-language-current-img");
-    if(currentFlag) currentFlag.setAttribute("src", flagPaths[lang]);
-
-    applyResponsiveRepoLabels(lang);
-    localStorage.setItem(languageKey, lang);
-  }
-
   function applyMode(mode){
     var light = mode === "light";
     document.body.classList.toggle("project-light-mode", light);
     document.body.classList.toggle("dark-mode", !light);
-    localStorage.setItem(modeKey, light ? "light" : "dark");
+    try{ localStorage.setItem(modeKey, light ? "light" : "dark"); }catch(error){}
   }
 
   function setupGallery(){
@@ -659,28 +278,27 @@
     });
   }
 
+
   document.addEventListener("DOMContentLoaded", function(){
-    applyLanguage(localStorage.getItem(languageKey) || "es");
-    applyMode(localStorage.getItem(modeKey) || "dark");
+    applyMode((function(){ try{return localStorage.getItem(modeKey) || "dark";}catch(error){return "dark";} })());
+    applyResponsiveRepoLabels();
 
     var languageToggle = document.querySelector(".project-language-toggle");
     if(languageToggle){
-      languageToggle.addEventListener("click", function(){
+      languageToggle.addEventListener("click", function(event){
+        event.preventDefault();
         var selector = document.querySelector(".project-language-selector");
         setLanguageMenu(!(selector && selector.classList.contains("is-open")));
       });
     }
 
-    document.querySelectorAll(".project-language-option").forEach(function(btn){
-      btn.addEventListener("click", function(){
-        applyLanguage(btn.getAttribute("data-lang"));
-        setLanguageMenu(false);
-      });
-    });
-
     document.addEventListener("click", function(event){
       var selector = document.querySelector(".project-language-selector");
       if(selector && !selector.contains(event.target)) setLanguageMenu(false);
+    });
+
+    document.addEventListener("keydown", function(event){
+      if(event.key === "Escape") setLanguageMenu(false);
     });
 
     var toggle = document.querySelector(".project-theme-toggle");
@@ -691,13 +309,9 @@
     }
 
     if(mobileRepoMedia.addEventListener){
-      mobileRepoMedia.addEventListener("change", function(){
-        applyResponsiveRepoLabels(document.documentElement.lang || "es");
-      });
+      mobileRepoMedia.addEventListener("change", applyResponsiveRepoLabels);
     }else if(mobileRepoMedia.addListener){
-      mobileRepoMedia.addListener(function(){
-        applyResponsiveRepoLabels(document.documentElement.lang || "es");
-      });
+      mobileRepoMedia.addListener(applyResponsiveRepoLabels);
     }
 
     setupGallery();
