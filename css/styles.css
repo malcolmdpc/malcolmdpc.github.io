@@ -13850,6 +13850,37 @@ html body footer.footer .pl-footer-author-note{
   }
 }
 
+/* v66a · Mobile refinements: project detail CTA + About card copy */
+@media (max-width:767px), (hover:none) and (pointer:coarse){
+  #projects .github-project-card.project-hover-magnetic .project-magnetic-bar{
+    gap:8px;
+    min-height:42px;
+    padding:8px 12px;
+    border-radius:14px;
+  }
+
+  #projects .github-project-card.project-hover-magnetic .project-magnetic-bar span{
+    flex:1 1 auto;
+    min-width:0;
+    white-space:nowrap;
+    line-height:1;
+    font-size:12px;
+  }
+
+  #projects .github-project-card.project-hover-magnetic .project-magnetic-bar b{
+    width:26px;
+    height:26px;
+    min-width:26px;
+    font-size:1.15rem;
+  }
+
+  #about .about-profile-axis-description{
+    width:100%;
+    max-width:none;
+    text-align:left;
+  }
+}
+
 @media (prefers-reduced-motion:reduce){
   #projects .github-project-card.project-hover-magnetic .project-magnetic-bar,
   #projects .github-project-card.project-hover-magnetic .project-magnetic-bar b{
