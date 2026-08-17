@@ -111,7 +111,7 @@
 
             display: inline-block;
             position: relative;
-            width: var(--pl-share-expanded-width);
+            width: var(--pl-share-size);
             max-width: 100%;
             height: var(--pl-share-size);
             overflow: visible;
@@ -185,6 +185,7 @@
             overflow: hidden;
             cursor: pointer;
             color: var(--pl-share-yellow);
+            border: 1px solid var(--pl-share-frame, rgba(255,255,255,.34));
             background:
               radial-gradient(circle at 34% 18%, rgba(255,255,255,.16), transparent 28%),
               linear-gradient(135deg, #16191f 0%, #0a0c0f 52%, #050607 100%);

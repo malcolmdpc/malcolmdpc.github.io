@@ -15436,3 +15436,32 @@ body:not(.dark-mode) .about-profile-title{
     hyphens:none !important;
   }
 }
+
+
+@media (max-width:767px){
+  #home .pl-hero-title,
+  #home .pl-hero-title.hero-entry-title{
+    width:calc(100% - 8px) !important;
+    max-width:calc(100% - 8px) !important;
+    font-size:clamp(2.65rem,14vw,4.2rem) !important;
+    overflow:visible !important;
+  }
+  html[lang="it"] #home .pl-hero-title,
+  html[lang="it"] #home .pl-hero-title.hero-entry-title{
+    font-size:clamp(2.75rem,14.8vw,4.35rem) !important;
+  }
+  html[lang="fr"] #home .pl-hero-title,
+  html[lang="fr"] #home .pl-hero-title.hero-entry-title{
+    font-size:clamp(2.1rem,10.7vw,3.45rem) !important;
+  }
+  #home .pl-hero-title .hero-line-row{
+    max-width:none !important;
+    white-space:nowrap !important;
+  }
+  #home .about-text p.hero-entry-copy,
+  #home .hero-entry-copy{
+    width:calc(100% - 4px) !important;
+    max-width:calc(100% - 4px) !important;
+    padding-right:2px !important;
+  }
+}
