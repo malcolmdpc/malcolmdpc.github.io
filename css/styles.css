@@ -15379,22 +15379,12 @@ body:not(.dark-mode) .about-profile-title{
 
   #home .pl-hero-title,
   #home .pl-hero-title.hero-entry-title{
-    width:100% !important;
-    max-width:100% !important;
+    width:calc(100% - 4px) !important;
+    max-width:calc(100% - 4px) !important;
     overflow:visible !important;
-    font-size:clamp(2.8rem, 15.4vw, 4.5rem) !important;
-    line-height:.82 !important;
+    font-size:clamp(3.8rem,19.2vw,7rem) !important;
+    line-height:.81 !important;
     letter-spacing:-.092em !important;
-  }
-
-  html[lang="it"] #home .pl-hero-title,
-  html[lang="it"] #home .pl-hero-title.hero-entry-title{
-    font-size:clamp(3rem, 16.7vw, 4.8rem) !important;
-  }
-
-  html[lang="fr"] #home .pl-hero-title,
-  html[lang="fr"] #home .pl-hero-title.hero-entry-title{
-    font-size:clamp(2.2rem, 12vw, 3.7rem) !important;
   }
 
   #home .pl-hero-title .hero-line{
@@ -15406,7 +15396,7 @@ body:not(.dark-mode) .about-profile-title{
   #home .pl-hero-title .hero-line-row{
     display:block !important;
     width:max-content !important;
-    max-width:100% !important;
+    max-width:none !important;
     white-space:nowrap !important;
     overflow:visible !important;
   }
@@ -15414,19 +15404,23 @@ body:not(.dark-mode) .about-profile-title{
   #home .pl-hero-title .hero-rotator{
     width:100% !important;
     max-width:100% !important;
+    overflow:visible !important;
   }
 
-  html[lang="fr"] #home .pl-hero-title .hero-rotator span{
-    font-size:.86em !important;
+  #home .pl-hero-title .hero-rotator span{
+    font-size:1em;
+    max-width:none !important;
+    white-space:nowrap !important;
   }
 
   #home .about-text p.hero-entry-copy,
   #home .hero-entry-copy{
     display:block !important;
-    width:100% !important;
-    max-width:100% !important;
+    width:calc(100% - 4px) !important;
+    max-width:calc(100% - 4px) !important;
     min-width:0 !important;
     box-sizing:border-box !important;
+    padding-right:2px !important;
     overflow:visible !important;
     white-space:normal !important;
     text-align:left !important;
@@ -15434,34 +15428,5 @@ body:not(.dark-mode) .about-profile-title{
     word-break:normal !important;
     overflow-wrap:break-word !important;
     hyphens:none !important;
-  }
-}
-
-
-@media (max-width:767px){
-  #home .pl-hero-title,
-  #home .pl-hero-title.hero-entry-title{
-    width:calc(100% - 8px) !important;
-    max-width:calc(100% - 8px) !important;
-    font-size:clamp(2.65rem,14vw,4.2rem) !important;
-    overflow:visible !important;
-  }
-  html[lang="it"] #home .pl-hero-title,
-  html[lang="it"] #home .pl-hero-title.hero-entry-title{
-    font-size:clamp(2.75rem,14.8vw,4.35rem) !important;
-  }
-  html[lang="fr"] #home .pl-hero-title,
-  html[lang="fr"] #home .pl-hero-title.hero-entry-title{
-    font-size:clamp(2.1rem,10.7vw,3.45rem) !important;
-  }
-  #home .pl-hero-title .hero-line-row{
-    max-width:none !important;
-    white-space:nowrap !important;
-  }
-  #home .about-text p.hero-entry-copy,
-  #home .hero-entry-copy{
-    width:calc(100% - 4px) !important;
-    max-width:calc(100% - 4px) !important;
-    padding-right:2px !important;
   }
 }

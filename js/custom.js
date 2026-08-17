@@ -2283,7 +2283,7 @@ $('.color-mode').on('click', function(){
 
 
 (function(){
-  if(window.PL_STATIC_MULTILINGUAL) return;
+  if(window.PL_STATIC_MULTILINGUAL || /^(es|en|it|fr)(-|$)/i.test(document.documentElement.lang || '')) return;
   const STORAGE_KEY = 'patronesLabLanguage';
   const DEFAULT_LANG = 'es';
   const FLAG_US = '/images/patrones/language-flags/flag-us.svg';
@@ -2697,7 +2697,7 @@ $('.color-mode').on('click', function(){
 
 
 (function(){
-  if(window.PL_STATIC_MULTILINGUAL) return;
+  if(window.PL_STATIC_MULTILINGUAL || /^(es|en|it|fr)(-|$)/i.test(document.documentElement.lang || '')) return;
   const STORAGE_KEY = 'patronesLabLanguage';
   const FLAG_US = '/images/patrones/language-flags/flag-us.svg';
   const FLAG_ES = '/images/patrones/language-flags/flag-es.svg';
@@ -3127,7 +3127,7 @@ $('.color-mode').on('click', function(){
 
 
 (function(){
-  if(window.PL_STATIC_MULTILINGUAL && window.plPageLanguage === 'fr') return;
+  if(window.PL_STATIC_MULTILINGUAL || /^(es|en|it|fr)(-|$)/i.test(document.documentElement.lang || '')) return;
   const STORAGE_KEY = 'patronesLabLanguage';
   const FLAGS = {
     es: '/images/patrones/language-flags/flag-es.svg',
@@ -6040,3 +6040,72 @@ $('.color-mode').on('click', function(){
     applyProjectDetailCue(getLang());
   }
 })();
+
+(function(){
+  "use strict";
+
+  var mobileQuery = window.matchMedia("(max-width: 767px)");
+  var scheduled = false;
+
+  function clearFit(title, words){
+    if(title) title.style.removeProperty("font-size");
+    words.forEach(function(word){ word.style.removeProperty("font-size"); });
+  }
+
+  function fitMobileHeroTitle(){
+    var title = document.querySelector("#home .pl-hero-title");
+    if(!title) return;
+    var rows = Array.prototype.slice.call(title.querySelectorAll(".hero-line-row"));
+    var words = Array.prototype.slice.call(title.querySelectorAll(".hero-rotator span"));
+
+    clearFit(title, words);
+    if(!mobileQuery.matches) return;
+
+    var available = Math.max(0, title.getBoundingClientRect().width - 4);
+    if(!available) return;
+
+    var baseSize = parseFloat(window.getComputedStyle(title).fontSize) || 0;
+    var widestRow = rows.reduce(function(maxWidth, row){
+      return Math.max(maxWidth, row.scrollWidth || row.getBoundingClientRect().width || 0);
+    }, 0);
+
+    if(baseSize && widestRow > available){
+      var rowScale = Math.min(1, (available / widestRow) * 0.985);
+      title.style.setProperty("font-size", (baseSize * rowScale).toFixed(2) + "px", "important");
+    }
+
+    words.forEach(function(word){
+      word.style.removeProperty("font-size");
+      var wordWidth = word.scrollWidth || word.getBoundingClientRect().width || 0;
+      if(wordWidth <= available || !wordWidth) return;
+      var wordSize = parseFloat(window.getComputedStyle(word).fontSize) || 0;
+      if(!wordSize) return;
+      var wordScale = Math.min(1, (available / wordWidth) * 0.985);
+      word.style.setProperty("font-size", (wordSize * wordScale).toFixed(2) + "px", "important");
+    });
+  }
+
+  function scheduleFit(){
+    if(scheduled) return;
+    scheduled = true;
+    window.requestAnimationFrame(function(){
+      scheduled = false;
+      fitMobileHeroTitle();
+    });
+  }
+
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", scheduleFit, {once:true});
+  }else{
+    scheduleFit();
+  }
+
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(scheduleFit).catch(function(){});
+  }
+
+  window.addEventListener("resize", scheduleFit, {passive:true});
+  window.addEventListener("orientationchange", scheduleFit, {passive:true});
+  document.addEventListener("pl-language-changed", scheduleFit);
+})();
+
