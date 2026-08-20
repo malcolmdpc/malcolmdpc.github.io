@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Analisi Sportiva · Metriche, simulazione e probabilità</title>
+<meta content="Progetti di analisi sportiva di Patrones Lab su metriche calcistiche, pericolo atteso, rendimento e simulazione probabilistica." name="description"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<meta content="Malcolm Di Pietro Cagliari" name="author"/>
+<meta content="Malcolm Di Pietro Cagliari" name="creator"/>
+<meta content="Patrones Lab" name="publisher"/>
+<meta content="#0c0c0d" name="theme-color"/>
+<link href="https://malcolmdpc.github.io/it/aree/analisi-sportiva.html" rel="canonical"/>
+<link href="https://malcolmdpc.github.io/areas/analitica-deportiva.html" hreflang="es" rel="alternate"/>
+<link href="https://malcolmdpc.github.io/en/areas/sports-analytics.html" hreflang="en" rel="alternate"/>
+<link href="https://malcolmdpc.github.io/it/aree/analisi-sportiva.html" hreflang="it" rel="alternate"/>
+<link href="https://malcolmdpc.github.io/fr/domaines/analyse-sportive.html" hreflang="fr" rel="alternate"/>
+<link href="https://malcolmdpc.github.io/areas/analitica-deportiva.html" hreflang="x-default" rel="alternate"/>
+<link href="../../favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="../../images/patrones/favicon/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="../../images/patrones/favicon/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="../../images/patrones/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&amp;display=swap" rel="stylesheet"/></noscript>
+<link as="style" href="https://fonts.googleapis.com/css?family=Maven+Pro:400,700&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
+<noscript><link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,700&amp;display=swap" rel="stylesheet"/></noscript>
+<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../css/styles.css" rel="stylesheet"/>
+<link href="../../css/areas.css" rel="stylesheet"/>
+<link href="../../site.webmanifest" rel="manifest"/>
+<meta content="website" property="og:type"/>
+<meta content="Analisi Sportiva · Metriche, simulazione e probabilità" property="og:title"/>
+<meta content="Progetti di analisi sportiva di Patrones Lab su metriche calcistiche, pericolo atteso, rendimento e simulazione probabilistica." property="og:description"/>
+<meta content="https://malcolmdpc.github.io/it/aree/analisi-sportiva.html" property="og:url"/>
+<meta content="Patrones Lab" property="og:site_name"/>
+<meta content="it_IT" property="og:locale"/>
+<meta content="https://malcolmdpc.github.io/images/patrones/social/patrones-lab-og.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="image/jpeg" property="og:image:type"/>
+<meta content="Patrones Lab · Analisi Sportiva" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/><meta content="Analisi Sportiva · Metriche, simulazione e probabilità" name="twitter:title"/><meta content="Progetti di analisi sportiva di Patrones Lab su metriche calcistiche, pericolo atteso, rendimento e simulazione probabilistica." name="twitter:description"/><meta content="https://malcolmdpc.github.io/images/patrones/social/patrones-lab-og.jpg" name="twitter:image"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://malcolmdpc.github.io/#website","name":"Patrones Lab","url":"https://malcolmdpc.github.io/","inLanguage":["es","en","it","fr"],"creator":{"@id":"https://malcolmdpc.github.io/#person"},"publisher":{"@id":"https://malcolmdpc.github.io/#organization"}},{"@type":"Organization","@id":"https://malcolmdpc.github.io/#organization","name":"Patrones Lab","url":"https://malcolmdpc.github.io/","logo":{"@id":"https://malcolmdpc.github.io/#logo"}},{"@type":"Person","@id":"https://malcolmdpc.github.io/#person","name":"Malcolm Di Pietro Cagliari","url":"https://malcolmdpc.github.io/","image":{"@id":"https://malcolmdpc.github.io/#portrait"}},{"@type":"CollectionPage","@id":"https://malcolmdpc.github.io/it/aree/analisi-sportiva.html#webpage","url":"https://malcolmdpc.github.io/it/aree/analisi-sportiva.html","name":"Analisi Sportiva · Metriche, simulazione e probabilità","description":"Progetti di analisi sportiva di Patrones Lab su metriche calcistiche, pericolo atteso, rendimento e simulazione probabilistica.","inLanguage":"it","isPartOf":{"@id":"https://malcolmdpc.github.io/#website"},"about":[{"@id":"https://malcolmdpc.github.io/#person"},{"@id":"https://malcolmdpc.github.io/#organization"}],"dateModified":"2026-08-21","mainEntity":{"@id":"https://malcolmdpc.github.io/it/aree/analisi-sportiva.html#projects"}},{"@type":"BreadcrumbList","@id":"https://malcolmdpc.github.io/it/aree/analisi-sportiva.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Patrones Lab","item":"https://malcolmdpc.github.io/"},{"@type":"ListItem","position":2,"name":"Analisi Sportiva","item":"https://malcolmdpc.github.io/it/aree/analisi-sportiva.html"}]},{"@type":"ItemList","@id":"https://malcolmdpc.github.io/it/aree/analisi-sportiva.html#projects","name":"Analisi Sportiva","numberOfItems":4,"itemListElement":[{"@type":"ListItem","position":1,"url":"https://malcolmdpc.github.io/it/progetti/modello-machine-learning-gol-attesi-xg.html","name":"Gol Attesi nel Calcio"},{"@type":"ListItem","position":2,"url":"https://malcolmdpc.github.io/it/progetti/probabilita-calcio-pericolo-atteso-xt.html","name":"Pericolo Generato nel Calcio"},{"@type":"ListItem","position":3,"url":"https://malcolmdpc.github.io/it/progetti/statistiche-mondiali-2022-radar-percentili.html","name":"Mondiali 2022 · Radar dei Percentili"},{"@type":"ListItem","position":4,"url":"https://malcolmdpc.github.io/it/progetti/simulazione-monte-carlo-mondiali-2026.html","name":"Mondiali 2026 · Simulazione Monte Carlo"}]},{"@type":"ImageObject","@id":"https://malcolmdpc.github.io/#logo","contentUrl":"https://malcolmdpc.github.io/images/patrones/favicon/favicon-512.png","url":"https://malcolmdpc.github.io/images/patrones/favicon/favicon-512.png","width":512,"height":512,"name":"Patrones Lab"},{"@type":"ImageObject","@id":"https://malcolmdpc.github.io/#portrait","contentUrl":"https://malcolmdpc.github.io/images/patrones/about/malcolm-di-pietro-cagliari-about.webp","url":"https://malcolmdpc.github.io/images/patrones/about/malcolm-di-pietro-cagliari-about.webp","width":600,"height":600,"name":"Malcolm Di Pietro Cagliari"}]}</script>
+</head>
+<body class="dark-mode pl-area-page">
+<a class="pl-area-skip" href="#area-projects">Vai ai progetti</a>
+<nav class="navbar navbar-expand-sm navbar-light pl-smart-navbar pl-active-navbar" aria-label="Apri navigazione">
+  <div class="container">
+    <a class="navbar-brand" href="../index.html"><span class="brand-badge brand-image-badge"><img alt="" decoding="async" fetchpriority="high" height="180" src="../../images/patrones/navbar-bulb-animated.gif" width="180"/></span> Patrones Lab</a>
+    <div class="navbar-mobile-actions">
+      <div class="language-selector language-selector-mobile"><button aria-expanded="false" aria-haspopup="true" aria-label="Cambia lingua: Italiano" class="language-select-toggle language-select-toggle-mobile" title="Italiano" type="button"><img alt="" aria-hidden="true" class="language-select-current-img" src="../../images/patrones/language-flags/flag-it.svg"/></button><div aria-label="Lingue disponibili" class="language-menu" role="menu"><button aria-current="false" aria-label="Español" class="language-option" data-lang="es" data-language-url="https://malcolmdpc.github.io/areas/analitica-deportiva.html" role="menuitem" title="Español" type="button"><img alt="" aria-hidden="true" class="language-option-img" src="../../images/patrones/language-flags/flag-es.svg"/></button><button aria-current="false" aria-label="English" class="language-option" data-lang="en" data-language-url="https://malcolmdpc.github.io/en/areas/sports-analytics.html" role="menuitem" title="English" type="button"><img alt="" aria-hidden="true" class="language-option-img" src="../../images/patrones/language-flags/flag-us.svg"/></button><button aria-current="page" aria-label="Italiano" class="language-option is-active" data-lang="it" data-language-url="https://malcolmdpc.github.io/it/aree/analisi-sportiva.html" role="menuitem" title="Italiano" type="button"><img alt="" aria-hidden="true" class="language-option-img" src="../../images/patrones/language-flags/flag-it.svg"/></button><button aria-current="false" aria-label="Français" class="language-option" data-lang="fr" data-language-url="https://malcolmdpc.github.io/fr/domaines/analyse-sportive.html" role="menuitem" title="Français" type="button"><img alt="" aria-hidden="true" class="language-option-img" src="../../images/patrones/language-flags/flag-fr.svg"/></button></div></div>
+      <div aria-label="Cambia modalità visiva" class="color-mode color-mode-mobile d-flex justify-content-center align-items-center" role="button" tabindex="0" title="Cambia modalità visiva"><i class="color-mode-icon active"></i></div>
+    </div>
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Apri navigazione" class="navbar-toggler" data-target="#navbarNav" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span><span class="navbar-toggler-icon"></span><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto"><li class="nav-item"><a class="nav-link" data-section="inicio" href="../index.html#home">Home</a></li><li class="nav-item"><a class="nav-link" data-section="about" href="../index.html#about">Chi sono</a></li><li class="nav-item"><a class="nav-link" data-section="metodologia" href="../index.html#methodology">Metodologia</a></li><li class="nav-item"><a class="nav-link" data-section="proyectos" href="../index.html#projects">Progetti</a></li><li class="nav-item"><a class="nav-link" data-section="redes" href="../index.html#networks">Canali</a></li><li class="nav-item"><a class="nav-link" data-section="contacto" href="../index.html#contact">Contatti</a></li></ul>
+      <div class="navbar-nav ml-lg-auto"><div class="ml-lg-4">
+        <div class="language-selector language-selector-desktop"><button aria-expanded="false" aria-haspopup="true" aria-label="Cambia lingua: Italiano" class="language-select-toggle language-select-toggle-desktop" title="Italiano" type="button"><img alt="" aria-hidden="true" class="language-select-current-img" src="../../images/patrones/language-flags/flag-it.svg"/></button><div aria-label="Lingue disponibili" class="language-menu" role="menu"><button aria-current="false" aria-label="Español" class="language-option" data-lang="es" data-language-url="https://malcolmdpc.github.io/areas/analitica-deportiva.html" role="menuitem" title="Español" type="button"><img alt="" aria-hidden="true" class="language-option-img" src="../../images/patrones/language-flags/flag-es.svg"/></button><button aria-current="false" aria-label="English" class="language-option" data-lang="en" data-language-url="https://malcolmdpc.github.io/en/areas/sports-analytics.html" role="menuitem" title="English" type="button"><img alt="" aria-hidden="true" class="language-option-img" src="../../images/patrones/language-flags/flag-us.svg"/></button><button aria-current="page" aria-label="Italiano" class="language-option is-active" data-lang="it" data-language-url="https://malcolmdpc.github.io/it/aree/analisi-sportiva.html" role="menuitem" title="Italiano" type="button"><img alt="" aria-hidden="true" class="language-option-img" src="../../images/patrones/language-flags/flag-it.svg"/></button><button aria-current="false" aria-label="Français" class="language-option" data-lang="fr" data-language-url="https://malcolmdpc.github.io/fr/domaines/analyse-sportive.html" role="menuitem" title="Français" type="button"><img alt="" aria-hidden="true" class="language-option-img" src="../../images/patrones/language-flags/flag-fr.svg"/></button></div></div>
+        <div aria-label="Cambia modalità visiva" class="color-mode d-lg-flex justify-content-center align-items-center" role="button" tabindex="0" title="Cambia modalità visiva"><i class="color-mode-icon active"></i></div>
+      </div></div>
+    </div>
+  </div>
+</nav>
+<div class="pl-area-header">
+  <div class="pl-area-header__inner">
+    <nav class="pl-area-nav" aria-label="Aree del portfolio"><div class="pl-area-nav__items"><a class="pl-area-chip" href="analisi-dati.html">Analisi dei Dati</a><a class="pl-area-chip" href="machine-learning.html">Machine Learning</a><a class="pl-area-chip" href="business-intelligence.html">Business Intelligence</a><a class="pl-area-chip is-active" aria-current="page" href="analisi-sportiva.html">Analisi Sportiva</a></div></nav>
+    <h1 class="pl-area-pin__title"><strong>Analisi Sportiva</strong></h1>
+  </div>
+</div>
+<div class="pl-area-subarea-pin" aria-hidden="true"><div class="pl-area-subarea-pin__inner"><span class="pl-area-subarea-pin__bullet" aria-hidden="true"></span><div class="pl-area-subarea-pin__title" id="area-current-subarea">Metriche nel Calcio</div></div></div>
+<main class="pl-area-content" id="area-projects">
+<section class="pl-area-subarea" id="subarea-1" data-title="Metriche nel Calcio" aria-labelledby="subarea-1-heading">
+    <h2 class="sr-only" id="subarea-1-heading">Metriche nel Calcio</h2>
+    <article class="pl-area-project" id="project-06" style="--area-pattern-rgb:255,208,84">
+      <div class="pl-area-project__stage">
+        <figure class="pl-area-project__visual"><a href="../progetti/modello-machine-learning-gol-attesi-xg.html" aria-label="Apri progetto Gol Attesi nel Calcio"><img src="../../images/patrones/projects/modelo-ml-goles-esperados-xg/p06-xg-futbol-static.webp" alt="Calciatore al tiro con annotazioni del modello Expected Goals (xG) — Patrones Lab" width="1024" height="1536" loading="eager" fetchpriority="high"/></a></figure>
+        <div class="pl-area-project__copy">
+          <span class="pl-area-project__meta">Progetto 06 · Analisi calcistica</span>
+          <h3 class="pl-area-project__title"><a href="../progetti/modello-machine-learning-gol-attesi-xg.html">Gol Attesi nel Calcio</a></h3>
+          <p class="pl-area-project__description">Modello di regressione logistica che stima la probabilità che ogni tiro diventi gol con dati pubblici StatsBomb, validazione per partita e applicazione al Mondiale Qatar 2022.</p>
+        </div>
+        <a class="pl-area-project__cta" href="../progetti/modello-machine-learning-gol-attesi-xg.html" aria-label="Apri progetto Gol Attesi nel Calcio"><span aria-hidden="true"></span></a>
+        <span class="pl-area-project__number" aria-hidden="true">06</span>
+      </div>
+    </article>
+    <article class="pl-area-project" id="project-07" style="--area-pattern-rgb:105,156,255">
+      <div class="pl-area-project__stage">
+        <figure class="pl-area-project__visual"><a href="../progetti/probabilita-calcio-pericolo-atteso-xt.html" aria-label="Apri progetto Pericolo Generato nel Calcio"><img src="../../images/patrones/projects/probabilidades-futbol-peligro-esperado-xt/p07-futbol-xt-static.webp" alt="Calciatore in conduzione con annotazioni del modello Expected Threat (xT) — Patrones Lab" width="1024" height="1536" loading="lazy"/></a></figure>
+        <div class="pl-area-project__copy">
+          <span class="pl-area-project__meta">Progetto 07 · Analisi calcistica</span>
+          <h3 class="pl-area-project__title"><a href="../progetti/probabilita-calcio-pericolo-atteso-xt.html">Pericolo Generato nel Calcio</a></h3>
+          <p class="pl-area-project__description">Modello probabilistico di Expected Threat nel calcio basato su dati pubblici StatsBomb. Stima la probabilità di gol nelle successive 5 azioni.</p>
+        </div>
+        <a class="pl-area-project__cta" href="../progetti/probabilita-calcio-pericolo-atteso-xt.html" aria-label="Apri progetto Pericolo Generato nel Calcio"><span aria-hidden="true"></span></a>
+        <span class="pl-area-project__number" aria-hidden="true">07</span>
+      </div>
+    </article>
+    <article class="pl-area-project" id="project-11" style="--area-pattern-rgb:245,187,78">
+      <div class="pl-area-project__stage">
+        <figure class="pl-area-project__visual"><a href="../progetti/statistiche-mondiali-2022-radar-percentili.html" aria-label="Apri progetto Mondiali 2022 · Radar dei Percentili"><img src="../../images/patrones/projects/estadisticas-mundial-futbol-qatar-2022/p11-mundial-2022-radar-percentiles-static.webp" alt="Calciatore argentino con radar dei percentili del Mondiale 2022 — Patrones Lab" width="1024" height="1536" loading="lazy"/></a></figure>
+        <div class="pl-area-project__copy">
+          <span class="pl-area-project__meta">Progetto 11 · Analisi calcistica</span>
+          <h3 class="pl-area-project__title"><a href="../progetti/statistiche-mondiali-2022-radar-percentili.html">Mondiali 2022 · Radar dei Percentili</a></h3>
+          <p class="pl-area-project__description">Analisi delle statistiche del Mondiale 2022 con dati pubblici StatsBomb, orientata a sintetizzare le prestazioni individuali e confrontare i giocatori con radar dei percentili.</p>
+        </div>
+        <a class="pl-area-project__cta" href="../progetti/statistiche-mondiali-2022-radar-percentili.html" aria-label="Apri progetto Mondiali 2022 · Radar dei Percentili"><span aria-hidden="true"></span></a>
+        <span class="pl-area-project__number" aria-hidden="true">11</span>
+      </div>
+    </article>
+  </section>
+  <section class="pl-area-subarea" id="subarea-2" data-title="Simulazione e Probabilità" aria-labelledby="subarea-2-heading">
+    <h2 class="sr-only" id="subarea-2-heading">Simulazione e Probabilità</h2>
+    <article class="pl-area-project" id="project-15" style="--area-pattern-rgb:183,119,255">
+      <div class="pl-area-project__stage">
+        <figure class="pl-area-project__visual"><a href="../progetti/simulazione-monte-carlo-mondiali-2026.html" aria-label="Apri progetto Mondiali 2026 · Simulazione Monte Carlo"><img src="../../images/patrones/projects/simulacion-montecarlo-mundial-2026/p15-montecarlo-mundial-2026-static.webp" alt="Traiettorie di simulazione Monte Carlo su sfondo di uno stadio di calcio — Patrones Lab" width="1024" height="1536" loading="lazy"/></a></figure>
+        <div class="pl-area-project__copy">
+          <span class="pl-area-project__meta">Progetto 15 · Analisi calcistica</span>
+          <h3 class="pl-area-project__title"><a href="../progetti/simulazione-monte-carlo-mondiali-2026.html">Mondiali 2026 · Simulazione Monte Carlo</a></h3>
+          <p class="pl-area-project__description">Simulazione di un milione di scenari del Mondiale 2026 basata sui rating Elo per stimare le probabilità di raggiungere le semifinali, disputare la finale e diventare campione.</p>
+        </div>
+        <a class="pl-area-project__cta" href="../progetti/simulazione-monte-carlo-mondiali-2026.html" aria-label="Apri progetto Mondiali 2026 · Simulazione Monte Carlo"><span aria-hidden="true"></span></a>
+        <span class="pl-area-project__number" aria-hidden="true">15</span>
+      </div>
+    </article>
+  </section>
+</main>
+<footer class="footer py-5">Patrones Lab® · Generando conoscenza a partire dai dati · di Malcolm Di Pietro Cagliari</footer>
+<script defer src="../../js/language-routing.js"></script>
+<script defer src="../../js/jquery-3.3.1.min.js"></script>
+<script defer src="../../js/popper.min.js"></script>
+<script defer src="../../js/bootstrap.min.js"></script>
+<script defer src="../../js/areas.js"></script>
+</body>
+</html>

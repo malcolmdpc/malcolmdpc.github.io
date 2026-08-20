@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Machine Learning · Classification, predictions, clustering and anomalies</title>
+<meta content="Patrones Lab Machine Learning projects covering classification, prediction, clustering and anomaly detection." name="description"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<meta content="Malcolm Di Pietro Cagliari" name="author"/>
+<meta content="Malcolm Di Pietro Cagliari" name="creator"/>
+<meta content="Patrones Lab" name="publisher"/>
+<meta content="#0c0c0d" name="theme-color"/>
+<link href="https://malcolmdpc.github.io/en/areas/machine-learning.html" rel="canonical"/>
+<link href="https://malcolmdpc.github.io/areas/machine-learning.html" hreflang="es" rel="alternate"/>
+<link href="https://malcolmdpc.github.io/en/areas/machine-learning.html" hreflang="en" rel="alternate"/>
+<link href="https://malcolmdpc.github.io/it/aree/machine-learning.html" hreflang="it" rel="alternate"/>
+<link href="https://malcolmdpc.github.io/fr/domaines/machine-learning.html" hreflang="fr" rel="alternate"/>
+<link href="https://malcolmdpc.github.io/areas/machine-learning.html" hreflang="x-default" rel="alternate"/>
+<link href="../../favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="../../images/patrones/favicon/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="../../images/patrones/favicon/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="../../images/patrones/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&amp;display=swap" rel="stylesheet"/></noscript>
+<link as="style" href="https://fonts.googleapis.com/css?family=Maven+Pro:400,700&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
+<noscript><link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,700&amp;display=swap" rel="stylesheet"/></noscript>
+<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../css/styles.css" rel="stylesheet"/>
+<link href="../../css/areas.css" rel="stylesheet"/>
+<link href="../../site.webmanifest" rel="manifest"/>
+<meta content="website" property="og:type"/>
+<meta content="Machine Learning · Classification, predictions, clustering and anomalies" property="og:title"/>
+<meta content="Patrones Lab Machine Learning projects covering classification, prediction, clustering and anomaly detection." property="og:description"/>
+<meta content="https://malcolmdpc.github.io/en/areas/machine-learning.html" property="og:url"/>
+<meta content="Patrones Lab" property="og:site_name"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="https://malcolmdpc.github.io/images/patrones/social/patrones-lab-og.jpg" property="og:image"/>
+<meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="image/jpeg" property="og:image:type"/>
+<meta content="Patrones Lab · Machine Learning" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/><meta content="Machine Learning · Classification, predictions, clustering and anomalies" name="twitter:title"/><meta content="Patrones Lab Machine Learning projects covering classification, prediction, clustering and anomaly detection." name="twitter:description"/><meta content="https://malcolmdpc.github.io/images/patrones/social/patrones-lab-og.jpg" name="twitter:image"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://malcolmdpc.github.io/#website","name":"Patrones Lab","url":"https://malcolmdpc.github.io/","inLanguage":["es","en","it","fr"],"creator":{"@id":"https://malcolmdpc.github.io/#person"},"publisher":{"@id":"https://malcolmdpc.github.io/#organization"}},{"@type":"Organization","@id":"https://malcolmdpc.github.io/#organization","name":"Patrones Lab","url":"https://malcolmdpc.github.io/","logo":{"@id":"https://malcolmdpc.github.io/#logo"}},{"@type":"Person","@id":"https://malcolmdpc.github.io/#person","name":"Malcolm Di Pietro Cagliari","url":"https://malcolmdpc.github.io/","image":{"@id":"https://malcolmdpc.github.io/#portrait"}},{"@type":"CollectionPage","@id":"https://malcolmdpc.github.io/en/areas/machine-learning.html#webpage","url":"https://malcolmdpc.github.io/en/areas/machine-learning.html","name":"Machine Learning · Classification, predictions, clustering and anomalies","description":"Patrones Lab Machine Learning projects covering classification, prediction, clustering and anomaly detection.","inLanguage":"en","isPartOf":{"@id":"https://malcolmdpc.github.io/#website"},"about":[{"@id":"https://malcolmdpc.github.io/#person"},{"@id":"https://malcolmdpc.github.io/#organization"}],"dateModified":"2026-08-21","mainEntity":{"@id":"https://malcolmdpc.github.io/en/areas/machine-learning.html#projects"}},{"@type":"BreadcrumbList","@id":"https://malcolmdpc.github.io/en/areas/machine-learning.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Patrones Lab","item":"https://malcolmdpc.github.io/"},{"@type":"ListItem","position":2,"name":"Machine Learning","item":"https://malcolmdpc.github.io/en/areas/machine-learning.html"}]},{"@type":"ItemList","@id":"https://malcolmdpc.github.io/en/areas/machine-learning.html#projects","name":"Machine Learning","numberOfItems":6,"itemListElement":[{"@type":"ListItem","position":1,"url":"https://malcolmdpc.github.io/en/projects/machine-learning-model-airbnb-london.html","name":"Airbnb Price Model"},{"@type":"ListItem","position":2,"url":"https://malcolmdpc.github.io/en/projects/machine-learning-model-expected-goals-xg.html","name":"Expected Goals in Football"},{"@type":"ListItem","position":3,"url":"https://malcolmdpc.github.io/en/projects/machine-learning-fraud-logistic-regression.html","name":"Fraud Model with Logistic Regression"},{"@type":"ListItem","position":4,"url":"https://malcolmdpc.github.io/en/projects/neural-network-weather-event-damage.html","name":"Weather Event Damage Model"},{"@type":"ListItem","position":5,"url":"https://malcolmdpc.github.io/en/projects/machine-learning-fraud-model-kmeans.html","name":"Fraud Model with K-means"},{"@type":"ListItem","position":6,"url":"https://malcolmdpc.github.io/en/projects/machine-learning-fraud-model-dbscan.html","name":"Fraud Model with DBSCAN"}]},{"@type":"ImageObject","@id":"https://malcolmdpc.github.io/#logo","contentUrl":"https://malcolmdpc.github.io/images/patrones/favicon/favicon-512.png","url":"https://malcolmdpc.github.io/images/patrones/favicon/favicon-512.png","width":512,"height":512,"name":"Patrones Lab"},{"@type":"ImageObject","@id":"https://malcolmdpc.github.io/#portrait","contentUrl":"https://malcolmdpc.github.io/images/patrones/about/malcolm-di-pietro-cagliari-about.webp","url":"https://malcolmdpc.github.io/images/patrones/about/malcolm-di-pietro-cagliari-about.webp","width":600,"height":600,"name":"Malcolm Di Pietro Cagliari"}]}</script>
+</head>
+<body class="dark-mode pl-area-page">
+<a class="pl-area-skip" href="#area-projects">Skip to projects</a>
+<nav class="navbar navbar-expand-sm navbar-light pl-smart-navbar pl-active-navbar" aria-label="Open navigation">
+  <div class="container">
+    <a class="navbar-brand" href="../index.html"><span class="brand-badge brand-image-badge"><img alt="" decoding="async" fetchpriority="high" height="180" src="../../images/patrones/navbar-bulb-animated.gif" width="180"/></span> Patrones Lab</a>
+    <div class="navbar-mobile-actions">
+      <div class="language-selector language-selector-mobile"><button aria-expanded="false" aria-haspopup="true" aria-label="Change language: English" class="language-select-toggle language-select-toggle-mobile" title="English" type="button"><img alt="" aria-hidden="true" class="language-select-current-img" src="../../images/patrones/language-flags/flag-us.svg"/></button><div aria-label="Available languages" class="language-menu" role="menu"><button aria-current="false" aria-label="Español" class="language-option" data-lang="es" data-language-url="https://malcolmdpc.github.io/areas/machine-learning.html" role="menuitem" title="Español" type="button"><img alt="" aria-hidden="true" class="language-option-img" src="../../images/patrones/language-flags/flag-es.svg"/></button><button aria-current="page" aria-label="English" class="language-option is-active" data-lang="en" data-language-url="https://malcolmdpc.github.io/en/areas/machine-learning.html" role="menuitem" title="English" type="button"><img alt="" aria-hidden="true" class="language-option-img" src="../../images/patrones/language-flags/flag-us.svg"/></button><button aria-current="false" aria-label="Italiano" class="language-option" data-lang="it" data-language-url="https://malcolmdpc.github.io/it/aree/machine-learning.html" role="menuitem" title="Italiano" type="button"><img alt="" aria-hidden="true" class="language-option-img" src="../../images/patrones/language-flags/flag-it.svg"/></button><button aria-current="false" aria-label="Français" class="language-option" data-lang="fr" data-language-url="https://malcolmdpc.github.io/fr/domaines/machine-learning.html" role="menuitem" title="Français" type="button"><img alt="" aria-hidden="true" class="language-option-img" src="../../images/patrones/language-flags/flag-fr.svg"/></button></div></div>
+      <div aria-label="Change visual mode" class="color-mode color-mode-mobile d-flex justify-content-center align-items-center" role="button" tabindex="0" title="Change visual mode"><i class="color-mode-icon active"></i></div>
+    </div>
+    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Open navigation" class="navbar-toggler" data-target="#navbarNav" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span><span class="navbar-toggler-icon"></span><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto"><li class="nav-item"><a class="nav-link" data-section="inicio" href="../index.html#home">Home</a></li><li class="nav-item"><a class="nav-link" data-section="about" href="../index.html#about">About</a></li><li class="nav-item"><a class="nav-link" data-section="metodologia" href="../index.html#methodology">Methodology</a></li><li class="nav-item"><a class="nav-link" data-section="proyectos" href="../index.html#projects">Projects</a></li><li class="nav-item"><a class="nav-link" data-section="redes" href="../index.html#networks">Channels</a></li><li class="nav-item"><a class="nav-link" data-section="contacto" href="../index.html#contact">Contact</a></li></ul>
+      <div class="navbar-nav ml-lg-auto"><div class="ml-lg-4">
+        <div class="language-selector language-selector-desktop"><button aria-expanded="false" aria-haspopup="true" aria-label="Change language: English" class="language-select-toggle language-select-toggle-desktop" title="English" type="button"><img alt="" aria-hidden="true" class="language-select-current-img" src="../../images/patrones/language-flags/flag-us.svg"/></button><div aria-label="Available languages" class="language-menu" role="menu"><button aria-current="false" aria-label="Español" class="language-option" data-lang="es" data-language-url="https://malcolmdpc.github.io/areas/machine-learning.html" role="menuitem" title="Español" type="button"><img alt="" aria-hidden="true" class="language-option-img" src="../../images/patrones/language-flags/flag-es.svg"/></button><button aria-current="page" aria-label="English" class="language-option is-active" data-lang="en" data-language-url="https://malcolmdpc.github.io/en/areas/machine-learning.html" role="menuitem" title="English" type="button"><img alt="" aria-hidden="true" class="language-option-img" src="../../images/patrones/language-flags/flag-us.svg"/></button><button aria-current="false" aria-label="Italiano" class="language-option" data-lang="it" data-language-url="https://malcolmdpc.github.io/it/aree/machine-learning.html" role="menuitem" title="Italiano" type="button"><img alt="" aria-hidden="true" class="language-option-img" src="../../images/patrones/language-flags/flag-it.svg"/></button><button aria-current="false" aria-label="Français" class="language-option" data-lang="fr" data-language-url="https://malcolmdpc.github.io/fr/domaines/machine-learning.html" role="menuitem" title="Français" type="button"><img alt="" aria-hidden="true" class="language-option-img" src="../../images/patrones/language-flags/flag-fr.svg"/></button></div></div>
+        <div aria-label="Change visual mode" class="color-mode d-lg-flex justify-content-center align-items-center" role="button" tabindex="0" title="Change visual mode"><i class="color-mode-icon active"></i></div>
+      </div></div>
+    </div>
+  </div>
+</nav>
+<div class="pl-area-header">
+  <div class="pl-area-header__inner">
+    <nav class="pl-area-nav" aria-label="Portfolio areas"><div class="pl-area-nav__items"><a class="pl-area-chip" href="data-analytics.html">Data Analytics</a><a class="pl-area-chip is-active" aria-current="page" href="machine-learning.html">Machine Learning</a><a class="pl-area-chip" href="business-intelligence.html">Business Intelligence</a><a class="pl-area-chip" href="sports-analytics.html">Sports Analytics</a></div></nav>
+    <h1 class="pl-area-pin__title"><strong>Machine Learning</strong></h1>
+  </div>
+</div>
+<div class="pl-area-subarea-pin" aria-hidden="true"><div class="pl-area-subarea-pin__inner"><span class="pl-area-subarea-pin__bullet" aria-hidden="true"></span><div class="pl-area-subarea-pin__title" id="area-current-subarea">Classification and Predictions</div></div></div>
+<main class="pl-area-content" id="area-projects">
+<section class="pl-area-subarea" id="subarea-1" data-title="Classification and Predictions" aria-labelledby="subarea-1-heading">
+    <h2 class="sr-only" id="subarea-1-heading">Classification and Predictions</h2>
+    <article class="pl-area-project" id="project-04" style="--area-pattern-rgb:255,159,28">
+      <div class="pl-area-project__stage">
+        <figure class="pl-area-project__visual"><a href="../projects/machine-learning-model-airbnb-london.html" aria-label="Open project Airbnb Price Model"><img src="../../images/patrones/projects/modelo-ml-airbnb-london/p04-ml-airbnb-static.webp" alt="London residential neighborhood with variables from the Airbnb price classification model overlaid — Patrones Lab" width="1024" height="1536" loading="eager" fetchpriority="high"/></a></figure>
+        <div class="pl-area-project__copy">
+          <span class="pl-area-project__meta">Project 04 · Machine learning</span>
+          <h3 class="pl-area-project__title"><a href="../projects/machine-learning-model-airbnb-london.html">Airbnb Price Model</a></h3>
+          <p class="pl-area-project__description">Supervised classification of listings as relatively expensive or inexpensive within each accommodation type.</p>
+        </div>
+        <a class="pl-area-project__cta" href="../projects/machine-learning-model-airbnb-london.html" aria-label="Open project Airbnb Price Model"><span aria-hidden="true"></span></a>
+        <span class="pl-area-project__number" aria-hidden="true">04</span>
+      </div>
+    </article>
+    <article class="pl-area-project" id="project-06" style="--area-pattern-rgb:255,208,84">
+      <div class="pl-area-project__stage">
+        <figure class="pl-area-project__visual"><a href="../projects/machine-learning-model-expected-goals-xg.html" aria-label="Open project Expected Goals in Football"><img src="../../images/patrones/projects/modelo-ml-goles-esperados-xg/p06-xg-futbol-static.webp" alt="Footballer taking a shot with annotations from the expected goals (xG) model — Patrones Lab" width="1024" height="1536" loading="lazy"/></a></figure>
+        <div class="pl-area-project__copy">
+          <span class="pl-area-project__meta">Project 06 · Football analytics</span>
+          <h3 class="pl-area-project__title"><a href="../projects/machine-learning-model-expected-goals-xg.html">Expected Goals in Football</a></h3>
+          <p class="pl-area-project__description">Logistic regression model that estimates the probability of each shot becoming a goal using public StatsBomb data, match-level validation and application to the Qatar 2022 World Cup.</p>
+        </div>
+        <a class="pl-area-project__cta" href="../projects/machine-learning-model-expected-goals-xg.html" aria-label="Open project Expected Goals in Football"><span aria-hidden="true"></span></a>
+        <span class="pl-area-project__number" aria-hidden="true">06</span>
+      </div>
+    </article>
+    <article class="pl-area-project" id="project-09" style="--area-pattern-rgb:214,113,255">
+      <div class="pl-area-project__stage">
+        <figure class="pl-area-project__visual"><a href="../projects/machine-learning-fraud-logistic-regression.html" aria-label="Open project Fraud Model with Logistic Regression"><img src="../../images/patrones/projects/modelo-ml-fraude-regresion-logistica/p09-fraude-logit-static.webp" alt="Payment terminal and card with logistic regression signals for fraud detection — Patrones Lab" width="1024" height="1536" loading="lazy"/></a></figure>
+        <div class="pl-area-project__copy">
+          <span class="pl-area-project__meta">Project 09 · Machine learning</span>
+          <h3 class="pl-area-project__title"><a href="../projects/machine-learning-fraud-logistic-regression.html">Fraud Model with Logistic Regression</a></h3>
+          <p class="pl-area-project__description">Supervised logistic regression model for credit card fraud detection.</p>
+        </div>
+        <a class="pl-area-project__cta" href="../projects/machine-learning-fraud-logistic-regression.html" aria-label="Open project Fraud Model with Logistic Regression"><span aria-hidden="true"></span></a>
+        <span class="pl-area-project__number" aria-hidden="true">09</span>
+      </div>
+    </article>
+    <article class="pl-area-project" id="project-16" style="--area-pattern-rgb:97,195,255">
+      <div class="pl-area-project__stage">
+        <figure class="pl-area-project__visual"><a href="../projects/neural-network-weather-event-damage.html" aria-label="Open project Weather Event Damage Model"><img src="../../images/patrones/projects/storm-events-neural-network/p16-storm-events-neural-network-static.webp" alt="Electrical storm with variables from the economic damage prediction model overlaid — Patrones Lab" width="1024" height="1536" loading="lazy"/></a></figure>
+        <div class="pl-area-project__copy">
+          <span class="pl-area-project__meta">Project 16 · Machine Learning</span>
+          <h3 class="pl-area-project__title"><a href="../projects/neural-network-weather-event-damage.html">Weather Event Damage Model</a></h3>
+          <p class="pl-area-project__description">Classification model for estimating economic damage in weather events, comparing improvements between logistic regression and a neural network.</p>
+        </div>
+        <a class="pl-area-project__cta" href="../projects/neural-network-weather-event-damage.html" aria-label="Open project Weather Event Damage Model"><span aria-hidden="true"></span></a>
+        <span class="pl-area-project__number" aria-hidden="true">16</span>
+      </div>
+    </article>
+  </section>
+  <section class="pl-area-subarea" id="subarea-2" data-title="Clustering and Anomalies" aria-labelledby="subarea-2-heading">
+    <h2 class="sr-only" id="subarea-2-heading">Clustering and Anomalies</h2>
+    <article class="pl-area-project" id="project-08" style="--area-pattern-rgb:132,236,126">
+      <div class="pl-area-project__stage">
+        <figure class="pl-area-project__visual"><a href="../projects/machine-learning-fraud-model-kmeans.html" aria-label="Open project Fraud Model with K-means"><img src="../../images/patrones/projects/modelo-ml-fraude-kmeans/p08-fraude-kmeans-static.webp" alt="Payment terminal and cards with K-means clustering points for fraud detection — Patrones Lab" width="1024" height="1536" loading="lazy"/></a></figure>
+        <div class="pl-area-project__copy">
+          <span class="pl-area-project__meta">Project 08 · Machine learning</span>
+          <h3 class="pl-area-project__title"><a href="../projects/machine-learning-fraud-model-kmeans.html">Fraud Model with K-means</a></h3>
+          <p class="pl-area-project__description">Unsupervised K-means clustering applied to credit card fraud detection.</p>
+        </div>
+        <a class="pl-area-project__cta" href="../projects/machine-learning-fraud-model-kmeans.html" aria-label="Open project Fraud Model with K-means"><span aria-hidden="true"></span></a>
+        <span class="pl-area-project__number" aria-hidden="true">08</span>
+      </div>
+    </article>
+    <article class="pl-area-project" id="project-10" style="--area-pattern-rgb:255,132,173">
+      <div class="pl-area-project__stage">
+        <figure class="pl-area-project__visual"><a href="../projects/machine-learning-fraud-model-dbscan.html" aria-label="Open project Fraud Model with DBSCAN"><img src="../../images/patrones/projects/modelo-ml-fraude-dbscan/p10-fraude-dbscan-static.webp" alt="Payment terminal with DBSCAN cluster visualization for fraud detection — Patrones Lab" width="1024" height="1536" loading="lazy"/></a></figure>
+        <div class="pl-area-project__copy">
+          <span class="pl-area-project__meta">Project 10 · Machine learning</span>
+          <h3 class="pl-area-project__title"><a href="../projects/machine-learning-fraud-model-dbscan.html">Fraud Model with DBSCAN</a></h3>
+          <p class="pl-area-project__description">Unsupervised DBSCAN clustering to detect potential credit card fraud patterns.</p>
+        </div>
+        <a class="pl-area-project__cta" href="../projects/machine-learning-fraud-model-dbscan.html" aria-label="Open project Fraud Model with DBSCAN"><span aria-hidden="true"></span></a>
+        <span class="pl-area-project__number" aria-hidden="true">10</span>
+      </div>
+    </article>
+  </section>
+</main>
+<footer class="footer py-5">Patrones Lab® · Generating knowledge from data · by Malcolm Di Pietro Cagliari</footer>
+<script defer src="../../js/language-routing.js"></script>
+<script defer src="../../js/jquery-3.3.1.min.js"></script>
+<script defer src="../../js/popper.min.js"></script>
+<script defer src="../../js/bootstrap.min.js"></script>
+<script defer src="../../js/areas.js"></script>
+</body>
+</html>

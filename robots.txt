@@ -2,4 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://malcolmdpc.github.io/sitemap.xml
-Sitemap: https://malcolmdpc.github.io/patrones-lab-sitemap.xml
