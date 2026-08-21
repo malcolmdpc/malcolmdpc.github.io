@@ -530,3 +530,36 @@ body:not(.dark-mode).pl-area-page .pl-area-project__cta:focus-visible span::afte
   .pl-area-project__stage,.pl-area-project__visual,.pl-area-project__visual img,.pl-area-project__title a,.pl-area-chip,.pl-area-subarea-pin__title,.pl-area-project__visual::after{transition:none!important}
 }
 .pl-area-subarea{scroll-margin-top:calc(var(--area-stack-h) + 18px)}
+
+.pl-area-project{
+  min-height:0;
+  padding-block:clamp(54px,6.5vh,82px);
+}
+
+@media (min-width:901px) and (max-width:1180px){
+  .pl-area-project{min-height:0;padding-block:clamp(46px,5.8vh,68px)}
+}
+
+@media (min-width:701px) and (max-width:900px){
+  .pl-area-project{min-height:0;padding-block:40px}
+}
+
+@media (min-width:576px) and (max-width:700px){
+  .pl-area-project{min-height:0;padding-block:34px}
+}
+
+@media (min-width:431px) and (max-width:575px){
+  .pl-area-project{min-height:0;padding-block:28px}
+}
+
+@media (min-width:361px) and (max-width:430px){
+  .pl-area-project{min-height:0;padding-block:26px}
+}
+
+@media (max-width:360px){
+  .pl-area-project{min-height:0;padding-block:24px}
+}
+
+@media (max-height:700px) and (min-width:901px){
+  .pl-area-project{min-height:0;padding-block:42px}
+}
