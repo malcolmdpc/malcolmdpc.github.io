@@ -563,3 +563,36 @@ body:not(.dark-mode).pl-area-page .pl-area-project__cta:focus-visible span::afte
 @media (max-height:700px) and (min-width:901px){
   .pl-area-project{min-height:0;padding-block:42px}
 }
+
+/* Espacio de cierre interno: permite centrar el último proyecto sin modificar el footer. */
+.pl-area-content{
+  padding-bottom:clamp(130px,18svh,190px);
+}
+
+@media (min-width:901px) and (max-width:1180px){
+  .pl-area-content{padding-bottom:clamp(120px,17svh,175px)}
+}
+
+@media (min-width:701px) and (max-width:900px){
+  .pl-area-content{padding-bottom:clamp(145px,21svh,210px)}
+}
+
+@media (min-width:576px) and (max-width:700px){
+  .pl-area-content{padding-bottom:clamp(220px,32svh,290px)}
+}
+
+@media (min-width:431px) and (max-width:575px){
+  .pl-area-content{padding-bottom:clamp(240px,33svh,305px)}
+}
+
+@media (min-width:361px) and (max-width:430px){
+  .pl-area-content{padding-bottom:clamp(260px,34svh,315px)}
+}
+
+@media (max-width:360px){
+  .pl-area-content{padding-bottom:clamp(240px,34svh,290px)}
+}
+
+@media (max-height:700px) and (min-width:901px){
+  .pl-area-content{padding-bottom:clamp(105px,16svh,145px)}
+}
