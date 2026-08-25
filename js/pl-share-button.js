@@ -40,6 +40,24 @@
       copy: "Copier le lien",
       copied: "Lien copié",
       prompt: "Copiez ce lien :"
+    },
+    de: {
+      main: "Projekt teilen",
+      whatsapp: "Über WhatsApp teilen",
+      linkedin: "Auf LinkedIn teilen",
+      x: "Auf X teilen",
+      copy: "Link kopieren",
+      copied: "Link kopiert",
+      prompt: "Diesen Link kopieren:"
+    },
+    pt: {
+      main: "Partilhar projeto",
+      whatsapp: "Partilhar no WhatsApp",
+      linkedin: "Partilhar no LinkedIn",
+      x: "Partilhar no X",
+      copy: "Copiar ligação",
+      copied: "Ligação copiada",
+      prompt: "Copie esta ligação:"
     }
   };
 

@@ -4,14 +4,16 @@
   var languageKey = "patronesLabLanguage";
   var modeKey = "patrones-lab-color-mode";
   var pageLanguage = (document.documentElement.lang || "es").toLowerCase().split("-")[0];
-  var supportedLanguages = {es:true,en:true,it:true,fr:true};
+  var supportedLanguages = {es:true,en:true,it:true,fr:true,de:true,pt:true};
   if(!supportedLanguages[pageLanguage]) pageLanguage = "es";
 
   var mobileRepoLabels = {
     es: "Entrar al Repo",
     en: "Open Repo",
     it: "Apri il repo",
-    fr: "Ouvrir le dépôt"
+    fr: "Ouvrir le dépôt",
+    de: "Repo öffnen",
+    pt: "Abrir repositório"
   };
   var mobileRepoMedia = window.matchMedia("(max-width: 767px)");
 
@@ -34,6 +36,26 @@
     if(!selector || !toggle) return;
     selector.classList.toggle("is-open", !!open);
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+
+  function syncProjectLanguageSelector(){
+    var selector = document.querySelector(".project-language-selector");
+    if(!selector) return;
+
+    var active = null;
+    selector.querySelectorAll(".project-language-option").forEach(function(option){
+      var isActive = (option.getAttribute("data-lang") || "").toLowerCase() === pageLanguage;
+      option.classList.toggle("active", isActive);
+      option.setAttribute("aria-current", isActive ? "page" : "false");
+      if(isActive) active = option;
+    });
+
+    var current = selector.querySelector(".project-language-current-img");
+    var activeImg = active && active.querySelector("img");
+    if(current && activeImg && activeImg.getAttribute("src")){
+      current.setAttribute("src", activeImg.getAttribute("src"));
+    }
   }
 
   function applyMode(mode){
@@ -282,6 +304,7 @@
   document.addEventListener("DOMContentLoaded", function(){
     applyMode((function(){ try{return localStorage.getItem(modeKey) || "dark";}catch(error){return "dark";} })());
     applyResponsiveRepoLabels();
+    syncProjectLanguageSelector();
 
     var languageToggle = document.querySelector(".project-language-toggle");
     if(languageToggle){

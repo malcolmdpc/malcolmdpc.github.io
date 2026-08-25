@@ -754,3 +754,14 @@ body.project-static-detail-page .project-static-hero-placeholder::after{
   .project-breadcrumb__item--area{max-width:38%}
   .project-breadcrumb__item + .project-breadcrumb__item::before{margin:0 .2rem}
 }
+
+/* v68i · Selector multidioma con siglas bajo cada bandera */
+.project-language-menu{align-items:flex-start;gap:9px;padding:8px 10px 7px;border-radius:22px}
+.project-language-option{width:36px;height:46px;min-width:36px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:5px;padding:2px 0 0;box-shadow:none!important;text-decoration:none}
+.project-language-option-img{transition:box-shadow .18s ease,transform .18s ease}
+.project-language-option-label{display:block;font-size:10px;line-height:1;font-weight:800;letter-spacing:.055em;color:rgba(255,255,255,.64);transition:color .18s ease}
+.project-language-option:hover .project-language-option-img,.project-language-option:focus-visible .project-language-option-img,.project-language-option.active .project-language-option-img{box-shadow:0 0 0 2px rgba(255,194,0,.72)}
+.project-language-option:hover .project-language-option-label,.project-language-option:focus-visible .project-language-option-label,.project-language-option.active .project-language-option-label{color:#ffd21f}
+.project-light-mode .project-language-option-label{color:rgba(17,17,17,.62)}
+.project-light-mode .project-language-option:hover .project-language-option-label,.project-light-mode .project-language-option:focus-visible .project-language-option-label,.project-light-mode .project-language-option.active .project-language-option-label{color:#8a6500}
+@media (max-width:900px){.project-language-menu{gap:7px;padding:7px 8px 6px;border-radius:20px}.project-language-option{width:31px;height:41px;min-width:31px;gap:4px}.project-language-option-label{font-size:8px;letter-spacing:.04em}}

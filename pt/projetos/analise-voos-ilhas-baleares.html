@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="pt">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="pt" http-equiv="content-language"/>
+<title>Análise de voos nas Ilhas Baleares · Rotas, Passageiros e Sazonalidade</title>
+<meta content="Projeto de análise de dados sobre voos nas Ilhas Baleares, com dados de 2024 e 2025, orientado a detetar padrões de procura, sazonalidade e conectividade aérea. Por Malcolm Di Pietro Cagliari." name="description"/><meta content="2026-08-24" property="og:updated_time"/><meta content="Patrones Lab" property="article:publisher"/><meta content="Patrones Lab" name="apple-mobile-web-app-title"/><meta content="Patrones Lab" name="application-name"/><meta content="Análise de voos nas Ilhas Baleares · Rotas, Passageiros e Sazonalidade" name="title"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/><meta content="Malcolm Di Pietro Cagliari" name="author"/><meta content="Malcolm Di Pietro Cagliari" name="creator"/><meta content="Patrones Lab, Malcolm Di Pietro Cagliari, análise de dados, voos, Ilhas Baleares, AENA, tráfego aéreo, procura aérea, sazonalidade, conectividade aérea, Business Intelligence, Python" name="keywords"/><meta content="Malcolm Di Pietro Cagliari" property="article:author"/><meta content="Análise de dados" property="article:section"/><meta content="Python" property="article:tag"/><meta content="Data storytelling" property="article:tag"/><meta content="Aviação" property="article:tag"/><meta content="Análise de dados" property="article:tag"/><meta content="BI" property="article:tag"/><meta content="2026-06-20" property="article:published_time"/><meta content="2026-08-24" property="article:modified_time"/>
+<link href="../../favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="../../images/patrones/favicon/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="../../images/patrones/favicon/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="../../images/patrones/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<meta content="#0c0c0d" name="theme-color"/>
+<meta content="article" property="og:type"/>
+<meta content="Análise de voos nas Ilhas Baleares · Rotas, Passageiros e Sazonalidade" property="og:title"/>
+<meta content="Projeto de análise de dados sobre voos nas Ilhas Baleares, com dados de 2024 e 2025, orientado a detetar padrões de procura, sazonalidade e conectividade aérea. Por Malcolm Di Pietro Cagliari." property="og:description"/>
+<meta content="https://malcolmdpc.github.io/pt/projetos/analise-voos-ilhas-baleares.html" property="og:url"/>
+<meta content="https://malcolmdpc.github.io/images/patrones/social/projects/p01-vuelos-baleares-og.jpg" property="og:image"/><link href="https://malcolmdpc.github.io/images/patrones/social/projects/p01-vuelos-baleares-og.jpg" rel="image_src"/><meta content="https://malcolmdpc.github.io/images/patrones/social/projects/p01-vuelos-baleares-og.jpg" property="og:image:secure_url"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="image/jpeg" property="og:image:type"/><meta content="Imagem de pré-visualização do projeto Patrones Lab «Análise de voos nas Ilhas Baleares · Rotas, Passageiros e Sazonalidade»." property="og:image:alt"/>
+<meta content="Patrones Lab" property="og:site_name"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Análise de voos nas Ilhas Baleares · Rotas, Passageiros e Sazonalidade" name="twitter:title"/>
+<meta content="Projeto de análise de dados sobre voos nas Ilhas Baleares, com dados de 2024 e 2025, orientado a detetar padrões de procura, sazonalidade e conectividade aérea. Por Malcolm Di Pietro Cagliari." name="twitter:description"/>
+<meta content="https://malcolmdpc.github.io/images/patrones/social/projects/p01-vuelos-baleares-og.jpg" name="twitter:image"/><meta content="Imagem de pré-visualização do projeto Patrones Lab «Análise de voos nas Ilhas Baleares · Rotas, Passageiros e Sazonalidade»." name="twitter:image:alt"/>
+<link href="../../site-pt.webmanifest" rel="manifest"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://malcolmdpc.github.io/#website","name":"Patrones Lab","url":"https://malcolmdpc.github.io/","inLanguage":["es","en","it","fr","de","pt"],"publisher":{"@id":"https://malcolmdpc.github.io/#organization"},"alternateName":["Patrones Lab · Análise de Dados","Patrones Lab · Data & Analytics"]},{"@type":"Organization","@id":"https://malcolmdpc.github.io/#organization","name":"Patrones Lab","url":"https://malcolmdpc.github.io/","logo":{"@id":"https://malcolmdpc.github.io/#logo"},"sameAs":["https://github.com/malcolmdpc/patrones-lab","https://www.instagram.com/patroneslab/","https://linktr.ee/PatronesLab"]},{"@type":"Person","@id":"https://malcolmdpc.github.io/#person","name":"Malcolm Di Pietro Cagliari","url":"https://malcolmdpc.github.io/","sameAs":["https://www.linkedin.com/in/malcolmdpc/","https://github.com/malcolmdpc","https://medium.com/@malcolmdpc"],"image":{"@id":"https://malcolmdpc.github.io/#portrait"}},{"@type":"WebPage","@id":"https://malcolmdpc.github.io/pt/projetos/analise-voos-ilhas-baleares.html#webpage","url":"https://malcolmdpc.github.io/pt/projetos/analise-voos-ilhas-baleares.html","name":"Análise de voos nas Ilhas Baleares · Rotas, Passageiros e Sazonalidade","headline":"Análise de voos nas Ilhas Baleares · Rotas, Passageiros e Sazonalidade","description":"Projeto de análise de dados sobre voos nas Ilhas Baleares, com dados de 2024 e 2025, orientado a detetar padrões de procura, sazonalidade e conectividade aérea. Por Malcolm Di Pietro Cagliari.","inLanguage":"pt","isPartOf":{"@id":"https://malcolmdpc.github.io/#website"},"mainEntity":{"@id":"https://malcolmdpc.github.io/pt/projetos/analise-voos-ilhas-baleares.html#article"},"author":{"@id":"https://malcolmdpc.github.io/#person"},"creator":{"@id":"https://malcolmdpc.github.io/#person"},"publisher":{"@id":"https://malcolmdpc.github.io/#organization"},"breadcrumb":{"@id":"https://malcolmdpc.github.io/pt/projetos/analise-voos-ilhas-baleares.html#breadcrumb"},"primaryImageOfPage":{"@id":"https://malcolmdpc.github.io/pt/projetos/analise-voos-ilhas-baleares.html#primaryimage"},"thumbnailUrl":"https://malcolmdpc.github.io/images/patrones/social/projects/p01-vuelos-baleares-og.jpg","dateModified":"2026-08-24"},{"@type":"TechArticle","@id":"https://malcolmdpc.github.io/pt/projetos/analise-voos-ilhas-baleares.html#article","mainEntityOfPage":{"@id":"https://malcolmdpc.github.io/pt/projetos/analise-voos-ilhas-baleares.html#webpage"},"url":"https://malcolmdpc.github.io/pt/projetos/analise-voos-ilhas-baleares.html","name":"Análise de voos nas Ilhas Baleares · Rotas, Passageiros e Sazonalidade","headline":"Análise de voos nas Ilhas Baleares · Rotas, Passageiros e Sazonalidade","description":"Projeto de análise de dados sobre voos nas Ilhas Baleares, com dados de 2024 e 2025, orientado a detetar padrões de procura, sazonalidade e conectividade aérea. Por Malcolm Di Pietro Cagliari.","image":{"@id":"https://malcolmdpc.github.io/pt/projetos/analise-voos-ilhas-baleares.html#primaryimage"},"thumbnailUrl":"https://malcolmdpc.github.io/images/patrones/social/projects/p01-vuelos-baleares-og.jpg","inLanguage":"pt","author":{"@id":"https://malcolmdpc.github.io/#person"},"creator":{"@id":"https://malcolmdpc.github.io/#person"},"publisher":{"@id":"https://malcolmdpc.github.io/#organization"},"datePublished":"2026-06-20","dateModified":"2026-08-24","keywords":["Patrones Lab","Malcolm Di Pietro Cagliari","análise de dados","voos","Ilhas Baleares","AENA","tráfego aéreo","procura aérea","sazonalidade","conectividade aérea","Business Intelligence","Python"],"articleSection":"Análise de Dados","isPartOf":{"@id":"https://malcolmdpc.github.io/#website"},"breadcrumb":{"@id":"https://malcolmdpc.github.io/pt/projetos/analise-voos-ilhas-baleares.html#breadcrumb"},"alternativeHeadline":"Análise de Voos nas Ilhas Baleares"},{"@type":"BreadcrumbList","@id":"https://malcolmdpc.github.io/pt/projetos/analise-voos-ilhas-baleares.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Patrones Lab","item":"https://malcolmdpc.github.io/pt/"},{"@type":"ListItem","position":2,"name":"Projetos","item":"https://malcolmdpc.github.io/pt/#projects"},{"@type":"ListItem","position":3,"name":"Análise de Dados","item":"https://malcolmdpc.github.io/pt/areas/analise-dados.html"},{"@type":"ListItem","position":4,"name":"Voos nas Ilhas Baleares","item":"https://malcolmdpc.github.io/pt/projetos/analise-voos-ilhas-baleares.html"}]},{"@type":"ImageObject","@id":"https://malcolmdpc.github.io/#logo","contentUrl":"https://malcolmdpc.github.io/images/patrones/favicon/favicon-512.png","url":"https://malcolmdpc.github.io/images/patrones/favicon/favicon-512.png","width":512,"height":512,"name":"Patrones Lab"},{"@type":"ImageObject","@id":"https://malcolmdpc.github.io/#portrait","contentUrl":"https://malcolmdpc.github.io/images/patrones/about/malcolm-di-pietro-cagliari-about.webp","url":"https://malcolmdpc.github.io/images/patrones/about/malcolm-di-pietro-cagliari-about.webp","width":600,"height":600,"name":"Malcolm Di Pietro Cagliari"},{"@type":"ImageObject","@id":"https://malcolmdpc.github.io/pt/projetos/analise-voos-ilhas-baleares.html#primaryimage","contentUrl":"https://malcolmdpc.github.io/images/patrones/social/projects/p01-vuelos-baleares-og.jpg","url":"https://malcolmdpc.github.io/images/patrones/social/projects/p01-vuelos-baleares-og.jpg","width":1200,"height":630,"name":"Análise de voos nas Ilhas Baleares · Rotas, Passageiros e Sazonalidade — Patrones Lab"}]}</script><link as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&amp;family=Inter:wght@500;600;700;800;900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&amp;family=Inter:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet"/></noscript>
+<link as="style" href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
+<noscript><link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&amp;display=swap" rel="stylesheet"/></noscript>
+<link href="../../css/unicons.css" rel="stylesheet"/>
+<link href="../../css/project-detail.css" rel="stylesheet"/>
+<meta content="pt_PT" property="og:locale"/><meta content="es_ES" property="og:locale:alternate"/><meta content="en_US" property="og:locale:alternate"/><meta content="it_IT" property="og:locale:alternate"/><meta content="fr_FR" property="og:locale:alternate"/><meta content="de_DE" property="og:locale:alternate"/><link href="https://malcolmdpc.github.io/pt/projetos/analise-voos-ilhas-baleares.html" rel="canonical"/><link href="https://malcolmdpc.github.io/proyectos/analisis-vuelos-islas-baleares.html" hreflang="es" rel="alternate"/><link href="https://malcolmdpc.github.io/en/projects/balearic-islands-flight-analysis.html" hreflang="en" rel="alternate"/><link href="https://malcolmdpc.github.io/it/progetti/analisi-voli-isole-baleari.html" hreflang="it" rel="alternate"/><link href="https://malcolmdpc.github.io/fr/projets/analyse-vols-iles-baleares.html" hreflang="fr" rel="alternate"/><link href="https://malcolmdpc.github.io/de/projekte/fluganalyse-balearen.html" hreflang="de" rel="alternate"/><link href="https://malcolmdpc.github.io/pt/projetos/analise-voos-ilhas-baleares.html" hreflang="pt" rel="alternate"/><link href="https://malcolmdpc.github.io/proyectos/analisis-vuelos-islas-baleares.html" hreflang="x-default" rel="alternate"/></head>
+<body class="project-detail-page project-static-detail-page" data-project-detail="aena-baleares">
+<main aria-label="Página do projeto" class="project-detail-layout">
+<section aria-label="Imagem principal do projeto" class="project-gallery-panel project-static-hero-panel project-cover-shine"><picture class="project-static-hero-picture"><source media="(max-width: 900px)" srcset="../../images/patrones/projects/analisis-vuelos-islas-baleares/p01-vuelos-baleares-mobile-banner.webp" type="image/webp"/><source media="(min-width: 901px) and (max-width: 1100px)" srcset="../../images/patrones/projects/analisis-vuelos-islas-baleares/p01-vuelos-baleares-mobile.webp" type="image/webp"/><img alt="Avião na pista com relevo costeiro ao fundo e dados de voo sobrepostos — Patrones Lab" class="project-static-hero-image" decoding="async" fetchpriority="high" height="1536" loading="eager" src="../../images/patrones/projects/analisis-vuelos-islas-baleares/p01-vuelos-baleares-static.webp" width="1024"/></picture></section>
+<section aria-label="Informações do projeto" class="project-info-panel">
+<header class="project-detail-topbar">
+<nav aria-label="Percurso de navegação" class="project-breadcrumb"><ol class="project-breadcrumb__list"><li class="project-breadcrumb__item project-breadcrumb__item--projects"><a href="../index.html#projects">Projetos</a></li><li class="project-breadcrumb__item project-breadcrumb__item--area"><a href="../areas/analise-dados.html">Análise de Dados</a></li><li class="project-breadcrumb__item project-breadcrumb__item--subarea"><a href="../areas/analise-dados.html#subarea-1">Transporte e Território</a></li><li aria-current="page" class="project-breadcrumb__item project-breadcrumb__item--project"><span title="Voos nas Ilhas Baleares">Voos nas Ilhas Baleares</span></li></ol></nav><div aria-label="Navegação entre projetos" class="project-step-nav"><a aria-label="Projeto anterior: Análise Geoespacial de Airbnb em Londres" class="project-step-button project-step-button--prev" href="analise-geoespacial-airbnb-londres.html"><span aria-hidden="true" class="project-step-arrow"></span></a><a aria-label="Projeto seguinte: Análise de Airbnb em Londres" class="project-step-button project-step-button--next" href="analise-alojamentos-airbnb-londres.html"><span aria-hidden="true" class="project-step-arrow"></span></a></div>
+<div class="project-detail-controls">
+<div aria-label="Alterar idioma" class="project-language-selector">
+<button aria-expanded="false" aria-haspopup="true" aria-label="Alterar idioma: Português" class="project-language-toggle" title="Português" type="button">
+<img alt="" class="project-language-current-img" height="32" src="../../images/patrones/language-flags/flag-pt.svg" width="32"/>
+</button>
+<div aria-label="Idiomas disponíveis" class="project-language-menu" role="menu"><a aria-current="false" aria-label="Español" class="project-language-option" data-lang="es" href="../../proyectos/analisis-vuelos-islas-baleares.html" role="menuitem" title="Español"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-es.svg" width="32"/><span aria-hidden="true" class="project-language-option-label">ESP</span></a><a aria-current="false" aria-label="English" class="project-language-option" data-lang="en" href="../../en/projects/balearic-islands-flight-analysis.html" role="menuitem" title="English"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-us.svg" width="32"/><span aria-hidden="true" class="project-language-option-label">ENG</span></a><a aria-current="false" aria-label="Italiano" class="project-language-option" data-lang="it" href="../../it/progetti/analisi-voli-isole-baleari.html" role="menuitem" title="Italiano"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-it.svg" width="32"/><span aria-hidden="true" class="project-language-option-label">ITA</span></a><a aria-current="false" aria-label="Français" class="project-language-option" data-lang="fr" href="../../fr/projets/analyse-vols-iles-baleares.html" role="menuitem" title="Français"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-fr.svg" width="32"/><span aria-hidden="true" class="project-language-option-label">FRA</span></a><a aria-current="false" aria-label="Deutsch" class="project-language-option" data-lang="de" href="../../de/projekte/fluganalyse-balearen.html" role="menuitem" title="Deutsch"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-de.svg" width="32"/><span aria-hidden="true" class="project-language-option-label">DEU</span></a><a aria-current="page" aria-label="Português" class="project-language-option active" data-lang="pt" href="analise-voos-ilhas-baleares.html" role="menuitem" title="Português"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-pt.svg" width="32"/><span aria-hidden="true" class="project-language-option-label">POR</span></a></div>
+</div>
+<button aria-label="Alterar modo visual" class="project-theme-toggle" type="button"><i aria-hidden="true" class="color-mode-icon"></i></button>
+</div>
+</header>
+<div class="project-detail-copy">
+<p class="project-kicker">Projeto 01 · Análise de dados</p>
+<h1>Análise de Voos nas Ilhas Baleares</h1>
+<div class="project-meta-line">
+<span class="project-status-badge">✅ publicado</span>
+<span class="project-data-badge"><span>dados:</span> 2025</span>
+</div>
+<p class="project-lead">Análise do tráfego aéreo em Espanha com dados públicos da AENA, focada em volumes, padrões por aeroporto e diferenças entre categorias.</p>
+<div aria-label="Tecnologias e temas" class="project-tags project-tech-logo-list"><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="106" loading="lazy" src="../../images/patrones/tag-logos/python.png" width="106"/></span><figcaption class="project-tech-logo-label">Python</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="109" loading="lazy" src="../../images/patrones/tag-logos/pandas.png" width="109"/></span><figcaption class="project-tech-logo-label">Pandas</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="109" loading="lazy" src="../../images/patrones/tag-logos/plotly.png" width="109"/></span><figcaption class="project-tech-logo-label">Plotly</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="135" loading="lazy" src="../../images/patrones/tag-logos/aviacion.png" width="135"/></span><figcaption class="project-tech-logo-label">Aviação</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="126" loading="lazy" src="../../images/patrones/tag-logos/analisis-datos.png" width="126"/></span><figcaption class="project-tech-logo-label">Análise de dados</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="118" loading="lazy" src="../../images/patrones/tag-logos/bi.png" width="118"/></span><figcaption class="project-tech-logo-label">BI</figcaption></figure></div>
+<section class="project-text-block">
+<h2>CONTEXTO E OBJETIVO</h2>
+<p>Explorar como se distribui o tráfego aéreo nas Ilhas Baleares por aeroporto, volume e tipo de tráfego.</p>
+</section>
+<section class="project-text-block">
+<h2>DADOS E DIAGNÓSTICO</h2>
+<ul>
+<li>Utilização de dados públicos da AENA como fonte principal.</li>
+<li>Comparação entre aeroportos, categorias e variações de tráfego.</li>
+<li>Construção de visuais para transformar dados operacionais numa leitura territorial.</li>
+</ul>
+</section>
+<section class="project-text-block">
+<h2>ENTREGA E APRENDIZAGEM</h2>
+<p>O projeto é apresentado como uma análise reproduzível no GitHub e como peça editorial no LinkedIn, mantendo uma narrativa visual orientada a padrões e contexto.</p>
+</section>
+<div class="project-tech-popover project-tech-popover-lower" data-tech-popover="">
+<div class="project-tech-action-row">
+<button aria-controls="project1-tech-sheet" aria-expanded="false" aria-label="Ver ficha técnica do projeto" class="project-tech-trigger btn-ft btn-style-28" type="button">
+<span class="label">Ver ficha técnica</span>
+<span aria-hidden="true" class="plus project-tech-trigger-icon">+</span>
+</button>
+<span aria-label="Partilhar projeto" class="project-share-tech-slot">
+<pl-share-button direction="right" share-text-en="Data analytics project on flights in the Balearic Islands, using 2024 and 2025 data to analyze demand patterns, seasonality and air connectivity. By Malcolm Di Pietro Cagliari." share-text-es="Proyecto de analítica de datos sobre vuelos en las Islas Baleares, con datos 2024 y 2025, orientado a detectar patrones de demanda, estacionalidad y conectividad aérea. Por Malcolm Di Pietro Cagliari." share-text-it="Progetto di analisi dei dati sui voli nelle Isole Baleari, con dati 2024 e 2025, orientato ad analizzare pattern di domanda, stagionalità e connettività aerea. Di Malcolm Di Pietro Cagliari." share-title-en="Patrones Lab · Balearic Islands Flight Analysis" share-title-es="Patrones Lab · Análisis de Vuelos en las Islas Baleares" share-title-it="Patrones Lab · Analisi del traffico aereo nelle Isole Baleari" share-url="https://malcolmdpc.github.io/proyectos/analisis-vuelos-islas-baleares.html" size="md"></pl-share-button>
+</span>
+</div>
+<section aria-hidden="true" aria-label="Ficha técnica do projeto" class="project-tech-sheet" id="project1-tech-sheet">
+<h2>FICHA TÉCNICA</h2>
+<dl class="project-tech-grid">
+<div class="project-tech-row"><dt>Tipo de análise</dt><dd>Análise de dados · Visualização · Data storytelling</dd></div>
+<div class="project-tech-row"><dt>Fonte de dados</dt><dd>Dados públicos da AENA</dd></div>
+<div class="project-tech-row"><dt>Período analisado</dt><dd>2024 e 2025</dd></div>
+<div class="project-tech-row"><dt>Unidade de análise</dt><dd>Passageiros aéreos associados aos aeroportos das Baleares</dd></div>
+<div class="project-tech-row"><dt>Território</dt><dd>Palma de Mallorca · Ibiza · Menorca</dd></div>
+<div class="project-tech-row"><dt>Variáveis principais</dt><dd>Passageiros, aeroportos, países, cidades, companhias aéreas, meses e sazonalidade</dd></div>
+<div class="project-tech-row"><dt>Eixo de análise</dt><dd>Procura aérea, sazonalidade, conectividade internacional e distribuição territorial do tráfego nas Baleares</dd></div>
+<div class="project-tech-row"><dt>Tratamento aplicado</dt><dd>Limpeza de dados, agregação temporal, comparação entre épocas e análise por aeroportos, países, cidades e companhias aéreas</dd></div>
+<div class="project-tech-row"><dt>Ferramentas</dt><dd>Python · Pandas · Plotly · GitHub</dd></div>
+<div class="project-tech-row"><dt>Resultado do projeto</dt><dd>Notebook analítico, gráficos e publicação no LinkedIn</dd></div>
+<div class="project-tech-row"><dt>Estado</dt><dd>Publicado</dd></div>
+</dl>
+</section>
+</div>
+<section aria-labelledby="related-projects-title" class="related-projects">
+<h2 class="related-projects__heading" id="related-projects-title">PROJETOS RELACIONADOS</h2>
+<div class="related-projects__grid">
+<article class="related-project-card">
+<div class="related-project-card__image" style="background-image:url('../../images/patrones/projects/airbnb-london-analysis/p02-airbnb-londres-static.webp')"></div>
+<a aria-label="Abrir projeto «Alojamentos Airbnb em Londres»" class="related-project-card__link" href="analise-alojamentos-airbnb-londres.html">
+<div class="related-project-card__image-hover" style="background-image:url('../../images/patrones/projects/airbnb-london-analysis/p02-airbnb-londres-static.webp')"></div>
+</a>
+<div class="related-project-card__info">
+<span class="related-project-card__category">ANÁLISE DE DADOS · PROJETO 02</span>
+<h3 class="related-project-card__title">Alojamentos Airbnb em Londres</h3>
+<p class="related-project-card__teaser">Descubra como os preços variam consoante o tipo de alojamento, o bairro, a disponibilidade e a estadia mínima.</p>
+<span class="related-project-card__cta">Ver projeto →</span>
+</div>
+</article>
+<article class="related-project-card">
+<div class="related-project-card__image" style="background-image:url('../../images/patrones/projects/analisis-viajes-taxi-chicago/p03-taxi-chicago-static.webp')"></div>
+<a aria-label="Abrir projeto «Viagens de Táxi em Chicago»" class="related-project-card__link" href="analise-viagens-taxi-chicago.html">
+<div class="related-project-card__image-hover" style="background-image:url('../../images/patrones/projects/analisis-viajes-taxi-chicago/p03-taxi-chicago-static.webp')"></div>
+</a>
+<div class="related-project-card__info">
+<span class="related-project-card__category">ANÁLISE DE DADOS · PROJETO 03</span>
+<h3 class="related-project-card__title">Viagens de Táxi em Chicago</h3>
+<p class="related-project-card__teaser">Explore quando, onde e como se desloca a procura de táxis através de horários, duração, distâncias e zonas da cidade.</p>
+<span class="related-project-card__cta">Ver projeto →</span>
+</div>
+</article>
+</div>
+</section>
+</div>
+<footer class="project-detail-footer">
+<p class="project-detail-signature">Patrones Lab® · A gerar conhecimento a partir dos dados · por Malcolm Di Pietro Cagliari</p>
+<div aria-label="Ligações do projeto" class="project-detail-actions">
+<a aria-label="Abrir repositório do projeto no GitHub" class="project-action project-action-primary" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-01_trafico-aereo-aena" rel="noopener" target="_blank">
+<span data-mobile-repo-label="true">Abrir repositório</span><span class="project-action-icon project-action-icon-github"><img alt="" height="63" loading="lazy" src="../../images/patrones/github-button-icon.png" width="64"/></span>
+</a>
+<a aria-label="Abrir publicação do projeto no LinkedIn" class="project-action project-action-secondary" href="https://www.linkedin.com/pulse/turismo-en-las-islas-baleares-visto-desde-el-aire-qu%C3%A9-malcolm-dl9be" rel="noopener" target="_blank">
+<span>Ler no LinkedIn</span><span class="project-action-icon project-action-icon-linkedin">in</span>
+</a>
+</div>
+</footer>
+</section>
+</main>
+<script defer="" src="../../js/project-detail.js"></script>
+<script defer="" src="../../js/pl-share-button.js"></script>
+</body>
+</html>

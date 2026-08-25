@@ -1,7 +1,7 @@
 (function(){
   "use strict";
 
-  var supported = {es:true,en:true,it:true,fr:true};
+  var supported = {es:true,en:true,it:true,fr:true,de:true,pt:true};
   var storageKey = "patronesLabLanguage";
   var pageLanguage = (document.documentElement.lang || "es").toLowerCase().split("-")[0];
   if(!supported[pageLanguage]) pageLanguage = "es";

@@ -1,0 +1,23 @@
+{
+  "name": "Patrones Lab · Datenanalyse",
+  "short_name": "Patrones Lab",
+  "description": "Patrones Lab vereint Projekte aus Datenanalyse, Business Intelligence und Machine Learning, um Muster zu erkennen, Erkenntnisse zu gewinnen und Ergebnisse visuell zu kommunizieren.",
+  "start_url": "/de/",
+  "scope": "/de/",
+  "display": "standalone",
+  "background_color": "#0c0c0d",
+  "theme_color": "#0c0c0d",
+  "icons": [
+    {
+      "src": "images/patrones/favicon/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "images/patrones/favicon/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "lang": "de"
+}

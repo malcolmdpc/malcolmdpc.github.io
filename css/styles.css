@@ -15430,3 +15430,14 @@ body:not(.dark-mode) .about-profile-title{
     hyphens:none !important;
   }
 }
+
+/* v68i · Selector multidioma con siglas bajo cada bandera */
+.language-menu{align-items:flex-start;gap:9px;padding:8px 10px 7px;border-radius:22px}
+.language-option{width:36px;height:46px;min-width:36px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:5px;padding:2px 0 0;box-shadow:none!important}
+.language-option-img{transition:box-shadow .18s ease,transform .18s ease}
+.language-option-label{display:block;font-size:10px;line-height:1;font-weight:800;letter-spacing:.055em;color:rgba(255,255,255,.64);transition:color .18s ease}
+.language-option:hover .language-option-img,.language-option:focus-visible .language-option-img,.language-option.is-active .language-option-img{box-shadow:0 0 0 2px rgba(255,194,0,.72)}
+.language-option:hover .language-option-label,.language-option:focus-visible .language-option-label,.language-option.is-active .language-option-label{color:#ffd21f}
+body:not(.dark-mode) .language-option-label{color:rgba(17,17,17,.62)}
+body:not(.dark-mode) .language-option:hover .language-option-label,body:not(.dark-mode) .language-option:focus-visible .language-option-label,body:not(.dark-mode) .language-option.is-active .language-option-label{color:#8a6500}
+@media (max-width:767px),(hover:none) and (pointer:coarse){.language-selector-mobile .language-menu{gap:7px;padding:7px 8px 6px;border-radius:20px}.language-selector-mobile .language-option{width:31px;height:41px;min-width:31px;gap:4px}.language-selector-mobile .language-option-label{font-size:8px;letter-spacing:.04em}}

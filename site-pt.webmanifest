@@ -1,0 +1,23 @@
+{
+  "name": "Patrones Lab · Análise de Dados",
+  "short_name": "Patrones Lab",
+  "description": "O Patrones Lab reúne projetos de análise de dados, Business Intelligence e Machine Learning para explorar dados, detetar padrões, gerar conhecimento e comunicar resultados de forma visual.",
+  "start_url": "/pt/",
+  "scope": "/pt/",
+  "display": "standalone",
+  "background_color": "#0c0c0d",
+  "theme_color": "#0c0c0d",
+  "icons": [
+    {
+      "src": "images/patrones/favicon/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "images/patrones/favicon/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "lang": "pt"
+}
