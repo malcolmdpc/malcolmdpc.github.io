@@ -2,19 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 <url>
 <loc>https://malcolmdpc.github.io/</loc>
-<lastmod>2026-08-18</lastmod>
+<lastmod>2026-08-24</lastmod>
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/en/</loc>
-<lastmod>2026-08-18</lastmod>
+<lastmod>2026-08-24</lastmod>
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/it/</loc>
-<lastmod>2026-08-18</lastmod>
+<lastmod>2026-08-24</lastmod>
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/proyectos/analisis-vuelos-islas-baleares.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 <image:image>
 <image:loc>https://malcolmdpc.github.io/images/patrones/projects/analisis-vuelos-islas-baleares/p01-vuelos-baleares-mobile-banner.webp</image:loc>
 </image:image>
@@ -24,7 +24,7 @@
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/en/projects/balearic-islands-flight-analysis.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 <image:image>
 <image:loc>https://malcolmdpc.github.io/images/patrones/projects/analisis-vuelos-islas-baleares/p01-vuelos-baleares-mobile-banner.webp</image:loc>
 </image:image>
@@ -34,7 +34,7 @@
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/it/progetti/analisi-voli-isole-baleari.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 <image:image>
 <image:loc>https://malcolmdpc.github.io/images/patrones/projects/analisis-vuelos-islas-baleares/p01-vuelos-baleares-mobile-banner.webp</image:loc>
 </image:image>
@@ -44,7 +44,7 @@
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/proyectos/analisis-alojamiento-airbnb-londres.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 <image:image>
 <image:loc>https://malcolmdpc.github.io/images/patrones/projects/airbnb-london-analysis/p02-airbnb-londres-mobile-banner.webp</image:loc>
 </image:image>
@@ -54,7 +54,7 @@
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/en/projects/london-airbnb-accommodation-analysis.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 <image:image>
 <image:loc>https://malcolmdpc.github.io/images/patrones/projects/airbnb-london-analysis/p02-airbnb-londres-mobile-banner.webp</image:loc>
 </image:image>
@@ -64,7 +64,7 @@
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/it/progetti/analisi-alloggi-airbnb-londra.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 <image:image>
 <image:loc>https://malcolmdpc.github.io/images/patrones/projects/airbnb-london-analysis/p02-airbnb-londres-mobile-banner.webp</image:loc>
 </image:image>
@@ -104,7 +104,7 @@
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/proyectos/modelo-ml-airbnb-london.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 <image:image>
 <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-airbnb-london/p04-ml-airbnb-mobile-banner.webp</image:loc>
 </image:image>
@@ -114,7 +114,7 @@
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/en/projects/machine-learning-model-airbnb-london.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 <image:image>
 <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-airbnb-london/p04-ml-airbnb-mobile-banner.webp</image:loc>
 </image:image>
@@ -124,7 +124,7 @@
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/it/progetti/modello-machine-learning-airbnb-londra.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 <image:image>
 <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-airbnb-london/p04-ml-airbnb-mobile-banner.webp</image:loc>
 </image:image>
@@ -464,23 +464,23 @@
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/proyectos/red-neuronal-danos-eventos-meteorologicos.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/en/projects/neural-network-weather-event-damage.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/it/progetti/rete-neurale-danni-eventi-meteorologici.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/fr/</loc>
-<lastmod>2026-08-18</lastmod>
+<lastmod>2026-08-24</lastmod>
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/fr/projets/analyse-vols-iles-baleares.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 <image:image>
 <image:loc>https://malcolmdpc.github.io/images/patrones/projects/analisis-vuelos-islas-baleares/p01-vuelos-baleares-mobile-banner.webp</image:loc>
 </image:image>
@@ -490,7 +490,7 @@
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/fr/projets/analyse-hebergements-airbnb-londres.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 <image:image>
 <image:loc>https://malcolmdpc.github.io/images/patrones/projects/airbnb-london-analysis/p02-airbnb-londres-mobile-banner.webp</image:loc>
 </image:image>
@@ -510,7 +510,7 @@
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/fr/projets/machine-learning-airbnb-londres.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 <image:image>
 <image:loc>https://malcolmdpc.github.io/images/patrones/projects/modelo-ml-airbnb-london/p04-ml-airbnb-mobile-banner.webp</image:loc>
 </image:image>
@@ -630,11 +630,11 @@
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/fr/projets/reseaux-neuronaux-dommages-evenements-meteo.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/areas/analitica-de-datos.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/areas/machine-learning.html</loc>
@@ -650,7 +650,7 @@
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/en/areas/data-analytics.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/en/areas/machine-learning.html</loc>
@@ -666,7 +666,7 @@
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/it/aree/analisi-dati.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/it/aree/machine-learning.html</loc>
@@ -682,7 +682,7 @@
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/fr/domaines/analyse-donnees.html</loc>
-<lastmod>2026-08-21</lastmod>
+<lastmod>2026-08-24</lastmod>
 </url>
 <url>
 <loc>https://malcolmdpc.github.io/fr/domaines/machine-learning.html</loc>
@@ -696,4 +696,28 @@
 <loc>https://malcolmdpc.github.io/fr/domaines/analyse-sportive.html</loc>
 <lastmod>2026-08-21</lastmod>
 </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/proyectos/analisis-espacial-airbnb-londres.html</loc>
+    <lastmod>2026-08-24</lastmod>
+    <image:image><image:loc>https://malcolmdpc.github.io/images/patrones/projects/airbnb-london-spatial/p17-airbnb-espacial-mobile-banner.webp</image:loc></image:image>
+    <image:image><image:loc>https://malcolmdpc.github.io/images/patrones/projects/airbnb-london-spatial/p17-airbnb-espacial-mobile.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html</loc>
+    <lastmod>2026-08-24</lastmod>
+    <image:image><image:loc>https://malcolmdpc.github.io/images/patrones/projects/airbnb-london-spatial/p17-airbnb-espacial-mobile-banner.webp</image:loc></image:image>
+    <image:image><image:loc>https://malcolmdpc.github.io/images/patrones/projects/airbnb-london-spatial/p17-airbnb-espacial-mobile.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/it/progetti/analisi-geospaziale-airbnb-londra.html</loc>
+    <lastmod>2026-08-24</lastmod>
+    <image:image><image:loc>https://malcolmdpc.github.io/images/patrones/projects/airbnb-london-spatial/p17-airbnb-espacial-mobile-banner.webp</image:loc></image:image>
+    <image:image><image:loc>https://malcolmdpc.github.io/images/patrones/projects/airbnb-london-spatial/p17-airbnb-espacial-mobile.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://malcolmdpc.github.io/fr/projets/analyse-geospatiale-airbnb-londres.html</loc>
+    <lastmod>2026-08-24</lastmod>
+    <image:image><image:loc>https://malcolmdpc.github.io/images/patrones/projects/airbnb-london-spatial/p17-airbnb-espacial-mobile-banner.webp</image:loc></image:image>
+    <image:image><image:loc>https://malcolmdpc.github.io/images/patrones/projects/airbnb-london-spatial/p17-airbnb-espacial-mobile.webp</image:loc></image:image>
+  </url>
 </urlset>
