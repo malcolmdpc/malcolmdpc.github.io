@@ -9401,6 +9401,9 @@ html.pl-section-snap-enabled{
 #projects .github-project-card .mini-tags span{
   display:inline-flex;
   align-items:center;
+  flex:0 1 auto;
+  max-width:100%;
+  box-sizing:border-box;
   min-height:25px;
   padding:5px 9px !important;
   border-radius:999px !important;
@@ -15441,3 +15444,14 @@ body:not(.dark-mode) .about-profile-title{
 body:not(.dark-mode) .language-option-label{color:rgba(17,17,17,.62)}
 body:not(.dark-mode) .language-option:hover .language-option-label,body:not(.dark-mode) .language-option:focus-visible .language-option-label,body:not(.dark-mode) .language-option.is-active .language-option-label{color:#8a6500}
 @media (max-width:767px),(hover:none) and (pointer:coarse){.language-selector-mobile .language-menu{gap:7px;padding:7px 8px 6px;border-radius:20px}.language-selector-mobile .language-option{width:31px;height:41px;min-width:31px;gap:4px}.language-selector-mobile .language-option-label{font-size:8px;letter-spacing:.04em}}
+
+/* Project tags: adaptive horizontal packing */
+#projects .mini-tags{
+  column-gap:var(--pl-mini-tag-column-gap, 6px) !important;
+}
+
+@media (max-width:767px), (hover:none) and (pointer:coarse){
+  #projects .mini-tags{
+    column-gap:var(--pl-mini-tag-column-gap, 5px) !important;
+  }
+}

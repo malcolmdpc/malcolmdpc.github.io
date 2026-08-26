@@ -5298,6 +5298,365 @@ $('.color-mode').on('click', function(){
 
 
 (function(){
+  function getMiniTagGap(holder){
+    const style = window.getComputedStyle(holder);
+    const raw = style.columnGap && style.columnGap !== 'normal' ? style.columnGap : style.gap;
+    const value = parseFloat(raw);
+    return Number.isFinite(value) ? value : 0;
+  }
+
+  function simulateMiniTagRows(items, order, capacity, gap){
+    const rows = [];
+    let row = [];
+    let used = 0;
+
+    order.forEach(function(itemIndex){
+      const width = items[itemIndex].width;
+      const extraGap = row.length ? gap : 0;
+
+      if(row.length && used + extraGap + width > capacity + 0.5){
+        rows.push({items: row.slice(), used: used});
+        row = [];
+        used = 0;
+      }
+
+      if(row.length){
+        used += gap;
+      }
+
+      row.push(itemIndex);
+      used += width;
+    });
+
+    if(row.length){
+      rows.push({items: row.slice(), used: used});
+    }
+
+    return rows;
+  }
+
+  function compactMiniTagOrder(items, capacity, gap){
+    const count = items.length;
+    const original = items.map(function(_, index){ return index; });
+
+    if(count < 3 || count > 14){
+      return original;
+    }
+
+    const fullMask = (1 << count) - 1;
+    const usedCache = new Map();
+    const memo = new Map();
+
+    function bitCount(mask){
+      let value = mask;
+      let total = 0;
+      while(value){
+        total += value & 1;
+        value >>>= 1;
+      }
+      return total;
+    }
+
+    function firstIndex(mask){
+      for(let index = 0; index < count; index += 1){
+        if(mask & (1 << index)) return index;
+      }
+      return -1;
+    }
+
+    function rowUsed(mask){
+      if(usedCache.has(mask)) return usedCache.get(mask);
+
+      let width = 0;
+      for(let index = 0; index < count; index += 1){
+        if(mask & (1 << index)){
+          width += items[index].width;
+        }
+      }
+
+      const itemsInRow = bitCount(mask);
+      width += gap * Math.max(0, itemsInRow - 1);
+      if(itemsInRow === 1){
+        width = Math.min(width, capacity);
+      }
+      usedCache.set(mask, width);
+      return width;
+    }
+
+    function compareScores(a, b){
+      if(!b) return -1;
+      const keys = ['rows', 'maxGap', 'sumSquaredGap', 'movement'];
+
+      for(let i = 0; i < keys.length; i += 1){
+        const key = keys[i];
+        if(Math.abs(a[key] - b[key]) <= 0.01) continue;
+        return a[key] < b[key] ? -1 : 1;
+      }
+
+      return 0;
+    }
+
+    function solve(mask){
+      if(mask === 0){
+        return {
+          rows: 0,
+          maxGap: 0,
+          sumSquaredGap: 0,
+          movement: 0,
+          rowMasks: []
+        };
+      }
+
+      if(memo.has(mask)) return memo.get(mask);
+
+      const anchor = firstIndex(mask);
+      let best = null;
+      let subset = mask;
+
+      while(subset){
+        const containsAnchor = Boolean(subset & (1 << anchor));
+        const used = containsAnchor ? rowUsed(subset) : capacity + 1;
+
+        if(containsAnchor && used <= capacity + 0.5){
+          const rest = mask ^ subset;
+          const nextIndex = rest ? firstIndex(rest) : -1;
+          const forcesRealWrap = !rest || used + gap + items[nextIndex].width > capacity + 0.5;
+
+          if(!forcesRealWrap){
+            subset = (subset - 1) & mask;
+            continue;
+          }
+
+          const tail = solve(rest);
+          if(!tail){
+            subset = (subset - 1) & mask;
+            continue;
+          }
+
+          const slack = rest ? Math.max(0, capacity - used) : 0;
+          let movement = 0;
+
+          for(let selectedIndex = anchor + 1; selectedIndex < count; selectedIndex += 1){
+            if(!(subset & (1 << selectedIndex))) continue;
+
+            for(let skippedIndex = anchor; skippedIndex < selectedIndex; skippedIndex += 1){
+              if((mask & (1 << skippedIndex)) && !(subset & (1 << skippedIndex))){
+                movement += 1;
+              }
+            }
+          }
+
+          const candidate = {
+            rows: 1 + tail.rows,
+            maxGap: Math.max(slack, tail.maxGap),
+            sumSquaredGap: slack * slack + tail.sumSquaredGap,
+            movement: movement + tail.movement,
+            rowMasks: [subset].concat(tail.rowMasks)
+          };
+
+          if(compareScores(candidate, best) < 0){
+            best = candidate;
+          }
+        }
+
+        subset = (subset - 1) & mask;
+      }
+
+      memo.set(mask, best);
+      return best;
+    }
+
+    const solution = solve(fullMask);
+    if(!solution) return original;
+
+    const output = [];
+    solution.rowMasks.forEach(function(mask){
+      for(let index = 0; index < count; index += 1){
+        if(mask & (1 << index)) output.push(index);
+      }
+    });
+
+    return output;
+  }
+
+  function measureMiniTagWidth(span, holder, capacity){
+    const clone = span.cloneNode(true);
+    clone.removeAttribute('id');
+    clone.setAttribute('aria-hidden', 'true');
+    clone.style.position = 'absolute';
+    clone.style.visibility = 'hidden';
+    clone.style.pointerEvents = 'none';
+    clone.style.width = 'max-content';
+    clone.style.maxWidth = 'none';
+    clone.style.minWidth = '0';
+    clone.style.flex = '0 0 auto';
+    clone.style.whiteSpace = 'nowrap';
+    clone.style.order = '0';
+
+    holder.appendChild(clone);
+    const width = clone.getBoundingClientRect().width;
+    clone.remove();
+
+    return Math.min(capacity, Math.ceil(width * 10) / 10);
+  }
+
+  function layoutMovement(order){
+    let movement = 0;
+    order.forEach(function(itemIndex, visualIndex){
+      movement += Math.abs(itemIndex - visualIndex);
+    });
+    return movement;
+  }
+
+  function scoreMiniTagLayout(items, order, capacity, gap, baseGap){
+    const rows = simulateMiniTagRows(items, order, capacity, gap);
+    const nonFinal = rows.slice(0, -1);
+    const slacks = nonFinal.map(function(row){
+      return Math.max(0, capacity - row.used);
+    });
+
+    return {
+      order: order,
+      gap: gap,
+      rowsData: rows,
+      rows: rows.length,
+      maxGap: slacks.length ? Math.max.apply(null, slacks) : 0,
+      sumSquaredGap: slacks.reduce(function(total, slack){
+        return total + slack * slack;
+      }, 0),
+      movement: layoutMovement(order),
+      gapReduction: Math.max(0, baseGap - gap)
+    };
+  }
+
+  function isBetterMiniTagLayout(candidate, current){
+    if(!current) return true;
+
+    if(candidate.rows !== current.rows){
+      return candidate.rows < current.rows;
+    }
+
+    if(Math.abs(candidate.maxGap - current.maxGap) > 0.01){
+      return candidate.maxGap < current.maxGap;
+    }
+
+    if(Math.abs(candidate.sumSquaredGap - current.sumSquaredGap) > 0.01){
+      return candidate.sumSquaredGap < current.sumSquaredGap;
+    }
+
+    if(candidate.movement !== current.movement){
+      return candidate.movement < current.movement;
+    }
+
+    if(Math.abs(candidate.gapReduction - current.gapReduction) > 0.01){
+      return candidate.gapReduction < current.gapReduction;
+    }
+
+    return false;
+  }
+
+  function candidateMiniTagGaps(baseGap){
+    const minimum = baseGap >= 5.75 ? 4 : Math.max(3.5, baseGap - 1.5);
+    const values = [baseGap];
+
+    for(let gap = baseGap - 0.5; gap >= minimum - 0.01; gap -= 0.5){
+      values.push(Math.max(minimum, Math.round(gap * 10) / 10));
+    }
+
+    return values.filter(function(value, index, list){
+      return list.findIndex(function(other){
+        return Math.abs(other - value) < 0.01;
+      }) === index;
+    });
+  }
+
+  function packMiniTagHolder(holder){
+    const spans = Array.from(holder.querySelectorAll(':scope > span'));
+
+    if(spans.length < 3){
+      holder.style.removeProperty('--pl-mini-tag-column-gap');
+      return;
+    }
+
+    const capacity = holder.clientWidth;
+    if(!capacity || capacity < 1) return;
+
+    holder.style.removeProperty('--pl-mini-tag-column-gap');
+    const baseGap = getMiniTagGap(holder);
+    const items = spans.map(function(span){
+      return {
+        node: span,
+        width: measureMiniTagWidth(span, holder, capacity)
+      };
+    });
+
+    const originalOrder = items.map(function(_, index){ return index; });
+    let best = scoreMiniTagLayout(items, originalOrder, capacity, baseGap, baseGap);
+
+    candidateMiniTagGaps(baseGap).forEach(function(gap){
+      const compactOrder = compactMiniTagOrder(items, capacity, gap);
+      const candidate = scoreMiniTagLayout(items, compactOrder, capacity, gap, baseGap);
+
+      if(isBetterMiniTagLayout(candidate, best)){
+        best = candidate;
+      }
+    });
+
+    best.order.forEach(function(itemIndex, visualIndex){
+      items[itemIndex].node.style.order = String(visualIndex);
+    });
+
+    if(best.gap < baseGap - 0.01){
+      holder.style.setProperty('--pl-mini-tag-column-gap', best.gap.toFixed(1) + 'px');
+    }else{
+      holder.style.removeProperty('--pl-mini-tag-column-gap');
+    }
+
+    const reordered = best.order.some(function(itemIndex, visualIndex){
+      return itemIndex !== originalOrder[visualIndex];
+    });
+
+    holder.dataset.packedRows = String(best.rows);
+    holder.dataset.packed = reordered ? 'true' : 'false';
+    holder.dataset.packedGap = best.gap.toFixed(1);
+  }
+
+  let miniTagPackFrame = 0;
+  const observedMiniTagHolders = new WeakSet();
+  const miniTagResizeObserver = typeof ResizeObserver === 'function'
+    ? new ResizeObserver(function(entries){
+        if(entries.some(function(entry){ return entry.target && entry.target.matches('#projects .mini-tags'); })){
+          scheduleMiniTagPacking();
+        }
+      })
+    : null;
+
+  function observeMiniTagHolders(){
+    if(!miniTagResizeObserver) return;
+
+    document.querySelectorAll('#projects .mini-tags').forEach(function(holder){
+      if(observedMiniTagHolders.has(holder)) return;
+      observedMiniTagHolders.add(holder);
+      miniTagResizeObserver.observe(holder);
+    });
+  }
+
+  function packMiniTags(){
+    observeMiniTagHolders();
+    document.querySelectorAll('#projects .mini-tags').forEach(packMiniTagHolder);
+  }
+
+  function scheduleMiniTagPacking(){
+    if(miniTagPackFrame){
+      window.cancelAnimationFrame(miniTagPackFrame);
+    }
+
+    miniTagPackFrame = window.requestAnimationFrame(function(){
+      miniTagPackFrame = 0;
+      packMiniTags();
+    });
+  }
+
   function removeInjectedProjectTags(){
     document.querySelectorAll('#projects .github-project-card .project-tags').forEach(function(holder){
       holder.remove();
@@ -5322,6 +5681,7 @@ $('.color-mode').on('click', function(){
     removeInjectedProjectTags();
   }
 
+  window.plPackMiniTags = scheduleMiniTagPacking;
   window.plRemoveInjectedProjectTags = removeInjectedProjectTags;
 })();
 
@@ -5766,6 +6126,9 @@ $('.color-mode').on('click', function(){
     renderFilters(language);
     renderMiniTags(language);
     removeInjectedProjectTags();
+    if(window.plPackMiniTags){
+      window.plPackMiniTags();
+    }
 
     audit(language);
   }
@@ -5804,6 +6167,16 @@ $('.color-mode').on('click', function(){
     }, {once:true});
   }else{
     syncSoon(getLang());
+  }
+
+  window.addEventListener('resize', function(){
+    if(window.plPackMiniTags) window.plPackMiniTags();
+  }, {passive:true});
+
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(function(){
+      if(window.plPackMiniTags) window.plPackMiniTags();
+    }).catch(function(){});
   }
 
   window.plSyncMiniTagsAndFilters = syncSoon;
