@@ -5555,8 +5555,10 @@ $('.color-mode').on('click', function(){
     return false;
   }
 
-  function candidateMiniTagGaps(baseGap){
-    const minimum = baseGap >= 5.75 ? 4 : Math.max(3.5, baseGap - 1.5);
+  function candidateMiniTagGaps(baseGap, minimumGap){
+    const minimum = Number.isFinite(minimumGap)
+      ? Math.max(0, Math.min(baseGap, minimumGap))
+      : (baseGap >= 5.75 ? 4 : Math.max(3.5, baseGap - 1.5));
     const values = [baseGap];
 
     for(let gap = baseGap - 0.5; gap >= minimum - 0.01; gap -= 0.5){
@@ -5570,43 +5572,149 @@ $('.color-mode').on('click', function(){
     });
   }
 
+  function clearMiniTagDensity(holder){
+    holder.style.removeProperty('--pl-mini-tag-font-size');
+    holder.style.removeProperty('--pl-mini-tag-padding-x');
+    holder.style.removeProperty('--pl-mini-tag-padding-y');
+    holder.style.removeProperty('--pl-mini-tag-min-height');
+  }
+
+  function applyMiniTagDensity(holder, profile){
+    if(!profile){
+      clearMiniTagDensity(holder);
+      return;
+    }
+
+    holder.style.setProperty('--pl-mini-tag-font-size', profile.fontSize.toFixed(2) + 'px');
+    holder.style.setProperty('--pl-mini-tag-padding-x', profile.paddingX.toFixed(2) + 'px');
+    holder.style.setProperty('--pl-mini-tag-padding-y', profile.paddingY.toFixed(2) + 'px');
+    holder.style.setProperty('--pl-mini-tag-min-height', profile.minHeight.toFixed(2) + 'px');
+  }
+
+  function mobileMiniTagDensityProfiles(holder, spanCount){
+    if(window.innerWidth > 767) return [null];
+
+    const width = holder.clientWidth;
+    let base;
+
+    if(width <= 130){
+      base = {fontSize:8.5, paddingX:4.0, paddingY:3.0, minHeight:18.0, gap:2.5, minGap:2.0};
+    }else if(width <= 150){
+      base = {fontSize:8.8, paddingX:4.25, paddingY:3.0, minHeight:18.5, gap:2.75, minGap:2.0};
+    }else if(width <= 180){
+      base = {fontSize:9.2, paddingX:4.5, paddingY:3.1, minHeight:19.0, gap:3.0, minGap:2.0};
+    }else if(width <= 220){
+      base = {fontSize:9.5, paddingX:4.75, paddingY:3.2, minHeight:19.5, gap:3.25, minGap:2.25};
+    }else if(width <= 280){
+      base = {fontSize:9.8, paddingX:5.0, paddingY:3.3, minHeight:20.0, gap:3.5, minGap:2.5};
+    }else{
+      base = {fontSize:10.2, paddingX:5.5, paddingY:3.5, minHeight:20.5, gap:4.0, minGap:3.0};
+    }
+
+    const profiles = [Object.assign({name:'balanced', rank:0}, base)];
+
+    const compact = {
+      name:'compact',
+      rank:1,
+      fontSize:Math.max(8.2, base.fontSize - 0.5),
+      paddingX:Math.max(3.75, base.paddingX - 0.5),
+      paddingY:Math.max(2.8, base.paddingY - 0.2),
+      minHeight:Math.max(18.0, base.minHeight - 0.5),
+      gap:Math.max(2.25, base.gap - 0.5),
+      minGap:Math.max(1.9, base.minGap - 0.25)
+    };
+    profiles.push(compact);
+
+    if(spanCount >= 7 || width <= 190){
+      profiles.push({
+        name:'dense',
+        rank:2,
+        fontSize:Math.max(8.2, base.fontSize - 1.0),
+        paddingX:Math.max(3.5, base.paddingX - 1.0),
+        paddingY:Math.max(2.7, base.paddingY - 0.35),
+        minHeight:Math.max(18.0, base.minHeight - 0.9),
+        gap:Math.max(2.0, base.gap - 1.0),
+        minGap:Math.max(1.75, base.minGap - 0.4)
+      });
+    }
+
+    return profiles;
+  }
+
+  function isBetterAcrossDensityProfiles(candidate, current){
+    if(!current) return true;
+
+    if(candidate.rows !== current.rows){
+      return candidate.rows < current.rows;
+    }
+
+    if(candidate.profileRank !== current.profileRank){
+      return candidate.profileRank < current.profileRank;
+    }
+
+    return isBetterMiniTagLayout(candidate, current);
+  }
+
   function packMiniTagHolder(holder){
     const spans = Array.from(holder.querySelectorAll(':scope > span'));
 
     if(spans.length < 3){
       holder.style.removeProperty('--pl-mini-tag-column-gap');
+      clearMiniTagDensity(holder);
+      holder.removeAttribute('data-packed-density');
       return;
     }
 
     const capacity = holder.clientWidth;
     if(!capacity || capacity < 1) return;
 
-    holder.style.removeProperty('--pl-mini-tag-column-gap');
-    const baseGap = getMiniTagGap(holder);
-    const items = spans.map(function(span){
-      return {
-        node: span,
-        width: measureMiniTagWidth(span, holder, capacity)
-      };
-    });
+    const originalOrder = spans.map(function(_, index){ return index; });
+    const profiles = mobileMiniTagDensityProfiles(holder, spans.length);
+    let best = null;
 
-    const originalOrder = items.map(function(_, index){ return index; });
-    let best = scoreMiniTagLayout(items, originalOrder, capacity, baseGap, baseGap);
+    profiles.forEach(function(profile){
+      applyMiniTagDensity(holder, profile);
+      holder.style.removeProperty('--pl-mini-tag-column-gap');
 
-    candidateMiniTagGaps(baseGap).forEach(function(gap){
-      const compactOrder = compactMiniTagOrder(items, capacity, gap);
-      const candidate = scoreMiniTagLayout(items, compactOrder, capacity, gap, baseGap);
+      const profileBaseGap = profile ? profile.gap : getMiniTagGap(holder);
+      const profileMinGap = profile ? profile.minGap : undefined;
+      const items = spans.map(function(span){
+        return {
+          node: span,
+          width: measureMiniTagWidth(span, holder, capacity)
+        };
+      });
 
-      if(isBetterMiniTagLayout(candidate, best)){
-        best = candidate;
+      let bestForProfile = scoreMiniTagLayout(items, originalOrder, capacity, profileBaseGap, profileBaseGap);
+      bestForProfile.profile = profile;
+      bestForProfile.profileRank = profile ? profile.rank : 0;
+
+      candidateMiniTagGaps(profileBaseGap, profileMinGap).forEach(function(gap){
+        const compactOrder = compactMiniTagOrder(items, capacity, gap);
+        const candidate = scoreMiniTagLayout(items, compactOrder, capacity, gap, profileBaseGap);
+        candidate.profile = profile;
+        candidate.profileRank = profile ? profile.rank : 0;
+
+        if(isBetterMiniTagLayout(candidate, bestForProfile)){
+          bestForProfile = candidate;
+        }
+      });
+
+      if(isBetterAcrossDensityProfiles(bestForProfile, best)){
+        best = bestForProfile;
       }
     });
 
+    if(!best) return;
+
+    applyMiniTagDensity(holder, best.profile);
+
     best.order.forEach(function(itemIndex, visualIndex){
-      items[itemIndex].node.style.order = String(visualIndex);
+      spans[itemIndex].style.order = String(visualIndex);
     });
 
-    if(best.gap < baseGap - 0.01){
+    const defaultGap = best.profile ? best.profile.gap : getMiniTagGap(holder);
+    if(best.profile || Math.abs(best.gap - defaultGap) > 0.01){
       holder.style.setProperty('--pl-mini-tag-column-gap', best.gap.toFixed(1) + 'px');
     }else{
       holder.style.removeProperty('--pl-mini-tag-column-gap');
@@ -5619,6 +5727,11 @@ $('.color-mode').on('click', function(){
     holder.dataset.packedRows = String(best.rows);
     holder.dataset.packed = reordered ? 'true' : 'false';
     holder.dataset.packedGap = best.gap.toFixed(1);
+    if(best.profile){
+      holder.dataset.packedDensity = best.profile.name;
+    }else{
+      holder.removeAttribute('data-packed-density');
+    }
   }
 
   let miniTagPackFrame = 0;

@@ -15450,8 +15450,44 @@ body:not(.dark-mode) .language-option:hover .language-option-label,body:not(.dar
   column-gap:var(--pl-mini-tag-column-gap, 6px) !important;
 }
 
-@media (max-width:767px), (hover:none) and (pointer:coarse){
+/* Mobile: denser chips only inside the existing card layout.
+   JS can refine these values per holder width when doing so removes a row. */
+@media (max-width:767px){
   #projects .mini-tags{
-    column-gap:var(--pl-mini-tag-column-gap, 5px) !important;
+    column-gap:var(--pl-mini-tag-column-gap, 3px) !important;
+    row-gap:4px !important;
+  }
+
+  #projects .mini-tags span{
+    font-size:var(--pl-mini-tag-font-size, clamp(8.5px, 2.25vw, 9.8px)) !important;
+    min-height:var(--pl-mini-tag-min-height, 19px) !important;
+    padding:var(--pl-mini-tag-padding-y, 3.1px) var(--pl-mini-tag-padding-x, 4.5px) !important;
+    line-height:1.02 !important;
+  }
+}
+
+@media (max-width:380px){
+  #projects .mini-tags{
+    column-gap:var(--pl-mini-tag-column-gap, 2.5px) !important;
+    row-gap:3.5px !important;
+  }
+
+  #projects .mini-tags span{
+    font-size:var(--pl-mini-tag-font-size, 8.4px) !important;
+    min-height:var(--pl-mini-tag-min-height, 18px) !important;
+    padding:var(--pl-mini-tag-padding-y, 3px) var(--pl-mini-tag-padding-x, 4px) !important;
+  }
+}
+
+@media (min-width:576px) and (max-width:767px){
+  #projects .mini-tags{
+    column-gap:var(--pl-mini-tag-column-gap, 4px) !important;
+    row-gap:4.5px !important;
+  }
+
+  #projects .mini-tags span{
+    font-size:var(--pl-mini-tag-font-size, clamp(9.8px, 1.35vw, 10.3px)) !important;
+    min-height:var(--pl-mini-tag-min-height, 20px) !important;
+    padding:var(--pl-mini-tag-padding-y, 3.4px) var(--pl-mini-tag-padding-x, 5px) !important;
   }
 }
