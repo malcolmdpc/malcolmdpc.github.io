@@ -15491,3 +15491,32 @@ body:not(.dark-mode) .language-option:hover .language-option-label,body:not(.dar
     padding:var(--pl-mini-tag-padding-y, 3.4px) var(--pl-mini-tag-padding-x, 5px) !important;
   }
 }
+
+#projects .repo-filter-toolbar.repo-filter-toolbar-categories{
+  column-gap:var(--pl-filter-gap-x, 12px) !important;
+  row-gap:var(--pl-filter-gap-y, 14px) !important;
+}
+
+#projects .repo-filter-toolbar.repo-filter-toolbar-categories > .repo-filter-btn{
+  padding-left:var(--pl-filter-all-padding-x, 14px) !important;
+  padding-right:var(--pl-filter-all-padding-x, 14px) !important;
+}
+
+#projects .repo-filter-toolbar.repo-filter-toolbar-categories .repo-filter-group-trigger{
+  padding-left:var(--pl-filter-trigger-padding-x, 20px) !important;
+  padding-right:var(--pl-filter-trigger-padding-x, 20px) !important;
+}
+
+@media (max-width: 767px), (hover: none) and (pointer: coarse){
+  #projects .repo-filter-toolbar.repo-filter-toolbar-categories{
+    column-gap:var(--pl-filter-gap-x, 8px) !important;
+    row-gap:var(--pl-filter-gap-y, 9px) !important;
+  }
+}
+
+
+/* v68o · Project card descriptions — improved responsive line wrapping */
+#projects .github-project-card .github-project-body > p:not(.project-status){
+  text-wrap:pretty !important;
+  text-wrap-style:pretty !important;
+}

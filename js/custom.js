@@ -6805,3 +6805,250 @@ $('.color-mode').on('click', function(){
   document.addEventListener("pl-language-changed", scheduleFit);
 })();
 
+(function(){
+  function getToolbar(){
+    return document.querySelector('#projects .repo-filter-toolbar.repo-filter-toolbar-categories');
+  }
+
+  function getItems(toolbar){
+    if(!toolbar) return [];
+    return Array.from(toolbar.children).filter(function(node){
+      return node.matches &&
+        (node.matches('.repo-filter-group') ||
+         node.matches('.repo-filter-btn[data-repo-filter="all"]'));
+    });
+  }
+
+  function permutations(values){
+    if(values.length <= 1) return [values.slice()];
+    const output = [];
+    values.forEach(function(value, index){
+      const rest = values.slice(0, index).concat(values.slice(index + 1));
+      permutations(rest).forEach(function(tail){
+        output.push([value].concat(tail));
+      });
+    });
+    return output;
+  }
+
+  function simulate(widths, order, capacity, gap){
+    const rows = [];
+    let current = {items:[], used:0};
+
+    order.forEach(function(index){
+      const width = Math.min(capacity, widths[index]);
+      const next = current.items.length ? current.used + gap + width : width;
+
+      if(current.items.length && next > capacity + 0.5){
+        rows.push(current);
+        current = {items:[index], used:width};
+      }else{
+        current.items.push(index);
+        current.used = next;
+      }
+    });
+
+    if(current.items.length) rows.push(current);
+    return rows;
+  }
+
+  function movement(order){
+    return order.reduce(function(total, itemIndex, visualIndex){
+      return total + Math.abs(itemIndex - visualIndex);
+    }, 0);
+  }
+
+  function score(widths, order, capacity, gap, baseGap){
+    const rows = simulate(widths, order, capacity, gap);
+    const nonFinal = rows.slice(0, -1);
+    const slacks = nonFinal.map(function(row){
+      return Math.max(0, capacity - row.used);
+    });
+
+    return {
+      order:order,
+      gap:gap,
+      rows:rows.length,
+      maxSlack:slacks.length ? Math.max.apply(null, slacks) : 0,
+      sumSquaredSlack:slacks.reduce(function(total, slack){
+        return total + slack * slack;
+      }, 0),
+      movement:movement(order),
+      gapReduction:Math.max(0, baseGap - gap)
+    };
+  }
+
+  function betterWithinProfile(candidate, current){
+    if(!current) return true;
+    if(candidate.rows !== current.rows) return candidate.rows < current.rows;
+    if(Math.abs(candidate.maxSlack - current.maxSlack) > 0.01){
+      return candidate.maxSlack < current.maxSlack;
+    }
+    if(Math.abs(candidate.sumSquaredSlack - current.sumSquaredSlack) > 0.01){
+      return candidate.sumSquaredSlack < current.sumSquaredSlack;
+    }
+    if(candidate.movement !== current.movement){
+      return candidate.movement < current.movement;
+    }
+    if(Math.abs(candidate.gapReduction - current.gapReduction) > 0.01){
+      return candidate.gapReduction < current.gapReduction;
+    }
+    return false;
+  }
+
+  function betterAcrossProfiles(candidate, current){
+    if(!current) return true;
+    if(candidate.rows !== current.rows) return candidate.rows < current.rows;
+    if(candidate.profileRank !== current.profileRank){
+      return candidate.profileRank < current.profileRank;
+    }
+    return betterWithinProfile(candidate, current);
+  }
+
+  function profileCandidates(toolbarWidth){
+    const mobile = window.matchMedia('(max-width: 767px), (hover: none) and (pointer: coarse)').matches;
+
+    if(!mobile){
+      return [
+        {name:'balanced', rank:0, groupPadding:20, allPadding:14, gap:12, minGap:9, rowGap:14},
+        {name:'compact', rank:1, groupPadding:18, allPadding:14, gap:10, minGap:8, rowGap:13}
+      ];
+    }
+
+    if(toolbarWidth <= 340){
+      return [
+        {name:'balanced', rank:0, groupPadding:20, allPadding:14, gap:8, minGap:6, rowGap:9},
+        {name:'compact', rank:1, groupPadding:17, allPadding:13, gap:6, minGap:4.5, rowGap:8},
+        {name:'dense', rank:2, groupPadding:14.5, allPadding:12, gap:4.5, minGap:3.5, rowGap:7}
+      ];
+    }
+
+    if(toolbarWidth <= 460){
+      return [
+        {name:'balanced', rank:0, groupPadding:20, allPadding:14, gap:8, minGap:6, rowGap:9},
+        {name:'compact', rank:1, groupPadding:17.5, allPadding:13, gap:6, minGap:4.5, rowGap:8},
+        {name:'dense', rank:2, groupPadding:15, allPadding:12, gap:4.5, minGap:3.5, rowGap:7.5}
+      ];
+    }
+
+    return [
+      {name:'balanced', rank:0, groupPadding:20, allPadding:14, gap:8, minGap:6, rowGap:9},
+      {name:'compact', rank:1, groupPadding:18, allPadding:13.5, gap:6, minGap:4.5, rowGap:8}
+    ];
+  }
+
+  function gapCandidates(baseGap, minGap){
+    const out = [baseGap];
+    for(let value = baseGap - 0.5; value >= minGap - 0.01; value -= 0.5){
+      out.push(Math.max(minGap, Math.round(value * 10) / 10));
+    }
+    return out.filter(function(value, index, values){
+      return values.findIndex(function(other){
+        return Math.abs(other - value) < 0.01;
+      }) === index;
+    });
+  }
+
+  function applyProfile(toolbar, profile, gap){
+    toolbar.style.setProperty('--pl-filter-trigger-padding-x', profile.groupPadding + 'px');
+    toolbar.style.setProperty('--pl-filter-all-padding-x', profile.allPadding + 'px');
+    toolbar.style.setProperty('--pl-filter-gap-x', gap + 'px');
+    toolbar.style.setProperty('--pl-filter-gap-y', profile.rowGap + 'px');
+  }
+
+  function measureWidths(toolbar, items, profile){
+    applyProfile(toolbar, profile, profile.gap);
+    return items.map(function(item){
+      return Math.ceil(item.getBoundingClientRect().width * 10) / 10;
+    });
+  }
+
+  function optimizeToolbar(){
+    const toolbar = getToolbar();
+    const items = getItems(toolbar);
+    if(!toolbar || items.length < 3) return;
+
+    const capacity = toolbar.clientWidth;
+    if(!capacity) return;
+
+    const originalOrder = items.map(function(_, index){ return index; });
+    const firstIndex = items.findIndex(function(item){
+      return item.matches('.repo-filter-btn[data-repo-filter="all"]');
+    });
+
+    const fixedFirst = firstIndex >= 0 ? firstIndex : 0;
+    const remaining = originalOrder.filter(function(index){ return index !== fixedFirst; });
+    const visualOrders = permutations(remaining).map(function(order){
+      return [fixedFirst].concat(order);
+    });
+
+    let best = null;
+
+    profileCandidates(capacity).forEach(function(profile){
+      const widths = measureWidths(toolbar, items, profile);
+      let bestForProfile = null;
+
+      gapCandidates(profile.gap, profile.minGap).forEach(function(gap){
+        visualOrders.forEach(function(order){
+          const candidate = score(widths, order, capacity, gap, profile.gap);
+          candidate.profile = profile;
+          candidate.profileRank = profile.rank;
+
+          if(betterWithinProfile(candidate, bestForProfile)){
+            bestForProfile = candidate;
+          }
+        });
+      });
+
+      if(bestForProfile && betterAcrossProfiles(bestForProfile, best)){
+        best = bestForProfile;
+      }
+    });
+
+    if(!best) return;
+
+    applyProfile(toolbar, best.profile, best.gap);
+
+    best.order.forEach(function(itemIndex, visualIndex){
+      items[itemIndex].style.order = String(visualIndex);
+    });
+
+    toolbar.dataset.filterLayoutRows = String(best.rows);
+    toolbar.dataset.filterLayoutProfile = best.profile.name;
+    toolbar.dataset.filterLayoutGap = best.gap.toFixed(1);
+    toolbar.dataset.filterLayoutPacked = best.order.some(function(itemIndex, visualIndex){
+      return itemIndex !== originalOrder[visualIndex];
+    }) ? 'true' : 'false';
+  }
+
+  let frame = 0;
+  function schedule(){
+    if(frame) window.cancelAnimationFrame(frame);
+    frame = window.requestAnimationFrame(function(){
+      frame = 0;
+      optimizeToolbar();
+    });
+  }
+
+  const toolbar = getToolbar();
+  if(toolbar && typeof ResizeObserver === 'function'){
+    const observer = new ResizeObserver(schedule);
+    observer.observe(toolbar);
+  }
+
+  window.addEventListener('resize', schedule, {passive:true});
+  document.addEventListener('pl-language-changed', schedule);
+
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(schedule).catch(function(){});
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', schedule, {once:true});
+  }else{
+    schedule();
+  }
+
+  window.plOptimizeProjectFilters = schedule;
+})();
+
