@@ -7052,3 +7052,74 @@ $('.color-mode').on('click', function(){
   window.plOptimizeProjectFilters = schedule;
 })();
 
+
+/* v68p · Project meta badges responsive packing */
+(function(){
+  'use strict';
+
+  const selector = '#projects .project-meta-row';
+  let frame = 0;
+
+  function rowsFit(row){
+    const status = row.querySelector('.project-status');
+    const data = row.querySelector('.project-data-year');
+    if(!status || !data) return true;
+
+    const style = window.getComputedStyle(row);
+    const gap = parseFloat(style.columnGap || style.gap || '0') || 0;
+    const available = row.clientWidth;
+    const needed = status.getBoundingClientRect().width + data.getBoundingClientRect().width + gap;
+    return needed <= available + 0.5;
+  }
+
+  function optimizeRow(row){
+    row.classList.remove('project-meta-compact');
+
+    if(rowsFit(row)){
+      row.dataset.metaLayout = 'regular-row';
+      return;
+    }
+
+    row.classList.add('project-meta-compact');
+
+    if(rowsFit(row)){
+      row.dataset.metaLayout = 'compact-row';
+      return;
+    }
+
+    row.classList.remove('project-meta-compact');
+    row.dataset.metaLayout = 'wrapped';
+  }
+
+  function optimizeAll(){
+    document.querySelectorAll(selector).forEach(optimizeRow);
+  }
+
+  function schedule(){
+    if(frame) window.cancelAnimationFrame(frame);
+    frame = window.requestAnimationFrame(function(){
+      frame = 0;
+      optimizeAll();
+    });
+  }
+
+  if(typeof ResizeObserver === 'function'){
+    const observer = new ResizeObserver(schedule);
+    document.querySelectorAll(selector).forEach(function(row){ observer.observe(row); });
+  }
+
+  window.addEventListener('resize', schedule, {passive:true});
+  document.addEventListener('pl-language-changed', schedule);
+
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(schedule).catch(function(){});
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', schedule, {once:true});
+  }else{
+    schedule();
+  }
+
+  window.plOptimizeProjectMetaRows = schedule;
+})();
