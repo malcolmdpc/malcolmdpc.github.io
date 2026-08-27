@@ -15615,3 +15615,292 @@ body:not(.dark-mode) .language-option:hover .language-option-label,body:not(.dar
     padding-right:5px;
   }
 }
+
+/* v68r · Navbar mobile: distribución fluida 320–767 px */
+@media (max-width:767px){
+  .pl-smart-navbar .container{
+    width:100% !important;
+    max-width:none !important;
+    padding-left:clamp(10px, 3vw, 16px) !important;
+    padding-right:clamp(10px, 3vw, 16px) !important;
+    flex-wrap:wrap !important;
+    align-items:center !important;
+  }
+
+  .pl-smart-navbar .navbar-brand{
+    order:1;
+    flex:1 1 auto !important;
+    min-width:0 !important;
+    width:auto !important;
+    max-width:none !important;
+    margin-right:clamp(4px, 1.4vw, 8px) !important;
+    gap:clamp(4px, 1.25vw, 8px) !important;
+    font-size:clamp(12.5px, 3.35vw, 14px) !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+  }
+
+  .pl-smart-navbar .brand-image-badge,
+  .pl-smart-navbar .brand-badge{
+    width:clamp(28px, 7.8vw, 32px) !important;
+    height:clamp(28px, 7.8vw, 32px) !important;
+    min-width:clamp(28px, 7.8vw, 32px) !important;
+    margin-right:0 !important;
+    flex:0 0 auto !important;
+  }
+
+  .navbar-mobile-actions{
+    --pl-mobile-nav-control:clamp(32px, 8.75vw, 36px);
+    order:2;
+    flex:0 0 auto !important;
+    width:auto !important;
+    height:var(--pl-mobile-nav-control) !important;
+    margin-left:auto !important;
+    margin-right:clamp(4px, 1.7vw, 10px) !important;
+    gap:clamp(5px, 1.65vw, 10px) !important;
+  }
+
+  .navbar-mobile-actions .language-selector-mobile,
+  .navbar-mobile-actions .language-select-toggle-mobile,
+  .navbar-mobile-actions .color-mode-mobile,
+  .pl-smart-navbar .navbar-toggler{
+    width:var(--pl-mobile-nav-control, clamp(32px, 8.75vw, 36px)) !important;
+    height:var(--pl-mobile-nav-control, clamp(32px, 8.75vw, 36px)) !important;
+    min-width:var(--pl-mobile-nav-control, clamp(32px, 8.75vw, 36px)) !important;
+    min-height:var(--pl-mobile-nav-control, clamp(32px, 8.75vw, 36px)) !important;
+    max-width:var(--pl-mobile-nav-control, clamp(32px, 8.75vw, 36px)) !important;
+    max-height:var(--pl-mobile-nav-control, clamp(32px, 8.75vw, 36px)) !important;
+  }
+
+  .pl-smart-navbar .navbar-toggler{
+    order:3;
+    display:inline-flex !important;
+    flex:0 0 auto !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    padding:0 !important;
+    margin:0 !important;
+  }
+
+  .pl-smart-navbar .navbar-toggler-icon{
+    width:clamp(18px, 5vw, 21px) !important;
+    height:2px !important;
+    margin:2.5px 0 !important;
+  }
+
+  /* Bootstrap expande navbar-expand-sm desde 576 px. Mantener comportamiento
+     mobile real hasta nuestro breakpoint de 768 px. */
+  .navbar-expand-sm .navbar-collapse.collapse:not(.show){
+    display:none !important;
+  }
+
+  .navbar-expand-sm .navbar-collapse.collapse.show,
+  .navbar-expand-sm .navbar-collapse.collapsing{
+    display:block !important;
+  }
+
+  .pl-smart-navbar .navbar-collapse{
+    order:4;
+    flex:0 0 100% !important;
+    flex-basis:100% !important;
+    width:100% !important;
+    min-width:0 !important;
+    padding:clamp(7px, 2vw, 10px) 0 clamp(10px, 2.8vw, 14px) !important;
+    margin:0 !important;
+  }
+
+  .pl-smart-navbar .navbar-collapse > .navbar-nav.mx-auto{
+    width:100% !important;
+    margin:0 !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+    justify-content:flex-start !important;
+    gap:2px !important;
+  }
+
+  .pl-smart-navbar .navbar-collapse > .navbar-nav.mx-auto .nav-item{
+    width:100% !important;
+    min-width:0 !important;
+  }
+
+  .pl-smart-navbar .navbar-collapse > .navbar-nav.mx-auto .nav-link{
+    width:100% !important;
+    min-width:0 !important;
+    height:clamp(32px, 8vw, 36px) !important;
+    padding:0 clamp(10px, 3vw, 14px) !important;
+    font-size:clamp(12.5px, 3.3vw, 13.5px) !important;
+    justify-content:flex-start !important;
+    overflow:visible !important;
+  }
+
+  /* Los controles de idioma/tema ya viven en la fila superior mobile. */
+  .pl-smart-navbar .navbar-collapse > .navbar-nav.ml-lg-auto{
+    display:none !important;
+  }
+}
+
+/* En móviles anchos, aprovechar la anchura del panel abierto sin comprimir texto. */
+@media (min-width:520px) and (max-width:767px){
+  .pl-smart-navbar .navbar-collapse > .navbar-nav.mx-auto{
+    display:grid !important;
+    grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+    column-gap:clamp(8px, 2.2vw, 16px) !important;
+    row-gap:3px !important;
+  }
+}
+
+@media (max-width:359px){
+  .pl-smart-navbar .container{
+    padding-left:9px !important;
+    padding-right:9px !important;
+  }
+
+  .pl-smart-navbar .navbar-brand{
+    font-size:12.25px !important;
+    margin-right:3px !important;
+  }
+
+  .navbar-mobile-actions{
+    --pl-mobile-nav-control:31px;
+    gap:4px !important;
+    margin-right:4px !important;
+  }
+}
+
+/* v68t · Hero: balance tipográfico responsive multidioma */
+#home .small-text.hero-entry-kicker{
+  max-inline-size:min(100%, 58ch) !important;
+  text-wrap:balance;
+  overflow-wrap:normal;
+}
+
+#home .pl-hero-title,
+#home .pl-hero-title .hero-line,
+#home .pl-hero-title .hero-line-row{
+  text-wrap:balance;
+}
+
+#home .hero-entry-copy{
+  max-inline-size:min(100%, 62ch) !important;
+  text-wrap:pretty;
+  orphans:2;
+  widows:2;
+}
+
+/* Palabras rotativas especialmente largas: conservar la escala del hero sin desbordar. */
+html:lang(fr) #home .hero-rotator span:nth-child(3){
+  font-size:.74em !important;
+  letter-spacing:-.055em !important;
+}
+
+html:lang(de) #home .hero-rotator span:nth-child(4){
+  font-size:.84em !important;
+  letter-spacing:-.045em !important;
+}
+
+@media (max-width:767px){
+  #home .small-text.hero-entry-kicker{
+    width:auto !important;
+    max-width:min(100%, 48ch) !important;
+    margin-bottom:clamp(11px, 3vw, 15px) !important;
+    font-size:clamp(12.4px, 3.25vw, 15px) !important;
+    line-height:1.18 !important;
+    white-space:normal !important;
+    overflow:visible !important;
+    text-overflow:initial !important;
+  }
+
+  #home .small-text.hero-entry-kicker,
+  #home .small-text.hero-entry-kicker *{
+    white-space:normal !important;
+  }
+
+  #home .pl-hero-title,
+  #home .pl-hero-title.hero-entry-title{
+    width:100% !important;
+    max-width:100% !important;
+    font-size:clamp(3.6rem, 17.55vw, 6.8rem) !important;
+    line-height:.835 !important;
+    letter-spacing:-.084em !important;
+    margin-bottom:clamp(15px, 4vw, 20px) !important;
+  }
+
+  /* Francés y alemán necesitan algo más de aire por longitud de las líneas fijas. */
+  html:lang(fr) #home .pl-hero-title,
+  html:lang(fr) #home .pl-hero-title.hero-entry-title{
+    font-size:clamp(3.35rem, 16.15vw, 6.35rem) !important;
+    letter-spacing:-.078em !important;
+  }
+
+  html:lang(de) #home .pl-hero-title,
+  html:lang(de) #home .pl-hero-title.hero-entry-title{
+    font-size:clamp(3.45rem, 16.55vw, 6.5rem) !important;
+    letter-spacing:-.08em !important;
+  }
+
+  #home .pl-hero-title .hero-line,
+  #home .pl-hero-title .hero-line-row,
+  #home .pl-hero-title .hero-rotator{
+    width:100% !important;
+    max-width:100% !important;
+  }
+
+  #home .pl-hero-title .hero-line-row{
+    white-space:nowrap !important;
+  }
+
+  #home .pl-hero-title .hero-rotator{
+    min-height:1.03em !important;
+    margin-top:.075em !important;
+    overflow:hidden !important;
+  }
+
+  #home .pl-hero-title .hero-rotator span{
+    max-width:100% !important;
+    transform-origin:left center !important;
+    white-space:nowrap !important;
+  }
+
+  html:lang(fr) #home .hero-rotator span:nth-child(3){
+    font-size:.70em !important;
+    letter-spacing:-.06em !important;
+  }
+
+  html:lang(de) #home .hero-rotator span:nth-child(4){
+    font-size:.80em !important;
+    letter-spacing:-.05em !important;
+  }
+
+  #home .about-text p.hero-entry-copy,
+  #home .hero-entry-copy{
+    width:100% !important;
+    max-width:min(100%, 58ch) !important;
+    padding-right:0 !important;
+    line-height:1.52 !important;
+    text-wrap:pretty;
+    overflow-wrap:normal !important;
+    word-break:normal !important;
+  }
+
+  #home .hero-tech-marquee{
+    margin-top:clamp(22px, 5.5vw, 30px) !important;
+  }
+}
+
+@media (max-width:380px){
+  #home .pl-hero-title,
+  #home .pl-hero-title.hero-entry-title{
+    font-size:clamp(3.35rem, 17.1vw, 4.55rem) !important;
+  }
+
+  html:lang(fr) #home .pl-hero-title,
+  html:lang(fr) #home .pl-hero-title.hero-entry-title{
+    font-size:clamp(3.1rem, 15.7vw, 4.25rem) !important;
+  }
+
+  html:lang(de) #home .pl-hero-title,
+  html:lang(de) #home .pl-hero-title.hero-entry-title{
+    font-size:clamp(3.2rem, 16.05vw, 4.35rem) !important;
+  }
+}

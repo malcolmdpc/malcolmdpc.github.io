@@ -246,6 +246,88 @@
     window.addEventListener("resize", handleResize);
   }
 
+  function setupAdaptiveTechRows(){
+    var rows = Array.prototype.slice.call(document.querySelectorAll(".project-tech-row"));
+    if(!rows.length) return;
+
+    var resizeTimer = 0;
+    var mobileQuery = window.matchMedia("(max-width: 900px)");
+
+    function clearRow(row){
+      row.classList.remove("is-adaptive-split");
+      row.style.removeProperty("--project-tech-label-width");
+      row.style.removeProperty("--project-tech-row-gap");
+    }
+
+    function optimize(){
+      rows.forEach(clearRow);
+      if(!mobileQuery.matches) return;
+
+      rows.forEach(function(row){
+        var dt = row.querySelector("dt");
+        var dd = row.querySelector("dd");
+        if(!dt || !dd) return;
+
+        var rowWidth = row.clientWidth;
+        if(rowWidth < 285) return;
+
+        var stackHeight = row.offsetHeight;
+        var ratio;
+        if(rowWidth < 345){
+          ratio = 0.37;
+        }else if(rowWidth < 420){
+          ratio = 0.36;
+        }else if(rowWidth < 520){
+          ratio = 0.34;
+        }else if(rowWidth < 640){
+          ratio = 0.32;
+        }else{
+          ratio = 0.30;
+        }
+
+        var labelWidth = Math.round(Math.max(104, Math.min(158, rowWidth * ratio)));
+        var gap = rowWidth < 420 ? 7 : (rowWidth < 560 ? 8 : 10);
+        var contentWidth = rowWidth - labelWidth - gap;
+        if(contentWidth < 168) return;
+
+        row.style.setProperty("--project-tech-label-width", labelWidth + "px");
+        row.style.setProperty("--project-tech-row-gap", gap + "px");
+        row.classList.add("is-adaptive-split");
+
+        var splitHeight = row.offsetHeight;
+        var dtStyle = window.getComputedStyle(dt);
+        var lineHeight = parseFloat(dtStyle.lineHeight) || 14;
+        var dtLines = Math.round(dt.scrollHeight / lineHeight);
+
+        if(splitHeight > stackHeight - 2 || dtLines > 2){
+          clearRow(row);
+        }
+      });
+    }
+
+    function scheduleOptimize(){
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(optimize, 90);
+    }
+
+    optimize();
+    window.addEventListener("resize", scheduleOptimize, {passive:true});
+    if(mobileQuery.addEventListener){
+      mobileQuery.addEventListener("change", scheduleOptimize);
+    }else if(mobileQuery.addListener){
+      mobileQuery.addListener(scheduleOptimize);
+    }
+
+    if(document.fonts && document.fonts.ready){
+      document.fonts.ready.then(optimize).catch(function(){});
+    }
+
+    if("ResizeObserver" in window){
+      var observer = new ResizeObserver(scheduleOptimize);
+      document.querySelectorAll(".project-tech-grid").forEach(function(grid){ observer.observe(grid); });
+    }
+  }
+
   function setupTechPopover(){
     document.querySelectorAll("[data-tech-popover]").forEach(function(popover){
       var trigger = popover.querySelector(".project-tech-trigger");
@@ -338,6 +420,7 @@
     }
 
     setupGallery();
+    setupAdaptiveTechRows();
     setupTechPopover();
   });
 })();

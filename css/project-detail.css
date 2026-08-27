@@ -806,3 +806,16 @@ body.project-static-detail-page .project-static-hero-placeholder::after{
     padding-right:5px;
   }
 }
+
+
+/* v68s · Ficha técnica mobile: proporción adaptativa etiqueta/contenido por fila */
+@media (max-width:900px){
+  .project-tech-row.is-adaptive-split{
+    grid-template-columns:minmax(0,var(--project-tech-label-width,34%)) minmax(0,1fr);
+    column-gap:var(--project-tech-row-gap,.58rem);
+    row-gap:0;
+    align-items:start;
+  }
+  .project-tech-row.is-adaptive-split dt,
+  .project-tech-row.is-adaptive-split dd{min-width:0}
+}
