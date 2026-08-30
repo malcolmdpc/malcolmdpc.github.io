@@ -1839,6 +1839,21 @@ $('.color-mode').on('click', function(){
     if(!link) return;
 
     event.preventDefault();
+
+    if(window.matchMedia && window.matchMedia('(max-width: 767px)').matches){
+      const navbarCollapse = document.getElementById('navbarNav');
+      if(navbarCollapse && navbarCollapse.classList.contains('show')){
+        if(window.jQuery && window.jQuery.fn && typeof window.jQuery.fn.collapse === 'function'){
+          window.jQuery(navbarCollapse).collapse('hide');
+        }else{
+          const toggler = document.querySelector('.navbar-toggler[aria-controls="navbarNav"]');
+          if(toggler && toggler.getAttribute('aria-expanded') === 'true'){
+            toggler.click();
+          }
+        }
+      }
+    }
+
     event.stopPropagation();
     event.stopImmediatePropagation();
 
