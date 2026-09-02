@@ -832,3 +832,40 @@ body.project18-detail-page .project-image-placeholder-surface{
   height:100%;
   background:#050505;
 }
+
+/* v68zc · Related projects — width-first responsive text flow */
+.related-projects{
+  max-width:790px;
+}
+.related-projects__grid{
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));
+  gap:1.35rem;
+  padding-left:0;
+  padding-right:0;
+}
+.related-project-card__info{
+  padding-left:18px;
+  padding-right:18px;
+}
+.related-project-card__title,
+.related-project-card__teaser{
+  text-wrap:wrap;
+}
+@media (max-width:900px){
+  .related-projects__grid{
+    grid-template-columns:1fr;
+    gap:1rem;
+    padding-left:0;
+    padding-right:0;
+  }
+  .related-project-card__info{
+    padding-left:16px;
+    padding-right:16px;
+  }
+}
+@media (max-width:520px){
+  .related-project-card__info{
+    padding-left:14px;
+    padding-right:14px;
+  }
+}
