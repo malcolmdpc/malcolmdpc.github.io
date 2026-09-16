@@ -15904,3 +15904,9 @@ html:lang(de) #home .hero-rotator span:nth-child(4){
     font-size:clamp(3.2rem, 16.05vw, 4.35rem) !important;
   }
 }
+
+/* P19 card copy: fill the available line before wrapping; other cards keep their existing rules. */
+#projects .github-project-card[data-project-id="champions-league-2026-27-poisson"] .github-project-body > p:not(.project-status){
+  text-wrap:normal !important;
+  text-wrap-style:auto !important;
+}

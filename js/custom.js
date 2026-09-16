@@ -2810,6 +2810,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Regresión logística',
         '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
         '#projects .repo-filter-btn[data-repo-filter="simulacion"]': '<span class="filter-icon">∿</span> Simulación',
+        '#projects .repo-filter-btn[data-repo-filter="poisson"]': '<span class="filter-icon">λ</span> Poisson',
         '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geoespacial',
         '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
         '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
@@ -2972,6 +2973,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Logistic regression',
         '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
         '#projects .repo-filter-btn[data-repo-filter="simulacion"]': '<span class="filter-icon">∿</span> Simulation',
+        '#projects .repo-filter-btn[data-repo-filter="poisson"]': '<span class="filter-icon">λ</span> Poisson',
         '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geospatial',
         '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
         '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
@@ -3233,6 +3235,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Regresión logística',
         '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
         '#projects .repo-filter-btn[data-repo-filter="simulacion"]': '<span class="filter-icon">∿</span> Simulación',
+        '#projects .repo-filter-btn[data-repo-filter="poisson"]': '<span class="filter-icon">λ</span> Poisson',
         '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geoespacial',
         '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
         '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
@@ -3403,6 +3406,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Logistic regression',
         '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
         '#projects .repo-filter-btn[data-repo-filter="simulacion"]': '<span class="filter-icon">∿</span> Simulation',
+        '#projects .repo-filter-btn[data-repo-filter="poisson"]': '<span class="filter-icon">λ</span> Poisson',
         '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geospatial',
         '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
         '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
@@ -3582,6 +3586,7 @@ $('.color-mode').on('click', function(){
         '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Regressione logistica',
         '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
         '#projects .repo-filter-btn[data-repo-filter="simulacion"]': '<span class="filter-icon">∿</span> Simulazione',
+        '#projects .repo-filter-btn[data-repo-filter="poisson"]': '<span class="filter-icon">λ</span> Poisson',
         '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geospaziale',
         '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
         '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
@@ -4224,6 +4229,7 @@ $('.color-mode').on('click', function(){
       'k-means': 'K-means',
       'regresion-logistica': 'Regresión Logística',
       'dbscan': 'DBSCAN',
+      'poisson': 'Poisson',
       'geoespacial': 'Geoespacial',
       'airbnb': 'Airbnb',
       'taxi': 'Taxi',
@@ -4253,6 +4259,7 @@ $('.color-mode').on('click', function(){
       'k-means': 'K-means',
       'regresion-logistica': 'Logistic Regression',
       'dbscan': 'DBSCAN',
+      'poisson': 'Poisson',
       'geoespacial': 'Geospatial',
       'airbnb': 'Airbnb',
       'taxi': 'Taxi',
@@ -4282,6 +4289,7 @@ $('.color-mode').on('click', function(){
       'k-means': 'K-means',
       'regresion-logistica': 'Regressione logistica',
       'dbscan': 'DBSCAN',
+      'poisson': 'Poisson',
       'geoespacial': 'Geospaziale',
       'airbnb': 'Airbnb',
       'taxi': 'Taxi',
@@ -4312,6 +4320,7 @@ $('.color-mode').on('click', function(){
       'regresion-logistica': 'Régression logistique',
       'dbscan': 'DBSCAN',
       'simulacion': 'Simulation',
+      'poisson': 'Poisson',
       'geoespacial': 'Géospatial',
       'airbnb': 'Airbnb',
       'taxi': 'Taxi',
@@ -4635,6 +4644,15 @@ $('.color-mode').on('click', function(){
         "de": "Simulation",
         "pt": "Simulação"
     },
+    "poisson": {
+        "icon": "λ",
+        "es": "Poisson",
+        "en": "Poisson",
+        "it": "Poisson",
+        "fr": "Poisson",
+        "de": "Poisson",
+        "pt": "Poisson"
+    },
     "geoespacial": {
         "icon": "⌖",
         "es": "Geoespacial",
@@ -4763,7 +4781,7 @@ $('.color-mode').on('click', function(){
 
     document.querySelectorAll('#projects .repo-filter-btn[data-repo-filter]').forEach(function(button){
       const token = button.dataset.repoFilter;
-      const text = button.textContent.replace(/^\s*(?:ƒx|[◎▦▥⚗✦✎◇◧◉▣✓≡✣↗⌖⌁⊙●✈!∿])+\s*/, '').trim();
+      const text = button.textContent.replace(/^\s*(?:ƒx|[◎▦▥⚗✦✎◇◧◉▣✓≡✣↗⌖⌁⊙●✈!∿λ])+\s*/, '').trim();
       const expected = labelFor(token, lang);
 
       filterLabels[token] = text;
@@ -5092,6 +5110,15 @@ $('.color-mode').on('click', function(){
         "de": "Simulation",
         "pt": "Simulação"
     },
+    "poisson": {
+        "icon": "λ",
+        "es": "Poisson",
+        "en": "Poisson",
+        "it": "Poisson",
+        "fr": "Poisson",
+        "de": "Poisson",
+        "pt": "Poisson"
+    },
     "geoespacial": {
         "icon": "⌖",
         "es": "Geoespacial",
@@ -5175,7 +5202,7 @@ $('.color-mode').on('click', function(){
   }
 
   function cleanFilterText(text){
-    return (text || '').replace(/^\s*(?:ƒx|[◎▦▥⚗✦✎◇◧◉▣✓≡✣↗⌖⌁⊙●✈!∿])+\s*/, '').trim();
+    return (text || '').replace(/^\s*(?:ƒx|[◎▦▥⚗✦✎◇◧◉▣✓≡✣↗⌖⌁⊙●✈!∿λ])+\s*/, '').trim();
   }
 
   function renderOneFilter(button, lang){
@@ -6023,6 +6050,15 @@ $('.color-mode').on('click', function(){
         "de": "Simulation",
         "pt": "Simulação"
     },
+    "poisson": {
+        "icon": "λ",
+        "es": "Poisson",
+        "en": "Poisson",
+        "it": "Poisson",
+        "fr": "Poisson",
+        "de": "Poisson",
+        "pt": "Poisson"
+    },
     "geoespacial": {
         "icon": "⌖",
         "es": "Geoespacial",
@@ -6100,13 +6136,21 @@ $('.color-mode').on('click', function(){
     return data[lang] || data.es || token;
   }
 
+  function labelForCard(token, lang, card){
+    if(card.dataset.projectId === 'champions-league-2026-27-poisson' && lang === 'es'){
+      if(token === 'data-science') return 'Ciencia de Datos';
+      if(token === 'data-analysis') return 'Análisis de Datos';
+    }
+    return labelFor(token, lang);
+  }
+
   function iconFor(token){
     const data = FINAL_PROJECT_LABELS[token];
     return data && data.icon ? data.icon : '';
   }
 
   function stripIcon(text){
-    return (text || '').replace(/^\s*(?:ƒx|[◎▦▥⚗✦✎◇◧◉▣✓≡✣↗⌖⌁⊙●✈!∿])+\s*/, '').trim();
+    return (text || '').replace(/^\s*(?:ƒx|[◎▦▥⚗✦✎◇◧◉▣✓≡✣↗⌖⌁⊙●✈!∿λ])+\s*/, '').trim();
   }
 
   function renderFilters(lang){
@@ -6146,7 +6190,7 @@ $('.color-mode').on('click', function(){
           holder.appendChild(span);
         }
 
-        const label = labelFor(token, lang);
+        const label = labelForCard(token, lang, card);
 
         if(span.textContent.trim() !== label){
           span.textContent = label;
@@ -6205,7 +6249,7 @@ $('.color-mode').on('click', function(){
       }
 
       tokens.forEach(function(token, index){
-        const expected = labelFor(token, lang);
+        const expected = labelForCard(token, lang, card);
         const actual = spans[index] ? spans[index].textContent.trim() : '';
         const filter = filters[token];
 
@@ -6219,7 +6263,7 @@ $('.color-mode').on('click', function(){
           });
         }
 
-        if(filter && filter !== actual){
+        if(filter && filter !== actual && !(card.dataset.projectId === 'champions-league-2026-27-poisson' && lang === 'es' && ['data-science','data-analysis'].includes(token))){
           problems.push({
             type: 'filter-mini-tag-different',
             card: cardIndex + 1,
