@@ -192,6 +192,40 @@ $('.color-mode').on('click', function(){
 
 
 (function(){
+  const grid = document.querySelector('#projects .github-project-grid');
+  if(!grid) return;
+
+  const cards = Array.from(grid.children);
+  if(cards.length !== 19 || !cards.every(card => card.matches('.github-project-card[data-project-id]'))) return;
+
+  // Cada proyecto ocupa las cuatro posiciones iniciales una vez por ciclo.
+  const rotation = [1, 6, 12, 18, 2, 7, 13, 19, 3, 8, 14, 17, 4, 9, 11, 15, 5, 10, 16];
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/Madrid', year: 'numeric', month: '2-digit', day: '2-digit'
+  }).formatToParts(new Date());
+  const date = {};
+  parts.forEach(part => { date[part.type] = Number(part.value); });
+
+  const today = Date.UTC(date.year, date.month - 1, date.day);
+  const firstDay = Date.UTC(2026, 8, 17);
+  const elapsedDays = Math.floor((today - firstDay) / 86400000);
+  const cycleDay = ((elapsedDays % 19) + 19) % 19;
+  const featured = [];
+
+  for(let position = 0; position < 4; position++){
+    featured.push(rotation[(cycleDay * 4 + position) % 19]);
+  }
+
+  const fragment = document.createDocumentFragment();
+  featured.forEach(number => fragment.appendChild(cards[number - 1]));
+  cards.forEach((card, index) => {
+    if(!featured.includes(index + 1)) fragment.appendChild(card);
+  });
+  grid.appendChild(fragment);
+})();
+
+
+(function(){
   const projectsSection = document.querySelector('#projects');
   if(!projectsSection) return;
 
@@ -944,58 +978,6 @@ $('.color-mode').on('click', function(){
       card.style.removeProperty('--mx');
       card.style.removeProperty('--my');
     }, {passive:true});
-  });
-})();
-
-
-(function(){
-  const groups = Array.from(document.querySelectorAll('.repo-filter-group'));
-  if(!groups.length) return;
-
-  groups.forEach(group => {
-    const trigger = group.querySelector('.repo-filter-group-trigger');
-    if(!trigger) return;
-
-    function open(){
-      trigger.setAttribute('aria-expanded', 'true');
-    }
-
-    function close(){
-      trigger.setAttribute('aria-expanded', 'false');
-    }
-
-    group.addEventListener('mouseenter', open);
-    group.addEventListener('mouseleave', close);
-    group.addEventListener('focusin', open);
-    group.addEventListener('focusout', event => {
-      if(!group.contains(event.relatedTarget)) close();
-    });
-  });
-})();
-
-
-(function(){
-  const groups = Array.from(document.querySelectorAll('.repo-filter-group'));
-  if(!groups.length) return;
-
-  groups.forEach(group => {
-    const trigger = group.querySelector('.repo-filter-group-trigger');
-    if(!trigger) return;
-
-    function open(){
-      trigger.setAttribute('aria-expanded', 'true');
-    }
-
-    function close(){
-      trigger.setAttribute('aria-expanded', 'false');
-    }
-
-    group.addEventListener('mouseenter', open);
-    group.addEventListener('mouseleave', close);
-    group.addEventListener('focusin', open);
-    group.addEventListener('focusout', event => {
-      if(!group.contains(event.relatedTarget)) close();
-    });
   });
 })();
 
@@ -1871,42 +1853,234 @@ $('.color-mode').on('click', function(){
 
 
 (function(){
-  const projectsSection = document.querySelector('#projects');
-  if(!projectsSection) return;
+  const projects = document.querySelector('#projects');
+  if(!projects) return;
 
-  const groups = Array.from(projectsSection.querySelectorAll('.repo-filter-group'));
+  const groups = Array.from(projects.querySelectorAll('.repo-filter-group'));
   if(!groups.length) return;
 
-  groups.forEach(group => {
+  let active = null;
+  let closeTimer = null;
+  let positionFrame = null;
+
+  function cancelClose(){
+    window.clearTimeout(closeTimer);
+    closeTimer = null;
+  }
+
+  function closePanel(){
+    cancelClose();
+    if(!active) return;
+
+    const { group, panel, next, trigger } = active;
+    panel.classList.remove('pl-filter-portal', 'pl-filter-constrained', 'pl-filter-compact');
+    panel.style.removeProperty('--pl-filter-top');
+    panel.style.removeProperty('--pl-filter-left');
+    panel.style.removeProperty('--pl-filter-max-height');
+
+    if(next && next.parentNode === group){
+      group.insertBefore(panel, next);
+    }else{
+      group.appendChild(panel);
+    }
+
+    trigger.setAttribute('aria-expanded', 'false');
+    group.classList.remove('is-filter-open');
+    active = null;
+  }
+
+  function positionPanel(){
+    if(!active) return;
+
+    const { trigger, panel } = active;
+    const viewportWidth = document.documentElement.clientWidth;
+    const viewportHeight = window.innerHeight;
+    const margin = 12;
+    const gap = 8;
+    const mobile = window.matchMedia('(max-width: 767px), (hover: none) and (pointer: coarse)').matches;
+    const toolbar = projects.querySelector('.repo-filter-toolbar');
+    let barRect = toolbar.getBoundingClientRect();
+
+    if(barRect.bottom <= 0 || barRect.top >= viewportHeight){
+      closePanel();
+      return;
+    }
+
+    panel.classList.remove('pl-filter-constrained', 'pl-filter-compact');
+    panel.style.removeProperty('--pl-filter-max-height');
+    let panelHeight = panel.getBoundingClientRect().height;
+
+    // Preserve the narrow column; reduce vertical gaps only if the screen is short.
+    if(mobile && barRect.height + panelHeight + gap + margin * 2 > viewportHeight){
+      panel.classList.add('pl-filter-compact');
+      panelHeight = panel.getBoundingClientRect().height;
+    }
+
+    // When feasible, keep the full toolbar and menu in view instead of overlapping triggers.
+    const needed = barRect.bottom + gap + panelHeight + margin - viewportHeight;
+    if(mobile && needed > 1 && needed <= barRect.top - margin &&
+       barRect.height + panelHeight + gap + margin * 2 <= viewportHeight){
+      const before = window.scrollY;
+      window.scrollBy(0, Math.ceil(needed));
+      if(window.scrollY > before + 0.5){
+        barRect = toolbar.getBoundingClientRect();
+      }
+    }
+
+    const below = viewportHeight - barRect.bottom - gap - margin;
+    const above = barRect.top - gap - margin;
+    let top;
+
+    if(below >= panelHeight){
+      top = barRect.bottom + gap;
+    }else if(above >= panelHeight){
+      top = barRect.top - panelHeight - gap;
+    }else if(panelHeight <= viewportHeight - margin * 2){
+      // The menu fits on-screen in its original width; avoid an internal scrollbar.
+      top = Math.max(margin, Math.min(barRect.bottom + gap, viewportHeight - panelHeight - margin));
+    }else{
+      // Only a menu taller than the viewport needs internal scrolling.
+      const openBelow = below >= above;
+      const available = Math.max(40, openBelow ? below : above);
+      panel.classList.add('pl-filter-constrained');
+      panel.style.setProperty('--pl-filter-max-height', available + 'px');
+      panelHeight = panel.getBoundingClientRect().height;
+      top = openBelow ? barRect.bottom + gap : barRect.top - panelHeight - gap;
+    }
+
+    const panelWidth = panel.getBoundingClientRect().width;
+    const rect = trigger.getBoundingClientRect();
+    const preferredLeft = mobile ? rect.left : rect.left + (rect.width - panelWidth) / 2;
+    let left = Math.max(margin, Math.min(preferredLeft, viewportWidth - panelWidth - margin));
+
+    // In very short desktop viewports, keep open menus beside the category triggers.
+    if(!mobile && top < barRect.bottom && top + panelHeight > barRect.top){
+      const triggerRects = groups.map(function(item){
+        return item.querySelector('.repo-filter-group-trigger').getBoundingClientRect();
+      });
+      const firstLeft = Math.min.apply(null, triggerRects.map(function(item){ return item.left; }));
+      const lastRight = Math.max.apply(null, triggerRects.map(function(item){ return item.right; }));
+      if(firstLeft >= panelWidth + gap + margin){
+        left = firstLeft - panelWidth - gap;
+      }else if(viewportWidth - lastRight >= panelWidth + gap + margin){
+        left = lastRight + gap;
+      }
+    }
+
+    panel.style.setProperty('--pl-filter-left', Math.round(left) + 'px');
+    panel.style.setProperty('--pl-filter-top', Math.round(Math.max(margin, top)) + 'px');
+  }
+
+  function openPanel(group){
+    cancelClose();
+    if(active && active.group === group){
+      positionPanel();
+      return;
+    }
+
+    closePanel();
     const trigger = group.querySelector('.repo-filter-group-trigger');
     const panel = group.querySelector('.repo-filter-category-panel');
     if(!trigger || !panel) return;
 
-    let closeTimer = null;
+    active = { group, trigger, panel, next:panel.nextSibling };
+    group.classList.add('is-filter-open');
+    trigger.setAttribute('aria-expanded', 'true');
+    panel.classList.add('pl-filter-portal');
+    document.body.appendChild(panel);
+    positionPanel();
+  }
 
-    function open(){
-      window.clearTimeout(closeTimer);
-      trigger.setAttribute('aria-expanded', 'true');
-      group.classList.add('is-filter-open');
-    }
+  function scheduleClose(){
+    cancelClose();
+    closeTimer = window.setTimeout(function(){
+      if(!active) return;
+      const focus = document.activeElement;
+      if(active.group.matches(':hover') || active.panel.matches(':hover') ||
+         active.group.contains(focus) || active.panel.contains(focus)) return;
+      closePanel();
+    }, 180);
+  }
 
-    function close(){
-      window.clearTimeout(closeTimer);
-      closeTimer = window.setTimeout(() => {
-        trigger.setAttribute('aria-expanded', 'false');
-        group.classList.remove('is-filter-open');
-      }, 180);
-    }
+  groups.forEach(function(group, index){
+    const trigger = group.querySelector('.repo-filter-group-trigger');
+    const panel = group.querySelector('.repo-filter-category-panel');
+    if(!trigger || !panel) return;
 
-    group.addEventListener('pointerenter', open);
-    group.addEventListener('pointerleave', close);
-    panel.addEventListener('pointerenter', open);
-    panel.addEventListener('pointerleave', close);
-    group.addEventListener('focusin', open);
-    group.addEventListener('focusout', event => {
-      if(!group.contains(event.relatedTarget)) close();
+    if(!panel.id) panel.id = 'pl-project-filter-panel-' + (index + 1);
+    trigger.setAttribute('aria-controls', panel.id);
+
+    trigger.addEventListener('click', function(event){
+      event.preventDefault();
+      const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      if(active && active.group === group && !finePointer){
+        closePanel();
+      }else{
+        openPanel(group);
+      }
     });
+
+    trigger.addEventListener('keydown', function(event){
+      if(event.key === 'ArrowDown'){
+        event.preventDefault();
+        openPanel(group);
+        const first = panel.querySelector('.repo-filter-btn');
+        if(first) first.focus();
+      }
+    });
+
+    group.addEventListener('pointerenter', function(event){
+      if(event.pointerType === 'mouse' && window.matchMedia('(hover: hover)').matches){
+        openPanel(group);
+      }
+    });
+    group.addEventListener('pointerleave', scheduleClose);
+    group.addEventListener('focusout', function(event){
+      if(!group.contains(event.relatedTarget) && !panel.contains(event.relatedTarget)){
+        scheduleClose();
+      }
+    });
+    panel.addEventListener('pointerenter', cancelClose);
+    panel.addEventListener('pointerleave', scheduleClose);
+    panel.addEventListener('focusin', cancelClose);
+    panel.addEventListener('focusout', function(event){
+      if(!panel.contains(event.relatedTarget) && !group.contains(event.relatedTarget)){
+        scheduleClose();
+      }
+    });
+
+    // Capture the selection before the filter button stops event propagation.
+    panel.addEventListener('click', function(event){
+      if(event.target.closest('.repo-filter-btn')){
+        window.setTimeout(closePanel, 0);
+      }
+    }, true);
   });
+
+  document.addEventListener('click', function(event){
+    if(active && !active.group.contains(event.target) && !active.panel.contains(event.target)){
+      closePanel();
+    }
+  }, true);
+
+  document.addEventListener('keydown', function(event){
+    if(event.key === 'Escape' && active){
+      const trigger = active.trigger;
+      closePanel();
+      trigger.focus();
+    }
+  });
+
+  function schedulePosition(){
+    if(!active || positionFrame !== null) return;
+    positionFrame = window.requestAnimationFrame(function(){
+      positionFrame = null;
+      positionPanel();
+    });
+  }
+
+  window.addEventListener('resize', schedulePosition, {passive:true});
+  window.addEventListener('scroll', schedulePosition, {passive:true});
 })();
 
 (function(){
@@ -2182,120 +2356,6 @@ $('.color-mode').on('click', function(){
   }, {passive:true});
 
   updateTitleContrast(0);
-})();
-
-
-(function(){
-  const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
-  const mobileWidth = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
-  if(!coarsePointer && !mobileWidth) return;
-
-  const projects = document.querySelector('#projects');
-  if(!projects) return;
-
-  const groups = Array.from(projects.querySelectorAll('.repo-filter-group'));
-  if(!groups.length) return;
-
-  let active = null;
-
-  function restorePanel(){
-    if(!active) return;
-
-    const { group, panel, next } = active;
-
-    panel.classList.remove('pl-mobile-filter-portal');
-    panel.classList.remove('pl-mobile-filter-floating');
-    panel.style.removeProperty('--pl-filter-top');
-    panel.style.removeProperty('--pl-filter-left');
-
-    if(next && next.parentNode === group){
-      group.insertBefore(panel, next);
-    }else{
-      group.appendChild(panel);
-    }
-
-    const trigger = group.querySelector('.repo-filter-group-trigger');
-    if(trigger) trigger.setAttribute('aria-expanded', 'false');
-    group.classList.remove('is-filter-open');
-
-    active = null;
-  }
-
-  function positionPanel(trigger, panel){
-    panel.classList.add('pl-mobile-filter-portal');
-    panel.classList.remove('pl-mobile-filter-floating');
-
-    const rect = trigger.getBoundingClientRect();
-
-    const panelWidth = Math.min(panel.scrollWidth || panel.offsetWidth || 220, window.innerWidth - 24);
-    let left = rect.left;
-    const maxLeft = window.innerWidth - panelWidth - 12;
-
-    if(left > maxLeft) left = maxLeft;
-    if(left < 12) left = 12;
-
-    const top = Math.min(rect.bottom + 8, window.innerHeight - 80);
-
-    panel.style.setProperty('--pl-filter-top', top + 'px');
-    panel.style.setProperty('--pl-filter-left', left + 'px');
-  }
-
-  function openGroup(group){
-    const trigger = group.querySelector('.repo-filter-group-trigger');
-    const panel = group.querySelector('.repo-filter-category-panel') || (active && active.group === group ? active.panel : null);
-    if(!trigger || !panel) return;
-
-    if(active && active.group === group){
-      restorePanel();
-      return;
-    }
-
-    restorePanel();
-
-    const next = panel.nextSibling;
-    active = { group, panel, next };
-
-    group.classList.add('is-filter-open');
-    trigger.setAttribute('aria-expanded', 'true');
-
-    document.body.appendChild(panel);
-    positionPanel(trigger, panel);
-  }
-
-  groups.forEach(function(group){
-    const trigger = group.querySelector('.repo-filter-group-trigger');
-    if(!trigger) return;
-
-    trigger.addEventListener('click', function(event){
-      event.preventDefault();
-      openGroup(group);
-    });
-
-    trigger.addEventListener('touchend', function(event){
-      event.preventDefault();
-      openGroup(group);
-    }, {passive:false});
-  });
-
-  document.addEventListener('click', function(event){
-    if(!active) return;
-
-    const target = event.target;
-    const clickedTrigger = active.group && active.group.contains(target);
-    const clickedPanel = active.panel && active.panel.contains(target);
-
-    if(clickedPanel && target.closest && target.closest('.repo-filter-btn')){
-      window.setTimeout(restorePanel, 120);
-      return;
-    }
-
-    if(clickedTrigger || clickedPanel) return;
-
-    restorePanel();
-  });
-
-  window.addEventListener('scroll', restorePanel, {passive:true});
-  window.addEventListener('resize', restorePanel, {passive:true});
 })();
 
 

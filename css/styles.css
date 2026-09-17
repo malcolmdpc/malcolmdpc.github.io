@@ -15910,3 +15910,120 @@ html:lang(de) #home .hero-rotator span:nth-child(4){
   text-wrap:normal !important;
   text-wrap-style:auto !important;
 }
+
+/* Project filters: the toolbar must not clip popovers or produce a vertical scrollbar. */
+#projects .repo-filter-toolbar.repo-filter-toolbar-categories{
+  overflow:visible !important;
+  overflow-x:visible !important;
+  overflow-y:visible !important;
+  flex-wrap:wrap !important;
+}
+
+/* Popovers are placed in body so section transforms and responsive overflow cannot clip them. */
+body > .repo-filter-category-panel.pl-filter-portal{
+  position:fixed !important;
+  top:var(--pl-filter-top, 12px) !important;
+  left:var(--pl-filter-left, 12px) !important;
+  right:auto !important;
+  bottom:auto !important;
+  z-index:2147483000 !important;
+  box-sizing:border-box !important;
+  display:flex !important;
+  flex-wrap:wrap !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:7px !important;
+  width:min(280px, calc(100vw - 24px)) !important;
+  min-width:0 !important;
+  max-width:calc(100vw - 24px) !important;
+  padding:13px !important;
+  border-radius:20px !important;
+  background:rgba(12,13,12,.98) !important;
+  border:1px solid rgba(255,194,0,.24) !important;
+  box-shadow:0 24px 70px rgba(0,0,0,.40) !important;
+  transform:none !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  pointer-events:auto !important;
+  overflow:visible !important;
+  max-height:none !important;
+}
+body > .repo-filter-category-panel.pl-filter-portal .repo-filter-btn{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-height:29px !important;
+  padding:5px 12px !important;
+  border-radius:11px !important;
+  font-size:12.2px !important;
+  line-height:1.12 !important;
+  white-space:normal !important;
+  color:#f5f0e8 !important;
+  background:rgba(255,255,255,.065) !important;
+  border:1px solid rgba(255,255,255,.12) !important;
+  box-shadow:none !important;
+}
+body > .repo-filter-category-panel.pl-filter-portal .repo-filter-btn.active,
+body > .repo-filter-category-panel.pl-filter-portal .repo-filter-btn:hover,
+body > .repo-filter-category-panel.pl-filter-portal .repo-filter-btn:focus-visible{
+  color:#111 !important;
+  background:#ffc200 !important;
+  border-color:#ffc200 !important;
+}
+body:not(.dark-mode) > .repo-filter-category-panel.pl-filter-portal{
+  background:rgba(255,255,255,.98) !important;
+  border-color:rgba(20,20,24,.14) !important;
+}
+body:not(.dark-mode) > .repo-filter-category-panel.pl-filter-portal .repo-filter-btn{
+  color:#202126 !important;
+  background:rgba(20,20,24,.045) !important;
+  border-color:rgba(20,20,24,.12) !important;
+}
+body:not(.dark-mode) > .repo-filter-category-panel.pl-filter-portal .repo-filter-btn.active,
+body:not(.dark-mode) > .repo-filter-category-panel.pl-filter-portal .repo-filter-btn:hover,
+body:not(.dark-mode) > .repo-filter-category-panel.pl-filter-portal .repo-filter-btn:focus-visible{
+  color:#111 !important;
+  background:#ffc200 !important;
+  border-color:#ffc200 !important;
+}
+@media (max-width:767px), (hover:none) and (pointer:coarse){
+  body > .repo-filter-category-panel.pl-filter-portal{
+    flex-direction:column !important;
+    flex-wrap:nowrap !important;
+    align-items:stretch !important;
+    justify-content:flex-start !important;
+    gap:0 !important;
+    width:max-content !important;
+    min-width:0 !important;
+    max-width:calc(100vw - 24px) !important;
+    inline-size:max-content !important;
+    padding:10px !important;
+    border-radius:16px !important;
+  }
+  body > .repo-filter-category-panel.pl-filter-portal .repo-filter-btn{
+    width:100% !important;
+    min-width:0 !important;
+    max-width:calc(100vw - 48px) !important;
+    margin:0 0 4px !important;
+    padding:5px 14px !important;
+    min-height:29px !important;
+    font-size:12.8px !important;
+    text-align:center !important;
+    white-space:nowrap !important;
+  }
+  body > .repo-filter-category-panel.pl-filter-portal .repo-filter-btn:last-child{
+    margin-bottom:0 !important;
+  }
+}
+/* Internal scrolling only when the complete list cannot fit in the available viewport space. */
+body > .repo-filter-category-panel.pl-filter-portal.pl-filter-constrained{
+  max-height:min(calc(100dvh - 24px), var(--pl-filter-max-height, 9999px)) !important;
+  overflow-y:auto !important;
+  overscroll-behavior:contain;
+}
+
+@media (max-width:767px), (hover:none) and (pointer:coarse){
+  body > .repo-filter-category-panel.pl-filter-portal.pl-filter-compact .repo-filter-btn{
+    margin-bottom:0 !important;
+  }
+}
