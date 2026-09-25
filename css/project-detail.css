@@ -755,7 +755,6 @@ body.project-static-detail-page .project-static-hero-placeholder::after{
   .project-breadcrumb__item + .project-breadcrumb__item::before{margin:0 .2rem}
 }
 
-/* v68i · Selector multidioma con siglas bajo cada bandera */
 .project-language-menu{align-items:flex-start;gap:9px;padding:8px 10px 7px;border-radius:22px}
 .project-language-option{width:36px;height:46px;min-width:36px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:5px;padding:2px 0 0;box-shadow:none!important;text-decoration:none}
 .project-language-option-img{transition:box-shadow .18s ease,transform .18s ease}
@@ -766,7 +765,6 @@ body.project-static-detail-page .project-static-hero-placeholder::after{
 .project-light-mode .project-language-option:hover .project-language-option-label,.project-light-mode .project-language-option:focus-visible .project-language-option-label,.project-light-mode .project-language-option.active .project-language-option-label{color:#8a6500}
 @media (max-width:900px){.project-language-menu{gap:7px;padding:7px 8px 6px;border-radius:20px}.project-language-option{width:31px;height:41px;min-width:31px;gap:4px}.project-language-option-label{font-size:8px;letter-spacing:.04em}}
 
-/* v68q · Selector de idiomas en proyectos: espaciado responsive de 6 opciones */
 .project-language-menu{
   max-width:calc(100vw - 16px);
   width:max-content;
@@ -808,7 +806,6 @@ body.project-static-detail-page .project-static-hero-placeholder::after{
 }
 
 
-/* v68s · Ficha técnica mobile: proporción adaptativa etiqueta/contenido por fila */
 @media (max-width:900px){
   .project-tech-row.is-adaptive-split{
     grid-template-columns:minmax(0,var(--project-tech-label-width,34%)) minmax(0,1fr);
@@ -819,21 +816,19 @@ body.project-static-detail-page .project-static-hero-placeholder::after{
   .project-tech-row.is-adaptive-split dt,
   .project-tech-row.is-adaptive-split dd{min-width:0}
 }
-body.project18-detail-page .project-static-hero-image{width:100%;height:100%;object-fit:cover;object-position:center center}
-@media (max-width:900px){body.project18-detail-page .project-static-hero-image{object-fit:cover;object-position:center 47%}}
+body.project18-detail-page .project-static-hero-image,body.project19-detail-page .project-static-hero-image{width:100%;height:100%;object-fit:cover;object-position:center center}
+@media (max-width:900px){body.project18-detail-page .project-static-hero-image,body.project19-detail-page .project-static-hero-image{object-fit:cover;object-position:center 47%}}
 
-/* P18 · LaLiga 2026/27 — reserved project-image slots while final imagery is pending */
-body.project18-detail-page .project-image-placeholder-panel{
+body.project18-detail-page .project-image-placeholder-panel,body.project19-detail-page .project-image-placeholder-panel{
   background:#050505;
 }
-body.project18-detail-page .project-image-placeholder-surface{
+body.project18-detail-page .project-image-placeholder-surface,body.project19-detail-page .project-image-placeholder-surface{
   display:block;
   width:100%;
   height:100%;
   background:#050505;
 }
 
-/* v68zc · Related projects — width-first responsive text flow */
 .related-projects{
   max-width:790px;
 }

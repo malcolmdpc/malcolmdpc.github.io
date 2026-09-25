@@ -983,6 +983,58 @@ $('.color-mode').on('click', function(){
 
 
 (function(){
+  const groups = Array.from(document.querySelectorAll('.repo-filter-group'));
+  if(!groups.length) return;
+
+  groups.forEach(group => {
+    const trigger = group.querySelector('.repo-filter-group-trigger');
+    if(!trigger) return;
+
+    function open(){
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+
+    function close(){
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    group.addEventListener('mouseenter', open);
+    group.addEventListener('mouseleave', close);
+    group.addEventListener('focusin', open);
+    group.addEventListener('focusout', event => {
+      if(!group.contains(event.relatedTarget)) close();
+    });
+  });
+})();
+
+
+(function(){
+  const groups = Array.from(document.querySelectorAll('.repo-filter-group'));
+  if(!groups.length) return;
+
+  groups.forEach(group => {
+    const trigger = group.querySelector('.repo-filter-group-trigger');
+    if(!trigger) return;
+
+    function open(){
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+
+    function close(){
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    group.addEventListener('mouseenter', open);
+    group.addEventListener('mouseleave', close);
+    group.addEventListener('focusin', open);
+    group.addEventListener('focusout', event => {
+      if(!group.contains(event.relatedTarget)) close();
+    });
+  });
+})();
+
+
+(function(){
   const preloader = document.querySelector('.pl-preloader');
   if(!preloader) return;
 
@@ -1853,234 +1905,42 @@ $('.color-mode').on('click', function(){
 
 
 (function(){
-  const projects = document.querySelector('#projects');
-  if(!projects) return;
+  const projectsSection = document.querySelector('#projects');
+  if(!projectsSection) return;
 
-  const groups = Array.from(projects.querySelectorAll('.repo-filter-group'));
+  const groups = Array.from(projectsSection.querySelectorAll('.repo-filter-group'));
   if(!groups.length) return;
 
-  let active = null;
-  let closeTimer = null;
-  let positionFrame = null;
-
-  function cancelClose(){
-    window.clearTimeout(closeTimer);
-    closeTimer = null;
-  }
-
-  function closePanel(){
-    cancelClose();
-    if(!active) return;
-
-    const { group, panel, next, trigger } = active;
-    panel.classList.remove('pl-filter-portal', 'pl-filter-constrained', 'pl-filter-compact');
-    panel.style.removeProperty('--pl-filter-top');
-    panel.style.removeProperty('--pl-filter-left');
-    panel.style.removeProperty('--pl-filter-max-height');
-
-    if(next && next.parentNode === group){
-      group.insertBefore(panel, next);
-    }else{
-      group.appendChild(panel);
-    }
-
-    trigger.setAttribute('aria-expanded', 'false');
-    group.classList.remove('is-filter-open');
-    active = null;
-  }
-
-  function positionPanel(){
-    if(!active) return;
-
-    const { trigger, panel } = active;
-    const viewportWidth = document.documentElement.clientWidth;
-    const viewportHeight = window.innerHeight;
-    const margin = 12;
-    const gap = 8;
-    const mobile = window.matchMedia('(max-width: 767px), (hover: none) and (pointer: coarse)').matches;
-    const toolbar = projects.querySelector('.repo-filter-toolbar');
-    let barRect = toolbar.getBoundingClientRect();
-
-    if(barRect.bottom <= 0 || barRect.top >= viewportHeight){
-      closePanel();
-      return;
-    }
-
-    panel.classList.remove('pl-filter-constrained', 'pl-filter-compact');
-    panel.style.removeProperty('--pl-filter-max-height');
-    let panelHeight = panel.getBoundingClientRect().height;
-
-    // Preserve the narrow column; reduce vertical gaps only if the screen is short.
-    if(mobile && barRect.height + panelHeight + gap + margin * 2 > viewportHeight){
-      panel.classList.add('pl-filter-compact');
-      panelHeight = panel.getBoundingClientRect().height;
-    }
-
-    // When feasible, keep the full toolbar and menu in view instead of overlapping triggers.
-    const needed = barRect.bottom + gap + panelHeight + margin - viewportHeight;
-    if(mobile && needed > 1 && needed <= barRect.top - margin &&
-       barRect.height + panelHeight + gap + margin * 2 <= viewportHeight){
-      const before = window.scrollY;
-      window.scrollBy(0, Math.ceil(needed));
-      if(window.scrollY > before + 0.5){
-        barRect = toolbar.getBoundingClientRect();
-      }
-    }
-
-    const below = viewportHeight - barRect.bottom - gap - margin;
-    const above = barRect.top - gap - margin;
-    let top;
-
-    if(below >= panelHeight){
-      top = barRect.bottom + gap;
-    }else if(above >= panelHeight){
-      top = barRect.top - panelHeight - gap;
-    }else if(panelHeight <= viewportHeight - margin * 2){
-      // The menu fits on-screen in its original width; avoid an internal scrollbar.
-      top = Math.max(margin, Math.min(barRect.bottom + gap, viewportHeight - panelHeight - margin));
-    }else{
-      // Only a menu taller than the viewport needs internal scrolling.
-      const openBelow = below >= above;
-      const available = Math.max(40, openBelow ? below : above);
-      panel.classList.add('pl-filter-constrained');
-      panel.style.setProperty('--pl-filter-max-height', available + 'px');
-      panelHeight = panel.getBoundingClientRect().height;
-      top = openBelow ? barRect.bottom + gap : barRect.top - panelHeight - gap;
-    }
-
-    const panelWidth = panel.getBoundingClientRect().width;
-    const rect = trigger.getBoundingClientRect();
-    const preferredLeft = mobile ? rect.left : rect.left + (rect.width - panelWidth) / 2;
-    let left = Math.max(margin, Math.min(preferredLeft, viewportWidth - panelWidth - margin));
-
-    // In very short desktop viewports, keep open menus beside the category triggers.
-    if(!mobile && top < barRect.bottom && top + panelHeight > barRect.top){
-      const triggerRects = groups.map(function(item){
-        return item.querySelector('.repo-filter-group-trigger').getBoundingClientRect();
-      });
-      const firstLeft = Math.min.apply(null, triggerRects.map(function(item){ return item.left; }));
-      const lastRight = Math.max.apply(null, triggerRects.map(function(item){ return item.right; }));
-      if(firstLeft >= panelWidth + gap + margin){
-        left = firstLeft - panelWidth - gap;
-      }else if(viewportWidth - lastRight >= panelWidth + gap + margin){
-        left = lastRight + gap;
-      }
-    }
-
-    panel.style.setProperty('--pl-filter-left', Math.round(left) + 'px');
-    panel.style.setProperty('--pl-filter-top', Math.round(Math.max(margin, top)) + 'px');
-  }
-
-  function openPanel(group){
-    cancelClose();
-    if(active && active.group === group){
-      positionPanel();
-      return;
-    }
-
-    closePanel();
+  groups.forEach(group => {
     const trigger = group.querySelector('.repo-filter-group-trigger');
     const panel = group.querySelector('.repo-filter-category-panel');
     if(!trigger || !panel) return;
 
-    active = { group, trigger, panel, next:panel.nextSibling };
-    group.classList.add('is-filter-open');
-    trigger.setAttribute('aria-expanded', 'true');
-    panel.classList.add('pl-filter-portal');
-    document.body.appendChild(panel);
-    positionPanel();
-  }
+    let closeTimer = null;
 
-  function scheduleClose(){
-    cancelClose();
-    closeTimer = window.setTimeout(function(){
-      if(!active) return;
-      const focus = document.activeElement;
-      if(active.group.matches(':hover') || active.panel.matches(':hover') ||
-         active.group.contains(focus) || active.panel.contains(focus)) return;
-      closePanel();
-    }, 180);
-  }
-
-  groups.forEach(function(group, index){
-    const trigger = group.querySelector('.repo-filter-group-trigger');
-    const panel = group.querySelector('.repo-filter-category-panel');
-    if(!trigger || !panel) return;
-
-    if(!panel.id) panel.id = 'pl-project-filter-panel-' + (index + 1);
-    trigger.setAttribute('aria-controls', panel.id);
-
-    trigger.addEventListener('click', function(event){
-      event.preventDefault();
-      const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-      if(active && active.group === group && !finePointer){
-        closePanel();
-      }else{
-        openPanel(group);
-      }
-    });
-
-    trigger.addEventListener('keydown', function(event){
-      if(event.key === 'ArrowDown'){
-        event.preventDefault();
-        openPanel(group);
-        const first = panel.querySelector('.repo-filter-btn');
-        if(first) first.focus();
-      }
-    });
-
-    group.addEventListener('pointerenter', function(event){
-      if(event.pointerType === 'mouse' && window.matchMedia('(hover: hover)').matches){
-        openPanel(group);
-      }
-    });
-    group.addEventListener('pointerleave', scheduleClose);
-    group.addEventListener('focusout', function(event){
-      if(!group.contains(event.relatedTarget) && !panel.contains(event.relatedTarget)){
-        scheduleClose();
-      }
-    });
-    panel.addEventListener('pointerenter', cancelClose);
-    panel.addEventListener('pointerleave', scheduleClose);
-    panel.addEventListener('focusin', cancelClose);
-    panel.addEventListener('focusout', function(event){
-      if(!panel.contains(event.relatedTarget) && !group.contains(event.relatedTarget)){
-        scheduleClose();
-      }
-    });
-
-    // Capture the selection before the filter button stops event propagation.
-    panel.addEventListener('click', function(event){
-      if(event.target.closest('.repo-filter-btn')){
-        window.setTimeout(closePanel, 0);
-      }
-    }, true);
-  });
-
-  document.addEventListener('click', function(event){
-    if(active && !active.group.contains(event.target) && !active.panel.contains(event.target)){
-      closePanel();
+    function open(){
+      window.clearTimeout(closeTimer);
+      trigger.setAttribute('aria-expanded', 'true');
+      group.classList.add('is-filter-open');
     }
-  }, true);
 
-  document.addEventListener('keydown', function(event){
-    if(event.key === 'Escape' && active){
-      const trigger = active.trigger;
-      closePanel();
-      trigger.focus();
+    function close(){
+      window.clearTimeout(closeTimer);
+      closeTimer = window.setTimeout(() => {
+        trigger.setAttribute('aria-expanded', 'false');
+        group.classList.remove('is-filter-open');
+      }, 180);
     }
-  });
 
-  function schedulePosition(){
-    if(!active || positionFrame !== null) return;
-    positionFrame = window.requestAnimationFrame(function(){
-      positionFrame = null;
-      positionPanel();
+    group.addEventListener('pointerenter', open);
+    group.addEventListener('pointerleave', close);
+    panel.addEventListener('pointerenter', open);
+    panel.addEventListener('pointerleave', close);
+    group.addEventListener('focusin', open);
+    group.addEventListener('focusout', event => {
+      if(!group.contains(event.relatedTarget)) close();
     });
-  }
-
-  window.addEventListener('resize', schedulePosition, {passive:true});
-  window.addEventListener('scroll', schedulePosition, {passive:true});
+  });
 })();
 
 (function(){
@@ -2360,315 +2220,116 @@ $('.color-mode').on('click', function(){
 
 
 (function(){
-  if(window.PL_STATIC_MULTILINGUAL || /^(es|en|it|fr|de|pt)(-|$)/i.test(document.documentElement.lang || '')) return;
-  const STORAGE_KEY = 'patronesLabLanguage';
-  const DEFAULT_LANG = 'es';
-  const FLAG_US = '/images/patrones/language-flags/flag-us.svg';
-  const FLAG_ES = '/images/patrones/language-flags/flag-es.svg';
+  const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  const mobileWidth = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
+  if(!coarsePointer && !mobileWidth) return;
 
-  const dictionary = {
-    en: {
-      title: 'Patrones Lab — Data, BI & Machine Learning Portfolio',
-      metaDescription: 'Patrones Lab: a portfolio of reproducible data projects across BI, machine learning, Python, SQL, Power BI, Qlik and Looker Studio.',
-      htmlLang: 'en',
-      toggleFlag: FLAG_ES,
-      toggleLabel: 'Switch to Spanish',
+  const projects = document.querySelector('#projects');
+  if(!projects) return;
 
-      text: {
-        '.tech-logo-card-power-bi small': 'Business Intelligence',
-        '.tech-logo-card-qlik small': 'Visual analytics',
-        '.tech-logo-card-looker small': 'Dashboards',
-        '.tech-logo-card-python small': 'Analysis and modeling',
-        '.tech-logo-card-pandas small': 'Data manipulation',
-        '.tech-logo-card-scikit small': 'Machine Learning',
-        '.tech-logo-card-plotly small': 'Interactive visualization',
-        '.tech-logo-card-spss small': 'Visual modeling',
-        '.tech-logo-card-snowflake small': 'Data warehouse',
-        '.tech-logo-card-databricks small': 'Lakehouse',
-        '.floating-cta__text': 'View repository',
+  const groups = Array.from(projects.querySelectorAll('.repo-filter-group'));
+  if(!groups.length) return;
 
-        '.navbar-nav .nav-link[href="#home"]': 'Home',
-        '.navbar-nav .nav-link[href="#methodology"]': 'Methodology',
-        '.navbar-nav .nav-link[href="#projects"]': 'Projects',
-        '.navbar-nav .nav-link[href="#networks"]': 'Channels',
-        '.navbar-nav .nav-link[href="#contact"]': 'Contact',
-        '.color-mode': '<i class="color-mode-icon"></i>',
+  let active = null;
 
-        '#home .hero-entry-kicker': 'Project portfolio BI · ML · Python · Dashboards',
-        '#home .hero-line': '<span class="hero-line-row">I turn</span><span class="hero-line-row">data into</span>',
-        '#home .hero-rotator span:nth-child(1)': 'evidence',
-        '#home .hero-rotator span:nth-child(2)': 'models',
-        '#home .hero-rotator span:nth-child(3)': 'dashboards',
-        '#home .hero-rotator span:nth-child(4)': 'decisions',
-        '#home .hero-rotator span:nth-child(5)': 'patterns',
-        '#home .hero-entry-copy': 'Patrones Lab is a data analytics lab focused on real-world, everyday phenomena.<br><br>It brings together independent projects built with public data, with an emphasis on finding patterns, explaining behavior and communicating insights with context.<br><br>The goal is to ask better questions, prepare reliable data, build reproducible analyses and turn results into clear visual outputs.',
+  function restorePanel(){
+    if(!active) return;
 
-        '.tech-logo-card-airflow small': 'Orchestration',
-        '.tech-logo-card-sql-server small': 'Database',
-        '.tech-logo-card-numpy small': 'Numerical Computing',
-        '.tech-logo-card-matplotlib small': 'Data Visualization',
-        '.tech-logo-card-dbt small': 'Transformation',
+    const { group, panel, next } = active;
 
-        '#methodology .process-horizontal-static-head h2': 'Data Lifecycle',
-        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Esplorazione',
-        '#methodology .process-horizontal-panel:nth-child(1) small': 'Context & Objective',
-        '#methodology .process-horizontal-panel:nth-child(1) p': 'Clarifying the problem, the decision to improve, the users involved and the expected outcome.',
-        '#methodology .process-horizontal-panel:nth-child(2) h3': 'Sources',
-        '#methodology .process-horizontal-panel:nth-child(2) small': 'Sources & Diagnostics',
-        '#methodology .process-horizontal-panel:nth-child(2) p': 'Mapping available data sources, including their origin, refresh cadence, reliability and main limitations.',
-        '#methodology .process-horizontal-panel:nth-child(3) h3': 'Preparation',
-        '#methodology .process-horizontal-panel:nth-child(3) small': 'Analytical Dataset',
-        '#methodology .process-horizontal-panel:nth-child(3) p': 'Structuring, cleaning and combining data into a consistent analytical dataset ready for analysis.',
-        '#methodology .process-horizontal-panel:nth-child(4) h3': 'Development',
-        '#methodology .process-horizontal-panel:nth-child(4) small': 'Solution',
-        '#methodology .process-horizontal-panel:nth-child(4) p': 'Building the analysis, model or dashboard required to address the defined objective.',
-        '#methodology .process-horizontal-panel:nth-child(5) h3': 'Validation',
-        '#methodology .process-horizontal-panel:nth-child(5) small': 'Quality & Confidence',
-        '#methodology .process-horizontal-panel:nth-child(5) p': 'Reviewing the coherence, stability and business relevance of the results before delivery.',
-        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Pubblicazione',
-        '#methodology .process-horizontal-panel:nth-child(6) small': 'Publishing, Automation & Iteration',
-        '#methodology .process-horizontal-panel:nth-child(6) p': 'Documenting the final output, automating recurring workflows and using feedback to guide future improvements.',
+    panel.classList.remove('pl-mobile-filter-portal');
+    panel.classList.remove('pl-mobile-filter-floating');
+    panel.style.removeProperty('--pl-filter-top');
+    panel.style.removeProperty('--pl-filter-left');
 
-        '#projects .section-kicker': 'Patrones Lab Repository',
-        '#projects .projects-title-display': 'Projects',
-        '#projects .projects-intro': 'A selection of applied projects built with public data, documented methodology and visual outputs. Use the filters to explore by discipline, tool or deliverable type.',
-        '#projects .repo-filter-btn[data-repo-filter="all"]': '◎ All',
-        '#projects .repo-filter-group:nth-of-type(1) .repo-filter-group-trigger': 'Discipline',
-        '#projects .repo-filter-group:nth-of-type(2) .repo-filter-group-trigger': 'Tools',
-        '#projects .repo-filter-group:nth-of-type(3) .repo-filter-group-trigger': 'Model',
-        '#projects .repo-filter-group:nth-of-type(4) .repo-filter-group-trigger': 'Domain',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '✓ Supervised Model',
-        '#projects .repo-filter-btn[data-repo-filter="redes-neuronales"]': '⋈ Neural Networks',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '◎ Unsupervised Model',
-        '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '≡ Classification',
-        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '⌁ Logistic Regression',
-        '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '⌖ Geospatial',
-        '#projects .repo-filter-btn[data-repo-filter="futbol"]': '● Soccer',
-        '#projects .repo-filter-btn[data-repo-filter="aviacion"]': '✈ Aviation',
-        '#projects .repo-filter-btn[data-repo-filter="fraude"]': '! Fraud',
-
-        '#projects .github-project-card[data-project-id="aena-balearic-flights"] h3': 'Balearic Islands Flight Analysis',
-        '#projects .github-project-card[data-project-id="aena-balearic-flights"] p:not(.project-status)': 'Analysis of air traffic in Spain using public AENA data, focused on volume, airport-level patterns and differences across traffic categories.',
-        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] h3': 'Airbnb Lodging Analysis in London',
-        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] p:not(.project-status)': 'Exploratory analysis of Airbnb listings in London, focused on pricing, property categories, reviews and spatial patterns.',
-        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] h3': 'Chicago Taxi Trip Analysis',
-        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] p:not(.project-status)': 'Analysis of reported Chicago taxi trips to study duration, demand, geospatial distribution and operational patterns.',
-        '#projects .github-project-card[data-project-id="airbnb-london-ml"] h3': 'ML Model · Airbnb London',
-        '#projects .github-project-card[data-project-id="airbnb-london-ml"] p:not(.project-status)': 'Supervised classification of listings as relatively expensive or inexpensive within each accommodation type.',
-        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] h3': 'Looker Dashboard · Chicago Taxi Trips',
-        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] p:not(.project-status)': 'Interactive Looker Studio dashboard for exploring Chicago taxi trips, operational indicators, hourly patterns and pickup-dropoff routes.',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'Machine Learning Model · Expected Goals (xG)',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] p:not(.project-status)': 'Logistic regression model that estimates the probability of each shot becoming a goal using public StatsBomb data, match-level validation and application to the Qatar 2022 World Cup.',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] h3': 'Soccer Probabilities · Expected Threat (xT)',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] p:not(.project-status)': 'Probabilistic Expected Threat model in soccer using public StatsBomb data. It estimates the probability of a goal in the next 5 actions.',
-        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] h3': 'ML Model · Fraud Detection',
-        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] p:not(.project-status)': 'Unsupervised K-means clustering applied to credit card fraud detection.',
-        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] h3': 'ML Model · Fraud Detection',
-        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] p:not(.project-status)': 'Supervised logistic regression model for credit card fraud detection.',
-        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] h3': 'ML Model · Fraud Detection',
-        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] p:not(.project-status)': 'Unsupervised DBSCAN clustering to detect potential credit card fraud patterns.',
-        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] h3': '2022 World Cup Statistics: Percentile Radar',
-        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] p:not(.project-status)': 'Analysis of 2022 World Cup statistics using public StatsBomb data, focused on summarizing individual performances and comparing players through percentile radar charts.',
-        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Geospatial Analysis of Chicago Taxi Trips',
-        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Coming soon.',
-
-        '#projects .repo-empty-message': 'There are no projects in this category yet.',
-
-        '#networks .section-kicker': 'Patrones Lab Online Presence',
-        '#networks .projects-title-display': 'Channels',
-        '#networks .social-intro': 'The full project ecosystem in one place: visuals, technical notes, articles, dashboards, useful links and professional contact channels.',
-        '#networks .social-card.instagram small': 'Visuals and posts',
-        '#networks .social-card.linkedin small': 'Professional profile',
-        '#networks .social-card.medium small': 'Articles and notes',
-        '#networks .social-card.linktree small': 'All links',
-        '#networks .social-card.github small': 'Technical profile',
-        '#networks .social-card.mail small': 'Direct contact',
-
-        '#contact .contact-section-heading .section-kicker': 'Let’s talk data',
-        '#contact .contact-section-heading .projects-title-display': 'Contact',
-        '#contact .contact-panel h3': 'Write to me',
-        '#contact .contact-panel p:not(.contact-email-line)': 'For professional opportunities, analytics collaboration or BI, machine learning and dashboard projects.',
-        '#contact .contact-email-line strong': 'email:',
-        '#contact .contact-form h2': 'Leave me a message',
-        '#contact .form-note': 'Send me a message and I’ll get back to you shortly.',
-
-        'footer': 'Patrones Lab® · Generating knowledge from data · by Malcolm Di Pietro Cagliari'
-      },
-
-      all: [
-        ['.project-status.published', '✅ published'],
-        ['.project-status.development', '⚠️ in progress'],
-        ['#projects .project-link', {
-          'Entrar al proyecto': 'Open project',
-          'Leer en LinkedIn': 'Read on LinkedIn',
-          'Ver dashboard': 'View dashboard',
-          'Ver documentación': 'View documentation',
-          'Ver en SPSS': 'View in SPSS',
-          'Ver en Python': 'View in Python'
-        }]
-      ],
-
-      attrs: {
-        '#name': {placeholder: 'Name'},
-        '#message': {placeholder: 'Message'},
-        '#contactForm .submit-btn': {value: 'Prepare email'},
-        '.pl-scroll-loader': {'aria-label': 'Patrones Lab Data & Analytics. Tap to enter the site'},
-        '.pl-scroll-loader__first': {'aria-label': 'Scroll to enter the site'},
-        '.language-menu': {'aria-label': 'Available languages'},
-        '.color-mode': {'aria-label': 'Change visual mode', title: 'Change visual mode'},
-        '.floating-cta': {'aria-label': 'View Patrones Lab repository'},
-        '.navbar-toggler': {'aria-label': 'Open navigation'},
-        '#home .hero-rotator': {'aria-label': 'evidence, models, dashboards, decisions and patterns'},
-        '#home .hero-tech-marquee': {'aria-label': 'Technologies used'},
-        '#projects .repo-filter-toolbar': {'aria-label': 'Filter projects'}
-      }
+    if(next && next.parentNode === group){
+      group.insertBefore(panel, next);
+    }else{
+      group.appendChild(panel);
     }
-  };
 
-  const original = new Map();
+    const trigger = group.querySelector('.repo-filter-group-trigger');
+    if(trigger) trigger.setAttribute('aria-expanded', 'false');
+    group.classList.remove('is-filter-open');
 
-  function rememberElement(el){
-    if(!original.has(el)){
-      original.set(el, {
-        html: el.innerHTML,
-        text: el.textContent,
-        attrs: {}
-      });
-    }
+    active = null;
   }
 
-  function setHtml(selector, html){
-    document.querySelectorAll(selector).forEach(function(el){
-      rememberElement(el);
-      el.innerHTML = html;
-    });
+  function positionPanel(trigger, panel){
+    panel.classList.add('pl-mobile-filter-portal');
+    panel.classList.remove('pl-mobile-filter-floating');
+
+    const rect = trigger.getBoundingClientRect();
+
+    const panelWidth = Math.min(panel.scrollWidth || panel.offsetWidth || 220, window.innerWidth - 24);
+    let left = rect.left;
+    const maxLeft = window.innerWidth - panelWidth - 12;
+
+    if(left > maxLeft) left = maxLeft;
+    if(left < 12) left = 12;
+
+    const top = Math.min(rect.bottom + 8, window.innerHeight - 80);
+
+    panel.style.setProperty('--pl-filter-top', top + 'px');
+    panel.style.setProperty('--pl-filter-left', left + 'px');
   }
 
-  function setText(selector, text){
-    document.querySelectorAll(selector).forEach(function(el){
-      rememberElement(el);
-      el.textContent = text;
-    });
-  }
+  function openGroup(group){
+    const trigger = group.querySelector('.repo-filter-group-trigger');
+    const panel = group.querySelector('.repo-filter-category-panel') || (active && active.group === group ? active.panel : null);
+    if(!trigger || !panel) return;
 
-  function setAttr(selector, attrs){
-    document.querySelectorAll(selector).forEach(function(el){
-      rememberElement(el);
-      Object.keys(attrs).forEach(function(name){
-        if(!original.get(el).attrs[name]){
-          original.get(el).attrs[name] = el.getAttribute(name);
-        }
-        el.setAttribute(name, attrs[name]);
-      });
-    });
-  }
-
-  function restoreOriginals(){
-    original.forEach(function(value, el){
-      if(value.html !== undefined){
-        el.innerHTML = value.html;
-      }
-      Object.keys(value.attrs || {}).forEach(function(name){
-        const previous = value.attrs[name];
-        if(previous === null || previous === undefined){
-          el.removeAttribute(name);
-        }else{
-          el.setAttribute(name, previous);
-        }
-      });
-    });
-  }
-
-  function applyLanguage(lang){
-    const isEnglish = lang === 'en';
-
-    if(!isEnglish){
-      restoreOriginals();
-      document.documentElement.lang = 'es';
-      const meta = document.querySelector('meta[name="description"]');
-      if(meta){
-        meta.setAttribute('content', 'Patrones Lab reúne proyectos de analítica de datos, Business Intelligence y Machine Learning para explorar datos, detectar patrones, generar conocimiento y representar visualmente los descubrimientos.');
-      }
-      document.title = 'Patrones Lab · Analítica de Datos · Portfolio de proyectos ML y BI';
-
-      document.querySelectorAll('.language-toggle').forEach(function(btn){
-        const flag = btn.querySelector('.language-toggle__flag-img');
-        if(flag) flag.setAttribute('src', FLAG_US);
-        btn.setAttribute('aria-label', 'Cambiar a inglés');
-        btn.setAttribute('title', 'English');
-      });
-
-      localStorage.setItem(STORAGE_KEY, 'es');
-      document.dispatchEvent(new CustomEvent('pl-language-changed', {detail:{language:'es'}}));
+    if(active && active.group === group){
+      restorePanel();
       return;
     }
 
-    const dict = dictionary.en;
-    document.documentElement.lang = dict.htmlLang;
-    document.title = dict.title;
+    restorePanel();
 
-    const meta = document.querySelector('meta[name="description"]');
-    if(meta) meta.setAttribute('content', dict.metaDescription);
+    const next = panel.nextSibling;
+    active = { group, panel, next };
 
-    Object.keys(dict.text).forEach(function(selector){
-      setHtml(selector, dict.text[selector]);
-    });
+    group.classList.add('is-filter-open');
+    trigger.setAttribute('aria-expanded', 'true');
 
-    (dict.all || []).forEach(function(entry){
-      const selector = entry[0];
-      const value = entry[1];
-
-      document.querySelectorAll(selector).forEach(function(el){
-        rememberElement(el);
-
-        if(typeof value === 'string'){
-          el.innerHTML = value;
-          return;
-        }
-
-        const current = el.textContent.trim();
-        Object.keys(value).forEach(function(source){
-          if(current.indexOf(source) !== -1){
-            el.innerHTML = el.innerHTML.replace(source, value[source]);
-          }
-        });
-      });
-    });
-
-    Object.keys(dict.attrs).forEach(function(selector){
-      setAttr(selector, dict.attrs[selector]);
-    });
-
-    document.querySelectorAll('.language-toggle').forEach(function(btn){
-      const flag = btn.querySelector('.language-toggle__flag-img');
-      if(flag) flag.setAttribute('src', FLAG_ES);
-      btn.setAttribute('aria-label', dict.toggleLabel);
-      btn.setAttribute('title', 'Español');
-    });
-
-    localStorage.setItem(STORAGE_KEY, 'en');
-    document.dispatchEvent(new CustomEvent('pl-language-changed', {detail:{language:'en'}}));
+    document.body.appendChild(panel);
+    positionPanel(trigger, panel);
   }
 
-  function currentLang(){
-    return localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG;
-  }
+  groups.forEach(function(group){
+    const trigger = group.querySelector('.repo-filter-group-trigger');
+    if(!trigger) return;
 
-  document.addEventListener('click', function(event){
-    const btn = event.target.closest && event.target.closest('.language-toggle');
-    if(!btn) return;
+    trigger.addEventListener('click', function(event){
+      event.preventDefault();
+      openGroup(group);
+    });
 
-    event.preventDefault();
-    const next = currentLang() === 'en' ? 'es' : 'en';
-    applyLanguage(next);
+    trigger.addEventListener('touchend', function(event){
+      event.preventDefault();
+      openGroup(group);
+    }, {passive:false});
   });
 
-  window.plGetLanguage = currentLang;
-  window.plSetLanguage = applyLanguage;
+  document.addEventListener('click', function(event){
+    if(!active) return;
 
-  applyLanguage(currentLang());
+    const target = event.target;
+    const clickedTrigger = active.group && active.group.contains(target);
+    const clickedPanel = active.panel && active.panel.contains(target);
 
-  window.plCurrentLanguageForContact = currentLang;
+    if(clickedPanel && target.closest && target.closest('.repo-filter-btn')){
+      window.setTimeout(restorePanel, 120);
+      return;
+    }
+
+    if(clickedTrigger || clickedPanel) return;
+
+    restorePanel();
+  });
+
+  window.addEventListener('scroll', restorePanel, {passive:true});
+  window.addEventListener('resize', restorePanel, {passive:true});
 })();
 
 
@@ -2770,1126 +2431,6 @@ $('.color-mode').on('click', function(){
   document.addEventListener('pl-language-changed', function(){
     applyRepoFilter(projectsSection.dataset.activeRepoFilter || 'all');
   });
-})();
-
-
-(function(){
-  if(window.PL_STATIC_MULTILINGUAL || /^(es|en|it|fr|de|pt)(-|$)/i.test(document.documentElement.lang || '')) return;
-  const STORAGE_KEY = 'patronesLabLanguage';
-  const FLAG_US = '/images/patrones/language-flags/flag-us.svg';
-  const FLAG_ES = '/images/patrones/language-flags/flag-es.svg';
-
-  const dict = {
-    es: {
-      title: 'Patrones Lab · Analítica de Datos · Portfolio de proyectos ML y BI',
-      metaDescription: 'Patrones Lab reúne proyectos de analítica de datos, Business Intelligence y Machine Learning para explorar datos, detectar patrones, generar conocimiento y representar visualmente los descubrimientos.',
-      htmlLang: 'es',
-      toggleFlag: FLAG_US,
-      toggleLabel: 'Cambiar a inglés',
-      toggleTitle: 'English',
-      text: {
-        '.tech-logo-card-power-bi small': 'Inteligencia de negocio',
-        '.tech-logo-card-qlik small': 'Analítica visual',
-        '.tech-logo-card-looker small': 'Dashboards',
-        '.tech-logo-card-python small': 'Análisis y modelado',
-        '.tech-logo-card-pandas small': 'Manipulación de datos',
-        '.tech-logo-card-scikit small': 'Machine Learning',
-        '.tech-logo-card-plotly small': 'Visualización interactiva',
-        '.tech-logo-card-spss small': 'Modelado visual',
-        '.tech-logo-card-snowflake small': 'Data warehouse',
-        '.tech-logo-card-databricks small': 'Lakehouse',
-        '.floating-cta__text': 'Ver repo',
-
-        '.navbar-nav .nav-link[href="#home"]': 'Inicio',
-        '.navbar-nav .nav-link[href="#methodology"]': 'Metodología',
-        '.navbar-nav .nav-link[href="#projects"]': 'Proyectos',
-        '.navbar-nav .nav-link[href="#networks"]': 'Redes',
-        '.navbar-nav .nav-link[href="#contact"]': 'Contacto',
-        '.color-mode': '<i class="color-mode-icon"></i>',
-
-        '#home .hero-entry-kicker': 'Portfolio de proyectos <span class="mobile-block">BI · ML · Python · Dashboards</span>',
-        '#home .hero-line': '<span class="hero-line-row">Transformo</span><span class="hero-line-row">datos en</span>',
-        '#home .hero-rotator span:nth-child(1)': 'evidencia',
-        '#home .hero-rotator span:nth-child(2)': 'modelos',
-        '#home .hero-rotator span:nth-child(3)': 'dashboards',
-        '#home .hero-rotator span:nth-child(4)': 'decisiones',
-        '#home .hero-rotator span:nth-child(5)': 'patrones',
-        '#home .hero-entry-copy': 'Patrones Lab es un laboratorio de análisis de datos aplicado a fenómenos cotidianos y reales.<br><br>Aquí se trabajan proyectos independientes construidos a partir de datos públicos, con foco en detectar patrones, describir comportamientos y comunicar los hallazgos con su contexto.<br><br>El objetivo es plantear preguntas, preparar datos, construir análisis claros y generar resultados visuales.',
-
-        '.tech-logo-card-airflow small': 'Orquestación',
-        '.tech-logo-card-sql-server small': 'Base de datos',
-        '.tech-logo-card-numpy small': 'Cálculo numérico',
-        '.tech-logo-card-matplotlib small': 'Visualización',
-        '.tech-logo-card-dbt small': 'Transformación',
-
-        '#methodology .process-horizontal-static-head h2': 'Ciclo de vida del dato',
-        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Descubrimiento',
-        '#methodology .process-horizontal-panel:nth-child(1) small': 'Contexto y objetivo',
-        '#methodology .process-horizontal-panel:nth-child(1) p': 'Entendimiento del problema, la decisión a mejorar, los usuarios involucrados y el resultado esperado.',
-        '#methodology .process-horizontal-panel:nth-child(2) h3': 'Fuentes',
-        '#methodology .process-horizontal-panel:nth-child(2) small': 'Datos y diagnóstico',
-        '#methodology .process-horizontal-panel:nth-child(2) p': 'Identificación de las fuentes disponibles, su origen, actualización, confiabilidad y principales limitaciones.',
-        '#methodology .process-horizontal-panel:nth-child(3) h3': 'Preparación',
-        '#methodology .process-horizontal-panel:nth-child(3) small': 'Base analítica',
-        '#methodology .process-horizontal-panel:nth-child(3) p': 'Organización, limpieza y combinación de datos para construir una base consistente y usable.',
-        '#methodology .process-horizontal-panel:nth-child(4) h3': 'Construcción',
-        '#methodology .process-horizontal-panel:nth-child(4) small': 'Solución',
-        '#methodology .process-horizontal-panel:nth-child(4) p': 'Desarrollo del análisis, modelo o dashboard necesario según el objetivo definido.',
-        '#methodology .process-horizontal-panel:nth-child(5) h3': 'Validación',
-        '#methodology .process-horizontal-panel:nth-child(5) small': 'Control y confianza',
-        '#methodology .process-horizontal-panel:nth-child(5) p': 'Revisión de la coherencia, estabilidad y alineación de los resultados con la realidad del negocio.',
-        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Entrega',
-        '#methodology .process-horizontal-panel:nth-child(6) small': 'Publicación, automatización y evolución',
-        '#methodology .process-horizontal-panel:nth-child(6) p': 'Documentación del trabajo final, automatización de procesos recurrentes y consideración del feedback para mejoras futuras.',
-
-        '#projects .section-kicker': 'Repositorio Patrones Lab',
-        '#projects .projects-title-display': 'Proyectos',
-        '#projects .projects-intro': 'Selección de proyectos aplicados con datos públicos, metodología y resultados visuales. Usá los filtros para navegar por disciplina, herramienta o tipo de entrega.',
-        '#projects .repo-filter-btn[data-repo-filter="all"]': '<span class="filter-icon">◎</span> Todos',
-        '#projects .repo-filter-group:nth-of-type(1) .repo-filter-group-trigger': 'Disciplina',
-        '#projects .repo-filter-group:nth-of-type(2) .repo-filter-group-trigger': 'Herramientas',
-        '#projects .repo-filter-group:nth-of-type(3) .repo-filter-group-trigger': 'Modelo',
-        '#projects .repo-filter-group:nth-of-type(4) .repo-filter-group-trigger': 'Tema',
-
-        '#projects .repo-filter-btn[data-repo-filter="bi"]': '<span class="filter-icon">▦</span> BI',
-        '#projects .repo-filter-btn[data-repo-filter="data-analysis"]': '<span class="filter-icon">▥</span> Data Analysis',
-        '#projects .repo-filter-btn[data-repo-filter="data-science"]': '<span class="filter-icon">⚗</span> Data Science',
-        '#projects .repo-filter-btn[data-repo-filter="machine-learning"]': '<span class="filter-icon">✦</span> Machine Learning',
-        '#projects .repo-filter-btn[data-repo-filter="data-storytelling"]': '<span class="filter-icon">✎</span> Data Storytelling',
-        '#projects .repo-filter-btn[data-repo-filter="python"]': '<span class="filter-icon">◇</span> Python',
-        '#projects .repo-filter-btn[data-repo-filter="spss"]': '<span class="filter-icon">◧</span> SPSS',
-        '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
-        '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Modelo supervisado',
-        '#projects .repo-filter-btn[data-repo-filter="redes-neuronales"]': '<span class="filter-icon">⋈</span> Redes Neuronales',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Modelo no supervisado',
-        '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Clasificación',
-        '#projects .repo-filter-btn[data-repo-filter="clustering"]': '<span class="filter-icon">✣</span> Clustering',
-        '#projects .repo-filter-btn[data-repo-filter="knn"]': '<span class="filter-icon">↗</span> KNN',
-        '#projects .repo-filter-btn[data-repo-filter="k-means"]': '<span class="filter-icon">⌖</span> K-means',
-        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Regresión logística',
-        '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
-        '#projects .repo-filter-btn[data-repo-filter="simulacion"]': '<span class="filter-icon">∿</span> Simulación',
-        '#projects .repo-filter-btn[data-repo-filter="poisson"]': '<span class="filter-icon">λ</span> Poisson',
-        '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geoespacial',
-        '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
-        '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
-        '#projects .repo-filter-btn[data-repo-filter="futbol"]': '<span class="filter-icon">●</span> Fútbol',
-        '#projects .repo-filter-btn[data-repo-filter="aviacion"]': '<span class="filter-icon">✈</span> Aviación',
-        '#projects .repo-filter-btn[data-repo-filter="fraude"]': '<span class="filter-icon">!</span> Fraude',
-
-        '#projects .github-project-card[data-project-id="aena-balearic-flights"] h3': 'Análisis de Vuelos en las Islas Baleares',
-        '#projects .github-project-card[data-project-id="aena-balearic-flights"] p:not(.project-status)': 'Análisis de tráfico aéreo en España con datos públicos de AENA, con foco en volúmenes, patrones por aeropuerto y diferencias entre categorías.',
-        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] h3': 'Análisis del Alojamiento Airbnb en Londres',
-        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] p:not(.project-status)': 'Análisis exploratorio del alojamiento Airbnb en Londres con foco en precio, categorías, reseñas y patrones territoriales.',
-        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] h3': 'Análisis de Viajes en Taxi en Chicago',
-        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] p:not(.project-status)': 'Análisis de viajes de taxi en Chicago para estudiar duración, demanda, distribución geoespacial y patrones operativos.',
-        '#projects .github-project-card[data-project-id="airbnb-london-ml"] h3': 'Modelo ML · Airbnb London',
-        '#projects .github-project-card[data-project-id="airbnb-london-ml"] p:not(.project-status)': 'Clasificación supervisada de anuncios relativamente caros o baratos dentro de cada tipo de alojamiento.',
-        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] h3': 'Dashboard Looker · Taxi Trips Chicago',
-        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] p:not(.project-status)': 'Dashboard interactivo en Looker Studio para explorar viajes de taxi en Chicago, indicadores operativos, patrones horarios y recorridos pickup-dropoff.',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'Modelo ML · Goles Esperados (xG)',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] p:not(.project-status)': 'Modelo de regresión logística para estimar la probabilidad de gol de cada tiro con datos públicos de StatsBomb, validación por partidos y aplicación al Mundial Qatar 2022.',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] h3': 'Probabilidades en el Fútbol · Peligro Esperado (xT)',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] p:not(.project-status)': 'Modelo probabilístico de Peligro Esperado en el fútbol con datos públicos de StatsBomb. Se estima la probabilidad de gol en las próximas 5 jugadas.',
-        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] h3': 'Modelo ML · Detección de Fraude',
-        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] p:not(.project-status)': 'Clustering no supervisado con K-means para la detección de fraudes con tarjetas de crédito.',
-        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] h3': 'Modelo ML · Detección de Fraude',
-        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] p:not(.project-status)': 'Clasificación supervisada mediante regresión logística para la detección de fraude con tarjeta de crédito.',
-        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] h3': 'Modelo ML · Detección de Fraude',
-        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] p:not(.project-status)': 'Clustering no supervisado con DBSCAN para identificar posibles fraudes con tarjeta de crédito.',
-        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] h3': 'Estadísticas del Mundial 2022: Radar de Percentiles',
-        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] p:not(.project-status)': 'Análisis de estadísticas del Mundial 2022 con datos públicos de StatsBomb, orientado a resumir rendimientos individuales y comparar jugadores mediante radar de percentiles.',
-        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Análisis Geoespacial de los Viajes en Taxi',
-        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Próximamente.',
-
-        '#projects .repo-empty-message': 'No hay proyectos para esa categoría todavía.',
-
-        '#networks .section-kicker': 'Canales de Patrones Lab',
-        '#networks .projects-title-display': 'Redes y canales',
-        '#networks .social-intro': 'Todo el ecosistema del proyecto en un solo lugar: visuales, notas técnicas, publicaciones, dashboards, enlaces útiles y contacto profesional.',
-        '#networks .social-card.instagram small': 'Visuales y posts',
-        '#networks .social-card.linkedin small': 'Perfil profesional',
-        '#networks .social-card.medium small': 'Artículos y notas',
-        '#networks .social-card.linktree small': 'Todos los enlaces',
-        '#networks .social-card.github small': 'Perfil técnico',
-        '#networks .social-card.mail small': 'Contacto directo',
-
-        '#contact .contact-section-heading .section-kicker': 'Conversemos sobre datos',
-        '#contact .contact-section-heading .projects-title-display': 'Contacto',
-        '#contact .contact-panel h3': 'Escríbeme',
-        '#contact .contact-panel p:not(.contact-email-line)': 'Para oportunidades profesionales, colaboración analítica o proyectos de BI · ML · Dashboards.',
-        '#contact .contact-email-line strong': 'correo:',
-        '#contact .contact-form h2': 'Dejame un mensaje',
-        '#contact .form-note': 'Escribime y te responderé a la brevedad.',
-        'footer': 'Patrones Lab® · Generando conocimiento a partir de los datos · por Malcolm Di Pietro Cagliari'
-      },
-      all: [
-        ['.project-status.published', '✅ publicado'],
-        ['.project-status.development', '⚠️ en desarrollo'],
-        ['#projects .project-link', {
-          'Open project': 'Entrar al proyecto',
-          'Read on LinkedIn': 'Leer en LinkedIn',
-          'View dashboard': 'Ver dashboard',
-          'View documentation': 'Ver documentación',
-          'View docs': 'Ver documentación',
-          'View in SPSS': 'Ver en SPSS',
-          'View in Python': 'Ver en Python'
-        }]
-      ],
-      attrs: {
-        '#name': {placeholder: 'Nombre'},
-        '#message': {placeholder: 'Mensaje'},
-        '#contactForm .submit-btn': {value: 'Preparar email'},
-        '.pl-scroll-loader': {'aria-label': 'Patrones Lab Data & Analytics. Tocar para entrar al sitio'},
-        '.pl-scroll-loader__first': {'aria-label': 'Scroll para entrar al sitio'},
-        '.language-menu': {'aria-label': 'Idiomas disponibles'},
-        '.color-mode': {'aria-label': 'Cambiar modo visual', title: 'Cambiar modo visual'},
-        '.floating-cta': {'aria-label': 'Ver repositorio de Patrones Lab'},
-        '.navbar-toggler': {'aria-label': 'Abrir navegación'},
-        '#home .hero-rotator': {'aria-label': 'evidencia, modelos, dashboards, decisiones y patrones'},
-        '#home .hero-tech-marquee': {'aria-label': 'Tecnologías utilizadas'},
-        '#projects .repo-filter-toolbar': {'aria-label': 'Filtrar proyectos'}
-      }
-    },
-
-    en: {
-      title: 'Patrones Lab — Data, BI & Machine Learning Portfolio',
-      metaDescription: 'Patrones Lab: a portfolio of reproducible data projects across BI, machine learning, Python, SQL, Power BI, Qlik and Looker Studio.',
-      htmlLang: 'en',
-      toggleFlag: FLAG_ES,
-      toggleLabel: 'Switch to Spanish',
-      toggleTitle: 'Español',
-      text: {
-        '.floating-cta__text': 'View repository',
-
-        '.navbar-nav .nav-link[href="#home"]': 'Home',
-        '.navbar-nav .nav-link[href="#methodology"]': 'Methodology',
-        '.navbar-nav .nav-link[href="#projects"]': 'Projects',
-        '.navbar-nav .nav-link[href="#networks"]': 'Channels',
-        '.navbar-nav .nav-link[href="#contact"]': 'Contact',
-        '.color-mode': '<i class="color-mode-icon"></i>',
-
-        '#home .hero-entry-kicker': 'Project portfolio BI · ML · Python · Dashboards',
-        '#home .hero-line': '<span class="hero-line-row">I turn</span><span class="hero-line-row">data into</span>',
-        '#home .hero-rotator span:nth-child(1)': 'evidence',
-        '#home .hero-rotator span:nth-child(2)': 'models',
-        '#home .hero-rotator span:nth-child(3)': 'dashboards',
-        '#home .hero-rotator span:nth-child(4)': 'decisions',
-        '#home .hero-rotator span:nth-child(5)': 'patterns',
-        '#home .hero-entry-copy': 'Patrones Lab is a data analytics lab focused on real-world, everyday phenomena.<br><br>It brings together independent projects built with public data, with an emphasis on finding patterns, explaining behavior and communicating insights with context.<br><br>The goal is to ask better questions, prepare reliable data, build reproducible analyses and turn results into clear visual outputs.',
-
-        '.tech-logo-card-airflow small': 'Orchestration',
-        '.tech-logo-card-sql-server small': 'Database',
-        '.tech-logo-card-numpy small': 'Numerical Computing',
-        '.tech-logo-card-matplotlib small': 'Data Visualization',
-        '.tech-logo-card-dbt small': 'Transformation',
-
-        '#methodology .process-horizontal-static-head h2': 'Data Lifecycle',
-        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Esplorazione',
-        '#methodology .process-horizontal-panel:nth-child(1) small': 'Context & Objective',
-        '#methodology .process-horizontal-panel:nth-child(1) p': 'Clarifying the problem, the decision to improve, the users involved and the expected outcome.',
-        '#methodology .process-horizontal-panel:nth-child(2) h3': 'Sources',
-        '#methodology .process-horizontal-panel:nth-child(2) small': 'Sources & Diagnostics',
-        '#methodology .process-horizontal-panel:nth-child(2) p': 'Mapping available data sources, including their origin, refresh cadence, reliability and main limitations.',
-        '#methodology .process-horizontal-panel:nth-child(3) h3': 'Preparation',
-        '#methodology .process-horizontal-panel:nth-child(3) small': 'Analytical Dataset',
-        '#methodology .process-horizontal-panel:nth-child(3) p': 'Structuring, cleaning and combining data into a consistent analytical dataset ready for analysis.',
-        '#methodology .process-horizontal-panel:nth-child(4) h3': 'Development',
-        '#methodology .process-horizontal-panel:nth-child(4) small': 'Solution',
-        '#methodology .process-horizontal-panel:nth-child(4) p': 'Building the analysis, model or dashboard required to address the defined objective.',
-        '#methodology .process-horizontal-panel:nth-child(5) h3': 'Validation',
-        '#methodology .process-horizontal-panel:nth-child(5) small': 'Quality & Confidence',
-        '#methodology .process-horizontal-panel:nth-child(5) p': 'Reviewing the coherence, stability and business relevance of the results before delivery.',
-        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Pubblicazione',
-        '#methodology .process-horizontal-panel:nth-child(6) small': 'Publishing, Automation & Iteration',
-        '#methodology .process-horizontal-panel:nth-child(6) p': 'Documenting the final output, automating recurring workflows and using feedback to guide future improvements.',
-
-        '#projects .section-kicker': 'Patrones Lab Repository',
-        '#projects .projects-title-display': 'Projects',
-        '#projects .projects-intro': 'A selection of applied projects built with public data, documented methodology and visual outputs. Use the filters to explore by discipline, tool or deliverable type.',
-        '#projects .repo-filter-btn[data-repo-filter="all"]': '<span class="filter-icon">◎</span> All',
-        '#projects .repo-filter-group:nth-of-type(1) .repo-filter-group-trigger': 'Discipline',
-        '#projects .repo-filter-group:nth-of-type(2) .repo-filter-group-trigger': 'Tools',
-        '#projects .repo-filter-group:nth-of-type(3) .repo-filter-group-trigger': 'Model',
-        '#projects .repo-filter-group:nth-of-type(4) .repo-filter-group-trigger': 'Domain',
-
-        '#projects .repo-filter-btn[data-repo-filter="bi"]': '<span class="filter-icon">▦</span> BI',
-        '#projects .repo-filter-btn[data-repo-filter="data-analysis"]': '<span class="filter-icon">▥</span> Data Analysis',
-        '#projects .repo-filter-btn[data-repo-filter="data-science"]': '<span class="filter-icon">⚗</span> Data Science',
-        '#projects .repo-filter-btn[data-repo-filter="machine-learning"]': '<span class="filter-icon">✦</span> Machine Learning',
-        '#projects .repo-filter-btn[data-repo-filter="data-storytelling"]': '<span class="filter-icon">✎</span> Data Storytelling',
-        '#projects .repo-filter-btn[data-repo-filter="python"]': '<span class="filter-icon">◇</span> Python',
-        '#projects .repo-filter-btn[data-repo-filter="spss"]': '<span class="filter-icon">◧</span> SPSS',
-        '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
-        '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Supervised model',
-        '#projects .repo-filter-btn[data-repo-filter="redes-neuronales"]': '<span class="filter-icon">⋈</span> Neural Networks',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Unsupervised model',
-        '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Classification',
-        '#projects .repo-filter-btn[data-repo-filter="clustering"]': '<span class="filter-icon">✣</span> Clustering',
-        '#projects .repo-filter-btn[data-repo-filter="knn"]': '<span class="filter-icon">↗</span> KNN',
-        '#projects .repo-filter-btn[data-repo-filter="k-means"]': '<span class="filter-icon">⌖</span> K-means',
-        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Logistic regression',
-        '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
-        '#projects .repo-filter-btn[data-repo-filter="simulacion"]': '<span class="filter-icon">∿</span> Simulation',
-        '#projects .repo-filter-btn[data-repo-filter="poisson"]': '<span class="filter-icon">λ</span> Poisson',
-        '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geospatial',
-        '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
-        '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
-        '#projects .repo-filter-btn[data-repo-filter="futbol"]': '<span class="filter-icon">●</span> Soccer',
-        '#projects .repo-filter-btn[data-repo-filter="aviacion"]': '<span class="filter-icon">✈</span> Aviation',
-        '#projects .repo-filter-btn[data-repo-filter="fraude"]': '<span class="filter-icon">!</span> Fraud',
-
-        '#projects .github-project-card[data-project-id="aena-balearic-flights"] h3': 'Balearic Islands Flight Analysis',
-        '#projects .github-project-card[data-project-id="aena-balearic-flights"] p:not(.project-status)': 'Analysis of air traffic in Spain using public AENA data, focused on volume, airport-level patterns and differences across traffic categories.',
-        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] h3': 'Airbnb Lodging Analysis in London',
-        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] p:not(.project-status)': 'Exploratory analysis of Airbnb listings in London, focused on pricing, property categories, reviews and spatial patterns.',
-        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] h3': 'Chicago Taxi Trip Analysis',
-        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] p:not(.project-status)': 'Analysis of reported Chicago taxi trips to study duration, demand, geospatial distribution and operational patterns.',
-        '#projects .github-project-card[data-project-id="airbnb-london-ml"] h3': 'ML Model · Airbnb London',
-        '#projects .github-project-card[data-project-id="airbnb-london-ml"] p:not(.project-status)': 'Supervised classification of listings as relatively expensive or inexpensive within each accommodation type.',
-        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] h3': 'Looker Dashboard · Chicago Taxi Trips',
-        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] p:not(.project-status)': 'Interactive Looker Studio dashboard for exploring Chicago taxi trips, operational indicators, hourly patterns and pickup-dropoff routes.',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'Machine Learning Model · Expected Goals (xG)',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] p:not(.project-status)': 'Logistic regression model that estimates the probability of each shot becoming a goal using public StatsBomb data, match-level validation and application to the Qatar 2022 World Cup.',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] h3': 'Soccer Probabilities · Expected Threat (xT)',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] p:not(.project-status)': 'Probabilistic Expected Threat model in soccer using public StatsBomb data. It estimates the probability of a goal in the next 5 actions.',
-        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] h3': 'ML Model · Fraud Detection',
-        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] p:not(.project-status)': 'Unsupervised K-means clustering applied to credit card fraud detection.',
-        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] h3': 'ML Model · Fraud Detection',
-        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] p:not(.project-status)': 'Supervised logistic regression model for credit card fraud detection.',
-        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] h3': 'ML Model · Fraud Detection',
-        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] p:not(.project-status)': 'Unsupervised DBSCAN clustering to detect potential credit card fraud patterns.',
-        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] h3': '2022 World Cup Statistics: Percentile Radar',
-        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] p:not(.project-status)': 'Analysis of 2022 World Cup statistics using public StatsBomb data, focused on summarizing individual performances and comparing players through percentile radar charts.',
-        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Geospatial Analysis of Chicago Taxi Trips',
-        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Coming soon.',
-
-        '#projects .repo-empty-message': 'There are no projects in this category yet.',
-
-        '#networks .section-kicker': 'Patrones Lab Online Presence',
-        '#networks .projects-title-display': 'Channels',
-        '#networks .social-intro': 'The full project ecosystem in one place: visuals, technical notes, articles, dashboards, useful links and professional contact channels.',
-        '#networks .social-card.instagram small': 'Visuals and posts',
-        '#networks .social-card.linkedin small': 'Professional profile',
-        '#networks .social-card.medium small': 'Articles and notes',
-        '#networks .social-card.linktree small': 'All links',
-        '#networks .social-card.github small': 'Technical profile',
-        '#networks .social-card.mail small': 'Direct contact',
-
-        '#contact .contact-section-heading .section-kicker': 'Let’s talk data',
-        '#contact .contact-section-heading .projects-title-display': 'Contact',
-        '#contact .contact-panel h3': 'Write to me',
-        '#contact .contact-panel p:not(.contact-email-line)': 'For professional opportunities, analytics collaboration or BI, machine learning and dashboard projects.',
-        '#contact .contact-email-line strong': 'email:',
-        '#contact .contact-form h2': 'Leave me a message',
-        '#contact .form-note': 'Send me a message and I’ll get back to you shortly.',
-        'footer': 'Patrones Lab® · Generating knowledge from data · by Malcolm Di Pietro Cagliari'
-      },
-      all: [
-        ['.project-status.published', '✅ published'],
-        ['.project-status.development', '⚠️ in progress'],
-        ['#projects .project-link', {
-          'Entrar al proyecto': 'Open project',
-          'Leer en LinkedIn': 'Read on LinkedIn',
-          'Ver dashboard': 'View dashboard',
-          'Ver documentación': 'View documentation',
-          'Ver en SPSS': 'View in SPSS',
-          'Ver en Python': 'View in Python'
-        }]
-      ],
-      attrs: {
-        '#name': {placeholder: 'Name'},
-        '#message': {placeholder: 'Message'},
-        '#contactForm .submit-btn': {value: 'Prepare email'},
-        '.pl-scroll-loader': {'aria-label': 'Patrones Lab Data & Analytics. Tap to enter the site'},
-        '.pl-scroll-loader__first': {'aria-label': 'Scroll to enter the site'},
-        '.language-menu': {'aria-label': 'Available languages'},
-        '.color-mode': {'aria-label': 'Change visual mode', title: 'Change visual mode'},
-        '.floating-cta': {'aria-label': 'View Patrones Lab repository'},
-        '.navbar-toggler': {'aria-label': 'Open navigation'},
-        '#home .hero-rotator': {'aria-label': 'evidence, models, dashboards, decisions and patterns'},
-        '#home .hero-tech-marquee': {'aria-label': 'Technologies used'},
-        '#projects .repo-filter-toolbar': {'aria-label': 'Filter projects'}
-      }
-    }
-  };
-
-  function setHtml(selector, html){
-    document.querySelectorAll(selector).forEach(function(el){
-      el.innerHTML = html;
-    });
-  }
-
-  function setAttr(selector, attrs){
-    document.querySelectorAll(selector).forEach(function(el){
-      Object.keys(attrs).forEach(function(name){
-        el.setAttribute(name, attrs[name]);
-      });
-    });
-  }
-
-  function applyExplicitLanguage(lang){
-    const language = lang === 'en' ? 'en' : 'es';
-    const data = dict[language];
-
-    document.documentElement.lang = data.htmlLang;
-    document.title = data.title;
-
-    const meta = document.querySelector('meta[name="description"]');
-    if(meta) meta.setAttribute('content', data.metaDescription);
-
-    Object.keys(data.text).forEach(function(selector){
-      setHtml(selector, data.text[selector]);
-    });
-
-    (data.all || []).forEach(function(entry){
-      const selector = entry[0];
-      const value = entry[1];
-
-      document.querySelectorAll(selector).forEach(function(el){
-        if(typeof value === 'string'){
-          el.innerHTML = value;
-          return;
-        }
-
-        const current = el.textContent.trim();
-        Object.keys(value).forEach(function(source){
-          if(current.indexOf(source) !== -1){
-            el.innerHTML = el.innerHTML.replace(source, value[source]);
-          }
-        });
-      });
-    });
-
-    Object.keys(data.attrs).forEach(function(selector){
-      setAttr(selector, data.attrs[selector]);
-    });
-
-    document.querySelectorAll('.language-toggle').forEach(function(btn){
-      const flag = btn.querySelector('.language-toggle__flag-img');
-      if(flag) flag.setAttribute('src', data.toggleFlag);
-      btn.setAttribute('aria-label', data.toggleLabel);
-      btn.setAttribute('title', data.toggleTitle);
-    });
-
-    localStorage.setItem(STORAGE_KEY, language);
-
-    document.dispatchEvent(new CustomEvent('pl-language-changed', {detail:{language:language}}));
-
-    if(window.plApplyRepoFilter && window.plGetActiveRepoFilter){
-      window.plApplyRepoFilter(window.plGetActiveRepoFilter());
-    }
-  }
-
-  document.addEventListener('click', function(event){
-    const btn = event.target.closest && event.target.closest('.language-toggle');
-    if(!btn) return;
-
-    event.preventDefault();
-    event.stopPropagation();
-    event.stopImmediatePropagation();
-
-    const current = localStorage.getItem(STORAGE_KEY) || 'es';
-    applyExplicitLanguage(current === 'en' ? 'es' : 'en');
-  }, true);
-
-  window.plSetLanguage = applyExplicitLanguage;
-  window.plGetLanguage = function(){
-    return localStorage.getItem(STORAGE_KEY) || 'es';
-  };
-  window.plCurrentLanguageForContact = window.plGetLanguage;
-
-  applyExplicitLanguage(localStorage.getItem(STORAGE_KEY) || 'es');
-})();
-
-
-(function(){
-  if(window.PL_STATIC_MULTILINGUAL || /^(es|en|it|fr|de|pt)(-|$)/i.test(document.documentElement.lang || '')) return;
-  const STORAGE_KEY = 'patronesLabLanguage';
-  const FLAGS = {
-    es: '/images/patrones/language-flags/flag-es.svg',
-    en: '/images/patrones/language-flags/flag-us.svg',
-    it: '/images/patrones/language-flags/flag-it.svg'
-  };
-
-  const langData = {
-    es: {
-      title: 'Patrones Lab · Analítica de Datos · Portfolio de proyectos ML y BI',
-      metaDescription: 'Patrones Lab reúne proyectos de analítica de datos, Business Intelligence y Machine Learning para explorar datos, detectar patrones, generar conocimiento y representar visualmente los descubrimientos.',
-      htmlLang: 'es',
-      currentLabel: 'Español',
-      languageSelectorAriaLabel: 'Idioma',
-      text: {
-        '.floating-cta__text': 'Ver repo',
-        '.navbar-nav .nav-link[href="#home"]': 'Inicio',
-        '.navbar-nav .nav-link[href="#methodology"]': 'Metodología',
-        '.navbar-nav .nav-link[href="#projects"]': 'Proyectos',
-        '.navbar-nav .nav-link[href="#networks"]': 'Redes',
-        '.navbar-nav .nav-link[href="#contact"]': 'Contacto',
-        '.color-mode': '<i class="color-mode-icon"></i>',
-
-        '#home .hero-entry-kicker': 'Portfolio de proyectos <span class="mobile-block">BI · ML · Python · Dashboards</span>',
-        '#home .hero-line': '<span class="hero-line-row">Transformo</span><span class="hero-line-row">datos en</span>',
-        '#home .hero-rotator span:nth-child(1)': 'evidencia',
-        '#home .hero-rotator span:nth-child(2)': 'modelos',
-        '#home .hero-rotator span:nth-child(3)': 'dashboards',
-        '#home .hero-rotator span:nth-child(4)': 'decisiones',
-        '#home .hero-rotator span:nth-child(5)': 'patrones',
-        '#home .hero-entry-copy': 'Patrones Lab es un laboratorio de análisis de datos aplicado a fenómenos cotidianos y reales.<br><br>Aquí se trabajan proyectos independientes construidos a partir de datos públicos, con foco en detectar patrones, describir comportamientos y comunicar los hallazgos con su contexto.<br><br>El objetivo es plantear preguntas, preparar datos, construir análisis claros y generar resultados visuales.',
-
-        '.tech-logo-card-airflow small': 'Orquestación',
-        '.tech-logo-card-sql-server small': 'Base de datos',
-        '.tech-logo-card-numpy small': 'Cálculo numérico',
-        '.tech-logo-card-matplotlib small': 'Visualización',
-        '.tech-logo-card-dbt small': 'Transformación',
-
-        '#methodology .process-horizontal-static-head h2': 'Ciclo de vida del dato',
-        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Descubrimiento',
-        '#methodology .process-horizontal-panel:nth-child(1) small': 'Contexto y objetivo',
-        '#methodology .process-horizontal-panel:nth-child(1) p': 'Entendimiento del problema, la decisión a mejorar, los usuarios involucrados y el resultado esperado.',
-        '#methodology .process-horizontal-panel:nth-child(2) h3': 'Fuentes',
-        '#methodology .process-horizontal-panel:nth-child(2) small': 'Datos y diagnóstico',
-        '#methodology .process-horizontal-panel:nth-child(2) p': 'Identificación de las fuentes disponibles, su origen, actualización, confiabilidad y principales limitaciones.',
-        '#methodology .process-horizontal-panel:nth-child(3) h3': 'Preparación',
-        '#methodology .process-horizontal-panel:nth-child(3) small': 'Base analítica',
-        '#methodology .process-horizontal-panel:nth-child(3) p': 'Organización, limpieza y combinación de datos para construir una base consistente y usable.',
-        '#methodology .process-horizontal-panel:nth-child(4) h3': 'Construcción',
-        '#methodology .process-horizontal-panel:nth-child(4) small': 'Solución',
-        '#methodology .process-horizontal-panel:nth-child(4) p': 'Desarrollo del análisis, modelo o dashboard necesario según el objetivo definido.',
-        '#methodology .process-horizontal-panel:nth-child(5) h3': 'Validación',
-        '#methodology .process-horizontal-panel:nth-child(5) small': 'Control y confianza',
-        '#methodology .process-horizontal-panel:nth-child(5) p': 'Revisión de la coherencia, estabilidad y alineación de los resultados con la realidad del negocio.',
-        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Entrega',
-        '#methodology .process-horizontal-panel:nth-child(6) small': 'Publicación, automatización y evolución',
-        '#methodology .process-horizontal-panel:nth-child(6) p': 'Documentación del trabajo final, automatización de procesos recurrentes y consideración del feedback para mejoras futuras.',
-
-        '#projects .section-kicker': 'Repositorio Patrones Lab',
-        '#projects .projects-title-display': 'Proyectos',
-        '#projects .projects-intro': 'Selección de proyectos aplicados con datos públicos, metodología y resultados visuales. Usá los filtros para navegar por disciplina, herramienta o tipo de entrega.',
-        '#projects .repo-filter-btn[data-repo-filter="all"]': '<span class="filter-icon">◎</span> Todos',
-        '#projects .repo-filter-group:nth-of-type(1) .repo-filter-group-trigger': 'Disciplina',
-        '#projects .repo-filter-group:nth-of-type(2) .repo-filter-group-trigger': 'Herramientas',
-        '#projects .repo-filter-group:nth-of-type(3) .repo-filter-group-trigger': 'Modelo',
-        '#projects .repo-filter-group:nth-of-type(4) .repo-filter-group-trigger': 'Tema',
-
-        '#projects .repo-filter-btn[data-repo-filter="bi"]': '<span class="filter-icon">▦</span> BI',
-        '#projects .repo-filter-btn[data-repo-filter="data-analysis"]': '<span class="filter-icon">▥</span> Data Analysis',
-        '#projects .repo-filter-btn[data-repo-filter="data-science"]': '<span class="filter-icon">⚗</span> Data Science',
-        '#projects .repo-filter-btn[data-repo-filter="machine-learning"]': '<span class="filter-icon">✦</span> Machine Learning',
-        '#projects .repo-filter-btn[data-repo-filter="data-storytelling"]': '<span class="filter-icon">✎</span> Data Storytelling',
-        '#projects .repo-filter-btn[data-repo-filter="python"]': '<span class="filter-icon">◇</span> Python',
-        '#projects .repo-filter-btn[data-repo-filter="spss"]': '<span class="filter-icon">◧</span> SPSS',
-        '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
-        '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
-        '#projects .repo-filter-btn[data-repo-filter="power-bi"]': '<span class="filter-icon">▥</span> Power BI',
-        '#projects .repo-filter-btn[data-repo-filter="dax"]': '<span class="filter-icon">ƒx</span> DAX',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Modelo supervisado',
-        '#projects .repo-filter-btn[data-repo-filter="redes-neuronales"]': '<span class="filter-icon">⋈</span> Redes Neuronales',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Modelo no supervisado',
-        '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Clasificación',
-        '#projects .repo-filter-btn[data-repo-filter="clustering"]': '<span class="filter-icon">✣</span> Clustering',
-        '#projects .repo-filter-btn[data-repo-filter="knn"]': '<span class="filter-icon">↗</span> KNN',
-        '#projects .repo-filter-btn[data-repo-filter="k-means"]': '<span class="filter-icon">⌖</span> K-means',
-        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Regresión logística',
-        '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
-        '#projects .repo-filter-btn[data-repo-filter="simulacion"]': '<span class="filter-icon">∿</span> Simulación',
-        '#projects .repo-filter-btn[data-repo-filter="poisson"]': '<span class="filter-icon">λ</span> Poisson',
-        '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geoespacial',
-        '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
-        '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
-        '#projects .repo-filter-btn[data-repo-filter="futbol"]': '<span class="filter-icon">●</span> Fútbol',
-        '#projects .repo-filter-btn[data-repo-filter="aviacion"]': '<span class="filter-icon">✈</span> Aviación',
-        '#projects .repo-filter-btn[data-repo-filter="fraude"]': '<span class="filter-icon">!</span> Fraude',
-        '#projects .repo-filter-btn[data-repo-filter="spotify"]': '<span class="filter-icon">♪</span> Spotify',
-
-        '#projects .github-project-card[data-project-id="aena-balearic-flights"] h3': 'Análisis de Vuelos en las Islas Baleares',
-        '#projects .github-project-card[data-project-id="aena-balearic-flights"] p:not(.project-status)': 'Análisis de tráfico aéreo en España con datos públicos de AENA, con foco en volúmenes, patrones por aeropuerto y diferencias entre categorías.',
-        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] h3': 'Análisis del Alojamiento Airbnb en Londres',
-        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] p:not(.project-status)': 'Análisis exploratorio del alojamiento Airbnb en Londres con foco en precio, categorías, reseñas y patrones territoriales.',
-        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] h3': 'Análisis de Viajes en Taxi en Chicago',
-        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] p:not(.project-status)': 'Análisis de viajes de taxi en Chicago para estudiar duración, demanda, distribución geoespacial y patrones operativos.',
-        '#projects .github-project-card[data-project-id="airbnb-london-ml"] h3': 'Modelo ML · Airbnb London',
-        '#projects .github-project-card[data-project-id="airbnb-london-ml"] p:not(.project-status)': 'Clasificación supervisada de anuncios relativamente caros o baratos dentro de cada tipo de alojamiento.',
-        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] h3': 'Dashboard Looker · Taxi Trips Chicago',
-        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] p:not(.project-status)': 'Dashboard interactivo en Looker Studio para explorar viajes de taxi en Chicago, indicadores operativos, patrones horarios y recorridos pickup-dropoff.',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'Modelo ML · Goles Esperados (xG)',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] p:not(.project-status)': 'Modelo de regresión logística para estimar la probabilidad de gol de cada tiro con datos públicos de StatsBomb, validación por partidos y aplicación al Mundial Qatar 2022.',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] h3': 'Probabilidades en el Fútbol · Peligro Esperado (xT)',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] p:not(.project-status)': 'Modelo probabilístico de Peligro Esperado en el fútbol con datos públicos de StatsBomb. Se estima la probabilidad de gol en las próximas 5 jugadas.',
-        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] h3': 'Modelo ML · Detección de Fraude',
-        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] p:not(.project-status)': 'Clustering no supervisado con K-means para la detección de fraudes con tarjetas de crédito.',
-        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] h3': 'Modelo ML · Detección de Fraude',
-        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] p:not(.project-status)': 'Clasificación supervisada mediante regresión logística para la detección de fraude con tarjeta de crédito.',
-        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] h3': 'Modelo ML · Detección de Fraude',
-        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] p:not(.project-status)': 'Clustering no supervisado con DBSCAN para identificar posibles fraudes con tarjeta de crédito.',
-        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] h3': 'Estadísticas del Mundial 2022: Radar de Percentiles',
-        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] p:not(.project-status)': 'Análisis de estadísticas del Mundial 2022 con datos públicos de StatsBomb, orientado a resumir rendimientos individuales y comparar jugadores mediante radar de percentiles.',
-        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Análisis Geoespacial de los Viajes en Taxi',
-        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Próximamente.',
-        '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] h3': 'Dashboard en Power BI · Spotify Charts',
-        '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] p:not(.project-status)': 'Análisis de rankings musicales de Spotify Charts con datos públicos de canciones, artistas, álbumes y mercados, orientado a explorar streams, presencia en charts, liderazgo temporal y distribución territorial mediante un dashboard interactivo en Power BI.',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] h3': 'Dashboard en Power BI · Análisis de Gastos',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] p:not(.project-status)': 'Informe interactivo en Power BI para analizar gasto con proveedores, evolución mensual, distribución por categorías, ahorro y distribución geográfica.',
-        '#projects .github-project-card[data-project-id="world-cup-2026-montecarlo-simulation"] h3': 'Simulación de Montecarlo · Predicciones para el Mundial 2026',
-        '#projects .github-project-card[data-project-id="world-cup-2026-montecarlo-simulation"] p:not(.project-status)': 'Simulación de un millón de escenarios del Mundial 2026 con ratings Elo para estimar probabilidades de alcanzar semifinales, disputar la final y consagrarse campeón.',
-        '#projects .repo-empty-message': 'No hay proyectos para esa categoría todavía.',
-
-        '#networks .section-kicker': 'Canales de Patrones Lab',
-        '#networks .projects-title-display': 'Redes y canales',
-        '#networks .social-intro': 'Todo el ecosistema del proyecto en un solo lugar: visuales, notas técnicas, publicaciones, dashboards, enlaces útiles y contacto profesional.',
-        '#networks .social-card.instagram small': 'Visuales y posts',
-        '#networks .social-card.linkedin small': 'Perfil profesional',
-        '#networks .social-card.medium small': 'Artículos y notas',
-        '#networks .social-card.linktree small': 'Todos los enlaces',
-        '#networks .social-card.github small': 'Perfil técnico',
-        '#networks .social-card.mail small': 'Contacto directo',
-
-        '#contact .contact-section-heading .section-kicker': 'Conversemos sobre datos',
-        '#contact .contact-section-heading .projects-title-display': 'Contacto',
-        '#contact .contact-panel h3': 'Escríbeme',
-        '#contact .contact-panel p:not(.contact-email-line)': 'Para oportunidades profesionales, colaboración analítica o proyectos de BI · ML · Dashboards.',
-        '#contact .contact-email-line strong': 'correo:',
-        '#contact .contact-form h2': 'Dejame un mensaje',
-        '#contact .form-note': 'Escribime y te responderé a la brevedad.',
-        'footer': 'Patrones Lab® · Generando conocimiento a partir de los datos · por Malcolm Di Pietro Cagliari'
-      },
-      links: {
-        'Open project': 'Entrar al proyecto',
-        'Apri progetto': 'Entrar al proyecto',
-        'Read on LinkedIn': 'Leer en LinkedIn',
-        'Leggi su LinkedIn': 'Leer en LinkedIn',
-        'View dashboard': 'Ver dashboard',
-        'Visualizza dashboard': 'Ver dashboard',
-        'View documentation': 'Ver documentación',
-        'View docs': 'Ver documentación',
-        'Documentazione': 'Ver documentación',
-        'View in SPSS': 'Ver en SPSS',
-        'Visualizza in SPSS': 'Ver en SPSS',
-        'View in Python': 'Ver en Python',
-        'Visualizza in Python': 'Ver en Python'
-      },
-      attrs: {
-        '#name': {placeholder: 'Nombre'},
-        '#message': {placeholder: 'Mensaje'},
-        '#contactForm .submit-btn': {value: 'Preparar email'},
-        '.pl-scroll-loader': {'aria-label': 'Patrones Lab Data & Analytics. Tocar para entrar al sitio'},
-        '.pl-scroll-loader__first': {'aria-label': 'Scroll para entrar al sitio'},
-        '.language-menu': {'aria-label': 'Idiomas disponibles'},
-        '.color-mode': {'aria-label': 'Cambiar modo visual', title: 'Cambiar modo visual'},
-        '.floating-cta': {'aria-label': 'Ver repositorio de Patrones Lab'},
-        '.navbar-toggler': {'aria-label': 'Abrir navegación'},
-        '#home .hero-rotator': {'aria-label': 'evidencia, modelos, dashboards, decisiones y patrones'},
-        '#home .hero-tech-marquee': {'aria-label': 'Tecnologías utilizadas'},
-        '#projects .repo-filter-toolbar': {'aria-label': 'Filtrar proyectos'}
-      }
-    },
-
-    en: {
-      title: 'Patrones Lab — Data, BI & Machine Learning Portfolio',
-      metaDescription: 'Patrones Lab: a portfolio of reproducible data projects across BI, machine learning, Python, SQL, Power BI, Qlik and Looker Studio.',
-      htmlLang: 'en',
-      currentLabel: 'English',
-      languageSelectorAriaLabel: 'Language',
-      text: {
-        '.floating-cta__text': 'View repository',
-        '.navbar-nav .nav-link[href="#home"]': 'Home',
-        '.navbar-nav .nav-link[href="#methodology"]': 'Methodology',
-        '.navbar-nav .nav-link[href="#projects"]': 'Projects',
-        '.navbar-nav .nav-link[href="#networks"]': 'Channels',
-        '.navbar-nav .nav-link[href="#contact"]': 'Contact',
-        '.color-mode': '<i class="color-mode-icon"></i>',
-
-        '#home .hero-entry-kicker': 'Project portfolio BI · ML · Python · Dashboards',
-        '#home .hero-line': '<span class="hero-line-row">I turn</span><span class="hero-line-row">data into</span>',
-        '#home .hero-rotator span:nth-child(1)': 'evidence',
-        '#home .hero-rotator span:nth-child(2)': 'models',
-        '#home .hero-rotator span:nth-child(3)': 'dashboards',
-        '#home .hero-rotator span:nth-child(4)': 'decisions',
-        '#home .hero-rotator span:nth-child(5)': 'patterns',
-        '#home .hero-entry-copy': 'Patrones Lab is a data analytics lab focused on real-world, everyday phenomena.<br><br>It brings together independent projects built with public data, with an emphasis on finding patterns, explaining behavior and communicating insights with context.<br><br>The goal is to ask better questions, prepare reliable data, build reproducible analyses and turn results into clear visual outputs.',
-
-        '.tech-logo-card-airflow small': 'Orchestration',
-        '.tech-logo-card-sql-server small': 'Database',
-        '.tech-logo-card-numpy small': 'Numerical Computing',
-        '.tech-logo-card-matplotlib small': 'Data Visualization',
-        '.tech-logo-card-dbt small': 'Transformation',
-
-        '#methodology .process-horizontal-static-head h2': 'Data Lifecycle',
-        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Esplorazione',
-        '#methodology .process-horizontal-panel:nth-child(1) small': 'Context & Objective',
-        '#methodology .process-horizontal-panel:nth-child(1) p': 'Clarifying the problem, the decision to improve, the users involved and the expected outcome.',
-        '#methodology .process-horizontal-panel:nth-child(2) h3': 'Sources',
-        '#methodology .process-horizontal-panel:nth-child(2) small': 'Sources & Diagnostics',
-        '#methodology .process-horizontal-panel:nth-child(2) p': 'Mapping available data sources, including their origin, refresh cadence, reliability and main limitations.',
-        '#methodology .process-horizontal-panel:nth-child(3) h3': 'Preparation',
-        '#methodology .process-horizontal-panel:nth-child(3) small': 'Analytical Dataset',
-        '#methodology .process-horizontal-panel:nth-child(3) p': 'Structuring, cleaning and combining data into a consistent analytical dataset ready for analysis.',
-        '#methodology .process-horizontal-panel:nth-child(4) h3': 'Development',
-        '#methodology .process-horizontal-panel:nth-child(4) small': 'Solution',
-        '#methodology .process-horizontal-panel:nth-child(4) p': 'Building the analysis, model or dashboard required to address the defined objective.',
-        '#methodology .process-horizontal-panel:nth-child(5) h3': 'Validation',
-        '#methodology .process-horizontal-panel:nth-child(5) small': 'Quality & Confidence',
-        '#methodology .process-horizontal-panel:nth-child(5) p': 'Reviewing the coherence, stability and business relevance of the results before delivery.',
-        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Pubblicazione',
-        '#methodology .process-horizontal-panel:nth-child(6) small': 'Publishing, Automation & Iteration',
-        '#methodology .process-horizontal-panel:nth-child(6) p': 'Documenting the final output, automating recurring workflows and using feedback to guide future improvements.',
-
-        '#projects .section-kicker': 'Patrones Lab Repository',
-        '#projects .projects-title-display': 'Projects',
-        '#projects .projects-intro': 'A selection of applied projects built with public data, documented methodology and visual outputs. Use the filters to explore by discipline, tool or deliverable type.',
-        '#projects .repo-filter-btn[data-repo-filter="all"]': '<span class="filter-icon">◎</span> All',
-        '#projects .repo-filter-group:nth-of-type(1) .repo-filter-group-trigger': 'Discipline',
-        '#projects .repo-filter-group:nth-of-type(2) .repo-filter-group-trigger': 'Tools',
-        '#projects .repo-filter-group:nth-of-type(3) .repo-filter-group-trigger': 'Model',
-        '#projects .repo-filter-group:nth-of-type(4) .repo-filter-group-trigger': 'Domain',
-
-        '#projects .repo-filter-btn[data-repo-filter="bi"]': '<span class="filter-icon">▦</span> BI',
-        '#projects .repo-filter-btn[data-repo-filter="data-analysis"]': '<span class="filter-icon">▥</span> Data Analysis',
-        '#projects .repo-filter-btn[data-repo-filter="data-science"]': '<span class="filter-icon">⚗</span> Data Science',
-        '#projects .repo-filter-btn[data-repo-filter="machine-learning"]': '<span class="filter-icon">✦</span> Machine Learning',
-        '#projects .repo-filter-btn[data-repo-filter="data-storytelling"]': '<span class="filter-icon">✎</span> Data Storytelling',
-        '#projects .repo-filter-btn[data-repo-filter="python"]': '<span class="filter-icon">◇</span> Python',
-        '#projects .repo-filter-btn[data-repo-filter="spss"]': '<span class="filter-icon">◧</span> SPSS',
-        '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
-        '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
-        '#projects .repo-filter-btn[data-repo-filter="power-bi"]': '<span class="filter-icon">▥</span> Power BI',
-        '#projects .repo-filter-btn[data-repo-filter="dax"]': '<span class="filter-icon">ƒx</span> DAX',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Supervised model',
-        '#projects .repo-filter-btn[data-repo-filter="redes-neuronales"]': '<span class="filter-icon">⋈</span> Neural Networks',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Unsupervised model',
-        '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Classification',
-        '#projects .repo-filter-btn[data-repo-filter="clustering"]': '<span class="filter-icon">✣</span> Clustering',
-        '#projects .repo-filter-btn[data-repo-filter="knn"]': '<span class="filter-icon">↗</span> KNN',
-        '#projects .repo-filter-btn[data-repo-filter="k-means"]': '<span class="filter-icon">⌖</span> K-means',
-        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Logistic regression',
-        '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
-        '#projects .repo-filter-btn[data-repo-filter="simulacion"]': '<span class="filter-icon">∿</span> Simulation',
-        '#projects .repo-filter-btn[data-repo-filter="poisson"]': '<span class="filter-icon">λ</span> Poisson',
-        '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geospatial',
-        '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
-        '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
-        '#projects .repo-filter-btn[data-repo-filter="futbol"]': '<span class="filter-icon">●</span> Soccer',
-        '#projects .repo-filter-btn[data-repo-filter="aviacion"]': '<span class="filter-icon">✈</span> Aviation',
-        '#projects .repo-filter-btn[data-repo-filter="fraude"]': '<span class="filter-icon">!</span> Fraud',
-        '#projects .repo-filter-btn[data-repo-filter="spotify"]': '<span class="filter-icon">♪</span> Spotify',
-
-        '#projects .github-project-card[data-project-id="aena-balearic-flights"] h3': 'Balearic Islands Flight Analysis',
-        '#projects .github-project-card[data-project-id="aena-balearic-flights"] p:not(.project-status)': 'Analysis of air traffic in Spain using public AENA data, focused on volume, airport-level patterns and differences across traffic categories.',
-        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] h3': 'Airbnb Lodging Analysis in London',
-        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] p:not(.project-status)': 'Exploratory analysis of Airbnb listings in London, focused on pricing, property categories, reviews and spatial patterns.',
-        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] h3': 'Chicago Taxi Trip Analysis',
-        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] p:not(.project-status)': 'Analysis of reported Chicago taxi trips to study duration, demand, geospatial distribution and operational patterns.',
-        '#projects .github-project-card[data-project-id="airbnb-london-ml"] h3': 'ML Model · Airbnb London',
-        '#projects .github-project-card[data-project-id="airbnb-london-ml"] p:not(.project-status)': 'Supervised classification of listings as relatively expensive or inexpensive within each accommodation type.',
-        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] h3': 'Looker Dashboard · Chicago Taxi Trips',
-        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] p:not(.project-status)': 'Interactive Looker Studio dashboard for exploring Chicago taxi trips, operational indicators, hourly patterns and pickup-dropoff routes.',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'Machine Learning Model · Expected Goals (xG)',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] p:not(.project-status)': 'Logistic regression model that estimates the probability of each shot becoming a goal using public StatsBomb data, match-level validation and application to the Qatar 2022 World Cup.',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] h3': 'Soccer Probabilities · Expected Threat (xT)',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] p:not(.project-status)': 'Probabilistic Expected Threat model in soccer using public StatsBomb data. It estimates the probability of a goal in the next 5 actions.',
-        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] h3': 'ML Model · Fraud Detection',
-        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] p:not(.project-status)': 'Unsupervised K-means clustering applied to credit card fraud detection.',
-        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] h3': 'ML Model · Fraud Detection',
-        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] p:not(.project-status)': 'Supervised logistic regression model for credit card fraud detection.',
-        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] h3': 'ML Model · Fraud Detection',
-        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] p:not(.project-status)': 'Unsupervised DBSCAN clustering to detect potential credit card fraud patterns.',
-        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] h3': '2022 World Cup Statistics: Percentile Radar',
-        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] p:not(.project-status)': 'Analysis of 2022 World Cup statistics using public StatsBomb data, focused on summarizing individual performances and comparing players through percentile radar charts.',
-        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Geospatial Analysis of Chicago Taxi Trips',
-        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Coming soon.',
-        '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] h3': 'Power BI Dashboard · Spotify Charts',
-        '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] p:not(.project-status)': 'Analysis of Spotify Charts music rankings using public data on songs, artists, albums and markets, focused on exploring streams, chart presence, temporal leadership and territorial distribution through an interactive Power BI dashboard.',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] h3': 'Power BI Dashboard · Spend Analysis',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] p:not(.project-status)': 'Interactive Power BI report for analyzing supplier spend, monthly trends, category distribution, savings and geographic distribution.',
-        '#projects .github-project-card[data-project-id="world-cup-2026-montecarlo-simulation"] h3': 'Monte Carlo Simulation · 2026 World Cup Predictions',
-        '#projects .github-project-card[data-project-id="world-cup-2026-montecarlo-simulation"] p:not(.project-status)': 'Simulation of one million 2026 World Cup scenarios using Elo ratings to estimate the probability of reaching the semifinals, playing the final and becoming champion.',
-        '#projects .repo-empty-message': 'There are no projects in this category yet.',
-
-        '#networks .section-kicker': 'Patrones Lab Online Presence',
-        '#networks .projects-title-display': 'Channels',
-        '#networks .social-intro': 'The full project ecosystem in one place: visuals, technical notes, articles, dashboards, useful links and professional contact channels.',
-        '#networks .social-card.instagram small': 'Visuals and posts',
-        '#networks .social-card.linkedin small': 'Professional profile',
-        '#networks .social-card.medium small': 'Articles and notes',
-        '#networks .social-card.linktree small': 'All links',
-        '#networks .social-card.github small': 'Technical profile',
-        '#networks .social-card.mail small': 'Direct contact',
-
-        '#contact .contact-section-heading .section-kicker': 'Let’s talk data',
-        '#contact .contact-section-heading .projects-title-display': 'Contact',
-        '#contact .contact-panel h3': 'Write to me',
-        '#contact .contact-panel p:not(.contact-email-line)': 'For professional opportunities, analytics collaboration or BI, machine learning and dashboard projects.',
-        '#contact .contact-email-line strong': 'email:',
-        '#contact .contact-form h2': 'Leave me a message',
-        '#contact .form-note': 'Send me a message and I’ll get back to you shortly.',
-        'footer': 'Patrones Lab® · Generating knowledge from data · by Malcolm Di Pietro Cagliari'
-      },
-      links: {
-        'Entrar al proyecto': 'Open project',
-        'Apri progetto': 'Open project',
-        'Leer en LinkedIn': 'Read on LinkedIn',
-        'Leggi su LinkedIn': 'Read on LinkedIn',
-        'Ver dashboard': 'View dashboard',
-        'Visualizza dashboard': 'View dashboard',
-        'Ver documentación': 'View documentation',
-        'Documentazione': 'View documentation',
-        'Ver en SPSS': 'View in SPSS',
-        'Visualizza in SPSS': 'View in SPSS',
-        'Ver en Python': 'View in Python',
-        'Visualizza in Python': 'View in Python'
-      },
-      attrs: {
-        '#name': {placeholder: 'Name'},
-        '#message': {placeholder: 'Message'},
-        '#contactForm .submit-btn': {value: 'Prepare email'},
-        '.pl-scroll-loader': {'aria-label': 'Patrones Lab Data & Analytics. Tap to enter the site'},
-        '.pl-scroll-loader__first': {'aria-label': 'Scroll to enter the site'},
-        '.language-menu': {'aria-label': 'Available languages'},
-        '.color-mode': {'aria-label': 'Change visual mode', title: 'Change visual mode'},
-        '.floating-cta': {'aria-label': 'View Patrones Lab repository'},
-        '.navbar-toggler': {'aria-label': 'Open navigation'},
-        '#home .hero-rotator': {'aria-label': 'evidence, models, dashboards, decisions and patterns'},
-        '#home .hero-tech-marquee': {'aria-label': 'Technologies used'},
-        '#projects .repo-filter-toolbar': {'aria-label': 'Filter projects'}
-      }
-    },
-
-    it: {
-      title: 'Patrones Lab — Portfolio Dati, BI e Machine Learning',
-      metaDescription: 'Patrones Lab: portfolio di progetti basati sui dati e riproducibili in BI, machine learning, Python, SQL, Power BI, Qlik e Looker Studio.',
-      htmlLang: 'it',
-      currentLabel: 'Italiano',
-      languageSelectorAriaLabel: 'Lingua',
-      text: {
-        '.tech-logo-card-power-bi small': 'Business Intelligence',
-        '.tech-logo-card-qlik small': 'Analisi visuale',
-        '.tech-logo-card-looker small': 'Dashboard',
-        '.tech-logo-card-python small': 'Analisi e modellazione',
-        '.tech-logo-card-pandas small': 'Manipolazione dati',
-        '.tech-logo-card-scikit small': 'Machine Learning',
-        '.tech-logo-card-plotly small': 'Visualizzazione interattiva',
-        '.tech-logo-card-spss small': 'Modellazione visuale',
-        '.tech-logo-card-snowflake small': 'Data warehouse',
-        '.tech-logo-card-databricks small': 'Lakehouse',
-        '.floating-cta__text': 'Vedi repo',
-        '.navbar-nav .nav-link[href="#home"]': 'Home',
-        '.navbar-nav .nav-link[href="#methodology"]': 'Metodologia',
-        '.navbar-nav .nav-link[href="#projects"]': 'Progetti',
-        '.navbar-nav .nav-link[href="#networks"]': 'Canali',
-        '.navbar-nav .nav-link[href="#contact"]': 'Contatti',
-        '.color-mode': '<i class="color-mode-icon"></i>',
-
-        '#home .hero-entry-kicker': 'Portfolio progetti Dati · BI · ML · Python',
-        '#home .hero-line': '<span class="hero-line-row">Trasformo</span><span class="hero-line-row">i dati in</span>',
-        '#home .hero-rotator span:nth-child(1)': 'evidenze',
-        '#home .hero-rotator span:nth-child(2)': 'modelli',
-        '#home .hero-rotator span:nth-child(3)': 'dashboard',
-        '#home .hero-rotator span:nth-child(4)': 'decisioni',
-        '#home .hero-rotator span:nth-child(5)': 'pattern',
-        '#home .hero-entry-copy': 'Patrones Lab è un laboratorio di analisi dei dati applicata a fenomeni reali e quotidiani.<br><br>Raccoglie progetti indipendenti basati su dati pubblici, con attenzione all’individuazione di pattern, alla spiegazione dei comportamenti e alla comunicazione di evidenze contestualizzate.<br><br>L’obiettivo è formulare domande migliori, costruire dataset affidabili, sviluppare analisi riproducibili e trasformare i risultati in output visuali chiari.',
-
-        '.tech-logo-card-airflow small': 'Orchestrazione',
-        '.tech-logo-card-sql-server small': 'Database',
-        '.tech-logo-card-numpy small': 'Calcolo numerico',
-        '.tech-logo-card-matplotlib small': 'Visualizzazione dati',
-        '.tech-logo-card-dbt small': 'Trasformazione dati',
-
-        '#methodology .process-horizontal-static-head h2': 'Ciclo di vita dei dati',
-        '#methodology .process-horizontal-panel:nth-child(1) h3': 'Esplorazione',
-        '#methodology .process-horizontal-panel:nth-child(1) small': 'Contesto e obiettivo',
-        '#methodology .process-horizontal-panel:nth-child(1) p': 'Definizione del problema, della decisione da supportare, degli utenti coinvolti e dell’output atteso.',
-        '#methodology .process-horizontal-panel:nth-child(2) h3': 'Sorgenti dati',
-        '#methodology .process-horizontal-panel:nth-child(2) small': 'Sorgenti e qualità dei dati',
-        '#methodology .process-horizontal-panel:nth-child(2) p': 'Mappatura delle sorgenti disponibili, della loro origine, frequenza di aggiornamento, affidabilità e principali limiti di qualità.',
-        '#methodology .process-horizontal-panel:nth-child(3) h3': 'Preparazione',
-        '#methodology .process-horizontal-panel:nth-child(3) small': 'Dataset analitico',
-        '#methodology .process-horizontal-panel:nth-child(3) p': 'Pulizia, normalizzazione e integrazione dei dati per costruire un dataset coerente, tracciabile e pronto per l’analisi.',
-        '#methodology .process-horizontal-panel:nth-child(4) h3': 'Sviluppo',
-        '#methodology .process-horizontal-panel:nth-child(4) small': 'Soluzione',
-        '#methodology .process-horizontal-panel:nth-child(4) p': 'Sviluppo dell’analisi, del modello o della dashboard più adatta all’obiettivo definito.',
-        '#methodology .process-horizontal-panel:nth-child(5) h3': 'Validazione',
-        '#methodology .process-horizontal-panel:nth-child(5) small': 'Qualità e affidabilità',
-        '#methodology .process-horizontal-panel:nth-child(5) p': 'Controllo della coerenza, stabilità e rilevanza operativa dei risultati prima della pubblicazione.',
-        '#methodology .process-horizontal-panel:nth-child(6) h3': 'Pubblicazione',
-        '#methodology .process-horizontal-panel:nth-child(6) small': 'Pubblicazione, automazione e miglioramento',
-        '#methodology .process-horizontal-panel:nth-child(6) p': 'Documentazione dell’output finale, automazione dei flussi di lavoro ricorrenti e uso del feedback per miglioramenti successivi.',
-
-        '#projects .section-kicker': 'Repository Patrones Lab',
-        '#projects .projects-title-display': 'Progetti',
-        '#projects .projects-intro': 'Selezione di progetti basati sui dati pubblici, con metodologia documentata e output visuali. Usa i filtri per esplorare per disciplina, strumento o tipo di risultato.',
-        '#projects .repo-filter-btn[data-repo-filter="all"]': '<span class="filter-icon">◎</span> Tutti',
-        '#projects .repo-filter-group:nth-of-type(1) .repo-filter-group-trigger': 'Disciplina',
-        '#projects .repo-filter-group:nth-of-type(2) .repo-filter-group-trigger': 'Strumenti',
-        '#projects .repo-filter-group:nth-of-type(3) .repo-filter-group-trigger': 'Modello',
-        '#projects .repo-filter-group:nth-of-type(4) .repo-filter-group-trigger': 'Dominio',
-
-        '#projects .repo-filter-btn[data-repo-filter="bi"]': '<span class="filter-icon">▦</span> BI',
-        '#projects .repo-filter-btn[data-repo-filter="data-analysis"]': '<span class="filter-icon">▥</span> Analisi dati',
-        '#projects .repo-filter-btn[data-repo-filter="data-science"]': '<span class="filter-icon">⚗</span> Scienza dei dati',
-        '#projects .repo-filter-btn[data-repo-filter="machine-learning"]': '<span class="filter-icon">✦</span> Machine Learning',
-        '#projects .repo-filter-btn[data-repo-filter="data-storytelling"]': '<span class="filter-icon">✎</span> Data storytelling',
-        '#projects .repo-filter-btn[data-repo-filter="python"]': '<span class="filter-icon">◇</span> Python',
-        '#projects .repo-filter-btn[data-repo-filter="spss"]': '<span class="filter-icon">◧</span> SPSS',
-        '#projects .repo-filter-btn[data-repo-filter="looker-studio"]': '<span class="filter-icon">◉</span> Looker Studio',
-        '#projects .repo-filter-btn[data-repo-filter="dashboard"]': '<span class="filter-icon">▣</span> Dashboard',
-        '#projects .repo-filter-btn[data-repo-filter="power-bi"]': '<span class="filter-icon">▥</span> Power BI',
-        '#projects .repo-filter-btn[data-repo-filter="dax"]': '<span class="filter-icon">ƒx</span> DAX',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-supervisado"]': '<span class="filter-icon">✓</span> Modello supervisionato',
-        '#projects .repo-filter-btn[data-repo-filter="redes-neuronales"]': '<span class="filter-icon">⋈</span> Reti neurali',
-        '#projects .repo-filter-btn[data-repo-filter="modelo-no-supervisado"]': '<span class="filter-icon">◎</span> Modello non supervisionato',
-        '#projects .repo-filter-btn[data-repo-filter="clasificacion"]': '<span class="filter-icon">≡</span> Classificazione',
-        '#projects .repo-filter-btn[data-repo-filter="clustering"]': '<span class="filter-icon">✣</span> Clustering',
-        '#projects .repo-filter-btn[data-repo-filter="knn"]': '<span class="filter-icon">↗</span> KNN',
-        '#projects .repo-filter-btn[data-repo-filter="k-means"]': '<span class="filter-icon">⌖</span> K-means',
-        '#projects .repo-filter-btn[data-repo-filter="regresion-logistica"]': '<span class="filter-icon">⌁</span> Regressione logistica',
-        '#projects .repo-filter-btn[data-repo-filter="dbscan"]': '<span class="filter-icon">⊙</span> DBSCAN',
-        '#projects .repo-filter-btn[data-repo-filter="simulacion"]': '<span class="filter-icon">∿</span> Simulazione',
-        '#projects .repo-filter-btn[data-repo-filter="poisson"]': '<span class="filter-icon">λ</span> Poisson',
-        '#projects .repo-filter-btn[data-repo-filter="geoespacial"]': '<span class="filter-icon">⌖</span> Geospaziale',
-        '#projects .repo-filter-btn[data-repo-filter="airbnb"]': '<span class="filter-icon">⌂</span> Airbnb',
-        '#projects .repo-filter-btn[data-repo-filter="taxi"]': '<span class="filter-icon">◆</span> Taxi',
-        '#projects .repo-filter-btn[data-repo-filter="futbol"]': '<span class="filter-icon">●</span> Calcio',
-        '#projects .repo-filter-btn[data-repo-filter="aviacion"]': '<span class="filter-icon">✈</span> Aviazione',
-        '#projects .repo-filter-btn[data-repo-filter="fraude"]': '<span class="filter-icon">!</span> Frode',
-        '#projects .repo-filter-btn[data-repo-filter="spotify"]': '<span class="filter-icon">♪</span> Spotify',
-
-        '#projects .github-project-card[data-project-id="aena-balearic-flights"] h3': 'Analisi del traffico aereo nelle Isole Baleari',
-        '#projects .github-project-card[data-project-id="aena-balearic-flights"] p:not(.project-status)': 'Analisi del traffico aereo in Spagna con dati pubblici AENA, con focus su volumi, pattern per aeroporto e differenze tra categorie di traffico.',
-        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] h3': 'Analisi degli annunci Airbnb a Londra',
-        '#projects .github-project-card[data-project-id="airbnb-london-analysis"] p:not(.project-status)': 'Analisi esplorativa degli annunci Airbnb a Londra, con focus su pricing, categorie di alloggio, recensioni e pattern territoriali.',
-        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] h3': 'Analisi delle corse taxi a Chicago',
-        '#projects .github-project-card[data-project-id="chicago-taxi-analysis"] p:not(.project-status)': 'Analisi delle corse taxi registrate a Chicago per studiare durata, domanda, distribuzione geospaziale e pattern operativi.',
-        '#projects .github-project-card[data-project-id="airbnb-london-ml"] h3': 'Modello ML · Airbnb London',
-        '#projects .github-project-card[data-project-id="airbnb-london-ml"] p:not(.project-status)': 'Classificazione supervisionata degli annunci relativamente costosi o economici all’interno di ciascuna tipologia di alloggio.',
-        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] h3': 'Dashboard Looker · Taxi Trips Chicago',
-        '#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] p:not(.project-status)': 'Dashboard interattiva in Looker Studio per esplorare corse taxi a Chicago, indicatori operativi, pattern orari e percorsi pickup-dropoff.',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] h3': 'Modello Machine Learning · Gol attesi (xG)',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-goals-xg"] p:not(.project-status)': 'Modello di regressione logistica che stima la probabilità che ogni tiro diventi gol con dati pubblici StatsBomb, validazione per partita e applicazione al Mondiale Qatar 2022.',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] h3': 'Probabilità nel calcio · Expected Threat (xT)',
-        '#projects .github-project-card[data-project-id="statsbomb-expected-threat-xt"] p:not(.project-status)': 'Modello probabilistico di Expected Threat nel calcio basato su dati pubblici StatsBomb. Stima la probabilità di gol nelle successive 5 azioni.',
-        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] h3': 'Modello ML · Rilevamento frodi',
-        '#projects .github-project-card[data-project-id="fraud-detection-kmeans"] p:not(.project-status)': 'Clustering non supervisionato con K-means applicato al rilevamento di frodi su transazioni con carta di credito.',
-        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] h3': 'Modello ML · Rilevamento frodi',
-        '#projects .github-project-card[data-project-id="fraud-detection-logistic-regression"] p:not(.project-status)': 'Modello supervisionato di regressione logistica per il rilevamento di frodi su transazioni con carta di credito.',
-        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] h3': 'Modello ML · Rilevamento frodi',
-        '#projects .github-project-card[data-project-id="fraud-detection-dbscan"] p:not(.project-status)': 'Clustering non supervisionato con DBSCAN per individuare possibili pattern anomali nelle transazioni con carta di credito.',
-        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] h3': 'Statistiche Mondiali 2022: Radar dei percentili',
-        '#projects .github-project-card[data-project-id="qatar-2022-world-cup-stats"] p:not(.project-status)': 'Analisi delle statistiche del Mondiale 2022 con dati pubblici StatsBomb, orientata a sintetizzare le prestazioni individuali e confrontare i giocatori con radar dei percentili.',
-        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] h3': 'Analisi geospaziale delle corse taxi a Chicago',
-        '#projects .github-project-card[data-project-id="chicago-taxi-geospatial-analysis"] p:not(.project-status)': 'Prossimamente.',
-        '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] h3': 'Dashboard Power BI · Spotify Charts',
-        '#projects .github-project-card[data-project-id="spotify-charts-powerbi-dashboard"] p:not(.project-status)': 'Analisi dei ranking musicali di Spotify Charts con dati pubblici su brani, artisti, album e mercati, orientata a esplorare stream, presenza nelle classifiche, leadership temporale e distribuzione territoriale tramite una dashboard interattiva in Power BI.',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] h3': 'Dashboard in Power BI · Analisi della spesa',
-        '#projects .github-project-card[data-project-id="supplier-spend-discounts-powerbi-dashboard"] p:not(.project-status)': 'Report interattivo in Power BI per analizzare la spesa verso i fornitori, l’andamento mensile, la distribuzione per categoria, il risparmio e la distribuzione geografica.',
-        '#projects .github-project-card[data-project-id="world-cup-2026-montecarlo-simulation"] h3': 'Simulazione Monte Carlo · Previsioni per il Mondiale 2026',
-        '#projects .github-project-card[data-project-id="world-cup-2026-montecarlo-simulation"] p:not(.project-status)': 'Simulazione di un milione di scenari del Mondiale 2026 basata sui rating Elo per stimare le probabilità di raggiungere le semifinali, disputare la finale e diventare campione.',
-        '#projects .repo-empty-message': 'Non ci sono ancora progetti per questa categoria.',
-
-        '#networks .section-kicker': 'Presenza digitale di Patrones Lab',
-        '#networks .projects-title-display': 'Canali',
-        '#networks .social-intro': 'L’intero ecosistema del progetto in un unico punto: visual, note tecniche, articoli, dashboard, link utili e canali di contatto professionale.',
-        '#networks .social-card.instagram small': 'Visual e post',
-        '#networks .social-card.linkedin small': 'Profilo professionale',
-        '#networks .social-card.medium small': 'Articoli e note',
-        '#networks .social-card.linktree small': 'Tutti i link',
-        '#networks .social-card.github small': 'Profilo tecnico',
-        '#networks .social-card.mail small': 'Contatto diretto',
-
-        '#contact .contact-section-heading .section-kicker': 'Parliamo di dati',
-        '#contact .contact-section-heading .projects-title-display': 'Contatti',
-        '#contact .contact-panel h3': 'Scrivimi',
-        '#contact .contact-panel p:not(.contact-email-line)': 'Per opportunità professionali, collaborazioni in ambito analitico o progetti di BI, machine learning e dashboard.',
-        '#contact .contact-email-line strong': 'email:',
-        '#contact .contact-form h2': 'Lasciami un messaggio',
-        '#contact .form-note': 'Scrivimi e ti risponderò appena possibile.',
-        'footer': 'Patrones Lab® · Generando conoscenza a partire dai dati · di Malcolm Di Pietro Cagliari'
-      },
-      links: {
-        'Entrar al proyecto': 'Apri progetto',
-        'Open project': 'Apri progetto',
-        'Leer en LinkedIn': 'Leggi su LinkedIn',
-        'Read on LinkedIn': 'Leggi su LinkedIn',
-        'Ver dashboard': 'Visualizza dashboard',
-        'View dashboard': 'Visualizza dashboard',
-        'Ver documentación': 'Documentazione',
-        'View documentation': 'Documentazione',
-        'View docs': 'Documentazione',
-        'Ver en SPSS': 'Visualizza in SPSS',
-        'View in SPSS': 'Visualizza in SPSS',
-        'Ver en Python': 'Visualizza in Python',
-        'View in Python': 'Visualizza in Python'
-      },
-      attrs: {
-        '#name': {placeholder: 'Nome'},
-        '#message': {placeholder: 'Messaggio'},
-        '#contactForm .submit-btn': {value: 'Prepara email'},
-        '.pl-scroll-loader': {'aria-label': 'Patrones Lab Data & Analytics. Tocca per entrare nel sito'},
-        '.pl-scroll-loader__first': {'aria-label': 'Scorri per entrare nel sito'},
-        '.language-menu': {'aria-label': 'Lingue disponibili'},
-        '.color-mode': {'aria-label': 'Cambia modalità visiva', title: 'Cambia modalità visiva'},
-        '.floating-cta': {'aria-label': 'Vedi repository Patrones Lab'},
-        '.navbar-toggler': {'aria-label': 'Apri navigazione'},
-        '#home .hero-rotator': {'aria-label': 'evidenze, modelli, dashboard, decisioni e pattern'},
-        '#home .hero-tech-marquee': {'aria-label': 'Tecnologie utilizzate'},
-        '#projects .repo-filter-toolbar': {'aria-label': 'Filtra progetti'}
-      }
-    }
-  };
-
-  const statusLabels = {
-    es: {published:'✅ publicado', development:'⚠️ en desarrollo'},
-    en: {published:'✅ published', development:'⚠️ in progress'},
-    it: {published:'✅ pubblicato', development:'⚠️ in sviluppo'}
-  };
-
-  function setHtml(selector, html){
-    const el = document.querySelector(selector);
-    if(el) el.innerHTML = html;
-  }
-
-  function setAttr(selector, attrs){
-    document.querySelectorAll(selector).forEach(function(el){
-      Object.keys(attrs).forEach(function(name){
-        el.setAttribute(name, attrs[name]);
-      });
-    });
-  }
-
-  function replaceLinkLabels(lang){
-    const mapping = langData[lang].links || {};
-    document.querySelectorAll('#projects .project-link').forEach(function(link){
-      Object.keys(mapping).forEach(function(source){
-        if(link.innerHTML.indexOf(source) !== -1){
-          link.innerHTML = link.innerHTML.replace(source, mapping[source]);
-        }
-      });
-    });
-  }
-
-  function updateStatusLabels(lang){
-    const labels = statusLabels[lang] || statusLabels.es;
-    document.querySelectorAll('.project-status.published').forEach(function(el){
-      el.innerHTML = labels.published;
-    });
-    document.querySelectorAll('.project-status.development').forEach(function(el){
-      el.innerHTML = labels.development;
-    });
-  }
-
-  function updateLanguageSelector(lang){
-    document.querySelectorAll('.language-selector').forEach(function(selector){
-      const toggle = selector.querySelector('.language-select-toggle');
-      const current = selector.querySelector('.language-select-current-img');
-      if(toggle){
-        toggle.setAttribute('aria-label', (langData[lang].languageSelectorAriaLabel || 'Idioma') + ': ' + langData[lang].currentLabel);
-        toggle.setAttribute('title', langData[lang].currentLabel);
-        toggle.setAttribute('aria-expanded', selector.classList.contains('is-open') ? 'true' : 'false');
-      }
-      if(current){
-        current.setAttribute('src', FLAGS[lang]);
-      }
-    });
-
-    document.querySelectorAll('.language-option').forEach(function(option){
-      const active = option.dataset.lang === lang;
-      option.classList.toggle('is-active', active);
-      option.setAttribute('aria-current', active ? 'true' : 'false');
-    });
-  }
-
-  function closeLanguageMenus(){
-    document.querySelectorAll('.language-selector.is-open').forEach(function(selector){
-      selector.classList.remove('is-open');
-      const toggle = selector.querySelector('.language-select-toggle');
-      if(toggle) toggle.setAttribute('aria-expanded', 'false');
-    });
-  }
-
-  function applyLanguage(lang){
-    const language = langData[lang] ? lang : 'es';
-    const data = langData[language];
-
-    document.documentElement.lang = data.htmlLang;
-    document.title = data.title;
-
-    const meta = document.querySelector('meta[name="description"]');
-    if(meta) meta.setAttribute('content', data.metaDescription);
-
-    Object.keys(data.text).forEach(function(selector){
-      setHtml(selector, data.text[selector]);
-    });
-
-    Object.keys(data.attrs).forEach(function(selector){
-      setAttr(selector, data.attrs[selector]);
-    });
-
-    replaceLinkLabels(language);
-    updateStatusLabels(language);
-    updateLanguageSelector(language);
-
-    try{
-      localStorage.setItem(STORAGE_KEY, language);
-    }catch(e){}
-
-    document.dispatchEvent(new CustomEvent('pl-language-changed', {detail:{language:language}}));
-
-    if(window.plApplyRepoFilter && window.plGetActiveRepoFilter){
-      window.plApplyRepoFilter(window.plGetActiveRepoFilter());
-    }
-  }
-
-  document.addEventListener('click', function(event){
-    const toggle = event.target.closest && event.target.closest('.language-select-toggle');
-    const option = event.target.closest && event.target.closest('.language-option');
-
-    if(toggle){
-      event.preventDefault();
-      event.stopPropagation();
-      event.stopImmediatePropagation();
-
-      const selector = toggle.closest('.language-selector');
-      const willOpen = !selector.classList.contains('is-open');
-      closeLanguageMenus();
-      selector.classList.toggle('is-open', willOpen);
-      toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
-      return;
-    }
-
-    if(option){
-      event.preventDefault();
-      event.stopPropagation();
-      event.stopImmediatePropagation();
-
-      const lang = option.dataset.lang || 'es';
-      applyLanguage(lang);
-      closeLanguageMenus();
-      return;
-    }
-
-    if(!event.target.closest || !event.target.closest('.language-selector')){
-      closeLanguageMenus();
-    }
-  }, true);
-
-  document.addEventListener('keydown', function(event){
-    if(event.key === 'Escape'){
-      closeLanguageMenus();
-    }
-  });
-
-  window.plSetLanguage = applyLanguage;
-  window.plGetLanguage = function(){
-    try{
-      return localStorage.getItem(STORAGE_KEY) || 'es';
-    }catch(e){
-      return 'es';
-    }
-  };
-  window.plCurrentLanguageForContact = window.plGetLanguage;
-
-  applyLanguage(window.plPageLanguage || document.documentElement.lang || window.plGetLanguage());
 })();
 
 
@@ -7172,7 +5713,6 @@ $('.color-mode').on('click', function(){
 })();
 
 
-/* v68p · Project meta badges responsive packing */
 (function(){
   'use strict';
 
