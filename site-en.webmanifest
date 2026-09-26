@@ -2,8 +2,8 @@
   "name": "Patrones Lab · Data Analytics",
   "short_name": "Patrones Lab",
   "description": "Patrones Lab is a portfolio of data analytics, Business Intelligence and Machine Learning projects.",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "/en/",
+  "scope": "/en/",
   "display": "standalone",
   "background_color": "#0c0c0d",
   "theme_color": "#0c0c0d",
@@ -18,5 +18,6 @@
       "sizes": "180x180",
       "type": "image/png"
     }
-  ]
+  ],
+  "lang": "en"
 }
