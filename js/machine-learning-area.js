@@ -31,7 +31,9 @@
     });
     if(!next || next === currentSection) return;
     currentSection = next;
-    const title = next.dataset.title || '';
+    const headingId = (next.getAttribute('aria-labelledby') || '').split(/\s+/)[0];
+    const heading = headingId ? document.getElementById(headingId) : next.querySelector('h2, h3');
+    const title = heading ? heading.textContent.trim() : (next.dataset.title || '');
     if(subareaTimer) window.clearTimeout(subareaTimer);
     subPin.classList.add('is-changing');
     subareaTimer = window.setTimeout(()=>{

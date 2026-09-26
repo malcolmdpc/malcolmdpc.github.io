@@ -1,7 +1,7 @@
 {
   "name": "Patrones Lab · Data Analytics",
   "short_name": "Patrones Lab",
-  "description": "Patrones Lab is a portfolio of data analytics, Business Intelligence and Machine Learning projects.",
+  "description": "Patrones Lab brings together data analytics, Business Intelligence and Machine Learning projects to explore data, identify patterns, generate knowledge and visually represent findings.",
   "start_url": "/en/",
   "scope": "/en/",
   "display": "standalone",

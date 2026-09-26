@@ -1,4 +1,21 @@
 (function(){
+  // The current static document is the source of truth for localized labels.
+  window.PL_STATIC_MULTILINGUAL = ["es", "en", "it", "fr", "de", "pt"].includes((document.documentElement.lang || "").toLowerCase().split("-")[0]);
+  var labels = {};
+  document.querySelectorAll('#projects .repo-filter-btn[data-repo-filter]').forEach(function(button){
+    var copy = button.cloneNode(true);
+    copy.querySelectorAll('.filter-icon').forEach(function(icon){ icon.remove(); });
+    labels[button.dataset.repoFilter] = copy.textContent.trim();
+  });
+  window.plStaticFilterLabels = labels;
+  window.plReadFilterText = function(button){
+    var copy = button.cloneNode(true);
+    copy.querySelectorAll('.filter-icon').forEach(function(icon){ icon.remove(); });
+    return copy.textContent.trim();
+  };
+})();
+
+(function(){
   const DEFAULT_VERSION = 'default-es-dark';
   const VERSION_KEY = 'patronesLabDefaultVersion';
 
@@ -2041,7 +2058,8 @@ $('.color-mode').on('click', function(){
 
     loader.setAttribute('role', 'button');
     loader.setAttribute('tabindex', '0');
-    loader.setAttribute('aria-label', 'Patrones Lab Data & Analytics. Tocar para entrar al sitio');
+    // The static HTML carries the label in the current page language.
+    if(!loader.hasAttribute('aria-label')) loader.setAttribute('aria-label', 'Patrones Lab Data & Analytics');
 
     loader.addEventListener('pointerdown', finishMobileLoader, {passive:true, once:true});
     loader.addEventListener('touchstart', finishMobileLoader, {passive:true, once:true});
@@ -2654,6 +2672,7 @@ $('.color-mode').on('click', function(){
   }
 
   function patchVisibleTexts(lang){
+    if(window.PL_STATIC_MULTILINGUAL) return;
     const data = translations[lang] || translations.es;
 
     setText('#home .hero-scroll-indicator__text', data.scroll);
@@ -2768,6 +2787,7 @@ $('.color-mode').on('click', function(){
   }
 
   function patchTechLabels(lang){
+    if(window.PL_STATIC_MULTILINGUAL) return;
     const labels = techLabels[lang] || techLabels.es;
 
     Object.keys(labels).forEach(function(key){
@@ -2870,9 +2890,9 @@ $('.color-mode').on('click', function(){
     },
     it: {
       'bi': 'BI',
-      'data-analysis': 'Analisi dati',
+      'data-analysis': 'Analisi dei dati',
       'data-science': 'Scienza dei dati',
-      'data-storytelling': 'Data storytelling',
+      'data-storytelling': 'Storytelling dei dati',
       'machine-learning': 'Machine Learning',
       'python': 'Python',
       'spss': 'SPSS',
@@ -2943,6 +2963,7 @@ $('.color-mode').on('click', function(){
   }
 
   function renderProjectTags(lang){
+    if(window.PL_STATIC_MULTILINGUAL) return;
     const labels = tagLabels[lang] || tagLabels.es;
 
     document.querySelectorAll('#projects .github-project-card[data-tags]').forEach(function(card){
@@ -3060,7 +3081,7 @@ $('.color-mode').on('click', function(){
         "icon": "▥",
         "es": "Data Analysis",
         "en": "Data analysis",
-        "it": "Analisi dati",
+        "it": "Analisi dei dati",
         "fr": "Analyse de données",
         "de": "Datenanalyse",
         "pt": "Análise de Dados"
@@ -3078,7 +3099,7 @@ $('.color-mode').on('click', function(){
         "icon": "✎",
         "es": "Data Storytelling",
         "en": "Data Storytelling",
-        "it": "Data storytelling",
+        "it": "Storytelling dei dati",
         "fr": "Narration de données",
         "de": "Data Storytelling",
         "pt": "Data Storytelling"
@@ -3323,6 +3344,7 @@ $('.color-mode').on('click', function(){
   }
 
   function labelFor(token, lang){
+    if(window.PL_STATIC_MULTILINGUAL && window.plStaticFilterLabels[token]) return window.plStaticFilterLabels[token];
     const data = TAG_LABELS_BY_TOKEN[token];
     if(!data) return token;
     return data[lang] || data.es || token;
@@ -3334,6 +3356,7 @@ $('.color-mode').on('click', function(){
   }
 
   function renderFilterButton(button, lang){
+    if(window.PL_STATIC_MULTILINGUAL) return;
     const token = button.dataset.repoFilter;
     if(!token) return;
 
@@ -3526,7 +3549,7 @@ $('.color-mode').on('click', function(){
         "icon": "▥",
         "es": "Análisis de datos",
         "en": "Data analysis",
-        "it": "Analisi dati",
+        "it": "Analisi dei dati",
         "fr": "Analyse de données",
         "de": "Datenanalyse",
         "pt": "Análise de Dados"
@@ -3544,7 +3567,7 @@ $('.color-mode').on('click', function(){
         "icon": "✎",
         "es": "Data Storytelling",
         "en": "Data Storytelling",
-        "it": "Data Storytelling",
+        "it": "Storytelling dei dati",
         "fr": "Narration de données",
         "de": "Data Storytelling",
         "pt": "Data Storytelling"
@@ -3792,6 +3815,7 @@ $('.color-mode').on('click', function(){
   }
 
   function getLabel(token, lang){
+    if(window.PL_STATIC_MULTILINGUAL && window.plStaticFilterLabels[token]) return window.plStaticFilterLabels[token];
     const item = FINAL_TAG_LABELS[token];
     if(!item) return token;
     return item[lang] || item.es || token;
@@ -3807,6 +3831,7 @@ $('.color-mode').on('click', function(){
   }
 
   function renderOneFilter(button, lang){
+    if(window.PL_STATIC_MULTILINGUAL) return;
     const token = button.dataset.repoFilter;
     if(!token) return;
 
@@ -3831,6 +3856,7 @@ $('.color-mode').on('click', function(){
   }
 
   function renderFilters(lang){
+    if(window.PL_STATIC_MULTILINGUAL) return;
     document.querySelectorAll('#projects .repo-filter-btn[data-repo-filter]').forEach(function(button){
       renderOneFilter(button, lang);
     });
@@ -3854,7 +3880,7 @@ $('.color-mode').on('click', function(){
     document.querySelectorAll('#projects .repo-filter-btn[data-repo-filter]').forEach(function(button){
       const token = button.dataset.repoFilter;
       const expected = getLabel(token, lang);
-      const actual = cleanFilterText(button.textContent);
+      const actual = window.plReadFilterText(button);
 
       filterMap[token] = actual;
 
@@ -4466,7 +4492,7 @@ $('.color-mode').on('click', function(){
         "icon": "▥",
         "es": "Análisis de datos",
         "en": "Data analysis",
-        "it": "Analisi dati",
+        "it": "Analisi dei dati",
         "fr": "Analyse de données",
         "de": "Datenanalyse",
         "pt": "Análise de Dados"
@@ -4484,7 +4510,7 @@ $('.color-mode').on('click', function(){
         "icon": "✎",
         "es": "Data Storytelling",
         "en": "Data Storytelling",
-        "it": "Data Storytelling",
+        "it": "Storytelling dei dati",
         "fr": "Narration de données",
         "de": "Data Storytelling",
         "pt": "Data Storytelling"
@@ -4732,12 +4758,18 @@ $('.color-mode').on('click', function(){
   }
 
   function labelFor(token, lang){
+    if(window.PL_STATIC_MULTILINGUAL && window.plStaticFilterLabels[token]) return window.plStaticFilterLabels[token];
     const data = FINAL_PROJECT_LABELS[token];
     if(!data) return token;
     return data[lang] || data.es || token;
   }
 
   function labelForCard(token, lang, card){
+    if(window.PL_STATIC_MULTILINGUAL){
+      const tokens = (card.dataset.tags || '').trim().split(/\s+/);
+      const span = card.querySelectorAll('.mini-tags span')[tokens.indexOf(token)];
+      if(span) return span.textContent.trim();
+    }
     if(card.dataset.projectId === 'champions-league-2026-27-poisson' && lang === 'es'){
       if(token === 'data-science') return 'Ciencia de Datos';
       if(token === 'data-analysis') return 'Análisis de Datos';
@@ -4755,6 +4787,7 @@ $('.color-mode').on('click', function(){
   }
 
   function renderFilters(lang){
+    if(window.PL_STATIC_MULTILINGUAL) return;
     document.querySelectorAll('#projects .repo-filter-btn[data-repo-filter]').forEach(function(button){
       const token = button.dataset.repoFilter;
       if(!token) return;
@@ -4775,6 +4808,7 @@ $('.color-mode').on('click', function(){
   }
 
   function renderMiniTags(lang){
+    if(window.PL_STATIC_MULTILINGUAL) return;
     document.querySelectorAll('#projects .github-project-card[data-tags]').forEach(function(card){
       const tokens = (card.dataset.tags || '').trim().split(/\s+/).filter(Boolean);
       const holder = card.querySelector('.mini-tags');
@@ -4822,7 +4856,7 @@ $('.color-mode').on('click', function(){
     document.querySelectorAll('#projects .repo-filter-btn[data-repo-filter]').forEach(function(button){
       const token = button.dataset.repoFilter;
       const expected = labelFor(token, lang);
-      const actual = stripIcon(button.textContent);
+      const actual = window.plReadFilterText(button);
 
       filters[token] = actual;
 
@@ -5001,7 +5035,7 @@ $('.color-mode').on('click', function(){
   const footerTexts = {
     es: "Patrones Lab® · Generando conocimiento a partir de los datos · por Malcolm Di Pietro Cagliari",
     en: "Patrones Lab® · Generating knowledge from data · by Malcolm Di Pietro Cagliari",
-    it: "Patrones Lab® · Generando conoscenza a partire dai dati · di Malcolm Di Pietro Cagliari",
+    it: "Patrones Lab® · Generare conoscenza a partire dai dati · di Malcolm Di Pietro Cagliari",
     fr: "Patrones Lab® · Transformer les données en connaissances · par Malcolm Di Pietro Cagliari",
     de: "Patrones Lab® · Wissen aus Daten gewinnen · von Malcolm Di Pietro Cagliari",
     pt: "Patrones Lab® · A gerar conhecimento a partir dos dados · por Malcolm Di Pietro Cagliari"
@@ -5023,6 +5057,7 @@ $('.color-mode').on('click', function(){
   }
 
   function applyFooterText(lang){
+    if(window.PL_STATIC_MULTILINGUAL) return;
     const language = footerTexts[lang] ? lang : currentLang();
     const footer = document.querySelector('footer.footer');
     const text = document.querySelector('footer.footer .copyright-text');
@@ -5072,16 +5107,16 @@ $('.color-mode').on('click', function(){
         "Base analítica"
       ],
       [
-        "Modelado",
-        "Patrones y señales"
+        "Construcción",
+        "Solución"
       ],
       [
         "Validación",
         "Control y confianza"
       ],
       [
-        "Publicación",
-        "Entrega y aprendizaje"
+        "Entrega",
+        "Publicación, automatización y evolución"
       ]
     ]
   },
@@ -5098,19 +5133,19 @@ $('.color-mode').on('click', function(){
       ],
       [
         "Preparation",
-        "Analytical base"
+        "Analytical foundation"
       ],
       [
-        "Modeling",
-        "Patterns and signals"
+        "Development",
+        "Solution"
       ],
       [
         "Validation",
         "Control and confidence"
       ],
       [
-        "Publication",
-        "Delivery and learning"
+        "Delivery",
+        "Publication, automation and evolution"
       ]
     ]
   },
@@ -5118,11 +5153,11 @@ $('.color-mode').on('click', function(){
     "title": "Ciclo di vita dei dati",
     "steps": [
       [
-        "Esplorazione",
+        "Scoperta",
         "Contesto e obiettivo"
       ],
       [
-        "Fonti dati",
+        "Fonti",
         "Dati e diagnosi"
       ],
       [
@@ -5130,32 +5165,106 @@ $('.color-mode').on('click', function(){
         "Base analitica"
       ],
       [
-        "Modellazione",
-        "Pattern e segnali"
+        "Sviluppo",
+        "Soluzione"
       ],
       [
         "Validazione",
         "Controllo e affidabilità"
       ],
       [
-        "Pubblicazione",
-        "Consegna e apprendimento"
+        "Consegna",
+        "Pubblicazione, automazione ed evoluzione"
       ]
     ]
   },
   "fr": {
     "title": "Cycle de vie des données",
     "steps": [
-      ["Exploration", "Contexte et objectif"],
-      ["Sources", "Données et diagnostic"],
-      ["Préparation", "Base analytique"],
-      ["Modélisation", "Tendances et signaux"],
-      ["Validation", "Contrôle et confiance"],
-      ["Publication", "Livraison et apprentissage"]
+      [
+        "Découverte",
+        "Contexte et objectif"
+      ],
+      [
+        "Sources",
+        "Données et diagnostic"
+      ],
+      [
+        "Préparation",
+        "Base analytique"
+      ],
+      [
+        "Développement",
+        "Solution"
+      ],
+      [
+        "Validation",
+        "Contrôle et confiance"
+      ],
+      [
+        "Livraison",
+        "Publication, automatisation et évolution"
+      ]
     ]
-  }  ,"de": {"title":"Lebenszyklus der Daten","steps":[["Entdeckung","Kontext und Ziel"],["Quellen","Daten und Diagnose"],["Aufbereitung","Analysebasis"],["Modellierung","Muster und Signale"],["Validierung","Kontrolle und Vertrauen"],["Veröffentlichung","Ergebnis und Lerngewinn"]]},
-  "pt": {"title":"Ciclo de vida dos dados","steps":[["Descoberta","Contexto e objetivo"],["Fontes","Dados e diagnóstico"],["Preparação","Base analítica"],["Modelação","Padrões e sinais"],["Validação","Controlo e confiança"],["Publicação","Entrega e aprendizagem"]]}
-
+  },
+  "de": {
+    "title": "Lebenszyklus der Daten",
+    "steps": [
+      [
+        "Entdeckung",
+        "Kontext und Ziel"
+      ],
+      [
+        "Quellen",
+        "Daten und Diagnose"
+      ],
+      [
+        "Aufbereitung",
+        "Analysebasis"
+      ],
+      [
+        "Entwicklung",
+        "Lösung"
+      ],
+      [
+        "Validierung",
+        "Kontrolle und Vertrauen"
+      ],
+      [
+        "Übergabe",
+        "Veröffentlichung, Automatisierung und Weiterentwicklung"
+      ]
+    ]
+  },
+  "pt": {
+    "title": "Ciclo de vida dos dados",
+    "steps": [
+      [
+        "Descoberta",
+        "Contexto e objetivo"
+      ],
+      [
+        "Fontes",
+        "Dados e diagnóstico"
+      ],
+      [
+        "Preparação",
+        "Base analítica"
+      ],
+      [
+        "Construção",
+        "Solução"
+      ],
+      [
+        "Validação",
+        "Controlo e confiança"
+      ],
+      [
+        "Entrega",
+        "Publicação, automatização e evolução"
+      ]
+    ]
+  }
 };
 
   function currentLang(){
@@ -5181,6 +5290,7 @@ $('.color-mode').on('click', function(){
   }
 
   function applyMethodologyTexts(lang){
+    if(window.PL_STATIC_MULTILINGUAL) return;
     const language = methodologyTexts[lang] ? lang : currentLang();
     const pack = methodologyTexts[language];
 
@@ -5209,77 +5319,6 @@ $('.color-mode').on('click', function(){
   }
 
   window.plApplyMethodologyTranslations = applyMethodologyTexts;
-})();
-
-(function(){
-  const texts = {
-    es: "Análisis de viajes de taxi en Chicago con foco en ubicación geográfica, movimientos entre puntos, predominios de zonas y rutas.",
-    en: "Geospatial analysis of Chicago taxi trips, focused on identifying activity hotspots, urban routes and the territorial concentration of demand.",
-    it: "Analisi geospaziale delle corse taxi a Chicago, orientata a individuare le zone di maggiore attività, i percorsi urbani e la concentrazione territoriale della domanda.",
-    fr: "Analyse géospatiale des trajets en taxi à Chicago, centrée sur les zones de forte activité, les itinéraires urbains et la concentration territoriale de la demande.",
-    de: "Georäumliche Analyse von Taxifahrten in Chicago mit Fokus auf Aktivitätsschwerpunkte, urbane Routen und die räumliche Konzentration der Nachfrage.",
-    pt: "Análise geoespacial das viagens de táxi em Chicago, focada nas zonas de maior atividade, nos percursos urbanos e na concentração territorial da procura."
-  };
-
-  function getLanguage(){
-    if(window.plGetLanguage){
-      const lang = window.plGetLanguage();
-      if(texts[lang]) return lang;
-    }
-    try{
-      const stored = localStorage.getItem('patronesLabLanguage');
-      if(texts[stored]) return stored;
-    }catch(e){}
-    const htmlLang = document.documentElement.lang;
-    return texts[htmlLang] ? htmlLang : 'es';
-  }
-
-  function applyProject12Text(lang){
-    const language = texts[lang] ? lang : getLanguage();
-    const card = document.querySelectorAll('#projects .github-project-card')[11];
-    if(!card) return;
-
-    const description = Array.from(card.querySelectorAll('.github-project-body p')).find(function(p){
-      return !p.classList.contains('project-status');
-    });
-    if(description) description.textContent = texts[language];
-
-    const projectLink = Array.from(card.querySelectorAll('a.project-link')).find(function(a){
-      return a.textContent.indexOf('Entrar al proyecto') !== -1 ||
-             a.textContent.indexOf('Open project') !== -1 ||
-             a.textContent.indexOf('Apri il progetto') !== -1;
-    });
-    /* Localized project URLs are defined directly in each static page. */
-
-    const linkedinLink = Array.from(card.querySelectorAll('a.project-link')).find(function(a){
-      return a.textContent.indexOf('LinkedIn') !== -1;
-    });
-    if(linkedinLink){
-      linkedinLink.setAttribute('href', "https://www.linkedin.com/pulse/taxi-trips-chicago-an%C3%A1lisis-geoespacial-qu%C3%A9-muestran-malcolm-cjjae");
-      linkedinLink.setAttribute('target', '_blank');
-      linkedinLink.setAttribute('rel', 'noopener');
-      linkedinLink.removeAttribute('aria-disabled');
-      linkedinLink.removeAttribute('role');
-      linkedinLink.classList.remove('linkedin-placeholder-link');
-    }
-  }
-
-  document.addEventListener('pl-language-changed', function(event){
-    const lang = event.detail && event.detail.language ? event.detail.language : getLanguage();
-    applyProject12Text(lang);
-    window.requestAnimationFrame(function(){ applyProject12Text(lang); });
-    setTimeout(function(){ applyProject12Text(lang); }, 0);
-  });
-
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){
-      applyProject12Text(getLanguage());
-    }, {once:true});
-  }else{
-    applyProject12Text(getLanguage());
-  }
-
-  window.plApplyProject12Translations = applyProject12Text;
 })();
 
 (function(){
@@ -5314,6 +5353,7 @@ $('.color-mode').on('click', function(){
   }
 
   function syncProjectDataYearLabels(lang){
+    if(window.PL_STATIC_MULTILINGUAL) return;
     const language = labels[lang] ? lang : getLang();
 
     document.querySelectorAll('.project-data-label[data-data-year-label]').forEach(function(label){
@@ -5345,7 +5385,7 @@ $('.color-mode').on('click', function(){
   const detailCopy = {
     es: { cta: 'Ver detalle', ariaKey: 'detailAriaEs' },
     en: { cta: 'View details', ariaKey: 'detailAriaEn' },
-    it: { cta: 'Vedi dettaglio', ariaKey: 'detailAriaIt' },
+    it: { cta: 'Vedi dettagli', ariaKey: 'detailAriaIt' },
     fr: { cta: 'Voir le détail', ariaKey: 'detailAriaFr' },
     de: { cta: 'Details ansehen', ariaKey: 'detailAriaDe' },
     pt: { cta: 'Ver detalhe', ariaKey: 'detailAriaPt' }
@@ -5367,6 +5407,7 @@ $('.color-mode').on('click', function(){
   }
 
   function applyProjectDetailCue(lang){
+    if(window.PL_STATIC_MULTILINGUAL) return;
     const language = detailCopy[lang] ? lang : getLang();
     const pack = detailCopy[language];
 
