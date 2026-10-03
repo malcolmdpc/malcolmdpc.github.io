@@ -549,7 +549,7 @@ body.project-static-detail-page .project-static-hero-placeholder::after{
 .project-light-mode .related-project-card:hover,.project-light-mode .related-project-card:focus-within{border-color:rgba(154,112,0,.38);box-shadow:0 26px 28px -15px rgba(0,0,0,.3)}
 .project-light-mode .related-project-card:hover .related-project-card__info,.project-light-mode .related-project-card:focus-within .related-project-card__info{background-color:rgba(255,253,247,.94)}
 .project-light-mode .related-project-card__cta{color:#121417}
-@media (max-width:900px){.related-projects{margin-top:1.3rem;padding-top:.9rem}.related-projects__grid{grid-template-columns:1fr;gap:1rem;padding-right:.15rem}.related-project-card__image,.related-project-card__image-hover{height:168px}.related-project-card__info{min-height:0;padding:15px 18px 18px}.related-project-card__title{font-size:1.08rem}.related-project-card__teaser{font-size:.8rem}.related-project-card__cta{padding-top:13px;font-size:.8rem}.related-project-card:hover,.related-project-card:focus-within{transform:scale(1.015)}}
+@media (max-width:900px){.related-projects{margin-top:1.3rem;padding-top:.9rem}.related-projects__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;padding-right:.15rem}.related-project-card__image,.related-project-card__image-hover{height:168px}.related-project-card__info{min-height:0;padding:15px 18px 18px}.related-project-card__title{font-size:1.08rem}.related-project-card__teaser{font-size:.8rem}.related-project-card__cta{padding-top:13px;font-size:.8rem}.related-project-card:hover,.related-project-card:focus-within{transform:scale(1.015)}}
 @media (max-width:520px){.related-projects__heading{font-size:.76rem}.related-project-card__image,.related-project-card__image-hover{height:145px}.related-project-card__category{font-size:.61rem}.related-project-card__title{font-size:1rem}.related-project-card__teaser{font-size:.76rem;line-height:1.38}.related-project-card__cta{font-size:.77rem}}
 @media (prefers-reduced-motion:reduce){.related-project-card,.related-project-card__image-hover,.related-project-card__info{transition:none!important}.related-project-card:hover,.related-project-card:focus-within{transform:none}}
 
@@ -833,7 +833,7 @@ body.project18-detail-page .project-image-placeholder-surface,body.project19-det
   max-width:790px;
 }
 .related-projects__grid{
-  grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));
+  grid-template-columns:repeat(2,minmax(0,1fr));
   gap:1.35rem;
   padding-left:0;
   padding-right:0;
@@ -848,7 +848,7 @@ body.project18-detail-page .project-image-placeholder-surface,body.project19-det
 }
 @media (max-width:900px){
   .related-projects__grid{
-    grid-template-columns:1fr;
+    grid-template-columns:repeat(2,minmax(0,1fr));
     gap:1rem;
     padding-left:0;
     padding-right:0;
@@ -867,3 +867,19 @@ body.project18-detail-page .project-image-placeholder-surface,body.project19-det
 
 /* P20 stays outside the sequential project navigation. */
 body.project20-detail-page .project-step-button[aria-disabled="true"]{opacity:.38;cursor:default;pointer-events:none}
+
+/* Keep both recommendations in the same row at every viewport width. */
+.related-project-card__category,
+.related-project-card__title,
+.related-project-card__teaser,
+.related-project-card__cta{
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+@media (max-width:520px){
+  .related-projects__grid{gap:.55rem}
+  .related-project-card__info{padding:12px 8px 14px}
+  .related-project-card__image,
+  .related-project-card__image-hover{height:clamp(80px,25vw,130px)}
+  .related-project-card__category{letter-spacing:.06em}
+}
