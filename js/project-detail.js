@@ -335,7 +335,28 @@
       if(!trigger || !panel) return;
       var pinned = false;
 
+      var copy = document.body.classList.contains("project20-detail-page") ? popover.closest(".project-detail-copy") : null;
+      function fitTechnicalSheet(){
+        if(!copy) return;
+        var bounds = copy.getBoundingClientRect();
+        var anchor = popover.getBoundingClientRect();
+        var gap = 10;
+        var above = anchor.top - bounds.top - gap;
+        var below = bounds.bottom - anchor.bottom - gap;
+        var opensAbove = above >= below;
+        panel.style.maxHeight = Math.max(0, Math.min(540, window.innerHeight * .58, opensAbove ? above : below)) + "px";
+        panel.style.bottom = opensAbove ? "calc(100% + 10px)" : "auto";
+        panel.style.top = opensAbove ? "auto" : "calc(100% + 10px)";
+      }
+      if(copy){
+        var refit = function(){ if(popover.classList.contains("is-open")) fitTechnicalSheet(); };
+        copy.addEventListener("scroll", refit, {passive:true});
+        window.addEventListener("resize", refit);
+      }
+
       function openPopover(lockOpen){
+        fitTechnicalSheet();
+        if(copy && !popover.classList.contains("is-open")) panel.scrollTop = 0;
         if(lockOpen) pinned = true;
         popover.classList.add("is-open");
         popover.classList.toggle("is-pinned", pinned);

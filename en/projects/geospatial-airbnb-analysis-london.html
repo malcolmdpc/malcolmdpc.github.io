@@ -1,245 +1,48 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="en" http-equiv="content-language"/>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport"><meta content="en" http-equiv="content-language">
 <title>Geospatial Airbnb Analysis in London · Prices, Distance and Neighbourhood</title>
-<meta content="Geospatial data analysis of Airbnb listings in London using September 2025 data, focused on relative prices, distance to the city center and neighborhood patterns. By Malcolm Di Pietro Cagliari." name="description"/><meta content="2026-09-01" property="og:updated_time"/><meta content="Patrones Lab" property="article:publisher"/><meta content="Patrones Lab" name="apple-mobile-web-app-title"/><meta content="Patrones Lab" name="application-name"/><meta content="Geospatial Airbnb Analysis in London · Prices, Distance and Neighbourhood" name="title"/>
-<meta content="index, follow, max-image-preview:large" name="robots"/><meta content="Malcolm Di Pietro Cagliari" name="author"/><meta content="Malcolm Di Pietro Cagliari" name="creator"/><meta content="Patrones Lab, Malcolm Di Pietro Cagliari, Airbnb London, Inside Airbnb, accommodations, prices, availability, spatial distribution, data analytics, Business Intelligence, Python" name="keywords"/><meta content="Malcolm Di Pietro Cagliari" property="article:author"/><meta content="Data Analytics" property="article:section"/><meta content="Python" property="article:tag"/><meta content="Data Storytelling" property="article:tag"/><meta content="Airbnb" property="article:tag"/><meta content="Data Analysis" property="article:tag"/><meta content="BI" property="article:tag"/><meta content="Geospatial" property="article:tag"/><meta content="2026-08-24" property="article:published_time"/><meta content="2026-09-01" property="article:modified_time"/>
-<link href="../../favicon.ico" rel="icon" type="image/x-icon"/>
-<link href="../../images/patrones/favicon/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
-<link href="../../images/patrones/favicon/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
-<link href="../../images/patrones/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
-<meta content="#0c0c0d" name="theme-color"/>
-<meta content="article" property="og:type"/>
-<meta content="Geospatial Airbnb Analysis in London · Prices, Distance and Neighbourhood" property="og:title"/>
-<meta content="Geospatial data analysis of Airbnb listings in London using September 2025 data, focused on relative prices, distance to the city center and neighborhood patterns. By Malcolm Di Pietro Cagliari." property="og:description"/>
-<meta content="https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html" property="og:url"/>
-<meta content="https://malcolmdpc.github.io/images/patrones/social/projects/p17-airbnb-geoespacial-og.jpg" property="og:image"/><link href="https://malcolmdpc.github.io/images/patrones/social/projects/p17-airbnb-geoespacial-og.jpg" rel="image_src"/><meta content="https://malcolmdpc.github.io/images/patrones/social/projects/p17-airbnb-geoespacial-og.jpg" property="og:image:secure_url"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="image/jpeg" property="og:image:type"/><meta content="Preview image for Patrones Lab Project 17 on geospatial Airbnb analysis in London." property="og:image:alt"/>
-<meta content="Patrones Lab" property="og:site_name"/>
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="Geospatial Airbnb Analysis in London · Prices, Distance and Neighbourhood" name="twitter:title"/>
-<meta content="Geospatial data analysis of Airbnb listings in London using September 2025 data, focused on relative prices, distance to the city center and neighborhood patterns. By Malcolm Di Pietro Cagliari." name="twitter:description"/>
-<meta content="https://malcolmdpc.github.io/images/patrones/social/projects/p17-airbnb-geoespacial-og.jpg" name="twitter:image"/><meta content="Preview image for Patrones Lab Project 17 on geospatial Airbnb analysis in London." name="twitter:image:alt"/>
-<link href="../../site-en.webmanifest" rel="manifest"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "@id": "https://malcolmdpc.github.io/#website",
-      "name": "Patrones Lab",
-      "url": "https://malcolmdpc.github.io/",
-      "inLanguage": [
-        "es",
-        "en",
-        "it",
-        "fr",
-        "de",
-        "pt"
-      ],
-      "publisher": {
-        "@id": "https://malcolmdpc.github.io/#organization"
-      },
-      "alternateName": [
-        "Patrones Lab · Analítica de Datos",
-        "Patrones Lab · Data & Analytics"
-      ],
-      "creator": {
-        "@id": "https://malcolmdpc.github.io/#person"
-      }
-    },
-    {
-      "@type": "Organization",
-      "@id": "https://malcolmdpc.github.io/#organization",
-      "name": "Patrones Lab",
-      "url": "https://malcolmdpc.github.io/",
-      "logo": {
-        "@id": "https://malcolmdpc.github.io/#logo"
-      },
-      "sameAs": [
-        "https://github.com/malcolmdpc/patrones-lab",
-        "https://www.instagram.com/patroneslab/",
-        "https://x.com/PatronesLab",
-        "https://linktr.ee/PatronesLab"
-      ]
-    },
-    {
-      "@type": "Person",
-      "@id": "https://malcolmdpc.github.io/#person",
-      "name": "Malcolm Di Pietro Cagliari",
-      "url": "https://malcolmdpc.github.io/",
-      "sameAs": [
-        "https://github.com/malcolmdpc",
-        "https://www.linkedin.com/in/malcolmdpc/",
-        "https://medium.com/@malcolmdpc"
-      ],
-      "image": {
-        "@id": "https://malcolmdpc.github.io/#portrait"
-      }
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#webpage",
-      "url": "https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html",
-      "name": "Geospatial Airbnb Analysis in London · Prices, Distance and Neighbourhood",
-      "headline": "Geospatial Airbnb Analysis in London · Prices, Distance and Neighbourhood",
-      "description": "Geospatial data analysis of Airbnb listings in London using September 2025 data, focused on relative prices, distance to the city center and neighborhood patterns. By Malcolm Di Pietro Cagliari.",
-      "inLanguage": "en",
-      "isPartOf": {
-        "@id": "https://malcolmdpc.github.io/#website"
-      },
-      "mainEntity": {
-        "@id": "https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#article"
-      },
-      "author": {
-        "@id": "https://malcolmdpc.github.io/#person"
-      },
-      "creator": {
-        "@id": "https://malcolmdpc.github.io/#person"
-      },
-      "publisher": {
-        "@id": "https://malcolmdpc.github.io/#organization"
-      },
-      "breadcrumb": {
-        "@id": "https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#breadcrumb"
-      },
-      "primaryImageOfPage": {
-        "@id": "https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#primaryimage"
-      },
-      "thumbnailUrl": "https://malcolmdpc.github.io/images/patrones/social/projects/p17-airbnb-geoespacial-og.jpg",
-      "dateModified": "2026-09-01"
-    },
-    {
-      "@type": "TechArticle",
-      "@id": "https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#article",
-      "mainEntityOfPage": {
-        "@id": "https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#webpage"
-      },
-      "url": "https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html",
-      "name": "Geospatial Airbnb Analysis in London · Prices, Distance and Neighbourhood",
-      "headline": "Geospatial Airbnb Analysis in London · Prices, Distance and Neighbourhood",
-      "description": "Geospatial data analysis of Airbnb listings in London using September 2025 data, focused on relative prices, distance to the city center and neighborhood patterns. By Malcolm Di Pietro Cagliari.",
-      "image": {
-        "@id": "https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#primaryimage"
-      },
-      "thumbnailUrl": "https://malcolmdpc.github.io/images/patrones/social/projects/p17-airbnb-geoespacial-og.jpg",
-      "inLanguage": "en",
-      "author": {
-        "@id": "https://malcolmdpc.github.io/#person"
-      },
-      "creator": {
-        "@id": "https://malcolmdpc.github.io/#person"
-      },
-      "publisher": {
-        "@id": "https://malcolmdpc.github.io/#organization"
-      },
-      "datePublished": "2026-08-24",
-      "dateModified": "2026-09-01",
-      "keywords": [
-        "Patrones Lab",
-        "Malcolm Di Pietro Cagliari",
-        "Airbnb London",
-        "Inside Airbnb",
-        "accommodations",
-        "prices",
-        "availability",
-        "spatial distribution",
-        "data analytics",
-        "Business Intelligence",
-        "Python"
-      ],
-      "articleSection": "Data Analytics",
-      "isPartOf": {
-        "@id": "https://malcolmdpc.github.io/#website"
-      },
-      "breadcrumb": {
-        "@id": "https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#breadcrumb"
-      },
-      "alternativeHeadline": "Geospatial Airbnb Analysis in London"
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Patrones Lab",
-          "item": "https://malcolmdpc.github.io/en/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Projects",
-          "item": "https://malcolmdpc.github.io/en/#projects"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Data Analytics",
-          "item": "https://malcolmdpc.github.io/en/areas/data-analytics.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "Geospatial Airbnb Analysis in London",
-          "item": "https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html"
-        }
-      ]
-    },
-    {
-      "@type": "ImageObject",
-      "@id": "https://malcolmdpc.github.io/#logo",
-      "contentUrl": "https://malcolmdpc.github.io/images/patrones/favicon/favicon-512.png",
-      "url": "https://malcolmdpc.github.io/images/patrones/favicon/favicon-512.png",
-      "width": 512,
-      "height": 512,
-      "name": "Patrones Lab"
-    },
-    {
-      "@type": "ImageObject",
-      "@id": "https://malcolmdpc.github.io/#portrait",
-      "contentUrl": "https://malcolmdpc.github.io/images/patrones/about/malcolm-di-pietro-cagliari-about.webp",
-      "url": "https://malcolmdpc.github.io/images/patrones/about/malcolm-di-pietro-cagliari-about.webp",
-      "width": 600,
-      "height": 600,
-      "name": "Malcolm Di Pietro Cagliari"
-    },
-    {
-      "@type": "ImageObject",
-      "@id": "https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#primaryimage",
-      "contentUrl": "https://malcolmdpc.github.io/images/patrones/social/projects/p17-airbnb-geoespacial-og.jpg",
-      "url": "https://malcolmdpc.github.io/images/patrones/social/projects/p17-airbnb-geoespacial-og.jpg",
-      "width": 1200,
-      "height": 630,
-      "name": "Geospatial Airbnb Analysis in London"
-    }
-  ]
-}
-</script><link as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&amp;family=Inter:wght@500;600;700;800;900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
-<noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&amp;family=Inter:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet"/></noscript>
-<link as="style" href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
-<noscript><link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&amp;display=swap" rel="stylesheet"/></noscript>
-<link href="../../css/unicons.css" rel="stylesheet"/>
-<link href="../../css/project-detail.css" rel="stylesheet"/>
-<meta content="en_US" property="og:locale"/><meta content="es_ES" property="og:locale:alternate"/><meta content="it_IT" property="og:locale:alternate"/><meta content="fr_FR" property="og:locale:alternate"/><meta content="de_DE" property="og:locale:alternate"/><meta content="pt_PT" property="og:locale:alternate"/><link href="https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html" rel="canonical"/><link href="https://malcolmdpc.github.io/proyectos/analisis-geoespacial-airbnb-londres.html" hreflang="es" rel="alternate"/><link href="https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html" hreflang="en" rel="alternate"/><link href="https://malcolmdpc.github.io/it/progetti/analisi-geospaziale-airbnb-londra.html" hreflang="it" rel="alternate"/><link href="https://malcolmdpc.github.io/fr/projets/analyse-geospatiale-airbnb-londres.html" hreflang="fr" rel="alternate"/><link href="https://malcolmdpc.github.io/de/projekte/georaeumliche-airbnb-analyse-london.html" hreflang="de" rel="alternate"/><link href="https://malcolmdpc.github.io/pt/projetos/analise-geoespacial-airbnb-londres.html" hreflang="pt" rel="alternate"/><link href="https://malcolmdpc.github.io/proyectos/analisis-geoespacial-airbnb-londres.html" hreflang="x-default" rel="alternate"/></head>
+<meta content="Geospatial data analysis of Airbnb listings in London using September 2025 data, focused on relative prices, distance to the city center and neighborhood patterns. By Malcolm Di Pietro Cagliari." name="description"><meta content="2026-10-03" property="og:updated_time"><meta content="Patrones Lab" property="article:publisher"><meta content="Patrones Lab" name="apple-mobile-web-app-title"><meta content="Patrones Lab" name="application-name"><meta content="Geospatial Airbnb Analysis in London · Prices, Distance and Neighbourhood" name="title">
+<meta content="index, follow, max-image-preview:large" name="robots"><meta content="Malcolm Di Pietro Cagliari" name="author"><meta content="Malcolm Di Pietro Cagliari" name="creator"><meta content="Patrones Lab, Malcolm Di Pietro Cagliari, Airbnb London, Inside Airbnb, accommodations, prices, availability, spatial distribution, data analytics, Business Intelligence, Python" name="keywords"><meta content="Malcolm Di Pietro Cagliari" property="article:author"><meta content="Data Analytics" property="article:section"><meta content="Python" property="article:tag"><meta content="Data Storytelling" property="article:tag"><meta content="Airbnb" property="article:tag"><meta content="Data Analysis" property="article:tag"><meta content="BI" property="article:tag"><meta content="Geospatial" property="article:tag"><meta content="2026-08-24" property="article:published_time"><meta content="2026-10-03" property="article:modified_time">
+<link href="../../favicon.ico" rel="icon" type="image/x-icon">
+<link href="../../images/patrones/favicon/favicon-32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="../../images/patrones/favicon/favicon-16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="../../images/patrones/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<meta content="#0c0c0d" name="theme-color">
+<meta content="article" property="og:type">
+<meta content="Geospatial Airbnb Analysis in London · Prices, Distance and Neighbourhood" property="og:title">
+<meta content="Geospatial data analysis of Airbnb listings in London using September 2025 data, focused on relative prices, distance to the city center and neighborhood patterns. By Malcolm Di Pietro Cagliari." property="og:description">
+<meta content="https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html" property="og:url">
+<meta content="https://malcolmdpc.github.io/images/patrones/social/projects/p17-airbnb-geoespacial-og.jpg" property="og:image"><link href="https://malcolmdpc.github.io/images/patrones/social/projects/p17-airbnb-geoespacial-og.jpg" rel="image_src"><meta content="https://malcolmdpc.github.io/images/patrones/social/projects/p17-airbnb-geoespacial-og.jpg" property="og:image:secure_url"><meta content="1200" property="og:image:width"><meta content="630" property="og:image:height"><meta content="image/jpeg" property="og:image:type"><meta content="Preview image for Patrones Lab Project 17 on geospatial Airbnb analysis in London." property="og:image:alt">
+<meta content="Patrones Lab" property="og:site_name">
+<meta content="summary_large_image" name="twitter:card">
+<meta content="Geospatial Airbnb Analysis in London · Prices, Distance and Neighbourhood" name="twitter:title">
+<meta content="Geospatial data analysis of Airbnb listings in London using September 2025 data, focused on relative prices, distance to the city center and neighborhood patterns. By Malcolm Di Pietro Cagliari." name="twitter:description">
+<meta content="https://malcolmdpc.github.io/images/patrones/social/projects/p17-airbnb-geoespacial-og.jpg" name="twitter:image"><meta content="Preview image for Patrones Lab Project 17 on geospatial Airbnb analysis in London." name="twitter:image:alt">
+<link href="../../site-en.webmanifest" rel="manifest">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://malcolmdpc.github.io/#website","name":"Patrones Lab","url":"https://malcolmdpc.github.io/","inLanguage":["es","en","it","fr","de","pt"],"publisher":{"@id":"https://malcolmdpc.github.io/#organization"},"alternateName":["Patrones Lab · Analítica de Datos","Patrones Lab · Data & Analytics"],"creator":{"@id":"https://malcolmdpc.github.io/#person"}},{"@type":"Organization","@id":"https://malcolmdpc.github.io/#organization","name":"Patrones Lab","url":"https://malcolmdpc.github.io/","logo":{"@id":"https://malcolmdpc.github.io/#logo"},"sameAs":["https://github.com/malcolmdpc/patrones-lab","https://www.instagram.com/patroneslab/","https://x.com/PatronesLab","https://linktr.ee/PatronesLab"]},{"@type":"Person","@id":"https://malcolmdpc.github.io/#person","name":"Malcolm Di Pietro Cagliari","url":"https://malcolmdpc.github.io/","sameAs":["https://github.com/malcolmdpc","https://www.linkedin.com/in/malcolmdpc/","https://medium.com/@malcolmdpc"],"image":{"@id":"https://malcolmdpc.github.io/#portrait"}},{"@type":"WebPage","@id":"https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#webpage","url":"https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html","name":"Geospatial Airbnb Analysis in London · Prices, Distance and Neighbourhood","headline":"Geospatial Airbnb Analysis in London · Prices, Distance and Neighbourhood","description":"Geospatial data analysis of Airbnb listings in London using September 2025 data, focused on relative prices, distance to the city center and neighborhood patterns. By Malcolm Di Pietro Cagliari.","inLanguage":"en","isPartOf":{"@id":"https://malcolmdpc.github.io/#website"},"mainEntity":{"@id":"https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#article"},"author":{"@id":"https://malcolmdpc.github.io/#person"},"creator":{"@id":"https://malcolmdpc.github.io/#person"},"publisher":{"@id":"https://malcolmdpc.github.io/#organization"},"breadcrumb":{"@id":"https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#breadcrumb"},"primaryImageOfPage":{"@id":"https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#primaryimage"},"thumbnailUrl":"https://malcolmdpc.github.io/images/patrones/social/projects/p17-airbnb-geoespacial-og.jpg","dateModified":"2026-10-03"},{"@type":"TechArticle","@id":"https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#article","mainEntityOfPage":{"@id":"https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#webpage"},"url":"https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html","name":"Geospatial Airbnb Analysis in London · Prices, Distance and Neighbourhood","headline":"Geospatial Airbnb Analysis in London · Prices, Distance and Neighbourhood","description":"Geospatial data analysis of Airbnb listings in London using September 2025 data, focused on relative prices, distance to the city center and neighborhood patterns. By Malcolm Di Pietro Cagliari.","image":{"@id":"https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#primaryimage"},"thumbnailUrl":"https://malcolmdpc.github.io/images/patrones/social/projects/p17-airbnb-geoespacial-og.jpg","inLanguage":"en","author":{"@id":"https://malcolmdpc.github.io/#person"},"creator":{"@id":"https://malcolmdpc.github.io/#person"},"publisher":{"@id":"https://malcolmdpc.github.io/#organization"},"datePublished":"2026-08-24","dateModified":"2026-10-03","keywords":["Patrones Lab","Malcolm Di Pietro Cagliari","Airbnb London","Inside Airbnb","accommodations","prices","availability","spatial distribution","data analytics","Business Intelligence","Python"],"articleSection":"Data Analytics","isPartOf":{"@id":"https://malcolmdpc.github.io/#website"},"breadcrumb":{"@id":"https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#breadcrumb"},"alternativeHeadline":"Geospatial Airbnb Analysis in London"},{"@type":"BreadcrumbList","@id":"https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Patrones Lab","item":"https://malcolmdpc.github.io/en/"},{"@type":"ListItem","position":2,"name":"Projects","item":"https://malcolmdpc.github.io/en/#projects"},{"@type":"ListItem","position":3,"name":"Data Analytics","item":"https://malcolmdpc.github.io/en/areas/data-analytics.html"},{"@type":"ListItem","position":4,"name":"Geospatial Airbnb Analysis in London","item":"https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html"}]},{"@type":"ImageObject","@id":"https://malcolmdpc.github.io/#logo","contentUrl":"https://malcolmdpc.github.io/images/patrones/favicon/favicon-512.png","url":"https://malcolmdpc.github.io/images/patrones/favicon/favicon-512.png","width":512,"height":512,"name":"Patrones Lab"},{"@type":"ImageObject","@id":"https://malcolmdpc.github.io/#portrait","contentUrl":"https://malcolmdpc.github.io/images/patrones/about/malcolm-di-pietro-cagliari-about.webp","url":"https://malcolmdpc.github.io/images/patrones/about/malcolm-di-pietro-cagliari-about.webp","width":600,"height":600,"name":"Malcolm Di Pietro Cagliari"},{"@type":"ImageObject","@id":"https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#primaryimage","contentUrl":"https://malcolmdpc.github.io/images/patrones/social/projects/p17-airbnb-geoespacial-og.jpg","url":"https://malcolmdpc.github.io/images/patrones/social/projects/p17-airbnb-geoespacial-og.jpg","width":1200,"height":630,"name":"Geospatial Airbnb Analysis in London"},{"@type":"ItemList","@id":"https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html#related-projects","name":"RELATED PROJECTS","numberOfItems":2,"itemListElement":[{"@type":"ListItem","position":1,"url":"https://malcolmdpc.github.io/en/projects/london-airbnb-accommodation-analysis.html","name":"Geospatial Airbnb Analysis in London"},{"@type":"ListItem","position":2,"url":"https://malcolmdpc.github.io/en/projects/geospatial-chicago-taxi-trip-analysis.html","name":"Geospatial Analysis of Chicago Taxi Trips"}]}]}</script><link as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&amp;family=Inter:wght@500;600;700;800;900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload">
+<noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&amp;family=Inter:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet"></noscript>
+<link as="style" href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload">
+<noscript><link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&amp;display=swap" rel="stylesheet"></noscript>
+<link href="../../css/unicons.css" rel="stylesheet">
+<link href="../../css/project-detail.css?v=70" rel="stylesheet">
+<meta content="en_US" property="og:locale"><meta content="es_ES" property="og:locale:alternate"><meta content="it_IT" property="og:locale:alternate"><meta content="fr_FR" property="og:locale:alternate"><meta content="de_DE" property="og:locale:alternate"><meta content="pt_PT" property="og:locale:alternate"><link href="https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html" rel="canonical"><link href="https://malcolmdpc.github.io/proyectos/analisis-geoespacial-airbnb-londres.html" hreflang="es" rel="alternate"><link href="https://malcolmdpc.github.io/en/projects/geospatial-airbnb-analysis-london.html" hreflang="en" rel="alternate"><link href="https://malcolmdpc.github.io/it/progetti/analisi-geospaziale-airbnb-londra.html" hreflang="it" rel="alternate"><link href="https://malcolmdpc.github.io/fr/projets/analyse-geospatiale-airbnb-londres.html" hreflang="fr" rel="alternate"><link href="https://malcolmdpc.github.io/de/projekte/georaeumliche-airbnb-analyse-london.html" hreflang="de" rel="alternate"><link href="https://malcolmdpc.github.io/pt/projetos/analise-geoespacial-airbnb-londres.html" hreflang="pt" rel="alternate"><link href="https://malcolmdpc.github.io/proyectos/analisis-geoespacial-airbnb-londres.html" hreflang="x-default" rel="alternate"><link rel="prev" href="https://malcolmdpc.github.io/en/projects/neural-network-weather-event-damage.html"><link rel="next" href="https://malcolmdpc.github.io/en/projects/monte-carlo-simulation-laliga-2026-27.html"></head>
 <body class="project-detail-page project-static-detail-page" data-project-detail="airbnb-london">
 <main aria-label="Project page" class="project-detail-layout">
-<section aria-label="Geospatial Airbnb Analysis in London" class="project-gallery-panel project-static-hero-panel project-cover-shine"><picture class="project-static-hero-picture"><source media="(max-width: 900px)" srcset="../../images/patrones/projects/airbnb-london-spatial/p17-airbnb-geoespacial-mobile-banner.webp" type="image/webp"/><source media="(min-width: 901px) and (max-width: 1100px)" srcset="../../images/patrones/projects/airbnb-london-spatial/p17-airbnb-geoespacial-mobile.webp" type="image/webp"/><img alt="Main image for the geospatial Airbnb analysis project in London — Patrones Lab" class="project-static-hero-image" decoding="async" fetchpriority="high" height="1536" loading="eager" src="../../images/patrones/projects/airbnb-london-spatial/p17-airbnb-geoespacial-static.webp" width="1024"/></picture></section>
+<section aria-label="Geospatial Airbnb Analysis in London" class="project-gallery-panel project-static-hero-panel project-cover-shine"><picture class="project-static-hero-picture"><source media="(max-width: 900px)" srcset="../../images/patrones/projects/airbnb-london-spatial/p17-airbnb-geoespacial-mobile-banner.webp" type="image/webp"></source><source media="(min-width: 901px) and (max-width: 1100px)" srcset="../../images/patrones/projects/airbnb-london-spatial/p17-airbnb-geoespacial-mobile.webp" type="image/webp"></source><img alt="Main image for the geospatial Airbnb analysis project in London — Patrones Lab" class="project-static-hero-image" decoding="async" fetchpriority="high" height="1536" loading="eager" src="../../images/patrones/projects/airbnb-london-spatial/p17-airbnb-geoespacial-static.webp" width="1024"></picture></section>
 <section aria-label="Project information" class="project-info-panel">
 <header class="project-detail-topbar">
-<nav aria-label="Breadcrumb" class="project-breadcrumb"><ol class="project-breadcrumb__list"><li class="project-breadcrumb__item project-breadcrumb__item--projects"><a href="../index.html#projects">Projects</a></li><li class="project-breadcrumb__item project-breadcrumb__item--area"><a href="../areas/data-analytics.html">Data Analytics</a></li><li class="project-breadcrumb__item project-breadcrumb__item--subarea"><a href="../areas/data-analytics.html#subarea-2">Accommodation Market</a></li><li aria-current="page" class="project-breadcrumb__item project-breadcrumb__item--project"><span title="Geospatial Airbnb Analysis in London">Geospatial Airbnb Analysis in London</span></li></ol></nav><div aria-label="Project navigation" class="project-step-nav"><a aria-label="Previous project: Weather Event Damage Model" class="project-step-button project-step-button--prev" href="neural-network-weather-event-damage.html"><span aria-hidden="true" class="project-step-arrow"></span></a><a aria-label="Next project: Monte Carlo Simulation · Predictions for LaLiga 2026/27" class="project-step-button project-step-button--next" href="monte-carlo-simulation-laliga-2026-27.html"><span aria-hidden="true" class="project-step-arrow"></span></a></div>
+<nav aria-label="Breadcrumb" class="project-breadcrumb"><ol class="project-breadcrumb__list"><li class="project-breadcrumb__item project-breadcrumb__item--projects"><a href="../index.html#projects">Projects</a></li><li class="project-breadcrumb__item project-breadcrumb__item--area"><a href="../areas/data-analytics.html">Data Analytics</a></li><li class="project-breadcrumb__item project-breadcrumb__item--subarea"><a href="../areas/data-analytics.html#subarea-2">Accommodation Market</a></li><li aria-current="page" class="project-breadcrumb__item project-breadcrumb__item--project"><span title="Geospatial Airbnb Analysis in London">Geospatial Airbnb Analysis in London</span></li></ol></nav><div aria-label="Project navigation" class="project-step-nav"><a aria-label="Previous project: Neural Networks · Weather Event Damage" class="project-step-button project-step-button--prev" href="neural-network-weather-event-damage.html"><span aria-hidden="true" class="project-step-arrow"></span></a><a aria-label="Next project: Monte Carlo Simulation · Predictions for LaLiga 2026/27" class="project-step-button project-step-button--next" href="monte-carlo-simulation-laliga-2026-27.html"><span aria-hidden="true" class="project-step-arrow"></span></a></div>
 <div class="project-detail-controls">
 <div aria-label="Change language" class="project-language-selector">
 <button aria-expanded="false" aria-haspopup="true" aria-label="Change language: English" class="project-language-toggle" title="English" type="button">
-<img alt="" class="project-language-current-img" height="32" src="../../images/patrones/language-flags/flag-us.svg" width="32"/>
+<img alt="" class="project-language-current-img" height="32" src="../../images/patrones/language-flags/flag-us.svg" width="32">
 </button>
-<div aria-label="Available languages" class="project-language-menu" role="menu"><a aria-current="false" aria-label="Español" class="project-language-option" data-lang="es" href="../../proyectos/analisis-geoespacial-airbnb-londres.html" role="menuitem" title="Español"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-es.svg" width="32"/><span aria-hidden="true" class="project-language-option-label">ESP</span></a><a aria-current="page" aria-label="English" class="project-language-option active" data-lang="en" href="geospatial-airbnb-analysis-london.html" role="menuitem" title="English"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-us.svg" width="32"/><span aria-hidden="true" class="project-language-option-label">ENG</span></a><a aria-current="false" aria-label="Italiano" class="project-language-option" data-lang="it" href="../../it/progetti/analisi-geospaziale-airbnb-londra.html" role="menuitem" title="Italiano"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-it.svg" width="32"/><span aria-hidden="true" class="project-language-option-label">ITA</span></a><a aria-current="false" aria-label="Français" class="project-language-option" data-lang="fr" href="../../fr/projets/analyse-geospatiale-airbnb-londres.html" role="menuitem" title="Français"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-fr.svg" width="32"/><span aria-hidden="true" class="project-language-option-label">FRA</span></a><a aria-current="false" aria-label="Deutsch" class="project-language-option" data-lang="de" href="../../de/projekte/georaeumliche-airbnb-analyse-london.html" role="menuitem" title="Deutsch"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-de.svg" width="32"/><span aria-hidden="true" class="project-language-option-label">DEU</span></a><a aria-current="false" aria-label="Português" class="project-language-option" data-lang="pt" href="../../pt/projetos/analise-geoespacial-airbnb-londres.html" role="menuitem" title="Português"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-pt.svg" width="32"/><span aria-hidden="true" class="project-language-option-label">POR</span></a></div>
+<div aria-label="Available languages" class="project-language-menu" role="menu"><a aria-current="false" aria-label="Español" class="project-language-option" data-lang="es" href="../../proyectos/analisis-geoespacial-airbnb-londres.html" role="menuitem" title="Español"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-es.svg" width="32"><span aria-hidden="true" class="project-language-option-label">ESP</span></a><a aria-current="page" aria-label="English" class="project-language-option active" data-lang="en" href="geospatial-airbnb-analysis-london.html" role="menuitem" title="English"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-us.svg" width="32"><span aria-hidden="true" class="project-language-option-label">ENG</span></a><a aria-current="false" aria-label="Italiano" class="project-language-option" data-lang="it" href="../../it/progetti/analisi-geospaziale-airbnb-londra.html" role="menuitem" title="Italiano"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-it.svg" width="32"><span aria-hidden="true" class="project-language-option-label">ITA</span></a><a aria-current="false" aria-label="Français" class="project-language-option" data-lang="fr" href="../../fr/projets/analyse-geospatiale-airbnb-londres.html" role="menuitem" title="Français"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-fr.svg" width="32"><span aria-hidden="true" class="project-language-option-label">FRA</span></a><a aria-current="false" aria-label="Deutsch" class="project-language-option" data-lang="de" href="../../de/projekte/georaeumliche-airbnb-analyse-london.html" role="menuitem" title="Deutsch"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-de.svg" width="32"><span aria-hidden="true" class="project-language-option-label">DEU</span></a><a aria-current="false" aria-label="Português" class="project-language-option" data-lang="pt" href="../../pt/projetos/analise-geoespacial-airbnb-londres.html" role="menuitem" title="Português"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-pt.svg" width="32"><span aria-hidden="true" class="project-language-option-label">POR</span></a></div>
 </div>
 <button aria-label="Change visual mode" class="project-theme-toggle" type="button"><i aria-hidden="true" class="color-mode-icon"></i></button>
 </div>
@@ -252,7 +55,7 @@
 <span class="project-data-badge"><span>data:</span> 2025</span>
 </div>
 <p class="project-lead">Geospatial analysis of Airbnb prices in London using distance to the city center, neighborhoods and geographic neighbor metrics.</p>
-<div aria-label="Technologies and topics" class="project-tags project-tech-logo-list"><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="106" loading="lazy" src="../../images/patrones/tag-logos/python.png" width="106"/></span><figcaption class="project-tech-logo-label">Python</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="109" loading="lazy" src="../../images/patrones/tag-logos/pandas.png" width="109"/></span><figcaption class="project-tech-logo-label">Pandas</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="109" loading="lazy" src="../../images/patrones/tag-logos/plotly.png" width="109"/></span><figcaption class="project-tech-logo-label">Plotly</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="119" loading="lazy" src="../../images/patrones/tag-logos/airbnb.png" width="119"/></span><figcaption class="project-tech-logo-label">Airbnb</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="113" loading="lazy" src="../../images/patrones/tag-logos/geoespacial.png" width="113"/></span><figcaption class="project-tech-logo-label">Geospatial</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="107" loading="lazy" src="../../images/patrones/tag-logos/knn.png" width="107"/></span><figcaption class="project-tech-logo-label">KNN</figcaption></figure></div>
+<div aria-label="Technologies and topics" class="project-tags project-tech-logo-list"><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="106" loading="lazy" src="../../images/patrones/tag-logos/python.png" width="106"></span><figcaption class="project-tech-logo-label">Python</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="109" loading="lazy" src="../../images/patrones/tag-logos/pandas.png" width="109"></span><figcaption class="project-tech-logo-label">Pandas</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="109" loading="lazy" src="../../images/patrones/tag-logos/plotly.png" width="109"></span><figcaption class="project-tech-logo-label">Plotly</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="119" loading="lazy" src="../../images/patrones/tag-logos/airbnb.png" width="119"></span><figcaption class="project-tech-logo-label">Airbnb</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="113" loading="lazy" src="../../images/patrones/tag-logos/geoespacial.png" width="113"></span><figcaption class="project-tech-logo-label">Geospatial</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="107" loading="lazy" src="../../images/patrones/tag-logos/knn.png" width="107"></span><figcaption class="project-tech-logo-label">KNN</figcaption></figure></div>
 <section class="project-text-block">
 <h2>CONTEXT AND OBJECTIVE</h2>
 <p>Analyze how Airbnb listing prices in London vary with location, distance to the city center and the context of nearby comparable listings.</p>
@@ -288,22 +91,31 @@
 </div>
 <section aria-labelledby="related-projects-title" class="related-projects">
 <h2 class="related-projects__heading" id="related-projects-title">RELATED PROJECTS</h2>
-<div class="related-projects__grid">
-<article class="related-project-card"><div class="related-project-card__image" style="background-image:url('../../images/patrones/projects/airbnb-london-analysis/p02-airbnb-londres-static.webp')"></div><a aria-label="Airbnb Accommodation in London" class="related-project-card__link" href="london-airbnb-accommodation-analysis.html"><div class="related-project-card__image-hover" style="background-image:url('../../images/patrones/projects/airbnb-london-analysis/p02-airbnb-londres-static.webp')"></div></a><div class="related-project-card__info"><span class="related-project-card__category">DATA ANALYTICS · PROJECT 02</span><h3 class="related-project-card__title">Airbnb Accommodation in London</h3><p class="related-project-card__teaser">Explore how prices, supply and availability change by neighborhood and accommodation type.</p><span class="related-project-card__cta">View project →</span></div></article>
-<article class="related-project-card"><div class="related-project-card__image" style="background-image:url('../../images/patrones/projects/modelo-ml-airbnb-london/p04-ml-airbnb-static.webp')"></div><a aria-label="Airbnb Price Model" class="related-project-card__link" href="machine-learning-model-airbnb-london.html"><div class="related-project-card__image-hover" style="background-image:url('../../images/patrones/projects/modelo-ml-airbnb-london/p04-ml-airbnb-static.webp')"></div></a><div class="related-project-card__info"><span class="related-project-card__category">MACHINE LEARNING · PROJECT 04</span><h3 class="related-project-card__title">Airbnb Price Model</h3><p class="related-project-card__teaser">See how a supervised model identifies listings with higher or lower relative price tendencies within the London market.</p><span class="related-project-card__cta">View project →</span></div></article>
+<div class="related-projects__grid"><article class="related-project-card">
+<div class="related-project-card__image" style="background-image:url('../../images/patrones/projects/home-covers/p17-airbnb-geoespacial-cover.webp')"></div>
+<a aria-label="Open project: Geospatial Airbnb Analysis in London" class="related-project-card__link" href="london-airbnb-accommodation-analysis.html">
+<div class="related-project-card__image-hover" style="background-image:url('../../images/patrones/projects/home-covers/p17-airbnb-geoespacial-cover.webp')"></div>
+</a>
+<div class="related-project-card__info">
+<span class="related-project-card__category">DATA ANALYTICS · PROJECT 02</span>
+<h3 class="related-project-card__title">Geospatial Airbnb Analysis in London</h3>
+<p class="related-project-card__teaser">Geospatial analysis of Airbnb prices in London using distance to the city center, neighborhoods and geographic neighborhood metrics.</p>
+<span class="related-project-card__cta">View project →</span>
 </div>
-</section>
+</article>
+<article class="related-project-card"><div class="related-project-card__image" style="background-image:url('../../images/patrones/projects/home-covers/p12-taxi-geoespacial-cover.webp')"></div><a aria-label="Open project: Geospatial Analysis of Chicago Taxi Trips" class="related-project-card__link" href="geospatial-chicago-taxi-trip-analysis.html"><div class="related-project-card__image-hover" style="background-image:url('../../images/patrones/projects/home-covers/p12-taxi-geoespacial-cover.webp')"></div></a><div class="related-project-card__info"><span class="related-project-card__category">DATA ANALYTICS · PROJECT 12</span><h3 class="related-project-card__title">Geospatial Analysis of Chicago Taxi Trips</h3><p class="related-project-card__teaser">Geospatial analysis of Chicago taxi trips, focused on identifying activity hotspots, urban routes and the territorial concentration of demand.</p><span class="related-project-card__cta">View project →</span></div></article>
+</div></section>
 </div>
 <footer class="project-detail-footer">
 <p class="project-detail-signature">Patrones Lab® · Generating knowledge from data · by Malcolm Di Pietro Cagliari</p>
 <div aria-label="Project links" class="project-detail-actions">
 <a aria-label="Open project repository on GitHub" class="project-action project-action-primary" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-02_airbnb-london" rel="noopener" target="_blank">
-<span data-mobile-repo-label="true">Open Repository</span><span class="project-action-icon project-action-icon-github"><img alt="" height="63" loading="lazy" src="../../images/patrones/github-button-icon.png" width="64"/></span>
+<span data-mobile-repo-label="true">Open Repository</span><span class="project-action-icon project-action-icon-github"><img alt="" height="63" loading="lazy" src="../../images/patrones/github-button-icon.png" width="64"></span>
 </a>
 </div>
 </footer>
 </section>
 </main>
-<script defer="" src="../../js/project-detail.js"></script><script defer="" src="../../js/pl-share-button.js"></script>
+<script defer src="../../js/project-detail.js?v=70"></script><script defer src="../../js/pl-share-button.js"></script>
 </body>
 </html>

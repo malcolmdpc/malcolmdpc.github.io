@@ -819,10 +819,10 @@ body.project-static-detail-page .project-static-hero-placeholder::after{
 body.project18-detail-page .project-static-hero-image,body.project19-detail-page .project-static-hero-image{width:100%;height:100%;object-fit:cover;object-position:center center}
 @media (max-width:900px){body.project18-detail-page .project-static-hero-image,body.project19-detail-page .project-static-hero-image{object-fit:cover;object-position:center 47%}}
 
-body.project18-detail-page .project-image-placeholder-panel,body.project19-detail-page .project-image-placeholder-panel{
+body.project18-detail-page .project-image-placeholder-panel,body.project19-detail-page .project-image-placeholder-panel,body.project20-detail-page .project-image-placeholder-panel{
   background:#050505;
 }
-body.project18-detail-page .project-image-placeholder-surface,body.project19-detail-page .project-image-placeholder-surface{
+body.project18-detail-page .project-image-placeholder-surface,body.project19-detail-page .project-image-placeholder-surface,body.project20-detail-page .project-image-placeholder-surface{
   display:block;
   width:100%;
   height:100%;
@@ -864,3 +864,6 @@ body.project18-detail-page .project-image-placeholder-surface,body.project19-det
     padding-right:14px;
   }
 }
+
+/* P20 stays outside the sequential project navigation. */
+body.project20-detail-page .project-step-button[aria-disabled="true"]{opacity:.38;cursor:default;pointer-events:none}

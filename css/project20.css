@@ -1,0 +1,222 @@
+
+.project20-detail-page .project-text-block{margin-bottom:3.35rem}
+.project20-detail-page .project-text-block+.project-text-block{margin-top:1.15rem}
+body.project20-detail-page .project-text-block>h2{margin-bottom:1.65rem}
+.project20-detail-page .project-text-block p+p{margin-top:.92rem}
+.project20-detail-page .project-text-subheading{display:flex;align-items:center;gap:.58rem;font-family:"IBM Plex Sans",Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:2.55rem 0 1.2rem;color:#ffb56b;font-size:1.04rem;line-height:1.35;font-weight:800;letter-spacing:-.01em}
+.project20-detail-page .project-text-subheading::before{content:"";flex:0 0 .46rem;width:.46rem;height:.46rem;border-radius:50%;background:currentColor;box-shadow:0 0 0 3px color-mix(in srgb,currentColor 12%,transparent)}
+.project20-detail-page.project-light-mode .project-text-subheading{color:#b85d00}
+.project20-detail-page .project-formula-block{margin:2.05rem 0 2.45rem;padding:0 .15rem;max-width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
+.project20-detail-page .project-formula-label{display:block;margin:0 0 1rem;color:var(--pd-accent);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:.82rem;line-height:1.35;font-weight:900;letter-spacing:.105em;text-transform:uppercase}
+.project20-detail-page .project-katex{max-width:100%;color:var(--pd-copy-strong);font-size:1.08rem;text-align:center}
+.project20-detail-page .project-katex+.project-katex{margin-top:.72rem}
+.project20-detail-page .project-katex .katex-display{margin:0;overflow-x:auto;overflow-y:hidden;padding:.05rem 0 .12rem}
+.project20-detail-page .project-formula-note{margin-top:.95rem!important;color:var(--pd-copy-soft)!important;font-size:.84rem!important;line-height:1.5!important;text-align:left!important}
+.project20-detail-page .project-mini-gallery{margin:4.25rem 0 4.45rem}
+.project20-detail-page .project-mini-gallery[hidden]{display:none!important}
+.project20-detail-page .project-mini-gallery__heading{margin:0 0 1.35rem;font-family:"IBM Plex Sans",Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:18px;line-height:1.4;font-weight:620;letter-spacing:.08em;color:var(--pd-accent);text-transform:uppercase}
+.project20-detail-page .related-projects{margin:4.35rem 0 .5rem;padding-top:1.15rem;border-top:1px solid var(--pd-rule)}
+.project20-detail-page .related-projects__heading{margin:0 0 1.35rem;font-family:"IBM Plex Sans",Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:18px;line-height:1.4;font-weight:620;letter-spacing:.08em;color:var(--pd-accent);text-transform:uppercase}
+.project20-detail-page .project-mini-gallery__grid{display:grid;grid-template-columns:repeat(var(--gallery-columns,4),minmax(0,1fr));gap:.68rem}.project20-detail-page .project-mini-gallery__grid.is-masonry{display:block;column-count:var(--gallery-columns,4);column-gap:.68rem}
+.project20-detail-page .project-mini-gallery__item{display:block;width:100%;margin:0;padding:0;border:0;background:transparent;cursor:default;break-inside:avoid;overflow:hidden;border-radius:10px}
+.project20-detail-page .project-mini-gallery__grid.is-masonry .project-mini-gallery__item{margin-bottom:.68rem}.project20-detail-page .project-mini-gallery__item.is-ready{cursor:zoom-in}
+.project20-detail-page .project-mini-gallery__placeholder{display:grid;place-items:center;width:100%;aspect-ratio:4/5;min-height:150px;border:1px dashed color-mix(in srgb,var(--pd-copy-muted) 38%,transparent);border-radius:inherit;background:color-mix(in srgb,var(--pd-copy-muted) 5%,transparent);color:var(--pd-copy-muted);font:800 .72rem/1.2 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.project20-detail-page .project-mini-gallery__item.is-ready .project-mini-gallery__placeholder{display:none}
+.project20-detail-page .project-mini-gallery__item img{display:block;width:100%;height:auto;transition:transform .24s ease,filter .24s ease}
+.project20-detail-page .project-mini-gallery__item:hover img,.project20-detail-page .project-mini-gallery__item:focus-visible img{transform:scale(1.025);filter:brightness(1.05)}
+.project20-detail-page .project-mini-gallery__item:focus-visible{outline:2px solid var(--pd-accent);outline-offset:3px}
+.project20-detail-page .project-gallery-lightbox[hidden]{display:none!important}
+.project20-detail-page .project-gallery-lightbox{position:fixed;inset:0;z-index:9999;display:grid;grid-template-columns:auto minmax(0,auto) auto;align-items:center;justify-content:center;gap:clamp(.75rem,2vw,1.65rem);padding:clamp(1rem,3vw,2.5rem);background:rgba(6,7,9,.94);backdrop-filter:blur(8px)}
+.project20-detail-page .project-gallery-lightbox__figure{position:relative;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:auto;height:auto;max-width:min(82vw,calc(100vw - 14rem),1500px);max-height:88vh;margin:0}
+.project20-detail-page .project-gallery-lightbox__image{display:block;max-width:min(82vw,calc(100vw - 14rem),1500px);max-height:calc(88vh - 3rem);width:auto;height:auto;object-fit:contain}
+.project20-detail-page .project-gallery-lightbox__close,.project20-detail-page .project-gallery-lightbox__nav{border:0;background:rgba(20,21,24,.72);color:#fff;cursor:pointer;display:grid;place-items:center;z-index:2;transition:background .2s ease,transform .2s ease}
+.project20-detail-page .project-gallery-lightbox__close{position:absolute;top:1rem;right:1rem;width:44px;height:44px;border-radius:50%;font-size:1.55rem;line-height:1}
+.project20-detail-page .project-gallery-lightbox__nav{position:static;width:46px;height:58px;border-radius:10px;transform:none;font-size:1.7rem;align-self:center}
+.project20-detail-page .project-gallery-lightbox__prev{grid-column:1}
+.project20-detail-page .project-gallery-lightbox__next{grid-column:3}
+.project20-detail-page .project-gallery-lightbox__close:hover,.project20-detail-page .project-gallery-lightbox__nav:hover{background:rgba(255,216,77,.18)}
+.project20-detail-page .project-gallery-lightbox__counter{position:static;margin-top:.9rem;padding:.35rem .62rem;border-radius:999px;background:rgba(20,21,24,.72);color:#fff;font:700 .76rem/1 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.06em}
+@media (max-width:900px){.project20-detail-page .project-text-block{margin-bottom:2.8rem}.project20-detail-page .project-text-block+.project-text-block{margin-top:.8rem}body.project20-detail-page .project-text-block>h2{margin-bottom:1.35rem}.project20-detail-page .project-text-block p+p{margin-top:.78rem}.project20-detail-page .project-text-subheading{font-size:.94rem;margin:2.35rem 0 1.08rem;gap:.5rem}.project20-detail-page .project-text-subheading::before{flex-basis:.4rem;width:.4rem;height:.4rem}.project20-detail-page .project-formula-block{margin:1.9rem 0 2.3rem;padding:0}.project20-detail-page .project-formula-label{font-size:.76rem;margin-bottom:.92rem}.project20-detail-page .project-katex{font-size:.96rem}.project20-detail-page .project-formula-note{font-size:.79rem!important;line-height:1.48!important}.project20-detail-page .project-mini-gallery{margin:3.55rem 0 3.75rem}.project20-detail-page .project-mini-gallery__heading{font-size:18px;margin-bottom:1.35rem}.project20-detail-page .related-projects{margin-top:3.65rem;padding-top:.9rem;border-top:1px solid var(--pd-rule)}.project20-detail-page .related-projects__heading{font-size:18px;margin-bottom:1.35rem}.project20-detail-page .project-mini-gallery__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem}.project20-detail-page .project-mini-gallery__grid.is-masonry{column-count:2;column-gap:.55rem}.project20-detail-page .project-mini-gallery__grid.is-masonry .project-mini-gallery__item{margin-bottom:.55rem}.project20-detail-page .project-mini-gallery__item{border-radius:8px}.project20-detail-page .project-gallery-lightbox{grid-template-columns:42px minmax(0,auto) 42px;gap:.55rem;padding:.8rem}.project20-detail-page .project-gallery-lightbox__figure{width:auto;height:auto;max-width:calc(100vw - 8rem);max-height:84vh}.project20-detail-page .project-gallery-lightbox__image{max-width:calc(100vw - 8rem);max-height:calc(84vh - 2.8rem)}.project20-detail-page .project-gallery-lightbox__close{top:.65rem;right:.65rem;width:42px;height:42px}.project20-detail-page .project-gallery-lightbox__nav{width:42px;height:54px}.project20-detail-page .project-gallery-lightbox__counter{margin-top:.75rem}}
+@media (max-width:520px){.project20-detail-page .project-mini-gallery__heading,.project20-detail-page .related-projects__heading{font-size:.76rem;letter-spacing:.12em}}
+@media (max-width:430px){.project20-detail-page .project-katex{font-size:.9rem}.project20-detail-page .project-gallery-lightbox{grid-template-columns:40px minmax(0,auto) 40px;gap:.45rem;padding:.7rem}.project20-detail-page .project-gallery-lightbox__figure{max-width:calc(100vw - 7.3rem);max-height:80vh}.project20-detail-page .project-gallery-lightbox__image{max-width:calc(100vw - 7.3rem);max-height:calc(80vh - 2.6rem)}.project20-detail-page .project-gallery-lightbox__nav{width:40px;height:48px;border-radius:10px;font-size:1.5rem}.project20-detail-page .project-gallery-lightbox__counter{margin-top:.65rem}}
+
+.project20-detail-page .project-detail-copy>.project-kicker{margin:0 0 1.125rem}
+.project20-detail-page .project-detail-copy>h1{margin:0}
+.project20-detail-page .project-meta-line{margin:1.125rem 0 0}
+.project20-detail-page .project-lead{margin:1.125rem 0 0}
+.project20-detail-page .project-tags{margin:1.4rem 0 0}
+.project20-detail-page .project-text-block{margin:0;padding-top:0}
+.project20-detail-page .project-tags+.project-text-block{margin-top:3.25rem}
+.project20-detail-page .project-text-block+.project-text-block{margin-top:3.75rem}
+body.project20-detail-page .project-text-block>h2{margin:0}
+.project20-detail-page .project-text-block>h2+p{margin-top:1.75rem}
+.project20-detail-page .project-text-block p{margin:0}
+.project20-detail-page .project-text-block p+p{margin-top:1rem}
+.project20-detail-page .project-text-subheading{margin:2.25rem 0 0}
+.project20-detail-page .project-text-block>h2+.project-text-subheading{margin-top:1.875rem}
+.project20-detail-page .project-text-subheading+p{margin-top:1rem}
+.project20-detail-page .project-formula-block{margin:1.75rem 0 0;padding:0 .15rem}
+.project20-detail-page .project-formula-label{margin:0 0 1rem}
+.project20-detail-page .project-katex+.project-katex{margin-top:.875rem}
+.project20-detail-page .project-formula-note{margin-top:1.125rem!important}
+.project20-detail-page .project-formula-block+p{margin-top:1.75rem}
+.project20-detail-page .project-text-block+.project-tech-popover-lower{margin:2rem 0 0}
+.project20-detail-page .project-mini-gallery{margin:3.75rem 0 0}
+.project20-detail-page .project-mini-gallery__heading{margin:0}
+.project20-detail-page .project-mini-gallery__grid{margin-top:1.75rem}
+.project20-detail-page .related-projects{margin:3.75rem 0 0;padding-top:1.25rem;border-top:1px solid var(--pd-rule)}
+.project20-detail-page .related-projects__heading{margin:0}
+.project20-detail-page .related-projects__grid{margin-top:1.75rem;padding-top:0}
+@media (max-width:900px){
+.project20-detail-page .project-detail-copy>.project-kicker{margin-bottom:.9rem}
+.project20-detail-page .project-meta-line{margin-top:.9rem}
+.project20-detail-page .project-lead{margin-top:.9rem}
+.project20-detail-page .project-tags{margin:1.1rem 0 0}
+.project20-detail-page .project-tags+.project-text-block{margin-top:2.6rem}
+.project20-detail-page .project-text-block{margin:0;padding-top:0}
+.project20-detail-page .project-text-block+.project-text-block{margin-top:3rem}
+body.project20-detail-page .project-text-block>h2{margin:0}
+.project20-detail-page .project-text-block>h2+p{margin-top:1.4rem}
+.project20-detail-page .project-text-block p+p{margin-top:.875rem}
+.project20-detail-page .project-text-subheading{margin:1.75rem 0 0}
+.project20-detail-page .project-text-block>h2+.project-text-subheading{margin-top:1.625rem}
+.project20-detail-page .project-text-subheading+p{margin-top:.875rem}
+.project20-detail-page .project-formula-block{margin:1.5rem 0 0;padding:0}
+.project20-detail-page .project-formula-label{margin-bottom:.875rem}
+.project20-detail-page .project-katex+.project-katex{margin-top:.75rem}
+.project20-detail-page .project-formula-note{margin-top:var(--p20-formula-note-gap)!important}
+.project20-detail-page .project-formula-block+p{margin-top:1.75rem}
+.project20-detail-page .project-text-block+.project-tech-popover-lower{margin:1.5rem 0 0}
+.project20-detail-page .project-mini-gallery{margin:3rem 0 0}
+.project20-detail-page .project-mini-gallery__heading{margin:0}
+.project20-detail-page .project-mini-gallery__grid{margin-top:1.4rem}
+.project20-detail-page .related-projects{margin:3rem 0 0;padding-top:1rem;border-top:1px solid var(--pd-rule)}
+.project20-detail-page .related-projects__heading{margin:0}
+.project20-detail-page .related-projects__grid{margin-top:1.4rem;padding-top:0}
+}
+
+
+/* Proyecto 20 · ritmo editorial normalizado v69v
+   Un solo espaciado por relacion entre objetos. */
+.project20-detail-page{
+  --p20-section-gap:3.5rem;
+  --p20-title-gap:1rem;
+  --p20-paragraph-gap:.9375rem;
+  --p20-subsection-before:2.25rem;
+  --p20-subsection-after:1.125rem;
+  --p20-formula-before:1.75rem;
+  --p20-formula-after:1.5rem;
+  --p20-formula-note-gap:2rem;
+  --p20-controls-before:2rem;
+}
+
+/* Cabecera editorial */
+.project20-detail-page .project-detail-copy>.project-kicker{margin:0 0 .9rem!important}
+.project20-detail-page .project-detail-copy>h1{margin:0!important}
+.project20-detail-page .project-meta-line{margin:1rem 0 0!important}
+.project20-detail-page .project-lead{margin:1rem 0 0!important}
+.project20-detail-page .project-tags{margin:1.25rem 0 0!important}
+
+/* Secciones principales: el espacio pertenece al inicio de la nueva seccion */
+.project20-detail-page .project-text-block{margin:0!important;padding:0!important}
+.project20-detail-page .project-tags+.project-text-block,
+.project20-detail-page .project-text-block+.project-text-block{margin-top:var(--p20-section-gap)!important}
+body.project20-detail-page .project-text-block>h2,
+.project20-detail-page .project-mini-gallery__heading,
+.project20-detail-page .related-projects__heading{
+  margin:0!important;
+  font-size:22px!important;
+  line-height:1.28!important;
+  letter-spacing:.07em!important;
+  font-weight:650!important;
+}
+.project20-detail-page .project-text-block>h2+p{margin-top:var(--p20-title-gap)!important}
+.project20-detail-page .project-text-block p{margin:0!important}
+.project20-detail-page .project-text-block p+p{margin-top:var(--p20-paragraph-gap)!important}
+
+/* Subtitulos: mas aire antes que despues */
+.project20-detail-page .project-text-subheading{
+  margin:var(--p20-subsection-before) 0 0!important;
+  font-size:1rem!important;
+  line-height:1.35!important;
+}
+.project20-detail-page .project-text-block>h2+.project-text-subheading{margin-top:var(--p20-subsection-before)!important}
+.project20-detail-page .project-text-subheading+p{margin-top:var(--p20-subsection-after)!important}
+
+/* Formulas: una entrada clara y la salida la controla el contenido siguiente */
+.project20-detail-page .project-formula-block{
+  margin:var(--p20-formula-before) 0 0!important;
+  padding:0 .15rem!important;
+}
+.project20-detail-page .project-formula-label{margin:0 0 .875rem!important}
+.project20-detail-page .project-katex+.project-katex{margin-top:.75rem!important}
+.project20-detail-page .project-formula-note{margin-top:var(--p20-formula-note-gap)!important}
+.project20-detail-page .project-formula-block+p{margin-top:var(--p20-formula-after)!important}
+
+/* Controles, galeria y relacionados */
+.project20-detail-page .project-text-block+.project-tech-popover-lower{margin:var(--p20-controls-before) 0 0!important}
+.project20-detail-page .project-mini-gallery{margin:var(--p20-section-gap) 0 0!important}
+.project20-detail-page .project-mini-gallery__heading{margin:0!important}
+.project20-detail-page .project-mini-gallery__grid{margin-top:var(--p20-title-gap)!important}
+.project20-detail-page .related-projects{margin:var(--p20-section-gap) 0 0!important;padding-top:1.25rem!important;border-top:1px solid var(--pd-rule)!important}
+.project20-detail-page .related-projects__heading{margin:0!important}
+.project20-detail-page .related-projects__grid{margin-top:var(--p20-title-gap)!important;padding-top:0!important}
+
+/* Controles de ficha tecnica y compartir */
+.project20-detail-page .project-tech-action-row{gap:.85rem!important}
+.project20-detail-page .project-tech-action-row .btn-ft.btn-style-28{
+  min-height:52px!important;
+  padding:.42rem .46rem .42rem 1.08rem!important;
+  gap:.75rem!important;
+  border-radius:14px!important;
+}
+.project20-detail-page .project-tech-action-row .btn-ft.btn-style-28 .label{font-size:.8rem!important;letter-spacing:.105em!important}
+.project20-detail-page .project-tech-action-row .btn-ft.btn-style-28 .plus{width:30px!important;height:30px!important;min-width:30px!important;font-size:1.08rem!important}
+
+@media (max-width:900px){
+  .project20-detail-page{
+    --p20-section-gap:3rem;
+    --p20-title-gap:.875rem;
+    --p20-paragraph-gap:.875rem;
+    --p20-subsection-before:1.75rem;
+    --p20-subsection-after:1rem;
+    --p20-formula-before:1.5rem;
+    --p20-formula-after:1.375rem;
+    --p20-formula-note-gap:1.375rem;
+    --p20-controls-before:1.75rem;
+  }
+  body.project20-detail-page .project-text-block>h2,
+  .project20-detail-page .project-mini-gallery__heading,
+  .project20-detail-page .related-projects__heading{
+    font-size:18px!important;
+    line-height:1.3!important;
+    letter-spacing:.075em!important;
+  }
+  .project20-detail-page .project-text-subheading{font-size:.96rem!important}
+  .project20-detail-page .project-formula-block{padding:0!important}
+  .project20-detail-page .related-projects{padding-top:1rem!important}
+  .project20-detail-page .project-tech-action-row{gap:.7rem!important}
+  .project20-detail-page .project-tech-action-row .btn-ft.btn-style-28{min-height:52px!important;padding:.42rem .44rem .42rem 1rem!important;gap:.7rem!important}
+  .project20-detail-page .project-tech-action-row .btn-ft.btn-style-28 .label{font-size:.76rem!important}
+}
+
+@media (max-width:520px){
+  body.project20-detail-page .project-text-block>h2,
+  .project20-detail-page .project-mini-gallery__heading,
+  .project20-detail-page .related-projects__heading{font-size:17px!important;letter-spacing:.08em!important}
+  .project20-detail-page .project-tech-action-row{gap:.65rem!important}
+  .project20-detail-page .project-tech-action-row .btn-ft.btn-style-28 .label{font-size:.72rem!important}
+}
+
+/* Proyecto 20 · separación consistente entre KaTeX y sus referencias */
+.project20-detail-page .project-text-block .project-formula-block > p.project-formula-note{
+  margin-top:16px!important;
+}
+@media (max-width:900px){
+  .project20-detail-page .project-text-block .project-formula-block > p.project-formula-note{
+    margin-top:11px!important;
+  }
+}
+
+/* Long translated breadcrumb labels must stay inside their assigned flex item. */
+.project20-detail-page .project-breadcrumb__item a{display:block;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

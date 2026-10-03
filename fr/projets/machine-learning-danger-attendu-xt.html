@@ -1,244 +1,46 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="fr" http-equiv="content-language"/>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1" name="viewport"><meta content="fr" http-equiv="content-language">
 <title>Probabilités dans le football · Danger attendu (xT)</title>
-<meta content="Modèle probabiliste appliqué au football avec des données publiques StatsBomb pour estimer la probabilité qu’un but survienne dans les cinq actions suivantes. Par Malcolm Di Pietro Cagliari." name="description"/><meta content="2026-08-21" property="og:updated_time"/><meta content="Patrones Lab" property="article:publisher"/><meta content="Patrones Lab" name="apple-mobile-web-app-title"/><meta content="Patrones Lab" name="application-name"/><meta content="Probabilités dans le football · Danger attendu (xT)" name="title"/>
-<meta content="index, follow, max-image-preview:large" name="robots"/><meta content="Malcolm Di Pietro Cagliari" name="author"/><meta content="Malcolm Di Pietro Cagliari" name="creator"/><meta content="Patrones Lab, Malcolm Di Pietro Cagliari, football, Coupe du monde Qatar 2022, StatsBomb, Expected Threat, xT, danger attendu, modèle probabiliste, analyse sportive, Python" name="keywords"/><meta content="Malcolm Di Pietro Cagliari" property="article:author"/><meta content="Analyse Sportive" property="article:section"/><meta content="Python" property="article:tag"/><meta content="Narration de Données" property="article:tag"/><meta content="Football" property="article:tag"/><meta content="Analyse de Données" property="article:tag"/><meta content="BI" property="article:tag"/><meta content="Science des Données" property="article:tag"/><meta content="2026-06-20" property="article:published_time"/><meta content="2026-08-21" property="article:modified_time"/>
-<link href="../../favicon.ico" rel="icon" type="image/x-icon"/>
-<link href="../../images/patrones/favicon/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
-<link href="../../images/patrones/favicon/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
-<link href="../../images/patrones/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
-<meta content="#0c0c0d" name="theme-color"/>
-<meta content="article" property="og:type"/>
-<meta content="Probabilités dans le football · Danger attendu (xT)" property="og:title"/>
-<meta content="Modèle probabiliste appliqué au football avec des données publiques StatsBomb pour estimer la probabilité qu’un but survienne dans les cinq actions suivantes. Par Malcolm Di Pietro Cagliari." property="og:description"/>
-<meta content="https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html" property="og:url"/>
-<meta content="https://malcolmdpc.github.io/images/patrones/social/projects/p07-futbol-xt-og.jpg" property="og:image"/><link href="https://malcolmdpc.github.io/images/patrones/social/projects/p07-futbol-xt-og.jpg" rel="image_src"/><meta content="https://malcolmdpc.github.io/images/patrones/social/projects/p07-futbol-xt-og.jpg" property="og:image:secure_url"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="image/jpeg" property="og:image:type"/><meta content="Image de prévisualisation du projet 7 de Patrones Lab · Probabilités dans le football · Danger attendu (xT)" property="og:image:alt"/>
-<meta content="Patrones Lab" property="og:site_name"/>
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="Probabilités dans le football · Danger attendu (xT)" name="twitter:title"/>
-<meta content="Modèle probabiliste appliqué au football avec des données publiques StatsBomb pour estimer la probabilité qu’un but survienne dans les cinq actions suivantes. Par Malcolm Di Pietro Cagliari." name="twitter:description"/>
-<meta content="https://malcolmdpc.github.io/images/patrones/social/projects/p07-futbol-xt-og.jpg" name="twitter:image"/><meta content="Image de prévisualisation du projet 7 de Patrones Lab · Probabilités dans le football · Danger attendu (xT)" name="twitter:image:alt"/>
-<link href="../../site-fr.webmanifest" rel="manifest"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "@id": "https://malcolmdpc.github.io/#website",
-      "name": "Patrones Lab",
-      "url": "https://malcolmdpc.github.io/",
-      "inLanguage": [
-        "es",
-        "en",
-        "it",
-        "fr",
-        "de",
-        "pt"
-      ],
-      "publisher": {
-        "@id": "https://malcolmdpc.github.io/#organization"
-      },
-      "alternateName": [
-        "Patrones Lab · Analítica de Datos",
-        "Patrones Lab · Data & Analytics",
-        "Patrones Lab · Analyse de données"
-      ],
-      "creator": {
-        "@id": "https://malcolmdpc.github.io/#person"
-      }
-    },
-    {
-      "@type": "Organization",
-      "@id": "https://malcolmdpc.github.io/#organization",
-      "name": "Patrones Lab",
-      "url": "https://malcolmdpc.github.io/",
-      "logo": {
-        "@id": "https://malcolmdpc.github.io/#logo"
-      },
-      "sameAs": [
-        "https://github.com/malcolmdpc/patrones-lab",
-        "https://www.instagram.com/patroneslab/",
-        "https://x.com/PatronesLab",
-        "https://linktr.ee/PatronesLab"
-      ]
-    },
-    {
-      "@type": "Person",
-      "@id": "https://malcolmdpc.github.io/#person",
-      "name": "Malcolm Di Pietro Cagliari",
-      "url": "https://malcolmdpc.github.io/",
-      "sameAs": [
-        "https://github.com/malcolmdpc",
-        "https://www.linkedin.com/in/malcolmdpc/",
-        "https://medium.com/@malcolmdpc"
-      ],
-      "image": {
-        "@id": "https://malcolmdpc.github.io/#portrait"
-      }
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#webpage",
-      "url": "https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html",
-      "name": "Probabilités dans le football · Danger attendu (xT)",
-      "headline": "Probabilités dans le football · Danger attendu (xT)",
-      "description": "Modèle probabiliste appliqué au football avec des données publiques StatsBomb pour estimer la probabilité qu’un but survienne dans les cinq actions suivantes. Par Malcolm Di Pietro Cagliari.",
-      "inLanguage": "fr",
-      "isPartOf": {
-        "@id": "https://malcolmdpc.github.io/#website"
-      },
-      "mainEntity": {
-        "@id": "https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#article"
-      },
-      "author": {
-        "@id": "https://malcolmdpc.github.io/#person"
-      },
-      "creator": {
-        "@id": "https://malcolmdpc.github.io/#person"
-      },
-      "publisher": {
-        "@id": "https://malcolmdpc.github.io/#organization"
-      },
-      "breadcrumb": {
-        "@id": "https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#breadcrumb"
-      },
-      "primaryImageOfPage": {
-        "@id": "https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#primaryimage"
-      },
-      "thumbnailUrl": "https://malcolmdpc.github.io/images/patrones/social/projects/p07-futbol-xt-og.jpg",
-      "dateModified": "2026-08-21"
-    },
-    {
-      "@type": "TechArticle",
-      "@id": "https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#article",
-      "mainEntityOfPage": {
-        "@id": "https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#webpage"
-      },
-      "url": "https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html",
-      "name": "Probabilités dans le football · Danger attendu (xT)",
-      "headline": "Probabilités dans le football · Danger attendu (xT)",
-      "description": "Modèle probabiliste appliqué au football avec des données publiques StatsBomb pour estimer la probabilité qu’un but survienne dans les cinq actions suivantes. Par Malcolm Di Pietro Cagliari.",
-      "image": {
-        "@id": "https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#primaryimage"
-      },
-      "thumbnailUrl": "https://malcolmdpc.github.io/images/patrones/social/projects/p07-futbol-xt-og.jpg",
-      "inLanguage": "fr",
-      "author": {
-        "@id": "https://malcolmdpc.github.io/#person"
-      },
-      "creator": {
-        "@id": "https://malcolmdpc.github.io/#person"
-      },
-      "publisher": {
-        "@id": "https://malcolmdpc.github.io/#organization"
-      },
-      "datePublished": "2026-06-20",
-      "dateModified": "2026-08-21",
-      "keywords": [
-        "Patrones Lab",
-        "Malcolm Di Pietro Cagliari",
-        "football",
-        "Coupe du monde Qatar 2022",
-        "StatsBomb",
-        "Expected Threat",
-        "xT",
-        "danger attendu",
-        "modèle probabiliste",
-        "analyse sportive",
-        "Python"
-      ],
-      "articleSection": "Analyse Sportive",
-      "isPartOf": {
-        "@id": "https://malcolmdpc.github.io/#website"
-      },
-      "breadcrumb": {
-        "@id": "https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#breadcrumb"
-      },
-      "alternativeHeadline": "Probabilités dans le football · Danger attendu (xT)"
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Patrones Lab",
-          "item": "https://malcolmdpc.github.io/fr/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Projets",
-          "item": "https://malcolmdpc.github.io/fr/#projects"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Analyse Sportive",
-          "item": "https://malcolmdpc.github.io/fr/domaines/analyse-sportive.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "Danger Attendu dans le Football",
-          "item": "https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html"
-        }
-      ]
-    },
-    {
-      "@type": "ImageObject",
-      "@id": "https://malcolmdpc.github.io/#logo",
-      "contentUrl": "https://malcolmdpc.github.io/images/patrones/favicon/favicon-512.png",
-      "url": "https://malcolmdpc.github.io/images/patrones/favicon/favicon-512.png",
-      "width": 512,
-      "height": 512,
-      "name": "Patrones Lab"
-    },
-    {
-      "@type": "ImageObject",
-      "@id": "https://malcolmdpc.github.io/#portrait",
-      "contentUrl": "https://malcolmdpc.github.io/images/patrones/about/malcolm-di-pietro-cagliari-about.webp",
-      "url": "https://malcolmdpc.github.io/images/patrones/about/malcolm-di-pietro-cagliari-about.webp",
-      "width": 600,
-      "height": 600,
-      "name": "Malcolm Di Pietro Cagliari"
-    },
-    {
-      "@type": "ImageObject",
-      "@id": "https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#primaryimage",
-      "contentUrl": "https://malcolmdpc.github.io/images/patrones/social/projects/p07-futbol-xt-og.jpg",
-      "url": "https://malcolmdpc.github.io/images/patrones/social/projects/p07-futbol-xt-og.jpg",
-      "width": 1200,
-      "height": 630,
-      "name": "Probabilités dans le football · Danger attendu (xT) — Patrones Lab"
-    }
-  ]
-}
-</script><link as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&amp;family=Inter:wght@500;600;700;800;900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
-<noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&amp;family=Inter:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet"/></noscript>
-<link as="style" href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
-<noscript><link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&amp;display=swap" rel="stylesheet"/></noscript>
-<link href="../../css/unicons.css" rel="stylesheet"/>
-<link href="../../css/project-detail.css" rel="stylesheet"/>
-<meta content="fr_FR" property="og:locale"/><meta content="es_ES" property="og:locale:alternate"/><meta content="en_US" property="og:locale:alternate"/><meta content="it_IT" property="og:locale:alternate"/><meta content="de_DE" property="og:locale:alternate"/><meta content="pt_PT" property="og:locale:alternate"/><link href="https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html" rel="canonical"/><link href="https://malcolmdpc.github.io/proyectos/probabilidades-futbol-peligro-esperado-xt.html" hreflang="es" rel="alternate"/><link href="https://malcolmdpc.github.io/en/projects/football-probabilities-expected-threat-xt.html" hreflang="en" rel="alternate"/><link href="https://malcolmdpc.github.io/it/progetti/probabilita-calcio-pericolo-atteso-xt.html" hreflang="it" rel="alternate"/><link href="https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html" hreflang="fr" rel="alternate"/><link href="https://malcolmdpc.github.io/de/projekte/fussball-wahrscheinlichkeiten-erwartete-gefahr-xt.html" hreflang="de" rel="alternate"/><link href="https://malcolmdpc.github.io/pt/projetos/probabilidades-futebol-perigo-esperado-xt.html" hreflang="pt" rel="alternate"/><link href="https://malcolmdpc.github.io/proyectos/probabilidades-futbol-peligro-esperado-xt.html" hreflang="x-default" rel="alternate"/></head>
+<meta content="Modèle probabiliste appliqué au football avec des données publiques StatsBomb pour estimer la probabilité qu’un but survienne dans les cinq actions suivantes. Par Malcolm Di Pietro Cagliari." name="description"><meta content="2026-10-03" property="og:updated_time"><meta content="Patrones Lab" property="article:publisher"><meta content="Patrones Lab" name="apple-mobile-web-app-title"><meta content="Patrones Lab" name="application-name"><meta content="Probabilités dans le football · Danger attendu (xT)" name="title">
+<meta content="index, follow, max-image-preview:large" name="robots"><meta content="Malcolm Di Pietro Cagliari" name="author"><meta content="Malcolm Di Pietro Cagliari" name="creator"><meta content="Patrones Lab, Malcolm Di Pietro Cagliari, football, Coupe du monde Qatar 2022, StatsBomb, Expected Threat, xT, danger attendu, modèle probabiliste, analyse sportive, Python" name="keywords"><meta content="Malcolm Di Pietro Cagliari" property="article:author"><meta content="Analyse Sportive" property="article:section"><meta content="Python" property="article:tag"><meta content="Narration de Données" property="article:tag"><meta content="Football" property="article:tag"><meta content="Analyse de Données" property="article:tag"><meta content="BI" property="article:tag"><meta content="Science des Données" property="article:tag"><meta content="2026-06-20" property="article:published_time"><meta content="2026-10-03" property="article:modified_time">
+<link href="../../favicon.ico" rel="icon" type="image/x-icon">
+<link href="../../images/patrones/favicon/favicon-32.png" rel="icon" sizes="32x32" type="image/png">
+<link href="../../images/patrones/favicon/favicon-16.png" rel="icon" sizes="16x16" type="image/png">
+<link href="../../images/patrones/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<meta content="#0c0c0d" name="theme-color">
+<meta content="article" property="og:type">
+<meta content="Probabilités dans le football · Danger attendu (xT)" property="og:title">
+<meta content="Modèle probabiliste appliqué au football avec des données publiques StatsBomb pour estimer la probabilité qu’un but survienne dans les cinq actions suivantes. Par Malcolm Di Pietro Cagliari." property="og:description">
+<meta content="https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html" property="og:url">
+<meta content="https://malcolmdpc.github.io/images/patrones/social/projects/p07-futbol-xt-og.jpg" property="og:image"><link href="https://malcolmdpc.github.io/images/patrones/social/projects/p07-futbol-xt-og.jpg" rel="image_src"><meta content="https://malcolmdpc.github.io/images/patrones/social/projects/p07-futbol-xt-og.jpg" property="og:image:secure_url"><meta content="1200" property="og:image:width"><meta content="630" property="og:image:height"><meta content="image/jpeg" property="og:image:type"><meta content="Image de prévisualisation du projet 7 de Patrones Lab · Probabilités dans le football · Danger attendu (xT)" property="og:image:alt">
+<meta content="Patrones Lab" property="og:site_name">
+<meta content="summary_large_image" name="twitter:card">
+<meta content="Probabilités dans le football · Danger attendu (xT)" name="twitter:title">
+<meta content="Modèle probabiliste appliqué au football avec des données publiques StatsBomb pour estimer la probabilité qu’un but survienne dans les cinq actions suivantes. Par Malcolm Di Pietro Cagliari." name="twitter:description">
+<meta content="https://malcolmdpc.github.io/images/patrones/social/projects/p07-futbol-xt-og.jpg" name="twitter:image"><meta content="Image de prévisualisation du projet 7 de Patrones Lab · Probabilités dans le football · Danger attendu (xT)" name="twitter:image:alt">
+<link href="../../site-fr.webmanifest" rel="manifest">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://malcolmdpc.github.io/#website","name":"Patrones Lab","url":"https://malcolmdpc.github.io/","inLanguage":["es","en","it","fr","de","pt"],"publisher":{"@id":"https://malcolmdpc.github.io/#organization"},"alternateName":["Patrones Lab · Analítica de Datos","Patrones Lab · Data & Analytics","Patrones Lab · Analyse de données"],"creator":{"@id":"https://malcolmdpc.github.io/#person"}},{"@type":"Organization","@id":"https://malcolmdpc.github.io/#organization","name":"Patrones Lab","url":"https://malcolmdpc.github.io/","logo":{"@id":"https://malcolmdpc.github.io/#logo"},"sameAs":["https://github.com/malcolmdpc/patrones-lab","https://www.instagram.com/patroneslab/","https://x.com/PatronesLab","https://linktr.ee/PatronesLab"]},{"@type":"Person","@id":"https://malcolmdpc.github.io/#person","name":"Malcolm Di Pietro Cagliari","url":"https://malcolmdpc.github.io/","sameAs":["https://github.com/malcolmdpc","https://www.linkedin.com/in/malcolmdpc/","https://medium.com/@malcolmdpc"],"image":{"@id":"https://malcolmdpc.github.io/#portrait"}},{"@type":"WebPage","@id":"https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#webpage","url":"https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html","name":"Probabilités dans le football · Danger attendu (xT)","headline":"Probabilités dans le football · Danger attendu (xT)","description":"Modèle probabiliste appliqué au football avec des données publiques StatsBomb pour estimer la probabilité qu’un but survienne dans les cinq actions suivantes. Par Malcolm Di Pietro Cagliari.","inLanguage":"fr","isPartOf":{"@id":"https://malcolmdpc.github.io/#website"},"mainEntity":{"@id":"https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#article"},"author":{"@id":"https://malcolmdpc.github.io/#person"},"creator":{"@id":"https://malcolmdpc.github.io/#person"},"publisher":{"@id":"https://malcolmdpc.github.io/#organization"},"breadcrumb":{"@id":"https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#breadcrumb"},"primaryImageOfPage":{"@id":"https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#primaryimage"},"thumbnailUrl":"https://malcolmdpc.github.io/images/patrones/social/projects/p07-futbol-xt-og.jpg","dateModified":"2026-10-03"},{"@type":"TechArticle","@id":"https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#article","mainEntityOfPage":{"@id":"https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#webpage"},"url":"https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html","name":"Probabilités dans le football · Danger attendu (xT)","headline":"Probabilités dans le football · Danger attendu (xT)","description":"Modèle probabiliste appliqué au football avec des données publiques StatsBomb pour estimer la probabilité qu’un but survienne dans les cinq actions suivantes. Par Malcolm Di Pietro Cagliari.","image":{"@id":"https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#primaryimage"},"thumbnailUrl":"https://malcolmdpc.github.io/images/patrones/social/projects/p07-futbol-xt-og.jpg","inLanguage":"fr","author":{"@id":"https://malcolmdpc.github.io/#person"},"creator":{"@id":"https://malcolmdpc.github.io/#person"},"publisher":{"@id":"https://malcolmdpc.github.io/#organization"},"datePublished":"2026-06-20","dateModified":"2026-10-03","keywords":["Patrones Lab","Malcolm Di Pietro Cagliari","football","Coupe du monde Qatar 2022","StatsBomb","Expected Threat","xT","danger attendu","modèle probabiliste","analyse sportive","Python"],"articleSection":"Analyse Sportive","isPartOf":{"@id":"https://malcolmdpc.github.io/#website"},"breadcrumb":{"@id":"https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#breadcrumb"},"alternativeHeadline":"Probabilités dans le football · Danger attendu (xT)"},{"@type":"BreadcrumbList","@id":"https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Patrones Lab","item":"https://malcolmdpc.github.io/fr/"},{"@type":"ListItem","position":2,"name":"Projets","item":"https://malcolmdpc.github.io/fr/#projects"},{"@type":"ListItem","position":3,"name":"Analyse Sportive","item":"https://malcolmdpc.github.io/fr/domaines/analyse-sportive.html"},{"@type":"ListItem","position":4,"name":"Danger Attendu dans le Football","item":"https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html"}]},{"@type":"ImageObject","@id":"https://malcolmdpc.github.io/#logo","contentUrl":"https://malcolmdpc.github.io/images/patrones/favicon/favicon-512.png","url":"https://malcolmdpc.github.io/images/patrones/favicon/favicon-512.png","width":512,"height":512,"name":"Patrones Lab"},{"@type":"ImageObject","@id":"https://malcolmdpc.github.io/#portrait","contentUrl":"https://malcolmdpc.github.io/images/patrones/about/malcolm-di-pietro-cagliari-about.webp","url":"https://malcolmdpc.github.io/images/patrones/about/malcolm-di-pietro-cagliari-about.webp","width":600,"height":600,"name":"Malcolm Di Pietro Cagliari"},{"@type":"ImageObject","@id":"https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#primaryimage","contentUrl":"https://malcolmdpc.github.io/images/patrones/social/projects/p07-futbol-xt-og.jpg","url":"https://malcolmdpc.github.io/images/patrones/social/projects/p07-futbol-xt-og.jpg","width":1200,"height":630,"name":"Probabilités dans le football · Danger attendu (xT) — Patrones Lab"},{"@type":"ItemList","@id":"https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html#related-projects","name":"PROJETS ASSOCIÉS","numberOfItems":2,"itemListElement":[{"@type":"ListItem","position":1,"url":"https://malcolmdpc.github.io/fr/projets/machine-learning-buts-attendus-xg.html","name":"Modèle de Machine Learning · Buts attendus (xG)"},{"@type":"ListItem","position":2,"url":"https://malcolmdpc.github.io/fr/projets/pronostics-ligue-des-champions-2026-27.html","name":"Pronostics Ligue des champions 2026/27"}]}]}</script><link as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&amp;family=Inter:wght@500;600;700;800;900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload">
+<noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&amp;family=Inter:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet"></noscript>
+<link as="style" href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload">
+<noscript><link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&amp;display=swap" rel="stylesheet"></noscript>
+<link href="../../css/unicons.css" rel="stylesheet">
+<link href="../../css/project-detail.css?v=70" rel="stylesheet">
+<meta content="fr_FR" property="og:locale"><meta content="es_ES" property="og:locale:alternate"><meta content="en_US" property="og:locale:alternate"><meta content="it_IT" property="og:locale:alternate"><meta content="de_DE" property="og:locale:alternate"><meta content="pt_PT" property="og:locale:alternate"><link href="https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html" rel="canonical"><link href="https://malcolmdpc.github.io/proyectos/probabilidades-futbol-peligro-esperado-xt.html" hreflang="es" rel="alternate"><link href="https://malcolmdpc.github.io/en/projects/football-probabilities-expected-threat-xt.html" hreflang="en" rel="alternate"><link href="https://malcolmdpc.github.io/it/progetti/probabilita-calcio-pericolo-atteso-xt.html" hreflang="it" rel="alternate"><link href="https://malcolmdpc.github.io/fr/projets/machine-learning-danger-attendu-xt.html" hreflang="fr" rel="alternate"><link href="https://malcolmdpc.github.io/de/projekte/fussball-wahrscheinlichkeiten-erwartete-gefahr-xt.html" hreflang="de" rel="alternate"><link href="https://malcolmdpc.github.io/pt/projetos/probabilidades-futebol-perigo-esperado-xt.html" hreflang="pt" rel="alternate"><link href="https://malcolmdpc.github.io/proyectos/probabilidades-futbol-peligro-esperado-xt.html" hreflang="x-default" rel="alternate"><link rel="prev" href="https://malcolmdpc.github.io/fr/projets/machine-learning-buts-attendus-xg.html"><link rel="next" href="https://malcolmdpc.github.io/fr/projets/machine-learning-fraude-kmeans.html"></head>
 <body class="project-detail-page project-static-detail-page" data-project-detail="statsbomb-expected-threat-xt">
 <main aria-label="Page du projet" class="project-detail-layout">
-<section aria-label="Image principale du projet" class="project-gallery-panel project-static-hero-panel project-cover-shine"><picture class="project-static-hero-picture"><source media="(max-width: 900px)" srcset="../../images/patrones/projects/probabilidades-futbol-peligro-esperado-xt/p07-futbol-xt-mobile-banner.webp" type="image/webp"/><source media="(min-width: 901px) and (max-width: 1100px)" srcset="../../images/patrones/projects/probabilidades-futbol-peligro-esperado-xt/p07-futbol-xt-mobile.webp" type="image/webp"/><img alt="Footballeur conduisant le ballon avec annotations du modèle de danger attendu (xT) — Patrones Lab" class="project-static-hero-image" decoding="async" fetchpriority="high" height="1536" loading="eager" src="../../images/patrones/projects/probabilidades-futbol-peligro-esperado-xt/p07-futbol-xt-static.webp" width="1024"/></picture></section>
+<section aria-label="Image principale du projet" class="project-gallery-panel project-static-hero-panel project-cover-shine"><picture class="project-static-hero-picture"><source media="(max-width: 900px)" srcset="../../images/patrones/projects/probabilidades-futbol-peligro-esperado-xt/p07-futbol-xt-mobile-banner.webp" type="image/webp"></source><source media="(min-width: 901px) and (max-width: 1100px)" srcset="../../images/patrones/projects/probabilidades-futbol-peligro-esperado-xt/p07-futbol-xt-mobile.webp" type="image/webp"></source><img alt="Footballeur conduisant le ballon avec annotations du modèle de danger attendu (xT) — Patrones Lab" class="project-static-hero-image" decoding="async" fetchpriority="high" height="1536" loading="eager" src="../../images/patrones/projects/probabilidades-futbol-peligro-esperado-xt/p07-futbol-xt-static.webp" width="1024"></picture></section>
 <section aria-label="Informations sur le projet" class="project-info-panel">
 <header class="project-detail-topbar">
-<nav aria-label="Fil d’Ariane" class="project-breadcrumb"><ol class="project-breadcrumb__list"><li class="project-breadcrumb__item project-breadcrumb__item--projects"><a href="../index.html#projects">Projets</a></li><li class="project-breadcrumb__item project-breadcrumb__item--area"><a href="../domaines/analyse-sportive.html">Analyse Sportive</a></li><li class="project-breadcrumb__item project-breadcrumb__item--subarea"><a href="../domaines/analyse-sportive.html#subarea-1">Métriques du Football</a></li><li aria-current="page" class="project-breadcrumb__item project-breadcrumb__item--project"><span title="Danger Attendu dans le Football">Danger Attendu dans le Football</span></li></ol></nav><div aria-label="Navigation entre les projets" class="project-step-nav"><a aria-label="Projet précédent: Buts Attendus dans le Football" class="project-step-button project-step-button--prev" href="machine-learning-buts-attendus-xg.html"><span aria-hidden="true" class="project-step-arrow"></span></a><a aria-label="Projet suivant: Modèle de Fraude avec K-means" class="project-step-button project-step-button--next" href="machine-learning-fraude-kmeans.html"><span aria-hidden="true" class="project-step-arrow"></span></a></div>
+<nav aria-label="Fil d’Ariane" class="project-breadcrumb"><ol class="project-breadcrumb__list"><li class="project-breadcrumb__item project-breadcrumb__item--projects"><a href="../index.html#projects">Projets</a></li><li class="project-breadcrumb__item project-breadcrumb__item--area"><a href="../domaines/analyse-sportive.html">Analyse Sportive</a></li><li class="project-breadcrumb__item project-breadcrumb__item--subarea"><a href="../domaines/analyse-sportive.html#subarea-1">Métriques du Football</a></li><li aria-current="page" class="project-breadcrumb__item project-breadcrumb__item--project"><span title="Danger Attendu dans le Football">Danger Attendu dans le Football</span></li></ol></nav><div aria-label="Navigation entre les projets" class="project-step-nav"><a aria-label="Projet précédent : Modèle de Machine Learning · Buts attendus (xG)" class="project-step-button project-step-button--prev" href="machine-learning-buts-attendus-xg.html"><span aria-hidden="true" class="project-step-arrow"></span></a><a aria-label="Projet suivant : Machine Learning pour la fraude · Détection avec K-means" class="project-step-button project-step-button--next" href="machine-learning-fraude-kmeans.html"><span aria-hidden="true" class="project-step-arrow"></span></a></div>
 <div class="project-detail-controls">
 <div aria-label="Changer de langue" class="project-language-selector">
-<button aria-expanded="false" aria-haspopup="true" aria-label="Changer de langue: Français" class="project-language-toggle" title="Français" type="button"><img alt="" class="project-language-current-img" height="32" src="../../images/patrones/language-flags/flag-fr.svg" width="32"/></button>
-<div aria-label="Langues disponibles" class="project-language-menu" role="menu"><a aria-current="false" aria-label="Español" class="project-language-option" data-lang="es" href="../../proyectos/probabilidades-futbol-peligro-esperado-xt.html" role="menuitem" title="Español"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-es.svg" width="32"/><span aria-hidden="true" class="project-language-option-label">ESP</span></a><a aria-current="false" aria-label="English" class="project-language-option" data-lang="en" href="../../en/projects/football-probabilities-expected-threat-xt.html" role="menuitem" title="English"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-us.svg" width="32"/><span aria-hidden="true" class="project-language-option-label">ENG</span></a><a aria-current="false" aria-label="Italiano" class="project-language-option" data-lang="it" href="../../it/progetti/probabilita-calcio-pericolo-atteso-xt.html" role="menuitem" title="Italiano"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-it.svg" width="32"/><span aria-hidden="true" class="project-language-option-label">ITA</span></a><a aria-current="page" aria-label="Français" class="project-language-option active" data-lang="fr" href="machine-learning-danger-attendu-xt.html" role="menuitem" title="Français"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-fr.svg" width="32"/><span aria-hidden="true" class="project-language-option-label">FRA</span></a><a aria-current="false" aria-label="Deutsch" class="project-language-option" data-lang="de" href="../../de/projekte/fussball-wahrscheinlichkeiten-erwartete-gefahr-xt.html" role="menuitem" title="Deutsch"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-de.svg" width="32"/><span aria-hidden="true" class="project-language-option-label">DEU</span></a><a aria-current="false" aria-label="Português" class="project-language-option" data-lang="pt" href="../../pt/projetos/probabilidades-futebol-perigo-esperado-xt.html" role="menuitem" title="Português"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-pt.svg" width="32"/><span aria-hidden="true" class="project-language-option-label">POR</span></a></div></div>
+<button aria-expanded="false" aria-haspopup="true" aria-label="Changer de langue: Français" class="project-language-toggle" title="Français" type="button"><img alt="" class="project-language-current-img" height="32" src="../../images/patrones/language-flags/flag-fr.svg" width="32"></button>
+<div aria-label="Langues disponibles" class="project-language-menu" role="menu"><a aria-current="false" aria-label="Español" class="project-language-option" data-lang="es" href="../../proyectos/probabilidades-futbol-peligro-esperado-xt.html" role="menuitem" title="Español"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-es.svg" width="32"><span aria-hidden="true" class="project-language-option-label">ESP</span></a><a aria-current="false" aria-label="English" class="project-language-option" data-lang="en" href="../../en/projects/football-probabilities-expected-threat-xt.html" role="menuitem" title="English"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-us.svg" width="32"><span aria-hidden="true" class="project-language-option-label">ENG</span></a><a aria-current="false" aria-label="Italiano" class="project-language-option" data-lang="it" href="../../it/progetti/probabilita-calcio-pericolo-atteso-xt.html" role="menuitem" title="Italiano"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-it.svg" width="32"><span aria-hidden="true" class="project-language-option-label">ITA</span></a><a aria-current="page" aria-label="Français" class="project-language-option active" data-lang="fr" href="machine-learning-danger-attendu-xt.html" role="menuitem" title="Français"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-fr.svg" width="32"><span aria-hidden="true" class="project-language-option-label">FRA</span></a><a aria-current="false" aria-label="Deutsch" class="project-language-option" data-lang="de" href="../../de/projekte/fussball-wahrscheinlichkeiten-erwartete-gefahr-xt.html" role="menuitem" title="Deutsch"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-de.svg" width="32"><span aria-hidden="true" class="project-language-option-label">DEU</span></a><a aria-current="false" aria-label="Português" class="project-language-option" data-lang="pt" href="../../pt/projetos/probabilidades-futebol-perigo-esperado-xt.html" role="menuitem" title="Português"><img alt="" class="project-language-option-img" height="22" src="../../images/patrones/language-flags/flag-pt.svg" width="32"><span aria-hidden="true" class="project-language-option-label">POR</span></a></div></div>
 <button aria-label="Changer le mode visuel" class="project-theme-toggle" type="button"><i aria-hidden="true" class="color-mode-icon"></i></button>
 </div></header>
 <div class="project-detail-copy">
@@ -246,7 +48,7 @@
 <h1>Probabilités appliquées au football · Danger attendu (xT)</h1>
 <div class="project-meta-line"><span class="project-status-badge">✅ publié</span><span class="project-data-badge"><span>données:</span> 2022</span></div>
 <p class="project-lead">Modèle probabiliste de danger attendu (xT) appliqué au football à partir de données publiques StatsBomb. Il estime la probabilité qu’un but survienne dans les cinq actions suivantes.</p>
-<div aria-label="Technologies et thèmes" class="project-tags project-tech-logo-list"><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="106" loading="lazy" src="../../images/patrones/tag-logos/python.png" width="106"/></span><figcaption class="project-tech-logo-label">Python</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="109" loading="lazy" src="../../images/patrones/tag-logos/pandas.png" width="109"/></span><figcaption class="project-tech-logo-label">Pandas</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="107" loading="lazy" src="../../images/patrones/tag-logos/futbol.png" width="107"/></span><figcaption class="project-tech-logo-label">Football</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="119" loading="lazy" src="../../images/patrones/tag-logos/ciencia-datos.png" width="119"/></span><figcaption class="project-tech-logo-label">Science des données</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="126" loading="lazy" src="../../images/patrones/tag-logos/analisis-datos.png" width="126"/></span><figcaption class="project-tech-logo-label">Analyse de données</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="112" loading="lazy" src="../../images/patrones/tag-logos/data-storytelling.png" width="112"/></span><figcaption class="project-tech-logo-label">Narration de données</figcaption></figure></div>
+<div aria-label="Technologies et thèmes" class="project-tags project-tech-logo-list"><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="106" loading="lazy" src="../../images/patrones/tag-logos/python.png" width="106"></span><figcaption class="project-tech-logo-label">Python</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="109" loading="lazy" src="../../images/patrones/tag-logos/pandas.png" width="109"></span><figcaption class="project-tech-logo-label">Pandas</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="107" loading="lazy" src="../../images/patrones/tag-logos/futbol.png" width="107"></span><figcaption class="project-tech-logo-label">Football</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="119" loading="lazy" src="../../images/patrones/tag-logos/ciencia-datos.png" width="119"></span><figcaption class="project-tech-logo-label">Science des données</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="126" loading="lazy" src="../../images/patrones/tag-logos/analisis-datos.png" width="126"></span><figcaption class="project-tech-logo-label">Analyse de données</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="112" loading="lazy" src="../../images/patrones/tag-logos/data-storytelling.png" width="112"></span><figcaption class="project-tech-logo-label">Narration de données</figcaption></figure></div>
 <section class="project-text-block"><h2>CONTEXTE ET OBJECTIF</h2><p>Mesurer le danger généré par une action de football en estimant l’évolution de la probabilité de but sur une courte fenêtre de possession.</p></section>
 <section class="project-text-block"><h2>DONNÉES ET DIAGNOSTIC</h2><ul><li>Les données publiques d’événements StatsBomb sont utilisées comme source.</li>
 <li>Des variables spatiales et contextuelles sont construites pour représenter chaque action.</li>
@@ -275,17 +77,14 @@
 </div>
 <section aria-labelledby="related-projects-title" class="related-projects">
 <h2 class="related-projects__heading" id="related-projects-title">PROJETS ASSOCIÉS</h2>
-<div class="related-projects__grid">
-<article class="related-project-card"><div class="related-project-card__image" style="background-image:url('../../images/patrones/projects/estadisticas-mundial-futbol-qatar-2022/p11-mundial-2022-radar-percentiles-static.webp')"></div><a aria-label="Ouvrir le projet 11 · Coupe du monde 2022 · Radar de percentiles" class="related-project-card__link" href="statistiques-mondial-2022-radar-percentiles.html"><div class="related-project-card__image-hover" style="background-image:url('../../images/patrones/projects/estadisticas-mundial-futbol-qatar-2022/p11-mundial-2022-radar-percentiles-static.webp')"></div></a><div class="related-project-card__info"><span class="related-project-card__category">ANALYSE SPORTIVE · PROJET 11</span><h3 class="related-project-card__title">Coupe du monde 2022 · Radar de percentiles</h3><p class="related-project-card__teaser">Comparez la performance individuelle des joueurs du Mondial 2022 à l’aide de métriques normalisées et de radars de percentiles.</p><span class="related-project-card__cta">Voir le projet →</span></div></article>
-<article class="related-project-card"><div class="related-project-card__image" style="background-image:url('../../images/patrones/projects/home-covers/p18-laliga-2026-27-montecarlo-cover.webp')"></div><a aria-label="Ouvrir la page de détail du projet Simulation de Monte-Carlo · Prédictions pour LaLiga 2026/27" class="related-project-card__link" href="simulation-monte-carlo-laliga-2026-27.html"><div class="related-project-card__image-hover" style="background-image:url('../../images/patrones/projects/home-covers/p18-laliga-2026-27-montecarlo-cover.webp')"></div></a><div class="related-project-card__info"><span class="related-project-card__category">SIMULATION · PROJET 18</span><h3 class="related-project-card__title">Simulation de Monte-Carlo · Prédictions pour LaLiga 2026/27</h3><p class="related-project-card__teaser">Simulation d’un million de scénarios de LaLiga 2026/27 à partir de scores Elo afin d’estimer les probabilités des principaux résultats du championnat.</p><span class="related-project-card__cta">Voir le projet →</span></div></article>
-</div>
-</section>
+<div class="related-projects__grid"><article class="related-project-card"><div class="related-project-card__image" style="background-image:url('../../images/patrones/projects/home-covers/p06-xg-futbol-statsbomb-cover.webp')"></div><a aria-label="Ouvrir le projet : Modèle de Machine Learning · Buts attendus (xG)" class="related-project-card__link" href="machine-learning-buts-attendus-xg.html"><div class="related-project-card__image-hover" style="background-image:url('../../images/patrones/projects/home-covers/p06-xg-futbol-statsbomb-cover.webp')"></div></a><div class="related-project-card__info"><span class="related-project-card__category">MACHINE LEARNING · PROJET 06</span><h3 class="related-project-card__title">Modèle de Machine Learning · Buts attendus (xG)</h3><p class="related-project-card__teaser">Modèle de régression logistique qui estime la probabilité qu’un tir devienne un but à partir de données publiques StatsBomb, avec validation par match et application à la Coupe du monde Qatar 2022.</p><span class="related-project-card__cta">Voir le projet →</span></div></article>
+<article class="related-project-card"><div class="related-project-card__image" style="background-image:url('../../images/patrones/projects/home-covers/p19-champions-league-2026-27-poisson-cover.webp')"></div><a aria-label="Ouvrir le projet : Pronostics Ligue des champions 2026/27" class="related-project-card__link" href="pronostics-ligue-des-champions-2026-27.html"><div class="related-project-card__image-hover" style="background-image:url('../../images/patrones/projects/home-covers/p19-champions-league-2026-27-poisson-cover.webp')"></div></a><div class="related-project-card__info"><span class="related-project-card__category">ANALYSE SPORTIVE · PROJET 19</span><h3 class="related-project-card__title">Pronostics Ligue des champions 2026/27</h3><p class="related-project-card__teaser">Modèle de buts fondé sur la loi de Poisson pour calculer les forces offensives et défensives de chaque équipe, combiné à la simulation de Monte-Carlo pour estimer les probabilités du championnat.</p><span class="related-project-card__cta">Voir le projet →</span></div></article></div></section>
 </div>
 <footer class="project-detail-footer">
 <p class="project-detail-signature">Patrones Lab® · Transformer les données en connaissances · par Malcolm Di Pietro Cagliari</p>
 <div aria-label="Liens du projet" class="project-detail-actions">
 <a aria-label="Ouvrir le dépôt du projet sur GitHub" class="project-action project-action-primary" href="https://github.com/malcolmdpc/patrones-lab/tree/main/2026-04_futbol-statsbomb" rel="noopener" target="_blank">
-<span data-mobile-repo-label="true">Ouvrir le dépôt</span><span class="project-action-icon project-action-icon-github"><img alt="" height="63" loading="lazy" src="../../images/patrones/github-button-icon.png" width="64"/></span>
+<span data-mobile-repo-label="true">Ouvrir le dépôt</span><span class="project-action-icon project-action-icon-github"><img alt="" height="63" loading="lazy" src="../../images/patrones/github-button-icon.png" width="64"></span>
 </a>
 <a aria-label="Ouvrir la publication du projet sur LinkedIn" class="project-action project-action-secondary" href="https://www.linkedin.com/pulse/f%C3%BAtbol-y-probabilidades-c%C3%A1lculo-del-peligro-esperado-malcolm-acide" rel="noopener" target="_blank">
 <span>Lire sur LinkedIn</span><span class="project-action-icon project-action-icon-linkedin">in</span>
@@ -293,6 +92,6 @@
 </div>
 </footer>
 </section></main>
-<script defer="" src="../../js/project-detail.js"></script><script defer="" src="../../js/pl-share-button.js"></script>
+<script defer src="../../js/project-detail.js?v=70"></script><script defer src="../../js/pl-share-button.js"></script>
 </body>
 </html>
