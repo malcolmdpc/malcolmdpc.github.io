@@ -1,0 +1,100 @@
+/* Natural line wrapping with restrained, language-aware hyphenation. */
+#projects .github-project-card .github-project-body > p:not(.project-status),
+body.project-detail-page .project-lead,
+body.project-detail-page .project-text-block p,
+body.project-detail-page .project-text-block li,
+body.project-detail-page .project-tech-grid dd,
+body.project-detail-page .related-project-card__teaser,
+.pl-area-project__description{
+  white-space:normal!important;
+  text-wrap:wrap!important;
+  word-break:normal!important;
+  overflow-wrap:break-word!important;
+  -webkit-hyphens:auto!important;
+  hyphens:auto!important;
+  hyphenate-limit-chars:10 4 4;
+  hyphenate-limit-lines:2;
+  hyphenate-limit-zone:8%;
+}
+#projects .github-project-card .github-project-body h3,
+body.project-detail-page h1,
+body.project-detail-page h2,
+body.project-detail-page h3,
+body.project-detail-page .related-project-card__title,
+.pl-area-project__title{
+  white-space:normal!important;
+  text-wrap:wrap!important;
+  word-break:normal!important;
+  overflow-wrap:break-word!important;
+  -webkit-hyphens:none!important;
+  hyphens:none!important;
+}
+/* The breadcrumb stays compact and wraps only when its available width requires it. */
+body.project-detail-page .project-breadcrumb__list{align-items:flex-start}
+body.project-detail-page .project-breadcrumb__item{min-width:0;align-items:baseline}
+body.project-detail-page .project-breadcrumb__item a{
+  display:block;
+  min-width:0;
+  max-width:100%;
+  white-space:normal;
+  text-overflow:clip;
+  overflow-wrap:break-word;
+  word-break:normal;
+  -webkit-hyphens:auto;
+  hyphens:auto;
+  hyphenate-limit-chars:10 4 4;
+  hyphenate-limit-lines:2;
+  line-height:1.25;
+}
+body.project-detail-page .project-breadcrumb__item--project span{
+  white-space:normal;
+  text-overflow:clip;
+  overflow-wrap:break-word;
+  hyphens:none;
+  line-height:1.25;
+}
+@media(max-width:900px){
+  body.project-detail-page .project-breadcrumb__item--area,
+  body.project-detail-page .project-breadcrumb__item--subarea{max-width:none;flex:1 1 auto}
+}
+/* P05 uses the same vertical action arrangement as the other Home cards. */
+#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] .project-links-dashboard{
+  display:flex!important;
+  flex-direction:column!important;
+  grid-template-columns:none!important;
+  align-items:stretch!important;
+  gap:8px!important;
+}
+#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] .project-links-dashboard .project-link{
+  width:100%!important;
+  min-width:0!important;
+  margin:0!important;
+  white-space:normal!important;
+}
+.image-rights-link{color:inherit;text-decoration:underline;text-underline-offset:.15em}
+.image-rights-note{font-size:.75rem;line-height:1.4;margin:.7rem 0}
+
+#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] .project-action-label{
+  flex:1 1 auto;
+  min-width:0;
+  overflow-wrap:break-word;
+  hyphens:auto;
+  hyphenate-limit-chars:10 4 4;
+}
+@media(max-width:520px){
+  #projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] .project-links-dashboard .project-link{
+    padding:10px 34px 10px 6px!important;
+    font-size:12px!important;
+    gap:.3rem!important;
+  }
+}
+#projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] .project-link .project-action-label{
+  display:block!important;
+  min-width:0!important;
+  white-space:normal!important;
+  word-break:normal!important;
+  overflow-wrap:anywhere!important;
+  text-overflow:clip!important;
+  overflow:visible!important;
+  line-height:1.2!important;
+}
