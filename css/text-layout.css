@@ -29,34 +29,6 @@ body.project-detail-page .related-project-card__title,
   -webkit-hyphens:none!important;
   hyphens:none!important;
 }
-/* The breadcrumb stays compact and wraps only when its available width requires it. */
-body.project-detail-page .project-breadcrumb__list{align-items:flex-start}
-body.project-detail-page .project-breadcrumb__item{min-width:0;align-items:baseline}
-body.project-detail-page .project-breadcrumb__item a{
-  display:block;
-  min-width:0;
-  max-width:100%;
-  white-space:normal;
-  text-overflow:clip;
-  overflow-wrap:break-word;
-  word-break:normal;
-  -webkit-hyphens:auto;
-  hyphens:auto;
-  hyphenate-limit-chars:10 4 4;
-  hyphenate-limit-lines:2;
-  line-height:1.25;
-}
-body.project-detail-page .project-breadcrumb__item--project span{
-  white-space:normal;
-  text-overflow:clip;
-  overflow-wrap:break-word;
-  hyphens:none;
-  line-height:1.25;
-}
-@media(max-width:900px){
-  body.project-detail-page .project-breadcrumb__item--area,
-  body.project-detail-page .project-breadcrumb__item--subarea{max-width:none;flex:1 1 auto}
-}
 /* P05 uses the same vertical action arrangement as the other Home cards. */
 #projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] .project-links-dashboard{
   display:flex!important;
@@ -71,8 +43,6 @@ body.project-detail-page .project-breadcrumb__item--project span{
   margin:0!important;
   white-space:normal!important;
 }
-.image-rights-link{color:inherit;text-decoration:underline;text-underline-offset:.15em}
-.image-rights-note{font-size:.75rem;line-height:1.4;margin:.7rem 0}
 
 #projects .github-project-card[data-project-id="looker-chicago-taxi-dashboard"] .project-action-label{
   flex:1 1 auto;
@@ -97,4 +67,63 @@ body.project-detail-page .project-breadcrumb__item--project span{
   text-overflow:clip!important;
   overflow:visible!important;
   line-height:1.2!important;
+}
+
+/* Breadcrumbs: a single left-aligned line. JS chooses levels by actual text width. */
+body.project-detail-page .project-breadcrumb{justify-self:start;text-align:left;min-width:0;width:100%;margin-left:0;padding-left:0}
+body.project-detail-page .project-breadcrumb__list{display:flex;flex-wrap:nowrap;align-items:center;justify-content:flex-start;gap:0;margin:0;padding:0;width:100%;min-width:0;white-space:nowrap}
+body.project-detail-page .project-breadcrumb__item{align-items:center;flex:0 1 auto;min-width:0;max-width:none;margin:0;padding:0;overflow:hidden}
+body.project-detail-page .project-breadcrumb__item a,
+body.project-detail-page .project-breadcrumb__item span{display:block;min-width:0;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-break:normal;overflow-wrap:normal;-webkit-hyphens:none;hyphens:none;line-height:1.3}
+body.project-detail-page .project-breadcrumb__item--project{flex:1 1 auto}
+body.project-detail-page .project-breadcrumb[data-levels] .project-breadcrumb__item{display:flex}
+body.project-detail-page .project-breadcrumb[data-levels="3"] .project-breadcrumb__item--project,
+body.project-detail-page .project-breadcrumb[data-levels="2"] .project-breadcrumb__item--project,
+body.project-detail-page .project-breadcrumb[data-levels="2"] .project-breadcrumb__item--projects{display:none}
+body.project-detail-page .project-breadcrumb[data-levels="2"] .project-breadcrumb__item--area::before{display:none}
+@media(max-width:700px){body.project-detail-page .project-breadcrumb:not([data-levels]) .project-breadcrumb__item--area::before{display:none}}
+/* Use the available text column, not the screen width, to size project headings. */
+body.project-detail-page .project-detail-copy{container-type:inline-size}
+@supports(font-size:1cqi){
+ body.project-detail-page .project-detail-copy h1{font-size:min(clamp(2.9rem,4.75vw,4.95rem),clamp(2.45rem,8cqi,4.95rem))}
+ @media(min-width:901px) and (max-width:1100px){body.project-detail-page .project-detail-copy h1{font-size:min(clamp(2.45rem,4.65vw,4rem),clamp(2.45rem,8cqi,4.95rem))}}
+ @media(max-width:900px){body.project-detail-page .project-detail-copy h1{font-size:clamp(1.85rem,8cqi,3.05rem)}}
+}
+#projects .github-project-card .github-project-body h3,
+#projects .github-project-card .github-project-body > p:not(.project-status),
+body.project-detail-page .project-detail-copy h1,
+body.project-detail-page .project-detail-copy h2,
+body.project-detail-page .project-detail-copy h3,
+body.project-detail-page .project-lead,
+body.project-detail-page .project-text-block p,
+body.project-detail-page .project-text-block li,
+body.project-detail-page .project-tech-row dd,
+body.project-detail-page .related-project-card__teaser,
+.pl-area-project__title,.pl-area-project__description{max-inline-size:100%;text-wrap:wrap!important;text-wrap-style:auto!important}
+/* Reuse the Home's three-stroke navigation icon and localized destinations. */
+.project-site-navigation{position:relative;display:flex;align-items:center}
+.project-menu-toggle{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;flex:0 0 auto;width:38px;height:38px;padding:6px;border:0;border-radius:50%;background:rgba(255,255,255,.07);color:var(--pd-control-text);cursor:pointer;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.project-menu-toggle .navbar-toggler-icon{display:block;width:22px;height:2px;margin:0;background:currentColor;border-radius:1px;transition:transform .18s ease,opacity .18s ease}
+.project-menu-toggle[aria-expanded="true"] .navbar-toggler-icon:first-child{transform:translateY(7px) rotate(45deg)}
+.project-menu-toggle[aria-expanded="true"] .navbar-toggler-icon:nth-child(2){opacity:0}
+.project-menu-toggle[aria-expanded="true"] .navbar-toggler-icon:last-child{transform:translateY(-7px) rotate(-45deg)}
+.project-menu-toggle:focus-visible,.project-site-menu a:focus-visible{outline:3px solid #ffd21f;outline-offset:3px}
+.project-menu-toggle:hover{background:rgba(255,194,0,.14)}
+.project-site-menu{position:fixed;z-index:20;top:calc(100% + 10px);right:0;width:230px;max-width:calc(100vw - 32px);max-height:calc(100dvh - 16px);overflow:auto;padding:8px;border:1px solid rgba(255,194,0,.24);border-radius:15px;background:#10110f;box-shadow:0 20px 45px rgba(0,0,0,.28);text-align:left}
+.project-site-menu[hidden]{display:none}
+.project-site-menu ul{list-style:none;margin:0;padding:0}
+.project-site-menu li{margin:0;padding:0}
+.project-site-menu a{display:block;padding:10px 12px;color:var(--pd-copy-strong);font-family:"Maven Pro",system-ui,sans-serif;font-weight:700;font-size:.9rem;line-height:1.25;border-radius:8px;text-decoration:none}
+.project-site-menu a:hover{background:rgba(255,194,0,.14)}
+.project-light-mode .project-site-menu{background:#fffaf0;border-color:rgba(0,0,0,.14)}
+.project-light-mode .project-menu-toggle{background:rgba(0,0,0,.045);box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+@media(max-width:900px){.project-menu-toggle{width:36px;height:36px}}
+@media(prefers-reduced-motion:reduce){.project-menu-toggle .navbar-toggler-icon{transition:none}}
+/* Short landscape screens need document scrolling to keep header and footer apart. */
+@media(max-width:900px) and (max-height:520px) and (orientation:landscape){
+ body.project-static-detail-page{height:auto;overflow-y:auto}
+ body.project-static-detail-page .project-detail-layout{display:block;height:auto;min-height:100dvh;overflow:visible}
+ body.project-static-detail-page .project-info-panel{display:block;height:auto;overflow:visible}
+ body.project-static-detail-page .project-detail-copy{max-height:none;overflow:visible}
+ body.project-static-detail-page .project-detail-footer{margin-top:1rem}
 }
