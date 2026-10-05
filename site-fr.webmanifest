@@ -12,11 +12,6 @@
       "src": "images/patrones/favicon/favicon-512.png",
       "sizes": "512x512",
       "type": "image/png"
-    },
-    {
-      "src": "images/patrones/favicon/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png"
     }
   ],
   "lang": "fr"
