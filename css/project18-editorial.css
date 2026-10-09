@@ -1,0 +1,43 @@
+/* P18 editorial rhythm. Responsive values are defined here once. */
+body.project18-detail-page{
+  --p18-heading-size:22px;
+  --p18-section-gap:56px;
+  --p18-heading-gap:16px;
+  --p18-paragraph-gap:15px;
+  --p18-controls-gap:32px;
+}
+body.project18-detail-page .project-text-block{margin:0;padding-top:0}
+body.project18-detail-page .project-tags+.project-text-block,
+body.project18-detail-page .project-text-block+.project-text-block{margin-top:var(--p18-section-gap)}
+body.project18-detail-page .project-text-block>h2,
+body.project18-detail-page .project-mini-gallery__heading{
+  font-size:var(--p18-heading-size);
+  line-height:1.28;
+  letter-spacing:.07em;
+  font-weight:650;
+  margin:0 0 var(--p18-heading-gap);
+}
+body.project18-detail-page .project-text-block>p,
+body.project18-detail-page .project-text-block>ul{margin:0}
+body.project18-detail-page .project-text-block>p+p{margin-top:var(--p18-paragraph-gap)}
+body.project18-detail-page .project-tech-popover-lower{margin-top:var(--p18-controls-gap)}
+body.project18-detail-page .project-tech-action-row .btn-ft{min-height:52px}
+body.project18-detail-page .project-mini-gallery{margin-top:var(--p18-section-gap)}
+@media(max-width:900px){
+  body.project18-detail-page{
+    --p18-heading-size:18px;
+    --p18-section-gap:48px;
+    --p18-heading-gap:14px;
+    --p18-paragraph-gap:14px;
+    --p18-controls-gap:28px;
+  }
+}
+@media(max-width:520px){
+  body.project18-detail-page{--p18-heading-size:17px}
+  body.project18-detail-page .project-tech-action-row{flex-wrap:wrap}
+  body.project18-detail-page .project-share-tech-slot{flex-basis:100%}
+
+}
+@media(max-width:340px){
+  body.project18-detail-page pl-share-button{--pl-share-gap:6px}
+}
