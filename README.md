@@ -6,9 +6,9 @@ La web reúne proyectos orientados a explorar datos, detectar patrones, construi
 
 ## Sitio web
 
-https://malcolmdpc.github.io/
+https://patroneslab.com/
 
-<a href="https://malcolmdpc.github.io/">
+<a href="https://patroneslab.com/">
   <img src="images/patrones/social/patrones-lab-og.jpg" alt="Vista previa de Patrones Lab" width="50%">
 </a>
 

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://malcolmdpc.github.io/sitemap.xml
+Sitemap: https://patroneslab.com/sitemap.xml
