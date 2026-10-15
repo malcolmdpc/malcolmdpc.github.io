@@ -202,7 +202,7 @@ $('.color-mode').on('click', function(){
       'Email: ' + email + '\n\n' +
       pack.message + message
     );
-    window.location.href = 'mailto:encontrandopatrones@gmail.com?subject=' + subject + '&body=' + body;
+    window.location.href = 'mailto:malcolm@patroneslab.com?subject=' + subject + '&body=' + body;
   });
 
 })(jQuery);
@@ -2489,7 +2489,7 @@ $('.color-mode').on('click', function(){
       data.message + message
     );
 
-    window.location.href = 'mailto:encontrandopatrones@gmail.com?subject=' + subject + '&body=' + body;
+    window.location.href = 'mailto:malcolm@patroneslab.com?subject=' + subject + '&body=' + body;
   }, true);
 })();
 
