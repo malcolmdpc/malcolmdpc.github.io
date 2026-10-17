@@ -30,7 +30,84 @@
 <noscript><link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&amp;display=swap" rel="stylesheet"></noscript>
 <link href="../../css/unicons.css" rel="stylesheet">
 <link href="../../css/project-detail.css?v=73" rel="stylesheet">
-<meta content="Python" property="article:tag"><meta content="Pandas" property="article:tag"><meta content="Scikit-learn" property="article:tag"><meta content="Machine Learning" property="article:tag"><meta content="Neural Networks" property="article:tag"><meta content="Supervised Model" property="article:tag"><meta content="Classification" property="article:tag"><meta content="Logistic Regression" property="article:tag"><meta content="Keras" property="article:tag"><meta content="TensorFlow" property="article:tag"><meta content="NOAA Storm Events" property="article:tag"><meta content="en_US" property="og:locale"><meta content="es_ES" property="og:locale:alternate"><meta content="it_IT" property="og:locale:alternate"><meta content="fr_FR" property="og:locale:alternate"><meta content="de_DE" property="og:locale:alternate"><meta content="pt_PT" property="og:locale:alternate"><link href="https://patroneslab.com/en/projects/neural-network-weather-event-damage.html" rel="canonical"><link href="https://patroneslab.com/proyectos/red-neuronal-danos-eventos-meteorologicos.html" hreflang="es" rel="alternate"><link href="https://patroneslab.com/en/projects/neural-network-weather-event-damage.html" hreflang="en" rel="alternate"><link href="https://patroneslab.com/it/progetti/rete-neurale-danni-eventi-meteorologici.html" hreflang="it" rel="alternate"><link href="https://patroneslab.com/fr/projets/reseaux-neuronaux-dommages-evenements-meteo.html" hreflang="fr" rel="alternate"><link href="https://patroneslab.com/de/projekte/neuronales-netz-wetterschaeden.html" hreflang="de" rel="alternate"><link href="https://patroneslab.com/pt/projetos/rede-neuronal-danos-eventos-meteorologicos.html" hreflang="pt" rel="alternate"><link href="https://patroneslab.com/proyectos/red-neuronal-danos-eventos-meteorologicos.html" hreflang="x-default" rel="alternate"><link href="https://patroneslab.com/en/projects/monte-carlo-simulation-world-cup-2026.html" rel="prev"><link href="https://patroneslab.com/en/projects/geospatial-airbnb-analysis-london.html" rel="next"><link href="../../css/text-layout.css?v=75a" rel="stylesheet"><link rel="icon" href="../../images/patrones/favicon/favicon-512.png" sizes="512x512" type="image/png"></head>
+<meta content="Python" property="article:tag"><meta content="Pandas" property="article:tag"><meta content="Scikit-learn" property="article:tag"><meta content="Machine Learning" property="article:tag"><meta content="Neural Networks" property="article:tag"><meta content="Supervised Model" property="article:tag"><meta content="Classification" property="article:tag"><meta content="Logistic Regression" property="article:tag"><meta content="Keras" property="article:tag"><meta content="TensorFlow" property="article:tag"><meta content="NOAA Storm Events" property="article:tag"><meta content="en_US" property="og:locale"><meta content="es_ES" property="og:locale:alternate"><meta content="it_IT" property="og:locale:alternate"><meta content="fr_FR" property="og:locale:alternate"><meta content="de_DE" property="og:locale:alternate"><meta content="pt_PT" property="og:locale:alternate"><link href="https://patroneslab.com/en/projects/neural-network-weather-event-damage.html" rel="canonical"><link href="https://patroneslab.com/proyectos/red-neuronal-danos-eventos-meteorologicos.html" hreflang="es" rel="alternate"><link href="https://patroneslab.com/en/projects/neural-network-weather-event-damage.html" hreflang="en" rel="alternate"><link href="https://patroneslab.com/it/progetti/rete-neurale-danni-eventi-meteorologici.html" hreflang="it" rel="alternate"><link href="https://patroneslab.com/fr/projets/reseaux-neuronaux-dommages-evenements-meteo.html" hreflang="fr" rel="alternate"><link href="https://patroneslab.com/de/projekte/neuronales-netz-wetterschaeden.html" hreflang="de" rel="alternate"><link href="https://patroneslab.com/pt/projetos/rede-neuronal-danos-eventos-meteorologicos.html" hreflang="pt" rel="alternate"><link href="https://patroneslab.com/proyectos/red-neuronal-danos-eventos-meteorologicos.html" hreflang="x-default" rel="alternate"><link href="https://patroneslab.com/en/projects/monte-carlo-simulation-world-cup-2026.html" rel="prev"><link href="https://patroneslab.com/en/projects/geospatial-airbnb-analysis-london.html" rel="next"><link href="../../css/text-layout.css?v=75a" rel="stylesheet"><link rel="icon" href="../../images/patrones/favicon/favicon-512.png" sizes="512x512" type="image/png"><link href="../../vendor/katex/katex.min.css" rel="stylesheet"><style>
+body[data-project-detail="storm-events-neural-network"]{
+ --p16-section-gap:56px;--p16-title-gap:16px;--p16-paragraph-gap:15px;
+ --p16-subsection-before:36px;--p16-subsection-after:18px;
+ --p16-formula-before:28px;--p16-formula-after:24px;--p16-formula-note-gap:16px;
+ --p16-controls-before:32px
+}
+body[data-project-detail="storm-events-neural-network"] .project-detail-copy>.project-kicker{margin:0 0 .9rem!important}
+body[data-project-detail="storm-events-neural-network"] .project-detail-copy>h1{margin:0!important}
+body[data-project-detail="storm-events-neural-network"] .project-meta-line{margin:1rem 0 0!important}
+body[data-project-detail="storm-events-neural-network"] .project-lead{margin:1rem 0 0!important}
+body[data-project-detail="storm-events-neural-network"] .project-tags{margin:1.25rem 0 0!important}
+body[data-project-detail="storm-events-neural-network"] .project-text-block{margin:0!important;padding:0!important}
+body[data-project-detail="storm-events-neural-network"] .project-tags+.project-text-block,
+body[data-project-detail="storm-events-neural-network"] .project-text-block+.project-text-block{margin-top:var(--p16-section-gap)!important}
+body[data-project-detail="storm-events-neural-network"] .project-text-block>h2,
+body[data-project-detail="storm-events-neural-network"] .related-projects__heading{margin:0!important;font-size:22px!important;line-height:1.28!important;letter-spacing:.07em!important;font-weight:650!important}
+body[data-project-detail="storm-events-neural-network"] .project-text-block>h2+p{margin-top:var(--p16-title-gap)!important}
+body[data-project-detail="storm-events-neural-network"] .project-text-block p{margin:0!important}
+body[data-project-detail="storm-events-neural-network"] .project-text-block p+p{margin-top:var(--p16-paragraph-gap)!important}
+body[data-project-detail="storm-events-neural-network"] .project-text-subheading{display:flex;align-items:center;gap:.58rem;
+ margin:var(--p16-subsection-before) 0 0!important;color:#ffb56b;
+ font-family:"IBM Plex Sans",Inter,ui-sans-serif,system-ui,sans-serif;
+ font-size:1rem!important;line-height:1.35!important;font-weight:800;letter-spacing:-.01em}
+body[data-project-detail="storm-events-neural-network"] .project-text-subheading::before{content:"";width:.46rem;height:.46rem;flex:0 0 .46rem;
+ border-radius:50%;background:currentColor;box-shadow:0 0 0 3px color-mix(in srgb,currentColor 12%,transparent)}
+body[data-project-detail="storm-events-neural-network"].project-light-mode .project-text-subheading{color:#b85d00}
+body[data-project-detail="storm-events-neural-network"] .project-text-block>h2+.project-text-subheading{margin-top:var(--p16-subsection-before)!important}
+body[data-project-detail="storm-events-neural-network"] .project-text-subheading+p{margin-top:var(--p16-subsection-after)!important}
+body[data-project-detail="storm-events-neural-network"] .project-formula-block{margin:var(--p16-formula-before) 0 0!important;padding:0 .15rem!important;
+ max-width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
+body[data-project-detail="storm-events-neural-network"] .project-formula-label{display:block;margin:0 0 .875rem!important;color:var(--pd-accent);
+ font-family:Inter,ui-sans-serif,system-ui,sans-serif;font-size:.82rem;
+ font-weight:900;letter-spacing:.105em;line-height:1.35;text-transform:uppercase}
+body[data-project-detail="storm-events-neural-network"] .project-katex{max-width:100%;color:var(--pd-copy-strong);font-size:1.08rem;text-align:center}
+body[data-project-detail="storm-events-neural-network"] .project-katex+.project-katex{margin-top:.75rem!important}
+body[data-project-detail="storm-events-neural-network"] .project-katex .katex-display{margin:0;overflow-x:auto;overflow-y:hidden;padding:.05rem 0 .12rem}
+body[data-project-detail="storm-events-neural-network"] .project-text-block .project-formula-block>p.project-formula-note{margin-top:var(--p16-formula-note-gap)!important;
+ color:var(--pd-copy-soft)!important;font-size:.84rem!important;line-height:1.5!important;text-align:left!important}
+body[data-project-detail="storm-events-neural-network"] .project-text-block .project-formula-block+p{margin-top:var(--p16-formula-after)!important}
+body[data-project-detail="storm-events-neural-network"] .project-text-block+.project-tech-popover-lower{margin:var(--p16-controls-before) 0 0!important}
+body[data-project-detail="storm-events-neural-network"] .project-tech-action-row{gap:.85rem!important}
+body[data-project-detail="storm-events-neural-network"] .project-tech-action-row .btn-ft.btn-style-28{min-height:52px!important;
+ padding:.42rem .46rem .42rem 1.08rem!important;gap:.75rem!important;border-radius:14px!important}
+body[data-project-detail="storm-events-neural-network"] .project-tech-action-row .btn-ft.btn-style-28 .label{font-size:.8rem!important;letter-spacing:.105em!important}
+body[data-project-detail="storm-events-neural-network"] .project-tech-action-row .btn-ft.btn-style-28 .plus{width:30px!important;height:30px!important;
+ min-width:30px!important;font-size:1.08rem!important}
+body[data-project-detail="storm-events-neural-network"] .related-projects{margin:var(--p16-section-gap) 0 0!important;
+ padding-top:1.25rem!important;border-top:1px solid var(--pd-rule)!important}
+body[data-project-detail="storm-events-neural-network"] .related-projects__grid{margin-top:var(--p16-title-gap)!important;padding-top:0!important}
+body[data-project-detail="storm-events-neural-network"] .project-breadcrumb__item a{display:block;min-width:0;overflow:hidden;
+ text-overflow:ellipsis;white-space:nowrap}
+@media(max-width:900px){
+ body[data-project-detail="storm-events-neural-network"]{--p16-section-gap:48px;--p16-title-gap:14px;--p16-paragraph-gap:14px;
+ --p16-subsection-before:28px;--p16-subsection-after:16px;
+ --p16-formula-before:24px;--p16-formula-after:22px;--p16-formula-note-gap:11px;
+ --p16-controls-before:28px}
+ body[data-project-detail="storm-events-neural-network"] .project-text-block>h2,body[data-project-detail="storm-events-neural-network"] .related-projects__heading{font-size:18px!important;line-height:1.3!important;letter-spacing:.075em!important}
+ body[data-project-detail="storm-events-neural-network"] .project-text-subheading{font-size:.96rem!important;gap:.5rem}
+ body[data-project-detail="storm-events-neural-network"] .project-text-subheading::before{flex-basis:.4rem;width:.4rem;height:.4rem}
+ body[data-project-detail="storm-events-neural-network"] .project-formula-block{padding:0!important}
+ body[data-project-detail="storm-events-neural-network"] .project-formula-label{font-size:.76rem!important}
+ body[data-project-detail="storm-events-neural-network"] .project-katex{font-size:.96rem!important}
+ body[data-project-detail="storm-events-neural-network"] .project-text-block .project-formula-block>p.project-formula-note{font-size:.79rem!important;line-height:1.48!important}
+ body[data-project-detail="storm-events-neural-network"] .related-projects{padding-top:1rem!important}
+ body[data-project-detail="storm-events-neural-network"] .project-tech-action-row{gap:.7rem!important}
+ body[data-project-detail="storm-events-neural-network"] .project-tech-action-row .btn-ft.btn-style-28{min-height:52px!important;
+ padding:.42rem .44rem .42rem 1rem!important;gap:.7rem!important}
+ body[data-project-detail="storm-events-neural-network"] .project-tech-action-row .btn-ft.btn-style-28 .label{font-size:.76rem!important}
+}
+@media(max-width:520px){
+ body[data-project-detail="storm-events-neural-network"] .project-text-block>h2,body[data-project-detail="storm-events-neural-network"] .related-projects__heading{font-size:17px!important;letter-spacing:.08em!important}
+ body[data-project-detail="storm-events-neural-network"] .project-tech-action-row{gap:.65rem!important}
+ body[data-project-detail="storm-events-neural-network"] .project-tech-action-row .btn-ft.btn-style-28 .label{font-size:.72rem!important}
+}
+@media(max-width:430px){body[data-project-detail="storm-events-neural-network"] .project-katex{font-size:.9rem!important}}
+
+</style></head>
 <body class="project-detail-page project-static-detail-page" data-project-detail="storm-events-neural-network">
 <main aria-label="Project page" class="project-detail-layout">
 <section aria-label="Main image for the Neural Networks · Weather Event Damage project" class="project-gallery-panel project-static-hero-panel project-cover-shine"><picture class="project-static-hero-picture"><source media="(max-width: 900px)" srcset="../../images/patrones/projects/storm-events-neural-network/p16-storm-events-neural-network-mobile-banner.webp" type="image/webp" width="960" height="320"></source><source media="(min-width: 901px) and (max-width: 1100px)" srcset="../../images/patrones/projects/storm-events-neural-network/p16-storm-events-neural-network-mobile.webp" type="image/webp" width="480" height="1440"></source><img alt="Electrical storm with variables from the economic damage prediction model overlaid — Patrones Lab" class="project-static-hero-image" decoding="async" fetchpriority="high" height="1536" loading="eager" src="../../images/patrones/projects/storm-events-neural-network/p16-storm-events-neural-network-static.webp" width="1024"></picture></section>
@@ -47,29 +124,62 @@
 <p class="project-kicker">Project 16 · Machine Learning</p>
 <h1>Neural Networks · Weather Event Damage</h1>
 <div class="project-meta-line"><span class="project-status-badge">⚠️ in development</span><span aria-label="Data year: 2025" class="project-data-badge"><span>data:</span><strong>2025</strong></span></div>
-<p class="project-lead">Classification model for estimating economic damage in weather events, comparing logistic regression with a neural network using NOAA Storm Events data from 2010–2025.</p>
+<p class="project-lead">Classification model applied to NOAA Storm Events data to estimate the probability of recorded economic damage in weather events. The project uses information from 2010 to 2025, compares logistic regression with a neural network, and evaluates their performance on years after those used for training.</p>
 <div aria-label="Technologies and topics" class="project-tags project-tech-logo-list"><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="110" loading="lazy" src="../../images/patrones/tag-logos/python.png" width="110"></span><figcaption class="project-tech-logo-label">Python</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="110" loading="lazy" src="../../images/patrones/tag-logos/keras.svg" width="110"></span><figcaption class="project-tech-logo-label">Keras</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="118" loading="lazy" src="../../images/patrones/tag-logos/scikit-learn.png" width="118"></span><figcaption class="project-tech-logo-label">Scikit-learn</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="118" loading="lazy" src="../../images/patrones/tag-logos/machine-learning.png" width="118"></span><figcaption class="project-tech-logo-label">Machine Learning</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="118" loading="lazy" src="../../images/patrones/tag-logos/modelo-supervisado.png" width="118"></span><figcaption class="project-tech-logo-label">Supervised model</figcaption></figure><figure class="project-tech-logo-item"><span class="project-tech-logo-media"><img alt="" aria-hidden="true" decoding="async" height="118" loading="lazy" src="../../images/patrones/tag-logos/red-neuronal.svg" width="118"></span><figcaption class="project-tech-logo-label">Neural Network</figcaption></figure></div>
-<section class="project-text-block"><h2>CONTEXT AND OBJECTIVE</h2><p>The project uses NOAA Storm Events to classify whether a weather event records economic damage. Comparing logistic regression with a neural network tests whether a nonlinear model improves detection while retaining an interpretable baseline.</p></section>
-<section class="project-text-block"><h2>MODEL AND VALIDATION</h2><p>The dataset combines 1,037,691 events from 2010–2025 and uses 19 temporal, geographic, and meteorological predictors. Evaluation preserves time: 2010–2021 for training, 2022–2023 for validation, and 2024–2025 as the reserved final test.</p></section>
-<section class="project-text-block"><h2>CURRENT STATUS AND NEXT STEPS</h2><p>On the 2024–2025 test set, the neural network improves on logistic regression in ROC AUC (0.9324 vs. 0.8961), PR AUC (0.8004 vs. 0.6691), and positive-class F1 (0.6991 vs. 0.6042). Results are preliminary because the project is still in development.</p></section>
+<section class="project-text-block">
+<h2>CONTEXT AND OBJECTIVE</h2>
+<p>The project uses 1,037,691 weather events recorded by NOAA Storm Events between 2010 and 2025. Each record includes information on the observed phenomenon, date and location, together with weather characteristics and property and crop damage amounts when reported.</p>
+<p>These data were used to define a target variable identifying events with recorded economic damage. The analysis estimates the probability of this outcome using temporal, geographical and weather information for each event. To make predictions depend on these characteristics, damage amounts and other variables that directly reveal the outcome were excluded from the predictors.</p>
+<p>Two supervised classification models were compared. Logistic regression provides a statistical baseline through coefficients associated with the variables; the neural network offers greater flexibility to learn relationships between them. The models were trained on data from 2010 to 2021, validated on 2022 and 2023, and finally evaluated on events from 2024 and 2025. This temporal split measures their performance on records more recent than those used to fit each model.</p>
+</section>
+<section class="project-text-block">
+<h2>MODEL AND VALIDATION</h2>
+<h3 class="project-text-subheading">Data preparation and definition of recorded damage</h3>
+<p>The annual NOAA Storm Events files were first downloaded and integrated into a single dataset. Column names and types, missing values and consistency across years were reviewed before preparing the model variables.</p>
+<p>Property and crop damage appear in the files in different units, such as thousands or millions. They were converted into comparable numerical amounts and added together to construct the variable indicating whether each event has recorded economic damage.</p>
+<div class="project-formula-block"><span class="project-formula-label">TARGET VARIABLE · RECORDED ECONOMIC DAMAGE</span><div class="project-katex" data-expression="y_i=\mathbb{1}\left(D_{\mathrm{prop},i}+D_{\mathrm{cult},i}&gt;0\right)" aria-label="Mathematical formula">y_i=\mathbb{1}\left(D_{\mathrm{prop},i}+D_{\mathrm{cult},i}&gt;0\right)</div><p class="project-formula-note">The indicator equals 1 when the sum of recorded property and crop damage is greater than zero, and 0 otherwise. Amounts without a reported value were treated as zero when constructing it. The model therefore identifies damage recorded by NOAA, which does not necessarily represent all damage that may have occurred.</p></div>
+<p>Predictions used 19 source variables: ten numerical and nine categorical. These include dates, locations, event types, magnitudes and coordinates. Indicators of missing information were also created. Damage amounts and columns directly revealing the outcome were excluded from the predictors so that the model would learn from event characteristics.</p>
+<h3 class="project-text-subheading">Temporal split and variable preparation</h3>
+<p>Records were split chronologically into three sets: 2010-2021 for training, 2022-2023 for validation and 2024-2025 for the final test. The first period was used to estimate the models; the second to monitor their performance during development; and the third was reserved for the final comparison on later data.</p>
+<p>Common preprocessing was applied before training the models. Missing numerical values were filled with the training set median, and values were standardized to work on comparable scales. Categorical variables were transformed using one-hot encoding, which creates indicator columns for observed categories. Preprocessing was fitted on the training data and then applied to validation and test data without recalculating its parameters.</p>
+<h3 class="project-text-subheading">Logistic regression as the baseline model</h3>
+<p>Logistic regression served as the analysis baseline. During training, it estimates a coefficient for each transformed variable and combines these contributions into a score summarizing an event’s tendency to have recorded damage. Each coefficient’s sign indicates whether a variable increases or decreases this score, holding the others constant; its magnitude reflects the weight of that contribution on the model’s scale. The sigmoid function transforms the result into a probability between 0 and 1.</p>
+<div class="project-formula-block"><span class="project-formula-label">PROBABILITY ESTIMATED WITH LOGISTIC REGRESSION</span><div class="project-katex" data-expression="\hat{p}_i=\frac{1}{1+e^{-(\beta_0+\sum_j\beta_jx_{ij})}}" aria-label="Mathematical formula">\hat{p}_i=\frac{1}{1+e^{-(\beta_0+\sum_j\beta_jx_{ij})}}</div><p class="project-formula-note">In the equation, x represents the variables after preprocessing and β represents the coefficients estimated from the training data. The sigmoid transforms the linear combination into a probability of recorded economic damage between 0 and 1.</p></div>
+<p>Training includes L2 regularization to moderate excessively large coefficients and encourage more stable estimation when working with many transformed variables. Logistic regression thus provides a concrete point of comparison: its probabilities, correct predictions and errors are compared with those of the neural network over the same periods to assess the contribution of the latter’s greater flexibility.</p>
+<h3 class="project-text-subheading">Neural network and comparison of results</h3>
+<p>A neural network with dense layers was trained using the same prepared variables. Unlike logistic regression, the network combines signals in several stages using weights learned during training. ReLU activations allow it to capture nonlinear relationships; dropout helps reduce overfitting, and the final layer uses a sigmoid to express the prediction as a probability of recorded damage.</p>
+<div class="project-formula-block"><span class="project-formula-label">TRANSFORMATION IN THE HIDDEN LAYERS</span><div class="project-katex" data-expression="h^{(l)}=\mathrm{ReLU}\left(W^{(l)}h^{(l-1)}+b^{(l)}\right)" aria-label="Mathematical formula">h^{(l)}=\mathrm{ReLU}\left(W^{(l)}h^{(l-1)}+b^{(l)}\right)</div><p class="project-formula-note">In each layer, weights W and biases b transform the incoming information. The ReLU function allows the network to learn relationships that cannot be described by a purely linear combination.</p></div>
+<div class="project-formula-block"><span class="project-formula-label">NEURAL NETWORK PROBABILITY</span><div class="project-katex" data-expression="\hat{p}_i=\sigma\left(w^\top h_i+b\right)" aria-label="Mathematical formula">\hat{p}_i=\sigma\left(w^\top h_i+b\right)</div><p class="project-formula-note">The final layer applies the sigmoid function σ to the information learned by the network and returns a probability of recorded damage for each event.</p></div>
+<p>The network was trained using Adam, which adjusts weights based on model errors, and binary cross-entropy to measure the difference between predicted probabilities and observed outcomes. Monitoring validation performance allowed the learning rate to be adjusted and training to stop when improvement ceased, limiting overfitting.</p>
+<div class="project-formula-block"><span class="project-formula-label">LOSS · BINARY CROSS-ENTROPY</span><div class="project-katex" data-expression="\mathcal{L}=-\frac{1}{n}\sum_{i=1}^{n}\left[y_i\log(\hat{p}_i)+(1-y_i)\log(1-\hat{p}_i)\right]" aria-label="Mathematical formula">\mathcal{L}=-\frac{1}{n}\sum_{i=1}^{n}\left[y_i\log(\hat{p}_i)+(1-y_i)\log(1-\hat{p}_i)\right]</div><p class="project-formula-note">Cross-entropy compares the observed outcome y with the estimated probability p̂. The lower its value, the better the probabilities fit the actual outcomes.</p></div>
+<p>The final comparison used ROC AUC and PR AUC, which evaluate how well each model separates events with recorded damage from other events. PR AUC is especially important because events with positive damage are less frequent. Precision, recall, F1 and confusion matrices were also calculated to review how many positive cases each model detects and how many alerts are correct.</p>
+<div class="project-formula-block"><span class="project-formula-label">PRECISION AND RECALL OF EVENTS WITH DAMAGE</span><div class="project-katex" data-expression="\mathrm{Precision}=\frac{VP}{VP+FP}" aria-label="Mathematical formula">\mathrm{Precision}=\frac{VP}{VP+FP}</div><div class="project-katex" data-expression="\mathrm{Recall}=\frac{VP}{VP+FN}" aria-label="Mathematical formula">\mathrm{Recall}=\frac{VP}{VP+FN}</div><p class="project-formula-note">VP denotes damage cases correctly detected by the model; FP denotes positive alerts for events without recorded damage; and FN denotes damage cases the model failed to identify. Precision measures the proportion of positive alerts that were correct, while recall measures the proportion of events with damage that were detected.</p></div>
+</section>
+<section class="project-text-block">
+<h2>DELIVERY AND LEARNING</h2>
+<p>In the final test on events from 2024-2025, the neural network achieved a ROC AUC of 0.9324 and a PR AUC of 0.8004. Logistic regression achieved 0.8961 and 0.6691, respectively. The neural network better distinguished events with recorded damage, with a particularly clear advantage in PR AUC.</p>
+<p>Considering only events with recorded damage, the neural network achieved precision of 0.7942, recall of 0.6243 and F1 of 0.6991. Logistic regression achieved 0.7580, 0.5023 and 0.6042. In practical terms, the neural network identified a larger proportion of these events while maintaining higher precision in its positive alerts.</p>
+<div class="project-formula-block"><span class="project-formula-label">F1 METRIC · BALANCE BETWEEN PRECISION AND RECALL</span><div class="project-katex" data-expression="F_1=2\,\frac{\mathrm{Precision}\cdot\mathrm{Recall}}{\mathrm{Precision}+\mathrm{Recall}}" aria-label="Mathematical formula">F_1=2\,\frac{\mathrm{Precision}\cdot\mathrm{Recall}}{\mathrm{Precision}+\mathrm{Recall}}</div><p class="project-formula-note">F1 combines precision and recall into a single indicator. It is useful for comparing models when detecting the positive class matters while avoiding too many incorrect alerts.</p></div>
+<p>The comparison provides estimated probabilities for each event, predictions from both models, confusion matrices, comparative metrics and training plots. The preprocessing and models were retained to apply the same criteria to new records with the same variables. When data from later years are added, their predictions can be compared with recorded damage to check whether performance is maintained or retraining is advisable.</p>
+</section>
 <div class="project-tech-popover project-tech-popover-lower" data-tech-popover="">
 <div class="project-tech-action-row"><button aria-controls="project16-tech-sheet" aria-expanded="false" aria-label="View project technical sheet" class="project-tech-trigger btn-ft btn-style-28" type="button">
 <span class="label">View technical sheet</span>
 <span aria-hidden="true" class="plus project-tech-trigger-icon">+</span>
-</button><span aria-label="Share project" class="project-share-tech-slot"><pl-share-button direction="right" size="md"></pl-share-button></span></div>
+</button><span aria-label="Share project" class="project-share-tech-slot"><pl-share-button direction="right" size="lg" share-title="Weather Event Damage Prediction · Neural Networks" share-url="https://patroneslab.com/en/projects/neural-network-weather-event-damage.html"></pl-share-button></span></div>
 <section aria-hidden="true" aria-label="Project technical sheet" class="project-tech-sheet" id="project16-tech-sheet">
 <h2>TECHNICAL SHEET</h2>
 <dl class="project-tech-grid">
-<div class="project-tech-row"><dt>Analysis type</dt><dd>Machine Learning · Binary classification · Neural network</dd></div>
+<div class="project-tech-row"><dt>Analysis type</dt><dd>Machine Learning · Supervised binary classification · Logistic regression and neural network</dd></div>
 <div class="project-tech-row"><dt>Data source</dt><dd>NOAA / NCEI Storm Events · Details files</dd></div>
-<div class="project-tech-row"><dt>Analysis period</dt><dd>2010–2025</dd></div>
+<div class="project-tech-row"><dt>Analysis period</dt><dd>2010-2025 · training 2010-2021 · validation 2022-2023 · test 2024-2025</dd></div>
 <div class="project-tech-row"><dt>Unit of analysis</dt><dd>Individual weather events recorded in NOAA Storm Events</dd></div>
-<div class="project-tech-row"><dt>Main variables</dt><dd>19 temporal, geographic, and meteorological predictors</dd></div>
-<div class="project-tech-row"><dt>Analysis focus</dt><dd>Estimating the probability of recorded economic damage and comparing a logistic regression baseline with a neural network</dd></div>
-<div class="project-tech-row"><dt>Processing</dt><dd>Target and feature preparation, temporal split, preprocessing, logistic regression baseline, and Keras neural network</dd></div>
-<div class="project-tech-row"><dt>Tools</dt><dd>Python · Pandas · NumPy · Scikit-learn · Keras · TensorFlow · Matplotlib · GitHub</dd></div>
-<div class="project-tech-row"><dt>Project output</dt><dd>Five notebooks, preprocessing pipeline, compared models, predictions, and eperformance metrics</dd></div>
-<div class="project-tech-row"><dt>Status</dt><dd>In progress</dd></div>
+<div class="project-tech-row"><dt>Main variables</dt><dd>19 temporal, geographical and weather variables; property and crop damage amounts to construct the target variable</dd></div>
+<div class="project-tech-row"><dt>Analysis focus</dt><dd>Probability of recorded economic damage and performance comparison of logistic regression and a neural network</dd></div>
+<div class="project-tech-row"><dt>Processing</dt><dd>Ingestion and quality control, damage conversion, target construction, derived variables, temporal split, imputation, standardization, one-hot encoding, training and evaluation</dd></div>
+<div class="project-tech-row"><dt>Tools</dt><dd>Python · Pandas · NumPy · Scikit-learn · TensorFlow · Keras · Matplotlib · GitHub</dd></div>
+<div class="project-tech-row"><dt>Project output</dt><dd>Analytical notebooks, trained models, predictions for each event, confusion matrices, comparative metrics and training plots</dd></div>
+<div class="project-tech-row"><dt>Status</dt><dd>In development</dd></div>
 </dl>
 </section>
 </div>
@@ -96,5 +206,5 @@
 </footer>
 </section></main>
 <script defer src="../../js/project-detail.js?v=70"></script><script defer src="../../js/pl-share-button.js"></script>
-<script src="../../js/project-navigation.js?v=75"></script></body>
+<script src="../../js/project-navigation.js?v=75"></script><script defer src="../../vendor/katex/katex.min.js"></script><script>document.addEventListener("DOMContentLoaded",function(){function showP16Math(){if(!window.katex)return false;document.querySelectorAll(".project-katex[data-expression]").forEach(function(el){window.katex.render(el.dataset.expression,el,{displayMode:true,throwOnError:false,strict:"ignore"})});return true}if(showP16Math())return;var n=0;var wait=setInterval(function(){n++;if(showP16Math()||n>=40)clearInterval(wait)},100)});</script></body>
 </html>
