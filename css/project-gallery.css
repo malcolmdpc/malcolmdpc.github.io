@@ -1,0 +1,42 @@
+.project-detail-page .project-mini-gallery{margin:4.25rem 0 4.45rem}
+.project-detail-page .project-mini-gallery[hidden]{display:none!important}
+.project-detail-page .project-mini-gallery__heading{margin:0 0 1.35rem;font-family:"IBM Plex Sans",Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:18px;line-height:1.4;font-weight:620;letter-spacing:.08em;color:var(--pd-accent);text-transform:uppercase}
+.project-detail-page .project-mini-gallery__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.68rem}
+.project-detail-page .project-mini-gallery__grid.is-masonry{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-count:auto;gap:.68rem;align-items:start}
+.project-detail-page .project-mini-gallery__item{display:block;width:100%;margin:0;padding:0;border:0;background:transparent;cursor:default;break-inside:avoid;overflow:hidden;border-radius:10px}
+.project-detail-page .project-mini-gallery__grid.is-masonry .project-mini-gallery__item{margin-bottom:0}
+.project-detail-page .project-mini-gallery__item.is-ready{cursor:zoom-in}
+.project-detail-page .project-mini-gallery__placeholder{display:grid;place-items:center;width:100%;aspect-ratio:4/5;min-height:150px;border:1px dashed color-mix(in srgb,var(--pd-copy-muted) 38%,transparent);border-radius:inherit;background:color-mix(in srgb,var(--pd-copy-muted) 5%,transparent);color:var(--pd-copy-muted);font:800 .72rem/1.2 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.project-detail-page .project-mini-gallery__item.is-ready .project-mini-gallery__placeholder{display:none}
+.project-detail-page .project-mini-gallery__item img{display:block;width:100%;height:auto;transition:transform .24s ease,filter .24s ease}
+.project-detail-page .project-mini-gallery__item:hover img,.project-detail-page .project-mini-gallery__item:focus-visible img{transform:scale(1.025);filter:brightness(1.05)}
+.project-detail-page .project-mini-gallery__item:focus-visible{outline:2px solid var(--pd-accent);outline-offset:3px}
+.project-detail-page .project-gallery-lightbox[hidden]{display:none!important}
+.project-detail-page .project-gallery-lightbox{position:fixed;inset:0;z-index:9999;display:grid;grid-template-columns:auto minmax(0,auto) auto;align-items:center;justify-content:center;gap:clamp(.75rem,2vw,1.65rem);padding:clamp(1rem,3vw,2.5rem);background:rgba(6,7,9,.94);backdrop-filter:blur(8px)}
+.project-detail-page .project-gallery-lightbox__figure{position:relative;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:auto;height:auto;max-width:min(82vw,calc(100vw - 14rem),1500px);max-height:88vh;margin:0}
+.project-detail-page .project-gallery-lightbox__image{display:block;max-width:min(82vw,calc(100vw - 14rem),1500px);max-height:calc(88vh - 3rem);width:auto;height:auto;object-fit:contain}
+.project-detail-page .project-gallery-lightbox__close,.project-detail-page .project-gallery-lightbox__nav{border:0;background:rgba(20,21,24,.72);color:#fff;cursor:pointer;display:grid;place-items:center;z-index:2;transition:background .2s ease,transform .2s ease}
+.project-detail-page .project-gallery-lightbox__close{position:absolute;top:1rem;right:1rem;width:44px;height:44px;border-radius:50%;font-size:1.55rem;line-height:1}
+.project-detail-page .project-gallery-lightbox__nav{position:static;width:46px;height:58px;border-radius:10px;transform:none;font-size:1.7rem;align-self:center}
+.project-detail-page .project-gallery-lightbox__prev{grid-column:1}
+.project-detail-page .project-gallery-lightbox__next{grid-column:3}
+.project-detail-page .project-gallery-lightbox__close:hover,.project-detail-page .project-gallery-lightbox__nav:hover{background:rgba(255,216,77,.18)}
+.project-detail-page .project-gallery-lightbox__counter{position:static;margin-top:.9rem;padding:.35rem .62rem;border-radius:999px;background:rgba(20,21,24,.72);color:#fff;font:700 .76rem/1 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.06em}
+@media (max-width:900px){.project-detail-page .project-mini-gallery{margin:3.55rem 0 3.75rem}
+.project-detail-page .project-mini-gallery__heading{font-size:18px;margin-bottom:1.35rem}
+.project-detail-page .project-mini-gallery__grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:.4rem}
+.project-detail-page .project-mini-gallery__grid.is-masonry{column-count:auto;gap:.4rem}
+.project-detail-page .project-mini-gallery__grid.is-masonry .project-mini-gallery__item{margin-bottom:0}
+.project-detail-page .project-mini-gallery__item{border-radius:8px}
+.project-detail-page .project-gallery-lightbox{grid-template-columns:42px minmax(0,auto) 42px;gap:.55rem;padding:.8rem}
+.project-detail-page .project-gallery-lightbox__figure{width:auto;height:auto;max-width:calc(100vw - 8rem);max-height:84vh}
+.project-detail-page .project-gallery-lightbox__image{max-width:calc(100vw - 8rem);max-height:calc(84vh - 2.8rem)}
+.project-detail-page .project-gallery-lightbox__close{top:.65rem;right:.65rem;width:42px;height:42px}
+.project-detail-page .project-gallery-lightbox__nav{width:42px;height:54px}
+.project-detail-page .project-gallery-lightbox__counter{margin-top:.75rem}}
+@media (max-width:520px){.project-detail-page .project-mini-gallery__heading{font-size:.76rem;letter-spacing:.12em}}
+@media (max-width:430px){.project-detail-page .project-gallery-lightbox{grid-template-columns:40px minmax(0,auto) 40px;gap:.45rem;padding:.7rem}
+.project-detail-page .project-gallery-lightbox__figure{max-width:calc(100vw - 7.3rem);max-height:80vh}
+.project-detail-page .project-gallery-lightbox__image{max-width:calc(100vw - 7.3rem);max-height:calc(80vh - 2.6rem)}
+.project-detail-page .project-gallery-lightbox__nav{width:40px;height:48px;border-radius:10px;font-size:1.5rem}
+.project-detail-page .project-gallery-lightbox__counter{margin-top:.65rem}}

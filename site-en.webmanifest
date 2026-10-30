@@ -1,0 +1,18 @@
+{
+  "name": "Patrones Lab · Data Analytics",
+  "short_name": "Patrones Lab",
+  "description": "Patrones Lab brings together data analytics, Business Intelligence and Machine Learning projects to explore data, identify patterns, generate knowledge and visually represent findings.",
+  "start_url": "/en/",
+  "scope": "/en/",
+  "display": "standalone",
+  "background_color": "#0c0c0d",
+  "theme_color": "#0c0c0d",
+  "icons": [
+    {
+      "src": "images/patrones/favicon/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "lang": "en"
+}
