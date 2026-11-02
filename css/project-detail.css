@@ -883,3 +883,19 @@ body.project20-detail-page .project-step-button[aria-disabled="true"]{opacity:.3
   .related-project-card__image-hover{height:clamp(80px,25vw,130px)}
   .related-project-card__category{letter-spacing:.06em}
 }
+
+/* Shared formula captions: P06/P07 reference, all projects and languages. */
+body.project-detail-page .project-formula-label {
+ display:block;margin:0 0 14px!important;color:var(--pd-accent)!important;
+ font-family:Inter,sans-serif;font-weight:900;font-size:.82rem;line-height:1.35;
+ letter-spacing:.105em;text-transform:uppercase;text-align:left!important;
+}
+body.project-detail-page .project-formula-block > .project-formula-note {
+ margin:16px 0 0!important;color:var(--pd-copy-soft)!important;
+ font-size:.84rem!important;line-height:1.5!important;text-align:justify!important;
+ text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word;
+}
+@media(max-width:900px) {
+ body.project-detail-page .project-formula-label {font-size:.76rem;margin-bottom:11px!important}
+ body.project-detail-page .project-formula-block > .project-formula-note {font-size:.79rem!important;line-height:1.48!important;margin-top:11px!important}
+}
