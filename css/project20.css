@@ -7,11 +7,9 @@ body.project20-detail-page .project-text-block>h2{margin-bottom:1.65rem}
 .project20-detail-page .project-text-subheading::before{content:"";flex:0 0 .46rem;width:.46rem;height:.46rem;border-radius:50%;background:currentColor;box-shadow:0 0 0 3px color-mix(in srgb,currentColor 12%,transparent)}
 .project20-detail-page.project-light-mode .project-text-subheading{color:#b85d00}
 .project20-detail-page .project-formula-block{margin:2.05rem 0 2.45rem;padding:0 .15rem;max-width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
-.project20-detail-page .project-formula-label{display:block;margin:0 0 1rem;color:var(--pd-accent);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:.82rem;line-height:1.35;font-weight:900;letter-spacing:.105em;text-transform:uppercase}
 .project20-detail-page .project-katex{max-width:100%;color:var(--pd-copy-strong);font-size:1.08rem;text-align:center}
 .project20-detail-page .project-katex+.project-katex{margin-top:.72rem}
 .project20-detail-page .project-katex .katex-display{margin:0;overflow-x:auto;overflow-y:hidden;padding:.05rem 0 .12rem}
-.project20-detail-page .project-formula-note{margin-top:.95rem!important;color:var(--pd-copy-soft)!important;font-size:.84rem!important;line-height:1.5!important;text-align:left!important}
 .project20-detail-page .project-mini-gallery{margin:4.25rem 0 4.45rem}
 .project20-detail-page .project-mini-gallery[hidden]{display:none!important}
 .project20-detail-page .project-mini-gallery__heading{margin:0 0 1.35rem;font-family:"IBM Plex Sans",Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:18px;line-height:1.4;font-weight:620;letter-spacing:.08em;color:var(--pd-accent);text-transform:uppercase}
@@ -36,7 +34,7 @@ body.project20-detail-page .project-text-block>h2{margin-bottom:1.65rem}
 .project20-detail-page .project-gallery-lightbox__next{grid-column:3}
 .project20-detail-page .project-gallery-lightbox__close:hover,.project20-detail-page .project-gallery-lightbox__nav:hover{background:rgba(255,216,77,.18)}
 .project20-detail-page .project-gallery-lightbox__counter{position:static;margin-top:.9rem;padding:.35rem .62rem;border-radius:999px;background:rgba(20,21,24,.72);color:#fff;font:700 .76rem/1 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.06em}
-@media (max-width:900px){.project20-detail-page .project-text-block{margin-bottom:2.8rem}.project20-detail-page .project-text-block+.project-text-block{margin-top:.8rem}body.project20-detail-page .project-text-block>h2{margin-bottom:1.35rem}.project20-detail-page .project-text-block p+p{margin-top:.78rem}.project20-detail-page .project-text-subheading{font-size:.94rem;margin:2.35rem 0 1.08rem;gap:.5rem}.project20-detail-page .project-text-subheading::before{flex-basis:.4rem;width:.4rem;height:.4rem}.project20-detail-page .project-formula-block{margin:1.9rem 0 2.3rem;padding:0}.project20-detail-page .project-formula-label{font-size:.76rem;margin-bottom:.92rem}.project20-detail-page .project-katex{font-size:.96rem}.project20-detail-page .project-formula-note{font-size:.79rem!important;line-height:1.48!important}.project20-detail-page .project-mini-gallery{margin:3.55rem 0 3.75rem}.project20-detail-page .project-mini-gallery__heading{font-size:18px;margin-bottom:1.35rem}.project20-detail-page .related-projects{margin-top:3.65rem;padding-top:.9rem;border-top:1px solid var(--pd-rule)}.project20-detail-page .related-projects__heading{font-size:18px;margin-bottom:1.35rem}.project20-detail-page .project-mini-gallery__grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:.4rem}.project20-detail-page .project-mini-gallery__grid.is-masonry{column-count:auto;gap:.4rem}.project20-detail-page .project-mini-gallery__grid.is-masonry .project-mini-gallery__item{margin-bottom:0}.project20-detail-page .project-mini-gallery__item{border-radius:8px}.project20-detail-page .project-gallery-lightbox{grid-template-columns:42px minmax(0,auto) 42px;gap:.55rem;padding:.8rem}.project20-detail-page .project-gallery-lightbox__figure{width:auto;height:auto;max-width:calc(100vw - 8rem);max-height:84vh}.project20-detail-page .project-gallery-lightbox__image{max-width:calc(100vw - 8rem);max-height:calc(84vh - 2.8rem)}.project20-detail-page .project-gallery-lightbox__close{top:.65rem;right:.65rem;width:42px;height:42px}.project20-detail-page .project-gallery-lightbox__nav{width:42px;height:54px}.project20-detail-page .project-gallery-lightbox__counter{margin-top:.75rem}}
+@media (max-width:900px){.project20-detail-page .project-text-block{margin-bottom:2.8rem}.project20-detail-page .project-text-block+.project-text-block{margin-top:.8rem}body.project20-detail-page .project-text-block>h2{margin-bottom:1.35rem}.project20-detail-page .project-text-block p+p{margin-top:.78rem}.project20-detail-page .project-text-subheading{font-size:.94rem;margin:2.35rem 0 1.08rem;gap:.5rem}.project20-detail-page .project-text-subheading::before{flex-basis:.4rem;width:.4rem;height:.4rem}.project20-detail-page .project-formula-block{margin:1.9rem 0 2.3rem;padding:0}.project20-detail-page .project-katex{font-size:.96rem}.project20-detail-page .project-mini-gallery{margin:3.55rem 0 3.75rem}.project20-detail-page .project-mini-gallery__heading{font-size:18px;margin-bottom:1.35rem}.project20-detail-page .related-projects{margin-top:3.65rem;padding-top:.9rem;border-top:1px solid var(--pd-rule)}.project20-detail-page .related-projects__heading{font-size:18px;margin-bottom:1.35rem}.project20-detail-page .project-mini-gallery__grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:.4rem}.project20-detail-page .project-mini-gallery__grid.is-masonry{column-count:auto;gap:.4rem}.project20-detail-page .project-mini-gallery__grid.is-masonry .project-mini-gallery__item{margin-bottom:0}.project20-detail-page .project-mini-gallery__item{border-radius:8px}.project20-detail-page .project-gallery-lightbox{grid-template-columns:42px minmax(0,auto) 42px;gap:.55rem;padding:.8rem}.project20-detail-page .project-gallery-lightbox__figure{width:auto;height:auto;max-width:calc(100vw - 8rem);max-height:84vh}.project20-detail-page .project-gallery-lightbox__image{max-width:calc(100vw - 8rem);max-height:calc(84vh - 2.8rem)}.project20-detail-page .project-gallery-lightbox__close{top:.65rem;right:.65rem;width:42px;height:42px}.project20-detail-page .project-gallery-lightbox__nav{width:42px;height:54px}.project20-detail-page .project-gallery-lightbox__counter{margin-top:.75rem}}
 @media (max-width:520px){.project20-detail-page .project-mini-gallery__heading,.project20-detail-page .related-projects__heading{font-size:.76rem;letter-spacing:.12em}}
 @media (max-width:430px){.project20-detail-page .project-katex{font-size:.9rem}.project20-detail-page .project-gallery-lightbox{grid-template-columns:40px minmax(0,auto) 40px;gap:.45rem;padding:.7rem}.project20-detail-page .project-gallery-lightbox__figure{max-width:calc(100vw - 7.3rem);max-height:80vh}.project20-detail-page .project-gallery-lightbox__image{max-width:calc(100vw - 7.3rem);max-height:calc(80vh - 2.6rem)}.project20-detail-page .project-gallery-lightbox__nav{width:40px;height:48px;border-radius:10px;font-size:1.5rem}.project20-detail-page .project-gallery-lightbox__counter{margin-top:.65rem}}
 
@@ -56,9 +54,7 @@ body.project20-detail-page .project-text-block>h2{margin:0}
 .project20-detail-page .project-text-block>h2+.project-text-subheading{margin-top:1.875rem}
 .project20-detail-page .project-text-subheading+p{margin-top:1rem}
 .project20-detail-page .project-formula-block{margin:1.75rem 0 0;padding:0 .15rem}
-.project20-detail-page .project-formula-label{margin:0 0 1rem}
 .project20-detail-page .project-katex+.project-katex{margin-top:.875rem}
-.project20-detail-page .project-formula-note{margin-top:1.125rem!important}
 .project20-detail-page .project-formula-block+p{margin-top:1.75rem}
 .project20-detail-page .project-text-block+.project-tech-popover-lower{margin:2rem 0 0}
 .project20-detail-page .project-mini-gallery{margin:3.75rem 0 0}
@@ -82,9 +78,7 @@ body.project20-detail-page .project-text-block>h2{margin:0}
 .project20-detail-page .project-text-block>h2+.project-text-subheading{margin-top:1.625rem}
 .project20-detail-page .project-text-subheading+p{margin-top:.875rem}
 .project20-detail-page .project-formula-block{margin:1.5rem 0 0;padding:0}
-.project20-detail-page .project-formula-label{margin-bottom:.875rem}
 .project20-detail-page .project-katex+.project-katex{margin-top:.75rem}
-.project20-detail-page .project-formula-note{margin-top:var(--p20-formula-note-gap)!important}
 .project20-detail-page .project-formula-block+p{margin-top:1.75rem}
 .project20-detail-page .project-text-block+.project-tech-popover-lower{margin:1.5rem 0 0}
 .project20-detail-page .project-mini-gallery{margin:3rem 0 0}
@@ -148,9 +142,7 @@ body.project20-detail-page .project-text-block>h2,
   margin:var(--p20-formula-before) 0 0!important;
   padding:0 .15rem!important;
 }
-.project20-detail-page .project-formula-label{margin:0 0 .875rem!important}
 .project20-detail-page .project-katex+.project-katex{margin-top:.75rem!important}
-.project20-detail-page .project-formula-note{margin-top:var(--p20-formula-note-gap)!important}
 .project20-detail-page .project-formula-block+p{margin-top:var(--p20-formula-after)!important}
 
 /* Controles, galeria y relacionados */
@@ -207,15 +199,7 @@ body.project20-detail-page .project-text-block>h2,
   .project20-detail-page .project-tech-action-row{gap:.65rem!important}
   .project20-detail-page .project-tech-action-row .btn-ft.btn-style-28 .label{font-size:.72rem!important}
 }
-
-/* Proyecto 20 · separación consistente entre KaTeX y sus referencias */
-.project20-detail-page .project-text-block .project-formula-block > p.project-formula-note{
-  margin-top:16px!important;
-}
 @media (max-width:900px){
-  .project20-detail-page .project-text-block .project-formula-block > p.project-formula-note{
-    margin-top:11px!important;
-  }
 }
 
 /* Long translated breadcrumb labels must stay inside their assigned flex item. */
