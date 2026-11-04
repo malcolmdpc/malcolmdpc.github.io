@@ -29,78 +29,20 @@
 <link as="style" href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload">
 <noscript><link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&amp;display=swap" rel="stylesheet"></noscript>
 <link href="../../css/unicons.css" rel="stylesheet">
-<link href="../../css/project-detail.css?v=73" rel="stylesheet">
-<meta content="Python" property="article:tag"><meta content="Pandas" property="article:tag"><meta content="Scikit-learn" property="article:tag"><meta content="Machine Learning" property="article:tag"><meta content="Redes Neuronais" property="article:tag"><meta content="Modelo Supervisionado" property="article:tag"><meta content="Classificação" property="article:tag"><meta content="Regressão Logística" property="article:tag"><meta content="Keras" property="article:tag"><meta content="TensorFlow" property="article:tag"><meta content="NOAA Storm Events" property="article:tag"><meta content="pt_PT" property="og:locale"><meta content="es_ES" property="og:locale:alternate"><meta content="en_US" property="og:locale:alternate"><meta content="it_IT" property="og:locale:alternate"><meta content="fr_FR" property="og:locale:alternate"><meta content="de_DE" property="og:locale:alternate"><link href="https://patroneslab.com/pt/projetos/rede-neuronal-danos-eventos-meteorologicos.html" rel="canonical"><link href="https://patroneslab.com/proyectos/red-neuronal-danos-eventos-meteorologicos.html" hreflang="es" rel="alternate"><link href="https://patroneslab.com/en/projects/neural-network-weather-event-damage.html" hreflang="en" rel="alternate"><link href="https://patroneslab.com/it/progetti/rete-neurale-danni-eventi-meteorologici.html" hreflang="it" rel="alternate"><link href="https://patroneslab.com/fr/projets/reseaux-neuronaux-dommages-evenements-meteo.html" hreflang="fr" rel="alternate"><link href="https://patroneslab.com/de/projekte/neuronales-netz-wetterschaeden.html" hreflang="de" rel="alternate"><link href="https://patroneslab.com/pt/projetos/rede-neuronal-danos-eventos-meteorologicos.html" hreflang="pt" rel="alternate"><link href="https://patroneslab.com/proyectos/red-neuronal-danos-eventos-meteorologicos.html" hreflang="x-default" rel="alternate"><link href="https://patroneslab.com/pt/projetos/simulacao-monte-carlo-mundial-2026.html" rel="prev"><link href="https://patroneslab.com/pt/projetos/analise-geoespacial-airbnb-londres.html" rel="next"><link href="../../css/text-layout.css?v=75a" rel="stylesheet"><link rel="icon" href="../../images/patrones/favicon/favicon-512.png" sizes="512x512" type="image/png"><link href="../../vendor/katex/katex.min.css" rel="stylesheet"><style>
-body[data-project-detail="storm-events-neural-network"]{
- --p16-section-gap:56px;--p16-title-gap:16px;--p16-paragraph-gap:15px;
- --p16-subsection-before:36px;--p16-subsection-after:18px;
- --p16-formula-before:28px;--p16-formula-after:24px;--p16-formula-note-gap:16px;
- --p16-controls-before:32px
-}
-body[data-project-detail="storm-events-neural-network"] .project-detail-copy>.project-kicker{margin:0 0 .9rem!important}
-body[data-project-detail="storm-events-neural-network"] .project-detail-copy>h1{margin:0!important}
-body[data-project-detail="storm-events-neural-network"] .project-meta-line{margin:1rem 0 0!important}
-body[data-project-detail="storm-events-neural-network"] .project-lead{margin:1rem 0 0!important}
-body[data-project-detail="storm-events-neural-network"] .project-tags{margin:1.25rem 0 0!important}
-body[data-project-detail="storm-events-neural-network"] .project-text-block{margin:0!important;padding:0!important}
-body[data-project-detail="storm-events-neural-network"] .project-tags+.project-text-block,
-body[data-project-detail="storm-events-neural-network"] .project-text-block+.project-text-block{margin-top:var(--p16-section-gap)!important}
-body[data-project-detail="storm-events-neural-network"] .project-text-block>h2,
-body[data-project-detail="storm-events-neural-network"] .related-projects__heading{margin:0!important;font-size:22px!important;line-height:1.28!important;letter-spacing:.07em!important;font-weight:650!important}
-body[data-project-detail="storm-events-neural-network"] .project-text-block>h2+p{margin-top:var(--p16-title-gap)!important}
-body[data-project-detail="storm-events-neural-network"] .project-text-block p{margin:0!important}
-body[data-project-detail="storm-events-neural-network"] .project-text-block p+p{margin-top:var(--p16-paragraph-gap)!important}
-body[data-project-detail="storm-events-neural-network"] .project-text-subheading{display:flex;align-items:center;gap:.58rem;
- margin:var(--p16-subsection-before) 0 0!important;color:#ffb56b;
- font-family:"IBM Plex Sans",Inter,ui-sans-serif,system-ui,sans-serif;
- font-size:1rem!important;line-height:1.35!important;font-weight:800;letter-spacing:-.01em}
-body[data-project-detail="storm-events-neural-network"] .project-text-subheading::before{content:"";width:.46rem;height:.46rem;flex:0 0 .46rem;
- border-radius:50%;background:currentColor;box-shadow:0 0 0 3px color-mix(in srgb,currentColor 12%,transparent)}
-body[data-project-detail="storm-events-neural-network"].project-light-mode .project-text-subheading{color:#b85d00}
-body[data-project-detail="storm-events-neural-network"] .project-text-block>h2+.project-text-subheading{margin-top:var(--p16-subsection-before)!important}
-body[data-project-detail="storm-events-neural-network"] .project-text-subheading+p{margin-top:var(--p16-subsection-after)!important}
-body[data-project-detail="storm-events-neural-network"] .project-formula-block{margin:var(--p16-formula-before) 0 0!important;padding:0 .15rem!important;
- max-width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
-body[data-project-detail="storm-events-neural-network"] .project-katex{max-width:100%;color:var(--pd-copy-strong);font-size:1.08rem;text-align:center}
-body[data-project-detail="storm-events-neural-network"] .project-katex+.project-katex{margin-top:.75rem!important}
-body[data-project-detail="storm-events-neural-network"] .project-katex .katex-display{margin:0;overflow-x:auto;overflow-y:hidden;padding:.05rem 0 .12rem}
-body[data-project-detail="storm-events-neural-network"] .project-text-block .project-formula-block+p{margin-top:var(--p16-formula-after)!important}
-body[data-project-detail="storm-events-neural-network"] .project-text-block+.project-tech-popover-lower{margin:var(--p16-controls-before) 0 0!important}
-body[data-project-detail="storm-events-neural-network"] .project-tech-action-row{gap:.85rem!important}
-body[data-project-detail="storm-events-neural-network"] .project-tech-action-row .btn-ft.btn-style-28{min-height:52px!important;
- padding:.42rem .46rem .42rem 1.08rem!important;gap:.75rem!important;border-radius:14px!important}
-body[data-project-detail="storm-events-neural-network"] .project-tech-action-row .btn-ft.btn-style-28 .label{font-size:.8rem!important;letter-spacing:.105em!important}
-body[data-project-detail="storm-events-neural-network"] .project-tech-action-row .btn-ft.btn-style-28 .plus{width:30px!important;height:30px!important;
- min-width:30px!important;font-size:1.08rem!important}
-body[data-project-detail="storm-events-neural-network"] .related-projects{margin:var(--p16-section-gap) 0 0!important;
- padding-top:1.25rem!important;border-top:1px solid var(--pd-rule)!important}
-body[data-project-detail="storm-events-neural-network"] .related-projects__grid{margin-top:var(--p16-title-gap)!important;padding-top:0!important}
-body[data-project-detail="storm-events-neural-network"] .project-breadcrumb__item a{display:block;min-width:0;overflow:hidden;
- text-overflow:ellipsis;white-space:nowrap}
-@media(max-width:900px){
- body[data-project-detail="storm-events-neural-network"]{--p16-section-gap:48px;--p16-title-gap:14px;--p16-paragraph-gap:14px;
- --p16-subsection-before:28px;--p16-subsection-after:16px;
- --p16-formula-before:24px;--p16-formula-after:22px;--p16-formula-note-gap:11px;
- --p16-controls-before:28px}
- body[data-project-detail="storm-events-neural-network"] .project-text-block>h2,body[data-project-detail="storm-events-neural-network"] .related-projects__heading{font-size:18px!important;line-height:1.3!important;letter-spacing:.075em!important}
- body[data-project-detail="storm-events-neural-network"] .project-text-subheading{font-size:.96rem!important;gap:.5rem}
- body[data-project-detail="storm-events-neural-network"] .project-text-subheading::before{flex-basis:.4rem;width:.4rem;height:.4rem}
- body[data-project-detail="storm-events-neural-network"] .project-formula-block{padding:0!important}
- body[data-project-detail="storm-events-neural-network"] .project-katex{font-size:.96rem!important}
- body[data-project-detail="storm-events-neural-network"] .related-projects{padding-top:1rem!important}
- body[data-project-detail="storm-events-neural-network"] .project-tech-action-row{gap:.7rem!important}
- body[data-project-detail="storm-events-neural-network"] .project-tech-action-row .btn-ft.btn-style-28{min-height:52px!important;
- padding:.42rem .44rem .42rem 1rem!important;gap:.7rem!important}
- body[data-project-detail="storm-events-neural-network"] .project-tech-action-row .btn-ft.btn-style-28 .label{font-size:.76rem!important}
-}
-@media(max-width:520px){
- body[data-project-detail="storm-events-neural-network"] .project-text-block>h2,body[data-project-detail="storm-events-neural-network"] .related-projects__heading{font-size:17px!important;letter-spacing:.08em!important}
- body[data-project-detail="storm-events-neural-network"] .project-tech-action-row{gap:.65rem!important}
- body[data-project-detail="storm-events-neural-network"] .project-tech-action-row .btn-ft.btn-style-28 .label{font-size:.72rem!important}
-}
-@media(max-width:430px){body[data-project-detail="storm-events-neural-network"] .project-katex{font-size:.9rem!important}}
-
-</style></head>
+<link href="../../css/project-detail.css?v=f1ac18ee2d2e" rel="stylesheet">
+<meta content="Python" property="article:tag"><meta content="Pandas" property="article:tag"><meta content="Scikit-learn" property="article:tag"><meta content="Machine Learning" property="article:tag"><meta content="Redes Neuronais" property="article:tag"><meta content="Modelo Supervisionado" property="article:tag"><meta content="Classificação" property="article:tag"><meta content="Regressão Logística" property="article:tag"><meta content="Keras" property="article:tag"><meta content="TensorFlow" property="article:tag"><meta content="NOAA Storm Events" property="article:tag"><meta content="pt_PT" property="og:locale"><meta content="es_ES" property="og:locale:alternate"><meta content="en_US" property="og:locale:alternate"><meta content="it_IT" property="og:locale:alternate"><meta content="fr_FR" property="og:locale:alternate"><meta content="de_DE" property="og:locale:alternate"><link href="https://patroneslab.com/pt/projetos/rede-neuronal-danos-eventos-meteorologicos.html" rel="canonical"><link href="https://patroneslab.com/proyectos/red-neuronal-danos-eventos-meteorologicos.html" hreflang="es" rel="alternate"><link href="https://patroneslab.com/en/projects/neural-network-weather-event-damage.html" hreflang="en" rel="alternate"><link href="https://patroneslab.com/it/progetti/rete-neurale-danni-eventi-meteorologici.html" hreflang="it" rel="alternate"><link href="https://patroneslab.com/fr/projets/reseaux-neuronaux-dommages-evenements-meteo.html" hreflang="fr" rel="alternate"><link href="https://patroneslab.com/de/projekte/neuronales-netz-wetterschaeden.html" hreflang="de" rel="alternate"><link href="https://patroneslab.com/pt/projetos/rede-neuronal-danos-eventos-meteorologicos.html" hreflang="pt" rel="alternate"><link href="https://patroneslab.com/proyectos/red-neuronal-danos-eventos-meteorologicos.html" hreflang="x-default" rel="alternate"><link href="https://patroneslab.com/pt/projetos/simulacao-monte-carlo-mundial-2026.html" rel="prev"><link href="https://patroneslab.com/pt/projetos/analise-geoespacial-airbnb-londres.html" rel="next"><link href="../../css/text-layout.css?v=b56f3e20136b" rel="stylesheet"><link rel="icon" href="../../images/patrones/favicon/favicon-512.png" sizes="512x512" type="image/png"><link href="../../vendor/katex/katex.min.css" rel="stylesheet"><style>body[data-project-detail="storm-events-neural-network"] {--p16-section-gap:56px;--p16-title-gap:16px;--p16-paragraph-gap:15px;--p16-subsection-before:36px;--p16-subsection-after:18px;--p16-formula-before:28px;--p16-formula-after:24px;--p16-formula-note-gap:16px;--p16-controls-before:32px
+;}
+body[data-project-detail="storm-events-neural-network"] .project-formula-block {overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;}
+body[data-project-detail="storm-events-neural-network"] .project-katex .katex-display {overflow-x:auto;overflow-y:hidden;}
+body[data-project-detail="storm-events-neural-network"] .project-tech-action-row .btn-ft.btn-style-28 {min-height:52px!important;border-radius:14px!important;}
+body[data-project-detail="storm-events-neural-network"] .project-tech-action-row .btn-ft.btn-style-28 .plus {width:30px!important;height:30px!important;min-width:30px!important;}
+body[data-project-detail="storm-events-neural-network"] .related-projects {border-top:1px solid var(--pd-rule)!important;}
+body[data-project-detail="storm-events-neural-network"] .project-breadcrumb__item a {display:block;min-width:0;overflow:hidden;}
+@media (max-width:900px) {
+body[data-project-detail="storm-events-neural-network"] {--p16-section-gap:48px;--p16-title-gap:14px;--p16-paragraph-gap:14px;--p16-subsection-before:28px;--p16-subsection-after:16px;--p16-formula-before:24px;--p16-formula-after:22px;--p16-formula-note-gap:11px;--p16-controls-before:28px;}
+body[data-project-detail="storm-events-neural-network"] .project-tech-action-row .btn-ft.btn-style-28 {min-height:52px!important;}
+}</style><link rel="stylesheet" href="../../css/project-typography.css?v=a2d6336f907d"/>
+</head>
 <body class="project-detail-page project-static-detail-page" data-project-detail="storm-events-neural-network">
 <main aria-label="Página do projeto" class="project-detail-layout">
 <section aria-label="Imagem principal do projeto" class="project-gallery-panel project-static-hero-panel project-cover-shine"><picture class="project-static-hero-picture"><source media="(max-width: 900px)" srcset="../../images/patrones/projects/storm-events-neural-network/p16-storm-events-neural-network-mobile-banner.webp" type="image/webp" width="960" height="320"></source><source media="(min-width: 901px) and (max-width: 1100px)" srcset="../../images/patrones/projects/storm-events-neural-network/p16-storm-events-neural-network-mobile.webp" type="image/webp" width="480" height="1440"></source><img alt="Trovoada com variáveis do modelo de previsão de danos económicos sobrepostas — Patrones Lab" class="project-static-hero-image" decoding="async" fetchpriority="high" height="1536" loading="eager" src="../../images/patrones/projects/storm-events-neural-network/p16-storm-events-neural-network-static.webp" width="1024"></picture></section>

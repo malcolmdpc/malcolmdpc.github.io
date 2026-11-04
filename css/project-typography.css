@@ -1,0 +1,1048 @@
+/* Shared project typography. Component hierarchy and values follow P06. */
+:where(body.project-detail-page) {
+  color: var(--pd-text);
+  font-family: "Maven Pro",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+:where(body.project-detail-page) .project-detail-copy {
+  max-width: 790px;
+  padding: clamp(.55rem,1vw,.95rem) 0 .25rem;
+}
+:where(body.project-detail-page) .project-kicker {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(90deg, #ffd21d, #fff1a8 48%, #ffb400);
+  background-clip: text;
+  color: transparent;
+  font-family: Inter, sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.17em;
+  line-height: 1.25;
+  text-transform: uppercase;
+  margin: 0 0 .9rem;
+}
+:where(body.project-detail-page) .project-detail-copy h1 {
+  -webkit-hyphens: none;
+  color: var(--pd-title);
+  font-family: Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size: min(clamp(2.9rem,4.75vw,4.95rem),clamp(2.45rem,8cqi,4.95rem));
+  font-weight: 900;
+  hyphens: none;
+  letter-spacing: -.064em;
+  line-height: .96;
+  max-inline-size: 100%;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  text-align: left;
+  text-wrap: wrap;
+  text-wrap-style: auto;
+  white-space: normal;
+  word-break: normal;
+  margin: 0;
+}
+:where(body.project-detail-page) .project-meta-line {
+  gap: .72rem;
+  margin: 1rem 0 0;
+}
+:where(body.project-detail-page) .project-status-badge {
+  color: #e6fff3;
+  font-size: .84rem;
+  font-weight: 900;
+  line-height: 1;
+  padding: .3rem .78rem;
+}
+:where(body.project-detail-page) .project-data-badge {
+  color: #ffe3f5;
+  font-size: .84rem;
+  font-weight: 900;
+  line-height: 1;
+  padding: .3rem .78rem;
+}
+:where(body.project-detail-page) a.project-editorial-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--pd-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: .2em;
+}
+:where(body.project-detail-page) .project-lead {
+  -webkit-hyphens: auto;
+  color: var(--pd-muted);
+  font-family: "Maven Pro",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size: clamp(1.12rem,1.22vw,1.3rem);
+  font-weight: 600;
+  hyphenate-limit-chars: 10 4 4;
+  hyphenate-limit-lines: 2;
+  hyphenate-limit-zone: 8%;
+  hyphens: auto;
+  letter-spacing: -.012em;
+  line-height: 1.44;
+  max-inline-size: 100%;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  text-align: justify;
+  text-align-last: auto;
+  text-justify: inter-word;
+  text-wrap: wrap;
+  text-wrap-style: auto;
+  white-space: normal;
+  word-break: normal;
+  margin: 1rem 0 0;
+}
+:where(body.project-detail-page) .project-tags {
+  gap: .72rem 1rem;
+  max-width: 735px;
+  margin: 1.25rem 0 0;
+}
+:where(body.project-detail-page) .project-tech-logo-label {
+  color: var(--pd-copy-strong);
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: -.01em;
+  line-height: 1.04;
+  max-width: 78px;
+  text-align: center;
+  text-wrap: balance;
+}
+:where(body.project-detail-page) .project-text-block {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+:where(body.project-detail-page) .project-text-block h2,
+:where(body.project-detail-page) .project-mini-gallery__heading,
+:where(body.project-detail-page) .related-projects__heading {
+  -webkit-hyphens: none;
+  color: var(--pd-accent);
+  font-family: "IBM Plex Sans",Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size: 22px;
+  font-weight: 650;
+  hyphens: none;
+  letter-spacing: .07em;
+  line-height: 1.28;
+  max-inline-size: 100%;
+  overflow-wrap: break-word;
+  text-align: left;
+  text-transform: uppercase;
+  text-wrap: wrap;
+  text-wrap-style: auto;
+  white-space: normal;
+  word-break: normal;
+  margin: 0;
+}
+:where(body.project-detail-page) .project-text-subheading {
+  -webkit-hyphens: none;
+  color: #ffb56b;
+  display: block;
+  font-family: "IBM Plex Sans",Inter,sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  hyphens: none;
+  letter-spacing: .01em;
+  line-height: 1.35;
+  max-inline-size: 100%;
+  overflow-wrap: break-word;
+  text-align: left;
+  text-transform: uppercase;
+  text-wrap: wrap;
+  text-wrap-style: auto;
+  white-space: normal;
+  word-break: normal;
+  margin: 36px 0 0;
+}
+:where(body.project-detail-page) .project-text-block p {
+  -webkit-hyphens: auto;
+  color: var(--pd-copy);
+  font-family: "IBM Plex Sans",Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size: 18px;
+  font-weight: 620;
+  hyphenate-limit-chars: 10 4 4;
+  hyphenate-limit-lines: 2;
+  hyphenate-limit-zone: 8%;
+  hyphens: auto;
+  letter-spacing: -.004em;
+  line-height: 1.4;
+  max-inline-size: 100%;
+  overflow-wrap: break-word;
+  text-align: justify;
+  text-align-last: auto;
+  text-justify: inter-word;
+  text-wrap: wrap;
+  text-wrap-style: auto;
+  white-space: normal;
+  word-break: normal;
+  margin: 0;
+}
+:where(body.project-detail-page) .project-text-block li {
+  -webkit-hyphens: auto;
+  color: var(--pd-copy);
+  font-family: "IBM Plex Sans",Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size: 18px;
+  font-weight: 620;
+  hyphenate-limit-chars: 10 4 4;
+  hyphenate-limit-lines: 2;
+  hyphenate-limit-zone: 8%;
+  hyphens: auto;
+  letter-spacing: -.004em;
+  line-height: 1.4;
+  list-style: none;
+  max-inline-size: 100%;
+  overflow-wrap: break-word;
+  text-align: justify;
+  text-align-last: auto;
+  text-justify: inter-word;
+  text-wrap: wrap;
+  text-wrap-style: auto;
+  white-space: normal;
+  word-break: normal;
+  margin: 0 0 5px;
+  padding: 0 0 0 .9em;
+}
+:where(body.project-detail-page) .project-text-block ul {
+  list-style: none;
+  text-align: left;
+  margin: 10px 0 12px;
+  padding: 0;
+}
+:where(body.project-detail-page) .project-text-block ol {
+  list-style: decimal;
+  list-style-type: decimal;
+  text-align: left;
+  margin: 10px 0 12px;
+  padding: 0 0 0 1.05rem;
+}
+:where(body.project-detail-page) .project-formula-block {
+  max-width: 100%;
+  margin: 28px 0 0;
+  padding: 0 .15rem;
+}
+:where(body.project-detail-page) .project-formula-label {
+  color: var(--pd-accent);
+  font-family: Inter,sans-serif;
+  font-size: .82rem;
+  font-weight: 900;
+  letter-spacing: .105em;
+  line-height: 1.35;
+  text-align: left;
+  text-transform: uppercase;
+  margin: 0 0 14px;
+}
+:where(body.project-detail-page) .project-formula-block > .project-formula-note {
+  -webkit-hyphens: auto;
+  color: var(--pd-copy-soft);
+  font-family: "IBM Plex Sans",Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size: .84rem;
+  font-weight: 620;
+  hyphenate-limit-chars: 10 4 4;
+  hyphenate-limit-lines: 2;
+  hyphenate-limit-zone: 8%;
+  hyphens: auto;
+  letter-spacing: -.004em;
+  line-height: 1.5;
+  max-inline-size: 100%;
+  overflow-wrap: break-word;
+  text-align: justify;
+  text-align-last: auto;
+  text-justify: inter-word;
+  text-wrap: wrap;
+  text-wrap-style: auto;
+  white-space: normal;
+  word-break: normal;
+  margin: 16px 0 0;
+}
+:where(body.project-detail-page) .project-katex {
+  color: var(--pd-copy-strong);
+  font-size: 1.08rem;
+  max-width: 100%;
+  text-align: center;
+}
+:where(body.project-detail-page) .project-formula-block > .project-katex + .project-katex {
+  margin-top: .75rem;
+}
+:where(body.project-detail-page) .project-katex .katex-display {
+  text-align: center;
+  margin: 0;
+  padding: .05rem 0 .12rem;
+}
+:where(body.project-detail-page) .project-tech-popover {
+  max-width: 720px;
+  margin: 1.35rem 0 .15rem;
+}
+:where(body.project-detail-page) .project-tech-action-row {
+  gap: .85rem;
+  max-width: 100%;
+  text-align: left;
+}
+:where(body.project-detail-page) .btn-ft.btn-style-28 {
+  color: #fff;
+  font-family: Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  gap: .75rem;
+  max-width: max-content;
+  padding: .42rem .46rem .42rem 1.08rem;
+}
+:where(body.project-detail-page) .btn-ft.btn-style-28 .label {
+  font-size: .8rem;
+  font-weight: 950;
+  letter-spacing: .105em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+:where(body.project-detail-page) .btn-ft.btn-style-28 .plus {
+  color: #101010;
+  font-size: 1.08rem;
+  font-weight: 950;
+  line-height: 1;
+}
+:where(body.project-detail-page) .project-tech-sheet {
+  padding: 1rem 1.05rem;
+}
+:where(body.project-detail-page) .project-tech-sheet h2 {
+  -webkit-hyphens: none;
+  color: var(--pd-accent);
+  font-family: Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size: .78rem;
+  font-weight: 900;
+  hyphens: none;
+  letter-spacing: .14em;
+  line-height: 1.25;
+  max-inline-size: 100%;
+  overflow-wrap: break-word;
+  text-align: left;
+  text-transform: uppercase;
+  text-wrap: wrap;
+  text-wrap-style: auto;
+  white-space: normal;
+  word-break: normal;
+  margin: 0 0 .82rem;
+}
+:where(body.project-detail-page) .project-tech-grid {
+  margin: 0;
+}
+:where(body.project-detail-page) .project-tech-row {
+  padding: .34rem 0;
+}
+:where(body.project-detail-page) .project-tech-row dt {
+  color: var(--pd-copy-soft);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .075em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  margin: 0;
+}
+:where(body.project-detail-page) .project-tech-row dd {
+  -webkit-hyphens: auto;
+  color: var(--pd-copy-strong);
+  font-size: .86rem;
+  font-weight: 600;
+  hyphenate-limit-chars: 10 4 4;
+  hyphenate-limit-lines: 2;
+  hyphenate-limit-zone: 8%;
+  hyphens: auto;
+  letter-spacing: -.004em;
+  line-height: 1.36;
+  max-inline-size: 100%;
+  overflow-wrap: break-word;
+  text-align: justify;
+  text-align-last: auto;
+  text-justify: inter-word;
+  text-wrap: wrap;
+  text-wrap-style: auto;
+  white-space: normal;
+  word-break: normal;
+  margin: 0;
+}
+:where(body.project-detail-page) .project-mini-gallery {
+  margin: 56px 0 0;
+}
+:where(body.project-detail-page) .project-mini-gallery__grid {
+  margin-top: 16px;
+  max-width: 100%;
+}
+:where(body.project-detail-page) .related-projects {
+  max-width: 790px;
+  padding-top: 20px;
+  margin: 56px 0 0;
+}
+:where(body.project-detail-page) .related-projects__grid {
+  margin-top: 16px;
+  padding: 0 0 1rem;
+}
+:where(body.project-detail-page) .related-project-card__info {
+  padding: 18px 18px 22px;
+}
+:where(body.project-detail-page) .related-project-card__category {
+  color: #756656;
+  font-family: "Maven Pro",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size: .69rem;
+  font-weight: 900;
+  letter-spacing: .13em;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  text-transform: uppercase;
+  margin: 0 0 7px;
+}
+:where(body.project-detail-page) .related-project-card__title {
+  -webkit-hyphens: none;
+  color: #141518;
+  font-family: Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+  hyphens: none;
+  letter-spacing: -.045em;
+  line-height: 1.14;
+  max-inline-size: 100%;
+  overflow-wrap: break-word;
+  text-align: left;
+  text-wrap: wrap;
+  text-wrap-style: auto;
+  white-space: normal;
+  word-break: normal;
+  margin: 0 0 9px;
+}
+:where(body.project-detail-page) .related-project-card__teaser {
+  -webkit-hyphens: auto;
+  color: #4e493f;
+  font-family: "IBM Plex Sans",Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size: .88rem;
+  font-weight: 620;
+  hyphenate-limit-chars: 10 4 4;
+  hyphenate-limit-lines: 2;
+  hyphenate-limit-zone: 8%;
+  hyphens: auto;
+  letter-spacing: -.004em;
+  line-height: 1.42;
+  max-inline-size: 100%;
+  overflow-wrap: break-word;
+  text-align: justify;
+  text-align-last: auto;
+  text-wrap: wrap;
+  text-wrap-style: auto;
+  white-space: normal;
+  word-break: normal;
+  margin: 0;
+}
+:where(body.project-detail-page) .related-project-card__cta {
+  color: #141518;
+  font-family: Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size: .84rem;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  line-height: 1.2;
+  margin-top: auto;
+  overflow-wrap: anywhere;
+  padding-top: 15px;
+  text-transform: none;
+}
+:where(body.project-detail-page) .project-detail-footer {
+  color: var(--pd-copy);
+  max-width: 720px;
+  padding-top: .85rem;
+}
+:where(body.project-detail-page) .project-detail-signature {
+  color: var(--pd-copy-soft);
+  font-size: clamp(.7rem,.72vw,.78rem);
+  font-weight: 500;
+  letter-spacing: .012em;
+  line-height: 1.48;
+  max-width: 720px;
+  margin: 0 0 .72rem;
+}
+:where(body.project-detail-page) .project-detail-actions {
+  gap: .85rem;
+  max-width: 720px;
+}
+:where(body.project-detail-page) .project-action,
+:where(body.project-detail-page) .project-action-primary {
+  color: #111;
+  font-family: "Maven Pro",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size: .98rem;
+  font-weight: 950;
+  gap: .95rem;
+  line-height: 1;
+  text-decoration: none;
+  padding: .45rem .48rem .45rem 1.1rem;
+}
+:where(body.project-detail-page) .project-breadcrumb__item--project {
+  color: var(--pd-copy-soft);
+  font-weight: 700;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+:where(body.project-detail-page) .project-menu-toggle {
+  color: var(--pd-control-text);
+  padding: 6px;
+}
+:where(body.project-detail-page) .related-project-card__link,
+:where(body.project-detail-page) .project-action:hover {
+  text-decoration: none;
+}
+:where(body.project-detail-page) .project-tech-action-row .project-share-tech-slot {
+  max-width: 100%;
+}
+:where(body.project-detail-page) .project-action > span:first-child,
+:where(body.project-detail-page) .project-site-menu {
+  text-align: left;
+}
+:where(body.project-detail-page) .project-breadcrumb {
+  margin-left: 0;
+  padding-bottom: .05rem;
+  padding-left: 0;
+  padding-top: .08rem;
+  text-align: left;
+}
+:where(body.project-detail-page) .project-breadcrumb__list {
+  font-family: "Maven Pro",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size: clamp(.72rem,.72vw,.88rem);
+  font-weight: 800;
+  letter-spacing: .012em;
+  line-height: 1.2;
+  list-style: none;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+}
+:where(body.project-detail-page) .project-breadcrumb__item {
+  color: var(--pd-copy-soft);
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+:where(body.project-detail-page) .project-breadcrumb__item a {
+  -webkit-hyphens: none;
+  color: var(--pd-copy-strong);
+  hyphens: none;
+  line-height: 1.3;
+  max-width: 100%;
+  overflow-wrap: normal;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: normal;
+}
+:where(body.project-detail-page) .project-breadcrumb__item span {
+  -webkit-hyphens: none;
+  hyphens: none;
+  line-height: 1.3;
+  max-width: 100%;
+  overflow-wrap: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: normal;
+}
+:where(body.project-detail-page) .project-language-toggle,
+:where(body.project-detail-page) .project-theme-toggle {
+  color: var(--pd-control-text);
+  padding: 0;
+}
+:where(body.project-detail-page) .project-language-option {
+  text-decoration: none;
+  padding: 2px 0 0;
+}
+:where(body.project-detail-page) .project-language-option-label {
+  color: rgba(255,255,255,.64);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .055em;
+  line-height: 1;
+}
+:where(body.project-detail-page) .project-step-button {
+  color: rgba(255,255,255,.86);
+  text-decoration: none;
+}
+:where(body.project-detail-page) .project-theme-toggle .color-mode-icon {
+  font-style: normal;
+  line-height: 1;
+}
+:where(body.project-detail-page) .project-gallery-lightbox__close {
+  color: #fff;
+  font-size: 1.55rem;
+  line-height: 1;
+}
+:where(body.project-detail-page) .project-gallery-lightbox__nav {
+  color: #fff;
+  font-size: 1.7rem;
+}
+:where(body.project-detail-page) .project-gallery-lightbox__counter {
+  color: #fff;
+  font-family: Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size: .76rem;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: .06em;
+  line-height: 1;
+  margin-top: .9rem;
+  padding: .35rem .62rem;
+}
+:where(body.project-detail-page) .project-tags + .project-text-block,
+:where(body.project-detail-page) .project-text-block + .project-text-block {
+  margin-top: 56px;
+}
+:where(body.project-detail-page) .project-text-block h2 + p {
+  margin-top: 16px;
+}
+:where(body.project-detail-page) .project-text-subheading + p {
+  margin-top: 18px;
+}
+:where(body.project-detail-page) .project-text-block p + p {
+  margin-top: 15px;
+}
+:where(body.project-detail-page) .project-formula-block + p {
+  margin-top: 24px;
+}
+:where(body.project-detail-page) .project-text-block + .project-tech-popover-lower {
+  margin-bottom: 0;
+  margin-top: 32px;
+}
+:where(body.project-detail-page).project-light-mode .project-status-badge {
+  color: #005a33;
+}
+:where(body.project-detail-page).project-light-mode .project-data-badge {
+  color: #8f0f54;
+}
+:where(body.project-detail-page).project-light-mode .project-tech-logo-label {
+  color: #25231e;
+}
+:where(body.project-detail-page).project-light-mode .project-text-subheading {
+  color: #b85d00;
+}
+:where(body.project-detail-page).project-light-mode .btn-ft.btn-style-28 {
+  color: #2a2517;
+}
+:where(body.project-detail-page).project-light-mode .btn-ft.btn-style-28 .plus,
+:where(body.project-detail-page) .project-action-primary:hover,
+:where(body.project-detail-page).project-light-mode .project-step-button:hover {
+  color: #111;
+}
+:where(body.project-detail-page).project-light-mode .related-project-card__cta {
+  color: #121417;
+}
+:where(body.project-detail-page).project-light-mode .project-language-option-label {
+  color: rgba(17,17,17,.62);
+}
+:where(body.project-detail-page).project-light-mode .project-step-button {
+  color: rgba(23,24,29,.8);
+}
+:where(body.project-detail-page) .project-text-subheading::before {
+  content: none;
+  display: none;
+}
+:where(body.project-detail-page) .project-text-block ul > li {
+  position: relative;
+}
+:where(body.project-detail-page) .project-text-block ul > li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  color: inherit;
+}
+:where(body.project-detail-page) .project-text-block ol > li::before {
+  content: none;
+}
+:where(body.project-detail-page) .project-dax-code {
+  white-space: pre;
+  overflow-wrap: normal;
+  word-break: normal;
+  -webkit-hyphens: none;
+  hyphens: none;
+  margin: 0;
+  padding: 0;
+  font: 500 clamp(.74rem,1.15vw,.89rem)/1.55 Consolas,"Liberation Mono",monospace;
+  color: var(--pd-copy-strong);
+}
+:where(body.project-detail-page) .project-theme-toggle .color-mode-icon::after {
+  font-family: "unicons";
+  text-align: center;
+  line-height: 34px;
+  font-size: 25px;
+  font-weight: 300;
+  color: var(--pd-control-text);
+}
+:where(body.project-detail-page).project-light-mode .project-theme-toggle .color-mode-icon::after,
+:where(body.project-detail-page):not(.project-light-mode) .project-theme-toggle .color-mode-icon::after,
+:where(body.project-detail-page) body.project-light-mode .project-theme-toggle .color-mode-icon::after {
+  color: var(--pd-control-text);
+}
+:where(body.project-detail-page) .project-text-block li::marker,
+:where(body.project-detail-page) a.project-editorial-link:hover,
+:where(body.project-detail-page) a.project-editorial-link:focus-visible {
+  color: var(--pd-accent);
+}
+:where(body.project-detail-page) .project-action-secondary,
+:where(body.project-detail-page).project-light-mode .project-action-icon-code,
+:where(body.project-detail-page) .project-language-option:hover .project-language-option-label,
+:where(body.project-detail-page) .project-language-option:focus-visible .project-language-option-label,
+:where(body.project-detail-page) .project-language-option.active .project-language-option-label {
+  color: #ffd21f;
+}
+:where(body.project-detail-page) .project-action-secondary:hover {
+  color: #fff0a8;
+}
+:where(body.project-detail-page) .project-action-icon-linkedin {
+  color: #fff;
+  font-weight: 950;
+  font-size: 1rem;
+  font-family: Arial,Helvetica,sans-serif;
+  letter-spacing: -.03em;
+}
+:where(body.project-detail-page).project-light-mode .project-action-secondary {
+  color: #6e5000;
+}
+:where(body.project-detail-page).project-light-mode .project-action-secondary:hover {
+  color: #17181d;
+}
+:where(body.project-detail-page) .project-action-icon-code {
+  color: #ffd21f;
+  font-family: Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size: .72rem;
+  font-weight: 950;
+  letter-spacing: -.02em;
+}
+:where(body.project-detail-page) .btn-ft.btn-style-28:hover,
+:where(body.project-detail-page) .btn-ft.btn-style-28:focus-visible,
+:where(body.project-detail-page) .project-tech-popover.is-open .btn-ft.btn-style-28 {
+  color: #fff;
+}
+:where(body.project-detail-page).project-light-mode .btn-ft.btn-style-28:hover,
+:where(body.project-detail-page).project-light-mode .btn-ft.btn-style-28:focus-visible,
+:where(body.project-detail-page).project-light-mode .project-tech-popover.is-open .btn-ft.btn-style-28 {
+  color: #201b10;
+}
+:where(body.project-detail-page) .project-detail-actions .project-action .project-action-icon {
+  margin-left: auto;
+}
+:where(body.project-detail-page) .project-breadcrumb__item + .project-breadcrumb__item::before {
+  color: rgba(255,210,31,.54);
+  font-size: 1.08em;
+  font-weight: 900;
+}
+:where(body.project-detail-page) .project-breadcrumb__item a:hover {
+  color: var(--pd-accent-strong);
+  text-decoration: none;
+}
+:where(body.project-detail-page).project-light-mode .project-breadcrumb__item + .project-breadcrumb__item::before {
+  color: rgba(110,80,0,.48);
+}
+:where(body.project-detail-page) .project-step-button:hover {
+  color: #111;
+  text-decoration: none;
+}
+:where(body.project-detail-page).project-light-mode .project-language-option:hover .project-language-option-label,
+:where(body.project-detail-page).project-light-mode .project-language-option:focus-visible .project-language-option-label,
+:where(body.project-detail-page).project-light-mode .project-language-option.active .project-language-option-label {
+  color: #8a6500;
+}
+:where(body.project-detail-page) .project-site-menu ul {
+  list-style: none;
+}
+:where(body.project-detail-page) .project-site-menu a {
+  color: var(--pd-copy-strong);
+  font-family: "Maven Pro",system-ui,sans-serif;
+  font-weight: 700;
+  font-size: .9rem;
+  line-height: 1.25;
+  text-decoration: none;
+}
+:where(body.project-detail-page) .project-mini-gallery__placeholder {
+  color: var(--pd-copy-muted);
+  font: 800 .72rem/1.2 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+@media (max-width: 1100px) {
+  :where(body.project-detail-page) .project-detail-copy h1 {
+    font-size: min(clamp(2.45rem,4.65vw,4rem),clamp(2.45rem,8cqi,4.95rem));
+  }
+  :where(body.project-detail-page) .project-lead {
+    font-size: 1.04rem;
+    line-height: 1.42;
+  }
+  :where(body.project-detail-page) .project-text-block p,
+  :where(body.project-detail-page) .project-text-block li {
+    font-size: .94rem;
+    line-height: 1.48;
+  }
+}
+@media (max-width: 900px) {
+  :where(body.project-detail-page) .project-detail-copy {
+    padding-bottom: .15rem;
+    padding-top: .7rem;
+  }
+  :where(body.project-detail-page) .project-detail-copy h1 {
+    font-size: clamp(1.85rem,8cqi,3.05rem);
+    letter-spacing: -.055em;
+    line-height: .98;
+  }
+  :where(body.project-detail-page) .project-lead {
+    font-size: .95rem;
+    line-height: 1.38;
+  }
+  :where(body.project-detail-page) .project-tags {
+    gap: .42rem;
+    max-width: 100%;
+    padding-bottom: .18rem;
+  }
+  :where(body.project-detail-page) .project-text-block h2,
+  :where(body.project-detail-page) .project-mini-gallery__heading,
+  :where(body.project-detail-page) .related-projects__heading {
+    font-size: 18px;
+  }
+  :where(body.project-detail-page) .project-text-subheading {
+    font-size: .96rem;
+    margin-top: 28px;
+  }
+  :where(body.project-detail-page) .project-text-block p,
+  :where(body.project-detail-page) .project-text-block li {
+    font-size: .86rem;
+    line-height: 1.44;
+  }
+  :where(body.project-detail-page) .project-formula-block {
+    margin-top: 24px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  :where(body.project-detail-page) .project-formula-label {
+    font-size: .76rem;
+    margin-bottom: 11px;
+  }
+  :where(body.project-detail-page) .project-formula-block > .project-formula-note {
+    font-size: .79rem;
+    line-height: 1.48;
+    margin-top: 11px;
+  }
+  :where(body.project-detail-page) .project-katex {
+    font-size: .96rem;
+  }
+  :where(body.project-detail-page) .project-tech-popover {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+  :where(body.project-detail-page) .project-tech-action-row {
+    gap: .7rem;
+  }
+  :where(body.project-detail-page) .btn-ft.btn-style-28 {
+    gap: .7rem;
+    padding-left: 1rem;
+    padding-right: .44rem;
+  }
+  :where(body.project-detail-page) .btn-ft.btn-style-28 .label,
+  :where(body.project-detail-page) .project-breadcrumb__list {
+    font-size: .76rem;
+  }
+  :where(body.project-detail-page) .project-tech-sheet {
+    padding: .82rem;
+  }
+  :where(body.project-detail-page) .project-tech-sheet h2 {
+    font-size: .7rem;
+    margin-bottom: .68rem;
+  }
+  :where(body.project-detail-page) .project-tech-row dt {
+    font-size: .66rem;
+  }
+  :where(body.project-detail-page) .project-tech-row dd {
+    font-size: .8rem;
+    line-height: 1.32;
+  }
+  :where(body.project-detail-page) .project-mini-gallery,
+  :where(body.project-detail-page) .project-tags + .project-text-block,
+  :where(body.project-detail-page) .project-text-block + .project-text-block {
+    margin-top: 48px;
+  }
+  :where(body.project-detail-page) .project-mini-gallery__grid,
+  :where(body.project-detail-page) .related-projects__grid,
+  :where(body.project-detail-page) .project-text-block h2 + p,
+  :where(body.project-detail-page) .project-text-block p + p {
+    margin-top: 14px;
+  }
+  :where(body.project-detail-page) .related-projects {
+    margin-top: 48px;
+    padding-top: 16px;
+  }
+  :where(body.project-detail-page) .related-project-card__info {
+    padding: 15px 16px 18px;
+  }
+  :where(body.project-detail-page) .related-project-card__title {
+    font-size: 1.08rem;
+  }
+  :where(body.project-detail-page) .related-project-card__teaser {
+    font-size: .8rem;
+  }
+  :where(body.project-detail-page) .related-project-card__cta {
+    font-size: .8rem;
+    padding-top: 13px;
+  }
+  :where(body.project-detail-page) .project-detail-footer {
+    padding-top: .55rem;
+  }
+  :where(body.project-detail-page) .project-detail-actions {
+    gap: .48rem;
+  }
+  :where(body.project-detail-page) .project-action,
+  :where(body.project-detail-page) .project-action-primary {
+    gap: .38rem;
+    line-height: 1.05;
+    max-width: 100%;
+    text-align: left;
+    padding: .38rem .38rem .38rem .66rem;
+  }
+  :where(body.project-detail-page) .project-action > span:first-child {
+    white-space: normal;
+  }
+  :where(body.project-detail-page) .project-breadcrumb {
+    padding-top: .06rem;
+  }
+  :where(body.project-detail-page) .project-language-option-label {
+    font-size: clamp(7.5px, 2.05vw, 8px);
+    letter-spacing: clamp(.025em, .8vw, .04em);
+  }
+  :where(body.project-detail-page) .project-theme-toggle .color-mode-icon {
+    line-height: 30px;
+  }
+  :where(body.project-detail-page) .project-gallery-lightbox__counter {
+    margin-top: .75rem;
+  }
+  :where(body.project-detail-page) .project-text-subheading + p {
+    margin-top: 16px;
+  }
+  :where(body.project-detail-page) .project-formula-block + p {
+    margin-top: 22px;
+  }
+  :where(body.project-detail-page) .project-text-block + .project-tech-popover-lower {
+    margin-top: 28px;
+  }
+}
+@media (max-width: 520px) {
+  :where(body.project-detail-page) .project-detail-copy {
+    padding-top: .48rem;
+  }
+  :where(body.project-detail-page) .project-meta-line {
+    gap: .45rem;
+  }
+  :where(body.project-detail-page) .project-status-badge,
+  :where(body.project-detail-page) .project-data-badge {
+    font-size: .74rem;
+  }
+  :where(body.project-detail-page) .project-tags {
+    gap: .34rem;
+  }
+  :where(body.project-detail-page) .project-tech-logo-label {
+    font-size: .5rem;
+    line-height: 1.02;
+    max-width: 54px;
+  }
+  :where(body.project-detail-page) .project-text-block h2,
+  :where(body.project-detail-page) .project-mini-gallery__heading,
+  :where(body.project-detail-page) .related-projects__heading {
+    font-size: 17px;
+  }
+  :where(body.project-detail-page) .project-tech-popover {
+    margin-bottom: .88rem;
+  }
+  :where(body.project-detail-page) .project-tech-action-row {
+    gap: .65rem;
+  }
+  :where(body.project-detail-page) .btn-ft.btn-style-28 {
+    max-width: calc(100% - 40px);
+  }
+  :where(body.project-detail-page) .btn-ft.btn-style-28 .label {
+    font-size: .72rem;
+  }
+  :where(body.project-detail-page) .project-tech-sheet {
+    padding: .72rem;
+  }
+  :where(body.project-detail-page) .project-tech-row {
+    padding-bottom: .3rem;
+    padding-top: .3rem;
+  }
+  :where(body.project-detail-page) .project-tech-row dd {
+    font-size: .76rem;
+  }
+  :where(body.project-detail-page) .related-project-card__info {
+    padding: 12px 8px 14px;
+  }
+  :where(body.project-detail-page) .related-project-card__category {
+    font-size: .61rem;
+    letter-spacing: .06em;
+  }
+  :where(body.project-detail-page) .related-project-card__title {
+    font-size: 1rem;
+  }
+  :where(body.project-detail-page) .related-project-card__teaser {
+    font-size: .76rem;
+    line-height: 1.38;
+  }
+  :where(body.project-detail-page) .related-project-card__cta {
+    font-size: .77rem;
+  }
+  :where(body.project-detail-page) .project-detail-signature {
+    font-size: .61rem;
+    line-height: 1.36;
+    margin-bottom: .55rem;
+  }
+  :where(body.project-detail-page) .project-action,
+  :where(body.project-detail-page) .project-action-primary {
+    font-size: .9rem;
+  }
+  :where(body.project-detail-page) .project-tech-action-row .project-share-tech-slot {
+    max-width: none;
+  }
+  :where(body.project-detail-page) .project-breadcrumb {
+    padding-bottom: .02rem;
+    padding-top: .03rem;
+  }
+  :where(body.project-detail-page) .project-breadcrumb__list {
+    font-size: .73rem;
+    letter-spacing: .006em;
+  }
+}
+@media (max-width: 430px) {
+  :where(body.project-detail-page) .project-katex {
+    font-size: .9rem;
+  }
+  :where(body.project-detail-page) .project-gallery-lightbox__nav {
+    font-size: 1.5rem;
+  }
+  :where(body.project-detail-page) .project-gallery-lightbox__counter {
+    margin-top: .65rem;
+  }
+}
+@media (max-width: 390px) {
+  :where(body.project-detail-page) .project-detail-actions {
+    gap: .36rem;
+  }
+  :where(body.project-detail-page) .project-action,
+  :where(body.project-detail-page) .project-action-primary {
+    font-size: .78rem;
+    gap: .28rem;
+    letter-spacing: -.012em;
+    padding: .32rem .32rem .32rem .5rem;
+  }
+  :where(body.project-detail-page) .project-breadcrumb__list {
+    font-size: .7rem;
+  }
+}
+@media (max-width: 340px) {
+  :where(body.project-detail-page) .project-breadcrumb__list {
+    font-size: .67rem;
+  }
+}
+@media (max-width:900px) {
+  :where(body.project-detail-page) .project-theme-toggle .color-mode-icon::after {
+    line-height: 30px;
+    font-size: 23px;
+  }
+}
+@supports not (font-size: 1cqi) {
+  :where(body.project-detail-page) .project-detail-copy h1 {font-size:clamp(2.9rem,4.75vw,4.95rem);}
+  @media (max-width:1400px) {
+    :where(body.project-detail-page) .project-detail-copy h1 {font-size:clamp(2.72rem,4.65vw,4.55rem);}
+  }
+  @media (max-width:1100px) {
+    :where(body.project-detail-page) .project-detail-copy h1 {font-size:clamp(2.45rem,4.65vw,4rem);}
+  }
+  @media (max-width:900px) {
+    :where(body.project-detail-page) .project-detail-copy h1 {font-size:clamp(1.85rem,8vw,3.05rem);}
+  }
+}
