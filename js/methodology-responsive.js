@@ -31,6 +31,11 @@
     scrollTrigger: null,
     resizeFrame: 0,
     nativeScrollFrame: 0,
+    contentHeight: 0,
+    layoutWidth: 0,
+    layoutHeight: 0,
+    containerWidth: 0,
+    sectionInView: false,
     lastSignature: '',
     dragging: false,
     dragTarget: null,
@@ -65,15 +70,74 @@
     return Math.max(0, Math.round(navbar.getBoundingClientRect().height));
   }
 
+  function layoutHasChanged() {
+    return state.layoutWidth && (
+      state.layoutWidth !== visibleWidth() ||
+      state.layoutHeight !== visibleHeight() ||
+      state.containerWidth !== section.clientWidth
+    );
+  }
+
+  function rememberVisibility() {
+    if (layoutHasChanged()) return;
+    const rect = section.getBoundingClientRect();
+    state.sectionInView = rect.top < visibleHeight() && rect.bottom > 0;
+  }
+
   function chooseMode() {
     const usableHeight = visibleHeight() - navbarHeight();
     const animationReady = Boolean(window.gsap && window.ScrollTrigger);
-    const hasSpace = visibleWidth() >= 992 && usableHeight >= 610;
+    const hasSpace = visibleWidth() >= 992 && usableHeight >= 610 && state.contentHeight <= visibleHeight();
     const hasDesktopInput = hoverCapability.matches && finePointer.matches;
 
     return animationReady && hasSpace && hasDesktopInput && !reducedMotion.matches
       ? 'pinned'
       : 'native';
+  }
+
+  function measureContent() {
+    section.style.setProperty('--methodology-navbar-height', navbarHeight() + 'px');
+    section.style.setProperty('--methodology-stage-height', visibleHeight() + 'px');
+
+    const context = document.createElement('canvas').getContext('2d');
+    let copyWidth = 0;
+    panels.forEach(function (panel) {
+      panel.querySelectorAll('h3, small').forEach(function (element) {
+        const styles = window.getComputedStyle(element);
+        let text = element.textContent.trim();
+        if (styles.textTransform === 'uppercase') text = text.toUpperCase();
+        context.font = styles.fontWeight + ' ' + styles.fontSize + ' ' + styles.fontFamily;
+        const spacing = parseFloat(styles.letterSpacing) || 0;
+        copyWidth = Math.max(copyWidth, context.measureText(text).width + spacing * (text.length - 1));
+      });
+    });
+    copyWidth = Math.ceil(copyWidth) + 8;
+    section.style.setProperty('--methodology-copy-width', copyWidth + 'px');
+    const inner = panels[0].querySelector('.process-horizontal-panel__inner');
+    const styles = window.getComputedStyle(inner);
+    const available = inner.clientWidth - parseFloat(styles.paddingLeft) - parseFloat(styles.paddingRight);
+    const mediaWidth = parseFloat(window.getComputedStyle(section).getPropertyValue('--methodology-media-min-width'));
+    const stacked = section.clientWidth < 768 || copyWidth + mediaWidth + parseFloat(styles.columnGap) > available;
+    section.setAttribute('data-methodology-layout', stacked ? 'stacked' : 'columns');
+
+    if (staticHead) {
+      const headingBottom = staticHead.offsetTop + staticHead.offsetHeight + 24;
+      section.style.setProperty('--methodology-heading-bottom', headingBottom + 'px');
+    }
+
+    // Measure every panel before deciding whether the stage can be pinned.
+    state.contentHeight = Math.ceil(Math.max.apply(null, panels.map(function (panel) {
+      const inner = panel.querySelector('.process-horizontal-panel__inner');
+      const copy = panel.querySelector('.process-horizontal-panel__copy');
+      const media = panel.querySelector('.process-horizontal-panel__media');
+      const styles = window.getComputedStyle(inner);
+      const stacked = window.getComputedStyle(copy).order === '1';
+      const contentHeight = stacked
+        ? copy.offsetHeight + media.offsetHeight + parseFloat(styles.rowGap)
+        : Math.max(copy.offsetHeight, media.offsetHeight);
+
+      return contentHeight + parseFloat(styles.paddingTop) + parseFloat(styles.paddingBottom);
+    })));
   }
 
   function measure() {
@@ -136,6 +200,9 @@
   }
 
   function updateActive(index, progress) {
+    // Resize/scroll callbacks can arrive before the new panel geometry is measured.
+    if (layoutHasChanged()) return;
+
     const nextIndex = clamp(index, 0, panels.length - 1);
     const nextProgress = clamp(
       Number.isFinite(progress) ? progress : progressForIndex(nextIndex),
@@ -193,7 +260,7 @@
   function setNativePosition(index, behavior) {
     measure();
     const left = state.panelOffsets[clamp(index, 0, panels.length - 1)] || 0;
-    viewport.scrollTo({ left: left, behavior: behavior || 'auto' });
+    viewport.scrollTo({ left: left, behavior: behavior === 'smooth' ? 'smooth' : 'instant' });
   }
 
   function setupNative(index) {
@@ -301,14 +368,15 @@
   function rebuild(force) {
     state.resizeFrame = 0;
 
+    measureContent();
     const targetMode = chooseMode();
     const signature = [
       targetMode,
       visibleWidth(),
       visibleHeight(),
       navbarHeight(),
-      Math.round(viewport.clientWidth),
-      Math.round(track.scrollWidth)
+      state.contentHeight,
+      section.clientWidth
     ].join(':');
 
     if (!force && signature === state.lastSignature) return;
@@ -316,15 +384,20 @@
     const index = state.activeIndex;
     const sectionRect = section.getBoundingClientRect();
     const wasActive = Boolean(state.scrollTrigger && state.scrollTrigger.isActive);
-    const wasVisible = sectionRect.top < visibleHeight() && sectionRect.bottom > 0;
+    const isVisible = sectionRect.top < visibleHeight() && sectionRect.bottom > 0;
+    const resizing = layoutHasChanged();
+    const wasVisible = isVisible || (resizing && state.sectionInView);
 
     state.lastSignature = signature;
+    state.layoutWidth = visibleWidth();
+    state.layoutHeight = visibleHeight();
+    state.containerWidth = section.clientWidth;
 
     if (targetMode === 'pinned') {
-      setupPinned(index, wasActive || (state.mode === 'native' && wasVisible));
+      setupPinned(index, wasActive || (wasVisible && (resizing || state.mode === 'native')));
     } else {
       setupNative(index);
-      if (wasActive) {
+      if (wasActive || (wasVisible && !isVisible)) {
         window.requestAnimationFrame(function () {
           section.scrollIntoView({ behavior: 'auto', block: 'start' });
           setNativePosition(index, 'auto');
@@ -536,6 +609,7 @@
   bindMediaQuery(mobileViewport);
 
   window.addEventListener('resize', function () { scheduleRebuild(false); }, { passive: true });
+  window.addEventListener('scroll', rememberVisibility, { passive: true });
   window.addEventListener('orientationchange', function () { scheduleRebuild(true); }, { passive: true });
   window.addEventListener('load', function () { scheduleRebuild(true); }, { passive: true });
 
@@ -545,9 +619,15 @@
 
   if (typeof ResizeObserver === 'function') {
     const resizeObserver = new ResizeObserver(function () { scheduleRebuild(false); });
+    resizeObserver.observe(section);
     resizeObserver.observe(stage);
     resizeObserver.observe(viewport);
-    panels.forEach(function (panel) { resizeObserver.observe(panel); });
+    if (staticHead) resizeObserver.observe(staticHead);
+    panels.forEach(function (panel) {
+      resizeObserver.observe(panel);
+      resizeObserver.observe(panel.querySelector('.process-horizontal-panel__copy'));
+      resizeObserver.observe(panel.querySelector('.process-horizontal-panel__media'));
+    });
   }
 
   if (document.fonts && document.fonts.ready) {

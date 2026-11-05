@@ -4,7 +4,9 @@
   --methodology-header-top: calc(var(--methodology-navbar-height) + clamp(32px, 4svh, 44px));
   --methodology-header-space: calc(var(--methodology-navbar-height) + clamp(92px, 12svh, 122px));
   --methodology-footer-space: clamp(70px, 9svh, 96px);
-  --methodology-inline-space: clamp(24px, 5vw, 78px);
+  --methodology-guide-space: calc(42px + clamp(20px, 3.5svh, 34px) + 24px);
+  --methodology-inline-space: clamp(20px, 3vw, 52px);
+  --methodology-media-min-width: 400px;
   --methodology-active-color: #ffc200;
   position: relative !important;
   inset: auto !important;
@@ -25,7 +27,7 @@
   width: 100%;
   min-height: max(620px, var(--methodology-stage-height));
   height: var(--methodology-stage-height);
-  overflow: hidden;
+  overflow: visible;
   background: var(--methodology-active-color);
   transition: background-color 240ms ease;
 }
@@ -82,7 +84,7 @@
   min-height: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   opacity: 1 !important;
   visibility: visible !important;
   background: var(--panel-color) !important;
@@ -94,17 +96,17 @@
 
 #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__inner {
   display: grid !important;
-  grid-template-columns: minmax(280px, 0.82fr) minmax(330px, 1.18fr) !important;
+  grid-template-columns: minmax(var(--methodology-copy-width, 0px), 1.15fr) minmax(var(--methodology-media-min-width), 1fr) !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: clamp(24px, 4.4vw, 72px) !important;
-  width: min(1480px, 100%) !important;
-  max-width: 1480px !important;
+  gap: clamp(20px, 2vw, 32px) !important;
+  width: min(1720px, 100%) !important;
+  max-width: 1720px !important;
   min-width: 0 !important;
-  height: 100% !important;
+  height: auto !important;
   min-height: 0 !important;
   margin: 0 auto !important;
-  padding: var(--methodology-header-space) var(--methodology-inline-space) var(--methodology-footer-space) !important;
+  padding: max(var(--methodology-header-space), var(--methodology-heading-bottom, 0px)) var(--methodology-inline-space) max(var(--methodology-footer-space), var(--methodology-guide-space)) !important;
   overflow: visible !important;
   box-sizing: border-box;
 }
@@ -117,8 +119,8 @@
   flex-direction: column !important;
   align-items: flex-start !important;
   justify-content: center !important;
-  width: min(100%, 560px) !important;
-  max-width: 560px !important;
+  width: 100% !important;
+  max-width: none !important;
   min-width: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -126,6 +128,7 @@
   transform: none !important;
   isolation: auto !important;
   box-sizing: border-box;
+  container-type: inline-size;
 }
 
 #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__number {
@@ -150,16 +153,18 @@
   position: relative;
   z-index: 2;
   width: 100% !important;
-  max-width: 560px !important;
+  max-width: none !important;
   margin: 0 !important;
   min-height: 0.88em;
-  font-size: clamp(2.5rem, 5.25vw, 6.05rem) !important;
+  font-size: clamp(2.9rem, 6.08vw, 7rem) !important;
   font-weight: 900 !important;
   line-height: 0.88 !important;
   letter-spacing: -0.075em !important;
   white-space: normal !important;
   overflow: visible !important;
   text-wrap: balance;
+  hyphens: manual;
+  overflow-wrap: anywhere;
 }
 
 #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel small {
@@ -167,10 +172,10 @@
   z-index: 2;
   display: block !important;
   width: 100% !important;
-  max-width: 620px !important;
-  min-height: 2.2em;
+  max-width: none !important;
+  min-height: 1.1em;
   margin: clamp(14px, 2svh, 24px) 0 0 !important;
-  font-size: clamp(0.98rem, 1.35vw, 1.34rem) !important;
+  font-size: clamp(1.08rem, 1.48vw, 1.47rem) !important;
   font-weight: 800 !important;
   line-height: 1.1 !important;
   letter-spacing: 0.035em !important;
@@ -182,10 +187,10 @@
   position: relative;
   z-index: 2;
   width: 100% !important;
-  max-width: 560px !important;
-  min-height: 4.32em;
+  max-width: 560px;
+  min-height: 0;
   margin: clamp(12px, 1.8svh, 22px) 0 0 !important;
-  font-size: clamp(0.98rem, 1.08vw, 1.14rem) !important;
+  font-size: clamp(1.1rem, 1.21vw, 1.28rem) !important;
   line-height: 1.44 !important;
   overflow: visible !important;
 }
@@ -194,12 +199,12 @@
   position: relative;
   z-index: 2;
   display: flex !important;
-  flex-wrap: wrap !important;
+  flex-wrap: nowrap !important;
   justify-content: flex-start !important;
   align-items: flex-start !important;
   gap: clamp(8px, 1.1vw, 16px) !important;
   width: 100% !important;
-  max-width: 560px !important;
+  max-width: none !important;
   min-height: clamp(58px, 7svh, 76px);
   margin: clamp(14px, 2svh, 24px) 0 0 !important;
   overflow: visible !important;
@@ -211,7 +216,7 @@
   align-items: center !important;
   justify-content: flex-start !important;
   flex: 0 1 66px !important;
-  min-width: 52px !important;
+  min-width: 0 !important;
   width: auto !important;
   height: auto !important;
   padding: 0 !important;
@@ -230,6 +235,7 @@
   width: clamp(34px, 3vw, 48px) !important;
   height: clamp(34px, 3vw, 48px) !important;
   flex: 0 0 auto;
+  max-width: 100%;
   object-fit: contain;
 }
 
@@ -248,11 +254,11 @@
   place-items: center !important;
   justify-self: center !important;
   align-self: center !important;
-  width: min(100%, 700px) !important;
-  max-width: 700px !important;
-  height: min(58svh, 560px) !important;
-  min-height: 330px !important;
-  max-height: 560px !important;
+  width: min(100%, 880px) !important;
+  max-width: 880px !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
   margin: 0 !important;
   overflow: visible !important;
   background: transparent !important;
@@ -261,6 +267,25 @@
   transform: none !important;
   filter: none !important;
   aspect-ratio: auto !important;
+}
+
+/* Reserve the complete fan, including the small cards, throughout the transition.
+   The envelope is 3.2 card widths by 2.8 card widths; transforms stay unchanged. */
+#methodology[data-methodology-controller="adaptive"] .process-card-swiper .card-groups {
+  width: 100%;
+  aspect-ratio: 8 / 7;
+  position: relative;
+  display: block;
+  margin: 0;
+  transform: none;
+}
+
+#methodology[data-methodology-controller="adaptive"] .process-card-swiper .card-group {
+  inset: 14.285714% auto auto 34.375%;
+  width: 31.25%;
+  height: auto;
+  aspect-ratio: 5 / 7;
+  transform: none;
 }
 
 #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__media:hover {
@@ -408,14 +433,13 @@
 }
 
 @container (max-width: 930px) {
-  #methodology[data-methodology-controller="adaptive"] {
+  #methodology[data-methodology-controller="adaptive"] .methodology-stage {
     --methodology-header-space: calc(var(--methodology-navbar-height) + clamp(82px, 10svh, 104px));
     --methodology-footer-space: clamp(54px, 7svh, 72px);
     --methodology-inline-space: clamp(22px, 4.5vw, 42px);
   }
 
   #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__inner {
-    grid-template-columns: minmax(240px, 0.9fr) minmax(290px, 1.1fr) !important;
     gap: clamp(18px, 3vw, 34px) !important;
   }
 
@@ -424,60 +448,47 @@
   }
 
   #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel h3 {
-    min-height: 1.76em;
-    font-size: clamp(2.35rem, 5.8vw, 4.5rem) !important;
+    min-height: 0.88em;
+    font-size: clamp(2.6rem, 6.4vw, 5rem) !important;
   }
 
-  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel p {
-    min-height: 5.76em;
-  }
-
-  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__media {
-    height: min(52svh, 470px) !important;
-    min-height: 300px !important;
-  }
 }
 
-@container (max-width: 760px) {
-  #methodology[data-methodology-controller="adaptive"] {
+  #methodology[data-methodology-controller="adaptive"][data-methodology-layout="stacked"] .methodology-stage {
     --methodology-header-space: calc(var(--methodology-navbar-height) + clamp(84px, 11svh, 102px));
     --methodology-footer-space: 46px;
-    --methodology-inline-space: clamp(18px, 5vw, 34px);
+    --methodology-guide-space: 0px;
   }
 
-  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__inner {
+  #methodology[data-methodology-controller="adaptive"][data-methodology-layout="stacked"] .process-horizontal-panel__inner {
     grid-template-columns: 1fr !important;
     grid-template-rows: auto auto !important;
     align-content: start !important;
-    gap: clamp(22px, 4svh, 34px) !important;
+    row-gap: clamp(22px, 4svh, 34px);
     min-height: 0 !important;
-    padding-top: var(--methodology-header-space) !important;
-    padding-bottom: var(--methodology-footer-space) !important;
+    padding-top: max(var(--methodology-header-space), var(--methodology-heading-bottom, 0px)) !important;
+    padding-bottom: max(var(--methodology-footer-space), var(--methodology-guide-space)) !important;
   }
 
-  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__copy {
+  #methodology[data-methodology-controller="adaptive"][data-methodology-layout="stacked"] .process-horizontal-panel__copy {
     order: 1 !important;
     justify-self: center !important;
-    width: min(100%, 620px) !important;
-    max-width: 620px !important;
+    width: 100% !important;
+    max-width: none !important;
   }
 
-  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__media {
+  #methodology[data-methodology-controller="adaptive"][data-methodology-layout="stacked"] .process-horizontal-panel__media {
     order: 2 !important;
-    width: min(100%, 620px) !important;
-    height: clamp(300px, 42svh, 440px) !important;
-    min-height: 300px !important;
-    max-height: 440px !important;
+    width: 100% !important;
   }
 
-  #methodology[data-methodology-controller="adaptive"] .process-horizontal-guide {
+  #methodology[data-methodology-controller="adaptive"][data-methodology-layout="stacked"] .process-horizontal-guide {
     display: none !important;
   }
 
-  #methodology[data-methodology-controller="adaptive"][data-methodology-mode="native"] .process-horizontal-panel__inner {
+  #methodology[data-methodology-controller="adaptive"][data-methodology-layout="stacked"][data-methodology-mode="native"] .process-horizontal-panel__inner {
     min-height: 0 !important;
   }
-}
 
 @media (max-width: 767px), (hover: none) and (pointer: coarse) {
   html:has(#methodology[data-methodology-controller="adaptive"]),
@@ -500,6 +511,7 @@
   }
 
   #methodology[data-methodology-controller="adaptive"] .methodology-stage {
+    --methodology-guide-space: 0px;
     min-height: 0 !important;
     height: auto !important;
     overflow: visible !important;
@@ -548,14 +560,14 @@
     width: 100% !important;
     min-height: 0 !important;
     height: auto !important;
-    padding: var(--methodology-header-space) var(--methodology-inline-space) var(--methodology-footer-space) !important;
+    padding: max(var(--methodology-header-space), var(--methodology-heading-bottom, 0px)) var(--methodology-inline-space) max(var(--methodology-footer-space), var(--methodology-guide-space)) !important;
   }
 
   #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__copy {
     order: 1 !important;
     justify-self: center !important;
-    width: min(100%, 430px) !important;
-    max-width: 430px !important;
+    width: 100% !important;
+    max-width: none !important;
     margin: 0 !important;
     padding: 0 !important;
     text-align: left !important;
@@ -572,36 +584,35 @@
   }
 
   #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel h3 {
-    min-height: 1.8em;
-    font-size: clamp(2.15rem, 9.8vw, 3.3rem) !important;
+    min-height: 0.9em;
+    font-size: clamp(2.25rem, 10.2vw, 3.45rem) !important;
     line-height: 0.9 !important;
     white-space: normal !important;
   }
 
   #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel small {
-    min-height: 2.24em;
+    min-height: 1.12em;
     margin-top: 12px !important;
-    font-size: clamp(0.86rem, 3.5vw, 1.04rem) !important;
+    font-size: clamp(0.92rem, 3.7vw, 1.1rem) !important;
     line-height: 1.12 !important;
     white-space: normal !important;
   }
 
   #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel p {
-    min-height: 5.6em;
     margin-top: 12px !important;
-    font-size: clamp(0.9rem, 3.55vw, 1rem) !important;
+    font-size: clamp(0.96rem, 3.8vw, 1.08rem) !important;
     line-height: 1.4 !important;
   }
 
   #methodology[data-methodology-controller="adaptive"] .process-horizontal-tech {
-    flex-wrap: wrap !important;
+    flex-wrap: nowrap !important;
     gap: 8px !important;
     margin-top: 14px !important;
   }
 
   #methodology[data-methodology-controller="adaptive"] .process-horizontal-tech-chip {
     flex: 0 1 52px !important;
-    min-width: 44px !important;
+    min-width: 0 !important;
     width: auto !important;
     height: auto !important;
   }
@@ -617,10 +628,7 @@
   #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__media:hover {
     order: 2 !important;
     justify-self: center !important;
-    width: min(100%, 430px) !important;
-    height: clamp(290px, 40svh, 380px) !important;
-    min-height: 290px !important;
-    max-height: 380px !important;
+    width: min(100%, 480px) !important;
     margin: 0 !important;
     overflow: visible !important;
     transform: none !important;
@@ -651,7 +659,7 @@
   }
 
   #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__inner {
-    gap: clamp(20px, 3.5vw, 52px) !important;
+    gap: clamp(20px, 2vw, 32px) !important;
   }
 
   #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__number {
@@ -660,18 +668,13 @@
   }
 
   #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel h3 {
-    font-size: clamp(2.35rem, 4.8vw, 4.85rem) !important;
+    font-size: clamp(2.6rem, 5.3vw, 5.35rem) !important;
   }
 
   #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel small,
   #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel p,
   #methodology[data-methodology-controller="adaptive"] .process-horizontal-tech {
     margin-top: 10px !important;
-  }
-
-  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__media {
-    height: min(50svh, 410px) !important;
-    min-height: 290px !important;
   }
 }
 
@@ -714,12 +717,6 @@
 
   #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__inner {
     gap: clamp(8px, 2svh, 14px) !important;
-  }
-
-  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__media,
-  #methodology[data-methodology-controller="adaptive"] .process-horizontal-panel__media:hover {
-    margin-top: -14px !important;
-    transform: translateY(-8px) !important;
   }
 
   #methodology[data-methodology-controller="adaptive"].is-native-dragging .methodology-viewport {

@@ -1738,9 +1738,14 @@ $('.color-mode').on('click', function(){
     return window.innerWidth >= config.minDesktopWidth;
   }
 
+  function isMethodologyPinned(){
+    return document.querySelector('#methodology[data-methodology-controller="adaptive"].is-methodology-pinned-active');
+  }
+
   function shouldBypass(){
     return (
       !isEnabledViewport() ||
+      isMethodologyPinned() ||
       isSnapping ||
       body.classList.contains('pl-scroll-loader-active') ||
       body.classList.contains('pl-scroll-loader-finishing') ||
@@ -1801,6 +1806,10 @@ $('.color-mode').on('click', function(){
     const startedAt = performance.now();
 
     function frame(now){
+      if(isMethodologyPinned()){
+        isSnapping = false;
+        return;
+      }
       const elapsed = now - startedAt;
       const t = clamp(elapsed / config.duration, 0, 1);
       const eased = easeOutCubic(t);
