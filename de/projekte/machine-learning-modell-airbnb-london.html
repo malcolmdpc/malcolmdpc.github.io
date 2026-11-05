@@ -29,13 +29,11 @@
 <link as="style" href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload">
 <noscript><link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,500,600,700,800,900&amp;display=swap" rel="stylesheet"></noscript>
 <link href="../../css/unicons.css" rel="stylesheet">
-<link href="../../css/project-detail.css?v=f1ac18ee2d2e" rel="stylesheet">
+<link href="../../css/project-detail.css?v=f52acb06e5b4" rel="stylesheet">
 <meta content="de_DE" property="og:locale"><meta content="es_ES" property="og:locale:alternate"><meta content="en_US" property="og:locale:alternate"><meta content="it_IT" property="og:locale:alternate"><meta content="fr_FR" property="og:locale:alternate"><meta content="pt_PT" property="og:locale:alternate"><link href="https://patroneslab.com/de/projekte/machine-learning-modell-airbnb-london.html" rel="canonical"><link href="https://patroneslab.com/proyectos/modelo-ml-airbnb-london.html" hreflang="es" rel="alternate"><link href="https://patroneslab.com/en/projects/machine-learning-model-airbnb-london.html" hreflang="en" rel="alternate"><link href="https://patroneslab.com/it/progetti/modello-machine-learning-airbnb-londra.html" hreflang="it" rel="alternate"><link href="https://patroneslab.com/fr/projets/machine-learning-airbnb-londres.html" hreflang="fr" rel="alternate"><link href="https://patroneslab.com/de/projekte/machine-learning-modell-airbnb-london.html" hreflang="de" rel="alternate"><link href="https://patroneslab.com/pt/projetos/modelo-machine-learning-airbnb-londres.html" hreflang="pt" rel="alternate"><link href="https://patroneslab.com/proyectos/modelo-ml-airbnb-london.html" hreflang="x-default" rel="alternate"><link href="https://patroneslab.com/de/projekte/taxifahrten-analyse-chicago.html" rel="prev"><link href="https://patroneslab.com/de/projekte/looker-studio-dashboard-taxi-chicago.html" rel="next"><link href="../../css/text-layout.css?v=b56f3e20136b" rel="stylesheet"><link rel="icon" href="../../images/patrones/favicon/favicon-512.png" sizes="512x512" type="image/png"><style>body[data-project-detail="airbnb-london-ml"] .project-tech-action-row .btn-ft.btn-style-28 {min-height:52px!important;border-radius:14px!important;}
 body[data-project-detail="airbnb-london-ml"] .project-tech-action-row .btn-ft.btn-style-28 .plus {width:30px!important;height:30px!important;min-width:30px!important;}
-body[data-project-detail="airbnb-london-ml"] .project-mini-gallery__grid {grid-template-columns:repeat(4,minmax(0,1fr));}
 body[data-project-detail="airbnb-london-ml"] .related-projects {border-top:1px solid var(--pd-rule)!important;}
 @media (max-width:900px) {
-body[data-project-detail="airbnb-london-ml"] .project-mini-gallery__grid {grid-template-columns:repeat(2,minmax(0,1fr));}
 body[data-project-detail="airbnb-london-ml"] .project-tech-action-row .btn-ft.btn-style-28 {min-height:52px!important;}
 }
 /* Proportional gallery matching P07: original images, no forced frame or crop. */
@@ -45,13 +43,8 @@ body[data-project-detail="airbnb-london-ml"] .p04-mosaic-row {display:grid;width
 body[data-project-detail="airbnb-london-ml"] .p04-mosaic-row .project-mini-gallery__item {display:block;width:100%;height:auto!important;min-width:0;min-height:0;margin:0!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;overflow:hidden;}
 body[data-project-detail="airbnb-london-ml"] .p04-mosaic-row .project-mini-gallery__item img {display:block;width:100%!important;height:auto!important;max-width:100%!important;max-height:none!important;object-fit:contain!important;object-position:center;filter:none;transform:none;vertical-align:top;}
 body[data-project-detail="airbnb-london-ml"] .p04-mosaic-row .project-mini-gallery__item:is(:hover,:focus-visible) img {transform:none!important;filter:none!important;}
-@media (max-width:900px) {
-body[data-project-detail="airbnb-london-ml"] .project-mini-gallery__grid.p04-mosaic {gap:10px!important;}
-body[data-project-detail="airbnb-london-ml"] .project-mini-gallery__grid.p04-mosaic.is-masonry {gap:10px!important;}
-body[data-project-detail="airbnb-london-ml"] .p04-mosaic-row {gap:10px!important;}
-}
 body[data-project-detail="airbnb-london-ml"] .project-formula-block {overflow-x:auto;-webkit-overflow-scrolling:touch;}
-body[data-project-detail="airbnb-london-ml"] .project-katex .katex-display {overflow-x:auto;overflow-y:hidden;}</style><link href="../../css/project-gallery.css?v=fde362e1a19a" rel="stylesheet"/><link href="../../vendor/katex/katex.min.css" rel="stylesheet"/><link rel="stylesheet" href="../../css/project-typography.css?v=a2d6336f907d"/>
+body[data-project-detail="airbnb-london-ml"] .project-katex .katex-display {overflow-x:auto;overflow-y:hidden;}</style><link href="../../css/project-gallery.css?v=ecc5ea3966f7" rel="stylesheet"/><link href="../../vendor/katex/katex.min.css" rel="stylesheet"/><link rel="stylesheet" href="../../css/project-typography.css?v=4b9d46bf9073"/>
 </head>
 <body class="project-detail-page project-static-detail-page" data-project-detail="airbnb-london-ml">
 <main aria-label="Projektseite" class="project-detail-layout">
@@ -100,21 +93,17 @@ body[data-project-detail="airbnb-london-ml"] .project-katex .katex-display {over
   if(!grid)return;
   var items=Array.from(grid.querySelectorAll('.project-mini-gallery__item'));
   if(items.length!==6)return;
-  var mode='';
   function layout(){
-    var next=window.matchMedia('(max-width:700px)').matches?'mobile':'desktop';
-    if(mode===next)return;
-    var groups=next==='mobile'?[[0,1],[2,3],[4,5]]:[[0,1,2],[3,4,5]];
+    var groups=[[0,1,2],[3,4,5]];
     var frag=document.createDocumentFragment();
     groups.forEach(function(group){
       var row=document.createElement('div');row.className='p04-mosaic-row';
       row.style.gridTemplateColumns=group.map(function(i){var im=items[i].querySelector('img');return (Number(im.getAttribute('width'))/Number(im.getAttribute('height'))).toFixed(5)+'fr';}).join(' ');
       group.forEach(function(i){row.appendChild(items[i]);});frag.appendChild(row);
     });
-    grid.replaceChildren(frag);mode=next;
+    grid.replaceChildren(frag);
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',layout);else layout();
-  window.addEventListener('resize',layout,{passive:true});
 })();</script><div aria-hidden="true" aria-label="Bildanzeige des Projekts" aria-modal="true" class="project-gallery-lightbox" data-project-lightbox="" hidden="" role="dialog"><button aria-label="Galerie schließen" class="project-gallery-lightbox__close" data-lightbox-close="" type="button">×</button><button aria-label="Vorheriges Bild" class="project-gallery-lightbox__nav project-gallery-lightbox__prev" data-lightbox-prev="" type="button">‹</button><figure class="project-gallery-lightbox__figure"><img alt="" class="project-gallery-lightbox__image" data-lightbox-image=""><figcaption aria-live="polite" class="project-gallery-lightbox__counter" data-lightbox-counter=""></figcaption></figure><button aria-label="Nächstes Bild" class="project-gallery-lightbox__nav project-gallery-lightbox__next" data-lightbox-next="" type="button">›</button></div>
 <section aria-labelledby="related-projects-title" class="related-projects">
 <h2 class="related-projects__heading" id="related-projects-title">VERWANDTE PROJEKTE</h2>
@@ -157,5 +146,5 @@ body[data-project-detail="airbnb-london-ml"] .project-katex .katex-display {over
 </footer>
 </section></main>
 <script defer src="../../js/project-detail.js?v=70"></script><script defer src="../../js/pl-share-button.js"></script>
-<script src="../../js/project-navigation.js?v=75"></script><script src="../../js/project-gallery.js"></script><script src="../../vendor/katex/katex.min.js"></script><script>document.addEventListener('DOMContentLoaded',function(){function run(){if(!window.katex)return false;document.querySelectorAll('body[data-project-detail="airbnb-london-ml"] .project-katex').forEach(function(el){window.katex.render(el.dataset.expression,el,{displayMode:true,throwOnError:false,strict:'ignore'});});return true;}if(run())return;var n=0,t=setInterval(function(){n++;if(run()||n>=40)clearInterval(t);},100);});</script></body>
+<script src="../../js/project-navigation.js?v=75"></script><script src="../../js/project-gallery.js?v=7c304be49722"></script><script src="../../vendor/katex/katex.min.js"></script><script>document.addEventListener('DOMContentLoaded',function(){function run(){if(!window.katex)return false;document.querySelectorAll('body[data-project-detail="airbnb-london-ml"] .project-katex').forEach(function(el){window.katex.render(el.dataset.expression,el,{displayMode:true,throwOnError:false,strict:'ignore'});});return true;}if(run())return;var n=0,t=setInterval(function(){n++;if(run()||n>=40)clearInterval(t);},100);});</script></body>
 </html>

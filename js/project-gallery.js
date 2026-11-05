@@ -1,6 +1,23 @@
-/* P20 gallery: static HTML images remain available without JavaScript. */
+/* Shared gallery composition and lightbox. Static images remain available without JavaScript. */
 (function(){
   'use strict';
+  function preserveComposition(grid){
+    var viewport=document.createElement('div');
+    var canvas=document.createElement('div');
+    viewport.className='project-mini-gallery__viewport';
+    canvas.className='project-mini-gallery__canvas';
+    var copy=grid.closest('.project-detail-copy');
+    var referenceWidth=parseFloat(getComputedStyle(copy).maxWidth);
+    canvas.style.setProperty('--project-gallery-width',referenceWidth+'px');
+    grid.before(viewport);
+    viewport.appendChild(canvas);
+    canvas.appendChild(grid);
+    function resize(){
+      canvas.style.setProperty('--project-gallery-scale',viewport.clientWidth/referenceWidth);
+    }
+    resize();
+    new ResizeObserver(resize).observe(viewport);
+  }
   function init(){
     var gallery=document.querySelector('[data-project-gallery]');
     var dialog=document.querySelector('[data-project-lightbox]');
@@ -9,6 +26,7 @@
     var items=links.map(function(link){var img=link.querySelector('img');return {link:link,src:link.dataset.gallerySrc,alt:img.alt,ratio:Number(img.width)/Number(img.height)};});
     if(!items.length)return;
     var grid=gallery.querySelector('[data-project-gallery-grid]');
+    preserveComposition(grid);
     var ratios=items.map(function(item){return item.ratio;});
     grid.classList.toggle('is-masonry',Math.max.apply(null,ratios)-Math.min.apply(null,ratios)>.08);
     var image=dialog.querySelector('[data-lightbox-image]');
