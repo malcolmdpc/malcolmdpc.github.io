@@ -356,7 +356,7 @@
 :where(body.project-detail-page) .project-mini-gallery {
   margin: 56px 0 0;
 }
-:where(body.project-detail-page) .project-mini-gallery__grid {
+:where(body.project-detail-page) :is(.project-mini-gallery__viewport, .project-mini-gallery > .project-mini-gallery__grid) {
   margin-top: 16px;
   max-width: 100%;
 }
@@ -850,7 +850,7 @@
   :where(body.project-detail-page) .project-text-block + .project-text-block {
     margin-top: 48px;
   }
-  :where(body.project-detail-page) .project-mini-gallery__grid,
+  :where(body.project-detail-page) :is(.project-mini-gallery__viewport, .project-mini-gallery > .project-mini-gallery__grid),
   :where(body.project-detail-page) .related-projects__grid,
   :where(body.project-detail-page) .project-text-block h2 + p,
   :where(body.project-detail-page) .project-text-block p + p {

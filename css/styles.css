@@ -5844,7 +5844,7 @@ body:not(.dark-mode) .social-section .social-card::after{
 
 
 .github-project-card .mini-tags{
-  margin-bottom:14px !important;
+  margin-bottom:14px;
 }
 
 .github-project-card .github-project-body > .project-link,
@@ -5923,11 +5923,6 @@ body:not(.dark-mode) .social-section .social-card::after{
   margin-top:auto !important;
   align-self:stretch !important;
   width:100% !important;
-}
-
-
-.github-project-card[data-tags*="k-means"] .mini-tags{
-  margin-bottom:14px !important;
 }
 
 .github-project-card .project-links-dashboard{
@@ -9188,25 +9183,25 @@ html.pl-section-snap-enabled{
 }
 
 #projects-showcase .pl-codepen-text-cell .mini-tags{
-  display:flex !important;
+  display:flex;
   flex-wrap:wrap;
-  gap:7px !important;
-  margin:0 0 22px !important;
+  gap:7px;
+  margin:0 0 22px;
 }
 
 #projects-showcase .pl-codepen-text-cell .mini-tags span{
   display:inline-flex;
   align-items:center;
   min-height:25px;
-  padding:5px 9px !important;
-  border-radius:999px !important;
-  background:rgba(255,255,255,.17) !important;
-  border:1px solid rgba(255,255,255,.18) !important;
-  color:#f7f3ea !important;
+  padding:5px 9px;
+  border-radius:999px;
+  background:rgba(255,255,255,.17);
+  border:1px solid rgba(255,255,255,.18);
+  color:#f7f3ea;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
-  font-size:10.6px !important;
-  font-weight:950 !important;
-  line-height:1 !important;
+  font-size:10.6px;
+  font-weight:950;
+  line-height:1;
   text-transform:capitalize;
 }
 
@@ -9272,8 +9267,8 @@ html.pl-section-snap-enabled{
   }
 
   #projects-showcase .pl-codepen-text-cell .mini-tags{
-    gap:5px !important;
-    margin-bottom:18px !important;
+    gap:5px;
+    margin-bottom:18px;
   }
 }
 
@@ -9392,29 +9387,39 @@ html.pl-section-snap-enabled{
 }
 
 #projects .github-project-card .mini-tags{
-  display:flex !important;
+  display:flex;
   flex-wrap:wrap;
-  gap:7px !important;
-  margin:0 0 22px !important;
+  container-type:inline-size;
+  container-name:project-mini-tags;
+  gap:7px;
+  margin:0 0 22px;
 }
 
 #projects .github-project-card .mini-tags span{
   display:inline-flex;
   align-items:center;
-  flex:0 1 auto;
-  max-width:100%;
+  flex:0 0 auto;
   box-sizing:border-box;
   min-height:25px;
-  padding:5px 9px !important;
-  border-radius:999px !important;
-  background:rgba(255,255,255,.17) !important;
-  border:1px solid rgba(255,255,255,.18) !important;
-  color:#f7f3ea !important;
+  padding:5px clamp(3.5px, 1.8cqi, 6px);
+  border-radius:999px;
+  background:rgba(255,255,255,.17);
+  border:1px solid rgba(255,255,255,.18);
+  color:#f7f3ea;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
-  font-size:10.6px !important;
-  font-weight:950 !important;
-  line-height:1 !important;
+  font-size:10.6px;
+  font-weight:950;
+  line-height:1;
+  white-space:nowrap;
   text-transform:capitalize;
+}
+@container project-mini-tags (max-width:159px){
+  #projects .github-project-card .mini-tags span{
+    font-size:clamp(8.4px, 6.66cqi, 10.2px);
+    min-height:19px;
+    padding:3.1px clamp(1.5px, calc(6cqi - 5.5px), 4px);
+    line-height:1.02;
+  }
 }
 
 #projects .github-project-card .project-link-row,
@@ -10550,17 +10555,6 @@ html.pl-section-snap-enabled{
     margin-bottom:10px !important;
   }
 
-  #projects .mini-tags{
-    gap:4px !important;
-    margin-bottom:12px !important;
-  }
-
-  #projects .mini-tags span{
-    font-size:8.2px !important;
-    min-height:18px !important;
-    padding:3px 5px !important;
-  }
-
   #projects .github-project-card .project-link{
     min-height:30px !important;
     font-size:9.4px !important;
@@ -11244,17 +11238,6 @@ html.pl-section-snap-enabled{
     font-size:clamp(13.2px, 3.65vw, 14.9px) !important;
     line-height:1.41 !important;
     margin-bottom:13px !important;
-  }
-
-  #projects .mini-tags{
-    gap:5px !important;
-    margin-bottom:14px !important;
-  }
-
-  #projects .mini-tags span{
-    font-size:clamp(9.8px, 2.65vw, 10.8px) !important;
-    min-height:21px !important;
-    padding:4px 6px !important;
   }
 
   #projects .github-project-card .project-link{
@@ -12901,12 +12884,12 @@ body.light-mode #projects .github-project-card .project-status.development{
 
 body:not(.dark-mode) #projects .github-project-card .mini-tags span,
 body.light-mode #projects .github-project-card .mini-tags span{
-  color:#20242b !important;
-  -webkit-text-fill-color:#20242b !important;
-  background:rgba(22,24,29,.07) !important;
-  border:1px solid rgba(22,24,29,.16) !important;
-  box-shadow:none !important;
-  text-shadow:none !important;
+  color:#20242b;
+  -webkit-text-fill-color:#20242b;
+  background:rgba(22,24,29,.07);
+  border:1px solid rgba(22,24,29,.16);
+  box-shadow:none;
+  text-shadow:none;
 }
 
 
@@ -15443,52 +15426,12 @@ body:not(.dark-mode) .language-option-label{color:rgba(17,17,17,.62)}
 body:not(.dark-mode) .language-option:hover .language-option-label,body:not(.dark-mode) .language-option:focus-visible .language-option-label,body:not(.dark-mode) .language-option.is-active .language-option-label{color:#8a6500}
 @media (max-width:767px),(hover:none) and (pointer:coarse){.language-selector-mobile .language-menu{gap:7px;padding:7px 8px 6px;border-radius:20px}.language-selector-mobile .language-option{width:31px;height:41px;min-width:31px;gap:4px}.language-selector-mobile .language-option-label{font-size:8px;letter-spacing:.04em}}
 
-/* Project tags: adaptive horizontal packing */
-#projects .mini-tags{
-  column-gap:var(--pl-mini-tag-column-gap, 6px) !important;
-}
 
-/* Mobile: denser chips only inside the existing card layout.
-   JS can refine these values per holder width when doing so removes a row. */
-@media (max-width:767px){
-  #projects .mini-tags{
-    column-gap:var(--pl-mini-tag-column-gap, 3px) !important;
-    row-gap:4px !important;
-  }
 
-  #projects .mini-tags span{
-    font-size:var(--pl-mini-tag-font-size, clamp(8.5px, 2.25vw, 9.8px)) !important;
-    min-height:var(--pl-mini-tag-min-height, 19px) !important;
-    padding:var(--pl-mini-tag-padding-y, 3.1px) var(--pl-mini-tag-padding-x, 4.5px) !important;
-    line-height:1.02 !important;
-  }
-}
 
-@media (max-width:380px){
-  #projects .mini-tags{
-    column-gap:var(--pl-mini-tag-column-gap, 2.5px) !important;
-    row-gap:3.5px !important;
-  }
 
-  #projects .mini-tags span{
-    font-size:var(--pl-mini-tag-font-size, 8.4px) !important;
-    min-height:var(--pl-mini-tag-min-height, 18px) !important;
-    padding:var(--pl-mini-tag-padding-y, 3px) var(--pl-mini-tag-padding-x, 4px) !important;
-  }
-}
 
-@media (min-width:576px) and (max-width:767px){
-  #projects .mini-tags{
-    column-gap:var(--pl-mini-tag-column-gap, 4px) !important;
-    row-gap:4.5px !important;
-  }
 
-  #projects .mini-tags span{
-    font-size:var(--pl-mini-tag-font-size, clamp(9.8px, 1.35vw, 10.3px)) !important;
-    min-height:var(--pl-mini-tag-min-height, 20px) !important;
-    padding:var(--pl-mini-tag-padding-y, 3.4px) var(--pl-mini-tag-padding-x, 5px) !important;
-  }
-}
 
 #projects .repo-filter-toolbar.repo-filter-toolbar-categories{
   column-gap:var(--pl-filter-gap-x, 12px) !important;
