@@ -1,0 +1,50 @@
+/* Reglas propias del contenido interactivo; la página hereda el formato compartido. */
+body.project21-detail-page .project-formula-block{overflow-x:auto;overflow-y:hidden}
+body.project21-detail-page .project-katex .katex-display{overflow-x:auto;overflow-y:hidden}
+body.project21-detail-page .project-tech-action-row .btn-ft.btn-style-28{min-height:52px;border-radius:14px}
+body.project21-detail-page .project-tech-action-row .btn-ft.btn-style-28 .plus{width:30px;height:30px;min-width:30px}
+body.project21-detail-page .related-projects{border-top:1px solid var(--pd-rule)}
+body.project21-detail-page #simulador p{text-align:start;hyphens:none}
+body.project21-detail-page .project21-expand-button,
+body.project21-detail-page .project21-restore-button{align-items:center;justify-content:center;gap:8px;min-height:36px;padding:7px 12px;border:1px solid var(--pd-rule);border-radius:8px;background:transparent;color:var(--pd-text);font:600 14px "Maven Pro",sans-serif;cursor:pointer}
+body.project21-detail-page .project21-expand-button{display:none;margin:18px 0 0 auto}
+body.project21-detail-page .project21-expand-button svg,
+body.project21-detail-page .project21-restore-button svg,
+body.project21-detail-page .project21-graph-expand svg{fill:none;stroke:currentColor;stroke-width:1.7}
+body.project21-detail-page .project21-expand-button:focus-visible,
+body.project21-detail-page .project21-restore-button:focus-visible,
+body.project21-detail-page .project21-graph-expand:focus-visible{outline:3px solid var(--pd-accent);outline-offset:3px}
+body.project21-detail-page .project21-simulator-dialog{width:min(calc(100vw - 32px),max(960px,calc(150dvh - 48px)));height:calc(100dvh - 32px);max-width:none;max-height:none;padding:18px;border:1px solid var(--pd-rule);border-radius:14px;background:var(--pd-bg);color:var(--pd-text);overflow:hidden}
+body.project21-detail-page .project21-simulator-dialog[open]{display:flex;flex-direction:column;gap:14px}
+body.project21-detail-page .project21-simulator-dialog::backdrop{background:rgba(0,0,0,.75);backdrop-filter:blur(4px);animation:project21-backdrop-in 190ms ease-out}
+body.project21-detail-page .project21-simulator-dialog.is-closing::backdrop{animation:project21-backdrop-out 150ms ease-in forwards}
+body.project21-detail-page .project21-simulator-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-shrink:0;font:600 16px "Maven Pro",sans-serif}
+body.project21-detail-page .project21-restore-button{display:inline-flex}
+body.project21-detail-page .project21-simulator-content{min-height:0;overflow:auto;overscroll-behavior:contain}
+body.project21-detail-page .project21-simulator-dialog #simulador{margin:0}
+body.project21-detail-page .project21-chart-title{display:flex;align-items:center;gap:8px;min-width:0}
+body.project21-detail-page .project21-graph-expand{display:none;align-items:center;justify-content:center;flex-shrink:0;width:30px;height:30px;padding:4px;border:1px solid var(--pd-rule);border-radius:6px;background:transparent;color:inherit;cursor:pointer}
+body.project21-detail-page .project21-parameter-dock{position:sticky;top:0;z-index:8;padding:6px 0 10px;background:var(--bg);border-bottom:1px solid var(--line)}
+body.project21-detail-page #simulador .project21-parameter-dock .team-matchup{margin-bottom:6px}
+body.project21-detail-page #simulador .project21-parameter-dock .team-head{min-height:44px}
+body.project21-detail-page #simulador .project21-parameter-dock .locality-controls{justify-content:flex-end}
+body.project21-detail-page .project21-simulator-dialog[data-view="curves"] #simulador .match-summary{display:none}
+body.project21-detail-page .project21-simulator-dialog[data-view="curves"] .project21-simulator-content{flex:1}
+body.project21-detail-page .project21-simulator-dialog[data-view="curves"] #simulador{height:100%}
+body.project21-detail-page .project21-simulator-dialog[data-view="curves"] #simulador .workbench{height:100%}
+body.project21-detail-page .project21-simulator-dialog[data-view="curves"] #simulador .comparison{display:flex;flex-direction:column;min-height:0}
+body.project21-detail-page .project21-simulator-dialog[data-view="curves"] #simulador .project21-parameter-dock{flex-shrink:0}
+body.project21-detail-page .project21-simulator-dialog[data-view="curves"] #simulador .results{display:flex;flex-direction:column;flex:1;min-height:300px}
+body.project21-detail-page .project21-simulator-dialog[data-view="curves"] #simulador .chart-heading{flex-shrink:0}
+body.project21-detail-page .project21-simulator-dialog[data-view="curves"] #simulador .chart{--goal-chart-fit:1;position:relative;flex:1;min-height:230px;max-height:600px}
+body.project21-detail-page .project21-simulator-dialog[data-view="curves"] #simulador .chart svg{position:absolute;inset:0;height:100%}
+body.project21-detail-page .project21-simulator-dialog[data-view="curves"] #simulador .chart .axis-value{font-size:14px}
+@container (min-width:760px){
+body.project21-detail-page .project21-simulator-dialog[data-view="curves"] #simulador .controls{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+body.project21-detail-page .project21-simulator-dialog[data-view="curves"] #simulador .control label{min-height:28px}
+}
+body.project21-detail-page .project21-simulator-dialog[data-view="matrix"] #simulador .results{display:none}
+@keyframes project21-backdrop-in{from{opacity:0}to{opacity:1}}
+@keyframes project21-backdrop-out{from{opacity:1}to{opacity:0}}
+@media (prefers-reduced-motion:reduce){body.project21-detail-page .project21-simulator-dialog::backdrop{animation:none}}
+@media (min-width:1201px){body.project21-detail-page .project21-expand-button{display:flex}body.project21-detail-page .project21-graph-expand{display:inline-flex}}

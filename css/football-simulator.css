@@ -1,0 +1,171 @@
+#simulador{color-scheme:dark;--bg:#0c0c0d;--panel:#141612;--text:#fbf7ed;--muted:#bdb8aa;--line:#ffffff21;--track:#ffffff58;--accent:#ffd21f;--a:#ffd21f;--b:#62d8ed;--pitch:#19271d;--pitch-line:#b9d9b044;--shadow:0 20px 60px #0003;font-family:"Maven Pro",system-ui,sans-serif;line-height:1.33;color:var(--text);margin-block:24px;}
+:is(body.light,body.project-light-mode) #simulador{color-scheme:light;--bg:#f4efe2;--panel:#fffaf0;--text:#17181d;--muted:#605b50;--line:#17181d26;--track:#17181d50;--accent:#8a6100;--a:#947000;--b:#00788c;--pitch:#e2ebdb;--pitch-line:#2f613844;--shadow:0 20px 60px #49452e0d}
+#simulador button,#simulador input{font:inherit}#simulador button{cursor:pointer;color:inherit}#simulador button:disabled,#simulador input:disabled{cursor:not-allowed}#simulador :is(button,input):focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+#simulador .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+#simulador [hidden][hidden]{display:none}
+#simulador .workbench{display:grid;grid-template-columns:84px minmax(0,1fr) 84px;gap:12px;align-items:stretch}
+#simulador .comparison{min-width:0;container-type:inline-size}
+#simulador .club-rail{--team-color:var(--a);position:relative;min-width:0;min-height:0}
+#simulador .rail-b{--team-color:var(--b)}
+#simulador .club-rail>h3{font-size:11px;text-transform:uppercase;letter-spacing:.08em;text-align:center;color:var(--team-color);margin:0}
+#simulador .club-list{position:absolute;inset:44px 0 18px;display:flex;flex-direction:column;gap:6px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--line) transparent;padding:3px 6px 3px 3px}
+#simulador .rail-scroll{position:absolute;left:0;width:100%;height:18px;display:grid;place-items:center;padding:0;border:0;background:transparent;color:var(--team-color)}
+#simulador .rail-scroll::before{content:"";width:0;height:0;border-inline:5px solid transparent;animation:football-rail-hint 1.4s ease-in-out infinite}
+#simulador .rail-scroll-start{top:24px;--hint-x:0px;--hint-y:-3px}
+#simulador .rail-scroll-start::before{border-bottom:7px solid currentColor}
+#simulador .rail-scroll-end{bottom:0;--hint-x:0px;--hint-y:3px}
+#simulador .rail-scroll-end::before{border-top:7px solid currentColor}
+@keyframes football-rail-hint{0%,100%{transform:translate(0,0)}50%{transform:translate(var(--hint-x),var(--hint-y))}}
+#simulador .club-button{flex-shrink:0;display:grid;justify-items:center;gap:5px;width:100%;min-height:88px;padding:4px 2px;border:1px solid transparent;border-radius:6px;background:transparent;transition:background .15s,border-color .15s}
+#simulador .club-button img{display:block;width:58px;height:58px;object-fit:contain;filter:drop-shadow(0 2px 3px #0005)}
+#simulador .club-button span{font-size:10px;line-height:1.2;text-align:center;color:#fff;font-weight:600}
+:is(body.light,body.project-light-mode) #simulador .club-button span{color:var(--text)}
+#simulador .club-button:not(:disabled):hover{background:var(--line)}
+#simulador .club-button[aria-pressed=true]{border-color:var(--team-color);background:var(--line)}
+#simulador .club-button:disabled{opacity:1}
+#simulador .club-button:disabled img{opacity:.25;filter:grayscale(1)}
+#simulador .team-matchup{display:grid;grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr);gap:10px;align-items:start;margin-bottom:12px}
+#simulador .team{--team-color:var(--a);min-width:0}
+#simulador .team-b{--team-color:var(--b)}
+#simulador .team-head{display:flex;align-items:center;gap:8px;min-height:58px;margin-bottom:6px}
+#simulador .team-head>div:first-child{min-width:0;flex:1}
+#simulador .side-label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--team-color);margin-bottom:3px}
+#simulador .team h3{font-size:26px;letter-spacing:-.7px;line-height:1.08;margin:0;overflow-wrap:anywhere}
+#simulador .team-b .team-head{flex-direction:row-reverse;text-align:right}
+#simulador .xg{flex-shrink:0;text-align:right;line-height:1.1}
+#simulador .team-b .xg{text-align:left}
+#simulador .xg output{display:block;font-size:25px;letter-spacing:-1px;font-weight:800;color:var(--team-color);font-variant-numeric:tabular-nums}
+#simulador .xg span{font-size:9px;color:var(--muted)}
+#simulador .controls{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+#simulador .control{display:grid;grid-template-columns:minmax(0,1fr) 74px;gap:3px 9px;align-items:center;min-width:0}
+#simulador .control label{grid-column:1/-1;font-size:12px;font-weight:600;line-height:1.25}
+#simulador .control input[type=number]{grid-column:2;grid-row:2;width:100%;min-height:30px;padding:3px;text-align:center;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--text);font-size:17px;font-weight:600;font-variant-numeric:tabular-nums}
+#simulador .control input[type=range]{grid-column:1;grid-row:2;width:100%;margin:0;min-height:30px;appearance:none;-webkit-appearance:none;background:transparent;touch-action:pan-y;cursor:pointer}
+#simulador .control input[type=range]::-webkit-slider-runnable-track{height:5px;background:var(--track);border-radius:2px}
+#simulador .control input[type=range]::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:20px;height:20px;margin-top:-7.5px;border:0;border-radius:50%;background:transparent url("../images/patrones/projects/modelo-binomial-probabilidades-goles/simulator/ball.svg") center/contain no-repeat;box-shadow:0 0 0 2px var(--team-color);cursor:grab}
+#simulador .control input[type=range]::-moz-range-track{height:5px;background:var(--track);border-radius:2px}
+#simulador .control input[type=range]::-moz-range-thumb{width:20px;height:20px;border:0;border-radius:50%;background:transparent url("../images/patrones/projects/modelo-binomial-probabilidades-goles/simulator/ball.svg") center/contain no-repeat;box-shadow:0 0 0 2px var(--team-color);cursor:grab}
+#simulador .swap-button{align-self:center;display:grid;place-items:center;width:34px;height:34px;padding:4px;border:1px solid var(--line);background:var(--line);color:var(--accent);border-radius:5px}
+#simulador .swap-button svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+#simulador .swap-button:hover{color:var(--accent);background:var(--line)}
+#simulador .chart-options{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px}
+#simulador .locality-controls{display:flex;align-items:center;gap:5px}
+#simulador .locality-toggle,#simulador .locality-percentage{display:flex;align-items:center;gap:4px;font-size:12px;line-height:1.2}
+#simulador .locality-toggle{gap:8px}
+#simulador .locality-toggle input{accent-color:#43c77c;width:20px;height:20px;margin:0}
+#simulador .locality-percentage input{width:66px;min-height:28px;padding:3px;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--text);font-size:13px}
+#simulador .locality-note{font-size:11px;color:var(--muted);line-height:1.35;margin:6px 0 0}
+#simulador .locality-note:empty{display:none}
+#simulador .empty-team{font-size:11px;color:var(--muted)}
+#simulador .results{border-block:1px solid var(--line);padding:10px 0 6px}
+#simulador .chart-heading{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px}
+#simulador .chart-heading h3{font-family:"IBM Plex Sans",sans-serif;font-size:22px;font-weight:700;line-height:1.2;margin:0}
+#simulador .mode{display:inline-grid;grid-template-columns:1fr 1fr;gap:2px;padding:3px;border:1px solid var(--line);border-radius:9px;background:var(--panel)}
+#simulador .mode button{border:0;border-radius:6px;padding:7px 9px;font-size:11px;font-weight:600;background:transparent;color:var(--muted);transition:background-color .18s,color .18s,box-shadow .18s}
+#simulador .mode button[aria-pressed=true]{background:var(--accent);color:var(--bg);box-shadow:inset 0 1px 0 #ffffff30}
+#simulador .chart{width:100%;margin-top:5px}
+#simulador .chart svg{display:block;width:100%;height:auto}
+#simulador .chart text{font-family:inherit;fill:var(--muted);font-size:13px}
+#simulador .chart .axis-value{fill:#fff;font-weight:700}
+:is(body.light,body.project-light-mode) #simulador .chart .axis-value{fill:var(--text)}
+#simulador .gridline{stroke:var(--line);stroke-dasharray:3 5}
+#simulador .goal-curve{fill:none;stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round;transition:d .2s ease}
+#simulador .curve-a{stroke:var(--a)}
+#simulador .curve-b{stroke:var(--b)}
+#simulador .goal-area{pointer-events:none;transition:d .2s ease}
+#simulador .goal-point{stroke:var(--bg);stroke-width:3;paint-order:stroke fill;transition:cx .2s ease,cy .2s ease,r .12s ease}
+#simulador .point-a{fill:var(--a)}
+#simulador .point-b{fill:var(--b)}
+#simulador .goal-point.is-selected{stroke:var(--text);stroke-width:3}
+#simulador .goal-indicator{stroke:var(--text);stroke-opacity:.7;stroke-width:1.4;stroke-dasharray:4 3;opacity:0;pointer-events:none}
+#simulador .chart .hit{fill:transparent;cursor:pointer}
+#simulador .chart .hit:focus{outline:none}
+#simulador .chart .hit:focus-visible{outline:1.5px solid var(--accent);outline-offset:-2px}
+#simulador .chart-tooltip{pointer-events:none}
+#simulador .chart-tooltip rect{fill:var(--bg);fill-opacity:.96;stroke:var(--line);stroke-width:1}
+#simulador .chart .x-axis-title{font-size:11px;font-weight:600;letter-spacing:.06em}
+#simulador .chart-tooltip text{font-size:19px}
+#simulador .chart-tooltip .tooltip-local{fill:var(--a);font-size:19px;font-weight:700}
+#simulador .chart-tooltip .tooltip-away{fill:var(--b);font-size:19px;font-weight:700}
+#simulador .chart-empty{min-height:220px;display:grid;place-content:center;text-align:center;color:var(--muted)}
+#simulador .match-summary{display:grid;grid-template-columns:minmax(0,1fr) 148px;gap:0 12px;align-items:stretch;margin-top:14px}
+#simulador .score-matrix{min-width:0;container-type:inline-size}
+#simulador .score-matrix h2,#simulador .match-outcomes h2{font-family:"IBM Plex Sans",sans-serif;font-size:22px;font-weight:700;line-height:1.2;margin:0 0 10px}
+#simulador .heatmap{table-layout:fixed;width:100%;border-collapse:separate;border-spacing:var(--cell-gap,7px);text-align:center;font-variant-numeric:tabular-nums}
+#simulador .matrix-reference{grid-column:1;display:flex;flex-wrap:wrap;align-items:baseline;gap:0 5px;font-size:16px;line-height:1.4;color:#fff;font-weight:500;margin:7px 0 0}
+#simulador .matrix-reference strong{font-weight:700}
+:is(body.light,body.project-light-mode) #simulador .matrix-reference{color:var(--text)}
+#simulador .heatmap th{font-size:13px;text-align:center;padding:5px 0;font-weight:600}
+#simulador .heatmap th:first-child{width:26px}
+#simulador .heatmap th span{display:inline-block;width:20px;height:18px;line-height:18px;transform-origin:center;transition:transform .15s,color .15s}
+#simulador .heatmap th.axis-active span{transform:scale(1.2);font-weight:800}
+#simulador .heatmap [data-matrix-row].axis-active span{color:var(--a)}
+#simulador .heatmap [data-matrix-col].axis-active span{color:var(--b)}
+#simulador .heatmap td{height:var(--cell-height,clamp(32px,11cqi,46px));border:0;border-radius:var(--cell-radius,14px);padding:var(--cell-padding,6px 1px);font-size:clamp(11px,calc(2.2cqi + var(--prob-size)*1.4cqi),18px);font-weight:700;text-align:center;line-height:1;box-shadow:inset 0 0 0 1px #ffffff1f;transition:background-color .2s,color .2s}
+#simulador .heatmap td:hover,#simulador .heatmap td:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+#simulador .match-outcomes{min-width:0;display:grid;grid-template-rows:auto repeat(3,max-content);align-content:space-between;gap:8px;padding-bottom:7px}
+#simulador .match-outcomes h2{margin-bottom:2px;text-align:center}
+#simulador .outcome{border:1px solid var(--line);padding:7px 4px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:9px}
+#simulador .outcome-value{display:flex;align-items:center;justify-content:center;column-gap:10px;width:100%;min-width:0;min-height:48px}
+#simulador .outcome-value img{width:34px;max-width:100%;height:34px;object-fit:contain;flex-shrink:0}
+#simulador .outcome span{font-family:"IBM Plex Sans",sans-serif;font-size:14px;font-weight:700;line-height:1.2}
+#simulador .outcome output{white-space:nowrap;font-size:clamp(24px,5.4cqi,32px);font-weight:600;line-height:1.1;font-variant-numeric:tabular-nums}
+#simulador .outcome:first-of-type output{color:var(--a)}
+#simulador .outcome:last-of-type output{color:var(--b)}
+#simulador .status{font-size:12px;color:var(--muted);line-height:1.5;margin:12px 0}
+#simulador .status:empty{display:none}
+@media (max-width:1200px){#simulador .workbench{display:flex;flex-direction:column;gap:10px}
+#simulador .rail-a{order:0}
+#simulador .rail-b{order:1}
+#simulador .comparison{order:2}
+#simulador .club-rail{min-height:0}
+#simulador .club-rail>h3{text-align:left;margin-bottom:3px}
+#simulador .rail-scroll{top:20px;bottom:0;width:18px;height:auto}
+#simulador .rail-scroll::before{border:0;border-block:5px solid transparent}
+#simulador .rail-scroll-start{left:0;--hint-x:-3px;--hint-y:0px}
+#simulador .rail-scroll-end{left:auto;right:0;--hint-x:3px;--hint-y:0px}
+#simulador .rail-scroll-start::before{border-right:7px solid currentColor}
+#simulador .rail-scroll-end::before{border-left:7px solid currentColor}
+#simulador .club-list{position:static;margin-inline:18px;flex-direction:row;overflow-x:auto;overflow-y:hidden;padding:3px;gap:5px}
+#simulador .club-button{width:74px;min-height:80px;padding:3px 2px}
+#simulador .club-button img{width:48px;height:48px}}
+@media (max-width:600px){#simulador .match-summary{column-gap:10px}
+#simulador .chart-heading h3{font-size:18px}
+#simulador .score-matrix{--cell-gap:4px;--cell-height:clamp(26px,9cqi,34px);--cell-radius:10px;--cell-padding:3px 1px}
+#simulador .score-matrix h2,#simulador .match-outcomes h2{font-size:18px}}
+@container (max-width:480px){#simulador .score-matrix{--cell-gap:4px;--cell-height:clamp(24px,9cqi,32px);--cell-radius:8px;--cell-padding:3px 1px}
+#simulador .match-outcomes{padding-bottom:4px}
+#simulador .match-outcomes h2{font-size:18px}
+#simulador .outcome{padding:6px 4px;gap:5px}
+#simulador .outcome-value{min-height:30px}
+#simulador .outcome-value img{width:26px;height:26px}}
+@container (max-width:420px){#simulador .team-matchup{gap:8px;grid-template-columns:minmax(0,1fr) 26px minmax(0,1fr)}
+#simulador .team h3{font-size:20px}
+#simulador .team-head{flex-wrap:wrap;gap:4px;align-content:start;min-height:82px}
+#simulador .team-head>div:first-child{flex-basis:100%}
+#simulador .team-b .team-head{flex-direction:row}
+#simulador .team-b .xg{text-align:right;margin-left:auto}
+#simulador .xg output{font-size:23px}
+#simulador .control{grid-template-columns:minmax(0,1fr) 74px;gap:3px 7px}
+#simulador .control label{font-size:11px;min-height:28px}
+#simulador .control input[type=number]{font-size:16px}}
+@media (max-width:600px){@container (max-width:420px){#simulador .match-summary{grid-template-columns:minmax(0,1fr)}
+#simulador .match-outcomes{grid-row:3;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto auto;gap:6px;padding-bottom:0;margin-top:10px}
+#simulador .matrix-reference{grid-row:2}
+#simulador .match-outcomes h2{grid-column:1/-1}
+#simulador .outcome{padding:6px 3px;gap:5px}
+#simulador .outcome span{font-size:11px}
+#simulador .outcome output{font-size:clamp(18px,5.4cqi,22px)}
+#simulador .outcome-value{column-gap:7px;min-height:28px}
+#simulador .outcome-value img{width:18px;height:18px}
+#simulador .heatmap td{font-size:clamp(11px,calc(2.4cqi + var(--prob-size)*1.2cqi),16px)}}}
+@container (max-width:300px){#simulador .match-outcomes{grid-template-columns:minmax(0,1fr)}
+#simulador .outcome{width:132px;justify-self:center}
+#simulador .team-matchup{grid-template-columns:minmax(0,1fr)}
+#simulador .swap-button{justify-self:center}
+#simulador .team-head{min-height:0;flex-wrap:nowrap}
+#simulador .team-head>div:first-child{flex-basis:auto}
+#simulador .team-b .team-head{flex-direction:row-reverse}
+#simulador .team-b .xg{margin-left:0}
+#simulador .control label{min-height:0}}
+@media (prefers-reduced-motion:reduce){#simulador .rail-scroll::before{animation:none}#simulador .goal-curve,#simulador .goal-area,#simulador .goal-point,#simulador .mode button,#simulador .heatmap td,#simulador .heatmap th span,#simulador .club-button{transition:none}}

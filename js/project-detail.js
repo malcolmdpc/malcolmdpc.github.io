@@ -335,7 +335,7 @@
       if(!trigger || !panel) return;
       var pinned = false;
 
-      var copy = document.body.classList.contains("project20-detail-page") ? popover.closest(".project-detail-copy") : null;
+      var copy = document.body.matches(".project20-detail-page,.project21-detail-page") ? popover.closest(".project-detail-copy") : null;
       function fitTechnicalSheet(){
         if(!copy) return;
         var bounds = copy.getBoundingClientRect();
