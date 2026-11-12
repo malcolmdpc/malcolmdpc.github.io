@@ -215,10 +215,10 @@ $('.color-mode').on('click', function(){
   const allCards = Array.from(grid.children);
   const cards = allCards.filter(card => card.dataset.projectRotation !== 'exclude');
   const excludedCards = allCards.filter(card => card.dataset.projectRotation === 'exclude');
-  if(cards.length !== 20 || !cards.every(card => card.matches('.github-project-card[data-project-id]'))) return;
+  if(cards.length !== 21 || !cards.every(card => card.matches('.github-project-card[data-project-id]'))) return;
 
   // Cada proyecto ocupa las cuatro posiciones iniciales una vez por ciclo.
-  const rotation = [1, 6, 12, 18, 2, 7, 13, 19, 3, 8, 14, 17, 4, 9, 11, 15, 5, 10, 16, 20];
+  const rotation = [1, 6, 12, 18, 2, 7, 13, 19, 3, 8, 14, 17, 4, 9, 11, 15, 5, 10, 16, 20, 21];
   const parts = new Intl.DateTimeFormat('en-GB', {
     timeZone: 'Europe/Madrid', year: 'numeric', month: '2-digit', day: '2-digit'
   }).formatToParts(new Date());
@@ -228,14 +228,12 @@ $('.color-mode').on('click', function(){
   const today = Date.UTC(date.year, date.month - 1, date.day);
   const firstDay = Date.UTC(2026, 8, 17);
   const elapsedDays = Math.floor((today - firstDay) / 86400000);
-  const cycleDay = ((elapsedDays % 20) + 20) % 20;
-  // Con 20 proyectos, avanzar cuatro puestos repetiría el bloque cada cinco días.
-  // El desplazamiento entre bloques permite que todos ocupen las cuatro posiciones
-  // exactamente una vez en el ciclo de 20 días, conservando el orden original.
+  const cycleDay = ((elapsedDays % 21) + 21) % 21;
+  // Un ciclo de 21 días reparte cada proyecto una vez por posición.
   const featured = [];
 
   for(let position = 0; position < 4; position++){
-    featured.push(rotation[(cycleDay * 4 + Math.floor(cycleDay / 5) + position) % 20]);
+    featured.push(rotation[(cycleDay * 4 + position) % 21]);
   }
 
   const fragment = document.createDocumentFragment();
