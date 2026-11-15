@@ -5,6 +5,9 @@
   const COPY_SVG = `<svg viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="#111111" d="M8 7.5A2.5 2.5 0 0 1 10.5 5h6A2.5 2.5 0 0 1 19 7.5v8A2.5 2.5 0 0 1 16.5 18h-6A2.5 2.5 0 0 1 8 15.5v-8Zm2.5-.6a.6.6 0 0 0-.6.6v8a.6.6 0 0 0 .6.6h6a.6.6 0 0 0 .6-.6v-8a.6.6 0 0 0-.6-.6h-6ZM5 10.5A2.5 2.5 0 0 1 7.5 8h.9v1.9h-.9a.6.6 0 0 0-.6.6v8a.6.6 0 0 0 .6.6h6a.6.6 0 0 0 .6-.6v-.9H16v.9a2.5 2.5 0 0 1-2.5 2.5h-6A2.5 2.5 0 0 1 5 18.5v-8Z"/></svg>`;
 
   const UI_LABELS = {
+    ca: {"main":"Compartir el projecte","whatsapp":"Compartir per WhatsApp","linkedin":"Compartir a LinkedIn","x":"Compartir a X","copy":"Copiar l’enllaç","copied":"Enllaç copiat","prompt":"Copia aquest enllaç:"},
+    nl: {"main":"Project delen","whatsapp":"Delen via WhatsApp","linkedin":"Delen op LinkedIn","x":"Delen op X","copy":"Link kopiëren","copied":"Link gekopieerd","prompt":"Kopieer deze link:"},
+    pl: {"main":"Udostępnij projekt","whatsapp":"Udostępnij przez WhatsApp","linkedin":"Udostępnij na LinkedIn","x":"Udostępnij na X","copy":"Kopiuj link","copied":"Link skopiowany","prompt":"Skopiuj ten link:"},
     es: {
       main: "Compartir proyecto",
       whatsapp: "Compartir por WhatsApp",

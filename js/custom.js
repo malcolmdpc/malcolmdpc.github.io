@@ -1,6 +1,6 @@
 (function(){
   // The current static document is the source of truth for localized labels.
-  window.PL_STATIC_MULTILINGUAL = ["es", "en", "it", "fr", "de", "pt"].includes((document.documentElement.lang || "").toLowerCase().split("-")[0]);
+  window.PL_STATIC_MULTILINGUAL = ["es", "en", "it", "fr", "de", "pt", "ca", "nl", "pl"].includes((document.documentElement.lang || "").toLowerCase().split("-")[0]);
   var labels = {};
   document.querySelectorAll('#projects .repo-filter-btn[data-repo-filter]').forEach(function(button){
     var copy = button.cloneNode(true);
@@ -188,6 +188,9 @@ $('.color-mode').on('click', function(){
     const message = $('#message').val() || '';
     const language = (window.plCurrentLanguageForContact && window.plCurrentLanguageForContact()) || document.documentElement.lang || 'es';
     const mailText = {
+      ca: {"subject":"Contacte des de Patrones Lab","name":"Nom: ","message":"Missatge:\n","email":"Correu electrònic: "},
+      nl: {"subject":"Contact via Patrones Lab","name":"Naam: ","message":"Bericht:\n","email":"E-mail: "},
+      pl: {"subject":"Kontakt przez Patrones Lab","name":"Imię: ","message":"Wiadomość:\n","email":"E-mail: "},
       es: {subject:'Contacto desde Patrones Lab', name:'Nombre: ', message:'Mensaje:\n'},
       en: {subject:'Contact from Patrones Lab', name:'Name: ', message:'Message:\n'},
       it: {subject:'Contatto da Patrones Lab', name:'Nome: ', message:'Messaggio:\n'},
@@ -199,7 +202,7 @@ $('.color-mode').on('click', function(){
     const subject = encodeURIComponent(pack.subject);
     const body = encodeURIComponent(
       pack.name + name + '\n' +
-      'Email: ' + email + '\n\n' +
+      (pack.email || 'Email: ') + email + '\n\n' +
       pack.message + message
     );
     window.location.href = 'mailto:malcolm@patroneslab.com?subject=' + subject + '&body=' + body;
@@ -505,6 +508,7 @@ $('.color-mode').on('click', function(){
   }
 
   window.addEventListener('wheel', function(event){
+    if(event.target.closest && event.target.closest('.language-menu, .project-language-menu')) return;
     if(!canControl(event.deltaY)) return;
 
     event.preventDefault();
@@ -1272,6 +1276,7 @@ $('.color-mode').on('click', function(){
         },
         onComplete:finishScrollLoader
       });
+      window.setTimeout(finishScrollLoader, 1200);
       return;
     }
 
@@ -1626,7 +1631,7 @@ $('.color-mode').on('click', function(){
     if(event.ctrlKey || event.metaKey || event.shiftKey) return;
 
     const nativeScrollTarget = event.target && event.target.closest
-      ? event.target.closest('[data-native-scroll], textarea, select, .modal, .dropdown-menu')
+      ? event.target.closest('[data-native-scroll], textarea, select, .modal, .dropdown-menu, .language-menu, .project-language-menu')
       : null;
 
     if(nativeScrollTarget) return;
@@ -1672,6 +1677,16 @@ $('.color-mode').on('click', function(){
     }
   }
 
+  function onNavigationKey(event){
+    if(!['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','PageUp','PageDown','Home','End',' '].includes(event.key)) return;
+    if(event.target.closest && event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
+    if(rafId !== null) window.cancelAnimationFrame(rafId);
+    rafId = null;
+    isAnimating = false;
+    lastInputAt = 0;
+    syncToNative();
+  }
+
   function enable(){
     root.classList.add('pl-locomotive-style-active');
     body.classList.add('pl-locomotive-style-active');
@@ -1681,6 +1696,7 @@ $('.color-mode').on('click', function(){
     window.addEventListener('wheel', onWheel, { passive:false });
     window.addEventListener('scroll', onScroll, { passive:true });
     window.addEventListener('resize', onResize, { passive:true });
+    window.addEventListener('keydown', onNavigationKey);
 
     if(window.ScrollTrigger && typeof window.ScrollTrigger.refresh === 'function'){
       window.ScrollTrigger.refresh();
@@ -1731,6 +1747,7 @@ $('.color-mode').on('click', function(){
   let timer = null;
   let isSnapping = false;
   let lastUserInputAt = 0;
+  let keyboardScrolling = false;
 
   function isEnabledViewport(){
     return window.innerWidth >= config.minDesktopWidth;
@@ -1743,6 +1760,7 @@ $('.color-mode').on('click', function(){
   function shouldBypass(){
     return (
       !isEnabledViewport() ||
+      keyboardScrolling ||
       isMethodologyPinned() ||
       isSnapping ||
       body.classList.contains('pl-scroll-loader-active') ||
@@ -1804,7 +1822,7 @@ $('.color-mode').on('click', function(){
     const startedAt = performance.now();
 
     function frame(now){
-      if(isMethodologyPinned()){
+      if(isMethodologyPinned() || keyboardScrolling){
         isSnapping = false;
         return;
       }
@@ -1864,6 +1882,7 @@ $('.color-mode').on('click', function(){
   }
 
   function markUserInput(){
+    keyboardScrolling = false;
     lastUserInputAt = performance.now();
     scheduleSnap();
   }
@@ -1873,9 +1892,12 @@ $('.color-mode').on('click', function(){
 
     window.addEventListener('wheel', markUserInput, { passive:true });
     window.addEventListener('touchend', markUserInput, { passive:true });
-    window.addEventListener('keyup', function(event){
-      const keys = ['Space','PageDown','PageUp','ArrowDown','ArrowUp','Home','End'];
-      if(keys.includes(event.code)) markUserInput();
+    window.addEventListener('keydown', function(event){
+      const keys = ['Space','PageDown','PageUp','ArrowDown','ArrowUp','ArrowLeft','ArrowRight','Home','End'];
+      if(!keys.includes(event.code)) return;
+      if(event.target.closest && event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
+      keyboardScrolling = true;
+      window.clearTimeout(timer);
     }, { passive:true });
 
     
@@ -2480,6 +2502,9 @@ $('.color-mode').on('click', function(){
     const message = (document.querySelector('#message') || {}).value || '';
 
     const labels = {
+      ca: {"subject":"Contacte des de Patrones Lab","name":"Nom: ","message":"Missatge:\n","email":"Correu electrònic: "},
+      nl: {"subject":"Contact via Patrones Lab","name":"Naam: ","message":"Bericht:\n","email":"E-mail: "},
+      pl: {"subject":"Kontakt przez Patrones Lab","name":"Imię: ","message":"Wiadomość:\n","email":"E-mail: "},
       es: {subject:'Contacto desde Patrones Lab', name:'Nombre: ', message:'Mensaje:\n'},
       en: {subject:'Contact from Patrones Lab', name:'Name: ', message:'Message:\n'},
       it: {subject:'Contatto da Patrones Lab', name:'Nome: ', message:'Messaggio:\n'},
@@ -2492,7 +2517,7 @@ $('.color-mode').on('click', function(){
     const subject = encodeURIComponent(data.subject);
     const body = encodeURIComponent(
       data.name + name + '\n' +
-      'Email: ' + email + '\n\n' +
+      (data.email || 'Email: ') + email + '\n\n' +
       data.message + message
     );
 
@@ -3347,11 +3372,11 @@ $('.color-mode').on('click', function(){
   function currentLang(){
     if(window.plGetLanguage){
       const lang = window.plGetLanguage();
-      if(['es','en','it','fr','de','pt'].includes(lang)) return lang;
+      if(['es','en','it','fr','de','pt','ca','nl','pl'].includes(lang)) return lang;
     }
     try{
       const stored = localStorage.getItem('patronesLabLanguage');
-      if(['es','en','it','fr','de','pt'].includes(stored)) return stored;
+      if(['es','en','it','fr','de','pt','ca','nl','pl'].includes(stored)) return stored;
     }catch(e){}
     return 'es';
   }
@@ -3483,7 +3508,7 @@ $('.color-mode').on('click', function(){
   }
 
   function syncProjectFiltersAndTags(lang){
-    const language = ['es','en','it','fr','de','pt'].includes(lang) ? lang : currentLang();
+    const language = ['es','en','it','fr','de','pt','ca','nl','pl'].includes(lang) ? lang : currentLang();
 
     renderAllFilterButtons(language);
     renderAllCardTags(language);
@@ -3816,12 +3841,12 @@ $('.color-mode').on('click', function(){
   function getLang(){
     if(window.plGetLanguage){
       const lang = window.plGetLanguage();
-      if(['es','en','it','fr','de','pt'].includes(lang)) return lang;
+      if(['es','en','it','fr','de','pt','ca','nl','pl'].includes(lang)) return lang;
     }
 
     try{
       const stored = localStorage.getItem('patronesLabLanguage');
-      if(['es','en','it','fr','de','pt'].includes(stored)) return stored;
+      if(['es','en','it','fr','de','pt','ca','nl','pl'].includes(stored)) return stored;
     }catch(e){}
 
     return document.documentElement.lang || 'es';
@@ -3922,7 +3947,7 @@ $('.color-mode').on('click', function(){
 
     isSyncing = true;
 
-    const language = ['es','en','it','fr','de','pt'].includes(lang) ? lang : getLang();
+    const language = ['es','en','it','fr','de','pt','ca','nl','pl'].includes(lang) ? lang : getLang();
 
     renderFilters(language);
     renderCardTags(language);
@@ -3932,7 +3957,7 @@ $('.color-mode').on('click', function(){
   }
 
   function syncSoon(lang){
-    const language = ['es','en','it','fr','de','pt'].includes(lang) ? lang : getLang();
+    const language = ['es','en','it','fr','de','pt','ca','nl','pl'].includes(lang) ? lang : getLang();
 
     sync(language);
 
@@ -4285,16 +4310,16 @@ $('.color-mode').on('click', function(){
   function getLang(){
     if(window.plGetLanguage){
       const lang = window.plGetLanguage();
-      if(['es','en','it','fr','de','pt'].includes(lang)) return lang;
+      if(['es','en','it','fr','de','pt','ca','nl','pl'].includes(lang)) return lang;
     }
 
     try{
       const stored = localStorage.getItem('patronesLabLanguage');
-      if(['es','en','it','fr','de','pt'].includes(stored)) return stored;
+      if(['es','en','it','fr','de','pt','ca','nl','pl'].includes(stored)) return stored;
     }catch(e){}
 
     const htmlLang = document.documentElement.lang;
-    return ['es','en','it','fr','de','pt'].includes(htmlLang) ? htmlLang : 'es';
+    return ['es','en','it','fr','de','pt','ca','nl','pl'].includes(htmlLang) ? htmlLang : 'es';
   }
 
   function labelFor(token, lang){
@@ -4460,7 +4485,7 @@ $('.color-mode').on('click', function(){
   }
 
   function sync(lang){
-    const language = ['es','en','it','fr','de','pt'].includes(lang) ? lang : getLang();
+    const language = ['es','en','it','fr','de','pt','ca','nl','pl'].includes(lang) ? lang : getLang();
 
     removeInjectedProjectTags();
     renderFilters(language);
@@ -4478,7 +4503,7 @@ $('.color-mode').on('click', function(){
   }
 
   function syncSoon(lang){
-    const language = ['es','en','it','fr','de','pt'].includes(lang) ? lang : getLang();
+    const language = ['es','en','it','fr','de','pt','ca','nl','pl'].includes(lang) ? lang : getLang();
 
     sync(language);
 

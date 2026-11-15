@@ -11,7 +11,7 @@
   const projects = Array.from(document.querySelectorAll('.pl-area-project'));
 
   function syncHeights(){
-    const navH = mainNav ? mainNav.offsetHeight : 58;
+    const navH = mainNav ? mainNav.offsetHeight + (parseFloat(getComputedStyle(mainNav).top) || 0) : 58;
     const headerH = areaHeader ? areaHeader.offsetHeight : 138;
     const subH = subPin ? subPin.offsetHeight : 82;
     root.style.setProperty('--area-main-nav-h', navH + 'px');

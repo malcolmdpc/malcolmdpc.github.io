@@ -10,11 +10,11 @@
   const crestBase = new URL('../../images/patrones/projects/modelo-binomial-probabilidades-goles/simulator/crests/', document.currentScript.src).href;
   const number = new Intl.NumberFormat(locale, { maximumFractionDigits: 2, minimumFractionDigits: 2 });
   const percentFormat = new Intl.NumberFormat(locale, { style: 'percent', maximumFractionDigits: 1 });
-  const percent = value => value > 0 && value < 0.0005 ? '<0,1%' : percentFormat.format(value);
+  const percent = value => value > 0 && value < 0.0005 ? '<' + percentFormat.format(0.001) : percentFormat.format(value);
   const svgPercent = value => percent(value).replace('<', '&lt;');
   const advantageText = value => value.toFixed(1);
   const tooltipPercent = value => (value * 100).toLocaleString(locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' %';
-  const clubs = window.FootballClubs;
+  const clubs = window.FootballClubs.map(club => ({ ...club, nombre: copy.clubNames?.[club.id] || club.nombre }));
   // Orden visual fijo aportado por el usuario. No interviene en el modelo.
   const clubOrder = ['arsenal','bayern','barcelona','city','madrid','psg','inter','liverpool','atletico','dortmund','villa','sporting','roma','united','brugge','como','porto','leipzig','galatasaray','betis','stuttgart','napoli','villarreal','lens','psv','bodo','lille','fenerbahce','slavia','feyenoord','viking','aek','shakhtar','lask','sabah','slovan'];
   const orderedClubs = clubOrder.map(id => clubs.find(club => club.id === id));
@@ -124,6 +124,12 @@
     return cumulative ? (results[team]?.tail[k] || 0) : (results[team]?.pmf[k] || 0);
   }
 
+  function goalLabel(k) {
+    if (k === 1) return t('goal');
+    if (language === 'pl' && k % 10 >= 2 && k % 10 <= 4 && (k % 100 < 12 || k % 100 > 14)) return t('goalsFew');
+    return t('goals');
+  }
+
   function selectBin(k) {
     state.selected = k;
     const bin = bins.find(bin => bin.k === k);
@@ -131,7 +137,7 @@
     const grouped = state.mode === 'exact' && bin.tail;
     const cumulative = state.mode === 'atleast' || grouped;
     const description = `${t(cumulative ? 'atleast' : 'exact')} ${k}`;
-    $('chart-selection').textContent = `${description[0].toUpperCase() + description.slice(1)} ${t(k === 1 ? 'goal' : 'goals')}: ${t('home')} ${results.a ? percent(probability('a', k, cumulative)) : '—'} · ${t('away')} ${results.b ? percent(probability('b', k, cumulative)) : '—'}.`;
+    $('chart-selection').textContent = `${description[0].toUpperCase() + description.slice(1)} ${goalLabel(k)}: ${t('home')} ${results.a ? percent(probability('a', k, cumulative)) : '—'} · ${t('away')} ${results.b ? percent(probability('b', k, cumulative)) : '—'}.`;
     root.querySelectorAll('[data-indicator]').forEach(line => { line.style.opacity = Number(line.dataset.indicator) === k ? '1' : '0'; });
     root.querySelectorAll('[data-point]').forEach(point => {
       const selected = Number(point.dataset.point) === k;
@@ -222,7 +228,7 @@
       const center = centerX(i);
       const label = bin.tail ? '10+' : String(bin.k);
       const description = t(cumulative || bin.tail ? 'atleast' : 'exact');
-      svg += `<path class="goal-indicator" data-indicator="${bin.k}" d="M${center} ${top}V${bottom}"/><text class="axis-value" x="${center}" y="${bottom + 22}" text-anchor="middle">${label}</text><rect class="hit" data-goal="${bin.k}" role="button" tabindex="0" aria-label="${description} ${bin.k} ${t('goals')}: ${t('home')} ${results.a ? svgPercent(values[i][0]) : t('unselected')}, ${t('away')} ${results.b ? svgPercent(values[i][1]) : t('unselected')}" x="${left + step * i}" y="${top}" width="${step}" height="${plotHeight + 28}"/>`;
+      svg += `<path class="goal-indicator" data-indicator="${bin.k}" d="M${center} ${top}V${bottom}"/><text class="axis-value" x="${center}" y="${bottom + 22}" text-anchor="middle">${label}</text><rect class="hit" data-goal="${bin.k}" role="button" tabindex="0" aria-label="${description} ${bin.k} ${goalLabel(bin.k)}: ${t('home')} ${results.a ? svgPercent(values[i][0]) : t('unselected')}, ${t('away')} ${results.b ? svgPercent(values[i][1]) : t('unselected')}" x="${left + step * i}" y="${top}" width="${step}" height="${plotHeight + 28}"/>`;
     });
     svg += `<text x="${width - right}" class="x-axis-title" y="${height - 4}" text-anchor="end">${t('axis')}</text><g id="chart-tooltip" class="chart-tooltip" aria-hidden="true"><rect width="160" height="32" rx="5"/><text id="tooltip-local" class="tooltip-local" x="9" y="22"></text><text id="tooltip-away" class="tooltip-away" x="86" y="22"></text></g></svg>`;
     updateChartSvg(svg);

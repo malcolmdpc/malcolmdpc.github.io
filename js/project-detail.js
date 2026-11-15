@@ -4,10 +4,13 @@
   var languageKey = "patronesLabLanguage";
   var modeKey = "patrones-lab-color-mode";
   var pageLanguage = (document.documentElement.lang || "es").toLowerCase().split("-")[0];
-  var supportedLanguages = {es:true,en:true,it:true,fr:true,de:true,pt:true};
+  var supportedLanguages = {es:true,en:true,it:true,fr:true,de:true,pt:true,ca:true,nl:true,pl:true};
   if(!supportedLanguages[pageLanguage]) pageLanguage = "es";
 
   var mobileRepoLabels = {
+    ca: "Obrir el repositori",
+    nl: "Repository openen",
+    pl: "Otwórz repozytorium",
     es: "Entrar al Repo",
     en: "Open Repo",
     it: "Apri il repo",

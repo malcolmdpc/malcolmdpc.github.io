@@ -65,7 +65,7 @@
     pending=0;
     // Expanding the mobile menu must not shift the page content.
     if(nav.querySelector('.navbar-collapse.show, .navbar-collapse.collapsing'))return;
-    const height=Math.ceil(nav.getBoundingClientRect().height);
+    const height=Math.ceil(nav.getBoundingClientRect().height+(parseFloat(getComputedStyle(nav).top)||0));
     if(height>0)document.documentElement.style.setProperty('--news-nav-height',height+'px');
   }
   function schedule(){if(!pending)pending=requestAnimationFrame(measure)}

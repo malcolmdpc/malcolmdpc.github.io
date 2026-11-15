@@ -67,7 +67,7 @@
   function navbarHeight() {
     const navbar = document.querySelector('.navbar');
     if (!navbar) return 0;
-    return Math.max(0, Math.round(navbar.getBoundingClientRect().height));
+    return Math.max(0, Math.round(navbar.getBoundingClientRect().height + (parseFloat(getComputedStyle(navbar).top) || 0)));
   }
 
   function layoutHasChanged() {
@@ -426,13 +426,14 @@
   }
 
   function handleKeyboard(event) {
+    if(event.defaultPrevented || event.altKey || event.metaKey) return;
+    if(event.ctrlKey && event.key !== 'Home' && event.key !== 'End') return;
+    if(event.target.closest && event.target.closest('input, textarea, select, [contenteditable="true"], [role="menu"], dialog')) return;
+    const rect = viewport.getBoundingClientRect();
+    if(rect.top >= visibleHeight() / 2 || rect.bottom <= visibleHeight() / 2) return;
     const targets = {
       ArrowRight: state.activeIndex + 1,
-      PageDown: state.activeIndex + 1,
-      ArrowLeft: state.activeIndex - 1,
-      PageUp: state.activeIndex - 1,
-      Home: 0,
-      End: panels.length - 1
+      ArrowLeft: state.activeIndex - 1
     };
 
     if (!Object.prototype.hasOwnProperty.call(targets, event.key)) return;
@@ -582,7 +583,7 @@
   });
 
   viewport.addEventListener('scroll', handleNativeScroll, { passive: true });
-  viewport.addEventListener('keydown', handleKeyboard);
+  document.addEventListener('keydown', handleKeyboard);
   viewport.addEventListener('pointerdown', beginDrag);
   viewport.addEventListener('pointermove', moveDrag);
   viewport.addEventListener('pointerup', endDrag);

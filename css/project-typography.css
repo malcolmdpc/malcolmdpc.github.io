@@ -44,6 +44,11 @@
   gap: .72rem;
   margin: 1rem 0 0;
 }
+html:lang(pl) :where(body.project-detail-page) .project-detail-copy h1,
+html:lang(nl) :where(body.project-detail-page) .project-detail-copy h1 {
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
 :where(body.project-detail-page) .project-status-badge {
   color: #e6fff3;
   font-size: .84rem;
@@ -542,7 +547,7 @@
   padding: 2px 0 0;
 }
 :where(body.project-detail-page) .project-language-option-label {
-  color: rgba(255,255,255,.64);
+  color: rgba(255,255,255,.92);
   font-size: 10px;
   font-weight: 800;
   letter-spacing: .055em;
@@ -620,7 +625,7 @@
   color: #121417;
 }
 :where(body.project-detail-page).project-light-mode .project-language-option-label {
-  color: rgba(17,17,17,.62);
+  color: #17181d;
 }
 :where(body.project-detail-page).project-light-mode .project-step-button {
   color: rgba(23,24,29,.8);
