@@ -4,6 +4,9 @@
     var simulator=document.getElementById('simulador');
     if(simulator && document.body.classList.contains('project21-detail-page')){
       var labels={
+        ca:["Ampliar el simulador","Tornar","Simulador de gols","Ampliar el gràfic de gols","Ampliar el mapa de marcadors i els resultats","Mostrar tots els gràfics"],
+        nl:["Simulator vergroten","Terug","Doelpuntsimulator","Doelpuntenverdeling vergroten","Scorematrix en uitslagen vergroten","Alle grafieken tonen"],
+        pl:["Powiększ symulator","Wróć","Symulator goli","Powiększ wykres goli","Powiększ macierz wyników i podsumowanie","Pokaż wszystkie wykresy"],
         es:['Ampliar simulador','Volver','Simulador de goles','Ampliar gráfico de goles','Ampliar mapa de marcadores y resultados','Mostrar todos los gráficos'],
         en:['Expand simulator','Back','Goal simulator','Expand goal chart','Expand score matrix and match outcomes','Show all charts'],
         it:['Ingrandisci simulatore','Indietro','Simulatore di gol','Ingrandisci grafico dei gol','Ingrandisci matrice e risultati','Mostra tutti i grafici'],

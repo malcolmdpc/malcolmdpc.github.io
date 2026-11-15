@@ -1,0 +1,64 @@
+:root {
+  --site-scroll-progress-height:4px;
+}
+
+html.has-scroll-progress,
+.has-scroll-progress body,
+.has-scroll-progress .project-detail-copy {
+  scrollbar-width:none;
+}
+
+html.has-scroll-progress::-webkit-scrollbar,
+.has-scroll-progress body::-webkit-scrollbar,
+.has-scroll-progress .project-detail-copy::-webkit-scrollbar {
+  display:none;
+}
+
+.site-scroll-progress {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:var(--site-scroll-progress-height);
+  background:#fff;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:10000;
+}
+
+.dark-mode .site-scroll-progress,
+.project-detail-page:not(.project-light-mode) .site-scroll-progress,
+body:not([class]) .site-scroll-progress {
+  background:#0c0c0d;
+}
+
+@media (prefers-color-scheme:light) {
+  body:not([class]) .site-scroll-progress {
+    background:#fff;
+  }
+}
+
+.site-scroll-progress::before {
+  content:"";
+  display:block;
+  width:100%;
+  height:100%;
+  background:#ffc200;
+  transform:scaleX(var(--site-scroll-progress, 0));
+  transform-origin:left;
+}
+
+.has-scroll-progress .pl-smart-navbar {
+  top:var(--site-scroll-progress-height) !important;
+}
+
+.pl-scroll-loader-active .site-scroll-progress,
+.pl-scroll-landing-lock .site-scroll-progress {
+  visibility:hidden;
+}
+
+@media (max-width:767px) {
+  :root {
+    --site-scroll-progress-height:3px;
+  }
+}

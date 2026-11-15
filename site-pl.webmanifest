@@ -1,0 +1,23 @@
+{
+  "name": "Patrones Lab • Analityka danych",
+  "short_name": "Patrones Lab",
+  "description": "Patrones Lab gromadzi projekty z zakresu analityki danych, Business Intelligence i uczenia maszynowego, które pomagają badać dane, odkrywać wzorce i zdobywać wiedzę.",
+  "start_url": "/pl/",
+  "scope": "/pl/",
+  "display": "standalone",
+  "background_color": "#0c0c0d",
+  "theme_color": "#0c0c0d",
+  "icons": [
+    {
+      "src": "images/patrones/favicon/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/patrones/favicon/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "lang": "pl"
+}

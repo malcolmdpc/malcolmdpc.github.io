@@ -30,6 +30,29 @@
  }
  if(languageToggle)languageToggle.addEventListener('click',fitLanguageMenu);
  window.addEventListener('resize',fitLanguageMenu);
+  document.querySelectorAll(".project-language-menu").forEach(function(menu){
+    var selector = menu.parentElement;
+    var indicators = ["up", "down"].map(function(direction){
+      var indicator = document.createElement("span");
+      indicator.className = "project-language-scroll-indicator is-" + direction;
+      indicator.setAttribute("aria-hidden", "true");
+      selector.appendChild(indicator);
+      return indicator;
+    });
+    function updateIndicators(){
+      var left = menu.offsetLeft + menu.offsetWidth / 2 - 4;
+      indicators.forEach(function(indicator){ indicator.style.left = left + "px"; });
+      indicators[0].style.top = (menu.offsetTop - 7) + "px";
+      indicators[1].style.top = (menu.offsetTop + menu.offsetHeight + 2) + "px";
+      indicators[0].hidden = menu.scrollTop <= 1;
+      indicators[1].hidden = menu.scrollHeight - menu.clientHeight - menu.scrollTop <= 1;
+    }
+    menu.addEventListener("scroll", updateIndicators, {passive:true});
+    window.addEventListener("resize", updateIndicators);
+    selector.querySelector("button").addEventListener("click", function(){ requestAnimationFrame(updateIndicators); });
+    if(window.ResizeObserver) new ResizeObserver(updateIndicators).observe(menu);
+    updateIndicators();
+  });
  var wrap=document.querySelector('.project-site-navigation');if(!wrap)return;
  var button=wrap.querySelector('button'),menu=wrap.querySelector('nav'),links=Array.from(menu.querySelectorAll('a'));
  function fitSiteMenu(){
