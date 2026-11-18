@@ -124,10 +124,27 @@
     return cumulative ? (results[team]?.tail[k] || 0) : (results[team]?.pmf[k] || 0);
   }
 
+  const russianGoalForms = language === 'ru' ? new Intl.PluralRules('ru') : null;
+
   function goalLabel(k) {
+    if (russianGoalForms) {
+      const category = russianGoalForms.select(k);
+      return t(category === 'one' ? 'goal' : category === 'few' ? 'goalsFew' : 'goals');
+    }
     if (k === 1) return t('goal');
     if (language === 'pl' && k % 10 >= 2 && k % 10 <= 4 && (k % 100 < 12 || k % 100 > 14)) return t('goalsFew');
     return t('goals');
+  }
+
+  function goalDescription(k, cumulative) {
+    const qualifier = t(cumulative ? 'atleast' : 'exact');
+    if (language === 'ar') {
+      const count = k === 1 ? 'هدف واحد' : k === 2 ? 'هدفان' : k + ' ' + t('goals');
+      return count + ' ' + qualifier;
+    }
+    if (language === 'ja' || language === 'zh') return qualifier + k + goalLabel(k);
+    if (language === 'ko') return qualifier + ' ' + k + goalLabel(k);
+    return qualifier + ' ' + k + ' ' + goalLabel(k);
   }
 
   function selectBin(k) {
@@ -136,8 +153,8 @@
     if (!bin) return;
     const grouped = state.mode === 'exact' && bin.tail;
     const cumulative = state.mode === 'atleast' || grouped;
-    const description = `${t(cumulative ? 'atleast' : 'exact')} ${k}`;
-    $('chart-selection').textContent = `${description[0].toUpperCase() + description.slice(1)} ${goalLabel(k)}: ${t('home')} ${results.a ? percent(probability('a', k, cumulative)) : '—'} · ${t('away')} ${results.b ? percent(probability('b', k, cumulative)) : '—'}.`;
+    const description = goalDescription(k, cumulative);
+    $('chart-selection').textContent = `${description[0].toUpperCase() + description.slice(1)}: ${t('home')} ${results.a ? percent(probability('a', k, cumulative)) : '—'} · ${t('away')} ${results.b ? percent(probability('b', k, cumulative)) : '—'}.`;
     root.querySelectorAll('[data-indicator]').forEach(line => { line.style.opacity = Number(line.dataset.indicator) === k ? '1' : '0'; });
     root.querySelectorAll('[data-point]').forEach(point => {
       const selected = Number(point.dataset.point) === k;
@@ -227,8 +244,8 @@
     bins.forEach((bin, i) => {
       const center = centerX(i);
       const label = bin.tail ? '10+' : String(bin.k);
-      const description = t(cumulative || bin.tail ? 'atleast' : 'exact');
-      svg += `<path class="goal-indicator" data-indicator="${bin.k}" d="M${center} ${top}V${bottom}"/><text class="axis-value" x="${center}" y="${bottom + 22}" text-anchor="middle">${label}</text><rect class="hit" data-goal="${bin.k}" role="button" tabindex="0" aria-label="${description} ${bin.k} ${goalLabel(bin.k)}: ${t('home')} ${results.a ? svgPercent(values[i][0]) : t('unselected')}, ${t('away')} ${results.b ? svgPercent(values[i][1]) : t('unselected')}" x="${left + step * i}" y="${top}" width="${step}" height="${plotHeight + 28}"/>`;
+      const description = goalDescription(bin.k, cumulative || bin.tail);
+      svg += `<path class="goal-indicator" data-indicator="${bin.k}" d="M${center} ${top}V${bottom}"/><text class="axis-value" x="${center}" y="${bottom + 22}" text-anchor="middle">${label}</text><rect class="hit" data-goal="${bin.k}" role="button" tabindex="0" aria-label="${description}: ${t('home')} ${results.a ? svgPercent(values[i][0]) : t('unselected')}, ${t('away')} ${results.b ? svgPercent(values[i][1]) : t('unselected')}" x="${left + step * i}" y="${top}" width="${step}" height="${plotHeight + 28}"/>`;
     });
     svg += `<text x="${width - right}" class="x-axis-title" y="${height - 4}" text-anchor="end">${t('axis')}</text><g id="chart-tooltip" class="chart-tooltip" aria-hidden="true"><rect width="160" height="32" rx="5"/><text id="tooltip-local" class="tooltip-local" x="9" y="22"></text><text id="tooltip-away" class="tooltip-away" x="86" y="22"></text></g></svg>`;
     updateChartSvg(svg);

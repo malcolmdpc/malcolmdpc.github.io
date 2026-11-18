@@ -1,6 +1,6 @@
 (function(){
   // The current static document is the source of truth for localized labels.
-  window.PL_STATIC_MULTILINGUAL = ["es", "en", "it", "fr", "de", "pt", "ca", "nl", "pl"].includes((document.documentElement.lang || "").toLowerCase().split("-")[0]);
+  window.PL_STATIC_MULTILINGUAL = ["es", "en", "it", "fr", "de", "pt", "ca", "nl", "pl","id","tr","vi","ru","zh","ko","ja","hi","ar"].includes((document.documentElement.lang || "").toLowerCase().split("-")[0]);
   var labels = {};
   document.querySelectorAll('#projects .repo-filter-btn[data-repo-filter]').forEach(function(button){
     var copy = button.cloneNode(true);
@@ -26,7 +26,7 @@
     }
   }catch(e){}
 
-  document.documentElement.lang = ((document.documentElement.lang || 'es').split('-')[0] || 'es');
+  if (!document.documentElement.lang) document.documentElement.lang = 'es';
 
   if(document.body){
     document.body.classList.add('dark-mode');
@@ -143,7 +143,7 @@
   $('body').toggleClass('dark-mode', shouldUseDark);
   $('.color-mode-icon').toggleClass('active', shouldUseDark);
 
-  
+
 // Sincroniza el icono de modo visual con el estado real del tema.
 // En modo oscuro muestra sol; en modo claro muestra luna.
 function syncColorModeIconWithTheme() {
@@ -191,6 +191,15 @@ $('.color-mode').on('click', function(){
       ca: {"subject":"Contacte des de Patrones Lab","name":"Nom: ","message":"Missatge:\n","email":"Correu electrònic: "},
       nl: {"subject":"Contact via Patrones Lab","name":"Naam: ","message":"Bericht:\n","email":"E-mail: "},
       pl: {"subject":"Kontakt przez Patrones Lab","name":"Imię: ","message":"Wiadomość:\n","email":"E-mail: "},
+      id: {subject:"Pesan dari Patrones Lab",name:"Nama: ",message:"Pesan:\n","email":"Email: "},
+      tr: {subject:"Patrones Lab üzerinden iletişim",name:"Ad: ",message:"Mesaj:\n","email":"E-posta: "},
+      vi: {subject:"Liên hệ từ Patrones Lab",name:"Tên: ",message:"Tin nhắn:\n","email":"Email: "},
+      ru: {subject:"Сообщение с сайта Patrones Lab",name:"Имя: ",message:"Сообщение:\n","email":"Эл. почта: "},
+      zh: {subject:"来自 Patrones Lab 的留言",name:"姓名： ",message:"留言：\n","email":"电子邮箱："},
+      ko: {subject:"Patrones Lab을 통한 문의",name:"이름: ",message:"메시지:\n","email":"이메일: "},
+      ja: {subject:"Patrones Lab からのお問い合わせ",name:"お名前： ",message:"メッセージ：\n","email":"メール："},
+      hi: {subject:"Patrones Lab से संदेश",name:"नाम: ",message:"संदेश:\n","email":"ईमेल: "},
+      ar: {subject:"رسالة من Patrones Lab",name:"الاسم: ",message:"الرسالة:\n","email":"البريد الإلكتروني: "},
       es: {subject:'Contacto desde Patrones Lab', name:'Nombre: ', message:'Mensaje:\n'},
       en: {subject:'Contact from Patrones Lab', name:'Name: ', message:'Message:\n'},
       it: {subject:'Contatto da Patrones Lab', name:'Nome: ', message:'Messaggio:\n'},
@@ -672,7 +681,7 @@ $('.color-mode').on('click', function(){
   }
 
   function getCurrentSection(){
-    
+
     if(window.scrollY <= 96){
       return firstSectionId;
     }
@@ -725,7 +734,7 @@ $('.color-mode').on('click', function(){
     });
   });
 
-  
+
   window.setTimeout(updateActive, 120);
   window.setTimeout(updateActive, 480);
   window.setTimeout(updateActive, 1100);
@@ -1216,7 +1225,7 @@ $('.color-mode').on('click', function(){
       next.style.opacity = '1';
     }
 
-    
+
     cleanupScrollTrigger();
 
     forceTopFor(850);
@@ -1372,7 +1381,7 @@ $('.color-mode').on('click', function(){
 
     if(title && window.innerWidth){
       const rect = title.getBoundingClientRect();
-      
+
       threshold = clamp(1 - ((rect.right + 8) / window.innerWidth), .58, .88);
     }
 
@@ -1656,7 +1665,7 @@ $('.color-mode').on('click', function(){
     const y = window.scrollY || window.pageYOffset || 0;
     const now = performance.now();
 
-    
+
     const isRecentWheel = now - lastInputAt < 180;
     const isOurAnimation = isAnimating || isRecentWheel;
 
@@ -1795,7 +1804,7 @@ $('.color-mode').on('click', function(){
     sections.forEach(function(section){
       const rect = section.getBoundingClientRect();
 
-      
+
       const distance = Math.abs(rect.top - viewportTop);
 
       const isNearTop = distance <= config.threshold;
@@ -1868,7 +1877,7 @@ $('.color-mode').on('click', function(){
 
     const target = clamp(sectionTop(candidate.section), 0, maxScroll());
 
-    
+
     if(Math.abs(window.scrollY - target) < 4) return;
 
     animateTo(target);
@@ -1900,7 +1909,7 @@ $('.color-mode').on('click', function(){
       window.clearTimeout(timer);
     }, { passive:true });
 
-    
+
     window.addEventListener('scroll', scheduleSnap, { passive:true });
     window.addEventListener('resize', function(){
       window.clearTimeout(timer);
@@ -2505,6 +2514,15 @@ $('.color-mode').on('click', function(){
       ca: {"subject":"Contacte des de Patrones Lab","name":"Nom: ","message":"Missatge:\n","email":"Correu electrònic: "},
       nl: {"subject":"Contact via Patrones Lab","name":"Naam: ","message":"Bericht:\n","email":"E-mail: "},
       pl: {"subject":"Kontakt przez Patrones Lab","name":"Imię: ","message":"Wiadomość:\n","email":"E-mail: "},
+      id: {subject:"Pesan dari Patrones Lab",name:"Nama: ",message:"Pesan:\n","email":"Email: "},
+      tr: {subject:"Patrones Lab üzerinden iletişim",name:"Ad: ",message:"Mesaj:\n","email":"E-posta: "},
+      vi: {subject:"Liên hệ từ Patrones Lab",name:"Tên: ",message:"Tin nhắn:\n","email":"Email: "},
+      ru: {subject:"Сообщение с сайта Patrones Lab",name:"Имя: ",message:"Сообщение:\n","email":"Эл. почта: "},
+      zh: {subject:"来自 Patrones Lab 的留言",name:"姓名： ",message:"留言：\n","email":"电子邮箱："},
+      ko: {subject:"Patrones Lab을 통한 문의",name:"이름: ",message:"메시지:\n","email":"이메일: "},
+      ja: {subject:"Patrones Lab からのお問い合わせ",name:"お名前： ",message:"メッセージ：\n","email":"メール："},
+      hi: {subject:"Patrones Lab से संदेश",name:"नाम: ",message:"संदेश:\n","email":"ईमेल: "},
+      ar: {subject:"رسالة من Patrones Lab",name:"الاسم: ",message:"الرسالة:\n","email":"البريد الإلكتروني: "},
       es: {subject:'Contacto desde Patrones Lab', name:'Nombre: ', message:'Mensaje:\n'},
       en: {subject:'Contact from Patrones Lab', name:'Name: ', message:'Message:\n'},
       it: {subject:'Contatto da Patrones Lab', name:'Nome: ', message:'Messaggio:\n'},
@@ -2528,6 +2546,15 @@ $('.color-mode').on('click', function(){
 
 (function(){
   const translations = {
+    id: {scroll:"Jelajahi",scrollLabel:"Jelajahi, buka bagian Metodologi",networkRepoStrong:"Repositori",networkRepoSmall:"Patrones Lab",networkDashboardStrong:"Looker Studio",networkDashboardSmall:"Dashboard",networkXSmall:"Berita",networkPowerBISmall:"Dashboard",tags:{'Supervised Model':"Model yang Diawasi",'Modello supervisionato':"Model yang Diawasi",'Unsupervised Model':"Model Tanpa Pengawasan",'Modello non supervisionato':"Model Tanpa Pengawasan",'Classification':"Klasifikasi",'Classificazione':"Klasifikasi",'Logistic Regression':"Regresi Logistik",'Regressione logistica':"Regresi Logistik",'Geospatial':"Geospasial",'Geospaziale':"Geospasial",'Soccer':"Sepak bola",'Calcio':"Sepak bola",'Aviation':"Penerbangan",'Aviazione':"Penerbangan",'Fraud':"Tipuan",'Frode':"Tipuan"}},
+    tr: {scroll:"Keşfet",scrollLabel:"Keşfedin, Metodoloji bölümüne gidin",networkRepoStrong:"Depo",networkRepoSmall:"Patrones Lab",networkDashboardStrong:"Looker Studio",networkDashboardSmall:"Gösterge paneli",networkXSmall:"Haberler",networkPowerBISmall:"Gösterge paneli",tags:{'Supervised Model':"Denetimli Model",'Modello supervisionato':"Denetimli Model",'Unsupervised Model':"Denetimsiz Model",'Modello non supervisionato':"Denetimsiz Model",'Classification':"sınıflandırma",'Classificazione':"sınıflandırma",'Logistic Regression':"Lojistik Regresyon",'Regressione logistica':"Lojistik Regresyon",'Geospatial':"Jeouzaysal",'Geospaziale':"Jeouzaysal",'Soccer':"Futbol",'Calcio':"Futbol",'Aviation':"Havacılık",'Aviazione':"Havacılık",'Fraud':"Sahtekar",'Frode':"Sahtekar"}},
+    vi: {scroll:"Khám phá",scrollLabel:"Khám phá, vào phần Phương pháp luận",networkRepoStrong:"Kho mã",networkRepoSmall:"Patrones Lab",networkDashboardStrong:"Looker Studio",networkDashboardSmall:"Dashboard",networkXSmall:"Tin tức",networkPowerBISmall:"Dashboard",tags:{'Supervised Model':"Mô hình được giám sát",'Modello supervisionato':"Mô hình được giám sát",'Unsupervised Model':"Mô hình không giám sát",'Modello non supervisionato':"Mô hình không giám sát",'Classification':"Phân loại",'Classificazione':"Phân loại",'Logistic Regression':"Hồi quy logistic",'Regressione logistica':"Hồi quy logistic",'Geospatial':"Không gian địa lý",'Geospaziale':"Không gian địa lý",'Soccer':"Bóng đá",'Calcio':"Bóng đá",'Aviation':"Hàng không",'Aviazione':"Hàng không",'Fraud':"Gian lận",'Frode':"Gian lận"}},
+    ru: {scroll:"Изучить",scrollLabel:"Изучите, перейдите в раздел «Методология»",networkRepoStrong:"Репозиторий",networkRepoSmall:"Patrones Lab",networkDashboardStrong:"Looker Studio",networkDashboardSmall:"Дашборд",networkXSmall:"Новости",networkPowerBISmall:"Дашборд",tags:{'Supervised Model':"Контролируемая модель",'Modello supervisionato':"Контролируемая модель",'Unsupervised Model':"Неконтролируемая модель",'Modello non supervisionato':"Неконтролируемая модель",'Classification':"Классификация",'Classificazione':"Классификация",'Logistic Regression':"Логистическая регрессия",'Regressione logistica':"Логистическая регрессия",'Geospatial':"Геопространственный",'Geospaziale':"Геопространственный",'Soccer':"Футбольный",'Calcio':"Футбольный",'Aviation':"Авиация",'Aviazione':"Авиация",'Fraud':"Мошенничество",'Frode':"Мошенничество"}},
+    zh: {scroll:"探索",scrollLabel:"前往“分析方法”",networkRepoStrong:"代码仓库",networkRepoSmall:"Patrones Lab",networkDashboardStrong:"Looker Studio",networkDashboardSmall:"仪表板",networkXSmall:"最新动态",networkPowerBISmall:"仪表板",tags:{'Supervised Model':"监督学习模型",'Modello supervisionato':"监督学习模型",'Unsupervised Model':"无监督模型",'Modello non supervisionato':"无监督模型",'Classification':"分类",'Classificazione':"分类",'Logistic Regression':"逻辑回归",'Regressione logistica':"逻辑回归",'Geospatial':"地理空间",'Geospaziale':"地理空间",'Soccer':"足球",'Calcio':"足球",'Aviation':"航空",'Aviazione':"航空",'Fraud':"欺诈",'Frode':"欺诈"}},
+    ko: {scroll:"살펴보기",scrollLabel:"분석 방법 섹션으로 이동",networkRepoStrong:"저장소",networkRepoSmall:"Patrones Lab",networkDashboardStrong:"Looker Studio",networkDashboardSmall:"대시보드",networkXSmall:"새 소식",networkPowerBISmall:"대시보드",tags:{'Supervised Model':"지도 학습 모델",'Modello supervisionato':"지도 학습 모델",'Unsupervised Model':"비지도 학습 모델",'Modello non supervisionato':"비지도 학습 모델",'Classification':"분류",'Classificazione':"분류",'Logistic Regression':"로지스틱 회귀",'Regressione logistica':"로지스틱 회귀",'Geospatial':"지리공간",'Geospaziale':"지리공간",'Soccer':"축구",'Calcio':"축구",'Aviation':"항공",'Aviazione':"항공",'Fraud':"사기",'Frode':"사기"}},
+    ja: {scroll:"詳しく見る",scrollLabel:"分析手法のセクションへ移動",networkRepoStrong:"リポジトリ",networkRepoSmall:"Patrones Lab",networkDashboardStrong:"Looker Studio",networkDashboardSmall:"ダッシュボード",networkXSmall:"新着情報",networkPowerBISmall:"ダッシュボード",tags:{'Supervised Model':"教師あり学習モデル",'Modello supervisionato':"教師あり学習モデル",'Unsupervised Model':"教師なし学習モデル",'Modello non supervisionato':"教師なし学習モデル",'Classification':"分類",'Classificazione':"分類",'Logistic Regression':"ロジスティック回帰",'Regressione logistica':"ロジスティック回帰",'Geospatial':"地理空間",'Geospaziale':"地理空間",'Soccer':"サッカー",'Calcio':"サッカー",'Aviation':"航空",'Aviazione':"航空",'Fraud':"不正",'Frode':"不正"}},
+    hi: {scroll:"और जानें",scrollLabel:"कार्यपद्धति वाले अनुभाग पर जाएँ",networkRepoStrong:"रिपॉज़िटरी",networkRepoSmall:"Patrones Lab",networkDashboardStrong:"Looker Studio",networkDashboardSmall:"डैशबोर्ड",networkXSmall:"नए अपडेट",networkPowerBISmall:"डैशबोर्ड",tags:{'Supervised Model':"सुपरवाइज़्ड मॉडल",'Modello supervisionato':"सुपरवाइज़्ड मॉडल",'Unsupervised Model':"अनसुपरवाइज़्ड मॉडल",'Modello non supervisionato':"अनसुपरवाइज़्ड मॉडल",'Classification':"रैंकिंग",'Classificazione':"रैंकिंग",'Logistic Regression':"लॉजिस्टिक रिग्रेशन",'Regressione logistica':"लॉजिस्टिक रिग्रेशन",'Geospatial':"भू-स्थानिक विश्लेषण",'Geospaziale':"भू-स्थानिक विश्लेषण",'Soccer':"फ़ुटबॉल",'Calcio':"फ़ुटबॉल",'Aviation':"विमानन",'Aviazione':"विमानन",'Fraud':"धोखाधड़ी",'Frode':"धोखाधड़ी"}},
+    ar: {scroll:"استكشاف",scrollLabel:"الانتقال إلى قسم المنهجية",networkRepoStrong:"المستودع",networkRepoSmall:"Patrones Lab",networkDashboardStrong:"Looker Studio",networkDashboardSmall:"لوحة المعلومات",networkXSmall:"المستجدات",networkPowerBISmall:"لوحة المعلومات",tags:{'Supervised Model':"نموذج تعلّم خاضع للإشراف",'Modello supervisionato':"نموذج تعلّم خاضع للإشراف",'Unsupervised Model':"نموذج تعلّم غير خاضع للإشراف",'Modello non supervisionato':"نموذج تعلّم غير خاضع للإشراف",'Classification':"الترتيب",'Classificazione':"الترتيب",'Logistic Regression':"الانحدار اللوجستي",'Regressione logistica':"الانحدار اللوجستي",'Geospatial':"التحليل المكاني",'Geospaziale':"التحليل المكاني",'Soccer':"كرة القدم",'Calcio':"كرة القدم",'Aviation':"الطيران",'Aviazione':"الطيران",'Fraud':"الاحتيال",'Frode':"الاحتيال"}},
     es: {
       scroll: 'Explorar',
       scrollLabel: 'Explorar, ir a la sección Metodología',
@@ -2740,6 +2767,15 @@ $('.color-mode').on('click', function(){
 
 (function(){
   const techLabels = {
+    id: {'power-bi':"Business Intelligence",'qlik':"Analisis visual",'looker':"Dashboard",'sql-server':"Basis data",'python':"Analisis dan pemodelan",'pandas':"Manipulasi data",'numpy':"Perhitungan numerik",'scikit':"Machine Learning",'matplotlib':"Visualisasi",'plotly':"Visualisasi interaktif",'spss':"Pemodelan visual",'airflow':"Orkestrasi",'snowflake':"Gudang data",'databricks':"rumah danau",'dbt':"Transformasi"},
+    tr: {'power-bi':"İş zekâsı",'qlik':"Görsel analiz",'looker':"Gösterge panelleri",'sql-server':"Veritabanı",'python':"Analiz ve modelleme",'pandas':"Veri manipülasyonu",'numpy':"Sayısal hesaplama",'scikit':"Makine Öğrenmesi",'matplotlib':"Görselleştirme",'plotly':"Etkileşimli görselleştirme",'spss':"Görsel modelleme",'airflow':"Orkestrasyon",'snowflake':"Veri ambarı",'databricks':"Göl evi",'dbt':"Dönüşüm"},
+    vi: {'power-bi':"Phân tích kinh doanh",'qlik':"Phân tích trực quan",'looker':"Dashboard",'sql-server':"Cơ sở dữ liệu",'python':"Phân tích và mô hình hóa",'pandas':"Thao tác dữ liệu",'numpy':"Tính toán số",'scikit':"Học máy",'matplotlib':"Trực quan hóa",'plotly':"Trực quan hóa tương tác",'spss':"Mô hình trực quan",'airflow':"Hòa âm",'snowflake':"Kho dữ liệu",'databricks':"Nhà Hồ",'dbt':"Chuyển đổi"},
+    ru: {'power-bi':"Бизнес-аналитика",'qlik':"Визуальная аналитика",'looker':"Дашборды",'sql-server':"База данных",'python':"Анализ и моделирование",'pandas':"Манипулирование данными",'numpy':"Численный расчет",'scikit':"Машинное обучение",'matplotlib':"Визуализация",'plotly':"Интерактивная визуализация",'spss':"Визуальное моделирование",'airflow':"оркестровка",'snowflake':"Хранилище данных",'databricks':"Лейкхаус",'dbt':"Трансформация"},
+    zh: {'power-bi':"商业智能",'qlik':"可视分析",'looker':"仪表板",'sql-server':"数据库",'python':"分析与建模",'pandas':"数据处理",'numpy':"数值计算",'scikit':"机器学习",'matplotlib':"可视化",'plotly':"交互式可视化",'spss':"可视化建模",'airflow':"任务编排",'snowflake':"数据仓库",'databricks':"湖仓一体架构",'dbt':"转换"},
+    ko: {'power-bi':"비즈니스 인텔리전스",'qlik':"시각적 분석",'looker':"대시보드",'sql-server':"데이터베이스",'python':"분석 및 모델링",'pandas':"데이터 처리",'numpy':"수치 계산",'scikit':"머신러닝",'matplotlib':"시각화",'plotly':"대화형 시각화",'spss':"시각적 모델링",'airflow':"오케스트레이션",'snowflake':"데이터 웨어하우스",'databricks':"레이크하우스",'dbt':"변환"},
+    ja: {'power-bi':"ビジネスインテリジェンス",'qlik':"ビジュアル分析",'looker':"ダッシュボード",'sql-server':"データベース",'python':"分析とモデリング",'pandas':"データ加工",'numpy':"数値計算",'scikit':"機械学習",'matplotlib':"可視化",'plotly':"インタラクティブな可視化",'spss':"ビジュアルモデリング",'airflow':"ワークフロー管理",'snowflake':"データウェアハウス",'databricks':"レイクハウス",'dbt':"変換"},
+    hi: {'power-bi':"बिज़नेस इंटेलिजेंस",'qlik':"दृश्य विश्लेषण",'looker':"डैशबोर्ड",'sql-server':"डेटाबेस",'python':"विश्लेषण और मॉडलिंग",'pandas':"डेटा का प्रसंस्करण",'numpy':"संख्यात्मक गणना",'scikit':"मशीन लर्निंग",'matplotlib':"दृश्य प्रस्तुति",'plotly':"इंटरैक्टिव विज़ुअलाइज़ेशन",'spss':"विज़ुअल मॉडलिंग",'airflow':"ऑर्केस्ट्रेशन",'snowflake':"डेटा वेयरहाउस",'databricks':"डेटा लेकहाउस",'dbt':"रूपांतरण"},
+    ar: {'power-bi':"ذكاء الأعمال",'qlik':"التحليل البصري",'looker':"لوحات المعلومات",'sql-server':"قاعدة بيانات",'python':"التحليل والنمذجة",'pandas':"معالجة البيانات",'numpy':"الحساب العددي",'scikit':"التعلم الآلي",'matplotlib':"العرض البصري",'plotly':"عرض مرئي تفاعلي",'spss':"النمذجة المرئية",'airflow':"تنسيق المهام",'snowflake':"مستودع البيانات",'databricks':"بنية مستودع وبحيرة البيانات",'dbt':"التحويل"},
     es: {
       'power-bi':'Inteligencia de negocio',
       'qlik':'Analítica visual',
@@ -2866,6 +2902,15 @@ $('.color-mode').on('click', function(){
 
 (function(){
   const tagLabels = {
+    id: {'bi':"BI",'data-analysis':"Analisis Data",'data-science':"Ilmu Data",'data-storytelling':"Data Storytelling",'machine-learning':"Machine Learning",'python':"Python",'spss':"SPSS",'looker-studio':"Looker Studio",'dashboard':"Dashboard",'power-bi':"Power BI",'dax':"DAX",'spotify':"Spotify",'modelo-supervisado':"Model yang Diawasi",'redes-neuronales':"Jaringan Saraf",'modelo-no-supervisado':"Model Tanpa Pengawasan",'clasificacion':"Klasifikasi",'clustering':"Clustering",'knn':"KNN",'k-means':"K-means",'regresion-logistica':"Regresi Logistik",'dbscan':"DBSCAN",'poisson':"racun",'geoespacial':"Geospasial",'airbnb':"Airbnb",'taxi':"Taksi",'futbol':"Sepak bola",'aviacion':"Penerbangan",'fraude':"Tipuan"},
+    tr: {'bi':"BI",'data-analysis':"Veri Analizi",'data-science':"Veri Bilimi",'data-storytelling':"Data Storytelling",'machine-learning':"Makine Öğrenmesi",'python':"Python",'spss':"SPSS",'looker-studio':"Looker Studio",'dashboard':"Gösterge paneli",'power-bi':"Power BI",'dax':"DAX",'spotify':"Spotify",'modelo-supervisado':"Denetimli Model",'redes-neuronales':"Sinir Ağları",'modelo-no-supervisado':"Denetimsiz Model",'clasificacion':"sınıflandırma",'clustering':"Kümeleme",'knn':"KNN",'k-means':"K-means",'regresion-logistica':"Lojistik Regresyon",'dbscan':"DBSCAN",'poisson':"Poisson",'geoespacial':"Jeouzaysal",'airbnb':"Airbnb",'taxi':"Taksi",'futbol':"Futbol",'aviacion':"Havacılık",'fraude':"Sahtekar"},
+    vi: {'bi':"BI",'data-analysis':"Phân tích dữ liệu",'data-science':"Khoa học dữ liệu",'data-storytelling':"Data Storytelling",'machine-learning':"Học máy",'python':"Python",'spss':"SPSS",'looker-studio':"Looker Studio",'dashboard':"Dashboard",'power-bi':"Power BI",'dax':"DAX",'spotify':"Spotify",'modelo-supervisado':"Mô hình được giám sát",'redes-neuronales':"Mạng nơ-ron",'modelo-no-supervisado':"Mô hình không giám sát",'clasificacion':"Phân loại",'clustering':"Phân cụm",'knn':"KNN",'k-means':"K-means",'regresion-logistica':"Hồi quy logistic",'dbscan':"DBSCAN",'poisson':"Poisson",'geoespacial':"Không gian địa lý",'airbnb':"Airbnb",'taxi':"Taxi",'futbol':"Bóng đá",'aviacion':"Hàng không",'fraude':"Gian lận"},
+    ru: {'bi':"BI",'data-analysis':"Анализ данных",'data-science':"Наука о данных",'data-storytelling':"Data Storytelling",'machine-learning':"Машинное обучение",'python':"Python",'spss':"SPSS",'looker-studio':"Looker Studio",'dashboard':"Дашборд",'power-bi':"Power BI",'dax':"DAX",'spotify':"Спотифай",'modelo-supervisado':"Контролируемая модель",'redes-neuronales':"Нейронные сети",'modelo-no-supervisado':"Неконтролируемая модель",'clasificacion':"Классификация",'clustering':"Кластеризация",'knn':"KNN",'k-means':"K-means",'regresion-logistica':"Логистическая регрессия",'dbscan':"DBSCAN",'poisson':"Пуассон",'geoespacial':"Геопространственный",'airbnb':"Airbnb",'taxi':"Такси",'futbol':"Футбольный",'aviacion':"Авиация",'fraude':"Мошенничество"},
+    zh: {'bi':"BI",'data-analysis':"数据分析",'data-science':"数据科学",'data-storytelling':"数据叙事",'machine-learning':"机器学习",'python':"Python",'spss':"SPSS",'looker-studio':"Looker Studio",'dashboard':"仪表板",'power-bi':"Power BI",'dax':"DAX",'spotify':"Spotify",'modelo-supervisado':"监督学习模型",'redes-neuronales':"神经网络",'modelo-no-supervisado':"无监督模型",'clasificacion':"分类",'clustering':"聚类",'knn':"KNN",'k-means':"K-means",'regresion-logistica':"逻辑回归",'dbscan':"DBSCAN",'poisson':"泊松分布",'geoespacial':"地理空间",'airbnb':"Airbnb",'taxi':"出租车",'futbol':"足球",'aviacion':"航空",'fraude':"欺诈"},
+    ko: {'bi':"BI",'data-analysis':"데이터 분석",'data-science':"데이터 과학",'data-storytelling':"데이터 스토리텔링",'machine-learning':"머신러닝",'python':"Python",'spss':"SPSS",'looker-studio':"Looker Studio",'dashboard':"대시보드",'power-bi':"Power BI",'dax':"DAX",'spotify':"Spotify",'modelo-supervisado':"지도 학습 모델",'redes-neuronales':"신경망",'modelo-no-supervisado':"비지도 학습 모델",'clasificacion':"분류",'clustering':"군집 분석",'knn':"KNN",'k-means':"K-means",'regresion-logistica':"로지스틱 회귀",'dbscan':"DBSCAN",'poisson':"푸아송",'geoespacial':"지리공간",'airbnb':"Airbnb",'taxi':"택시",'futbol':"축구",'aviacion':"항공",'fraude':"사기"},
+    ja: {'bi':"BI",'data-analysis':"データ分析",'data-science':"データサイエンス",'data-storytelling':"データストーリーテリング",'machine-learning':"機械学習",'python':"Python",'spss':"SPSS",'looker-studio':"Looker Studio",'dashboard':"ダッシュボード",'power-bi':"Power BI",'dax':"DAX",'spotify':"Spotify",'modelo-supervisado':"教師あり学習モデル",'redes-neuronales':"ニューラルネットワーク",'modelo-no-supervisado':"教師なし学習モデル",'clasificacion':"分類",'clustering':"クラスタリング",'knn':"KNN",'k-means':"K-means",'regresion-logistica':"ロジスティック回帰",'dbscan':"DBSCAN",'poisson':"ポアソン分布",'geoespacial':"地理空間",'airbnb':"Airbnb",'taxi':"タクシー",'futbol':"サッカー",'aviacion':"航空",'fraude':"不正"},
+    hi: {'bi':"BI",'data-analysis':"डेटा विश्लेषण",'data-science':"डेटा विज्ञान",'data-storytelling':"डेटा से कहानी कहना",'machine-learning':"मशीन लर्निंग",'python':"Python",'spss':"SPSS",'looker-studio':"Looker Studio",'dashboard':"डैशबोर्ड",'power-bi':"Power BI",'dax':"DAX",'spotify':"Spotify",'modelo-supervisado':"सुपरवाइज़्ड मॉडल",'redes-neuronales':"न्यूरल नेटवर्क",'modelo-no-supervisado':"अनसुपरवाइज़्ड मॉडल",'clasificacion':"रैंकिंग",'clustering':"क्लस्टरिंग",'knn':"KNN",'k-means':"K-means",'regresion-logistica':"लॉजिस्टिक रिग्रेशन",'dbscan':"DBSCAN",'poisson':"प्वासों",'geoespacial':"भू-स्थानिक विश्लेषण",'airbnb':"Airbnb",'taxi':"टैक्सी",'futbol':"फ़ुटबॉल",'aviacion':"विमानन",'fraude':"धोखाधड़ी"},
+    ar: {'bi':"BI",'data-analysis':"تحليل البيانات",'data-science':"علم البيانات",'data-storytelling':"سرد القصص بالبيانات",'machine-learning':"التعلم الآلي",'python':"Python",'spss':"SPSS",'looker-studio':"Looker Studio",'dashboard':"لوحة المعلومات",'power-bi':"Power BI",'dax':"DAX",'spotify':"Spotify",'modelo-supervisado':"نموذج تعلّم خاضع للإشراف",'redes-neuronales':"الشبكات العصبية",'modelo-no-supervisado':"نموذج تعلّم غير خاضع للإشراف",'clasificacion':"الترتيب",'clustering':"التجميع",'knn':"KNN",'k-means':"K-means",'regresion-logistica':"الانحدار اللوجستي",'dbscan':"DBSCAN",'poisson':"بواسون",'geoespacial':"التحليل المكاني",'airbnb':"Airbnb",'taxi':"سيارة أجرة",'futbol':"كرة القدم",'aviacion':"الطيران",'fraude':"الاحتيال"},
     es: {
       'bi': 'BI',
       'data-analysis': 'Data Analysis',
@@ -3099,6 +3144,15 @@ $('.color-mode').on('click', function(){
   const TAG_LABELS_BY_TOKEN = {
     "all": {
         "icon": "◎",
+        id: "Semua",
+        tr: "Tümü",
+        vi: "Tất cả",
+        ru: "Все",
+        zh: "全部",
+        ko: "전체",
+        ja: "すべて",
+        hi: "सभी",
+        ar: "الكل",
         "es": "Todos",
         "en": "All",
         "it": "Tutti",
@@ -3108,6 +3162,15 @@ $('.color-mode').on('click', function(){
     },
     "bi": {
         "icon": "▦",
+        id: "BI",
+        tr: "BI",
+        vi: "BI",
+        ru: "BI",
+        zh: "BI",
+        ko: "BI",
+        ja: "BI",
+        hi: "BI",
+        ar: "BI",
         "es": "BI",
         "en": "BI",
         "it": "BI",
@@ -3117,6 +3180,15 @@ $('.color-mode').on('click', function(){
     },
     "data-analysis": {
         "icon": "▥",
+        id: "Analisis Data",
+        tr: "Veri Analizi",
+        vi: "Phân tích dữ liệu",
+        ru: "Анализ данных",
+        zh: "数据分析",
+        ko: "데이터 분석",
+        ja: "データ分析",
+        hi: "डेटा विश्लेषण",
+        ar: "تحليل البيانات",
         "es": "Data Analysis",
         "en": "Data analysis",
         "it": "Analisi dei dati",
@@ -3126,6 +3198,15 @@ $('.color-mode').on('click', function(){
     },
     "data-science": {
         "icon": "⚗",
+        id: "Ilmu Data",
+        tr: "Veri Bilimi",
+        vi: "Khoa học dữ liệu",
+        ru: "Наука о данных",
+        zh: "数据科学",
+        ko: "데이터 과학",
+        ja: "データサイエンス",
+        hi: "डेटा विज्ञान",
+        ar: "علم البيانات",
         "es": "Data Science",
         "en": "Data science",
         "it": "Scienza dei dati",
@@ -3135,6 +3216,15 @@ $('.color-mode').on('click', function(){
     },
     "data-storytelling": {
         "icon": "✎",
+        id: "Data Storytelling",
+        tr: "Data Storytelling",
+        vi: "Data Storytelling",
+        ru: "Data Storytelling",
+        zh: "数据叙事",
+        ko: "데이터 스토리텔링",
+        ja: "データストーリーテリング",
+        hi: "डेटा से कहानी कहना",
+        ar: "سرد القصص بالبيانات",
         "es": "Data Storytelling",
         "en": "Data Storytelling",
         "it": "Storytelling dei dati",
@@ -3144,6 +3234,15 @@ $('.color-mode').on('click', function(){
     },
     "machine-learning": {
         "icon": "✦",
+        id: "Machine Learning",
+        tr: "Makine Öğrenmesi",
+        vi: "Học máy",
+        ru: "Машинное обучение",
+        zh: "机器学习",
+        ko: "머신러닝",
+        ja: "機械学習",
+        hi: "मशीन लर्निंग",
+        ar: "التعلم الآلي",
         "es": "Machine Learning",
         "en": "Machine Learning",
         "it": "Machine Learning",
@@ -3153,6 +3252,15 @@ $('.color-mode').on('click', function(){
     },
     "python": {
         "icon": "◇",
+        id: "Python",
+        tr: "Python",
+        vi: "Python",
+        ru: "Python",
+        zh: "Python",
+        ko: "Python",
+        ja: "Python",
+        hi: "Python",
+        ar: "Python",
         "es": "Python",
         "en": "Python",
         "it": "Python",
@@ -3162,6 +3270,15 @@ $('.color-mode').on('click', function(){
     },
     "spss": {
         "icon": "◧",
+        id: "SPSS",
+        tr: "SPSS",
+        vi: "SPSS",
+        ru: "SPSS",
+        zh: "SPSS",
+        ko: "SPSS",
+        ja: "SPSS",
+        hi: "SPSS",
+        ar: "SPSS",
         "es": "SPSS",
         "en": "SPSS",
         "it": "SPSS",
@@ -3171,6 +3288,15 @@ $('.color-mode').on('click', function(){
     },
     "looker-studio": {
         "icon": "◉",
+        id: "Looker Studio",
+        tr: "Looker Studio",
+        vi: "Looker Studio",
+        ru: "Looker Studio",
+        zh: "Looker Studio",
+        ko: "Looker Studio",
+        ja: "Looker Studio",
+        hi: "Looker Studio",
+        ar: "Looker Studio",
         "es": "Looker Studio",
         "en": "Looker Studio",
         "it": "Looker Studio",
@@ -3180,6 +3306,15 @@ $('.color-mode').on('click', function(){
     },
     "dashboard": {
         "icon": "▣",
+        id: "Dashboard",
+        tr: "Gösterge paneli",
+        vi: "Dashboard",
+        ru: "Дашборд",
+        zh: "仪表板",
+        ko: "대시보드",
+        ja: "ダッシュボード",
+        hi: "डैशबोर्ड",
+        ar: "لوحة المعلومات",
         "es": "Dashboard",
         "en": "Dashboard",
         "it": "Dashboard",
@@ -3189,6 +3324,15 @@ $('.color-mode').on('click', function(){
     },
     "power-bi": {
         "icon": "▥",
+        id: "Power BI",
+        tr: "Power BI",
+        vi: "Power BI",
+        ru: "Power BI",
+        zh: "Power BI",
+        ko: "Power BI",
+        ja: "Power BI",
+        hi: "Power BI",
+        ar: "Power BI",
         "es": "Power BI",
         "en": "Power BI",
         "it": "Power BI",
@@ -3198,6 +3342,15 @@ $('.color-mode').on('click', function(){
     },
     "dax": {
         "icon": "ƒx",
+        id: "DAX",
+        tr: "DAX",
+        vi: "DAX",
+        ru: "DAX",
+        zh: "DAX",
+        ko: "DAX",
+        ja: "DAX",
+        hi: "DAX",
+        ar: "DAX",
         "es": "DAX",
         "en": "DAX",
         "it": "DAX",
@@ -3207,6 +3360,15 @@ $('.color-mode').on('click', function(){
     },
     "spotify": {
         "icon": "♪",
+        id: "Spotify",
+        tr: "Spotify",
+        vi: "Spotify",
+        ru: "Спотифай",
+        zh: "Spotify",
+        ko: "Spotify",
+        ja: "Spotify",
+        hi: "Spotify",
+        ar: "Spotify",
         "es": "Spotify",
         "en": "Spotify",
         "it": "Spotify",
@@ -3216,6 +3378,15 @@ $('.color-mode').on('click', function(){
     },
     "modelo-supervisado": {
         "icon": "✓",
+        id: "Model dengan supervisi",
+        tr: "Denetimli öğrenme modeli",
+        vi: "Mô hình học có giám sát",
+        ru: "Модель обучения с учителем",
+        zh: "监督学习模型",
+        ko: "지도 학습 모델",
+        ja: "教師ありモデル",
+        hi: "सुपरवाइज़्ड मॉडल",
+        ar: "نموذج تعلّم خاضع للإشراف",
         "es": "Modelo supervisado",
         "en": "Supervised model",
         "it": "Modello supervisionato",
@@ -3225,6 +3396,15 @@ $('.color-mode').on('click', function(){
     },
     "redes-neuronales": {
         "icon": "⋈",
+        id: "Jaringan Saraf",
+        tr: "Sinir Ağları",
+        vi: "Mạng nơ-ron",
+        ru: "Нейронные сети",
+        zh: "神经网络",
+        ko: "신경망",
+        ja: "ニューラルネットワーク",
+        hi: "न्यूरल नेटवर्क",
+        ar: "الشبكات العصبية",
         "es": "Redes Neuronales",
         "en": "Neural Networks",
         "it": "Reti neurali",
@@ -3234,6 +3414,15 @@ $('.color-mode').on('click', function(){
     },
     "modelo-no-supervisado": {
         "icon": "◎",
+        id: "Model tanpa supervisi",
+        tr: "Denetimsiz öğrenme modeli",
+        vi: "Mô hình học không giám sát",
+        ru: "Модель обучения без учителя",
+        zh: "无监督模型",
+        ko: "비지도 학습 모델",
+        ja: "教師なしモデル",
+        hi: "अनसुपरवाइज़्ड मॉडल",
+        ar: "نموذج تعلّم غير خاضع للإشراف",
         "es": "Modelo no supervisado",
         "en": "Unsupervised model",
         "it": "Modello non supervisionato",
@@ -3243,6 +3432,15 @@ $('.color-mode').on('click', function(){
     },
     "clasificacion": {
         "icon": "≡",
+        id: "Klasifikasi",
+        tr: "sınıflandırma",
+        vi: "Phân loại",
+        ru: "Классификация",
+        zh: "分类",
+        ko: "분류",
+        ja: "分類",
+        hi: "रैंकिंग",
+        ar: "الترتيب",
         "es": "Clasificación",
         "en": "Classification",
         "it": "Classificazione",
@@ -3252,6 +3450,15 @@ $('.color-mode').on('click', function(){
     },
     "clustering": {
         "icon": "✣",
+        id: "Clustering",
+        tr: "Kümeleme",
+        vi: "Phân cụm",
+        ru: "Кластеризация",
+        zh: "聚类",
+        ko: "군집 분석",
+        ja: "クラスタリング",
+        hi: "क्लस्टरिंग",
+        ar: "التجميع",
         "es": "Clustering",
         "en": "Clustering",
         "it": "Clustering",
@@ -3261,6 +3468,15 @@ $('.color-mode').on('click', function(){
     },
     "knn": {
         "icon": "↗",
+        id: "KNN",
+        tr: "KNN",
+        vi: "KNN",
+        ru: "KNN",
+        zh: "KNN",
+        ko: "KNN",
+        ja: "KNN",
+        hi: "KNN",
+        ar: "KNN",
         "es": "KNN",
         "en": "KNN",
         "it": "KNN",
@@ -3270,6 +3486,15 @@ $('.color-mode').on('click', function(){
     },
     "k-means": {
         "icon": "⌖",
+        id: "K-means",
+        tr: "K-means",
+        vi: "K-means",
+        ru: "K-means",
+        zh: "K-means",
+        ko: "K-means",
+        ja: "K-means",
+        hi: "K-means",
+        ar: "K-means",
         "es": "K-means",
         "en": "K-means",
         "it": "K-means",
@@ -3279,6 +3504,15 @@ $('.color-mode').on('click', function(){
     },
     "regresion-logistica": {
         "icon": "⌁",
+        id: "Regresi logistik",
+        tr: "Lojistik regresyon",
+        vi: "Hồi quy logistic",
+        ru: "Логистическая регрессия",
+        zh: "逻辑回归",
+        ko: "로지스틱 회귀",
+        ja: "ロジスティック回帰",
+        hi: "लॉजिस्टिक रिग्रेशन",
+        ar: "الانحدار اللوجستي",
         "es": "Regresión logística",
         "en": "Logistic regression",
         "it": "Regressione logistica",
@@ -3288,6 +3522,15 @@ $('.color-mode').on('click', function(){
     },
     "dbscan": {
         "icon": "⊙",
+        id: "DBSCAN",
+        tr: "DBSCAN",
+        vi: "DBSCAN",
+        ru: "DBSCAN",
+        zh: "DBSCAN",
+        ko: "DBSCAN",
+        ja: "DBSCAN",
+        hi: "DBSCAN",
+        ar: "DBSCAN",
         "es": "DBSCAN",
         "en": "DBSCAN",
         "it": "DBSCAN",
@@ -3297,6 +3540,15 @@ $('.color-mode').on('click', function(){
     },
     "simulacion": {
         "icon": "∿",
+        id: "Simulasi",
+        tr: "Simülasyon",
+        vi: "Mô phỏng",
+        ru: "Моделирование",
+        zh: "模拟",
+        ko: "시뮬레이션",
+        ja: "シミュレーション",
+        hi: "सिमुलेशन",
+        ar: "المحاكاة",
         "es": "Simulación",
         "en": "Simulation",
         "it": "Simulazione",
@@ -3306,6 +3558,15 @@ $('.color-mode').on('click', function(){
     },
     "poisson": {
         "icon": "λ",
+        id: "racun",
+        tr: "Poisson",
+        vi: "Poisson",
+        ru: "Пуассон",
+        zh: "泊松分布",
+        ko: "푸아송",
+        ja: "ポアソン分布",
+        hi: "प्वासों",
+        ar: "بواسون",
         "es": "Poisson",
         "en": "Poisson",
         "it": "Poisson",
@@ -3315,6 +3576,15 @@ $('.color-mode').on('click', function(){
     },
     "geoespacial": {
         "icon": "⌖",
+        id: "Geospasial",
+        tr: "Jeouzaysal",
+        vi: "Không gian địa lý",
+        ru: "Геопространственный",
+        zh: "地理空间",
+        ko: "지리공간",
+        ja: "地理空間",
+        hi: "भू-स्थानिक विश्लेषण",
+        ar: "التحليل المكاني",
         "es": "Geoespacial",
         "en": "Geospatial",
         "it": "Geospaziale",
@@ -3324,6 +3594,15 @@ $('.color-mode').on('click', function(){
     },
     "airbnb": {
         "icon": "⌂",
+        id: "Airbnb",
+        tr: "Airbnb",
+        vi: "Airbnb",
+        ru: "Airbnb",
+        zh: "Airbnb",
+        ko: "Airbnb",
+        ja: "Airbnb",
+        hi: "Airbnb",
+        ar: "Airbnb",
         "es": "Airbnb",
         "en": "Airbnb",
         "it": "Airbnb",
@@ -3333,6 +3612,15 @@ $('.color-mode').on('click', function(){
     },
     "taxi": {
         "icon": "◆",
+        id: "Taksi",
+        tr: "Taksi",
+        vi: "Taxi",
+        ru: "Такси",
+        zh: "出租车",
+        ko: "택시",
+        ja: "タクシー",
+        hi: "टैक्सी",
+        ar: "سيارة أجرة",
         "es": "Taxi",
         "en": "Taxi",
         "it": "Taxi",
@@ -3342,6 +3630,15 @@ $('.color-mode').on('click', function(){
     },
     "futbol": {
         "icon": "●",
+        id: "Sepak bola",
+        tr: "Futbol",
+        vi: "Bóng đá",
+        ru: "Футбольный",
+        zh: "足球",
+        ko: "축구",
+        ja: "サッカー",
+        hi: "फ़ुटबॉल",
+        ar: "كرة القدم",
         "es": "Fútbol",
         "en": "Soccer",
         "it": "Calcio",
@@ -3351,6 +3648,15 @@ $('.color-mode').on('click', function(){
     },
     "aviacion": {
         "icon": "✈",
+        id: "Penerbangan",
+        tr: "Havacılık",
+        vi: "Hàng không",
+        ru: "Авиация",
+        zh: "航空",
+        ko: "항공",
+        ja: "航空",
+        hi: "विमानन",
+        ar: "الطيران",
         "es": "Aviación",
         "en": "Aviation",
         "it": "Aviazione",
@@ -3360,6 +3666,15 @@ $('.color-mode').on('click', function(){
     },
     "fraude": {
         "icon": "!",
+        id: "Tipuan",
+        tr: "Sahtekar",
+        vi: "Gian lận",
+        ru: "Мошенничество",
+        zh: "欺诈",
+        ko: "사기",
+        ja: "不正",
+        hi: "धोखाधड़ी",
+        ar: "الاحتيال",
         "es": "Fraude",
         "en": "Fraud",
         "it": "Frode",
@@ -3372,11 +3687,11 @@ $('.color-mode').on('click', function(){
   function currentLang(){
     if(window.plGetLanguage){
       const lang = window.plGetLanguage();
-      if(['es','en','it','fr','de','pt','ca','nl','pl'].includes(lang)) return lang;
+      if(['es','en','it','fr','de','pt','ca','nl','pl',"id","tr","vi","ru","zh","ko","ja","hi","ar"].includes(lang)) return lang;
     }
     try{
       const stored = localStorage.getItem('patronesLabLanguage');
-      if(['es','en','it','fr','de','pt','ca','nl','pl'].includes(stored)) return stored;
+      if(['es','en','it','fr','de','pt','ca','nl','pl',"id","tr","vi","ru","zh","ko","ja","hi","ar"].includes(stored)) return stored;
     }catch(e){}
     return 'es';
   }
@@ -3508,7 +3823,7 @@ $('.color-mode').on('click', function(){
   }
 
   function syncProjectFiltersAndTags(lang){
-    const language = ['es','en','it','fr','de','pt','ca','nl','pl'].includes(lang) ? lang : currentLang();
+    const language = ['es','en','it','fr','de','pt','ca','nl','pl',"id","tr","vi","ru","zh","ko","ja","hi","ar"].includes(lang) ? lang : currentLang();
 
     renderAllFilterButtons(language);
     renderAllCardTags(language);
@@ -3567,6 +3882,15 @@ $('.color-mode').on('click', function(){
   const FINAL_TAG_LABELS = {
     "all": {
         "icon": "◎",
+        id: "Semua",
+        tr: "Tümü",
+        vi: "Tất cả",
+        ru: "Все",
+        zh: "全部",
+        ko: "전체",
+        ja: "すべて",
+        hi: "सभी",
+        ar: "الكل",
         "es": "Todos",
         "en": "All",
         "it": "Tutti",
@@ -3576,6 +3900,15 @@ $('.color-mode').on('click', function(){
     },
     "bi": {
         "icon": "▦",
+        id: "BI",
+        tr: "BI",
+        vi: "BI",
+        ru: "BI",
+        zh: "BI",
+        ko: "BI",
+        ja: "BI",
+        hi: "BI",
+        ar: "BI",
         "es": "BI",
         "en": "BI",
         "it": "BI",
@@ -3585,6 +3918,15 @@ $('.color-mode').on('click', function(){
     },
     "data-analysis": {
         "icon": "▥",
+        id: "Analisis data",
+        tr: "Veri analizi",
+        vi: "Phân tích dữ liệu",
+        ru: "Анализ данных",
+        zh: "数据分析",
+        ko: "데이터 분석",
+        ja: "データ分析",
+        hi: "डेटा विश्लेषण",
+        ar: "تحليل البيانات",
         "es": "Análisis de datos",
         "en": "Data analysis",
         "it": "Analisi dei dati",
@@ -3594,6 +3936,15 @@ $('.color-mode').on('click', function(){
     },
     "data-science": {
         "icon": "⚗",
+        id: "Sains data",
+        tr: "Veri bilimi",
+        vi: "Khoa học dữ liệu",
+        ru: "Наука о данных",
+        zh: "数据科学",
+        ko: "데이터 과학",
+        ja: "データサイエンス",
+        hi: "डेटा विज्ञान",
+        ar: "علم البيانات",
         "es": "Ciencia de datos",
         "en": "Data science",
         "it": "Scienza dei dati",
@@ -3603,6 +3954,15 @@ $('.color-mode').on('click', function(){
     },
     "data-storytelling": {
         "icon": "✎",
+        id: "Data Storytelling",
+        tr: "Data Storytelling",
+        vi: "Data Storytelling",
+        ru: "Data Storytelling",
+        zh: "数据叙事",
+        ko: "데이터 스토리텔링",
+        ja: "データストーリーテリング",
+        hi: "डेटा से कहानी कहना",
+        ar: "سرد القصص بالبيانات",
         "es": "Data Storytelling",
         "en": "Data Storytelling",
         "it": "Storytelling dei dati",
@@ -3612,6 +3972,15 @@ $('.color-mode').on('click', function(){
     },
     "machine-learning": {
         "icon": "✦",
+        id: "Machine Learning",
+        tr: "Makine Öğrenmesi",
+        vi: "Học máy",
+        ru: "Машинное обучение",
+        zh: "机器学习",
+        ko: "머신러닝",
+        ja: "機械学習",
+        hi: "मशीन लर्निंग",
+        ar: "التعلم الآلي",
         "es": "Machine Learning",
         "en": "Machine Learning",
         "it": "Machine Learning",
@@ -3621,6 +3990,15 @@ $('.color-mode').on('click', function(){
     },
     "python": {
         "icon": "◇",
+        id: "Python",
+        tr: "Python",
+        vi: "Python",
+        ru: "Python",
+        zh: "Python",
+        ko: "Python",
+        ja: "Python",
+        hi: "Python",
+        ar: "Python",
         "es": "Python",
         "en": "Python",
         "it": "Python",
@@ -3630,6 +4008,15 @@ $('.color-mode').on('click', function(){
     },
     "spss": {
         "icon": "◧",
+        id: "SPSS",
+        tr: "SPSS",
+        vi: "SPSS",
+        ru: "SPSS",
+        zh: "SPSS",
+        ko: "SPSS",
+        ja: "SPSS",
+        hi: "SPSS",
+        ar: "SPSS",
         "es": "SPSS",
         "en": "SPSS",
         "it": "SPSS",
@@ -3639,6 +4026,15 @@ $('.color-mode').on('click', function(){
     },
     "looker-studio": {
         "icon": "◉",
+        id: "Looker Studio",
+        tr: "Looker Studio",
+        vi: "Looker Studio",
+        ru: "Looker Studio",
+        zh: "Looker Studio",
+        ko: "Looker Studio",
+        ja: "Looker Studio",
+        hi: "Looker Studio",
+        ar: "Looker Studio",
         "es": "Looker Studio",
         "en": "Looker Studio",
         "it": "Looker Studio",
@@ -3648,6 +4044,15 @@ $('.color-mode').on('click', function(){
     },
     "dashboard": {
         "icon": "▣",
+        id: "Dashboard",
+        tr: "Gösterge paneli",
+        vi: "Dashboard",
+        ru: "Дашборд",
+        zh: "仪表板",
+        ko: "대시보드",
+        ja: "ダッシュボード",
+        hi: "डैशबोर्ड",
+        ar: "لوحة المعلومات",
         "es": "Dashboard",
         "en": "Dashboard",
         "it": "Dashboard",
@@ -3657,6 +4062,15 @@ $('.color-mode').on('click', function(){
     },
     "power-bi": {
         "icon": "▥",
+        id: "Power BI",
+        tr: "Power BI",
+        vi: "Power BI",
+        ru: "Power BI",
+        zh: "Power BI",
+        ko: "Power BI",
+        ja: "Power BI",
+        hi: "Power BI",
+        ar: "Power BI",
         "es": "Power BI",
         "en": "Power BI",
         "it": "Power BI",
@@ -3666,6 +4080,15 @@ $('.color-mode').on('click', function(){
     },
     "dax": {
         "icon": "ƒx",
+        id: "DAX",
+        tr: "DAX",
+        vi: "DAX",
+        ru: "DAX",
+        zh: "DAX",
+        ko: "DAX",
+        ja: "DAX",
+        hi: "DAX",
+        ar: "DAX",
         "es": "DAX",
         "en": "DAX",
         "it": "DAX",
@@ -3675,6 +4098,15 @@ $('.color-mode').on('click', function(){
     },
     "spotify": {
         "icon": "♪",
+        id: "Spotify",
+        tr: "Spotify",
+        vi: "Spotify",
+        ru: "Спотифай",
+        zh: "Spotify",
+        ko: "Spotify",
+        ja: "Spotify",
+        hi: "Spotify",
+        ar: "Spotify",
         "es": "Spotify",
         "en": "Spotify",
         "it": "Spotify",
@@ -3684,6 +4116,15 @@ $('.color-mode').on('click', function(){
     },
     "modelo-supervisado": {
         "icon": "✓",
+        id: "Model dengan supervisi",
+        tr: "Denetimli öğrenme modeli",
+        vi: "Mô hình học có giám sát",
+        ru: "Модель обучения с учителем",
+        zh: "监督学习模型",
+        ko: "지도 학습 모델",
+        ja: "教師ありモデル",
+        hi: "सुपरवाइज़्ड मॉडल",
+        ar: "نموذج تعلّم خاضع للإشراف",
         "es": "Modelo supervisado",
         "en": "Supervised model",
         "it": "Modello supervisionato",
@@ -3693,6 +4134,15 @@ $('.color-mode').on('click', function(){
     },
     "redes-neuronales": {
         "icon": "⋈",
+        id: "Jaringan Saraf",
+        tr: "Sinir Ağları",
+        vi: "Mạng nơ-ron",
+        ru: "Нейронные сети",
+        zh: "神经网络",
+        ko: "신경망",
+        ja: "ニューラルネットワーク",
+        hi: "न्यूरल नेटवर्क",
+        ar: "الشبكات العصبية",
         "es": "Redes Neuronales",
         "en": "Neural Networks",
         "it": "Reti neurali",
@@ -3702,6 +4152,15 @@ $('.color-mode').on('click', function(){
     },
     "modelo-no-supervisado": {
         "icon": "◎",
+        id: "Model tanpa supervisi",
+        tr: "Denetimsiz öğrenme modeli",
+        vi: "Mô hình học không giám sát",
+        ru: "Модель обучения без учителя",
+        zh: "无监督模型",
+        ko: "비지도 학습 모델",
+        ja: "教師なしモデル",
+        hi: "अनसुपरवाइज़्ड मॉडल",
+        ar: "نموذج تعلّم غير خاضع للإشراف",
         "es": "Modelo no supervisado",
         "en": "Unsupervised model",
         "it": "Modello non supervisionato",
@@ -3711,6 +4170,15 @@ $('.color-mode').on('click', function(){
     },
     "clasificacion": {
         "icon": "≡",
+        id: "Klasifikasi",
+        tr: "sınıflandırma",
+        vi: "Phân loại",
+        ru: "Классификация",
+        zh: "分类",
+        ko: "분류",
+        ja: "分類",
+        hi: "रैंकिंग",
+        ar: "الترتيب",
         "es": "Clasificación",
         "en": "Classification",
         "it": "Classificazione",
@@ -3720,6 +4188,15 @@ $('.color-mode').on('click', function(){
     },
     "clustering": {
         "icon": "✣",
+        id: "Clustering",
+        tr: "Kümeleme",
+        vi: "Phân cụm",
+        ru: "Кластеризация",
+        zh: "聚类",
+        ko: "군집 분석",
+        ja: "クラスタリング",
+        hi: "क्लस्टरिंग",
+        ar: "التجميع",
         "es": "Clustering",
         "en": "Clustering",
         "it": "Clustering",
@@ -3729,6 +4206,15 @@ $('.color-mode').on('click', function(){
     },
     "knn": {
         "icon": "↗",
+        id: "KNN",
+        tr: "KNN",
+        vi: "KNN",
+        ru: "KNN",
+        zh: "KNN",
+        ko: "KNN",
+        ja: "KNN",
+        hi: "KNN",
+        ar: "KNN",
         "es": "KNN",
         "en": "KNN",
         "it": "KNN",
@@ -3738,6 +4224,15 @@ $('.color-mode').on('click', function(){
     },
     "k-means": {
         "icon": "⌖",
+        id: "K-means",
+        tr: "K-means",
+        vi: "K-means",
+        ru: "K-means",
+        zh: "K-means",
+        ko: "K-means",
+        ja: "K-means",
+        hi: "K-means",
+        ar: "K-means",
         "es": "K-means",
         "en": "K-means",
         "it": "K-means",
@@ -3747,6 +4242,15 @@ $('.color-mode').on('click', function(){
     },
     "regresion-logistica": {
         "icon": "⌁",
+        id: "Regresi logistik",
+        tr: "Lojistik regresyon",
+        vi: "Hồi quy logistic",
+        ru: "Логистическая регрессия",
+        zh: "逻辑回归",
+        ko: "로지스틱 회귀",
+        ja: "ロジスティック回帰",
+        hi: "लॉजिस्टिक रिग्रेशन",
+        ar: "الانحدار اللوجستي",
         "es": "Regresión logística",
         "en": "Logistic regression",
         "it": "Regressione logistica",
@@ -3756,6 +4260,15 @@ $('.color-mode').on('click', function(){
     },
     "dbscan": {
         "icon": "⊙",
+        id: "DBSCAN",
+        tr: "DBSCAN",
+        vi: "DBSCAN",
+        ru: "DBSCAN",
+        zh: "DBSCAN",
+        ko: "DBSCAN",
+        ja: "DBSCAN",
+        hi: "DBSCAN",
+        ar: "DBSCAN",
         "es": "DBSCAN",
         "en": "DBSCAN",
         "it": "DBSCAN",
@@ -3765,6 +4278,15 @@ $('.color-mode').on('click', function(){
     },
     "simulacion": {
         "icon": "∿",
+        id: "Simulasi",
+        tr: "Simülasyon",
+        vi: "Mô phỏng",
+        ru: "Моделирование",
+        zh: "模拟",
+        ko: "시뮬레이션",
+        ja: "シミュレーション",
+        hi: "सिमुलेशन",
+        ar: "المحاكاة",
         "es": "Simulación",
         "en": "Simulation",
         "it": "Simulazione",
@@ -3774,6 +4296,15 @@ $('.color-mode').on('click', function(){
     },
     "poisson": {
         "icon": "λ",
+        id: "racun",
+        tr: "Poisson",
+        vi: "Poisson",
+        ru: "Пуассон",
+        zh: "泊松分布",
+        ko: "푸아송",
+        ja: "ポアソン分布",
+        hi: "प्वासों",
+        ar: "بواسون",
         "es": "Poisson",
         "en": "Poisson",
         "it": "Poisson",
@@ -3783,6 +4314,15 @@ $('.color-mode').on('click', function(){
     },
     "geoespacial": {
         "icon": "⌖",
+        id: "Geospasial",
+        tr: "Jeouzaysal",
+        vi: "Không gian địa lý",
+        ru: "Геопространственный",
+        zh: "地理空间",
+        ko: "지리공간",
+        ja: "地理空間",
+        hi: "भू-स्थानिक विश्लेषण",
+        ar: "التحليل المكاني",
         "es": "Geoespacial",
         "en": "Geospatial",
         "it": "Geospaziale",
@@ -3792,6 +4332,15 @@ $('.color-mode').on('click', function(){
     },
     "airbnb": {
         "icon": "⌂",
+        id: "Airbnb",
+        tr: "Airbnb",
+        vi: "Airbnb",
+        ru: "Airbnb",
+        zh: "Airbnb",
+        ko: "Airbnb",
+        ja: "Airbnb",
+        hi: "Airbnb",
+        ar: "Airbnb",
         "es": "Airbnb",
         "en": "Airbnb",
         "it": "Airbnb",
@@ -3801,6 +4350,15 @@ $('.color-mode').on('click', function(){
     },
     "taxi": {
         "icon": "◆",
+        id: "Taksi",
+        tr: "Taksi",
+        vi: "Taxi",
+        ru: "Такси",
+        zh: "出租车",
+        ko: "택시",
+        ja: "タクシー",
+        hi: "टैक्सी",
+        ar: "سيارة أجرة",
         "es": "Taxi",
         "en": "Taxi",
         "it": "Taxi",
@@ -3810,6 +4368,15 @@ $('.color-mode').on('click', function(){
     },
     "futbol": {
         "icon": "●",
+        id: "Sepak bola",
+        tr: "Futbol",
+        vi: "Bóng đá",
+        ru: "Футбольный",
+        zh: "足球",
+        ko: "축구",
+        ja: "サッカー",
+        hi: "फ़ुटबॉल",
+        ar: "كرة القدم",
         "es": "Fútbol",
         "en": "Soccer",
         "it": "Calcio",
@@ -3819,6 +4386,15 @@ $('.color-mode').on('click', function(){
     },
     "aviacion": {
         "icon": "✈",
+        id: "Penerbangan",
+        tr: "Havacılık",
+        vi: "Hàng không",
+        ru: "Авиация",
+        zh: "航空",
+        ko: "항공",
+        ja: "航空",
+        hi: "विमानन",
+        ar: "الطيران",
         "es": "Aviación",
         "en": "Aviation",
         "it": "Aviazione",
@@ -3828,6 +4404,15 @@ $('.color-mode').on('click', function(){
     },
     "fraude": {
         "icon": "!",
+        id: "Tipuan",
+        tr: "Sahtekar",
+        vi: "Gian lận",
+        ru: "Мошенничество",
+        zh: "欺诈",
+        ko: "사기",
+        ja: "不正",
+        hi: "धोखाधड़ी",
+        ar: "الاحتيال",
         "es": "Fraude",
         "en": "Fraud",
         "it": "Frode",
@@ -3841,12 +4426,12 @@ $('.color-mode').on('click', function(){
   function getLang(){
     if(window.plGetLanguage){
       const lang = window.plGetLanguage();
-      if(['es','en','it','fr','de','pt','ca','nl','pl'].includes(lang)) return lang;
+      if(['es','en','it','fr','de','pt','ca','nl','pl',"id","tr","vi","ru","zh","ko","ja","hi","ar"].includes(lang)) return lang;
     }
 
     try{
       const stored = localStorage.getItem('patronesLabLanguage');
-      if(['es','en','it','fr','de','pt','ca','nl','pl'].includes(stored)) return stored;
+      if(['es','en','it','fr','de','pt','ca','nl','pl',"id","tr","vi","ru","zh","ko","ja","hi","ar"].includes(stored)) return stored;
     }catch(e){}
 
     return document.documentElement.lang || 'es';
@@ -3901,7 +4486,7 @@ $('.color-mode').on('click', function(){
   }
 
   function renderOneCardTags(card, lang){
-    
+
     return;
   }
 
@@ -3947,7 +4532,7 @@ $('.color-mode').on('click', function(){
 
     isSyncing = true;
 
-    const language = ['es','en','it','fr','de','pt','ca','nl','pl'].includes(lang) ? lang : getLang();
+    const language = ['es','en','it','fr','de','pt','ca','nl','pl',"id","tr","vi","ru","zh","ko","ja","hi","ar"].includes(lang) ? lang : getLang();
 
     renderFilters(language);
     renderCardTags(language);
@@ -3957,7 +4542,7 @@ $('.color-mode').on('click', function(){
   }
 
   function syncSoon(lang){
-    const language = ['es','en','it','fr','de','pt','ca','nl','pl'].includes(lang) ? lang : getLang();
+    const language = ['es','en','it','fr','de','pt','ca','nl','pl',"id","tr","vi","ru","zh","ko","ja","hi","ar"].includes(lang) ? lang : getLang();
 
     sync(language);
 
@@ -3988,7 +4573,7 @@ $('.color-mode').on('click', function(){
     }
   }, true);
 
-  
+
 
   if(document.readyState === 'loading'){
     document.addEventListener('DOMContentLoaded', function(){
@@ -4037,6 +4622,15 @@ $('.color-mode').on('click', function(){
   const FINAL_PROJECT_LABELS = {
     "all": {
         "icon": "◎",
+        id: "Semua",
+        tr: "Tümü",
+        vi: "Tất cả",
+        ru: "Все",
+        zh: "全部",
+        ko: "전체",
+        ja: "すべて",
+        hi: "सभी",
+        ar: "الكل",
         "es": "Todos",
         "en": "All",
         "it": "Tutti",
@@ -4046,6 +4640,15 @@ $('.color-mode').on('click', function(){
     },
     "bi": {
         "icon": "▦",
+        id: "BI",
+        tr: "BI",
+        vi: "BI",
+        ru: "BI",
+        zh: "BI",
+        ko: "BI",
+        ja: "BI",
+        hi: "BI",
+        ar: "BI",
         "es": "BI",
         "en": "BI",
         "it": "BI",
@@ -4055,6 +4658,15 @@ $('.color-mode').on('click', function(){
     },
     "data-analysis": {
         "icon": "▥",
+        id: "Analisis data",
+        tr: "Veri analizi",
+        vi: "Phân tích dữ liệu",
+        ru: "Анализ данных",
+        zh: "数据分析",
+        ko: "데이터 분석",
+        ja: "データ分析",
+        hi: "डेटा विश्लेषण",
+        ar: "تحليل البيانات",
         "es": "Análisis de datos",
         "en": "Data analysis",
         "it": "Analisi dei dati",
@@ -4064,6 +4676,15 @@ $('.color-mode').on('click', function(){
     },
     "data-science": {
         "icon": "⚗",
+        id: "Sains data",
+        tr: "Veri bilimi",
+        vi: "Khoa học dữ liệu",
+        ru: "Наука о данных",
+        zh: "数据科学",
+        ko: "데이터 과학",
+        ja: "データサイエンス",
+        hi: "डेटा विज्ञान",
+        ar: "علم البيانات",
         "es": "Ciencia de datos",
         "en": "Data science",
         "it": "Scienza dei dati",
@@ -4073,6 +4694,15 @@ $('.color-mode').on('click', function(){
     },
     "data-storytelling": {
         "icon": "✎",
+        id: "Data Storytelling",
+        tr: "Data Storytelling",
+        vi: "Data Storytelling",
+        ru: "Data Storytelling",
+        zh: "数据叙事",
+        ko: "데이터 스토리텔링",
+        ja: "データストーリーテリング",
+        hi: "डेटा से कहानी कहना",
+        ar: "سرد القصص بالبيانات",
         "es": "Data Storytelling",
         "en": "Data Storytelling",
         "it": "Storytelling dei dati",
@@ -4082,6 +4712,15 @@ $('.color-mode').on('click', function(){
     },
     "machine-learning": {
         "icon": "✦",
+        id: "Machine Learning",
+        tr: "Makine Öğrenmesi",
+        vi: "Học máy",
+        ru: "Машинное обучение",
+        zh: "机器学习",
+        ko: "머신러닝",
+        ja: "機械学習",
+        hi: "मशीन लर्निंग",
+        ar: "التعلم الآلي",
         "es": "Machine Learning",
         "en": "Machine Learning",
         "it": "Machine Learning",
@@ -4091,6 +4730,15 @@ $('.color-mode').on('click', function(){
     },
     "python": {
         "icon": "◇",
+        id: "Python",
+        tr: "Python",
+        vi: "Python",
+        ru: "Python",
+        zh: "Python",
+        ko: "Python",
+        ja: "Python",
+        hi: "Python",
+        ar: "Python",
         "es": "Python",
         "en": "Python",
         "it": "Python",
@@ -4100,6 +4748,15 @@ $('.color-mode').on('click', function(){
     },
     "spss": {
         "icon": "◧",
+        id: "SPSS",
+        tr: "SPSS",
+        vi: "SPSS",
+        ru: "SPSS",
+        zh: "SPSS",
+        ko: "SPSS",
+        ja: "SPSS",
+        hi: "SPSS",
+        ar: "SPSS",
         "es": "SPSS",
         "en": "SPSS",
         "it": "SPSS",
@@ -4109,6 +4766,15 @@ $('.color-mode').on('click', function(){
     },
     "looker-studio": {
         "icon": "◉",
+        id: "Looker Studio",
+        tr: "Looker Studio",
+        vi: "Looker Studio",
+        ru: "Looker Studio",
+        zh: "Looker Studio",
+        ko: "Looker Studio",
+        ja: "Looker Studio",
+        hi: "Looker Studio",
+        ar: "Looker Studio",
         "es": "Looker Studio",
         "en": "Looker Studio",
         "it": "Looker Studio",
@@ -4118,6 +4784,15 @@ $('.color-mode').on('click', function(){
     },
     "dashboard": {
         "icon": "▣",
+        id: "Dashboard",
+        tr: "Gösterge paneli",
+        vi: "Dashboard",
+        ru: "Дашборд",
+        zh: "仪表板",
+        ko: "대시보드",
+        ja: "ダッシュボード",
+        hi: "डैशबोर्ड",
+        ar: "لوحة المعلومات",
         "es": "Dashboard",
         "en": "Dashboard",
         "it": "Dashboard",
@@ -4127,6 +4802,15 @@ $('.color-mode').on('click', function(){
     },
     "power-bi": {
         "icon": "▥",
+        id: "Power BI",
+        tr: "Power BI",
+        vi: "Power BI",
+        ru: "Power BI",
+        zh: "Power BI",
+        ko: "Power BI",
+        ja: "Power BI",
+        hi: "Power BI",
+        ar: "Power BI",
         "es": "Power BI",
         "en": "Power BI",
         "it": "Power BI",
@@ -4136,6 +4820,15 @@ $('.color-mode').on('click', function(){
     },
     "dax": {
         "icon": "ƒx",
+        id: "DAX",
+        tr: "DAX",
+        vi: "DAX",
+        ru: "DAX",
+        zh: "DAX",
+        ko: "DAX",
+        ja: "DAX",
+        hi: "DAX",
+        ar: "DAX",
         "es": "DAX",
         "en": "DAX",
         "it": "DAX",
@@ -4145,6 +4838,15 @@ $('.color-mode').on('click', function(){
     },
     "spotify": {
         "icon": "♪",
+        id: "Spotify",
+        tr: "Spotify",
+        vi: "Spotify",
+        ru: "Спотифай",
+        zh: "Spotify",
+        ko: "Spotify",
+        ja: "Spotify",
+        hi: "Spotify",
+        ar: "Spotify",
         "es": "Spotify",
         "en": "Spotify",
         "it": "Spotify",
@@ -4154,6 +4856,15 @@ $('.color-mode').on('click', function(){
     },
     "modelo-supervisado": {
         "icon": "✓",
+        id: "Model dengan supervisi",
+        tr: "Denetimli öğrenme modeli",
+        vi: "Mô hình học có giám sát",
+        ru: "Модель обучения с учителем",
+        zh: "监督学习模型",
+        ko: "지도 학습 모델",
+        ja: "教師ありモデル",
+        hi: "सुपरवाइज़्ड मॉडल",
+        ar: "نموذج تعلّم خاضع للإشراف",
         "es": "Modelo supervisado",
         "en": "Supervised model",
         "it": "Modello supervisionato",
@@ -4163,6 +4874,15 @@ $('.color-mode').on('click', function(){
     },
     "redes-neuronales": {
         "icon": "⋈",
+        id: "Jaringan Saraf",
+        tr: "Sinir Ağları",
+        vi: "Mạng nơ-ron",
+        ru: "Нейронные сети",
+        zh: "神经网络",
+        ko: "신경망",
+        ja: "ニューラルネットワーク",
+        hi: "न्यूरल नेटवर्क",
+        ar: "الشبكات العصبية",
         "es": "Redes Neuronales",
         "en": "Neural Networks",
         "it": "Reti neurali",
@@ -4172,6 +4892,15 @@ $('.color-mode').on('click', function(){
     },
     "modelo-no-supervisado": {
         "icon": "◎",
+        id: "Model tanpa supervisi",
+        tr: "Denetimsiz öğrenme modeli",
+        vi: "Mô hình học không giám sát",
+        ru: "Модель обучения без учителя",
+        zh: "无监督模型",
+        ko: "비지도 학습 모델",
+        ja: "教師なしモデル",
+        hi: "अनसुपरवाइज़्ड मॉडल",
+        ar: "نموذج تعلّم غير خاضع للإشراف",
         "es": "Modelo no supervisado",
         "en": "Unsupervised model",
         "it": "Modello non supervisionato",
@@ -4181,6 +4910,15 @@ $('.color-mode').on('click', function(){
     },
     "clasificacion": {
         "icon": "≡",
+        id: "Klasifikasi",
+        tr: "sınıflandırma",
+        vi: "Phân loại",
+        ru: "Классификация",
+        zh: "分类",
+        ko: "분류",
+        ja: "分類",
+        hi: "रैंकिंग",
+        ar: "الترتيب",
         "es": "Clasificación",
         "en": "Classification",
         "it": "Classificazione",
@@ -4190,6 +4928,15 @@ $('.color-mode').on('click', function(){
     },
     "clustering": {
         "icon": "✣",
+        id: "Clustering",
+        tr: "Kümeleme",
+        vi: "Phân cụm",
+        ru: "Кластеризация",
+        zh: "聚类",
+        ko: "군집 분석",
+        ja: "クラスタリング",
+        hi: "क्लस्टरिंग",
+        ar: "التجميع",
         "es": "Clustering",
         "en": "Clustering",
         "it": "Clustering",
@@ -4199,6 +4946,15 @@ $('.color-mode').on('click', function(){
     },
     "knn": {
         "icon": "↗",
+        id: "KNN",
+        tr: "KNN",
+        vi: "KNN",
+        ru: "KNN",
+        zh: "KNN",
+        ko: "KNN",
+        ja: "KNN",
+        hi: "KNN",
+        ar: "KNN",
         "es": "KNN",
         "en": "KNN",
         "it": "KNN",
@@ -4208,6 +4964,15 @@ $('.color-mode').on('click', function(){
     },
     "k-means": {
         "icon": "⌖",
+        id: "K-means",
+        tr: "K-means",
+        vi: "K-means",
+        ru: "K-means",
+        zh: "K-means",
+        ko: "K-means",
+        ja: "K-means",
+        hi: "K-means",
+        ar: "K-means",
         "es": "K-means",
         "en": "K-means",
         "it": "K-means",
@@ -4217,6 +4982,15 @@ $('.color-mode').on('click', function(){
     },
     "regresion-logistica": {
         "icon": "⌁",
+        id: "Regresi logistik",
+        tr: "Lojistik regresyon",
+        vi: "Hồi quy logistic",
+        ru: "Логистическая регрессия",
+        zh: "逻辑回归",
+        ko: "로지스틱 회귀",
+        ja: "ロジスティック回帰",
+        hi: "लॉजिस्टिक रिग्रेशन",
+        ar: "الانحدار اللوجستي",
         "es": "Regresión logística",
         "en": "Logistic regression",
         "it": "Regressione logistica",
@@ -4226,6 +5000,15 @@ $('.color-mode').on('click', function(){
     },
     "dbscan": {
         "icon": "⊙",
+        id: "DBSCAN",
+        tr: "DBSCAN",
+        vi: "DBSCAN",
+        ru: "DBSCAN",
+        zh: "DBSCAN",
+        ko: "DBSCAN",
+        ja: "DBSCAN",
+        hi: "DBSCAN",
+        ar: "DBSCAN",
         "es": "DBSCAN",
         "en": "DBSCAN",
         "it": "DBSCAN",
@@ -4235,6 +5018,15 @@ $('.color-mode').on('click', function(){
     },
     "simulacion": {
         "icon": "∿",
+        id: "Simulasi",
+        tr: "Simülasyon",
+        vi: "Mô phỏng",
+        ru: "Моделирование",
+        zh: "模拟",
+        ko: "시뮬레이션",
+        ja: "シミュレーション",
+        hi: "सिमुलेशन",
+        ar: "المحاكاة",
         "es": "Simulación",
         "en": "Simulation",
         "it": "Simulazione",
@@ -4244,6 +5036,15 @@ $('.color-mode').on('click', function(){
     },
     "poisson": {
         "icon": "λ",
+        id: "racun",
+        tr: "Poisson",
+        vi: "Poisson",
+        ru: "Пуассон",
+        zh: "泊松分布",
+        ko: "푸아송",
+        ja: "ポアソン分布",
+        hi: "प्वासों",
+        ar: "بواسون",
         "es": "Poisson",
         "en": "Poisson",
         "it": "Poisson",
@@ -4253,6 +5054,15 @@ $('.color-mode').on('click', function(){
     },
     "geoespacial": {
         "icon": "⌖",
+        id: "Geospasial",
+        tr: "Jeouzaysal",
+        vi: "Không gian địa lý",
+        ru: "Геопространственный",
+        zh: "地理空间",
+        ko: "지리공간",
+        ja: "地理空間",
+        hi: "भू-स्थानिक विश्लेषण",
+        ar: "التحليل المكاني",
         "es": "Geoespacial",
         "en": "Geospatial",
         "it": "Geospaziale",
@@ -4262,6 +5072,15 @@ $('.color-mode').on('click', function(){
     },
     "airbnb": {
         "icon": "⌂",
+        id: "Airbnb",
+        tr: "Airbnb",
+        vi: "Airbnb",
+        ru: "Airbnb",
+        zh: "Airbnb",
+        ko: "Airbnb",
+        ja: "Airbnb",
+        hi: "Airbnb",
+        ar: "Airbnb",
         "es": "Airbnb",
         "en": "Airbnb",
         "it": "Airbnb",
@@ -4271,6 +5090,15 @@ $('.color-mode').on('click', function(){
     },
     "taxi": {
         "icon": "◆",
+        id: "Taksi",
+        tr: "Taksi",
+        vi: "Taxi",
+        ru: "Такси",
+        zh: "出租车",
+        ko: "택시",
+        ja: "タクシー",
+        hi: "टैक्सी",
+        ar: "سيارة أجرة",
         "es": "Taxi",
         "en": "Taxi",
         "it": "Taxi",
@@ -4280,6 +5108,15 @@ $('.color-mode').on('click', function(){
     },
     "futbol": {
         "icon": "●",
+        id: "Sepak bola",
+        tr: "Futbol",
+        vi: "Bóng đá",
+        ru: "Футбольный",
+        zh: "足球",
+        ko: "축구",
+        ja: "サッカー",
+        hi: "फ़ुटबॉल",
+        ar: "كرة القدم",
         "es": "Fútbol",
         "en": "Soccer",
         "it": "Calcio",
@@ -4289,6 +5126,15 @@ $('.color-mode').on('click', function(){
     },
     "aviacion": {
         "icon": "✈",
+        id: "Penerbangan",
+        tr: "Havacılık",
+        vi: "Hàng không",
+        ru: "Авиация",
+        zh: "航空",
+        ko: "항공",
+        ja: "航空",
+        hi: "विमानन",
+        ar: "الطيران",
         "es": "Aviación",
         "en": "Aviation",
         "it": "Aviazione",
@@ -4298,6 +5144,15 @@ $('.color-mode').on('click', function(){
     },
     "fraude": {
         "icon": "!",
+        id: "Tipuan",
+        tr: "Sahtekar",
+        vi: "Gian lận",
+        ru: "Мошенничество",
+        zh: "欺诈",
+        ko: "사기",
+        ja: "不正",
+        hi: "धोखाधड़ी",
+        ar: "الاحتيال",
         "es": "Fraude",
         "en": "Fraud",
         "it": "Frode",
@@ -4310,16 +5165,16 @@ $('.color-mode').on('click', function(){
   function getLang(){
     if(window.plGetLanguage){
       const lang = window.plGetLanguage();
-      if(['es','en','it','fr','de','pt','ca','nl','pl'].includes(lang)) return lang;
+      if(['es','en','it','fr','de','pt','ca','nl','pl',"id","tr","vi","ru","zh","ko","ja","hi","ar"].includes(lang)) return lang;
     }
 
     try{
       const stored = localStorage.getItem('patronesLabLanguage');
-      if(['es','en','it','fr','de','pt','ca','nl','pl'].includes(stored)) return stored;
+      if(['es','en','it','fr','de','pt','ca','nl','pl',"id","tr","vi","ru","zh","ko","ja","hi","ar"].includes(stored)) return stored;
     }catch(e){}
 
     const htmlLang = document.documentElement.lang;
-    return ['es','en','it','fr','de','pt','ca','nl','pl'].includes(htmlLang) ? htmlLang : 'es';
+    return ['es','en','it','fr','de','pt','ca','nl','pl',"id","tr","vi","ru","zh","ko","ja","hi","ar"].includes(htmlLang) ? htmlLang : 'es';
   }
 
   function labelFor(token, lang){
@@ -4485,7 +5340,7 @@ $('.color-mode').on('click', function(){
   }
 
   function sync(lang){
-    const language = ['es','en','it','fr','de','pt','ca','nl','pl'].includes(lang) ? lang : getLang();
+    const language = ['es','en','it','fr','de','pt','ca','nl','pl',"id","tr","vi","ru","zh","ko","ja","hi","ar"].includes(lang) ? lang : getLang();
 
     removeInjectedProjectTags();
     renderFilters(language);
@@ -4503,7 +5358,7 @@ $('.color-mode').on('click', function(){
   }
 
   function syncSoon(lang){
-    const language = ['es','en','it','fr','de','pt','ca','nl','pl'].includes(lang) ? lang : getLang();
+    const language = ['es','en','it','fr','de','pt','ca','nl','pl',"id","tr","vi","ru","zh","ko","ja","hi","ar"].includes(lang) ? lang : getLang();
 
     sync(language);
 
@@ -4587,6 +5442,15 @@ $('.color-mode').on('click', function(){
 
 (function(){
   const footerTexts = {
+    id: "Patrones Lab® · Menghasilkan pengetahuan dari data · oleh Malcolm Di Pietro Cagliari",
+    tr: "Patrones Lab® · Verilerden bilgi üretme · Yazan: Malcolm Di Pietro Cagliari",
+    vi: "Patrones Lab® · Tạo ra kiến ​​thức từ dữ liệu · bởi Malcolm Di Pietro Cagliari",
+    ru: "Patrones Lab® · Генерация знаний из данных · автор Malcolm Di Pietro Cagliari",
+    zh: "Patrones Lab® · 从数据中获取知识 · Malcolm Di Pietro Cagliari",
+    ko: "Patrones Lab® · 데이터에서 지식을 찾습니다 · Malcolm Di Pietro Cagliari",
+    ja: "Patrones Lab® · データから知見を引き出す · Malcolm Di Pietro Cagliari",
+    hi: "Patrones Lab® · डेटा से नई समझ · Malcolm Di Pietro Cagliari",
+    ar: "Patrones Lab® · من البيانات إلى المعرفة · إعداد Malcolm Di Pietro Cagliari",
     es: "Patrones Lab® · Generando conocimiento a partir de los datos · por Malcolm Di Pietro Cagliari",
     en: "Patrones Lab® · Generating knowledge from data · by Malcolm Di Pietro Cagliari",
     it: "Patrones Lab® · Generare conoscenza a partire dai dati · di Malcolm Di Pietro Cagliari",
@@ -4645,6 +5509,15 @@ $('.color-mode').on('click', function(){
 
 (function(){
   const methodologyTexts = {
+  id: {"title":"Siklus hidup data","steps":[["Penemuan","Konteks dan tujuan"],["Sumber","Data dan diagnosis"],["Persiapan","Dasar analitis"],["Konstruksi","Larutan"],["Validasi","Kontrol dan kepercayaan"],["Pengiriman","Penerbitan, otomatisasi, dan evolusi"]]},
+  tr: {"title":"Veri yaşam döngüsü","steps":[["Keşif","Bağlam ve amaç"],["Kaynaklar","Veriler ve teşhis"],["Hazırlık","Analitik temel"],["Yapı","Çözüm"],["Doğrulama","Kontrol ve güven"],["Teslimat","Yayıncılık, otomasyon ve evrim"]]},
+  vi: {"title":"Vòng đời dữ liệu","steps":[["Khám phá","Bối cảnh và mục tiêu"],["Nguồn","Dữ liệu và chẩn đoán"],["Sự chuẩn bị","Cơ sở phân tích"],["Sự thi công","Giải pháp"],["Kiểm định","Kiểm soát và tin tưởng"],["Vận chuyển","Xuất bản, tự động hóa và phát triển"]]},
+  ru: {"title":"Жизненный цикл данных","steps":[["Открытие","Контекст и цель"],["Источники","Данные и диагностика"],["Подготовка","Аналитическая основа"],["Строительство","Решение"],["Валидация","Контроль и доверие"],["Доставка","Издательское дело, автоматизация и эволюция"]]},
+  zh: {"title":"数据生命周期","steps":[["明确需求","背景与目标"],["数据来源","数据与诊断"],["数据准备","分析基础"],["构建","解决方案"],["验证","质量控制与可信度"],["交付","发布、自动化与持续改进"]]},
+  ko: {"title":"데이터 수명 주기","steps":[["탐색","배경과 목표"],["출처","데이터 및 진단"],["준비","분석용 데이터셋"],["구축","해결책"],["검증","품질 관리와 신뢰성"],["결과물 전달","게시, 자동화와 개선"]]},
+  ja: {"title":"データのライフサイクル","steps":[["課題の把握","背景と目的"],["データの出典","データと現状分析"],["データの準備","分析の土台"],["構築","解決策"],["検証","品質管理と信頼性"],["成果の共有","公開・自動化・継続的な改善"]]},
+  hi: {"title":"डेटा का जीवनचक्र","steps":[["खोज","पृष्ठभूमि और उद्देश्य"],["स्रोत","डेटा और जाँच"],["तैयारी","विश्लेषण का डेटासेट"],["निर्माण","समाधान"],["सत्यापन","नियंत्रण और विश्वसनीयता"],["अंतिम प्रस्तुति","प्रकाशन, स्वचालन और आगे का विकास"]]},
+  ar: {"title":"دورة حياة البيانات","steps":[["الاستكشاف","السياق والهدف"],["المصادر","البيانات والتشخيص"],["التحضير","مجموعة البيانات المستخدمة في التحليل"],["البناء","الحل"],["التحقق","الضبط والموثوقية"],["التسليم","النشر والأتمتة والتطوير المستمر"]]},
   "es": {
     "title": "Ciclo de vida del dato",
     "steps": [
@@ -4877,6 +5750,15 @@ $('.color-mode').on('click', function(){
 
 (function(){
   const labels = {
+    id: "data:",
+    tr: "veri:",
+    vi: "dữ liệu:",
+    ru: "данные:",
+    zh: "数据：",
+    ko: "데이터:",
+    ja: "データ：",
+    hi: "डेटा:",
+    ar: "البيانات:",
     es: 'datos:',
     en: 'data:',
     it: 'dati:',
@@ -4886,6 +5768,15 @@ $('.color-mode').on('click', function(){
   };
 
   const ariaLabels = {
+    id: "Tahun data",
+    tr: "Veri yılı",
+    vi: "Năm của dữ liệu",
+    ru: "Год данных",
+    zh: "数据年份",
+    ko: "데이터 기준 연도",
+    ja: "データの対象年",
+    hi: "डेटा का वर्ष",
+    ar: "سنة البيانات",
     es: 'Año de los datos',
     en: 'Data year',
     it: 'Anno dei dati',
@@ -4937,6 +5828,15 @@ $('.color-mode').on('click', function(){
 
 (function(){
   const detailCopy = {
+    id: {cta:"Lihat detail",ariaKey:"detailAriaId"},
+    tr: {cta:"Ayrıntıları gör",ariaKey:"detailAriaTr"},
+    vi: {cta:"Xem chi tiết",ariaKey:"detailAriaVi"},
+    ru: {cta:"Подробнее",ariaKey:"detailAriaRu"},
+    zh: {cta:"查看详情",ariaKey:"detailAriaZh"},
+    ko: {cta:"자세히 보기",ariaKey:"detailAriaKo"},
+    ja: {cta:"詳細を見る",ariaKey:"detailAriaJa"},
+    hi: {cta:"विवरण देखें",ariaKey:"detailAriaHi"},
+    ar: {cta:"عرض التفاصيل",ariaKey:"detailAriaAr"},
     es: { cta: 'Ver detalle', ariaKey: 'detailAriaEs' },
     en: { cta: 'View details', ariaKey: 'detailAriaEn' },
     it: { cta: 'Vedi dettagli', ariaKey: 'detailAriaIt' },

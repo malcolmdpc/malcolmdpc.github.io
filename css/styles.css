@@ -4870,7 +4870,7 @@ body.hero-entry-ready .hero-entry-section .hero-entry-image{
     max-width:520px;
   }
 
-  
+
   .process-timeline{
     --circle-size:58px !important;
     --circle-x:29px !important;
@@ -4928,7 +4928,7 @@ body.hero-entry-ready .hero-entry-section .hero-entry-image{
     margin-bottom:0 !important;
   }
 
-  
+
   .stack-timeline{
     --stack-circle-size:56px !important;
     --stack-circle-x:28px !important;
@@ -5171,7 +5171,7 @@ body.hero-entry-ready .hero-entry-section .hero-entry-image{
     line-height:1.28 !important;
   }
 
-  
+
   .process-timeline{
     --circle-size:60px !important;
     --circle-x:30px !important;
@@ -5244,7 +5244,7 @@ body.hero-entry-ready .hero-entry-section .hero-entry-image{
     margin-bottom:0 !important;
   }
 
-  
+
   .stack-timeline{
     --stack-circle-size:58px !important;
     --stack-circle-x:29px !important;
@@ -10423,7 +10423,7 @@ html.pl-section-snap-enabled{
     touch-action:pan-y !important;
   }
 
-  
+
   [data-horizontal-process-section],
   [data-horizontal-process-section] .wrapper,
   [data-horizontal-process-section] .item,
@@ -10431,7 +10431,7 @@ html.pl-section-snap-enabled{
     touch-action:pan-y !important;
   }
 
-  
+
   .navbar.pl-smart-navbar .navbar-toggler,
   .pl-smart-navbar .navbar-toggler{
     width:38px !important;
@@ -10470,7 +10470,7 @@ html.pl-section-snap-enabled{
     bottom:7px !important;
   }
 
-  
+
   .pl-scroll-loader,
   .pl-scroll-loader__hero-text,
   .pl-scroll-loader__subtitle{
@@ -10507,7 +10507,7 @@ html.pl-section-snap-enabled{
     opacity:1 !important;
   }
 
-  
+
   #projects.github-projects-section .container,
   .github-projects-section#projects .container{
     width:min(100%, calc(100vw - 18px)) !important;
@@ -10664,7 +10664,7 @@ html.pl-section-snap-enabled{
     transition:none !important;
   }
 
-  
+
   #home{
     margin-bottom:0 !important;
   }
@@ -10698,7 +10698,7 @@ html.pl-section-snap-enabled{
     isolation:auto !important;
   }
 
-  
+
   #methodology .process-horizontal-static-head{
     position:relative !important;
     inset:auto !important;
@@ -10728,7 +10728,7 @@ html.pl-section-snap-enabled{
     text-shadow:0 2px 18px rgba(0,0,0,.42) !important;
   }
 
-  
+
   #methodology .process-horizontal-track{
     position:relative !important;
     inset:auto !important;
@@ -10871,7 +10871,7 @@ html.pl-section-snap-enabled{
     content:none !important;
   }
 
-  
+
   #methodology .process-horizontal-panel::before,
   #methodology .process-horizontal-panel::after{
     position:absolute !important;
@@ -10907,7 +10907,7 @@ html.pl-section-snap-enabled{
     opacity:.24 !important;
   }
 
-  
+
   #networks .social-grid,
   #networks .social-grid.social-grid-complete{
     display:grid !important;
@@ -11060,7 +11060,7 @@ html.pl-section-snap-enabled{
     background:#111111 !important;
   }
 
-  
+
   #methodology .process-horizontal-static-head{
     position:absolute !important;
     top:52px !important;
@@ -11121,7 +11121,7 @@ html.pl-section-snap-enabled{
     padding-top:116px !important;
   }
 
-  
+
   #methodology .process-horizontal-panel::before,
   #methodology .process-horizontal-panel::after{
     pointer-events:none !important;
@@ -11142,7 +11142,7 @@ html.pl-section-snap-enabled{
 
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
 
-  
+
   #projects .repo-filter-toolbar,
   #projects .repo-filter-toolbar-hover-groups,
   #projects .repo-filter-group{
@@ -11214,7 +11214,7 @@ html.pl-section-snap-enabled{
     z-index:1 !important;
   }
 
-  
+
   #projects .github-project-body{
     padding:15px 12px 16px !important;
   }
@@ -11274,7 +11274,7 @@ html.pl-section-snap-enabled{
     max-height:15px !important;
   }
 
-  
+
   #projects .github-project-card:nth-of-type(8) .project-links-dual,
   #projects .github-project-card:nth-of-type(8) .project-links-editorial,
   #projects .github-project-card:nth-of-type(8) .project-link-row,
@@ -11412,7 +11412,7 @@ html.pl-section-snap-enabled{
     transform:none !important;
   }
 
-  
+
   #projects .repo-filter-group:last-child .repo-filter-category-panel,
   #projects .repo-filter-group:nth-last-child(2) .repo-filter-category-panel{
     left:auto !important;
@@ -11449,7 +11449,7 @@ html.pl-section-snap-enabled{
     border-color:rgba(255,194,0,.35) !important;
   }
 
-  
+
   #projects .github-project-grid,
   #projects .github-project-card,
   #projects .project-image-link,
@@ -11481,7 +11481,7 @@ html.pl-section-snap-enabled{
     overflow:visible !important;
   }
 
-  
+
   #projects .repo-filter-category-panel.pl-mobile-filter-floating{
     position:fixed !important;
     top:var(--pl-filter-top, 80px) !important;
@@ -11674,7 +11674,7 @@ html.pl-section-snap-enabled{
     touch-action:manipulation !important;
   }
 
-  
+
   body > .repo-filter-category-panel.pl-mobile-filter-portal{
     position:fixed !important;
     z-index:2147483000 !important;
@@ -11686,7 +11686,7 @@ html.pl-section-snap-enabled{
 
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
 
-  
+
   #home .small-text.hero-entry-kicker,
   #home .small-text{
     display:block !important;
@@ -11713,7 +11713,7 @@ html.pl-section-snap-enabled{
     white-space:nowrap !important;
   }
 
-  
+
   #home .pl-hero-title.hero-entry-title,
   #home .pl-hero-title{
     display:block !important;
@@ -11748,7 +11748,7 @@ html.pl-section-snap-enabled{
     white-space:nowrap !important;
   }
 
-  
+
   #home .about-text p.hero-entry-copy,
   #home .about-text > p{
     color:#f4efe7 !important;
@@ -11756,14 +11756,14 @@ html.pl-section-snap-enabled{
     text-shadow:0 2px 18px rgba(0,0,0,.36) !important;
   }
 
-  
+
   #projects .projects-intro{
     color:#f4efe7 !important;
     opacity:1 !important;
     text-shadow:0 2px 18px rgba(0,0,0,.28) !important;
   }
 
-  
+
   #networks .social-intro{
     color:#f4efe7 !important;
     opacity:1 !important;
@@ -11797,7 +11797,7 @@ html.pl-section-snap-enabled{
     color:revert-layer !important;
   }
 
-  
+
   #home .small-text.hero-entry-kicker,
   #home .small-text{
     white-space:nowrap !important;
@@ -11929,7 +11929,7 @@ html.pl-section-snap-enabled{
     padding:6px 18px 74px !important;
   }
 
-  
+
   #methodology .process-horizontal-panel__media{
     width:min(60vw, 248px) !important;
     max-height:27svh !important;
@@ -11939,7 +11939,7 @@ html.pl-section-snap-enabled{
     z-index:3 !important;
   }
 
-  
+
   #methodology .process-horizontal-panel__copy{
     width:min(92vw, 420px) !important;
     padding-left:30px !important;
@@ -12300,12 +12300,12 @@ html.pl-section-snap-enabled{
 
 
 body.dark-mode .color-mode-icon:before{
-  content:"\eb65" !important; 
+  content:"\eb65" !important;
 }
 
 
 body:not(.dark-mode) .color-mode-icon:before{
-  content:"\eb9f" !important; 
+  content:"\eb9f" !important;
 }
 
 @media (max-width: 767px), (hover: none) and (pointer: coarse){
@@ -12575,7 +12575,6 @@ body:not(.dark-mode) .language-scroll-indicator {color:#17181d;}
 .language-option:focus-visible,
 .language-option.is-active{
   opacity:1;
-  transform:translateY(-1px);
 }
 
 .language-option.is-active{
@@ -15444,9 +15443,9 @@ html:is(:lang(pl),:lang(nl)) #projects .github-project-card h3{
   hyphenate-limit-chars:8 3 3;
 }
 .language-option{width:100%;height:34px;min-width:0;flex:0 0 34px;box-sizing:border-box;border-radius:8px;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:6px;padding:2px;box-shadow:none!important}
-.language-option-img{transition:box-shadow .18s ease,transform .18s ease}
-.language-option-label{display:block;font-size:10px;line-height:1;font-weight:800;letter-spacing:.055em;color:rgba(255,255,255,.92);transition:color .18s ease}
-.language-option:hover .language-option-img,.language-option:focus-visible .language-option-img,.language-option.is-active .language-option-img{box-shadow:0 0 0 2px rgba(255,194,0,.72)}
+.language-option-img{flex-shrink:0;transition:box-shadow .18s ease}
+.language-option-label{display:block;flex:0 0 22px;min-width:0;text-align:left;font-size:10px;line-height:1;font-weight:800;letter-spacing:.055em;color:rgba(255,255,255,.92);transition:color .18s ease}
+.language-option:hover .language-option-img,.language-option:focus-visible .language-option-img,.language-option.is-active .language-option-img{box-shadow:0 0 0 1px rgba(255,194,0,.72)}
 .language-option:hover .language-option-label,.language-option:focus-visible .language-option-label,.language-option.is-active .language-option-label{color:#ffd21f}
 body:not(.dark-mode) .language-option-label{color:#17181d}
 body:not(.dark-mode) .language-option:hover .language-option-label,body:not(.dark-mode) .language-option:focus-visible .language-option-label,body:not(.dark-mode) .language-option.is-active .language-option-label{color:#8a6500}
@@ -15707,6 +15706,15 @@ body:not(.dark-mode) .language-option:hover .language-option-label,body:not(.dar
   text-wrap:pretty;
   orphans:2;
   widows:2;
+}
+
+html:is(:lang(zh), :lang(ko), :lang(ja), :lang(hi)) #home .pl-hero-title :is(.hero-line-row, .hero-rotator, .hero-rotator span) {
+  line-height: 1.22 !important;
+  letter-spacing: normal !important;
+}
+
+html:is(:lang(zh), :lang(ko), :lang(ja), :lang(hi), :lang(ar)) #home .pl-hero-title .hero-rotator {
+  height: 1.3em !important;
 }
 
 /* Palabras rotativas especialmente largas: conservar la escala del hero sin desbordar. */

@@ -1,0 +1,23 @@
+{
+  "name": "Patrones Lab • 数据分析",
+  "short_name": "Patrones Lab",
+  "description": "Patrones Lab 汇集数据分析、商业智能与机器学习项目，通过探索数据发现规律、获得见解，并用图表呈现研究成果。",
+  "start_url": "/zh/",
+  "scope": "/zh/",
+  "display": "standalone",
+  "background_color": "#0c0c0d",
+  "theme_color": "#0c0c0d",
+  "icons": [
+    {
+      "src": "images/patrones/favicon/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/patrones/favicon/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "lang": "zh-Hans"
+}
