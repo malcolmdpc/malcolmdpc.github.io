@@ -1,7 +1,7 @@
 {
   "name": "Patrones Lab · Analyse de données",
   "short_name": "Patrones Lab",
-  "description": "Patrones Lab réunit des projets d’analyse de données, de Business Intelligence et de Machine Learning pour explorer les données, identifier des tendances, produire des connaissances et représenter visuellement les résultats.",
+  "description": "Patrones Lab réunit des projets d’analyse de données, d’informatique décisionnelle et d’apprentissage automatique pour explorer les données, repérer des régularités et présenter les résultats sous forme visuelle.",
   "start_url": "/fr/",
   "scope": "/fr/",
   "display": "standalone",

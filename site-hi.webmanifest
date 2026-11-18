@@ -1,0 +1,23 @@
+{
+  "name": "Patrones Lab • डेटा विश्लेषण",
+  "short_name": "Patrones Lab",
+  "description": "Patrones Lab में डेटा विश्लेषण, बिज़नेस इंटेलिजेंस और मशीन लर्निंग की परियोजनाएँ हैं। इनमें डेटा की पड़ताल कर पैटर्न पहचाने जाते हैं, नई जानकारी निकाली जाती है और निष्कर्ष दृश्य रूप में दिखाए जाते हैं।",
+  "start_url": "/hi/",
+  "scope": "/hi/",
+  "display": "standalone",
+  "background_color": "#0c0c0d",
+  "theme_color": "#0c0c0d",
+  "icons": [
+    {
+      "src": "images/patrones/favicon/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/patrones/favicon/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "lang": "hi"
+}

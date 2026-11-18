@@ -1,0 +1,24 @@
+{
+  "name": "Patrones Lab • تحليل البيانات",
+  "short_name": "Patrones Lab",
+  "description": "يجمع Patrones Lab مشاريع في تحليل البيانات وذكاء الأعمال والتعلم الآلي لاستكشاف البيانات واكتشاف الأنماط واستخلاص المعرفة وعرض النتائج بصريًا.",
+  "start_url": "/ar/",
+  "scope": "/ar/",
+  "display": "standalone",
+  "background_color": "#0c0c0d",
+  "theme_color": "#0c0c0d",
+  "icons": [
+    {
+      "src": "images/patrones/favicon/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/patrones/favicon/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "lang": "ar",
+  "dir": "rtl"
+}

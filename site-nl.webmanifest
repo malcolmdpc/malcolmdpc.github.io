@@ -1,7 +1,7 @@
 {
   "name": "Patrones Lab • Data-analyse",
   "short_name": "Patrones Lab",
-  "description": "Patrones Lab brengt projecten op het gebied van data-analyse, Business Intelligence en machine learning samen om gegevens te verkennen, patronen te ontdekken en inzichten te ontwikkelen.",
+  "description": "Patrones Lab brengt projecten op het gebied van data-analyse, business intelligence en machine learning samen. Ze laten zien hoe je gegevens verkent, patronen herkent en bevindingen in beeld brengt.",
   "start_url": "/nl/",
   "scope": "/nl/",
   "display": "standalone",

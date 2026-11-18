@@ -1,7 +1,7 @@
 {
   "name": "Patrones Lab • Analítica de dades",
   "short_name": "Patrones Lab",
-  "description": "Patrones Lab aplega projectes d’analítica de dades, Business Intelligence i aprenentatge automàtic per explorar dades, descobrir patrons i transformar-los en coneixement.",
+  "description": "Patrones Lab aplega projectes d’anàlisi de dades, intel·ligència de negoci i aprenentatge automàtic per explorar dades, detectar patrons i comunicar els resultats amb gràfics i visualitzacions.",
   "start_url": "/ca/",
   "scope": "/ca/",
   "display": "standalone",

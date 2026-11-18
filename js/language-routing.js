@@ -1,7 +1,7 @@
 (function(){
   "use strict";
 
-  var supported = {es:true,en:true,it:true,fr:true,de:true,pt:true,ca:true,nl:true,pl:true};
+  var supported = {id:true,tr:true,vi:true,ru:true,zh:true,ko:true,ja:true,hi:true,ar:true,es:true,en:true,it:true,fr:true,de:true,pt:true,ca:true,nl:true,pl:true};
   var storageKey = "patronesLabLanguage";
   var pageLanguage = (document.documentElement.lang || "es").toLowerCase().split("-")[0];
   if(!supported[pageLanguage]) pageLanguage = "es";

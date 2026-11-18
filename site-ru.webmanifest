@@ -1,0 +1,23 @@
+{
+  "name": "Patrones Lab • Аналитика данных",
+  "short_name": "Patrones Lab",
+  "description": "Patrones Lab объединяет проекты по анализу данных, бизнес-аналитике и машинному обучению. В них исследуют данные, выявляют закономерности и наглядно представляют результаты.",
+  "start_url": "/ru/",
+  "scope": "/ru/",
+  "display": "standalone",
+  "background_color": "#0c0c0d",
+  "theme_color": "#0c0c0d",
+  "icons": [
+    {
+      "src": "images/patrones/favicon/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/patrones/favicon/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "lang": "ru"
+}

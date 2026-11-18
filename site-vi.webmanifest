@@ -1,0 +1,23 @@
+{
+  "name": "Patrones Lab • Phân tích dữ liệu",
+  "short_name": "Patrones Lab",
+  "description": "Patrones Lab tập hợp các dự án phân tích dữ liệu, phân tích kinh doanh và học máy nhằm khám phá dữ liệu, nhận diện quy luật và trình bày kết quả một cách trực quan.",
+  "start_url": "/vi/",
+  "scope": "/vi/",
+  "display": "standalone",
+  "background_color": "#0c0c0d",
+  "theme_color": "#0c0c0d",
+  "icons": [
+    {
+      "src": "images/patrones/favicon/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/patrones/favicon/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "lang": "vi"
+}
