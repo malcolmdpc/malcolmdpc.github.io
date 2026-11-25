@@ -1107,6 +1107,12 @@ $('.color-mode').on('click', function(){
 })();
 
 
+function plRememberIntroEntry(){
+  try{
+    window.sessionStorage.setItem('patronesLabIntroSeen', '1');
+  }catch(e){}
+}
+
 (function(){
   const loader = document.querySelector('.pl-scroll-loader');
   if(!loader) return;
@@ -1115,7 +1121,9 @@ $('.color-mode').on('click', function(){
   const html = document.documentElement;
   const params = new URLSearchParams(window.location.search || '');
   const directSectionTarget = window.plInitialSectionTarget || null;
+  const introSeen = html.classList.contains('pl-intro-seen');
   const skipIntro = directSectionTarget ||
+    introSeen ||
     params.has('audit') ||
     params.has('lighthouse') ||
     /Lighthouse|PageSpeed|Chrome-Lighthouse/i.test(navigator.userAgent || '') ||
@@ -1134,7 +1142,7 @@ $('.color-mode').on('click', function(){
       window.setTimeout(function(){
         window.plScrollToInitialSection({replaceUrl:true});
       }, 0);
-    }else{
+    }else if(!introSeen){
       window.scrollTo(0, 0);
     }
 
@@ -1211,6 +1219,7 @@ $('.color-mode').on('click', function(){
 
   function finishScrollLoader(){
     if(finished) return;
+    if(!clickAnimating) plRememberIntroEntry();
     finished = true;
     clickAnimating = false;
 
@@ -1268,6 +1277,7 @@ $('.color-mode').on('click', function(){
       event.stopPropagation();
     }
 
+    plRememberIntroEntry();
     clickAnimating = true;
     cleanupScrollTrigger();
     window.scrollTo(0, 0);
@@ -2061,6 +2071,7 @@ $('.color-mode').on('click', function(){
 
     if(loader.dataset.mobileFinished === 'true') return;
     loader.dataset.mobileFinished = 'true';
+    plRememberIntroEntry();
 
     const dot = loader.querySelector('.dot');
     const next = loader.querySelector('.pl-scroll-loader__next');
